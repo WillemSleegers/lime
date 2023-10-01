@@ -4,7 +4,8 @@ import { useState, useEffect } from "react"
 import { WebR } from "webr"
 
 const webR = new WebR({
-  baseUrl: "./node_modules/webr/dist/",
+  baseUrl: "./",
+  serviceWorkerUrl: "./",
 })
 
 async function getRandomNumbers() {
