@@ -3,10 +3,7 @@
 import { useState, useEffect } from "react"
 import { WebR } from "webr"
 
-const webR = new WebR({
-  baseUrl: "./",
-  serviceWorkerUrl: "./",
-})
+const webR = new WebR({ serviceWorkerUrl: "/" })
 
 async function getRandomNumbers() {
   await webR.init()
