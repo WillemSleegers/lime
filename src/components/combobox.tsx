@@ -2,7 +2,6 @@ import { useState } from "react"
 import { Check, ChevronsUpDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-
 import {
   Command,
   CommandEmpty,
@@ -12,30 +11,16 @@ import {
 } from "./ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-]
+type ComboboxProps = {
+  options: {
+    value: string
+    label: string
+  }[]
+}
 
-export function Combobox() {
+export const Combobox = (props: ComboboxProps) => {
+  const { options } = props
+
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState([""])
 
@@ -52,14 +37,14 @@ export function Combobox() {
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[250px] p-0">
+      <PopoverContent className="w-[300px] p-0">
         <Command>
           <CommandInput placeholder="Search outcomes..." />
           <CommandEmpty>No outcomes found.</CommandEmpty>
           <CommandGroup>
-            {frameworks.map((framework) => (
+            {options.map((option) => (
               <CommandItem
-                key={framework.value}
+                key={option.value}
                 onSelect={(currentValue) => {
                   if (value.includes(currentValue)) {
                     setValue((oldValues) => {
@@ -73,12 +58,10 @@ export function Combobox() {
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
-                    value.includes(framework.value)
-                      ? "opacity-100"
-                      : "opacity-0"
+                    value.includes(option.value) ? "opacity-100" : "opacity-0"
                   )}
                 />
-                {framework.label}
+                {option.label}
               </CommandItem>
             ))}
           </CommandGroup>

@@ -1,10 +1,9 @@
-import Test from "@/components/webr"
+import { MetaAnalysis } from "@/components/meta-analysis"
 
-export default function Home() {
+export default () => {
   return (
-    <main className="flex min-h-screen flex-col items-center">
-      <h1>Meta-analysis</h1>
-      <Test />
+    <main>
+      <MetaAnalysis />
     </main>
   )
 }

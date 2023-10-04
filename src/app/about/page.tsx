@@ -1,7 +1,7 @@
 export default function About() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      About
+    <main className="p-3">
+      <h1 className="text-2xl">About</h1>
     </main>
   )
 }

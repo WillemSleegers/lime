@@ -13,13 +13,13 @@ export function MainNav({
     >
       <Link
         href="/"
-        className="text-sm font-medium transition-colors hover:text-primary"
+        className="text-xl font-medium transition-colors hover:text-primary"
       >
-        Meta-analysis
+        Meata-analysis
       </Link>
       <Link
         href="/about/"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
       >
         About
       </Link>
