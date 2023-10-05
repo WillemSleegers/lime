@@ -1,6 +1,6 @@
 import { MetaAnalysis } from "@/components/meta-analysis"
 
-export default () => {
+export default function Home() {
   return (
     <main>
       <MetaAnalysis />
