@@ -20,7 +20,12 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import { SlidersHorizontalIcon } from "lucide-react"
+import {
+  ChevronRightCircleIcon,
+  ChevronRightIcon,
+  ChevronRightSquareIcon,
+  SlidersHorizontalIcon,
+} from "lucide-react"
 
 const formSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -47,9 +52,15 @@ export const Filters = () => {
   return (
     <Form {...form}>
       <Collapsible>
-        <CollapsibleTrigger className="flex gap-3">
-          <h2 className="mb-2">Filters</h2>
-          <SlidersHorizontalIcon />
+        <CollapsibleTrigger className="mb-3">
+          <div className="space-y-0.5">
+            <div className="flex flex-row items-center gap-1">
+              <h2 className="text-2xl font-bold tracking-tight">Filters</h2>
+            </div>
+            <p className="text-muted-foreground">
+              Manage which effects you want to include in the meta-analysis.
+            </p>
+          </div>
         </CollapsibleTrigger>
         <CollapsibleContent>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

@@ -10,18 +10,21 @@ export const MetaAnalysis = () => {
 
   return (
     <div className="m-3">
-      <h1 className="font-bold tracking-tight">Meta-Analysis</h1>
-      <p className="my-3">Status: {status}</p>
+      <div className="my-5 flex gap-3 justify-between">
+        <h1 className="font-bold tracking-tight">Meta-Analysis</h1>
+        <p className="my-3">Status: {status}</p>
+      </div>
 
-      <Filters />
       <Highlights />
 
-      <div className="py-3">
+      <div className="py-5">
         <h2 className="mb-3">Forest plot</h2>
         <div className="flex flex-col p-3">
           <ForestPlot />
         </div>
       </div>
+
+      <Filters />
     </div>
   )
 }
