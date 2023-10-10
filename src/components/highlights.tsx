@@ -37,7 +37,7 @@ export const Highlights = () => {
       </div>
       <div className="flex flex-col gap-3 text-center my-5">
         <p className="text-base text-gray-500">
-          The average effect is a Cohen's d of:
+          The average effect is a Cohen&apos;s d of:
         </p>
         <p className="text-4xl font-semibold">0.21</p>
         <p className="text-base text-gray-500">95% CI [0.15, 0.24]</p>
