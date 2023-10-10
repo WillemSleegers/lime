@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { ForestPlot } from "./forest-plot"
 import { Filters } from "./Filters"
+import { Highlights } from "./highlights"
 
 export const MetaAnalysis = () => {
   const [status, setStatus] = useState("Loading webR...")
@@ -13,6 +14,7 @@ export const MetaAnalysis = () => {
       <p className="my-3">Status: {status}</p>
 
       <Filters />
+      <Highlights />
 
       <div className="py-3">
         <h2 className="mb-3">Forest plot</h2>

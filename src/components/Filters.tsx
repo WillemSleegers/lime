@@ -20,6 +20,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import { SlidersHorizontalIcon } from "lucide-react"
 
 const formSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -46,8 +47,9 @@ export const Filters = () => {
   return (
     <Form {...form}>
       <Collapsible>
-        <CollapsibleTrigger>
+        <CollapsibleTrigger className="flex gap-3">
           <h2 className="mb-2">Filters</h2>
+          <SlidersHorizontalIcon />
         </CollapsibleTrigger>
         <CollapsibleContent>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
