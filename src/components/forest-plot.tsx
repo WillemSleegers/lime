@@ -9,27 +9,21 @@ import {
   Tooltip,
 } from "recharts"
 
-export const ForestPlot = () => {
+type ForestPlotProps = {
+  data: {
+    name: string
+    errorX: number[]
+    x: number
+  }[]
+}
+
+export const ForestPlot = (props: ForestPlotProps) => {
+  const { data } = props
+
   return (
-    <ResponsiveContainer height={500} width="100%">
+    <ResponsiveContainer height={30 * data.length} width="100%">
       <ScatterChart
-        data={[
-          {
-            name: "A",
-            errorX: [0.5, 0.5],
-            x: 0.2,
-          },
-          {
-            name: "B",
-            errorX: [-0.2, -0.4],
-            x: -0.3,
-          },
-          {
-            name: "C",
-            errorX: [-0.25, -0.25],
-            x: -0.5,
-          },
-        ]}
+        data={data}
         margin={{
           bottom: 5,
           left: 20,
@@ -43,11 +37,16 @@ export const ForestPlot = () => {
           verticalFill={[]}
           verticalPoints={[]}
         />
-        <XAxis dataKey="x" type="number" domain={[-3, 3]} />
-        <YAxis yAxisId="left" dataKey="name" type="category" />
+        <XAxis
+          dataKey="x"
+          type="number"
+          domain={[-3, 3]}
+          ticks={[-3, -2, -1, 0, 1, 2, 3]}
+        />
+        <YAxis yAxisId="left" dataKey="name" type="category" width={240} />
         <YAxis
           yAxisId="right"
-          dataKey="name"
+          dataKey="x"
           type="category"
           orientation="right"
         />

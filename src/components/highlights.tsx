@@ -1,21 +1,29 @@
 import {
   Card,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { BarChartIcon, FilterIcon } from "lucide-react"
 
-export const Highlights = () => {
+type HighLightsProps = {
+  effects: number
+  papers: number
+}
+
+export const Highlights = (props: HighLightsProps) => {
+  const { effects, papers } = props
+
   return (
     <div>
       <div className="flex gap-3 justify-center">
         <Card>
           <CardHeader>
-            <CardTitle>254 effects</CardTitle>
-            <CardDescription>From 102 studies</CardDescription>
+            <CardTitle>
+              {effects} {effects > 1 ? "effects" : "effect"}
+            </CardTitle>
+            <CardDescription>
+              From {papers} {papers > 1 ? "papers" : "paper"}
+            </CardDescription>
           </CardHeader>
         </Card>
         <Card>

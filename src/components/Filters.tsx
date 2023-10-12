@@ -20,12 +20,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import {
-  ChevronRightCircleIcon,
-  ChevronRightIcon,
-  ChevronRightSquareIcon,
-  SlidersHorizontalIcon,
-} from "lucide-react"
 
 const formSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {

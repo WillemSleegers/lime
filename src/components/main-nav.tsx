@@ -23,6 +23,18 @@ export function MainNav({
       >
         About
       </Link>
+      <Link
+        href="/contributors/"
+        className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
+      >
+        Contributors
+      </Link>
+      <Link
+        href="/news/"
+        className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
+      >
+        Changelog
+      </Link>
     </nav>
   )
 }

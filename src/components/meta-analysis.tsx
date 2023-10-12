@@ -1,12 +1,24 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { ForestPlot } from "./forest-plot"
 import { Filters } from "./Filters"
 import { Highlights } from "./highlights"
+import {
+  getData,
+  getEffectsCount,
+  getPapersCount,
+  getPlotData,
+} from "@/lib/json-functions"
 
 export const MetaAnalysis = () => {
   const [status, setStatus] = useState("Loading webR...")
+
+  const [effects, setEffects] = useState(getEffectsCount())
+  const [papers, setPapers] = useState(getPapersCount())
+  const [plotData, setPlotData] = useState(getPlotData())
+
+  console.log(getData())
 
   return (
     <div className="m-3">
@@ -15,12 +27,11 @@ export const MetaAnalysis = () => {
         <p className="my-3">Status: {status}</p>
       </div>
 
-      <Highlights />
+      <Highlights effects={effects} papers={papers} />
 
       <div className="py-5">
-        <h2 className="mb-3">Forest plot</h2>
         <div className="flex flex-col p-3">
-          <ForestPlot />
+          <ForestPlot data={plotData} />
         </div>
       </div>
 
