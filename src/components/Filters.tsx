@@ -13,13 +13,18 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { getOutcomeCategories } from "@/lib/json-functions"
+import { getData, getOutcomeCategories } from "@/lib/json-functions"
 import { Checkbox } from "./ui/checkbox"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import { useEffect, useState } from "react"
+import { WebR } from "webr"
+import { getRandomNumbers } from "@/lib/r-functions"
+import { ChevronRight } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 const formSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -31,7 +36,24 @@ const items = getOutcomeCategories().map((e) => {
   return { id: e.toLowerCase(), label: e }
 })
 
-export const Filters = () => {
+type FiltersProps = {
+  setData: Function
+}
+
+export const Filters = (props: FiltersProps) => {
+  const { setData } = props
+
+  const [webR, setWebR] = useState()
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    const initializeR = async () => {
+      const newWebR = new WebR()
+      setWebR(newWebR)
+    }
+    initializeR()
+  }, [])
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,24 +61,34 @@ export const Filters = () => {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const data = getData({
+      outcomes: values.items,
+    })
+    setData(data)
+
+    const numbers = await getRandomNumbers(webR)
+    console.log(numbers)
   }
 
   return (
-    <Form {...form}>
-      <Collapsible>
-        <CollapsibleTrigger className="mb-3">
-          <div className="space-y-0.5">
-            <div className="flex flex-row items-center gap-1">
-              <h2 className="text-2xl font-bold tracking-tight">Filters</h2>
-            </div>
-            <p className="text-muted-foreground">
-              Manage which effects you want to include in the meta-analysis.
-            </p>
+    <Collapsible
+      className=" bg-gray-100 rounded-lg p-3"
+      open={open}
+      onOpenChange={setOpen}
+    >
+      <CollapsibleTrigger>
+        <div className="space-y-0.5">
+          <div className="flex flex-row items-center gap-1">
+            <h2 className="text-2xl font-bold tracking-tight">Filters</h2>
+            <ChevronRight
+              className={cn("transition", open ? "rotate-90" : "rotate-0")}
+            />
           </div>
-        </CollapsibleTrigger>
-        <CollapsibleContent>
+        </div>
+      </CollapsibleTrigger>
+      <CollapsibleContent className="CollapsibleContent">
+        <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
               control={form.control}
@@ -109,8 +141,8 @@ export const Filters = () => {
             />
             <Button type="submit">Update</Button>
           </form>
-        </CollapsibleContent>
-      </Collapsible>
-    </Form>
+        </Form>
+      </CollapsibleContent>
+    </Collapsible>
   )
 }

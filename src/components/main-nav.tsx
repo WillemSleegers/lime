@@ -15,7 +15,7 @@ export function MainNav({
         href="/"
         className="text-xl font-medium transition-colors hover:text-primary"
       >
-        Meata-analysis
+        The Meata-Analysis Project
       </Link>
       <Link
         href="/about/"

@@ -1,24 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import { ForestPlot } from "./forest-plot"
-import { Filters } from "./Filters"
-import { Highlights } from "./highlights"
-import {
-  getData,
-  getEffectsCount,
-  getPapersCount,
-  getPlotData,
-} from "@/lib/json-functions"
+import { Filters } from "@/components/filters"
+import { getData } from "@/lib/json-functions"
+import { Separator } from "@radix-ui/react-separator"
+import { Highlights } from "@/components/highlights"
+import { ForestPlot } from "@/components/forest-plot"
+import { Effect } from "@/components/effect"
 
 export const MetaAnalysis = () => {
   const [status, setStatus] = useState("Loading webR...")
-
-  const [effects, setEffects] = useState(getEffectsCount())
-  const [papers, setPapers] = useState(getPapersCount())
-  const [plotData, setPlotData] = useState(getPlotData())
-
-  console.log(getData())
+  const [data, setData] = useState(getData({}))
 
   return (
     <div className="m-3">
@@ -26,16 +18,11 @@ export const MetaAnalysis = () => {
         <h1 className="font-bold tracking-tight">Meta-Analysis</h1>
         <p className="my-3">Status: {status}</p>
       </div>
-
-      <Highlights effects={effects} papers={papers} />
-
-      <div className="py-5">
-        <div className="flex flex-col p-3">
-          <ForestPlot data={plotData} />
-        </div>
-      </div>
-
-      <Filters />
+      <Filters setData={setData} />
+      <Separator />
+      <Highlights data={data} />
+      <Effect effect={0.21} />
+      <ForestPlot data={data} />
     </div>
   )
 }

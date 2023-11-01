@@ -1,18 +1,31 @@
 import data from "../assets/data/prepared-effects.json"
 
-export const getData = () => {
-  return data
+type getDataProps = {
+  outcomes?: string[]
 }
 
-export const getEffectsCount = () => {
-  return data.length
+export const getData = (props: getDataProps) => {
+  const { outcomes } = props
+
+  let subset
+  if (outcomes) {
+    subset = data.filter((e) => outcomes.includes(e.outcome_category))
+
+    return subset
+  } else {
+    return data
+  }
 }
 
-export const getPapersCount = () => {
-  const papers = data.map((e) => {
-    return e.paper
+export type dataProps = typeof data
+type dataKeys = keyof dataProps[0]
+
+export const getUniqueData = (data: dataProps, x: dataKeys) => {
+  const array = data.map((e) => {
+    return e[x]
   })
-  return [...new Set(papers)].length
+
+  return new Set(array).size
 }
 
 export const getOutcomeCategories = () => {
@@ -20,17 +33,4 @@ export const getOutcomeCategories = () => {
     return e.outcome_category
   })
   return [...new Set(outcomes)]
-}
-
-export const getPlotData = () => {
-  return data.map((e) => {
-    return {
-      name: e.label,
-      x: e.effect_size_value,
-      errorX: [
-        Math.abs(e.effect_size_value - e.effect_size_lower),
-        Math.abs(e.effect_size_value - e.effect_size_upper),
-      ],
-    }
-  })
 }

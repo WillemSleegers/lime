@@ -6,7 +6,7 @@ import { MainNav } from "@/components/main-nav"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Meata-Analysis",
+  title: "The Meata-Analysis Project",
   description:
     "Meta-analysis of social psychological interventions studies directed at reducing the consumption of animal products.",
 }
