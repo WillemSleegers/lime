@@ -1,12 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { Filters } from "@/components/filters"
 import { getData } from "@/lib/json-functions"
-import { Separator } from "@radix-ui/react-separator"
-import { Highlights } from "@/components/highlights"
-import { ForestPlot } from "@/components/forest-plot"
-import { Effect } from "@/components/effect"
+import { Filters } from "./filters"
+import { Separator } from "./ui/separator"
+import { Highlights } from "./highlights"
+import { Effect } from "./effect"
+import { ForestPlot } from "./forest-plot"
 
 export const MetaAnalysis = () => {
   const [status, setStatus] = useState("Loading webR...")
