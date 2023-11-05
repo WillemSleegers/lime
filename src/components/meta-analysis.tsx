@@ -3,8 +3,7 @@
 import { useState } from "react"
 import { getData } from "@/lib/json-functions"
 import { Filters } from "./filters"
-import { Separator } from "./ui/separator"
-import { Highlights } from "./highlights"
+import { Highlights } from "./highlights/highlights"
 import { Effect } from "./effect"
 import { ForestPlot } from "./forest-plot"
 
@@ -19,7 +18,6 @@ export const MetaAnalysis = () => {
         <p className="my-3">Status: {status}</p>
       </div>
       <Filters setData={setData} />
-      <Separator />
       <Highlights data={data} />
       <Effect effect={0.21} />
       <ForestPlot data={data} />

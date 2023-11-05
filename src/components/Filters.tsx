@@ -78,13 +78,11 @@ export const Filters = (props: FiltersProps) => {
       onOpenChange={setOpen}
     >
       <CollapsibleTrigger>
-        <div className="space-y-0.5">
-          <div className="flex flex-row items-center gap-1">
-            <h2 className="text-2xl font-bold tracking-tight">Filters</h2>
-            <ChevronRight
-              className={cn("transition", open ? "rotate-90" : "rotate-0")}
-            />
-          </div>
+        <div className="flex flex-row items-center gap-1">
+          <h2 className="text-2xl font-bold tracking-tight">Filters</h2>
+          <ChevronRight
+            className={cn("transition", open ? "rotate-90" : "rotate-0")}
+          />
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
@@ -94,8 +92,8 @@ export const Filters = (props: FiltersProps) => {
               control={form.control}
               name="items"
               render={() => (
-                <FormItem>
-                  <div className="mb-4">
+                <FormItem className="m-3">
+                  <div>
                     <FormLabel className="text-base">Outcomes</FormLabel>
                     <FormDescription>
                       Select the outcomes you want to include in the

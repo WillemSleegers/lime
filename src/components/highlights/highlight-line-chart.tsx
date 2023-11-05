@@ -6,7 +6,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./ui/card"
+} from "../ui/card"
 
 const data = [
   {
@@ -66,13 +66,10 @@ export function HighlightLineChart() {
                 type="monotone"
                 strokeWidth={2}
                 dataKey="revenue"
-                activeDot={{
-                  r: 6,
-                  style: { fill: "var(--theme-primary)", opacity: 0.25 },
-                }}
                 style={{
                   stroke: "#3b82f6",
                 }}
+                dot={false}
               />
               <XAxis dataKey="subscription" className="text-xs" />
             </LineChart>

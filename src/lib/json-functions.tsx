@@ -28,6 +28,23 @@ export const getUniqueData = (data: dataProps, x: dataKeys) => {
   return new Set(array).size
 }
 
+export const getMostCommon = (data: dataProps, x: dataKeys) => {
+  const counts = data.reduce(
+    (effect: { [n: string]: number }, o) => (
+      (effect[o[x]!] = (effect[o[x]!] || 0) + 1), effect
+    ),
+    {}
+  )
+
+  const maxCount = Math.max(...Object.entries(counts).map((count) => count[1]))
+
+  const mostCommon = Object.keys(counts).filter(
+    (count) => counts[count] == maxCount
+  )
+
+  return mostCommon
+}
+
 export const getOutcomeCategories = () => {
   const outcomes = data.map((e) => {
     return e.outcome_category

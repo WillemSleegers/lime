@@ -8,8 +8,8 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "./ui/command"
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
+} from "./command"
+import { Popover, PopoverContent, PopoverTrigger } from "./popover"
 
 type ComboboxProps = {
   id: string
