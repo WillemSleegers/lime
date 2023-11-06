@@ -67,8 +67,8 @@ export const Filters = (props: FiltersProps) => {
     })
     setData(data)
 
-    const numbers = await getRandomNumbers(webR)
-    console.log(numbers)
+    //const numbers = await getRandomNumbers(webR)
+    //console.log(numbers)
   }
 
   return (

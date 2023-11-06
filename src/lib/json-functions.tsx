@@ -45,6 +45,46 @@ export const getMostCommon = (data: dataProps, x: dataKeys) => {
   return mostCommon
 }
 
+export const getCounts = (data: dataProps, by: dataKeys, x: dataKeys) => {
+  const unique = data.filter(
+    (value, index, self) => index === self.findIndex((t) => t[by] === value[by])
+  )
+
+  const counts = unique.reduce(
+    (effect: { [n: string]: number }, o) => (
+      (effect[o[x]!] = (effect[o[x]!] || 0) + 1), effect
+    ),
+    {}
+  )
+
+  const array = []
+  for (const [key, value] of Object.entries(counts)) {
+    array.push({ x: key, y: value })
+  }
+
+  return array
+}
+
+export const getCount = (
+  data: dataProps,
+  by: dataKeys,
+  x: dataKeys,
+  y: string | number
+) => {
+  const unique = data.filter(
+    (value, index, self) => index === self.findIndex((t) => t[by] === value[by])
+  )
+
+  const counts = unique.reduce(
+    (effect: { [n: string]: number }, o) => (
+      (effect[o[x]!] = (effect[o[x]!] || 0) + 1), effect
+    ),
+    {}
+  )
+
+  return counts[y]
+}
+
 export const getOutcomeCategories = () => {
   const outcomes = data.map((e) => {
     return e.outcome_category

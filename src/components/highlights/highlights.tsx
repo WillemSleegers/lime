@@ -1,5 +1,11 @@
-import { useEffect, useState } from "react"
-import { dataProps, getMostCommon, getUniqueData } from "@/lib/json-functions"
+import { useState } from "react"
+import {
+  dataProps,
+  getCount,
+  getCounts,
+  getMostCommon,
+  getUniqueData,
+} from "@/lib/json-functions"
 import { HighlightPercentage } from "@/components/highlights/highlight-percentage"
 import { HighlightLineChart } from "@/components/highlights/highlight-line-chart"
 import {
@@ -19,19 +25,13 @@ export const Highlights = (props: HighLightsProps) => {
   const { data } = props
 
   const [open, setOpen] = useState(true)
-  const [effects, setEffects] = useState(0)
-  const [papers, setPapers] = useState(0)
-  const [outcomes, setOutcomes] = useState(0)
 
-  let outcomeCount = getUniqueData(data, "outcome_category")
-  let mostCommonOutcome = getMostCommon(data, "outcome_category")
-
-  useEffect(() => {
-    setEffects(data.length)
-
-    const paperCount = getUniqueData(data, "paper")
-    setPapers(paperCount)
-  }, [data])
+  const effectsCount = data.length
+  const papersCount = getUniqueData(data, "paper")
+  const outcomeCount = getUniqueData(data, "outcome_category")
+  const mostCommonOutcome = getMostCommon(data, "outcome_category")
+  const openAccessCount = getCount(data, "paper", "paper_open_access", "yes")
+  const yearCounts = getCounts(data, "paper", "paper_year")
 
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
@@ -48,9 +48,9 @@ export const Highlights = (props: HighLightsProps) => {
       <CollapsibleContent className="CollapsibleContent">
         <div className="mt-5 grid grid-cols-3 gap-3">
           <HighlightText
-            title={effects + (effects == 1 ? " effect" : " effects")}
+            title={effectsCount + (effectsCount == 1 ? " effect" : " effects")}
             description={
-              "From " + papers + (papers == 1 ? " paper" : " papers")
+              "From " + papersCount + (papersCount == 1 ? " paper" : " papers")
             }
           />
           <HighlightText
@@ -64,8 +64,26 @@ export const Highlights = (props: HighLightsProps) => {
                 : "outcome is " + mostCommonOutcome)
             }
           />
-          <HighlightPercentage percentage={0.4} />
-          <HighlightLineChart />
+          <HighlightPercentage
+            title={openAccessCount + " open access papers"}
+            description={
+              Math.round(
+                ((openAccessCount / papersCount) * 100 + Number.EPSILON) * 100
+              ) /
+                100 +
+              "% of all papers"
+            }
+            percentage={openAccessCount / papersCount}
+          />
+          <HighlightLineChart
+            title={papersCount + (papersCount == 1 ? " paper" : " papers")}
+            description={
+              yearCounts[yearCounts.length - 1].y +
+              " published in " +
+              yearCounts[yearCounts.length - 1].x
+            }
+            data={yearCounts}
+          />
         </div>
       </CollapsibleContent>
     </Collapsible>

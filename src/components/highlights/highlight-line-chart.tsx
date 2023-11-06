@@ -8,47 +8,23 @@ import {
   CardTitle,
 } from "../ui/card"
 
-const data = [
-  {
-    revenue: 10400,
-    subscription: 2016,
-  },
-  {
-    revenue: 14405,
-    subscription: 2017,
-  },
-  {
-    revenue: 9400,
-    subscription: 2018,
-  },
-  {
-    revenue: 8200,
-    subscription: 2019,
-  },
-  {
-    revenue: 7000,
-    subscription: 2020,
-  },
-  {
-    revenue: 9600,
-    subscription: 2021,
-  },
-  {
-    revenue: 11244,
-    subscription: 2022,
-  },
-  {
-    revenue: 26475,
-    subscription: 2023,
-  },
-]
+type HighlightLineChartProps = {
+  title: string
+  description: string
+  data: {
+    x: string
+    y: number
+  }[]
+}
 
-export function HighlightLineChart() {
+export function HighlightLineChart(props: HighlightLineChartProps) {
+  const { title, description, data } = props
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>15 papers</CardTitle>
-        <CardDescription>3 published this year</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="h-[80px] w-[200px]">
@@ -65,13 +41,13 @@ export function HighlightLineChart() {
               <Line
                 type="monotone"
                 strokeWidth={2}
-                dataKey="revenue"
+                dataKey="y"
                 style={{
                   stroke: "#3b82f6",
                 }}
                 dot={false}
               />
-              <XAxis dataKey="subscription" className="text-xs" />
+              <XAxis dataKey="x" className="text-xs" />
             </LineChart>
           </ResponsiveContainer>
         </div>

@@ -8,19 +8,19 @@ import {
 } from "@/components/ui/card"
 
 type HighlightPercentageProps = {
+  title: string
+  description: string
   percentage: number
 }
 
 export const HighlightPercentage = (props: HighlightPercentageProps) => {
-  const { percentage } = props
+  const { title, description, percentage } = props
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>4 preregistered studies</CardTitle>
-        <CardDescription>
-          {percentage * 100}% of all included studies
-        </CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
 
       <CardContent>
