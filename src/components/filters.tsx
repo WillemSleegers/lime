@@ -22,7 +22,11 @@ import {
 } from "@/components/ui/collapsible"
 import { useEffect, useState } from "react"
 import { WebR } from "webr"
-import { getRandomNumbers } from "@/lib/r-functions"
+import {
+  getRandomNumbers,
+  jsonToDataframe,
+  runMetaAnalysis,
+} from "@/lib/r-functions"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -38,21 +42,15 @@ const items = getOutcomeCategories().map((e) => {
 
 type FiltersProps = {
   setData: Function
+  setEffect: Function
+  setStatus: Function
+  webR: WebR
 }
 
 export const Filters = (props: FiltersProps) => {
-  const { setData } = props
+  const { setData, setEffect, setStatus, webR } = props
 
-  const [webR, setWebR] = useState()
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const initializeR = async () => {
-      const newWebR = new WebR()
-      setWebR(newWebR)
-    }
-    initializeR()
-  }, [])
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -67,8 +65,12 @@ export const Filters = (props: FiltersProps) => {
     })
     setData(data)
 
-    //const numbers = await getRandomNumbers(webR)
-    //console.log(numbers)
+    setStatus("Running meta-analysis...")
+    await jsonToDataframe(webR, data, "data")
+    const results = await runMetaAnalysis(webR)
+    setEffect({ value: results[0], lower: results[1], upper: results[2] })
+
+    setStatus("Ready")
   }
 
   return (

@@ -5,10 +5,14 @@ import {
   CollapsibleTrigger,
 } from "./ui/collapsible"
 import { useState } from "react"
-import { cn } from "@/lib/utils"
+import { cn, round } from "@/lib/utils"
 
 type EffectProps = {
-  effect: number
+  effect: {
+    value: number
+    lower: number
+    upper: number
+  }
 }
 
 export const Effect = (props: EffectProps) => {
@@ -33,8 +37,14 @@ export const Effect = (props: EffectProps) => {
           <p className="text-base text-gray-500">
             The average effect is a Cohen&apos;s d of:
           </p>
-          <p className="text-4xl font-semibold">{effect}</p>
-          <p className="text-base text-gray-500">95% CI [0.15, 0.24]</p>
+          <p className="text-4xl font-semibold">{round(effect.value)}</p>
+          <p className="text-base text-gray-500">
+            {"95% CI [" +
+              round(effect.lower) +
+              ", " +
+              round(effect.upper) +
+              "]"}
+          </p>
         </div>
       </CollapsibleContent>
     </Collapsible>

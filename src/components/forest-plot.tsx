@@ -16,14 +16,10 @@ import {
 } from "./ui/collapsible"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { dataProps } from "@/lib/json-functions"
 
 type ForestPlotProps = {
-  data: {
-    label: string
-    effect_size_value: number
-    effect_size_lower: number
-    effect_size_upper: number
-  }[]
+  data: dataProps
 }
 
 export const ForestPlot = (props: ForestPlotProps) => {
