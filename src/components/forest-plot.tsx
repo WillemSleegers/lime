@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { PureComponent, useEffect, useState } from "react"
 import {
   ResponsiveContainer,
   ScatterChart,
@@ -8,6 +8,9 @@ import {
   Scatter,
   ErrorBar,
   Tooltip,
+  TooltipProps,
+  LabelProps,
+  TextProps,
 } from "recharts"
 import {
   Collapsible,
@@ -17,6 +20,13 @@ import {
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { dataProps } from "@/lib/json-functions"
+import {
+  NameType,
+  ValueType,
+} from "recharts/types/component/DefaultTooltipContent"
+import Link from "next/link"
+import { BaseAxisProps, CartesianTickItem } from "recharts/types/util/types"
+import { Props } from "recharts/types/component/Label"
 
 type ForestPlotProps = {
   data: dataProps
@@ -84,6 +94,7 @@ export const ForestPlot = (props: ForestPlotProps) => {
                   width={240}
                   axisLine={false}
                   tickLine={false}
+                  tick={<CustomizedAxisTick />}
                 />
                 <YAxis
                   yAxisId="right"
@@ -93,7 +104,7 @@ export const ForestPlot = (props: ForestPlotProps) => {
                   axisLine={false}
                   tickLine={false}
                 />
-                <Tooltip />
+                <Tooltip content={<CustomTooltip />} />
                 <Scatter shape="square" fill="black" yAxisId="left">
                   <ErrorBar
                     dataKey="errorX"
@@ -110,4 +121,35 @@ export const ForestPlot = (props: ForestPlotProps) => {
       </CollapsibleContent>
     </Collapsible>
   )
+}
+
+const CustomTooltip = ({
+  active,
+  payload,
+}: TooltipProps<ValueType, NameType>) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-tooltip bg-gray-50 p-3 rounded border">
+        <p>{`${payload[0].payload.name} : ${payload[0].value}`}</p>
+      </div>
+    )
+  }
+
+  return null
+}
+
+class CustomizedAxisTick extends PureComponent {
+  render() {
+    const { x, y, payload }: any = this.props
+
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <text x={0} y={0} dy={16} textAnchor="end" fill="#666">
+          <Link className="hover:underline cursor-pointer" href="">
+            {payload.value}
+          </Link>
+        </text>
+      </g>
+    )
+  }
 }
