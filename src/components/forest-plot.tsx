@@ -145,7 +145,11 @@ class CustomizedAxisTick extends PureComponent {
     return (
       <g transform={`translate(${x},${y})`}>
         <text x={0} y={0} dy={16} textAnchor="end" fill="#666">
-          <Link className="hover:underline cursor-pointer" href="">
+          <Link
+            className="hover:underline cursor-pointer"
+            target={"_blank"}
+            href={{ pathname: "/effect", query: { effect: payload.value } }}
+          >
             {payload.value}
           </Link>
         </text>
