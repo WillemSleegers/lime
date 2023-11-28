@@ -20,20 +20,18 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { WebR } from "webr"
-import {
-  getRandomNumbers,
-  jsonToDataframe,
-  runMetaAnalysis,
-} from "@/lib/r-functions"
+import { jsonToDataframe, runMetaAnalysis } from "@/lib/r-functions"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Input } from "./ui/input"
 
 const formSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
     message: "You have to select at least one item.",
   }),
+  minimumCellSize: z.coerce.number().min(1).max(1000),
 })
 
 const items = getOutcomeCategories().map((e) => {
@@ -56,13 +54,23 @@ export const Filters = (props: FiltersProps) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       items: items.map((e) => e.label),
+      minimumCellSize: 1,
     },
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const data = getData({
+    let data
+
+    data = getData({
       outcomes: values.items,
     })
+
+    data = data.filter(
+      (e) =>
+        e.control_n > values.minimumCellSize &&
+        e.treatment_n > values.minimumCellSize
+    )
+
     setData(data)
 
     setStatus("Running meta-analysis...")
@@ -90,55 +98,78 @@ export const Filters = (props: FiltersProps) => {
       <CollapsibleContent className="CollapsibleContent">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <FormField
-              control={form.control}
-              name="items"
-              render={() => (
-                <FormItem className="m-3">
-                  <div>
-                    <FormLabel className="text-base">Outcomes</FormLabel>
-                    <FormDescription>
-                      Select the outcomes you want to include in the
-                      meta-analysis.
-                    </FormDescription>
-                  </div>
-                  {items.map((item) => (
-                    <FormField
-                      key={item.id}
-                      control={form.control}
-                      name="items"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={item.id}
-                            className="flex flex-row items-start space-x-3 space-y-0"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(item.id)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([...field.value, item.id])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== item.id
+            <div className="mt-3 flex gap-6">
+              <FormField
+                control={form.control}
+                name="items"
+                render={() => (
+                  <FormItem>
+                    <div>
+                      <FormLabel className="text-base">Outcomes</FormLabel>
+                      <FormDescription>
+                        Select the outcomes you want to include in the
+                        meta-analysis.
+                      </FormDescription>
+                    </div>
+                    {items.map((item) => (
+                      <FormField
+                        key={item.id}
+                        control={form.control}
+                        name="items"
+                        render={({ field }) => {
+                          return (
+                            <FormItem
+                              key={item.id}
+                              className="flex flex-row items-start space-x-3 space-y-0"
+                            >
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value?.includes(item.id)}
+                                  onCheckedChange={(checked) => {
+                                    return checked
+                                      ? field.onChange([
+                                          ...field.value,
+                                          item.id,
+                                        ])
+                                      : field.onChange(
+                                          field.value?.filter(
+                                            (value) => value !== item.id
+                                          )
                                         )
-                                      )
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              {item.label}
-                            </FormLabel>
-                          </FormItem>
-                        )
-                      }}
-                    />
-                  ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                                  }}
+                                />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                {item.label}
+                              </FormLabel>
+                            </FormItem>
+                          )
+                        }}
+                      />
+                    ))}
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="minimumCellSize"
+                render={({ field }) => (
+                  <FormItem className="w-80">
+                    <FormLabel>Minimum cell size</FormLabel>
+                    <FormControl>
+                      <Input placeholder="1" type="number" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      This is the minimum cell size in either the control or
+                      intervention condition.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <Button type="submit">Update</Button>
           </form>
         </Form>
