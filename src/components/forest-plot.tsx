@@ -9,8 +9,6 @@ import {
   ErrorBar,
   Tooltip,
   TooltipProps,
-  LabelProps,
-  TextProps,
 } from "recharts"
 import {
   Collapsible,
@@ -24,9 +22,15 @@ import {
   NameType,
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent"
-import Link from "next/link"
-import { BaseAxisProps, CartesianTickItem } from "recharts/types/util/types"
-import { Props } from "recharts/types/component/Label"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import effects from "../assets/data/prepared-effects.json"
 
 type ForestPlotProps = {
   data: dataProps
@@ -142,18 +146,69 @@ class CustomizedAxisTick extends PureComponent {
   render() {
     const { x, y, payload }: any = this.props
 
+    const effect = effects.filter((e) => e.label == payload.value)
+
     return (
-      <g transform={`translate(${x},${y})`}>
-        <text x={0} y={0} dy={16} textAnchor="end" fill="#666">
-          <Link
-            className="hover:underline cursor-pointer"
-            target={"_blank"}
-            href={{ pathname: "/effect", query: { effect: payload.value } }}
-          >
-            {payload.value}
-          </Link>
-        </text>
-      </g>
+      <Dialog>
+        <DialogTrigger asChild className="cursor-pointer">
+          <g transform={`translate(${x},${y})`}>
+            <text x={0} y={0} dy={16} textAnchor="end" fill="#666">
+              {payload.value}
+            </text>
+          </g>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{payload.value}</DialogTitle>
+            <DialogDescription>
+              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0">
+                Paper
+              </h1>
+
+              <div className="my-3">
+                <span className="font-semibold">Title:</span>
+                <br />
+                <span>{effect[0].paper_title}</span>
+              </div>
+              <div className="my-3">
+                <span className="font-semibold">Authors:</span>
+                <br />
+                <span>{effect[0].paper_authors}</span>
+              </div>
+              <div className="my-3">
+                <span className="font-semibold">URL:</span>
+                <br />
+                <a target="_blank" href={effect[0].paper_link}>
+                  {effect[0].paper_link}
+                </a>
+              </div>
+
+              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0">
+                Outcome
+              </h1>
+              <div className="my-3">
+                <span className="font-semibold">Label:</span>
+                <br />
+                <span>{effect[0].outcome_label}</span>
+              </div>
+              <div className="my-3">
+                <span className="font-semibold">Category:</span>
+                <br />
+                <span>{effect[0].outcome_category}</span>
+              </div>
+
+              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0">
+                Effect
+              </h1>
+              <div className="my-3">
+                <span className="font-semibold">Value:</span>
+                <br />
+                <span>{effect[0].effect_size_value}</span>
+              </div>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     )
   }
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { dataProps, getData } from "@/lib/json-functions"
 import { Filters } from "./filters"
 import { Highlights } from "./highlights/highlights"
@@ -17,11 +17,13 @@ export const MetaAnalysis = () => {
 
   useEffect(() => {
     const initializeR = async () => {
+      console.log("Initializing...")
       const newData = getData({})
       setData(newData)
 
-      const newWebR = new WebR()
+      const newWebR = new WebR({ channelType: 1 })
       setWebR(newWebR)
+      console.log(newWebR)
 
       await newWebR.init()
 
