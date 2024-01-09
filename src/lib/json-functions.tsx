@@ -85,9 +85,9 @@ export const getCount = (
   return counts[y]
 }
 
-export const getOutcomeCategories = () => {
-  const outcomes = data.map((e) => {
-    return e.outcome_category
+export const getUniqueColumnValues = (x: dataKeys) => {
+  const values = data.map((column) => {
+    return column[x]
   })
-  return [...new Set(outcomes)]
+  return [...new Set(values)]
 }

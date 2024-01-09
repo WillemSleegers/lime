@@ -6,6 +6,7 @@ import {
 } from "./ui/collapsible"
 import { useState } from "react"
 import { cn, round } from "@/lib/utils"
+import { Skeleton } from "./ui/skeleton"
 
 type EffectProps = {
   effect: {
@@ -33,19 +34,29 @@ export const Effect = (props: EffectProps) => {
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
-        <div className="flex flex-col gap-3 text-center">
-          <p className="text-base text-gray-500">
-            The average effect is a Cohen&apos;s d of:
-          </p>
-          <p className="text-4xl font-semibold">{round(effect.value)}</p>
-          <p className="text-base text-gray-500">
-            {"95% CI [" +
-              round(effect.lower) +
-              ", " +
-              round(effect.upper) +
-              "]"}
-          </p>
-        </div>
+        {effect.value ? (
+          <div className="flex flex-col gap-3 items-center">
+            <span className="text-base text-gray-500">
+              The average effect is a Cohen&apos;s d of:
+            </span>
+            <span className="text-4xl font-semibold">
+              {round(effect.value)}
+            </span>
+            <span className="text-base text-gray-500">
+              {"95% CI [" +
+                round(effect.lower) +
+                ", " +
+                round(effect.upper) +
+                "]"}
+            </span>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-3 items-center">
+            <Skeleton className="w-[278px] h-[24px] rounded-full" />
+            <Skeleton className="w-[87px] h-[40px] rounded-full" />
+            <Skeleton className="w-[157px] h-[24px] rounded-full" />
+          </div>
+        )}
       </CollapsibleContent>
     </Collapsible>
   )
