@@ -60,7 +60,7 @@ export const Filters = (props: FiltersProps) => {
     data = data.filter(
       (e) =>
         e.control_n > values.minimumCellSize &&
-        e.treatment_n > values.minimumCellSize
+        e.intervention_n > values.minimumCellSize
     )
 
     setData(data)
