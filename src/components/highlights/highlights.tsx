@@ -46,7 +46,7 @@ export const Highlights = (props: HighLightsProps) => {
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
-        <div className="mt-5 grid grid-cols-3 gap-3">
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           <HighlightText
             title={effectsCount + (effectsCount == 1 ? " effect" : " effects")}
             description={

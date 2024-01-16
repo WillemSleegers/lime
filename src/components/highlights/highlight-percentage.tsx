@@ -33,7 +33,7 @@ export const HighlightPercentage = (props: HighlightPercentageProps) => {
                 startAngle={-270}
               >
                 <Cell key={`cell-${0}`} fill="#eee" />
-                <Cell key={`cell-${1}`} fill="#3b82f6" />
+                <Cell key={`cell-${1}`} fill="#94be53" />
               </Pie>
             </PieChart>
           </ResponsiveContainer>

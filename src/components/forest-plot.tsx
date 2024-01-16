@@ -42,6 +42,10 @@ export const ForestPlot = (props: ForestPlotProps) => {
   const [open, setOpen] = useState(true)
   const [plotData, setPlotData] = useState<{}[]>([])
 
+  const longestLabel = data
+    .map((e) => e.label)
+    .reduce((a, b) => (a.length > b.length ? a : b))
+
   useEffect(() => {
     const newData = data.map((e) => {
       return {
@@ -70,10 +74,11 @@ export const ForestPlot = (props: ForestPlotProps) => {
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
         <div className="py-5">
-          <div className="flex flex-col p-3">
+          <div className="flex flex-col p-3 overflow-auto">
             <ResponsiveContainer
               height={40 * plotData.length + 50}
               width="100%"
+              minWidth={600}
             >
               <ScatterChart
                 data={plotData}
@@ -95,7 +100,7 @@ export const ForestPlot = (props: ForestPlotProps) => {
                   yAxisId="left"
                   dataKey="name"
                   type="category"
-                  width={240}
+                  width={longestLabel.length * 8}
                   axisLine={false}
                   tickLine={false}
                   tick={<CustomizedAxisTick />}
@@ -159,49 +164,49 @@ class CustomizedAxisTick extends PureComponent {
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{payload.value}</DialogTitle>
+            <DialogTitle className="text-center">{payload.value}</DialogTitle>
             <DialogDescription>
-              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0">
+              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0 text-black">
                 Paper
               </h1>
 
               <div className="my-3">
-                <span className="font-semibold">Title:</span>
+                <span className="font-semibold text-black">Title:</span>
                 <br />
                 <span>{effect[0].paper_title}</span>
               </div>
               <div className="my-3">
-                <span className="font-semibold">Authors:</span>
+                <span className="font-semibold text-black">Authors:</span>
                 <br />
                 <span>{effect[0].paper_authors}</span>
               </div>
               <div className="my-3">
-                <span className="font-semibold">URL:</span>
+                <span className="font-semibold text-black">URL:</span>
                 <br />
                 <a target="_blank" href={effect[0].paper_link}>
                   {effect[0].paper_link}
                 </a>
               </div>
 
-              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0">
+              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0 text-black">
                 Outcome
               </h1>
               <div className="my-3">
-                <span className="font-semibold">Label:</span>
+                <span className="font-semibold text-black">Label:</span>
                 <br />
                 <span>{effect[0].outcome_label}</span>
               </div>
               <div className="my-3">
-                <span className="font-semibold">Category:</span>
+                <span className="font-semibold text-black">Category:</span>
                 <br />
                 <span>{effect[0].outcome_category}</span>
               </div>
 
-              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0">
+              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0 text-black">
                 Effect
               </h1>
               <div className="my-3">
-                <span className="font-semibold">Value:</span>
+                <span className="font-semibold text-black">Value:</span>
                 <br />
                 <span>{effect[0].effect_size_value}</span>
               </div>

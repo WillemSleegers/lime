@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 export function MainNav({
   className,
@@ -16,6 +17,13 @@ export function MainNav({
         className="text-xl font-medium transition-colors hover:text-primary"
       >
         The Meata-Analysis Project
+        <Image
+          className="inline-block ms-2"
+          alt="meata-analysis logo"
+          src="/green-leaf-icon.svg"
+          width={30}
+          height={30}
+        />
       </Link>
       <Link
         href="/about/"

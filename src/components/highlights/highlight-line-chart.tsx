@@ -43,7 +43,7 @@ export function HighlightLineChart(props: HighlightLineChartProps) {
                 strokeWidth={2}
                 dataKey="y"
                 style={{
-                  stroke: "#3b82f6",
+                  stroke: "#94be53",
                 }}
                 dot={false}
               />

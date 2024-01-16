@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
-import { getData, getUniqueColumnValues } from "@/lib/json-functions"
 import {
   Collapsible,
   CollapsibleContent,
@@ -19,15 +18,55 @@ import { cn } from "@/lib/utils"
 import { FilterInput } from "./filters/input"
 import { FilterSelectMultiple } from "./filters/select-multiple"
 
-const formSchema = z.object({
-  outcomes: z.array(z.string()).refine((value) => value.some((item) => item), {
-    message: "You have to select at least one outcome.",
-  }),
-  minimumCellSize: z.coerce.number().min(1).max(1000),
+import data from "../assets/data/prepared-effects.json"
+
+const outcomesBehavior = [
+  ...new Set(
+    data
+      .filter((column) => column.outcome_category == "behavior")
+      .map((column) => column.outcome_subcategory)
+  ),
+].map((e) => {
+  return {
+    id: e!.toString().toLowerCase(),
+    label: e!.toString(),
+    checked: true,
+  }
 })
 
-const outcomes = getUniqueColumnValues("outcome_category").map((e) => {
-  return { id: e!.toString().toLowerCase(), label: e!.toString() }
+const outcomesIntentions = [
+  ...new Set(
+    data
+      .filter((column) => column.outcome_category == "intentions")
+      .map((column) => column.outcome_subcategory)
+  ),
+].map((e) => {
+  return {
+    id: e!.toString().toLowerCase(),
+    label: e!.toString(),
+    checked: false,
+  }
+})
+
+const outcomesAttitudes = [
+  ...new Set(
+    data
+      .filter((column) => column.outcome_category == "attitudes/beliefs")
+      .map((column) => column.outcome_subcategory)
+  ),
+].map((e) => {
+  return {
+    id: e!.toString().toLowerCase(),
+    label: e!.toString(),
+    checked: false,
+  }
+})
+
+const formSchema = z.object({
+  outcomesBehavior: z.any(),
+  outcomesIntentions: z.any(),
+  outcomesAttitudes: z.any(),
+  minimumCellSize: z.coerce.number().min(1).max(1000),
 })
 
 type FiltersProps = {
@@ -45,28 +84,35 @@ export const Filters = (props: FiltersProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      outcomes: outcomes.map((e) => e.label),
+      outcomesBehavior: outcomesBehavior.map((e) => e.label),
+      outcomesIntentions: outcomesIntentions.map((e) => e.label),
+      outcomesAttitudes: outcomesAttitudes.map((e) => e.label),
       minimumCellSize: 1,
     },
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    let data
+    let subset
 
-    data = getData({
-      outcomes: values.outcomes,
-    })
+    const selectedSubCategories = values.outcomesBehavior.concat(
+      values.outcomesIntentions,
+      values.outcomesAttitudes
+    )
 
-    data = data.filter(
+    subset = data.filter((e) =>
+      selectedSubCategories.includes(e.outcome_subcategory)
+    )
+
+    subset = subset.filter(
       (e) =>
         e.control_n > values.minimumCellSize &&
         e.intervention_n > values.minimumCellSize
     )
 
-    setData(data)
+    setData(subset)
 
     setStatus("Running meta-analysis...")
-    await jsonToDataframe(webR, data, "data")
+    await jsonToDataframe(webR, subset, "data")
     const results = await runMetaAnalysis(webR)
     setEffect({ value: results[0], lower: results[1], upper: results[2] })
 
@@ -89,26 +135,43 @@ export const Filters = (props: FiltersProps) => {
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div className="mt-3 flex gap-6">
-              <FilterSelectMultiple
-                form={form}
-                name="outcomes"
-                label="Outcomes"
-                description="Select the outcomes you want to include in the
-                meta-analysis."
-                items={outcomes}
-              />
-
-              <FilterInput
-                form={form}
-                name="minimumCellSize"
-                label="Minimum cell size"
-                description="This is the minimum cell size in either the control or intervention condition."
-                placeholder="1"
-                type="number"
-              />
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-8 m-1"
+          >
+            <div className="flex gap-6">
+              <div>
+                <h3 className="font-semibold">Outcomes</h3>
+                <div className="flex flex-wrap gap-3">
+                  <FilterSelectMultiple
+                    form={form}
+                    name="outcomesBehavior"
+                    label="Behavioral outcomes"
+                    items={outcomesBehavior}
+                  />
+                  <FilterSelectMultiple
+                    form={form}
+                    name="outcomesIntentions"
+                    label="Intentions outcomes"
+                    items={outcomesIntentions}
+                  />
+                  <FilterSelectMultiple
+                    form={form}
+                    name="outcomesAttitudes"
+                    label="Attitudinal outcomes"
+                    items={outcomesAttitudes}
+                  />
+                </div>
+              </div>
             </div>
+            <FilterInput
+              form={form}
+              name="minimumCellSize"
+              label="Minimum cell size"
+              description="This is the minimum cell size in either the control or intervention condition."
+              placeholder="1"
+              type="number"
+            />
             <Button type="submit">Update</Button>
           </form>
         </Form>

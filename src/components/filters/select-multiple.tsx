@@ -12,7 +12,7 @@ type FilterSelectMultipleProps = {
   form: any
   name: string
   label: string
-  description: string
+  description?: string
   items: {
     id: string
     label: string
@@ -30,7 +30,7 @@ export function FilterSelectMultiple(props: FilterSelectMultipleProps) {
         <FormItem>
           <div>
             <FormLabel className="text-base">{label}</FormLabel>
-            <FormDescription>{description}</FormDescription>
+            {description && <FormDescription>{description}</FormDescription>}
           </div>
           {items.map((item) => (
             <FormField
