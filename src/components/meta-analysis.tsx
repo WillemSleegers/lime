@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useState } from "react"
 import { dataProps, getData } from "@/lib/json-functions"
 import { Filters } from "./filters"
 import { Highlights } from "./highlights/highlights"
@@ -8,8 +8,6 @@ import { Effect } from "./effect"
 import { ForestPlot } from "./forest-plot"
 import { WebR } from "webr"
 import { jsonToDataframe, runMetaAnalysis } from "@/lib/r-functions"
-import { VictoryForestPlot } from "./forest-plot-victory"
-import { ForestPlotD3 } from "./forest-plot-d3"
 
 export const MetaAnalysis = () => {
   const [status, setStatus] = useState("Loading webR...")
