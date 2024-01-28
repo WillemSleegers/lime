@@ -15,19 +15,20 @@ type HighlightLineChartProps = {
     x: string
     y: number
   }[]
+  classname?: string
 }
 
 export function HighlightLineChart(props: HighlightLineChartProps) {
-  const { title, description, data } = props
+  const { title, description, data, classname } = props
 
   return (
-    <Card>
+    <Card className={classname}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="h-[80px] w-[200px]">
+        <div className="h-[80px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={data}

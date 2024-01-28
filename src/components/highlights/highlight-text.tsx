@@ -16,8 +16,8 @@ export const HighlightText = (props: HighlightTextProps) => {
   return (
     <Card className="min-w-[175px]">
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardTitle className="text-3xl">{title}</CardTitle>
+        <CardDescription className="text-base">{description}</CardDescription>
       </CardHeader>
     </Card>
   )

@@ -3,7 +3,6 @@ import {
   dataProps,
   getCount,
   getCounts,
-  getMostCommon,
   getUniqueData,
 } from "@/lib/json-functions"
 import { HighlightPercentage } from "@/components/highlights/highlight-percentage"
@@ -26,12 +25,20 @@ export const Highlights = (props: HighLightsProps) => {
 
   const [open, setOpen] = useState(true)
 
+  const participantsCount = data
+    .map((e) =>
+      e.effect_size_name == "SMCC"
+        ? e.intervention_n
+        : e.intervention_n + e.control_n
+    )
+    .reduce((partialSum, a) => partialSum + a, 0)
+
   const effectsCount = data.length
   const papersCount = getUniqueData(data, "paper")
-  const outcomeCount = getUniqueData(data, "outcome_category")
-  const mostCommonOutcome = getMostCommon(data, "outcome_category")
   const openAccessCount = getCount(data, "paper", "paper_open_access", "yes")
   const yearCounts = getCounts(data, "paper", "paper_year")
+
+  const mostRecentYear = Math.max(...data.map((e) => parseInt(e.paper_year)))
 
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
@@ -48,41 +55,26 @@ export const Highlights = (props: HighLightsProps) => {
       <CollapsibleContent className="CollapsibleContent">
         <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           <HighlightText
-            title={effectsCount + (effectsCount == 1 ? " effect" : " effects")}
-            description={
-              "From " + papersCount + (papersCount == 1 ? " paper" : " papers")
-            }
+            title={papersCount.toString()}
+            description={"Number of papers"}
           />
           <HighlightText
-            title={
-              outcomeCount + (outcomeCount == 1 ? " outcome" : " outcomes")
-            }
-            description={
-              "The most common " +
-              (mostCommonOutcome.length > 1
-                ? "outcomes are " + mostCommonOutcome.join(" and ")
-                : "outcome is " + mostCommonOutcome)
-            }
+            title={effectsCount.toString()}
+            description={"Number of effects"}
+          />
+          <HighlightText
+            title={Math.round(participantsCount).toString()}
+            description={"Number of participants"}
           />
           <HighlightPercentage
-            title={openAccessCount + " open access papers"}
-            description={
-              Math.round(
-                ((openAccessCount / papersCount) * 100 + Number.EPSILON) * 100
-              ) /
-                100 +
-              "% of all papers"
-            }
+            title="Open access papers"
             percentage={openAccessCount / papersCount}
           />
           <HighlightLineChart
-            title={papersCount + (papersCount == 1 ? " paper" : " papers")}
-            description={
-              yearCounts[yearCounts.length - 1].y +
-              " published in " +
-              yearCounts[yearCounts.length - 1].x
-            }
+            title={mostRecentYear.toString()}
+            description={"Most recent publication year"}
             data={yearCounts}
+            classname="col-span-2"
           />
         </div>
       </CollapsibleContent>

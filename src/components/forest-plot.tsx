@@ -31,6 +31,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import effects from "../assets/data/prepared-effects.json"
+import { Button } from "./ui/button"
 
 type ForestPlotProps = {
   data: dataProps
@@ -47,16 +48,18 @@ export const ForestPlot = (props: ForestPlotProps) => {
     .reduce((a, b) => (a.length > b.length ? a : b))
 
   useEffect(() => {
-    const newData = data.map((e) => {
-      return {
-        name: e.label,
-        x: e.effect_size_value,
-        errorX: [
-          Math.abs(e.effect_size_value - e.effect_size_lower),
-          Math.abs(e.effect_size_value - e.effect_size_upper),
-        ],
-      }
-    })
+    const newData = data
+      .map((e) => {
+        return {
+          name: e.label,
+          x: e.effect_size_value,
+          errorX: [
+            Math.abs(e.effect_size_value - e.effect_size_lower),
+            Math.abs(e.effect_size_value - e.effect_size_upper),
+          ],
+        }
+      })
+      .sort((a, b) => a.x - b.x)
     setPlotData(newData)
   }, [data])
 
