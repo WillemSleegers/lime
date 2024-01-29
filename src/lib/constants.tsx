@@ -8,6 +8,32 @@ export const INTERVENTION_ASPECTS = [
   "None",
 ]
 
+export const INTERVENTION_MEDIA = [
+  "Text",
+  "Video",
+  "3D",
+  "Audio",
+  "In-person",
+  "Phone messages",
+  "Presentation",
+  "Image",
+]
+
+export const INTERVENTION_APPEALS = [
+  "Factual",
+  "Negative emotional",
+  "Positive emotional",
+  "Symbolic meaning",
+  "Norms",
+  "Nudge",
+  "Goal pursuit",
+  "Perspective taking",
+  "Infotainment",
+  "Origin of animal product",
+  "Celebrity",
+  "Choice architecture",
+]
+
 export const OUTCOMES_BEHAVIORS = [
   "Meat consumption",
   "Animal product consumption",

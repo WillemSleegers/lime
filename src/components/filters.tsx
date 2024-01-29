@@ -21,27 +21,39 @@ import { FilterSelectMultiple } from "./filters/select-multiple"
 import data from "../assets/data/prepared-effects.json"
 
 import {
-  INTERVENTION_ASPECTS,
   OUTCOMES_BEHAVIORS,
   OUTCOMES_INTENTIONS,
   OUTCOMES_ATTITUDES,
+  INTERVENTION_ASPECTS,
+  INTERVENTION_MEDIA,
+  INTERVENTION_APPEALS,
 } from "@/lib/constants"
 import { selectOptions } from "@/lib/utils"
 
-const interventionAspectsOptions = selectOptions(
-  INTERVENTION_ASPECTS,
-  INTERVENTION_ASPECTS
-)
+// Outcome options
 const outcomesBehaviorOptions = selectOptions(
   OUTCOMES_BEHAVIORS,
   OUTCOMES_BEHAVIORS
 )
 const outcomesIntentionsOptions = selectOptions(OUTCOMES_INTENTIONS, [])
 const outcomesAttitudesOptions = selectOptions(OUTCOMES_ATTITUDES, [])
-
 const outcomesOptions = outcomesBehaviorOptions.concat(
   outcomesIntentionsOptions,
   outcomesAttitudesOptions
+)
+
+// Intervention options
+const interventionAspectsOptions = selectOptions(
+  INTERVENTION_ASPECTS,
+  INTERVENTION_ASPECTS
+)
+const interventionMediaOptions = selectOptions(
+  INTERVENTION_MEDIA,
+  INTERVENTION_MEDIA
+)
+const interventionAppealsOptions = selectOptions(
+  INTERVENTION_APPEALS,
+  INTERVENTION_APPEALS
 )
 
 const formSchema = z.object({
@@ -53,6 +65,14 @@ const formSchema = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one intervention aspect" }),
+  interventionMedium: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one intervention medium" }),
+  interventionAppeal: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one intervention appeal" }),
   minimumCellSize: z.coerce.number().min(1).max(1000),
 })
 
@@ -74,6 +94,12 @@ export const Filters = (props: FiltersProps) => {
     defaultValues: {
       outcomes: outcomesOptions.filter((e) => e.checked).map((e) => e.label),
       interventionAspect: interventionAspectsOptions
+        .filter((e) => e.checked)
+        .map((e) => e.label),
+      interventionMedium: interventionMediaOptions
+        .filter((e) => e.checked)
+        .map((e) => e.label),
+      interventionAppeal: interventionAppealsOptions
         .filter((e) => e.checked)
         .map((e) => e.label),
       minimumCellSize: 1,
@@ -103,6 +129,18 @@ export const Filters = (props: FiltersProps) => {
     subset = subset.filter((e) => {
       return values.interventionAspect.some((aspect) =>
         e.intervention_aspect.includes(aspect.toLowerCase())
+      )
+    })
+
+    subset = subset.filter((e) => {
+      return values.interventionMedium.some((medium) =>
+        e.intervention_medium.includes(medium.toLowerCase())
+      )
+    })
+
+    subset = subset.filter((e) => {
+      return values.interventionAppeal.some((appeal) =>
+        e.intervention_appeal.includes(appeal.toLowerCase())
       )
     })
 
@@ -170,7 +208,7 @@ export const Filters = (props: FiltersProps) => {
               <div>
                 <h3 className="font-semibold text-xl">Outcomes</h3>
               </div>
-              <div>
+              <div className="flex gap-3">
                 <FilterSelectMultiple
                   form={form}
                   name="interventionAspect"
@@ -178,6 +216,26 @@ export const Filters = (props: FiltersProps) => {
                     {
                       label: "Intervention aspect",
                       items: interventionAspectsOptions,
+                    },
+                  ]}
+                />
+                <FilterSelectMultiple
+                  form={form}
+                  name="interventionMedium"
+                  groups={[
+                    {
+                      label: "Intervention medium",
+                      items: interventionMediaOptions,
+                    },
+                  ]}
+                />
+                <FilterSelectMultiple
+                  form={form}
+                  name="interventionAppeal"
+                  groups={[
+                    {
+                      label: "Intervention appeal",
+                      items: interventionAppealsOptions,
                     },
                   ]}
                 />

@@ -30,7 +30,7 @@ export function FilterSelectMultiple(props: FilterSelectMultipleProps) {
         <FormItem className="flex flex-col">
           <div className="flex gap-3">
             {groups.map((group) => (
-              <div>
+              <div key={group.label}>
                 <FormLabel className="text-base">{group.label}</FormLabel>
                 <div className="">
                   {group.items.map((item) => (
