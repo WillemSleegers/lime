@@ -31,7 +31,7 @@ export const HighlightPercentage = (props: HighlightPercentageProps) => {
                 innerRadius={35}
               >
                 <Cell key={`cell-${0}`} fill="#eee" />
-                <Cell key={`cell-${1}`} fill="#94be53" />
+                <Cell key={`cell-${1}`} fill="#16A34A" />
                 <Label
                   value={Math.round(percentage * 100) + "%"}
                   position="center"

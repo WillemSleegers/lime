@@ -30,7 +30,6 @@
     "recharts": "^2.8.0",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
-    "victory": "^36.8.1",
     "webr": "^0.2.1",
     "zod": "^3.22.4"
   },

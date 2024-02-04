@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { dataProps, getData } from "@/lib/json-functions"
 import { Filters } from "./filters"
 import { Highlights } from "./highlights/highlights"
 import { Effect } from "./effect"
@@ -9,21 +8,18 @@ import { ForestPlot } from "./forest-plot"
 import { WebR } from "webr"
 import { jsonToDataframe, runMetaAnalysis } from "@/lib/r-functions"
 
+import allData from "../assets/data/prepared-effects.json"
+
 export const MetaAnalysis = () => {
   const [status, setStatus] = useState("Loading webR...")
-  const [data, setData] = useState<dataProps>(getData({}))
+  const [data, setData] = useState(allData)
   const [webR, setWebR] = useState<WebR>()
   const [effect, setEffect] = useState({ value: 0, lower: 0, upper: 0 })
 
   useEffect(() => {
     const initializeR = async () => {
-      console.log("Initializing...")
-      const newData = getData({})
-      setData(newData)
-
       const newWebR = new WebR({ channelType: 1 })
       setWebR(newWebR)
-      console.log(newWebR)
 
       await newWebR.init()
 
@@ -31,7 +27,7 @@ export const MetaAnalysis = () => {
       await newWebR.installPackages(["metafor"])
 
       setStatus("Running meta-analysis...")
-      await jsonToDataframe(newWebR, newData, "data")
+      await jsonToDataframe(newWebR, data, "data")
       const results = await runMetaAnalysis(newWebR)
       setEffect({ value: results[0], lower: results[1], upper: results[2] })
 

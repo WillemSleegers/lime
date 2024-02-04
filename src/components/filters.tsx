@@ -27,6 +27,7 @@ import {
   INTERVENTION_ASPECTS,
   INTERVENTION_MEDIA,
   INTERVENTION_APPEALS,
+  COUNTRIES,
 } from "@/lib/constants"
 import { selectOptions } from "@/lib/utils"
 
@@ -56,6 +57,9 @@ const interventionAppealsOptions = selectOptions(
   INTERVENTION_APPEALS
 )
 
+// Country
+const countriesOptions = selectOptions(COUNTRIES, COUNTRIES)
+
 const formSchema = z.object({
   outcomes: z
     .string()
@@ -73,6 +77,10 @@ const formSchema = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one intervention appeal" }),
+  countries: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one country" }),
   minimumCellSize: z.coerce.number().min(1).max(1000),
 })
 
@@ -102,6 +110,7 @@ export const Filters = (props: FiltersProps) => {
       interventionAppeal: interventionAppealsOptions
         .filter((e) => e.checked)
         .map((e) => e.label),
+      countries: countriesOptions.filter((e) => e.checked).map((e) => e.label),
       minimumCellSize: 1,
     },
   })
@@ -143,6 +152,14 @@ export const Filters = (props: FiltersProps) => {
         e.intervention_appeal.includes(appeal.toLowerCase())
       )
     })
+
+    // Filter on country
+    subset = subset.filter((e) =>
+      values.countries.includes(e.control_sample_country)
+    )
+    subset = subset.filter((e) =>
+      values.countries.includes(e.intervention_sample_country)
+    )
 
     if (subset.length == 0) {
       setError(true)
@@ -206,7 +223,7 @@ export const Filters = (props: FiltersProps) => {
             </div>
             <div>
               <div>
-                <h3 className="font-semibold text-xl">Outcomes</h3>
+                <h3 className="font-semibold text-xl">Interventions</h3>
               </div>
               <div className="flex gap-3">
                 <FilterSelectMultiple
@@ -236,6 +253,23 @@ export const Filters = (props: FiltersProps) => {
                     {
                       label: "Intervention appeal",
                       items: interventionAppealsOptions,
+                    },
+                  ]}
+                />
+              </div>
+            </div>
+            <div>
+              <div>
+                <h3 className="font-semibold text-xl">Samples</h3>
+              </div>
+              <div className="flex gap-3">
+                <FilterSelectMultiple
+                  form={form}
+                  name="countries"
+                  groups={[
+                    {
+                      label: "Country",
+                      items: countriesOptions,
                     },
                   ]}
                 />

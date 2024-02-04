@@ -52,3 +52,16 @@ export const OUTCOMES_ATTITUDES = [
   "Meat attitude",
   "Meat hedonics",
 ]
+
+export const COUNTRIES = [
+  "Australia",
+  "Canada",
+  "Czechia",
+  "Germany",
+  "Italy",
+  "Netherlands",
+  "Portugal",
+  "Sweden",
+  "USA",
+  "N/A",
+]

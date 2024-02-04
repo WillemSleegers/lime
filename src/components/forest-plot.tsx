@@ -117,7 +117,7 @@ export const ForestPlot = (props: ForestPlotProps) => {
                   tickLine={false}
                 />
                 <Tooltip content={<CustomTooltip />} />
-                <Scatter shape="square" fill="black" yAxisId="left">
+                <Scatter shape="square" fill="#16A34A" yAxisId="left">
                   <ErrorBar
                     dataKey="errorX"
                     direction="x"

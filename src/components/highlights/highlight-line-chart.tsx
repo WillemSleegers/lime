@@ -44,7 +44,7 @@ export function HighlightLineChart(props: HighlightLineChartProps) {
                 strokeWidth={2}
                 dataKey="y"
                 style={{
-                  stroke: "#94be53",
+                  stroke: "#16A34A",
                 }}
                 dot={false}
               />

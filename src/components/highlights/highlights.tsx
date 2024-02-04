@@ -25,19 +25,26 @@ export const Highlights = (props: HighLightsProps) => {
 
   const [open, setOpen] = useState(true)
 
-  const participantsCount = data
-    .map((e) =>
-      e.effect_size_name == "SMCC"
-        ? e.intervention_n
-        : e.intervention_n + e.control_n
-    )
+  console.log(data)
+
+  const participantsCount = [
+    ...data
+      .reduce((map, { paper, study, total_n }) => {
+        return map.set(`${paper}-${study}`, {
+          paper,
+          study,
+          total_n,
+        })
+      }, new Map())
+      .values(),
+  ]
+    .map((e) => e.total_n)
     .reduce((partialSum, a) => partialSum + a, 0)
 
   const effectsCount = data.length
   const papersCount = getUniqueData(data, "paper")
   const openAccessCount = getCount(data, "paper", "paper_open_access", "yes")
   const yearCounts = getCounts(data, "paper", "paper_year")
-
   const mostRecentYear = Math.max(...data.map((e) => parseInt(e.paper_year)))
 
   return (
@@ -63,7 +70,7 @@ export const Highlights = (props: HighLightsProps) => {
             description={"Number of effects"}
           />
           <HighlightText
-            title={Math.round(participantsCount).toString()}
+            title={"~" + Math.round(participantsCount).toString()}
             description={"Number of participants"}
           />
           <HighlightPercentage
