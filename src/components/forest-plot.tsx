@@ -31,7 +31,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import effects from "../assets/data/prepared-effects.json"
-import { Button } from "./ui/button"
 
 type ForestPlotProps = {
   data: dataProps
@@ -40,7 +39,7 @@ type ForestPlotProps = {
 export const ForestPlot = (props: ForestPlotProps) => {
   const { data } = props
 
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [plotData, setPlotData] = useState<{}[]>([])
 
   const longestLabel = data
@@ -77,7 +76,7 @@ export const ForestPlot = (props: ForestPlotProps) => {
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
         <div className="py-5">
-          <div className="flex flex-col p-3 overflow-auto">
+          <div className="flex flex-col overflow-auto p-3">
             <ResponsiveContainer
               height={40 * plotData.length + 50}
               width="100%"
@@ -141,7 +140,7 @@ const CustomTooltip = ({
 }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
     return (
-      <div className="custom-tooltip bg-gray-50 p-3 rounded border">
+      <div className="custom-tooltip rounded border bg-gray-50 p-3">
         <p>{`${payload[0].payload.name} : ${payload[0].value}`}</p>
       </div>
     )
@@ -169,7 +168,7 @@ class CustomizedAxisTick extends PureComponent {
           <DialogHeader>
             <DialogTitle className="text-center">{payload.value}</DialogTitle>
             <DialogDescription>
-              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0 text-black">
+              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight text-black first:mt-0">
                 Paper
               </h1>
 
@@ -191,7 +190,7 @@ class CustomizedAxisTick extends PureComponent {
                 </a>
               </div>
 
-              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0 text-black">
+              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight text-black first:mt-0">
                 Outcome
               </h1>
               <div className="my-3">
@@ -205,7 +204,7 @@ class CustomizedAxisTick extends PureComponent {
                 <span>{effect[0].outcome_category}</span>
               </div>
 
-              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight first:mt-0 text-black">
+              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight text-black first:mt-0">
                 Effect
               </h1>
               <div className="my-3">

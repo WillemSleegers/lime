@@ -25,8 +25,6 @@ export const Highlights = (props: HighLightsProps) => {
 
   const [open, setOpen] = useState(true)
 
-  console.log(data)
-
   const participantsCount = [
     ...data
       .reduce((map, { paper, study, total_n }) => {
@@ -60,7 +58,7 @@ export const Highlights = (props: HighLightsProps) => {
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
-        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
           <HighlightText
             title={papersCount.toString()}
             description={"Number of papers"}

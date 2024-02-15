@@ -1,7 +1,7 @@
-import Link from "next/link"
+import Link from "next/link";
 
-import { cn } from "@/lib/utils"
-import Image from "next/image"
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function MainNav({
   className,
@@ -9,40 +9,55 @@ export function MainNav({
 }: React.HTMLAttributes<HTMLElement>) {
   return (
     <nav
-      className={cn("flex items-center space-x-4 lg:space-x-6", className)}
+      className={cn("flex w-full flex-wrap justify-between gap-3", className)}
       {...props}
     >
       <Link
         href="/"
-        className="text-xl font-medium transition-colors hover:text-primary"
+        className="whitespace-nowrap text-xl font-medium transition-colors hover:text-primary"
       >
         The Meata-Analysis Project
         <Image
-          className="inline-block ms-2"
+          className="ms-2 inline-block"
           alt="meata-analysis logo"
           src="/green-leaf-icon.svg"
           width={30}
           height={30}
         />
       </Link>
-      <Link
-        href="/about/"
-        className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
-      >
-        About
-      </Link>
-      <Link
-        href="/contributors/"
-        className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
-      >
-        Contributors
-      </Link>
-      <Link
-        href="/news/"
-        className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
-      >
-        Changelog
-      </Link>
+      <div className="space-x-4 lg:space-x-6">
+        <Link
+          href="/about/"
+          className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
+        >
+          About
+        </Link>
+        <Link
+          href="/meta-analysis/"
+          className="rounded bg-green-700 px-3 py-2 text-base font-medium text-white transition-colors hover:bg-green-800"
+        >
+          Meta-analysis
+        </Link>
+        <Link
+          href="/data/"
+          className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
+        >
+          Data
+        </Link>
+        <Link
+          href="/contributors/"
+          className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
+        >
+          Contributors
+        </Link>
+
+        <Link
+          href="/news/"
+          className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
+        >
+          Changelog
+        </Link>
+      </div>
     </nav>
-  )
+  );
 }

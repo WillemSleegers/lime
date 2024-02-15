@@ -19,10 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="hidden flex-col md:flex">
+        <div className="flex-col md:flex">
           <div className="border-b">
-            <div className="flex h-16 items-center px-4">
-              <MainNav className="mx-6" />
+            <div className="flex items-center p-4">
+              <MainNav />
             </div>
           </div>
         </div>

@@ -34,27 +34,27 @@ import { selectOptions } from "@/lib/utils"
 // Outcome options
 const outcomesBehaviorOptions = selectOptions(
   OUTCOMES_BEHAVIORS,
-  OUTCOMES_BEHAVIORS
+  OUTCOMES_BEHAVIORS.filter((e) => e !== "Vegetarian sales"),
 )
 const outcomesIntentionsOptions = selectOptions(OUTCOMES_INTENTIONS, [])
 const outcomesAttitudesOptions = selectOptions(OUTCOMES_ATTITUDES, [])
 const outcomesOptions = outcomesBehaviorOptions.concat(
   outcomesIntentionsOptions,
-  outcomesAttitudesOptions
+  outcomesAttitudesOptions,
 )
 
 // Intervention options
 const interventionAspectsOptions = selectOptions(
   INTERVENTION_ASPECTS,
-  INTERVENTION_ASPECTS
+  INTERVENTION_ASPECTS,
 )
 const interventionMediaOptions = selectOptions(
   INTERVENTION_MEDIA,
-  INTERVENTION_MEDIA
+  INTERVENTION_MEDIA,
 )
 const interventionAppealsOptions = selectOptions(
   INTERVENTION_APPEALS,
-  INTERVENTION_APPEALS
+  INTERVENTION_APPEALS,
 )
 
 // Country
@@ -119,46 +119,46 @@ export const Filters = (props: FiltersProps) => {
     let subset: typeof data
 
     const selectedSubCategories = values.outcomes.map((e: string) =>
-      e.toLowerCase()
+      e.toLowerCase(),
     )
 
     // Filter on outcome
     subset = data.filter((e) =>
-      selectedSubCategories.includes(e.outcome_subcategory)
+      selectedSubCategories.includes(e.outcome_subcategory),
     )
 
     // Filter on cell size
     subset = subset.filter(
       (e) =>
         e.control_n > values.minimumCellSize &&
-        e.intervention_n > values.minimumCellSize
+        e.intervention_n > values.minimumCellSize,
     )
 
     // Filter on intervention aspect
     subset = subset.filter((e) => {
       return values.interventionAspect.some((aspect) =>
-        e.intervention_aspect.includes(aspect.toLowerCase())
+        e.intervention_aspect.includes(aspect.toLowerCase()),
       )
     })
 
     subset = subset.filter((e) => {
       return values.interventionMedium.some((medium) =>
-        e.intervention_medium.includes(medium.toLowerCase())
+        e.intervention_medium.includes(medium.toLowerCase()),
       )
     })
 
     subset = subset.filter((e) => {
       return values.interventionAppeal.some((appeal) =>
-        e.intervention_appeal.includes(appeal.toLowerCase())
+        e.intervention_appeal.includes(appeal.toLowerCase()),
       )
     })
 
     // Filter on country
     subset = subset.filter((e) =>
-      values.countries.includes(e.control_sample_country)
+      values.countries.includes(e.control_sample_country),
     )
     subset = subset.filter((e) =>
-      values.countries.includes(e.intervention_sample_country)
+      values.countries.includes(e.intervention_sample_country),
     )
 
     if (subset.length == 0) {
@@ -182,12 +182,12 @@ export const Filters = (props: FiltersProps) => {
 
   return (
     <Collapsible
-      className=" bg-gray-100 rounded-lg p-3"
+      className=" rounded-lg bg-gray-100 p-3"
       open={open}
       onOpenChange={setOpen}
     >
       <CollapsibleTrigger>
-        <div className="flex flex-row items-center gap-1 m-1">
+        <div className="m-1 flex flex-row items-center gap-1">
           <h2 className="text-2xl font-bold tracking-tight">Filters</h2>
           <ChevronRight
             className={cn("transition", open ? "rotate-90" : "rotate-0")}
@@ -198,10 +198,10 @@ export const Filters = (props: FiltersProps) => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 m-1"
+            className="m-1 space-y-8"
           >
             <div>
-              <h3 className="font-semibold text-xl">Outcomes</h3>
+              <h3 className="text-xl font-semibold">Outcomes</h3>
               <FilterSelectMultiple
                 form={form}
                 name="outcomes"
@@ -223,7 +223,7 @@ export const Filters = (props: FiltersProps) => {
             </div>
             <div>
               <div>
-                <h3 className="font-semibold text-xl">Interventions</h3>
+                <h3 className="text-xl font-semibold">Interventions</h3>
               </div>
               <div className="flex gap-3">
                 <FilterSelectMultiple
@@ -260,7 +260,7 @@ export const Filters = (props: FiltersProps) => {
             </div>
             <div>
               <div>
-                <h3 className="font-semibold text-xl">Samples</h3>
+                <h3 className="text-xl font-semibold">Samples</h3>
               </div>
               <div className="flex gap-3">
                 <FilterSelectMultiple
@@ -287,7 +287,7 @@ export const Filters = (props: FiltersProps) => {
           </form>
         </Form>
         {error && (
-          <div className="text-red-500 text-sm ms-1 mt-2">
+          <div className="ms-1 mt-2 text-sm text-red-500">
             No papers match these criteria
           </div>
         )}

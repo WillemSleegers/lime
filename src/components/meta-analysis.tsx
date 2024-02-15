@@ -26,11 +26,6 @@ export const MetaAnalysis = () => {
       setStatus("Installing packages...")
       await newWebR.installPackages(["metafor"])
 
-      setStatus("Running meta-analysis...")
-      await jsonToDataframe(newWebR, data, "data")
-      const results = await runMetaAnalysis(newWebR)
-      setEffect({ value: results[0], lower: results[1], upper: results[2] })
-
       setStatus("Ready")
     }
     initializeR()
@@ -38,11 +33,8 @@ export const MetaAnalysis = () => {
 
   return (
     <div className="m-3">
-      <div className="my-5 flex gap-3 justify-between">
-        <h1 className="font-bold tracking-tight">Meta-Analysis</h1>
-        <p className="my-3">
-          <span className="font-semibold">Status:</span> {status}
-        </p>
+      <div className="my-5 ">
+        <span className="font-semibold">Status:</span> {status}
       </div>
       <Filters
         setData={setData}
