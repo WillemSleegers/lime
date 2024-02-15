@@ -5,7 +5,7 @@ import {
   CollapsibleTrigger,
 } from "./ui/collapsible"
 import { useState } from "react"
-import { cn, round } from "@/lib/utils"
+import { cdfNormal, cn, round } from "@/lib/utils"
 import { Skeleton } from "./ui/skeleton"
 
 type EffectProps = {
@@ -35,7 +35,7 @@ export const Effect = (props: EffectProps) => {
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
         {effect.value ? (
-          <div className="flex flex-col gap-3 items-center">
+          <div className="flex flex-col items-center gap-3">
             <span className="text-base text-gray-500">
               The average effect is a Cohen&apos;s d of:
             </span>
@@ -49,12 +49,27 @@ export const Effect = (props: EffectProps) => {
                 round(effect.upper) +
                 "]"}
             </span>
+            <div>
+              <span className="mb-0 text-base font-semibold">
+                Probability of superiority
+              </span>
+              <br />
+              <span className="text-gray-500">
+                There is a{" "}
+                <strong className="text-black">
+                  {round(cdfNormal(effect.value / Math.sqrt(2)) * 100)}
+                </strong>
+                % chance that a person picked at random from the treatment group
+                will have a higher score than a person picked at random from the
+                control group
+              </span>
+            </div>
           </div>
         ) : (
-          <div className="flex flex-col gap-3 items-center">
-            <Skeleton className="w-[278px] h-[24px] rounded-full" />
-            <Skeleton className="w-[87px] h-[40px] rounded-full" />
-            <Skeleton className="w-[157px] h-[24px] rounded-full" />
+          <div className="flex flex-col items-center gap-3">
+            <Skeleton className="h-[24px] w-[278px] rounded-full" />
+            <Skeleton className="h-[40px] w-[87px] rounded-full" />
+            <Skeleton className="h-[24px] w-[157px] rounded-full" />
           </div>
         )}
       </CollapsibleContent>

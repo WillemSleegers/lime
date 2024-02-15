@@ -87,15 +87,18 @@ const formSchema = z.object({
 type FiltersProps = {
   setData: Function
   setEffect: Function
+  status: string
   setStatus: Function
-  webR: WebR
 }
 
 export const Filters = (props: FiltersProps) => {
-  const { setData, setEffect, setStatus, webR } = props
+  const { setData, setEffect, status, setStatus } = props
 
   const [open, setOpen] = useState(false)
+  const [ranOnce, setRanOnce] = useState(false)
+  const [disabled, setDisabled] = useState(true)
   const [error, setError] = useState(false)
+  const [webR, setWebR] = useState<WebR>()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -168,17 +171,42 @@ export const Filters = (props: FiltersProps) => {
       setData(subset)
 
       setStatus("Running meta-analysis...")
+      setDisabled(true)
       await jsonToDataframe(webR, subset, "data")
       const results = await runMetaAnalysis(webR)
       setEffect({ value: results[0], lower: results[1], upper: results[2] })
 
       setStatus("Ready")
+      setDisabled(false)
     }
   }
 
   useEffect(() => {
+    const initializeR = async () => {
+      const newWebR = new WebR({ channelType: 1 })
+      setWebR(newWebR)
+
+      await newWebR.init()
+
+      setStatus("Installing packages...")
+      await newWebR.installPackages(["metafor"])
+
+      setStatus("Ready")
+    }
+    initializeR()
+
     form.handleSubmit(onSubmit)
   }, [])
+
+  useEffect(() => {
+    if (status == "Ready") {
+      if (!ranOnce) {
+        form.handleSubmit(onSubmit)()
+      }
+      setRanOnce(true)
+      setDisabled(false)
+    }
+  }, [status])
 
   return (
     <Collapsible
@@ -283,7 +311,9 @@ export const Filters = (props: FiltersProps) => {
               placeholder="1"
               type="number"
             />
-            <Button type="submit">Update</Button>
+            <Button type="submit" disabled={disabled}>
+              Update
+            </Button>
           </form>
         </Form>
         {error && (

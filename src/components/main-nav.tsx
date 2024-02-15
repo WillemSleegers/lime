@@ -1,7 +1,7 @@
-import Link from "next/link";
+import Link from "next/link"
 
-import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 export function MainNav({
   className,
@@ -52,12 +52,12 @@ export function MainNav({
         </Link>
 
         <Link
-          href="/news/"
+          href="/changelog/"
           className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
         >
           Changelog
         </Link>
       </div>
     </nav>
-  );
+  )
 }
