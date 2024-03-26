@@ -43,14 +43,14 @@ export const ForestPlot = (props: ForestPlotProps) => {
   const [plotData, setPlotData] = useState<{}[]>([])
 
   const longestLabel = data
-    .map((e) => e.label)
+    .map((e) => e.effect_label)
     .reduce((a, b) => (a.length > b.length ? a : b))
 
   useEffect(() => {
     const newData = data
       .map((e) => {
         return {
-          name: e.label,
+          name: e.effect_label,
           x: e.effect_size_value,
           errorX: [
             Math.abs(e.effect_size_value - e.effect_size_lower),
@@ -153,7 +153,7 @@ class CustomizedAxisTick extends PureComponent {
   render() {
     const { x, y, payload }: any = this.props
 
-    const effect = effects.filter((e) => e.label == payload.value)
+    const effect = effects.filter((e) => e.effect_label == payload.value)
 
     return (
       <Dialog>

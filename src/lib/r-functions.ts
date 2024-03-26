@@ -1,15 +1,5 @@
 import { WebR } from "webr"
 
-export async function getRandomNumbers(webR: WebR) {
-  try {
-    await webR.init()
-    const result = await webR.evalRNumber("1 + 1")
-    return result
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 export async function readCSV(webR: WebR, file: string) {
   await webR.objs.globalEnv.bind("file", "http://localhost:5173/" + file)
   await webR.evalR("data <- read.csv(file)")
@@ -20,16 +10,16 @@ export async function runMetaAnalysis(webR: WebR) {
     `
           V <- metafor::vcalc(
               vi = effect_size_var,
-              cluster = cluster,
+              cluster = paper_study,
               subgroup = outcome,
               data = data,
               grp1 = group_1,
               grp2 = group_2
             )
-          res <- metafor::rma.mv(yi, V, random = ~ 1 | cluster, data = data)
+          res <- metafor::rma.mv(yi, V, random = ~ 1 | paper_study/effect, data = data)
           c(res$beta, res$ci.lb, res$ci.ub)
           `,
-    "number[]"
+    "number[]",
   )
   return result
 }
@@ -37,14 +27,14 @@ export async function runMetaAnalysis(webR: WebR) {
 export async function jsonToDataframe(
   webR: WebR,
   json: unknown,
-  globalVarName = ""
+  globalVarName = "",
 ) {
   if (!globalVarName) {
     globalVarName = "dataVar_" + makeid(10)
   }
   if (!json)
     throw new Error(
-      "No input data provided. Input data has to be an array of objects."
+      "No input data provided. Input data has to be an array of objects.",
     )
   if (
     Array.isArray(json) &&
@@ -63,7 +53,7 @@ export async function jsonToDataframe(
       } else {
         throw new Error(
           "Unsupported data type in input data to jsonToDataframe: ",
-          col[0]
+          col[0],
         )
       }
       await webR.objs.globalEnv.bind(`v_${index}`, col)
@@ -74,9 +64,9 @@ export async function jsonToDataframe(
         .map((_, index) => `v_${index}`)
         .join()})
        colnames(${globalVarName}) <- c(${Object.keys(json[0])
-        .map((colName) => "'" + colName + "'")
-        .join(",")})
-      `
+         .map((colName) => "'" + colName + "'")
+         .join(",")})
+      `,
     )
     return globalVarName
   } else {

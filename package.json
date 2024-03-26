@@ -20,7 +20,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "cmdk": "^0.2.0",
+    "cmdk": "latest",
     "d3": "^7.8.5",
     "lucide-react": "latest",
     "mathjs": "^12.3.2",
@@ -31,11 +31,11 @@
     "recharts": "^2.8.0",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
-    "webr": "^0.2.1",
-    "zod": "^3.22.4"
+    "webr": "latest",
+    "zod": "latest"
   },
   "devDependencies": {
-    "@types/d3": "^7.4.3",
+    "@types/d3": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
@@ -43,8 +43,8 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.11",
+    "prettier": "latest",
+    "prettier-plugin-tailwindcss": "latest",
     "tailwindcss": "latest",
     "typescript": "latest"
   }

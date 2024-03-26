@@ -170,6 +170,8 @@ export const Filters = (props: FiltersProps) => {
       setError(false)
       setData(subset)
 
+      console.log(subset)
+
       setStatus("Running meta-analysis...")
       setDisabled(true)
       await jsonToDataframe(webR, subset, "data")

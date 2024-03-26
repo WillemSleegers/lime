@@ -13,14 +13,15 @@ export const getUniqueData = (data: dataProps, x: dataKeys) => {
 
 export const getCounts = (data: dataProps, by: dataKeys, x: dataKeys) => {
   const unique = data.filter(
-    (value, index, self) => index === self.findIndex((t) => t[by] === value[by])
+    (value, index, self) =>
+      index === self.findIndex((t) => t[by] === value[by]),
   )
 
   const counts = unique.reduce(
     (effect: { [n: string]: number }, o) => (
       (effect[o[x]!] = (effect[o[x]!] || 0) + 1), effect
     ),
-    {}
+    {},
   )
 
   const array = []
@@ -35,17 +36,18 @@ export const getCount = (
   data: dataProps,
   by: dataKeys,
   x: dataKeys,
-  y: string | number
+  y: string | number,
 ) => {
   const unique = data.filter(
-    (value, index, self) => index === self.findIndex((t) => t[by] === value[by])
+    (value, index, self) =>
+      index === self.findIndex((t) => t[by] === value[by]),
   )
 
   const counts = unique.reduce(
     (effect: { [n: string]: number }, o) => (
       (effect[o[x]!] = (effect[o[x]!] || 0) + 1), effect
     ),
-    {}
+    {},
   )
 
   return counts[y]
