@@ -43,7 +43,7 @@ export const Highlights = (props: HighLightsProps) => {
   const papersCount = getUniqueData(data, "paper")
   const openAccessCount = getCount(data, "paper", "paper_open_access", "yes")
   const yearCounts = getCounts(data, "paper", "paper_year")
-  const mostRecentYear = Math.max(...data.map((e) => parseInt(e.paper_year)))
+  const mostRecentYear = Math.max(...data.map((e) => e.paper_year))
 
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
