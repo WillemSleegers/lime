@@ -1806,7 +1806,6 @@ var require_XMLHttpRequest = __commonJS({
             response.on("data", function(chunk) {
               if (chunk) {
                 var data2 = Buffer.from(chunk);
-                self.responseText += data2.toString("utf8");
                 self.response = Buffer.concat([self.response, data2]);
               }
               if (sendFlag) {
@@ -1817,6 +1816,7 @@ var require_XMLHttpRequest = __commonJS({
               if (sendFlag) {
                 sendFlag = false;
                 setState(self.DONE);
+                self.responseText = self.response.toString("utf8");
               }
             });
             response.on("error", function(error) {
@@ -1904,18 +1904,18 @@ var require_XMLHttpRequest = __commonJS({
       this.dispatchEvent = function(event) {
         if (typeof self["on" + event] === "function") {
           if (this.readyState === this.DONE && settings.async)
-            setImmediate(function() {
+            setTimeout(function() {
               self["on" + event]();
-            });
+            }, 0);
           else
             self["on" + event]();
         }
         if (event in listeners) {
           for (let i = 0, len = listeners[event].length; i < len; i++) {
             if (this.readyState === this.DONE)
-              setImmediate(function() {
+              setTimeout(function() {
                 listeners[event][i].call(self);
-              });
+              }, 0);
             else
               listeners[event][i].call(self);
           }
@@ -1992,11 +1992,13 @@ if (globalThis.document) {
 // webR/utils.ts
 function promiseHandles() {
   const out = {
-    resolve: (_value) => {
+    resolve: () => {
+      return;
     },
-    reject: (_reason) => {
+    reject: () => {
+      return;
     },
-    promise: null
+    promise: Promise.resolve()
   };
   const promise = new Promise((resolve, reject) => {
     out.resolve = resolve;
@@ -2009,8 +2011,11 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 function replaceInObject(obj, test, replacer, ...replacerArgs) {
-  if (obj === null || typeof obj !== "object") {
+  if (obj === null || obj === void 0 || isImageBitmap(obj)) {
     return obj;
+  }
+  if (obj instanceof ArrayBuffer) {
+    return new Uint8Array(obj);
   }
   if (test(obj)) {
     return replacer(obj, ...replacerArgs);
@@ -2020,9 +2025,12 @@ function replaceInObject(obj, test, replacer, ...replacerArgs) {
       (v) => replaceInObject(v, test, replacer, ...replacerArgs)
     );
   }
-  return Object.fromEntries(
-    Object.entries(obj).map(([k, v], i) => [k, replaceInObject(v, test, replacer, ...replacerArgs)])
-  );
+  if (typeof obj === "object") {
+    return Object.fromEntries(
+      Object.entries(obj).map(([k, v]) => [k, replaceInObject(v, test, replacer, ...replacerArgs)])
+    );
+  }
+  return obj;
 }
 function newCrossOriginWorker(url, cb) {
   const req = new XMLHttpRequest();
@@ -2042,6 +2050,9 @@ function isCrossOrigin(urlString) {
     return false;
   }
   return true;
+}
+function isImageBitmap(value) {
+  return typeof ImageBitmap !== "undefined" && value instanceof ImageBitmap;
 }
 function throwUnreachable(context) {
   let msg = "Reached the unreachable";
@@ -2238,7 +2249,7 @@ function webRPayloadAsError(payload) {
   return e;
 }
 function isWebRPayload(value) {
-  return value && typeof value === "object" && "payloadType" in value && "obj" in value;
+  return !!value && typeof value === "object" && "payloadType" in value && "obj" in value;
 }
 function isWebRPayloadPtr(value) {
   return isWebRPayload(value) && value.payloadType === "ptr";
@@ -2493,6 +2504,7 @@ var SharedBufferChannelMain = class extends ChannelMain {
     __privateAdd(this, _handleEventsFromWorker);
     __privateAdd(this, _interruptBuffer, void 0);
     this.close = () => {
+      return;
     };
     __privateAdd(this, _onMessageFromWorker, async (worker, message) => {
       if (!message || !message.type) {
@@ -2569,7 +2581,7 @@ _handleEventsFromWorker = new WeakSet();
 handleEventsFromWorker_fn = function(worker) {
   if (IN_NODE) {
     worker.on("message", (message) => {
-      __privateGet(this, _onMessageFromWorker).call(this, worker, message);
+      void __privateGet(this, _onMessageFromWorker).call(this, worker, message);
     });
   } else {
     worker.onmessage = (ev) => __privateGet(this, _onMessageFromWorker).call(this, worker, ev.data);
@@ -2583,8 +2595,10 @@ var SharedBufferChannelWorker = class {
     __privateAdd(this, _dispatch, () => 0);
     __privateAdd(this, _interruptBuffer2, new Int32Array(new SharedArrayBuffer(4)));
     __privateAdd(this, _interrupt, () => {
+      return;
     });
     this.onMessageFromMainThread = () => {
+      return;
     };
     __privateSet(this, _ep, IN_NODE ? require("worker_threads").parentPort : globalThis);
     setInterruptBuffer(__privateGet(this, _interruptBuffer2).buffer);
@@ -2647,11 +2661,12 @@ var ServiceWorkerChannelMain = class extends ChannelMain {
     __privateAdd(this, _onMessageFromServiceWorker);
     __privateAdd(this, _handleEventsFromWorker2);
     this.close = () => {
+      return;
     };
     __privateAdd(this, _syncMessageCache, /* @__PURE__ */ new Map());
     __privateAdd(this, _registration, void 0);
     __privateAdd(this, _interrupted, false);
-    __privateAdd(this, _onMessageFromWorker2, async (worker, message) => {
+    __privateAdd(this, _onMessageFromWorker2, (worker, message) => {
       if (!message || !message.type) {
         return;
       }
@@ -2685,7 +2700,7 @@ var ServiceWorkerChannelMain = class extends ChannelMain {
         worker.terminate();
         this.putClosedMessage();
       };
-      __privateMethod(this, _registerServiceWorker, registerServiceWorker_fn).call(this, `${config.serviceWorkerUrl}webr-serviceworker.js`).then(
+      void __privateMethod(this, _registerServiceWorker, registerServiceWorker_fn).call(this, `${config.serviceWorkerUrl}webr-serviceworker.js`).then(
         (clientId) => {
           const msg = {
             type: "init",
@@ -2731,7 +2746,7 @@ registerServiceWorker_fn = async function(url) {
   await navigator.serviceWorker.ready;
   window.addEventListener("beforeunload", () => {
     var _a;
-    (_a = __privateGet(this, _registration)) == null ? void 0 : _a.unregister();
+    void ((_a = __privateGet(this, _registration)) == null ? void 0 : _a.unregister());
   });
   const clientId = await new Promise((resolve) => {
     navigator.serviceWorker.addEventListener(
@@ -2746,7 +2761,7 @@ registerServiceWorker_fn = async function(url) {
     this.activeRegistration().postMessage({ type: "register-client-main" });
   });
   navigator.serviceWorker.addEventListener("message", (event) => {
-    __privateMethod(this, _onMessageFromServiceWorker, onMessageFromServiceWorker_fn).call(this, event);
+    void __privateMethod(this, _onMessageFromServiceWorker, onMessageFromServiceWorker_fn).call(this, event);
   });
   return clientId;
 };
@@ -2806,8 +2821,10 @@ var ServiceWorkerChannelWorker = class {
     __privateAdd(this, _lastInterruptReq, Date.now());
     __privateAdd(this, _dispatch2, () => 0);
     __privateAdd(this, _interrupt2, () => {
+      return;
     });
     this.onMessageFromMainThread = () => {
+      return;
     };
     if (!data.clientId || !data.location) {
       throw new WebRChannelError("Can't start service worker channel");
@@ -2901,6 +2918,7 @@ var PostMessageChannelMain = class extends ChannelMain {
     super();
     __privateAdd(this, _handleEventsFromWorker3);
     this.close = () => {
+      return;
     };
     __privateAdd(this, _worker, void 0);
     __privateAdd(this, _onMessageFromWorker3, async (worker, message) => {
@@ -2973,29 +2991,27 @@ _handleEventsFromWorker3 = new WeakSet();
 handleEventsFromWorker_fn3 = function(worker) {
   if (IN_NODE) {
     worker.on("message", (message) => {
-      __privateGet(this, _onMessageFromWorker3).call(this, worker, message);
+      void __privateGet(this, _onMessageFromWorker3).call(this, worker, message);
     });
   } else {
     worker.onmessage = (ev) => __privateGet(this, _onMessageFromWorker3).call(this, worker, ev.data);
   }
 };
 _onMessageFromWorker3 = new WeakMap();
-var _ep3, _parked2, _dispatch3, _promptDepth, _interrupt3, _asyncREPL;
+var _ep3, _parked2, _dispatch3, _promptDepth, _asyncREPL;
 var PostMessageChannelWorker = class {
   constructor() {
     __privateAdd(this, _ep3, void 0);
     __privateAdd(this, _parked2, /* @__PURE__ */ new Map());
     __privateAdd(this, _dispatch3, () => 0);
     __privateAdd(this, _promptDepth, 0);
-    __privateAdd(this, _interrupt3, () => {
-    });
     /*
      * This is a fallback REPL for webR running in PostMessage mode. The prompt
      * section of R's R_ReplDLLdo1 returns empty with -1, which allows this
      * fallback REPL to yield to the event loop with await.
      *
      * The drawback of this approach is that nested REPLs do not work, such as
-     * realine, browser or menu. Attempting to use a nested REPL prints an error
+     * readline, browser or menu. Attempting to use a nested REPL prints an error
      * to the JS console.
      *
      * R/Wasm errors during execution are caught and the REPL is restarted at the
@@ -3049,13 +3065,12 @@ var PostMessageChannelWorker = class {
     );
   }
   inputOrDispatch() {
-    if (__privateGet(this, _promptDepth) > 10) {
-      __privateGet(this, _interrupt3).call(this);
-    } else if (__privateGet(this, _promptDepth) > 0) {
-      this.writeSystem({
-        type: "console.error",
-        data: "Nested REPL prompts are not available when using the `PostMessage` channel."
-      });
+    if (__privateGet(this, _promptDepth) > 0) {
+      __privateSet(this, _promptDepth, 0);
+      const msg = Module.allocateUTF8OnStack(
+        "Can't block for input when using the PostMessage communication channel."
+      );
+      Module._Rf_error(msg);
     }
     __privateWrapper(this, _promptDepth)._++;
     return 0;
@@ -3078,7 +3093,7 @@ var PostMessageChannelWorker = class {
     Module._setup_Rmainloop();
     Module._R_ReplDLLinit();
     Module._R_ReplDLLdo1();
-    __privateGet(this, _asyncREPL).call(this);
+    void __privateGet(this, _asyncREPL).call(this);
   }
   setDispatchHandler(dispatch2) {
     __privateSet(this, _dispatch3, dispatch2);
@@ -3090,10 +3105,11 @@ var PostMessageChannelWorker = class {
     this.write(req);
     return prom;
   }
-  setInterrupt(interrupt) {
-    __privateSet(this, _interrupt3, interrupt);
+  setInterrupt() {
+    return;
   }
   handleInterrupt() {
+    return;
   }
   onMessageFromMainThread(message) {
     const msg = message;
@@ -3111,7 +3127,6 @@ _ep3 = new WeakMap();
 _parked2 = new WeakMap();
 _dispatch3 = new WeakMap();
 _promptDepth = new WeakMap();
-_interrupt3 = new WeakMap();
 _asyncREPL = new WeakMap();
 
 // webR/chan/channel-common.ts
@@ -3130,7 +3145,7 @@ function newChannelWorker(msg) {
     case ChannelType.PostMessage:
       return new PostMessageChannelWorker();
     default:
-      throw new WebRChannelError("Unknown worker channel type recieved");
+      throw new WebRChannelError("Unknown worker channel type received");
   }
 }
 
@@ -3165,10 +3180,10 @@ var RTypeMap = {
   function: 99
 };
 function isWebRDataJs(value) {
-  return value && typeof value === "object" && Object.keys(RTypeMap).includes(value.type);
+  return !!value && typeof value === "object" && Object.keys(RTypeMap).includes(value.type);
 }
 function isComplex(value) {
-  return value && typeof value === "object" && "re" in value && "im" in value;
+  return !!value && typeof value === "object" && "re" in value && "im" in value;
 }
 
 // webR/utils-r.ts
@@ -3298,13 +3313,41 @@ function newObjectFromData(obj) {
   if (isComplex(obj)) {
     return new RComplex(obj);
   }
+  if (ArrayBuffer.isView(obj) || obj instanceof ArrayBuffer) {
+    return new RRaw(obj);
+  }
   if (Array.isArray(obj)) {
     return newObjectFromArray(obj);
+  }
+  if (typeof obj === "object") {
+    return RList.fromObject(obj);
   }
   throw new Error("Robj construction for this JS object is not yet supported");
 }
 function newObjectFromArray(arr) {
   const prot = { n: 0 };
+  const hasObjects = arr.every((v) => v && typeof v === "object" && !isRObject(v) && !isComplex(v));
+  if (hasObjects) {
+    const _arr = arr;
+    const isConsistent = _arr.every((a) => {
+      return Object.keys(a).filter((k) => !Object.keys(_arr[0]).includes(k)).length === 0 && Object.keys(_arr[0]).filter((k) => !Object.keys(a).includes(k)).length === 0;
+    });
+    const isAtomic = _arr.every((a) => Object.values(a).every((v) => {
+      return isAtomicType(v) || isRVectorAtomic(v);
+    }));
+    if (isConsistent && isAtomic) {
+      return RList.fromD3(_arr);
+    }
+  }
+  if (arr.every((v) => typeof v === "boolean" || v === null)) {
+    return new RLogical(arr);
+  }
+  if (arr.every((v) => typeof v === "number" || v === null)) {
+    return new RDouble(arr);
+  }
+  if (arr.every((v) => typeof v === "string" || v === null)) {
+    return new RCharacter(arr);
+  }
   try {
     const call = new RCall([new RSymbol("c"), ...arr]);
     protectInc(call, prot);
@@ -3355,6 +3398,15 @@ var _RObject = class extends RObjectBase {
   isNull() {
     return Module2._TYPEOF(this.ptr) === RTypeMap.null;
   }
+  isNa() {
+    try {
+      const result = parseEvalBare("is.na(x)", { x: this });
+      protect(result);
+      return result.toBoolean();
+    } finally {
+      unprotect(1);
+    }
+  }
   isUnbound() {
     return this.ptr === objs.unboundValue.ptr;
   }
@@ -3385,6 +3437,7 @@ var _RObject = class extends RObjectBase {
     const names = this.names();
     return names && names.includes(name);
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   toJs(options = { depth: 0 }, depth = 1) {
     throw new Error("This R object cannot be converted to JS");
   }
@@ -3534,10 +3587,10 @@ var RPairlist = class extends RObject {
   toObject({
     allowDuplicateKey = true,
     allowEmptyKey = false,
-    depth = 1
+    depth = -1
   } = {}) {
     const entries = this.entries({ depth });
-    const keys = entries.map(([k, v]) => k);
+    const keys = entries.map(([k]) => k);
     if (!allowDuplicateKey && new Set(keys).size !== keys.length) {
       throw new Error("Duplicate key when converting pairlist without allowDuplicateKey enabled");
     }
@@ -3620,14 +3673,37 @@ var RCall = class extends RObject {
     return RObject.wrap(Module2._CDR(this.ptr));
   }
   eval() {
-    return RObject.wrap(safeEval(this.ptr, objs.baseEnv));
+    return Module2.webr.evalR(this, { env: objs.baseEnv });
+  }
+  capture(options = {}) {
+    return Module2.webr.captureR(this, options);
+  }
+  deparse() {
+    const prot = { n: 0 };
+    try {
+      const call = Module2._Rf_lang2(
+        new RSymbol("deparse1").ptr,
+        Module2._Rf_lang2(new RSymbol("quote").ptr, this.ptr)
+      );
+      protectInc(call, prot);
+      const val = RCharacter.wrap(safeEval(call, objs.baseEnv));
+      protectInc(val, prot);
+      return val.toString();
+    } finally {
+      unprotect(prot.n);
+    }
   }
 };
 var RList = class extends RObject {
   constructor(val) {
+    var __super = (...args) => {
+      super(...args);
+    };
     if (val instanceof RObjectBase) {
       assertRType(val, "list");
-      super(val);
+      __super(val);
+      const classes = RPairlist.wrap(Module2._ATTRIB(val.ptr)).get("class");
+      this.isDataFrame = !classes.isNull() && classes.toArray().includes("data.frame");
       return this;
     }
     const prot = { n: 0 };
@@ -3639,10 +3715,11 @@ var RList = class extends RObject {
         Module2._SET_VECTOR_ELT(ptr, i, new RObject(v).ptr);
       });
       RObject.wrap(ptr).setNames(names);
-      super(new RObjectBase(ptr));
+      __super(new RObjectBase(ptr));
     } finally {
       unprotect(prot.n);
     }
+    this.isDataFrame = false;
   }
   get length() {
     return Module2._LENGTH(this.ptr);
@@ -3653,10 +3730,10 @@ var RList = class extends RObject {
   toObject({
     allowDuplicateKey = true,
     allowEmptyKey = false,
-    depth = 1
+    depth = -1
   } = {}) {
     const entries = this.entries({ depth });
-    const keys = entries.map(([k, v]) => k);
+    const keys = entries.map(([k]) => k);
     if (!allowDuplicateKey && new Set(keys).size !== keys.length) {
       throw new Error("Duplicate key when converting list without allowDuplicateKey enabled");
     }
@@ -3667,8 +3744,61 @@ var RList = class extends RObject {
       entries.filter((u, idx) => entries.findIndex((v) => v[0] === u[0]) === idx)
     );
   }
-  entries(options = { depth: 1 }) {
+  toD3() {
+    if (!this.isDataFrame) {
+      throw new Error(
+        "Can't convert R list object to D3 format. Object must be of class 'data.frame'."
+      );
+    }
+    const entries = this.entries();
+    return entries.reduce((a, entry) => {
+      entry[1].forEach((v, j) => a[j] = Object.assign(a[j] || {}, { [entry[0]]: v }));
+      return a;
+    }, []);
+  }
+  // JS objects are interpreted as R list objects. If we have a JS object with
+  // consistent columns of atomic type, make the returned R object a data.frame
+  static fromObject(obj) {
+    const { names, values } = toWebRData(obj);
+    const prot = { n: 0 };
+    try {
+      const hasNames = !!names && names.length > 0 && names.every((v) => v);
+      const hasArrays = values.length > 0 && values.every((v) => {
+        return Array.isArray(v) || ArrayBuffer.isView(v) || v instanceof ArrayBuffer;
+      });
+      if (hasNames && hasArrays) {
+        const _values = values;
+        const isConsistentLength = _values.every((a) => a.length === _values[0].length);
+        const isAtomic = _values.every((a) => {
+          return isAtomicType(a[0]) || isRVectorAtomic(a[0]);
+        });
+        if (isConsistentLength && isAtomic) {
+          const listObj = new RList({
+            type: "list",
+            names,
+            values: _values.map((a) => newObjectFromData(a))
+          });
+          protectInc(listObj, prot);
+          const asDataFrame = new RCall([new RSymbol("as.data.frame"), listObj]);
+          protectInc(asDataFrame, prot);
+          return asDataFrame.eval();
+        }
+      }
+    } finally {
+      unprotect(prot.n);
+    }
+    return new RList(obj);
+  }
+  static fromD3(arr) {
+    return this.fromObject(
+      Object.fromEntries(Object.keys(arr[0]).map((k) => [k, arr.map((v) => v[k])]))
+    );
+  }
+  entries(options = { depth: -1 }) {
     const obj = this.toJs(options);
+    if (this.isDataFrame && options.depth < 0) {
+      obj.values = obj.values.map((v) => v.toArray());
+    }
     return obj.values.map((v, i) => [obj.names ? obj.names[i] : null, v]);
   }
   toJs(options = { depth: 0 }, depth = 1) {
@@ -3692,6 +3822,16 @@ var RFunction = class extends RObject {
       const call = new RCall([this, ...args]);
       protectInc(call, prot);
       return call.eval();
+    } finally {
+      unprotect(prot.n);
+    }
+  }
+  capture(options = {}, ...args) {
+    const prot = { n: 0 };
+    try {
+      const call = new RCall([this, ...args]);
+      protectInc(call, prot);
+      return call.capture(options);
     } finally {
       unprotect(prot.n);
     }
@@ -3777,11 +3917,12 @@ var REnvironment = class extends RObject {
     }
     return this.getDollar(prop);
   }
-  toObject({ depth = 0 } = {}) {
+  toObject({ depth = -1 } = {}) {
     const symbols = this.names();
     return Object.fromEntries(
       [...Array(symbols.length).keys()].map((i) => {
-        return [symbols[i], this.getDollar(symbols[i]).toJs({ depth })];
+        const value = this.getDollar(symbols[i]);
+        return [symbols[i], depth < 0 ? value : value.toJs({ depth })];
       })
     );
   }
@@ -3829,7 +3970,7 @@ var RVectorAtomic = class extends RObject {
   subset(prop) {
     return super.subset(prop);
   }
-  getDollar(prop) {
+  getDollar() {
     throw new Error("$ operator is invalid for atomic vectors");
   }
   detectMissing() {
@@ -3851,7 +3992,7 @@ var RVectorAtomic = class extends RObject {
   }
   toObject({ allowDuplicateKey = true, allowEmptyKey = false } = {}) {
     const entries = this.entries();
-    const keys = entries.map(([k, v]) => k);
+    const keys = entries.map(([k]) => k);
     if (!allowDuplicateKey && new Set(keys).size !== keys.length) {
       throw new Error(
         "Duplicate key when converting atomic vector without allowDuplicateKey enabled"
@@ -4077,6 +4218,9 @@ __privateAdd(RCharacter, _newSetter5, (ptr) => {
 var _newSetter6;
 var _RRaw = class extends RVectorAtomic {
   constructor(val) {
+    if (val instanceof ArrayBuffer) {
+      val = new Uint8Array(val);
+    }
     super(val, "raw", __privateGet(_RRaw, _newSetter6));
   }
   getNumber(idx) {
@@ -4147,6 +4291,13 @@ function getRWorkerClass(type) {
 function isRObject(value) {
   return value instanceof RObject;
 }
+function isRVectorAtomic(value) {
+  const atomicRTypes = ["logical", "integer", "double", "complex", "character"];
+  return isRObject(value) && atomicRTypes.includes(value.type()) || isRObject(value) && value.isNa();
+}
+function isAtomicType(value) {
+  return value === null || typeof value === "number" || typeof value === "boolean" || typeof value === "string" || isComplex(value);
+}
 var objs;
 function initPersistentObjects() {
   objs = {
@@ -4186,7 +4337,8 @@ var onWorkerMessage = function(msg) {
   chan == null ? void 0 : chan.onMessageFromMainThread(msg);
 };
 if (IN_NODE) {
-  require("worker_threads").parentPort.on("message", onWorkerMessage);
+  const workerThreads = require("worker_threads");
+  workerThreads.parentPort.on("message", onWorkerMessage);
   globalThis.XMLHttpRequest = require_XMLHttpRequest().XMLHttpRequest;
 } else {
   globalThis.onmessage = (ev) => onWorkerMessage(ev.data);
@@ -4215,6 +4367,13 @@ function dispatch(msg) {
               obj: copyFSNode(Module2.FS.mkdir(msg2.data.path)),
               payloadType: "raw"
             });
+            break;
+          }
+          case "mount": {
+            const msg2 = reqMsg;
+            const fs = Module2.FS.filesystems[msg2.data.type];
+            Module2.FS.mount(fs, msg2.data.options, msg2.data.mountpoint);
+            write({ obj: null, payloadType: "raw" });
             break;
           }
           case "readFile": {
@@ -4256,6 +4415,14 @@ function dispatch(msg) {
             });
             break;
           }
+          case "unmount": {
+            const msg2 = reqMsg;
+            write({
+              obj: Module2.FS.unmount(msg2.data.path),
+              payloadType: "raw"
+            });
+            break;
+          }
           case "newShelter": {
             const id = generateUUID();
             shelters.set(id, []);
@@ -4290,14 +4457,14 @@ function dispatch(msg) {
             const prot = { n: 0 };
             try {
               const capture = captureR(data.code, data.options);
-              protectInc(capture, prot);
-              const result = capture.get("result");
-              const outputs = capture.get(2);
+              protectInc(capture.result, prot);
+              protectInc(capture.output, prot);
+              const result = capture.result;
               keep(shelter, result);
-              const n = outputs.length;
+              const n = capture.output.length;
               const output = [];
               for (let i = 1; i < n + 1; ++i) {
-                const out = outputs.get(i);
+                const out = capture.output.get(i);
                 const type = out.pluck(1, 1).toString();
                 const data2 = out.get(2);
                 if (type === "stdout" || type === "stderr") {
@@ -4328,7 +4495,8 @@ function dispatch(msg) {
                 payloadType: "raw",
                 obj: {
                   result: resultPayload,
-                  output
+                  output,
+                  images: capture.images
                 }
               });
             } finally {
@@ -4482,10 +4650,12 @@ function dispatch(msg) {
             break;
           }
           case "installPackage": {
+            const msg2 = reqMsg;
             evalR(`webr::install(
-              "${reqMsg.data.name}",
-              repos = "${_config.repoUrl}",
-              quiet = ${reqMsg.data.quiet ? "TRUE" : "FALSE"}
+              "${msg2.data.name}",
+              repos = "${msg2.data.options.repos ? msg2.data.options.repos : _config.repoUrl}",
+              quiet = ${msg2.data.options.quiet ? "TRUE" : "FALSE"},
+              mount = ${msg2.data.options.mount ? "TRUE" : "FALSE"}
             )`);
             write({
               obj: true,
@@ -4519,10 +4689,19 @@ function copyFSNode(obj) {
     name: obj.name,
     mode: obj.mode,
     isFolder: obj.isFolder,
+    mounted: null,
     contents: {}
   };
-  if (obj.isFolder) {
-    retObj.contents = Object.entries(obj.contents).map(([, node]) => copyFSNode(node));
+  if (obj.isFolder && obj.contents) {
+    retObj.contents = Object.fromEntries(
+      Object.entries(obj.contents).map(([name, node]) => [name, copyFSNode(node)])
+    );
+  }
+  if (obj.mounted !== null) {
+    retObj.mounted = {
+      mountpoint: obj.mounted.mountpoint,
+      root: copyFSNode(obj.mounted.root)
+    };
   }
   return retObj;
 }
@@ -4536,7 +4715,7 @@ function downloadFileContent(URL2, headers = []) {
       request.setRequestHeader(splitHeader[0], splitHeader[1]);
     });
   } catch {
-    const responseText = "An error occured setting headers in XMLHttpRequest";
+    const responseText = "An error occurred setting headers in XMLHttpRequest";
     console.error(responseText);
     return { status: 400, response: responseText };
   }
@@ -4551,8 +4730,64 @@ function downloadFileContent(URL2, headers = []) {
       return { status, response: responseText };
     }
   } catch {
-    return { status: 400, response: "An error occured in XMLHttpRequest" };
+    return { status: 400, response: "An error occurred in XMLHttpRequest" };
   }
+}
+function mountImageData(data, metadata, mountpoint) {
+  if (IN_NODE) {
+    const buf = data;
+    const WORKERFS = Module2.FS.filesystems.WORKERFS;
+    if (!WORKERFS.reader)
+      WORKERFS.reader = {
+        readAsArrayBuffer: (chunk) => new Uint8Array(chunk)
+      };
+    metadata.files.forEach((f) => {
+      const contents = buf.subarray(f.start, f.end);
+      contents.size = contents.byteLength;
+      contents.slice = (start, end) => {
+        const sub = contents.subarray(start, end);
+        sub.size = sub.byteLength;
+        return sub;
+      };
+      const parts = (mountpoint + f.filename).split("/");
+      const file = parts.pop();
+      if (!file) {
+        throw new Error(`Invalid mount path "${mountpoint}${f.filename}".`);
+      }
+      const dir = parts.join("/");
+      Module2.FS.mkdirTree(dir);
+      const dirNode = Module2.FS.lookupPath(dir, {}).node;
+      WORKERFS.createNode(dirNode, file, WORKERFS.FILE_MODE, 0, contents);
+    });
+  } else {
+    Module2.FS.mount(Module2.FS.filesystems.WORKERFS, {
+      packages: [{
+        blob: new Blob([data]),
+        metadata
+      }]
+    }, mountpoint);
+  }
+}
+function mountImageUrl(url, mountpoint) {
+  const dataResp = downloadFileContent(url);
+  const metaResp = downloadFileContent(url.replace(new RegExp(".data$"), ".js.metadata"));
+  if (dataResp.status < 200 || dataResp.status >= 300 || metaResp.status < 200 || metaResp.status >= 300) {
+    throw new Error("Unable to download Emscripten filesystem image.See the JavaScript console for further details.");
+  }
+  mountImageData(
+    dataResp.response,
+    JSON.parse(new TextDecoder().decode(metaResp.response)),
+    mountpoint
+  );
+}
+function mountImagePath(path, mountpoint) {
+  const fs = require("fs");
+  const buf = fs.readFileSync(path);
+  const metadata = JSON.parse(fs.readFileSync(
+    path.replace(new RegExp(".data$"), ".js.metadata"),
+    "utf8"
+  ));
+  mountImageData(buf, metadata, mountpoint);
 }
 function newRObject(data, objType) {
   const RClass = objType === "object" ? RObject : getRWorkerClass(RTypeMap[objType]);
@@ -4601,7 +4836,7 @@ function callRObjectMethod(obj, prop, args) {
   });
   return { obj: ret, payloadType: "raw" };
 }
-function captureR(code, options = {}) {
+function captureR(expr, options = {}) {
   var _a;
   const prot = { n: 0 };
   try {
@@ -4610,6 +4845,7 @@ function captureR(code, options = {}) {
         env: objs.globalEnv,
         captureStreams: true,
         captureConditions: true,
+        captureGraphics: typeof OffscreenCanvas !== "undefined",
         withAutoprint: false,
         throwJsException: true,
         withHandlers: true
@@ -4625,15 +4861,32 @@ function captureR(code, options = {}) {
     if (envObj.type() !== "environment") {
       throw new Error("Attempted to evaluate R code with invalid environment object");
     }
+    const devEnvObj = new REnvironment({});
+    protectInc(devEnvObj, prot);
+    if (_options.captureGraphics) {
+      if (typeof OffscreenCanvas === "undefined") {
+        throw new Error(
+          "This environment does not have support for OffscreenCanvas. Consider disabling plot capture using `captureGraphics: false`."
+        );
+      }
+      parseEvalBare(`{
+        old_dev <- dev.cur()
+        webr::canvas(capture = TRUE)
+        new_dev <- dev.cur()
+        old_cache <- webr::canvas_cache()
+      }`, devEnvObj);
+    }
     const tPtr = objs.true.ptr;
     const fPtr = objs.false.ptr;
     const fn = parseEvalBare("webr::eval_r", objs.baseEnv);
+    const qu = parseEvalBare("quote", objs.baseEnv);
     protectInc(fn, prot);
-    const codeObj = new RCharacter(code);
-    protectInc(codeObj, prot);
+    protectInc(qu, prot);
+    const exprObj = new RObject(expr);
+    protectInc(exprObj, prot);
     const call = Module2._Rf_lang6(
       fn.ptr,
-      codeObj.ptr,
+      Module2._Rf_lang2(qu.ptr, exprObj.ptr),
       _options.captureConditions ? tPtr : fPtr,
       _options.captureStreams ? tPtr : fPtr,
       _options.withAutoprint ? tPtr : fPtr,
@@ -4648,24 +4901,49 @@ function captureR(code, options = {}) {
         (out) => out.get("type").toString() === "error"
       );
       if (error) {
-        throw new Error(
-          ((_a = error.pluck("data", "message")) == null ? void 0 : _a.toString()) || "An error occured evaluating R code."
-        );
+        const call2 = error.pluck("data", "call");
+        const source = call2 && call2.type() === "call" ? call2.deparse() : "Unknown source";
+        const message = ((_a = error.pluck("data", "message")) == null ? void 0 : _a.toString()) || "An error occurred evaluating R code.";
+        throw new Error(`Error in ${source}: ${message}`);
       }
     }
-    return capture;
+    let images = [];
+    if (_options.captureGraphics) {
+      const plots = parseEvalBare(`{
+        new_cache <- webr::canvas_cache()
+        plots <- setdiff(new_cache, old_cache)
+      }`, devEnvObj);
+      protectInc(plots, prot);
+      images = plots.toArray().map((idx) => {
+        return Module2.webr.canvas[idx].offscreen.transferToImageBitmap();
+      });
+      parseEvalBare(`{
+        dev.off(new_dev)
+        dev.set(old_dev)
+        webr::canvas_destroy(plots)
+      }`, devEnvObj);
+    }
+    return {
+      result: capture.get("result"),
+      output: capture.get("output"),
+      images
+    };
   } finally {
     unprotect(prot.n);
   }
 }
-function evalR(code, options = {}) {
+function evalR(expr, options = {}) {
   var _a, _b;
-  const capture = captureR(code, options);
-  Module2._Rf_protect(capture.ptr);
+  options = Object.assign({
+    captureGraphics: false
+  }, options);
+  const prot = { n: 0 };
+  const capture = captureR(expr, options);
   try {
-    const output = capture.get("output");
-    for (let i = 1; i <= output.length; i++) {
-      const out = output.get(i);
+    protectInc(capture.output, prot);
+    protectInc(capture.result, prot);
+    for (let i = 1; i <= capture.output.length; i++) {
+      const out = capture.output.get(i);
       const outputType = out.get("type").toString();
       switch (outputType) {
         case "stdout":
@@ -4693,9 +4971,9 @@ ${((_b = out.pluck("data", "message")) == null ? void 0 : _b.toString()) || ""}`
           break;
       }
     }
-    return capture.get("result");
+    return capture.result;
   } finally {
-    Module2._Rf_unprotect(1);
+    unprotect(prot.n);
   }
 }
 function init(config) {
@@ -4731,6 +5009,9 @@ function init(config) {
   };
   Module2.webr = {
     UnwindProtectException,
+    evalR,
+    captureR,
+    canvas: {},
     resolveInit: () => {
       initPersistentObjects();
       chan == null ? void 0 : chan.setInterrupt(Module2._Rf_onintr);
@@ -4758,7 +5039,7 @@ function init(config) {
           throw e;
         }
         const msg = Module2.allocateUTF8OnStack(
-          `An error occured during JavaScript evaluation:
+          `An error occurred during JavaScript evaluation:
   ${e.message}`
         );
         Module2._Rf_error(msg);
@@ -4772,6 +5053,8 @@ function init(config) {
   };
   Module2.locateFile = (path) => _config.baseUrl + path;
   Module2.downloadFileContent = downloadFileContent;
+  Module2.mountImageUrl = mountImageUrl;
+  Module2.mountImagePath = mountImagePath;
   Module2.print = (text) => {
     chan == null ? void 0 : chan.write({ type: "stdout", data: text });
   };
@@ -4784,7 +5067,7 @@ function init(config) {
   globalThis.Module = Module2;
   setTimeout(() => {
     const scriptSrc = `${_config.baseUrl}R.bin.js`;
-    loadScript(scriptSrc);
+    void loadScript(scriptSrc);
   });
 }
 /*! Bundled license information:
