@@ -3293,7 +3293,7 @@ function purge(shelter) {
 }
 function newObjectFromData(obj) {
   if (isWebRDataJs(obj)) {
-    return new (getRWorkerClass(RTypeMap[obj.type]))(obj);
+    return new (getRWorkerClass(obj.type))(obj);
   }
   if (obj && typeof obj === "object" && "type" in obj && obj.type === "null") {
     return new RNull();
@@ -3320,7 +3320,7 @@ function newObjectFromData(obj) {
     return newObjectFromArray(obj);
   }
   if (typeof obj === "object") {
-    return RList.fromObject(obj);
+    return RDataFrame.fromObject(obj);
   }
   throw new Error("Robj construction for this JS object is not yet supported");
 }
@@ -3336,7 +3336,7 @@ function newObjectFromArray(arr) {
       return isAtomicType(v) || isRVectorAtomic(v);
     }));
     if (isConsistent && isAtomic) {
-      return RList.fromD3(_arr);
+      return RDataFrame.fromD3(_arr);
     }
   }
   if (arr.every((v) => typeof v === "boolean" || v === null)) {
@@ -3378,7 +3378,8 @@ var _RObject = class extends RObjectBase {
     __privateAdd(this, _slice);
   }
   static wrap(ptr) {
-    const type = Module2._TYPEOF(ptr);
+    const typeNumber = Module2._TYPEOF(ptr);
+    const type = Object.keys(RTypeMap)[Object.values(RTypeMap).indexOf(typeNumber)];
     return new (getRWorkerClass(type))(new RObjectBase(ptr));
   }
   get [Symbol.toStringTag]() {
@@ -3695,34 +3696,46 @@ var RCall = class extends RObject {
   }
 };
 var RList = class extends RObject {
-  constructor(val) {
-    var __super = (...args) => {
-      super(...args);
-    };
+  constructor(val, names = null) {
     if (val instanceof RObjectBase) {
       assertRType(val, "list");
-      __super(val);
-      const classes = RPairlist.wrap(Module2._ATTRIB(val.ptr)).get("class");
-      this.isDataFrame = !classes.isNull() && classes.toArray().includes("data.frame");
+      super(val);
+      if (names) {
+        if (names.length !== this.length) {
+          throw new Error(
+            "Can't construct named `RList`. Supplied `names` must be the same length as the list."
+          );
+        }
+        this.setNames(names);
+      }
       return this;
     }
     const prot = { n: 0 };
     try {
-      const { names, values } = toWebRData(val);
-      const ptr = Module2._Rf_allocVector(RTypeMap.list, values.length);
+      const data = toWebRData(val);
+      const ptr = Module2._Rf_allocVector(RTypeMap.list, data.values.length);
       protectInc(ptr, prot);
-      values.forEach((v, i) => {
+      data.values.forEach((v, i) => {
         Module2._SET_VECTOR_ELT(ptr, i, new RObject(v).ptr);
       });
-      RObject.wrap(ptr).setNames(names);
-      __super(new RObjectBase(ptr));
+      const _names = names ? names : data.names;
+      if (_names && _names.length !== data.values.length) {
+        throw new Error(
+          "Can't construct named `RList`. Supplied `names` must be the same length as the list."
+        );
+      }
+      RObject.wrap(ptr).setNames(_names);
+      super(new RObjectBase(ptr));
     } finally {
       unprotect(prot.n);
     }
-    this.isDataFrame = false;
   }
   get length() {
     return Module2._LENGTH(this.ptr);
+  }
+  isDataFrame() {
+    const classes = RPairlist.wrap(Module2._ATTRIB(this.ptr)).get("class");
+    return !classes.isNull() && classes.toArray().includes("data.frame");
   }
   toArray(options = { depth: 1 }) {
     return this.toJs(options).values;
@@ -3745,7 +3758,7 @@ var RList = class extends RObject {
     );
   }
   toD3() {
-    if (!this.isDataFrame) {
+    if (!this.isDataFrame()) {
       throw new Error(
         "Can't convert R list object to D3 format. Object must be of class 'data.frame'."
       );
@@ -3756,8 +3769,38 @@ var RList = class extends RObject {
       return a;
     }, []);
   }
-  // JS objects are interpreted as R list objects. If we have a JS object with
-  // consistent columns of atomic type, make the returned R object a data.frame
+  entries(options = { depth: -1 }) {
+    const obj = this.toJs(options);
+    if (this.isDataFrame() && options.depth < 0) {
+      obj.values = obj.values.map((v) => v.toArray());
+    }
+    return obj.values.map((v, i) => [obj.names ? obj.names[i] : null, v]);
+  }
+  toJs(options = { depth: 0 }, depth = 1) {
+    return {
+      type: "list",
+      names: this.names(),
+      values: [...Array(this.length).keys()].map((i) => {
+        if (options.depth && depth >= options.depth) {
+          return this.get(i + 1);
+        } else {
+          return this.get(i + 1).toJs(options, depth + 1);
+        }
+      })
+    };
+  }
+};
+var RDataFrame = class extends RList {
+  constructor(val) {
+    if (val instanceof RObjectBase) {
+      super(val);
+      if (!this.isDataFrame()) {
+        throw new Error("Can't construct `RDataFrame`. Supplied R object is not a `data.frame`.");
+      }
+      return this;
+    }
+    return RDataFrame.fromObject(val);
+  }
   static fromObject(obj) {
     const { names, values } = toWebRData(obj);
     const prot = { n: 0 };
@@ -3781,38 +3824,18 @@ var RList = class extends RObject {
           protectInc(listObj, prot);
           const asDataFrame = new RCall([new RSymbol("as.data.frame"), listObj]);
           protectInc(asDataFrame, prot);
-          return asDataFrame.eval();
+          return new RDataFrame(asDataFrame.eval());
         }
       }
     } finally {
       unprotect(prot.n);
     }
-    return new RList(obj);
+    throw new Error("Can't construct `data.frame`. Source object is not eligible.");
   }
   static fromD3(arr) {
     return this.fromObject(
       Object.fromEntries(Object.keys(arr[0]).map((k) => [k, arr.map((v) => v[k])]))
     );
-  }
-  entries(options = { depth: -1 }) {
-    const obj = this.toJs(options);
-    if (this.isDataFrame && options.depth < 0) {
-      obj.values = obj.values.map((v) => v.toArray());
-    }
-    return obj.values.map((v, i) => [obj.names ? obj.names[i] : null, v]);
-  }
-  toJs(options = { depth: 0 }, depth = 1) {
-    return {
-      type: "list",
-      names: this.names(),
-      values: [...Array(this.length).keys()].map((i) => {
-        if (options.depth && depth >= options.depth) {
-          return this.get(i + 1);
-        } else {
-          return this.get(i + 1).toJs(options, depth + 1);
-        }
-      })
-    };
   }
 };
 var RFunction = class extends RObject {
@@ -4265,23 +4288,25 @@ function toWebRData(jsObj) {
 }
 function getRWorkerClass(type) {
   const typeClasses = {
-    [RTypeMap.null]: RNull,
-    [RTypeMap.symbol]: RSymbol,
-    [RTypeMap.pairlist]: RPairlist,
-    [RTypeMap.closure]: RFunction,
-    [RTypeMap.environment]: REnvironment,
-    [RTypeMap.call]: RCall,
-    [RTypeMap.special]: RFunction,
-    [RTypeMap.builtin]: RFunction,
-    [RTypeMap.string]: RString,
-    [RTypeMap.logical]: RLogical,
-    [RTypeMap.integer]: RInteger,
-    [RTypeMap.double]: RDouble,
-    [RTypeMap.complex]: RComplex,
-    [RTypeMap.character]: RCharacter,
-    [RTypeMap.list]: RList,
-    [RTypeMap.raw]: RRaw,
-    [RTypeMap.function]: RFunction
+    object: RObject,
+    null: RNull,
+    symbol: RSymbol,
+    pairlist: RPairlist,
+    closure: RFunction,
+    environment: REnvironment,
+    call: RCall,
+    special: RFunction,
+    builtin: RFunction,
+    string: RString,
+    logical: RLogical,
+    integer: RInteger,
+    double: RDouble,
+    complex: RComplex,
+    character: RCharacter,
+    list: RList,
+    raw: RRaw,
+    function: RFunction,
+    dataframe: RDataFrame
   };
   if (type in typeClasses) {
     return typeClasses[type];
@@ -4624,7 +4649,7 @@ function dispatch(msg) {
           }
           case "newRObject": {
             const msg2 = reqMsg;
-            const payload = newRObject(msg2.data.obj, msg2.data.objType);
+            const payload = newRObject(msg2.data.args, msg2.data.objType);
             keep(msg2.data.shelter, payload.obj.ptr);
             write(payload);
             break;
@@ -4789,15 +4814,14 @@ function mountImagePath(path, mountpoint) {
   ));
   mountImageData(buf, metadata, mountpoint);
 }
-function newRObject(data, objType) {
-  const RClass = objType === "object" ? RObject : getRWorkerClass(RTypeMap[objType]);
-  const obj = new RClass(
-    replaceInObject(
-      data,
-      isWebRPayloadPtr,
-      (t) => RObject.wrap(t.obj.ptr)
-    )
+function newRObject(args, objType) {
+  const RClass = getRWorkerClass(objType);
+  const _args = replaceInObject(
+    args,
+    isWebRPayloadPtr,
+    (t) => RObject.wrap(t.obj.ptr)
   );
+  const obj = new RClass(..._args);
   return {
     obj: {
       type: obj.type(),
@@ -4838,42 +4862,46 @@ function callRObjectMethod(obj, prop, args) {
 }
 function captureR(expr, options = {}) {
   var _a;
+  const _options = Object.assign(
+    {
+      env: objs.globalEnv,
+      captureStreams: true,
+      captureConditions: true,
+      captureGraphics: typeof OffscreenCanvas !== "undefined",
+      withAutoprint: false,
+      throwJsException: true,
+      withHandlers: true
+    },
+    replaceInObject(
+      options,
+      isWebRPayloadPtr,
+      (t) => RObject.wrap(t.obj.ptr)
+    )
+  );
   const prot = { n: 0 };
+  const devEnvObj = new REnvironment({});
+  protectInc(devEnvObj, prot);
   try {
-    const _options = Object.assign(
-      {
-        env: objs.globalEnv,
-        captureStreams: true,
-        captureConditions: true,
-        captureGraphics: typeof OffscreenCanvas !== "undefined",
-        withAutoprint: false,
-        throwJsException: true,
-        withHandlers: true
-      },
-      replaceInObject(
-        options,
-        isWebRPayloadPtr,
-        (t) => RObject.wrap(t.obj.ptr)
-      )
-    );
     const envObj = new REnvironment(_options.env);
     protectInc(envObj, prot);
     if (envObj.type() !== "environment") {
       throw new Error("Attempted to evaluate R code with invalid environment object");
     }
-    const devEnvObj = new REnvironment({});
-    protectInc(devEnvObj, prot);
     if (_options.captureGraphics) {
       if (typeof OffscreenCanvas === "undefined") {
         throw new Error(
           "This environment does not have support for OffscreenCanvas. Consider disabling plot capture using `captureGraphics: false`."
         );
       }
+      devEnvObj.bind("canvas_options", new RList(Object.assign({
+        capture: true
+      }, _options.captureGraphics)));
       parseEvalBare(`{
         old_dev <- dev.cur()
-        webr::canvas(capture = TRUE)
+        do.call(webr::canvas, canvas_options)
         new_dev <- dev.cur()
         old_cache <- webr::canvas_cache()
+        plots <- numeric()
       }`, devEnvObj);
     }
     const tPtr = objs.true.ptr;
@@ -4902,7 +4930,7 @@ function captureR(expr, options = {}) {
       );
       if (error) {
         const call2 = error.pluck("data", "call");
-        const source = call2 && call2.type() === "call" ? call2.deparse() : "Unknown source";
+        const source = call2 && call2.type() === "call" ? `\`${call2.deparse()}\`` : "unknown source";
         const message = ((_a = error.pluck("data", "message")) == null ? void 0 : _a.toString()) || "An error occurred evaluating R code.";
         throw new Error(`Error in ${source}: ${message}`);
       }
@@ -4917,11 +4945,6 @@ function captureR(expr, options = {}) {
       images = plots.toArray().map((idx) => {
         return Module2.webr.canvas[idx].offscreen.transferToImageBitmap();
       });
-      parseEvalBare(`{
-        dev.off(new_dev)
-        dev.set(old_dev)
-        webr::canvas_destroy(plots)
-      }`, devEnvObj);
     }
     return {
       result: capture.get("result"),
@@ -4929,6 +4952,14 @@ function captureR(expr, options = {}) {
       images
     };
   } finally {
+    const newDev = devEnvObj.get("new_dev");
+    if (_options.captureGraphics && newDev.type() !== "null") {
+      parseEvalBare(`{
+        dev.off(new_dev)
+        dev.set(old_dev)
+        webr::canvas_destroy(plots)
+      }`, devEnvObj);
+    }
     unprotect(prot.n);
   }
 }
