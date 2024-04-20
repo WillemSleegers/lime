@@ -68,15 +68,33 @@ export const FunnelPlot = (props: FunnelPlotProps) => {
               <ScatterChart
                 data={plotData}
                 margin={{
-                  bottom: 5,
+                  bottom: 20,
                   left: 20,
                   right: 20,
                   top: 5,
                 }}
               >
                 <CartesianGrid />
-                <XAxis dataKey="x" type="number" />
-                <YAxis dataKey="y" type="number" range={[0, ymin]} />
+                <XAxis
+                  dataKey="x"
+                  type="number"
+                  label={{
+                    value: "Effect size",
+                    dy: 20,
+                    fill: "black",
+                  }}
+                />
+                <YAxis
+                  dataKey="y"
+                  type="number"
+                  label={{
+                    value: "Standard error",
+                    angle: -90,
+                    dx: -25,
+                    fill: "black",
+                  }}
+                  domain={[Math.floor(ymin), 0]}
+                />
                 <Tooltip content={<CustomTooltip />} />
                 <ReferenceLine
                   x={effect}
@@ -87,7 +105,10 @@ export const FunnelPlot = (props: FunnelPlotProps) => {
                 <ReferenceLine
                   segment={[
                     { x: effect, y: 0 },
-                    { x: effect - 1.96 * ymin, y: ymin },
+                    {
+                      x: effect - 1.96 * Math.floor(ymin),
+                      y: Math.floor(ymin),
+                    },
                   ]}
                   stroke="black"
                   strokeDasharray="3 3"
@@ -97,14 +118,17 @@ export const FunnelPlot = (props: FunnelPlotProps) => {
                 <ReferenceLine
                   segment={[
                     { x: effect, y: 0 },
-                    { x: effect + 1.96 * -1, y: -1 },
+                    {
+                      x: effect + 1.96 * Math.floor(ymin),
+                      y: Math.floor(ymin),
+                    },
                   ]}
                   stroke="black"
                   strokeDasharray="3 3"
                   strokeWidth={2}
                   ifOverflow="hidden"
                 />
-                <Scatter />
+                <Scatter fill="#50C878" stroke="black" />
               </ScatterChart>
             </ResponsiveContainer>
           </div>
