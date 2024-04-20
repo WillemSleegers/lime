@@ -5,6 +5,7 @@ import { Filters } from "@/components/filters"
 import { Highlights } from "@/components/highlights/highlights"
 import { Effect } from "@/components/effect"
 import { ForestPlot } from "@/components/forest-plot"
+import { FunnelPlot } from "@/components/funnel-plot"
 
 import allData from "../../assets/data/prepared-effects.json"
 
@@ -28,6 +29,7 @@ const MetaAnalysis = () => {
         <Highlights data={data} />
         <Effect effect={effect} />
         <ForestPlot data={data} />
+        <FunnelPlot data={data} effect={effect.value} />
       </div>
     </main>
   )

@@ -27,49 +27,44 @@ export function FilterSelectMultiple(props: FilterSelectMultipleProps) {
       control={form.control}
       name={name}
       render={() => (
-        <FormItem className="flex flex-col">
+        <FormItem>
           <div className="flex gap-3">
             {groups.map((group) => (
-              <div key={group.label}>
+              <div className="flex flex-col gap-1" key={group.label}>
                 <FormLabel className="text-base">{group.label}</FormLabel>
-                <div className="">
-                  {group.items.map((item) => (
-                    <FormField
-                      key={item.id}
-                      control={form.control}
-                      name={name}
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={item.id}
-                            className="space-x-3 space-y-0"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value.includes(item.label)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([
-                                        ...field.value,
-                                        item.label,
-                                      ])
-                                    : field.onChange(
-                                        field.value.filter(
-                                          (value: any) => value !== item.label
-                                        )
-                                      )
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              {item.label}
-                            </FormLabel>
-                          </FormItem>
-                        )
-                      }}
-                    />
-                  ))}
-                </div>
+                {group.items.map((item) => (
+                  <FormField
+                    key={item.id}
+                    control={form.control}
+                    name={name}
+                    render={({ field }) => {
+                      return (
+                        <FormItem
+                          key={item.id}
+                          className="flex items-center space-x-2 space-y-0"
+                        >
+                          <FormControl>
+                            <Checkbox
+                              checked={field.value.includes(item.label)}
+                              onCheckedChange={(checked) => {
+                                return checked
+                                  ? field.onChange([...field.value, item.label])
+                                  : field.onChange(
+                                      field.value.filter(
+                                        (value: any) => value !== item.label,
+                                      ),
+                                    )
+                              }}
+                            />
+                          </FormControl>
+                          <FormLabel className="text-sm">
+                            {item.label}
+                          </FormLabel>
+                        </FormItem>
+                      )
+                    }}
+                  />
+                ))}
               </div>
             ))}
           </div>

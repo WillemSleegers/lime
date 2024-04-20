@@ -37,7 +37,7 @@ export const INTERVENTION_APPEALS = [
 export const OUTCOMES_BEHAVIORS = [
   "Meat consumption",
   "Animal product consumption",
-  "Vegetarian sales",
+  "Vegetarian consumption",
 ]
 
 export const OUTCOMES_INTENTIONS = [
@@ -52,6 +52,8 @@ export const OUTCOMES_ATTITUDES = [
   "Meat attitude",
   "Meat hedonics",
 ]
+
+export const OUTCOME_MEASUREMENTS = ["Food diary", "Sales data", "Survey"]
 
 export const COUNTRIES = [
   "Australia",

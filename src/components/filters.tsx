@@ -24,6 +24,7 @@ import {
   OUTCOMES_BEHAVIORS,
   OUTCOMES_INTENTIONS,
   OUTCOMES_ATTITUDES,
+  OUTCOME_MEASUREMENTS,
   INTERVENTION_ASPECTS,
   INTERVENTION_MEDIA,
   INTERVENTION_APPEALS,
@@ -34,13 +35,18 @@ import { selectOptions } from "@/lib/utils"
 // Outcome options
 const outcomesBehaviorOptions = selectOptions(
   OUTCOMES_BEHAVIORS,
-  OUTCOMES_BEHAVIORS.filter((e) => e !== "Vegetarian sales"),
+  OUTCOMES_BEHAVIORS,
 )
 const outcomesIntentionsOptions = selectOptions(OUTCOMES_INTENTIONS, [])
 const outcomesAttitudesOptions = selectOptions(OUTCOMES_ATTITUDES, [])
 const outcomesOptions = outcomesBehaviorOptions.concat(
   outcomesIntentionsOptions,
   outcomesAttitudesOptions,
+)
+
+const outcomeMeasurementsOptions = selectOptions(
+  OUTCOME_MEASUREMENTS,
+  OUTCOME_MEASUREMENTS.filter((e) => e !== "Sales data"),
 )
 
 // Intervention options
@@ -65,6 +71,10 @@ const formSchema = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one outcome" }),
+  outcomeMeasurements: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one outcome measurement" }),
   interventionAspect: z
     .string()
     .array()
@@ -104,6 +114,9 @@ export const Filters = (props: FiltersProps) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       outcomes: outcomesOptions.filter((e) => e.checked).map((e) => e.label),
+      outcomeMeasurements: outcomeMeasurementsOptions
+        .filter((e) => e.checked)
+        .map((e) => e.label),
       interventionAspect: interventionAspectsOptions
         .filter((e) => e.checked)
         .map((e) => e.label),
@@ -129,6 +142,13 @@ export const Filters = (props: FiltersProps) => {
     subset = data.filter((e) =>
       selectedSubCategories.includes(e.outcome_subcategory),
     )
+
+    // Filter on outcome measurement
+    subset = subset.filter((e) => {
+      return values.outcomeMeasurements.some((aspect) =>
+        e.outcome_measurement_type.includes(aspect.toLowerCase()),
+      )
+    })
 
     // Filter on cell size
     subset = subset.filter(
@@ -170,16 +190,24 @@ export const Filters = (props: FiltersProps) => {
       setError(false)
       setData(subset)
 
-      console.log(subset)
+      if (webR) {
+        setStatus("Running meta-analysis...")
+        setDisabled(true)
+        await jsonToDataframe(webR, subset, "data")
+        // const test = [
+        //   { a: 0, b: "x" },
+        //   { a: 1, b: "y" },
+        // ]
+        // console.log(test)
+        // const df = await new webR.RDataFrame(test)
+        //await webR.objs.globalEnv.bind("data", df)
+        //await webR.evalR("print(class(df))")
+        const results = await runMetaAnalysis(webR)
+        setEffect({ value: results[0], lower: results[1], upper: results[2] })
 
-      setStatus("Running meta-analysis...")
-      setDisabled(true)
-      await jsonToDataframe(webR, subset, "data")
-      const results = await runMetaAnalysis(webR)
-      setEffect({ value: results[0], lower: results[1], upper: results[2] })
-
-      setStatus("Ready")
-      setDisabled(false)
+        setStatus("Ready")
+        setDisabled(false)
+      }
     }
   }
 
@@ -247,6 +275,16 @@ export const Filters = (props: FiltersProps) => {
                   {
                     label: "Attitudinal outcomes",
                     items: outcomesAttitudesOptions,
+                  },
+                ]}
+              />
+              <FilterSelectMultiple
+                form={form}
+                name="outcomeMeasurements"
+                groups={[
+                  {
+                    label: "Outcome measurement",
+                    items: outcomeMeasurementsOptions,
                   },
                 ]}
               />

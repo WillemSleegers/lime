@@ -9,7 +9,10 @@ export function MainNav({
 }: React.HTMLAttributes<HTMLElement>) {
   return (
     <nav
-      className={cn("flex w-full flex-wrap justify-between gap-3", className)}
+      className={cn(
+        "flex w-full flex-wrap items-center justify-between gap-3 ",
+        className,
+      )}
       {...props}
     >
       <Link
@@ -28,7 +31,7 @@ export function MainNav({
       <div className="space-x-4 lg:space-x-6">
         <Link
           href="/about/"
-          className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
+          className="text-base font-medium transition-colors hover:text-primary"
         >
           About
         </Link>
@@ -40,20 +43,20 @@ export function MainNav({
         </Link>
         <Link
           href="/data/"
-          className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
+          className="text-base font-medium transition-colors hover:text-primary"
         >
           Data
         </Link>
         <Link
           href="/contributors/"
-          className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
+          className="text-base font-medium transition-colors hover:text-primary"
         >
           Contributors
         </Link>
 
         <Link
           href="/changelog/"
-          className="text-base font-normal text-muted-foreground transition-colors hover:text-primary"
+          className="text-base font-medium transition-colors hover:text-primary"
         >
           Changelog
         </Link>

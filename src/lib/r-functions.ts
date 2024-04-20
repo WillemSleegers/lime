@@ -16,7 +16,7 @@ export async function runMetaAnalysis(webR: WebR) {
               grp1 = group_1,
               grp2 = group_2
             )
-          res <- metafor::rma.mv(yi, V, random = ~ 1 | paper_study/effect, data = data)
+          res <- metafor::rma.mv(yi, V, random = ~ 1 | paper_study/outcome, data = data)
           c(res$beta, res$ci.lb, res$ci.ub)
           `,
     "number[]",
@@ -44,7 +44,7 @@ export async function jsonToDataframe(
     // valid input
     for (const [index, key] of Object.keys(json[0]).entries()) {
       // create a column vector
-      let col = json.map((row) => row[key])
+      let col = json.map((row) => row[key]) as any
       // infer the data type from the first elem of the column
       if (typeof col[0] === "number") {
         col = await new webR.RDouble(col)
