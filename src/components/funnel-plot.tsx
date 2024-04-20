@@ -23,8 +23,6 @@ import {
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent"
 
-import effects from "../assets/data/prepared-effects.json"
-
 type FunnelPlotProps = {
   effect: number
   data: dataProps
@@ -35,19 +33,19 @@ export const FunnelPlot = (props: FunnelPlotProps) => {
 
   const [open, setOpen] = useState(false)
   const [ymin, setYmin] = useState(0)
-  const [plotData, setPlotData] = useState<{ x: number; y: number }[]>()
+  const [plotData, setPlotData] =
+    useState<{ x: number; y: number; name: string }[]>()
 
   useEffect(() => {
     const newData = data.map((e) => {
       return {
         x: e.yi,
         y: e.se * -1,
+        name: e.effect_label,
       }
     })
 
     setYmin(Math.min(...newData.map((e) => e.y)))
-    console.log(ymin)
-
     setPlotData(newData)
   }, [data])
 
@@ -121,9 +119,14 @@ const CustomTooltip = ({
   payload,
 }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
+    const dataPoint = payload[0].payload
     return (
       <div className="custom-tooltip rounded border bg-gray-50 p-3">
-        <p>{`${payload[0].payload.name} : ${payload[0].value}`}</p>
+        <span>{`${dataPoint.name}`}</span>
+        <br />
+        <span>{`x: ${dataPoint.x}`}</span>
+        <br />
+        <span>{`y: ${dataPoint.y}`}</span>
       </div>
     )
   }
