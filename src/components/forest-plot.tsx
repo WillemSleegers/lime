@@ -9,6 +9,8 @@ import {
   ErrorBar,
   Tooltip,
   TooltipProps,
+  ReferenceLine,
+  ZAxis,
 } from "recharts"
 import {
   Collapsible,
@@ -16,7 +18,7 @@ import {
   CollapsibleTrigger,
 } from "./ui/collapsible"
 import { ChevronRight } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, round } from "@/lib/utils"
 import { dataProps } from "@/lib/json-functions"
 import {
   NameType,
@@ -51,14 +53,15 @@ export const ForestPlot = (props: ForestPlotProps) => {
       .map((e) => {
         return {
           name: e.effect_label,
-          x: e.effect_size_value,
-          errorX: [
+          value: e.effect_size_value,
+          summary: `${round(e.effect_size_value)} [${round(e.effect_size_lower)}; ${round(e.effect_size_upper)}]`,
+          error: [
             Math.abs(e.effect_size_value - e.effect_size_lower),
             Math.abs(e.effect_size_value - e.effect_size_upper),
           ],
         }
       })
-      .sort((a, b) => a.x - b.x)
+      .sort((a, b) => a.value - b.value)
     setPlotData(newData)
   }, [data])
 
@@ -85,18 +88,28 @@ export const ForestPlot = (props: ForestPlotProps) => {
               <ScatterChart
                 data={plotData}
                 margin={{
-                  bottom: 5,
+                  bottom: 20,
                   left: 20,
                   right: 20,
                   top: 5,
                 }}
               >
-                <CartesianGrid horizontal={false} verticalValues={[0]} />
+                <CartesianGrid
+                  horizontal={false}
+                  fill="#F5F5F5"
+                  verticalValues={[-1, 1]}
+                />
                 <XAxis
-                  dataKey="x"
+                  dataKey="value"
                   type="number"
-                  domain={[-3, 3]}
-                  ticks={[-3, -2, -1, 0, 1, 2, 3]}
+                  label={{
+                    value: "Effect size",
+                    dy: 20,
+                    fill: "black",
+                  }}
+                  domain={[-2, 2]}
+                  ticks={[-2, -1, 0, 1, 2]}
+                  allowDataOverflow
                 />
                 <YAxis
                   yAxisId="left"
@@ -107,24 +120,24 @@ export const ForestPlot = (props: ForestPlotProps) => {
                   tickLine={false}
                   tick={<CustomizedAxisTick />}
                 />
-                <YAxis
-                  yAxisId="right"
-                  dataKey="x"
-                  type="category"
-                  orientation="right"
-                  axisLine={false}
-                  tickLine={false}
-                />
+                <ZAxis range={[40, 41]} />
                 <Tooltip content={<CustomTooltip />} />
-                <Scatter shape="square" fill="#16A34A" yAxisId="left">
+                <Scatter yAxisId="left">
                   <ErrorBar
-                    dataKey="errorX"
+                    dataKey="error"
                     direction="x"
-                    strokeWidth={2}
-                    opacity={0.8}
-                    width={0}
+                    strokeWidth={1}
+                    width={5}
+                    stroke="black"
                   />
                 </Scatter>
+                <ReferenceLine
+                  yAxisId="left"
+                  x={0}
+                  strokeWidth={2}
+                  stroke="gray"
+                  strokeDasharray="3 3"
+                />
               </ScatterChart>
             </ResponsiveContainer>
           </div>
@@ -139,9 +152,13 @@ const CustomTooltip = ({
   payload,
 }: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
+    console.log(payload)
+    const dataPoint = payload[0].payload
     return (
-      <div className="custom-tooltip rounded border bg-gray-50 p-3">
-        <p>{`${payload[0].payload.name} : ${payload[0].value}`}</p>
+      <div className="custom-tooltip rounded border border-gray-500 bg-white p-3">
+        <span className="font-semibold">{`${dataPoint.name}`}</span>
+        <br />
+        <span>{dataPoint.summary}</span>
       </div>
     )
   }
@@ -158,11 +175,16 @@ class CustomizedAxisTick extends PureComponent {
     return (
       <Dialog>
         <DialogTrigger asChild className="cursor-pointer">
-          <g transform={`translate(${x},${y})`}>
-            <text x={0} y={0} dy={16} textAnchor="end" fill="#666">
-              {payload.value}
-            </text>
-          </g>
+          <text
+            transform={`translate(${x},${y})`}
+            x={0}
+            y={0}
+            dy={5}
+            textAnchor="end"
+            fill="#666"
+          >
+            {payload.value}
+          </text>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
