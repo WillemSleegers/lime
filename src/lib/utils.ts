@@ -6,8 +6,15 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function round(x: number) {
-  return Math.round((x + Number.EPSILON) * 100) / 100
+export const round = (num: number, digits = 2) => {
+  const epsilon =
+    Number.EPSILON === undefined ? Math.pow(2, -52) : Number.EPSILON
+
+  const p = Math.pow(10, digits || 0)
+  const n = num * p * (1 + epsilon)
+  const r = Math.round(n) / p
+
+  return r.toFixed(digits)
 }
 
 export const selectOptions = (x: string[], defaults: string[]) => {
