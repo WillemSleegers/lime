@@ -74,7 +74,7 @@ export const FunnelPlot = (props: FunnelPlotProps) => {
                   top: 5,
                 }}
               >
-                <CartesianGrid />
+                <CartesianGrid fill="whitesmoke" />
                 <XAxis
                   dataKey="x"
                   type="number"
@@ -128,7 +128,7 @@ export const FunnelPlot = (props: FunnelPlotProps) => {
                   strokeWidth={2}
                   ifOverflow="hidden"
                 />
-                <Scatter fill="#50C878" stroke="black" />
+                <Scatter fill="lightgray" stroke="black" />
               </ScatterChart>
             </ResponsiveContainer>
           </div>
@@ -145,8 +145,8 @@ const CustomTooltip = ({
   if (active && payload && payload.length) {
     const dataPoint = payload[0].payload
     return (
-      <div className="custom-tooltip rounded border bg-gray-50 p-3">
-        <span>{`${dataPoint.name}`}</span>
+      <div className="custom-tooltip rounded border border-gray-500 bg-white p-3">
+        <span className="font-semibold">{`${dataPoint.name}`}</span>
         <br />
         <span>{`x: ${dataPoint.x}`}</span>
         <br />
