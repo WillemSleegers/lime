@@ -28,7 +28,7 @@ export const Counter = (props: CounterProps) => {
     return () => {
       clearInterval(counter)
     }
-  }, [targetValue, initialValue])
+  }, [targetValue, initialValue, duration])
 
   return <span>{count}</span>
 }
