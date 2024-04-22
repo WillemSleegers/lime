@@ -39,7 +39,7 @@ export const FunnelPlot = (props: FunnelPlotProps) => {
   useEffect(() => {
     const newData = data.map((e) => {
       return {
-        x: e.yi,
+        x: e.effect_size_value,
         y: e.se * -1,
         name: e.effect_label,
       }
