@@ -16,7 +16,7 @@ export async function runMetaAnalysis(webR: any) {
               grp1 = group_1,
               grp2 = group_2
             )
-          res <- metafor::rma.mv(yi, V, random = ~ 1 | paper_study/outcome, data = data)
+          res <- metafor::rma.mv(effect_size_value, V, random = ~ 1 | paper_study/outcome, data = data)
           c(res$beta, res$ci.lb, res$ci.ub)
           `,
     "number[]",
