@@ -30,6 +30,7 @@
     "react-dom": "latest",
     "react-hook-form": "^7.47.0",
     "recharts": "^2.8.0",
+    "sharp": "^0.33.3",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "webr": "latest",
