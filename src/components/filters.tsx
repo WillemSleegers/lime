@@ -223,7 +223,8 @@ export const Filters = (props: FiltersProps) => {
 
   useEffect(() => {
     const initializeR = async () => {
-      const newWebR = new WebR({ channelType: 1 })
+      console.log("Initializing...")
+      const newWebR = new WebR()
       setWebR(newWebR)
 
       await newWebR.init()
