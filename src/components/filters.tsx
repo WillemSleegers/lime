@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/collapsible"
 import { useEffect, useState } from "react"
 import { WebR } from "webr"
-import { jsonToDataframe, runMetaAnalysis } from "@/lib/r-functions"
+import { runMetaAnalysis } from "@/lib/r-functions"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { FilterInput } from "./filters/input"
@@ -193,15 +193,25 @@ export const Filters = (props: FiltersProps) => {
       if (webR) {
         setStatus("Running meta-analysis...")
         setDisabled(true)
-        await jsonToDataframe(webR, subset, "data")
-        // const test = [
-        //   { a: 0, b: "x" },
-        //   { a: 1, b: "y" },
-        // ]
-        // console.log(test)
-        // const df = await new webR.RDataFrame(test)
-        //await webR.objs.globalEnv.bind("data", df)
-        //await webR.evalR("print(class(df))")
+        const data = subset.map((e) =>
+          (({
+            effect_size_value,
+            effect_size_var,
+            paper_study,
+            outcome,
+            group_1,
+            group_2,
+          }) => ({
+            effect_size_value,
+            effect_size_var,
+            paper_study,
+            outcome,
+            group_1,
+            group_2,
+          }))(e),
+        )
+        const df = await new webR.RObject(data)
+        await webR.objs.globalEnv.bind("data", df)
         const results = await runMetaAnalysis(webR)
         setEffect({ value: results[0], lower: results[1], upper: results[2] })
 
