@@ -1,11 +1,11 @@
 import { WebR } from "webr"
 
-export async function readCSV(webR: any, file: string) {
+export async function readCSV(webR: WebR, file: string) {
   await webR.objs.globalEnv.bind("file", "http://localhost:5173/" + file)
   await webR.evalR("data <- read.csv(file)")
 }
 
-export async function runMetaAnalysis(webR: any) {
+export async function runMetaAnalysis(webR: WebR) {
   const result = await webR.evalRRaw(
     `
           V <- metafor::vcalc(
@@ -25,7 +25,7 @@ export async function runMetaAnalysis(webR: any) {
 }
 
 export async function jsonToDataframe(
-  webR: any,
+  webR: WebR,
   json: unknown,
   globalVarName = "",
 ) {

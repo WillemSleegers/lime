@@ -108,7 +108,7 @@ export const Filters = (props: FiltersProps) => {
   const [ranOnce, setRanOnce] = useState(false)
   const [disabled, setDisabled] = useState(true)
   const [error, setError] = useState(false)
-  const [webR, setWebR] = useState<any>()
+  const [webR, setWebR] = useState<WebR>()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

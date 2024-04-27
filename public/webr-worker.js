@@ -3414,6 +3414,16 @@ var _RObject = class extends RObjectBase {
   attrs() {
     return RPairlist.wrap(Module2._ATTRIB(this.ptr));
   }
+  class() {
+    const prot = { n: 0 };
+    const classCall = new RCall([new RSymbol("class"), this]);
+    protectInc(classCall, prot);
+    try {
+      return classCall.eval();
+    } finally {
+      unprotect(prot.n);
+    }
+  }
   setNames(values) {
     let namesObj;
     if (values === null) {
