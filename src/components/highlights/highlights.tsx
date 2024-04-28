@@ -13,7 +13,7 @@ import {
   CollapsibleTrigger,
 } from "../ui/collapsible"
 import { ChevronRight } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, round } from "@/lib/utils"
 import { HighlightText } from "./highlight-text"
 
 type HighLightsProps = {
@@ -73,7 +73,7 @@ export const Highlights = (props: HighLightsProps) => {
           />
           <HighlightPercentage
             title="Open access papers"
-            percentage={openAccessCount / papersCount}
+            percentage={round((openAccessCount / papersCount) * 100, 0)}
           />
           <HighlightLineChart
             title={mostRecentYear.toString()}

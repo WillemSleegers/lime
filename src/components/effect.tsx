@@ -5,8 +5,10 @@ import {
   CollapsibleTrigger,
 } from "./ui/collapsible"
 import { useState } from "react"
-import { cdfNormal, cn, round } from "@/lib/utils"
+import { cn, pOverlap, pSup, round, u3 } from "@/lib/utils"
 import { Skeleton } from "./ui/skeleton"
+import { ChartPercentage } from "./charts/chart-percentage"
+import { Button } from "./ui/button"
 
 type EffectProps = {
   effect: {
@@ -49,21 +51,39 @@ export const Effect = (props: EffectProps) => {
                 round(effect.upper) +
                 "]"}
             </span>
-            <div>
-              <span className="mb-0 text-base font-semibold">
-                Probability of superiority
-              </span>
-              <br />
-              <span className="text-gray-500">
-                There is a{" "}
-                <strong className="text-black">
-                  {round(cdfNormal(effect.value / Math.sqrt(2)) * 100)}
-                </strong>
-                % chance that a person picked at random from the treatment group
-                will have a higher score than a person picked at random from the
-                control group
-              </span>
+            <div className="mt-6 flex flex-row flex-wrap justify-center gap-3">
+              <div className="flex w-[240px] flex-col items-center gap-3">
+                <span className="text-xl font-semibold">
+                  Probability of superiority
+                </span>
+                <div className="mb-3 aspect-square h-[120px]">
+                  <ChartPercentage
+                    percentage={round(pSup(effect.value) * 100, 1)}
+                  />
+                </div>
+              </div>
+              <div className="flex w-[240px] flex-col items-center gap-3">
+                <span className="text-xl font-semibold">% overlap</span>
+                <div className="mb-3 aspect-square h-[120px]">
+                  <ChartPercentage
+                    percentage={round(pOverlap(effect.value) * 100, 1)}
+                  />
+                </div>
+              </div>
+              <div className="flex w-[240px] flex-col items-center gap-3">
+                <span className="text-xl font-semibold">Cohen&apos;s U3</span>
+                <div className="mb-3 aspect-square h-[120px]">
+                  <ChartPercentage
+                    percentage={round(u3(effect.value) * 100, 1)}
+                  />
+                </div>
+              </div>
             </div>
+            <Button variant="secondary" className="w-[108px]">
+              <a href="https://rpsychologist.com/cohend/" target="_blank">
+                Learn more
+              </a>
+            </Button>
           </div>
         ) : (
           <div className="flex flex-col items-center gap-3">

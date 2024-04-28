@@ -14,7 +14,7 @@ export const round = (num: number, digits = 2) => {
   const n = num * p * (1 + epsilon)
   const r = Math.round(n) / p
 
-  return r.toFixed(digits)
+  return Number(r.toFixed(digits))
 }
 
 export const selectOptions = (x: string[], defaults: string[]) => {
@@ -29,4 +29,16 @@ export const selectOptions = (x: string[], defaults: string[]) => {
 
 export const cdfNormal = (x: number, mean = 0, sd = 1) => {
   return (1 - erf((mean - x) / (Math.sqrt(2) * sd))) / 2
+}
+
+export const pSup = (x: number) => {
+  return cdfNormal(x / Math.sqrt(2))
+}
+
+export const u3 = (x: number) => {
+  return cdfNormal(x)
+}
+
+export const pOverlap = (x: number) => {
+  return 2 * cdfNormal((-1 * Math.abs(x)) / 2)
 }

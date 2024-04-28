@@ -1,0 +1,26 @@
+import { Cell, Label, Pie, PieChart, ResponsiveContainer } from "recharts"
+
+type ChartPercentageProps = {
+  percentage: number
+}
+
+export const ChartPercentage = (props: ChartPercentageProps) => {
+  const { percentage } = props
+
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <PieChart margin={{ top: -10, left: -10, right: -10, bottom: -10 }}>
+        <Pie
+          data={[{ value: 100 - percentage }, { value: percentage }]}
+          dataKey="value"
+          startAngle={-270}
+          innerRadius={35}
+        >
+          <Cell key={`cell-${0}`} fill="#eee" />
+          <Cell key={`cell-${1}`} fill="#16A34A" />
+          <Label value={percentage + "%"} position="center" />
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>
+  )
+}
