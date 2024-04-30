@@ -39,6 +39,6 @@ export const u3 = (x: number) => {
   return cdfNormal(x)
 }
 
-export const pOverlap = (x: number) => {
-  return 2 * cdfNormal((-1 * Math.abs(x)) / 2)
+export const u1 = (x: number) => {
+  return 1 - 2 * cdfNormal((-1 * Math.abs(x)) / 2)
 }

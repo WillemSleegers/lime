@@ -5,10 +5,12 @@ import {
   CollapsibleTrigger,
 } from "./ui/collapsible"
 import { useState } from "react"
-import { cn, pOverlap, pSup, round, u3 } from "@/lib/utils"
+import { cn, u1, pSup, round, u3 } from "@/lib/utils"
 import { Skeleton } from "./ui/skeleton"
 import { ChartPercentage } from "./charts/chart-percentage"
 import { Button } from "./ui/button"
+import { ChartPercentageBar } from "./charts/chart-percentage-bar"
+import { ChartHalfPie } from "./charts/chart-half-pie"
 
 type EffectProps = {
   effect: {
@@ -52,31 +54,29 @@ export const Effect = (props: EffectProps) => {
                 "]"}
             </span>
             <div className="mt-6 flex flex-row flex-wrap justify-center gap-3">
-              <div className="flex w-[240px] flex-col items-center gap-3">
-                <span className="text-xl font-semibold">
+              <div className="flex w-[200px] flex-col gap-3">
+                <div className="mb-3 h-[100px] w-full">
+                  <ChartHalfPie proportion={pSup(effect.value)} start={0.5} />
+                </div>
+                <span className="text-center text-xl font-semibold">
                   Probability of superiority
                 </span>
-                <div className="mb-3 aspect-square h-[120px]">
-                  <ChartPercentage
-                    percentage={round(pSup(effect.value) * 100, 1)}
-                  />
-                </div>
               </div>
-              <div className="flex w-[240px] flex-col items-center gap-3">
-                <span className="text-xl font-semibold">% overlap</span>
-                <div className="mb-3 aspect-square h-[120px]">
-                  <ChartPercentage
-                    percentage={round(pOverlap(effect.value) * 100, 1)}
-                  />
+              <div className="flex w-[200px] flex-col gap-3">
+                <div className="mb-3 h-[100px] w-full">
+                  <ChartHalfPie proportion={u3(effect.value)} start={0.5} />
                 </div>
+                <span className="text-center text-xl font-semibold">
+                  Cohen&apos;s U3
+                </span>
               </div>
-              <div className="flex w-[240px] flex-col items-center gap-3">
-                <span className="text-xl font-semibold">Cohen&apos;s U3</span>
-                <div className="mb-3 aspect-square h-[120px]">
-                  <ChartPercentage
-                    percentage={round(u3(effect.value) * 100, 1)}
-                  />
+              <div className="flex w-[200px] flex-col gap-3">
+                <div className="mb-3 h-[100px] w-full">
+                  <ChartHalfPie proportion={u1(effect.value)} start={0} />
                 </div>
+                <span className="text-center text-xl font-semibold">
+                  % non-overlap
+                </span>
               </div>
             </div>
             <Button variant="secondary" className="w-[108px]">
