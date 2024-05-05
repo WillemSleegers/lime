@@ -42,7 +42,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="p-3">
+      <section className="py-3">
         <div className="flex flex-wrap justify-center gap-12 bg-gray-100 p-6">
           <div>
             <div className="text-xl font-semibold">Number of papers</div>

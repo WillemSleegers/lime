@@ -21,14 +21,14 @@ export function MainNav({
       >
         The Meata-Analysis Project
         <Image
-          className="ms-2 inline-block"
+          className="ms-2 hidden sm:inline-block"
           alt="meata-analysis logo"
           src="/green-leaf-icon.svg"
           width={30}
           height={30}
         />
       </Link>
-      <div className="space-x-4 lg:space-x-6">
+      <div className="flex flex-wrap items-center gap-3">
         <Link
           href="/about/"
           className="text-base font-medium transition-colors hover:text-primary"
@@ -37,7 +37,7 @@ export function MainNav({
         </Link>
         <Link
           href="/meta-analysis/"
-          className="rounded bg-green-700 px-3 py-2 text-base font-medium text-white transition-colors hover:bg-green-800"
+          className="whitespace-nowrap rounded bg-green-700 px-3 py-2 text-base font-medium text-white transition-colors hover:bg-green-800"
         >
           Meta-analysis
         </Link>
