@@ -23,7 +23,7 @@ export const HighlightPercentage = (props: HighlightPercentageProps) => {
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="h-[120px]">
+        <div className="m-auto h-20 w-20">
           <ChartPercentage percentage={percentage} />
         </div>
       </CardContent>

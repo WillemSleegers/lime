@@ -72,7 +72,8 @@ export const Highlights = (props: HighLightsProps) => {
             description={"Number of participants"}
           />
           <HighlightPercentage
-            title="Open access papers"
+            title={openAccessCount.toString()}
+            description="Open access papers"
             percentage={round((openAccessCount / papersCount) * 100, 0)}
           />
           <HighlightLineChart

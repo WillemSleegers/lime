@@ -8,6 +8,7 @@ import { ForestPlot } from "@/components/forest-plot"
 import { FunnelPlot } from "@/components/funnel-plot"
 
 import allData from "../../assets/data/prepared-effects.json"
+import { PCurve } from "@/components/p-curve"
 
 const MetaAnalysis = () => {
   const [status, setStatus] = useState("Loading webR...")
@@ -30,6 +31,7 @@ const MetaAnalysis = () => {
         <Effect effect={effect} />
         <ForestPlot data={data} />
         <FunnelPlot data={data} effect={effect.value} />
+        <PCurve data={data} />
       </div>
     </main>
   )

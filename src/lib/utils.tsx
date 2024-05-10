@@ -42,3 +42,33 @@ export const u3 = (x: number) => {
 export const u1 = (x: number) => {
   return 1 - 2 * cdfNormal((-1 * Math.abs(x)) / 2)
 }
+
+export const countPValues = (x: number[]) => {
+  const bins = [0.01, 0.02, 0.03, 0.04, 0.05]
+
+  const counts = bins.map((bin) => {
+    return {
+      p: bin,
+      n: 0,
+      null: 0.2,
+      prop: 0,
+    }
+  })
+
+  for (let i = 0; i < x.length; i++) {
+    for (let j = 0; j < bins.length; j++) {
+      const bin = counts[j]
+      if (x[i] < bin.p) {
+        bin.n++
+        break
+      }
+    }
+  }
+
+  for (let j = 0; j < bins.length; j++) {
+    const bin = counts[j]
+    bin.prop = bin.n / x.length
+  }
+
+  return counts
+}

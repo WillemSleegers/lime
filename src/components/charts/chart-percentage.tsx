@@ -8,7 +8,7 @@ export const ChartPercentage = (props: ChartPercentageProps) => {
   const { percentage } = props
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer>
       <PieChart margin={{ top: -10, left: -10, right: -10, bottom: -10 }}>
         <Pie
           data={[{ value: 100 - percentage }, { value: percentage }]}
