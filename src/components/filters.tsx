@@ -95,6 +95,7 @@ const formSchema = z.object({
 })
 
 type FiltersProps = {
+  webR?: WebR
   setData: Function
   setEffect: Function
   status: string
@@ -102,13 +103,12 @@ type FiltersProps = {
 }
 
 export const Filters = (props: FiltersProps) => {
-  const { setData, setEffect, status, setStatus } = props
+  const { webR, setData, setEffect, status, setStatus } = props
 
   const [open, setOpen] = useState(false)
   const [ranOnce, setRanOnce] = useState(false)
   const [disabled, setDisabled] = useState(true)
   const [error, setError] = useState(false)
-  const [webR, setWebR] = useState<WebR>()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -222,20 +222,6 @@ export const Filters = (props: FiltersProps) => {
   }
 
   useEffect(() => {
-    const initializeR = async () => {
-      console.log("Initializing...")
-      const newWebR = new WebR()
-      setWebR(newWebR)
-
-      await newWebR.init()
-
-      setStatus("Installing packages...")
-      await newWebR.installPackages(["metafor"])
-
-      setStatus("Ready")
-    }
-    initializeR()
-
     form.handleSubmit(onSubmit)
   }, [form, setStatus])
 
