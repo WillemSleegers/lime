@@ -59,3 +59,107 @@ export const getUniqueColumnValues = (x: dataKeys) => {
   })
   return [...new Set(values)]
 }
+
+export const getOptions = (
+  x:
+    | "behaviors"
+    | "intentions"
+    | "attitudes"
+    | "outcome_subcategory"
+    | "outcome_measurement_type"
+    | "intervention_aspect"
+    | "intervention_medium"
+    | "intervention_appeal"
+    | "intervention_sample_country",
+) => {
+  let options
+
+  switch (x) {
+    case "behaviors":
+      options = [
+        ...new Set(
+          data
+            .filter((d) => d.outcome_category == "behavior")
+            .map((d) => d["outcome_subcategory"]),
+        ),
+      ].map((v: string) => {
+        return {
+          id: v,
+          checked: true,
+        }
+      })
+      break
+    case "intentions":
+      options = [
+        ...new Set(
+          data
+            .filter((d) => d.outcome_category == "intentions")
+            .map((d) => d["outcome_subcategory"]),
+        ),
+      ].map((v: string) => {
+        return {
+          id: v,
+          checked: true,
+        }
+      })
+      break
+    case "attitudes":
+      options = [
+        ...new Set(
+          data
+            .filter((d) => d.outcome_category == "attitudes/beliefs")
+            .map((d) => d["outcome_subcategory"]),
+        ),
+      ].map((v: string) => {
+        return {
+          id: v,
+          checked: true,
+        }
+      })
+      break
+    case "intervention_aspect":
+      options = [...new Set(data.map((d) => d["intervention_aspect"]))]
+      options = options.toString().replaceAll("; ", ",").split(",")
+      options = [...new Set(options)]
+      options = options.filter((option) => option) // Remove empty strings
+      options = options.map((e) => {
+        return {
+          id: e,
+          checked: true,
+        }
+      })
+      break
+    case "intervention_medium":
+      options = [...new Set(data.map((d) => d["intervention_medium"]))]
+      options = options.toString().replaceAll("; ", ",").split(",")
+      options = [...new Set(options)]
+      options = options.filter((option) => option) // Remove empty strings
+      options = options.map((e) => {
+        return {
+          id: e,
+          checked: true,
+        }
+      })
+      break
+    case "intervention_appeal":
+      options = [...new Set(data.map((d) => d["intervention_appeal"]))]
+      options = options.toString().replaceAll("; ", ",").split(",")
+      options = [...new Set(options)]
+      options = options.map((e) => {
+        return {
+          id: e,
+          checked: true,
+        }
+      })
+      break
+    default:
+      options = [...new Set(data.map((d) => d[x]))].map((v: string) => {
+        return {
+          id: v,
+          checked: true,
+        }
+      })
+  }
+
+  return options
+}

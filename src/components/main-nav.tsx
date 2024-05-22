@@ -15,19 +15,24 @@ export function MainNav({
       )}
       {...props}
     >
-      <Link
-        href="/"
-        className="whitespace-nowrap text-xl font-medium transition-colors hover:text-primary"
-      >
-        The Meata-Analysis Project
-        <Image
-          className="ms-2 hidden sm:inline-block"
-          alt="meata-analysis logo"
-          src="/green-leaf-icon.svg"
-          width={30}
-          height={30}
-        />
-      </Link>
+      <div>
+        <Link
+          href="/"
+          className="whitespace-nowrap text-xl font-medium transition-colors hover:text-primary"
+        >
+          The Meata-Analysis Project
+          <Image
+            className="ms-2 hidden sm:inline-block"
+            alt="meata-analysis logo"
+            src="/green-leaf-icon.svg"
+            width={30}
+            height={30}
+          />
+        </Link>
+        <span className="ml-3 whitespace-nowrap rounded bg-red-700 px-3 py-2 text-base font-medium text-white">
+          Beta
+        </span>
+      </div>
       <div className="flex flex-wrap items-center gap-3">
         <Link
           href="/about/"
@@ -46,6 +51,12 @@ export function MainNav({
           className="text-base font-medium transition-colors hover:text-primary"
         >
           Data
+        </Link>
+        <Link
+          href="/FAQ/"
+          className="text-base font-medium transition-colors hover:text-primary"
+        >
+          FAQ
         </Link>
         <Link
           href="/contributors/"

@@ -21,7 +21,6 @@ import { FilterSelectMultiple } from "./filters/select-multiple"
 import data from "../assets/data/prepared-effects.json"
 
 import {
-  OUTCOMES_BEHAVIORS,
   OUTCOMES_INTENTIONS,
   OUTCOMES_ATTITUDES,
   OUTCOME_MEASUREMENTS,
@@ -31,40 +30,18 @@ import {
   COUNTRIES,
 } from "@/lib/constants"
 import { selectOptions } from "@/lib/utils"
+import { getOptions, getUniqueColumnValues } from "@/lib/json-functions"
 
 // Outcome options
-const outcomesBehaviorOptions = selectOptions(
-  OUTCOMES_BEHAVIORS,
-  OUTCOMES_BEHAVIORS,
-)
-const outcomesIntentionsOptions = selectOptions(OUTCOMES_INTENTIONS, [])
-const outcomesAttitudesOptions = selectOptions(OUTCOMES_ATTITUDES, [])
-const outcomesOptions = outcomesBehaviorOptions.concat(
-  outcomesIntentionsOptions,
-  outcomesAttitudesOptions,
-)
-
-const outcomeMeasurementsOptions = selectOptions(
-  OUTCOME_MEASUREMENTS,
-  OUTCOME_MEASUREMENTS.filter((e) => e !== "Sales data"),
-)
-
-// Intervention options
-const interventionAspectsOptions = selectOptions(
-  INTERVENTION_ASPECTS,
-  INTERVENTION_ASPECTS,
-)
-const interventionMediaOptions = selectOptions(
-  INTERVENTION_MEDIA,
-  INTERVENTION_MEDIA,
-)
-const interventionAppealsOptions = selectOptions(
-  INTERVENTION_APPEALS,
-  INTERVENTION_APPEALS,
-)
-
-// Country
-const countriesOptions = selectOptions(COUNTRIES, COUNTRIES)
+const outcomesBehaviorOptions = getOptions("behaviors")
+const outcomesIntentionsOptions = getOptions("intentions")
+const outcomesAttitudesOptions = getOptions("attitudes")
+const outcomesOptions = getOptions("outcome_subcategory")
+const outcomeMeasurementsOptions = getOptions("outcome_measurement_type")
+const interventionAspectsOptions = getOptions("intervention_aspect")
+const interventionMediaOptions = getOptions("intervention_medium")
+const interventionAppealsOptions = getOptions("intervention_appeal")
+const countriesOptions = getOptions("intervention_sample_country")
 
 const formSchema = z.object({
   outcomes: z
@@ -113,20 +90,20 @@ export const Filters = (props: FiltersProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      outcomes: outcomesOptions.filter((e) => e.checked).map((e) => e.label),
+      outcomes: outcomesOptions.filter((e) => e.checked).map((e) => e.id),
       outcomeMeasurements: outcomeMeasurementsOptions
         .filter((e) => e.checked)
-        .map((e) => e.label),
+        .map((e) => e.id),
       interventionAspect: interventionAspectsOptions
         .filter((e) => e.checked)
-        .map((e) => e.label),
+        .map((e) => e.id),
       interventionMedium: interventionMediaOptions
         .filter((e) => e.checked)
-        .map((e) => e.label),
+        .map((e) => e.id),
       interventionAppeal: interventionAppealsOptions
         .filter((e) => e.checked)
-        .map((e) => e.label),
-      countries: countriesOptions.filter((e) => e.checked).map((e) => e.label),
+        .map((e) => e.id),
+      countries: countriesOptions.filter((e) => e.checked).map((e) => e.id),
       minimumCellSize: 1,
     },
   })
@@ -134,9 +111,7 @@ export const Filters = (props: FiltersProps) => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     let subset: typeof data
 
-    const selectedSubCategories = values.outcomes.map((e: string) =>
-      e.toLowerCase(),
-    )
+    const selectedSubCategories = values.outcomes
 
     // Filter on outcome
     subset = data.filter((e) =>
@@ -159,27 +134,34 @@ export const Filters = (props: FiltersProps) => {
 
     // Filter on intervention aspect
     subset = subset.filter((e) => {
-      return values.interventionAspect.some((aspect) =>
-        e.intervention_aspect.includes(aspect.toLowerCase()),
+      return values.interventionAspect.some(
+        (aspect) =>
+          e.intervention_aspect.includes(aspect.toLowerCase()) ||
+          e.intervention_aspect == "",
       )
     })
 
     subset = subset.filter((e) => {
-      return values.interventionMedium.some((medium) =>
-        e.intervention_medium.includes(medium.toLowerCase()),
+      return values.interventionMedium.some(
+        (medium) =>
+          e.intervention_medium.includes(medium.toLowerCase()) ||
+          e.intervention_medium == "",
       )
     })
 
     subset = subset.filter((e) => {
-      return values.interventionAppeal.some((appeal) =>
-        e.intervention_appeal.includes(appeal.toLowerCase()),
+      return values.interventionAppeal.some(
+        (appeal) =>
+          e.intervention_appeal.includes(appeal.toLowerCase()) ||
+          e.intervention_appeal == "",
       )
     })
 
     // Filter on country
-    subset = subset.filter((e) =>
-      values.countries.includes(e.control_sample_country),
-    )
+    // subset = subset.filter((e) =>
+    //   values.countries.includes(e.control_sample_country.toLowerCase()),
+    // )
+
     subset = subset.filter((e) =>
       values.countries.includes(e.intervention_sample_country),
     )

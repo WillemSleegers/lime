@@ -14,7 +14,6 @@ type FilterSelectMultipleProps = {
     label: string
     items: {
       id: string
-      label: string
     }[]
   }[]
 }
@@ -28,7 +27,7 @@ export function FilterSelectMultiple(props: FilterSelectMultipleProps) {
       name={name}
       render={() => (
         <FormItem>
-          <div className="flex gap-3">
+          <div className="mb-3 flex gap-3">
             {groups.map((group) => (
               <div className="flex flex-col gap-1" key={group.label}>
                 <FormLabel className="text-base">{group.label}</FormLabel>
@@ -45,20 +44,20 @@ export function FilterSelectMultiple(props: FilterSelectMultipleProps) {
                         >
                           <FormControl>
                             <Checkbox
-                              checked={field.value.includes(item.label)}
+                              checked={field.value.includes(item.id)}
                               onCheckedChange={(checked) => {
                                 return checked
-                                  ? field.onChange([...field.value, item.label])
+                                  ? field.onChange([...field.value, item.id])
                                   : field.onChange(
                                       field.value.filter(
-                                        (value: any) => value !== item.label,
+                                        (value: any) => value !== item.id,
                                       ),
                                     )
                               }}
                             />
                           </FormControl>
-                          <FormLabel className="text-sm">
-                            {item.label}
+                          <FormLabel className="text-sm first-letter:capitalize">
+                            {item.id}
                           </FormLabel>
                         </FormItem>
                       )
