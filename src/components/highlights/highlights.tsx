@@ -47,18 +47,16 @@ export const Highlights = (props: HighLightsProps) => {
 
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
-      <CollapsibleTrigger className="mb-3">
-        <div className="space-y-0.5">
-          <div className="flex flex-row items-center gap-1">
-            <h2 className="text-2xl font-bold tracking-tight">Highlights</h2>
-            <ChevronRight
-              className={cn("transition", open ? "rotate-90" : "rotate-0")}
-            />
-          </div>
+      <CollapsibleTrigger>
+        <div className="m-1 flex flex-row items-center gap-1">
+          <h2 className="text-2xl font-bold tracking-tight">Highlights</h2>
+          <ChevronRight
+            className={cn("transition", open ? "rotate-90" : "rotate-0")}
+          />
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
-        <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <HighlightText
             title={papersCount.toString()}
             description={"Number of papers"}
@@ -80,7 +78,7 @@ export const Highlights = (props: HighLightsProps) => {
             title={mostRecentYear.toString()}
             description={"Most recent publication year"}
             data={yearCounts}
-            classname="col-span-2"
+            classname="col-span-1 sm:col-span-2"
           />
         </div>
       </CollapsibleContent>

@@ -28,13 +28,11 @@ export const Effect = (props: EffectProps) => {
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger>
-        <div className="space-y-0.5">
-          <div className="flex flex-row items-center gap-1">
-            <h2 className="text-2xl font-bold tracking-tight">Effect</h2>
-            <ChevronRight
-              className={cn("transition", open ? "rotate-90" : "rotate-0")}
-            />
-          </div>
+        <div className="m-1 flex flex-row items-center gap-1">
+          <h2 className="text-2xl font-bold tracking-tight">Effect</h2>
+          <ChevronRight
+            className={cn("transition", open ? "rotate-90" : "rotate-0")}
+          />
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
@@ -79,7 +77,7 @@ export const Effect = (props: EffectProps) => {
                 </span>
               </div>
             </div>
-            <Button variant="secondary" className="w-[108px]">
+            <Button variant="secondary" className="mb-1 w-[108px]">
               <a href="https://rpsychologist.com/cohend/" target="_blank">
                 Learn more
               </a>

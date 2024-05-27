@@ -67,14 +67,12 @@ export const ForestPlot = (props: ForestPlotProps) => {
 
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
-      <CollapsibleTrigger className="mb-3">
-        <div className="space-y-0.5">
-          <div className="flex flex-row items-center gap-1">
-            <h2 className="text-2xl font-bold tracking-tight">Forest plot</h2>
-            <ChevronRight
-              className={cn("transition", open ? "rotate-90" : "rotate-0")}
-            />
-          </div>
+      <CollapsibleTrigger>
+        <div className="m-1 flex flex-row items-center gap-1">
+          <h2 className="text-2xl font-bold tracking-tight">Forest plot</h2>
+          <ChevronRight
+            className={cn("transition", open ? "rotate-90" : "rotate-0")}
+          />
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">

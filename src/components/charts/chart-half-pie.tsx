@@ -38,10 +38,10 @@ export const ChartHalfPie = (props: ChartHalfPieProps) => {
           fill="#8884d8"
         >
           <Label
+            className="text-xl"
             value={round(proportion * 100, 1) + "%"}
             position="center"
-            dy={-18}
-            fontSize={18}
+            dy={-15}
           />
           {start == 0 ? (
             <>

@@ -219,7 +219,7 @@ export const Filters = (props: FiltersProps) => {
 
   return (
     <Collapsible
-      className=" rounded-lg bg-gray-100 p-3"
+      className="rounded-lg bg-gray-100 p-3"
       open={open}
       onOpenChange={setOpen}
     >
