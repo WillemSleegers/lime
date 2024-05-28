@@ -25,24 +25,22 @@ export default function RootLayout({
           <div className="border-b">
             <div className="flex items-center p-4">
               <MainNav>
-                <div>
+                <div className="flex">
                   <Link
                     href="/"
-                    className="whitespace-nowrap text-xl font-medium transition-colors hover:text-primary"
+                    className="whitespace-pre-wrap text-xl font-medium transition-colors hover:text-primary sm:whitespace-nowrap"
                   >
                     The Meata-Analysis Project
-                    <Image
-                      className="ms-2 hidden sm:inline-block"
-                      alt="meata-analysis logo"
-                      src="/green-leaf-icon.svg"
-                      width={30}
-                      height={30}
-                    />
                   </Link>
-                  <span className="ml-3 whitespace-nowrap rounded bg-red-700 px-3 py-2 text-base font-medium text-white">
-                    Beta
-                  </span>
+                  <Image
+                    className="ms-2"
+                    alt="meata-analysis logo"
+                    src="/green-leaf-icon.svg"
+                    width={30}
+                    height={30}
+                  />
                 </div>
+
                 <div className="flex flex-wrap items-center gap-3">
                   <Link
                     href="/about/"
