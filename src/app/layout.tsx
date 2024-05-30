@@ -41,7 +41,7 @@ export default function RootLayout({
                   />
                 </div>
 
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-wrap items-center gap-4">
                   <Link
                     href="/about/"
                     className="text-base font-medium transition-colors hover:text-primary"
@@ -72,7 +72,12 @@ export default function RootLayout({
                   >
                     Contributors
                   </Link>
-
+                  <Link
+                    href="/contact/"
+                    className="text-base font-medium transition-colors hover:text-primary"
+                  >
+                    Contact
+                  </Link>
                   <Link
                     href="/changelog/"
                     className="text-base font-medium transition-colors hover:text-primary"
