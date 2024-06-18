@@ -17,11 +17,11 @@ export default function Home() {
       <section className="p-3">
         <div className="py-12 text-center lg:py-16">
           <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-            The Meata-Analysis Project
+            Library of Interventions for Meat Elimination
           </h1>
           <p className="text-lg font-normal text-gray-500 lg:text-xl">
-            A live meta-analysis of intervention studies to reduce animal
-            product consumption and improve animal attitudes.
+            A library of social psychological intervention studies to reduce the
+            consumption of animal products.
           </p>
           <div className="my-8 flex flex-row justify-center gap-4 md:gap-6 lg:gap-8">
             <Link
