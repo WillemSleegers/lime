@@ -8,12 +8,39 @@ import { Menu } from "lucide-react"
 import { useState } from "react"
 import { Lime } from "./lime"
 
+const items = [
+  {
+    title: "About",
+    href: "/about/",
+  },
+  {
+    title: "Data",
+    href: "/data/",
+  },
+  {
+    title: "Meta-analysis",
+    href: "/meta-analysis/",
+  },
+  {
+    title: "FAQ",
+    href: "/FAQ/",
+  },
+  {
+    title: "Contributors",
+    href: "/contributors/",
+  },
+  {
+    title: "Contact",
+    href: "/contact/",
+  },
+]
+
 export function MainNav() {
   const [open, setOpen] = useState(false)
 
   return (
     <div
-      className={`flex flex-col items-stretch justify-between gap-3 border-b p-3 sm:flex-row sm:items-center`}
+      className={`flex flex-col items-stretch justify-between gap-3 border-b p-3 md:flex-row md:items-center`}
     >
       <div className="flex justify-between">
         <div className="flex flex-row gap-3 p-1">
@@ -26,7 +53,7 @@ export function MainNav() {
         <Button
           variant="ghost"
           size="sm"
-          className="flex sm:hidden"
+          className="flex md:hidden"
           onClick={() => setOpen(!open)}
         >
           <Menu />
@@ -34,45 +61,16 @@ export function MainNav() {
         </Button>
       </div>
 
-      <nav
-        className={`m-auto gap-3 sm:m-0 sm:flex ${open ? "flex" : "hidden"}`}
-      >
-        <Link
-          className="font-normal text-gray-500 hover:text-gray-800"
-          href="/about"
-        >
-          About
-        </Link>
-        <Link
-          className="font-normal text-gray-500 hover:text-gray-800"
-          href="/data"
-        >
-          Data
-        </Link>
-        <Link
-          className="whitespace-nowrap font-normal text-gray-500 hover:text-gray-800"
-          href="/meta-analysis"
-        >
-          Meta-analysis
-        </Link>
-        <Link
-          className="font-normal text-gray-500 hover:text-gray-800"
-          href="/FAQ"
-        >
-          FAQ
-        </Link>
-        <Link
-          className="font-normal text-gray-500 hover:text-gray-800"
-          href="/contact"
-        >
-          Contact
-        </Link>
-        <Link
-          className="font-normal text-gray-500 hover:text-gray-800"
-          href="/contributors"
-        >
-          Contributors
-        </Link>
+      <nav className={`m-auto md:m-0 md:flex ${open ? "flex" : "hidden"}`}>
+        {items.map((e) => (
+          <Link
+            className="rounded-lg px-3 py-2 text-base font-normal text-gray-500 hover:bg-gray-100 hover:text-black"
+            href={e.href}
+            key={e.title}
+          >
+            {e.title}
+          </Link>
+        ))}
       </nav>
     </div>
   )
