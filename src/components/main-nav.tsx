@@ -14,7 +14,7 @@ const items = [
     href: "/about/",
   },
   {
-    title: "Data",
+    title: "Databank",
     href: "/data/",
   },
   {
@@ -44,7 +44,7 @@ export function MainNav() {
     >
       <div className="flex justify-between">
         <div className="flex flex-row gap-3 p-1">
-          <Link href="/" className="text-xl font-semibold leading-normal">
+          <Link href="/" className="text-2xl font-semibold leading-normal">
             LIME
           </Link>
           <Lime />
@@ -64,7 +64,7 @@ export function MainNav() {
       <nav className={`m-auto md:m-0 md:flex ${open ? "flex" : "hidden"}`}>
         {items.map((e) => (
           <Link
-            className="rounded-lg px-3 py-2 text-base font-normal text-gray-500 hover:bg-gray-100 hover:text-black"
+            className="rounded-lg px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-black"
             href={e.href}
             key={e.title}
           >

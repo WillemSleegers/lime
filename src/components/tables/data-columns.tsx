@@ -48,7 +48,7 @@ export const columns: ColumnDef<Effect>[] = [
     cell: ({ row }) => {
       const value = row.getValue("intervention_aspect") as string
       const content = value.split("; ").map((e) => (
-        <Badge key={e} variant="secondary">
+        <Badge key={e} variant="secondary" className="whitespace-nowrap">
           {e}
         </Badge>
       ))

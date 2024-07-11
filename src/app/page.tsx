@@ -2,8 +2,8 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import Image from "next/image"
-import fileCabinet from "../assets/images/file-cabinet.jpg"
-import boxplots from "../assets/images/boxplots.jpg"
+import imageLibrary from "../assets/images/library.png"
+import imagePlot from "../assets/images/forest-plot.png"
 import { Counter } from "@/components/counter"
 
 import data from "../assets/data/prepared-effects.json"
@@ -82,13 +82,13 @@ export default function Home() {
             Learn More
           </Link>
         </div>
-        <div className="w-80 bg-green-500">
-          <Image src={fileCabinet} alt="file cabinet" />
+        <div className="w-80">
+          <Image src={imageLibrary} alt="file cabinet" />
         </div>
       </section>
       <section className="my-6 flex flex-wrap-reverse items-center justify-center gap-3 bg-gray-100">
-        <div className="w-80 bg-green-500">
-          <Image src={boxplots} alt="boxplots" />
+        <div className="w-80">
+          <Image src={imagePlot} alt="boxplots" />
         </div>
         <div className="w-[500px] p-6">
           <h1 className="text-xl font-semibold">Analyze the literature</h1>
