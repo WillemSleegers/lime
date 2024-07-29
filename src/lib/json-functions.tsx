@@ -65,7 +65,6 @@ export const getOptions = (
     | "behaviors"
     | "intentions"
     | "attitudes"
-    | "outcome_subcategory"
     | "outcome_measurement_type"
     | "intervention_aspect"
     | "intervention_medium"
@@ -82,12 +81,7 @@ export const getOptions = (
             .filter((d) => d.outcome_category == "behavior")
             .map((d) => d["outcome_subcategory"]),
         ),
-      ].map((v: string) => {
-        return {
-          id: v,
-          checked: true,
-        }
-      })
+      ]
       break
     case "intentions":
       options = [
@@ -96,12 +90,7 @@ export const getOptions = (
             .filter((d) => d.outcome_category == "intentions")
             .map((d) => d["outcome_subcategory"]),
         ),
-      ].map((v: string) => {
-        return {
-          id: v,
-          checked: true,
-        }
-      })
+      ]
       break
     case "attitudes":
       options = [
@@ -110,55 +99,34 @@ export const getOptions = (
             .filter((d) => d.outcome_category == "attitudes/beliefs")
             .map((d) => d["outcome_subcategory"]),
         ),
-      ].map((v: string) => {
-        return {
-          id: v,
-          checked: true,
-        }
-      })
+      ]
       break
     case "intervention_aspect":
       options = [...new Set(data.map((d) => d["intervention_aspect"]))]
       options = options.toString().replaceAll("; ", ",").split(",")
       options = [...new Set(options)]
       options = options.filter((option) => option) // Remove empty strings
-      options = options.map((e) => {
-        return {
-          id: e,
-          checked: true,
-        }
-      })
+      options = options.map((e) => e)
       break
     case "intervention_medium":
       options = [...new Set(data.map((d) => d["intervention_medium"]))]
       options = options.toString().replaceAll("; ", ",").split(",")
       options = [...new Set(options)]
       options = options.filter((option) => option) // Remove empty strings
-      options = options.map((e) => {
-        return {
-          id: e,
-          checked: true,
-        }
-      })
+      options = options.map((e) => e)
       break
     case "intervention_appeal":
       options = [...new Set(data.map((d) => d["intervention_appeal"]))]
       options = options.toString().replaceAll("; ", ",").split(",")
       options = [...new Set(options)]
-      options = options.map((e) => {
-        return {
-          id: e,
-          checked: true,
-        }
-      })
+      options = options.map((e) => e)
+      break
+    case "intervention_sample_country":
+      options = [...new Set(data.map((d) => d[x]))]
+      options.push(options.splice(options.indexOf("N/A"), 1)[0])
       break
     default:
-      options = [...new Set(data.map((d) => d[x]))].map((v: string) => {
-        return {
-          id: v,
-          checked: true,
-        }
-      })
+      options = [...new Set(data.map((d) => d[x]))]
   }
 
   return options

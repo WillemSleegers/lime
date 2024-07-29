@@ -5,16 +5,16 @@ import {
   getCounts,
   getUniqueData,
 } from "@/lib/json-functions"
-import { HighlightPercentage } from "@/components/highlights/highlight-percentage"
 import { HighlightLineChart } from "@/components/highlights/highlight-line-chart"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "../ui/collapsible"
+} from "@/components/ui/collapsible"
 import { ChevronRight } from "lucide-react"
 import { cn, round } from "@/lib/utils"
-import { HighlightText } from "./highlight-text"
+import { HighlightText } from "@/components/highlights/highlight-text"
+import { HighlightPercentage } from "@/components/highlights/highlight-radial-percentage"
 
 type HighLightsProps = {
   data: dataProps
@@ -77,8 +77,7 @@ export const Highlights = (props: HighLightsProps) => {
           <HighlightLineChart
             title={mostRecentYear.toString()}
             description={"Most recent publication year"}
-            data={yearCounts}
-            classname="col-span-1 sm:col-span-2"
+            chartData={yearCounts}
           />
         </div>
       </CollapsibleContent>

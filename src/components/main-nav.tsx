@@ -43,7 +43,7 @@ export function MainNav() {
       className={`flex flex-col items-stretch justify-between gap-3 border-b p-3 md:flex-row md:items-center`}
     >
       <div className="flex justify-between">
-        <div className="flex flex-row gap-3 p-1">
+        <div className="flex flex-row items-center gap-3 p-1">
           <Link href="/" className="text-2xl font-semibold leading-normal">
             LIME
           </Link>

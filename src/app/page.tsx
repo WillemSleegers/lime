@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="pb-16">
       <section className="p-3">
-        <div className="py-12 text-center lg:py-16">
+        <div className="m-auto max-w-3xl py-12 text-center lg:py-16">
           <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
             Library of Interventions for Meat Elimination
           </h1>

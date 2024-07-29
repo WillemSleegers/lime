@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { Effects } from "@/components/effects"
 import { Filters } from "@/components/filters"
 import { Highlights } from "@/components/highlights/highlights"
 import { Effect } from "@/components/effect"
@@ -37,7 +38,7 @@ const MetaAnalysis = () => {
   return (
     <main className="m-auto max-w-screen-lg">
       <div className="m-3">
-        <div className="my-5 ">
+        <div className="my-5">
           <span className="font-semibold">Status:</span> {status}
         </div>
         <Filters
@@ -51,6 +52,7 @@ const MetaAnalysis = () => {
         <Effect effect={effect} />
         <ForestPlot data={data} />
         <FunnelPlot data={data} effect={effect.value} />
+        {/* <Effects data={data} /> */}
       </div>
     </main>
   )

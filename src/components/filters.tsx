@@ -4,7 +4,15 @@ import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
-import { Form } from "@/components/ui/form"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
 import {
   Collapsible,
   CollapsibleContent,
@@ -16,59 +24,47 @@ import { runMetaAnalysis } from "@/lib/r-functions"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { FilterInput } from "./filters/input"
-import { FilterSelectMultiple } from "./filters/select-multiple"
 
 import data from "../assets/data/prepared-effects.json"
 
-import {
-  OUTCOMES_INTENTIONS,
-  OUTCOMES_ATTITUDES,
-  OUTCOME_MEASUREMENTS,
-  INTERVENTION_ASPECTS,
-  INTERVENTION_MEDIA,
-  INTERVENTION_APPEALS,
-  COUNTRIES,
-} from "@/lib/constants"
-import { selectOptions } from "@/lib/utils"
-import { getOptions, getUniqueColumnValues } from "@/lib/json-functions"
+import { getOptions } from "@/lib/json-functions"
+import { MultiPillsForm } from "./form/multi-pills-form"
 
-// Outcome options
-const outcomesBehaviorOptions = getOptions("behaviors")
-const outcomesIntentionsOptions = getOptions("intentions")
-const outcomesAttitudesOptions = getOptions("attitudes")
-const outcomesOptions = getOptions("outcome_subcategory")
-const outcomeMeasurementsOptions = getOptions("outcome_measurement_type")
-const interventionAspectsOptions = getOptions("intervention_aspect")
-const interventionMediaOptions = getOptions("intervention_medium")
-const interventionAppealsOptions = getOptions("intervention_appeal")
-const countriesOptions = getOptions("intervention_sample_country")
+const behaviors = getOptions("behaviors")
+const intentions = getOptions("intentions")
+const attitudes = getOptions("attitudes")
+const measurements = getOptions("outcome_measurement_type")
+const aspects = getOptions("intervention_aspect")
+const mediums = getOptions("intervention_medium")
+const appeals = getOptions("intervention_appeal")
+const countries = getOptions("intervention_sample_country")
 
 const formSchema = z.object({
   outcomes: z
     .string()
     .array()
-    .nonempty({ message: "Must select at least one outcome" }),
-  outcomeMeasurements: z
+    .nonempty({ message: "Must select at least one outcome." }),
+  measurements: z
     .string()
     .array()
-    .nonempty({ message: "Must select at least one outcome measurement" }),
-  interventionAspect: z
+    .nonempty({ message: "Must select at least one outcome measurement." }),
+  aspects: z
     .string()
     .array()
-    .nonempty({ message: "Must select at least one intervention aspect" }),
-  interventionMedium: z
+    .nonempty({ message: "Must select at least one intervention aspect." }),
+  mediums: z
     .string()
     .array()
-    .nonempty({ message: "Must select at least one intervention medium" }),
-  interventionAppeal: z
+    .nonempty({ message: "Must select at least one intervention medium." }),
+  appeals: z
     .string()
     .array()
-    .nonempty({ message: "Must select at least one intervention appeal" }),
+    .nonempty({ message: "Must select at least one intervention appeal." }),
   countries: z
     .string()
     .array()
-    .nonempty({ message: "Must select at least one country" }),
-  minimumCellSize: z.coerce.number().min(1).max(1000),
+    .nonempty({ message: "Must select at least one country." }),
+  minimumCellSize: z.coerce.number().min(1),
 })
 
 type FiltersProps = {
@@ -90,78 +86,67 @@ export const Filters = (props: FiltersProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      outcomes: outcomesOptions.filter((e) => e.checked).map((e) => e.id),
-      outcomeMeasurements: outcomeMeasurementsOptions
-        .filter((e) => e.checked)
-        .map((e) => e.id),
-      interventionAspect: interventionAspectsOptions
-        .filter((e) => e.checked)
-        .map((e) => e.id),
-      interventionMedium: interventionMediaOptions
-        .filter((e) => e.checked)
-        .map((e) => e.id),
-      interventionAppeal: interventionAppealsOptions
-        .filter((e) => e.checked)
-        .map((e) => e.id),
-      countries: countriesOptions.filter((e) => e.checked).map((e) => e.id),
-      minimumCellSize: 1,
+      outcomes: ["meat consumption", "meat consumption intention"],
+      measurements: ["survey"],
+      aspects: ["animal welfare"],
+      mediums: ["text"],
+      appeals: ["factual"],
+      countries: countries,
+      minimumCellSize: 50,
     },
+    mode: "onSubmit",
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log("Submit")
+
     let subset: typeof data
 
-    const selectedSubCategories = values.outcomes
-
     // Filter on outcome
-    subset = data.filter((e) =>
-      selectedSubCategories.includes(e.outcome_subcategory),
+    subset = data.filter((datum) =>
+      values.outcomes.includes(datum.outcome_subcategory),
     )
 
     // Filter on outcome measurement
-    subset = subset.filter((e) => {
-      return values.outcomeMeasurements.some((aspect) =>
-        e.outcome_measurement_type.includes(aspect.toLowerCase()),
+    subset = subset.filter((datum) => {
+      return values.measurements.some((measurement) =>
+        datum.outcome_measurement_type.includes(measurement.toLowerCase()),
       )
     })
 
     // Filter on cell size
     subset = subset.filter(
-      (e) =>
-        e.control_n > values.minimumCellSize &&
-        e.intervention_n > values.minimumCellSize,
+      (datum) =>
+        datum.control_n > values.minimumCellSize &&
+        datum.intervention_n > values.minimumCellSize,
     )
 
     // Filter on intervention aspect
-    subset = subset.filter((e) => {
-      return values.interventionAspect.some(
+    subset = subset.filter((datum) => {
+      return values.aspects.some(
         (aspect) =>
-          e.intervention_aspect.includes(aspect.toLowerCase()) ||
-          e.intervention_aspect == "",
+          datum.intervention_aspect.includes(aspect.toLowerCase()) ||
+          datum.intervention_aspect == "",
       )
     })
 
-    subset = subset.filter((e) => {
-      return values.interventionMedium.some(
+    subset = subset.filter((datum) => {
+      return values.mediums.some(
         (medium) =>
-          e.intervention_medium.includes(medium.toLowerCase()) ||
-          e.intervention_medium == "",
+          datum.intervention_medium.includes(medium.toLowerCase()) ||
+          datum.intervention_medium == "",
       )
     })
 
-    subset = subset.filter((e) => {
-      return values.interventionAppeal.some(
+    subset = subset.filter((datum) => {
+      return values.appeals.some(
         (appeal) =>
-          e.intervention_appeal.includes(appeal.toLowerCase()) ||
-          e.intervention_appeal == "",
+          datum.intervention_appeal.includes(appeal.toLowerCase()) ||
+          datum.intervention_appeal == "",
       )
     })
 
-    // Filter on country
-    // subset = subset.filter((e) =>
-    //   values.countries.includes(e.control_sample_country.toLowerCase()),
-    // )
-
+    // Filter on country (intervention sample only)
     subset = subset.filter((e) =>
       values.countries.includes(e.intervention_sample_country),
     )
@@ -173,8 +158,10 @@ export const Filters = (props: FiltersProps) => {
       setData(subset)
 
       if (webR) {
+        console.log("Running meta-analysis...")
         setStatus("Running meta-analysis...")
         setDisabled(true)
+
         const data = subset.map((e) =>
           (({
             effect_size_value,
@@ -225,7 +212,9 @@ export const Filters = (props: FiltersProps) => {
     >
       <CollapsibleTrigger>
         <div className="m-1 flex flex-row items-center gap-1">
-          <h2 className="text-2xl font-bold tracking-tight">Filters</h2>
+          <h2 className="text-2xl font-bold tracking-tight">
+            Inclusion criteria
+          </h2>
           <ChevronRight
             className={cn("transition", open ? "rotate-90" : "rotate-0")}
           />
@@ -235,90 +224,135 @@ export const Filters = (props: FiltersProps) => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="m-1 space-y-8"
+            className="m-1 mt-4 space-y-4"
           >
             <div>
-              <h3 className="text-xl font-semibold">Outcomes</h3>
-              <FilterSelectMultiple
-                form={form}
+              <h3 className="mb-3 text-xl font-semibold">Outcomes</h3>
+              <FormField
+                control={form.control}
                 name="outcomes"
-                groups={[
-                  {
-                    label: "Behavioral outcomes",
-                    items: outcomesBehaviorOptions,
-                  },
-                  {
-                    label: "Intentions outcomes",
-                    items: outcomesIntentionsOptions,
-                  },
-                  {
-                    label: "Attitudinal outcomes",
-                    items: outcomesAttitudesOptions,
-                  },
-                ]}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <>
+                        <FormLabel className="text-base">
+                          Behavior outcomes
+                        </FormLabel>
+                        <FormDescription></FormDescription>
+                        <MultiPillsForm field={field} options={behaviors} />
+                        <FormLabel className="text-base">
+                          Intention outcomes
+                        </FormLabel>
+                        <FormDescription></FormDescription>
+                        <MultiPillsForm field={field} options={intentions} />
+                        <FormLabel className="text-base">
+                          Attitude/belief outcomes
+                        </FormLabel>
+                        <FormDescription></FormDescription>
+                        <MultiPillsForm field={field} options={attitudes} />
+                      </>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-              <FilterSelectMultiple
-                form={form}
-                name="outcomeMeasurements"
-                groups={[
-                  {
-                    label: "Outcome measurement",
-                    items: outcomeMeasurementsOptions,
-                  },
-                ]}
+              <hr className="mb-3 mt-1" />
+              <FormField
+                control={form.control}
+                name="measurements"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <>
+                        <FormLabel className="text-base">
+                          Measurement type
+                        </FormLabel>
+                        <FormDescription></FormDescription>
+                        <MultiPillsForm field={field} options={measurements} />
+                      </>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
             </div>
             <div>
-              <div>
-                <h3 className="text-xl font-semibold">Interventions</h3>
-              </div>
-              <div className="flex gap-3">
-                <FilterSelectMultiple
-                  form={form}
-                  name="interventionAspect"
-                  groups={[
-                    {
-                      label: "Intervention aspect",
-                      items: interventionAspectsOptions,
-                    },
-                  ]}
-                />
-                <FilterSelectMultiple
-                  form={form}
-                  name="interventionMedium"
-                  groups={[
-                    {
-                      label: "Intervention medium",
-                      items: interventionMediaOptions,
-                    },
-                  ]}
-                />
-                <FilterSelectMultiple
-                  form={form}
-                  name="interventionAppeal"
-                  groups={[
-                    {
-                      label: "Intervention appeal",
-                      items: interventionAppealsOptions,
-                    },
-                  ]}
-                />
-              </div>
+              <h3 className="mb-3 text-xl font-semibold">Interventions</h3>
+              <FormField
+                control={form.control}
+                name="aspects"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <>
+                        <FormLabel className="text-base">
+                          Intervention aspect
+                        </FormLabel>
+                        <FormDescription></FormDescription>
+                        <MultiPillsForm field={field} options={aspects} />
+                      </>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="mediums"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <>
+                        <FormLabel className="text-base">
+                          Intervention medium
+                        </FormLabel>
+                        <FormDescription></FormDescription>
+                        <MultiPillsForm field={field} options={mediums} />
+                      </>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="appeals"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <>
+                        <FormLabel className="text-base">
+                          Intervention appeal
+                        </FormLabel>
+                        <FormDescription></FormDescription>
+                        <MultiPillsForm field={field} options={appeals} />
+                      </>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
             <div>
               <div>
                 <h3 className="text-xl font-semibold">Samples</h3>
               </div>
               <div className="flex gap-3">
-                <FilterSelectMultiple
-                  form={form}
+                <FormField
+                  control={form.control}
                   name="countries"
-                  groups={[
-                    {
-                      label: "Country",
-                      items: countriesOptions,
-                    },
-                  ]}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <>
+                          <FormLabel className="text-base">Country</FormLabel>
+                          <FormDescription></FormDescription>
+                          <MultiPillsForm field={field} options={countries} />
+                        </>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
               </div>
             </div>
@@ -329,6 +363,14 @@ export const Filters = (props: FiltersProps) => {
               description="This is the minimum cell size in either the control or intervention condition."
               placeholder="1"
               type="number"
+            />
+            <FormField
+              name="error"
+              render={() => (
+                <FormItem>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
             <Button type="submit" disabled={disabled}>
               Update

@@ -1,4 +1,6 @@
-import { Line, LineChart, ResponsiveContainer, XAxis } from "recharts"
+"use client"
+
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
 import {
   Card,
@@ -6,52 +8,64 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../ui/card"
+} from "@/components/ui/card"
+import { ChartConfig, ChartContainer } from "@/components/ui/chart"
+
+const chartConfig = {
+  y: {
+    color: "hsl(var(--primary))",
+  },
+} satisfies ChartConfig
 
 type HighlightLineChartProps = {
   title: string
   description: string
-  data: {
+  chartData: {
     x: string
     y: number
   }[]
-  classname?: string
 }
 
-export function HighlightLineChart(props: HighlightLineChartProps) {
-  const { title, description, data, classname } = props
-
+export const HighlightLineChart = ({
+  title,
+  description,
+  chartData,
+}: HighlightLineChartProps) => {
+  console.log(chartData)
   return (
-    <Card className={classname}>
+    <Card>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="h-[80px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              data={data}
-              margin={{
-                top: 5,
-                right: 10,
-                left: 10,
-                bottom: 0,
-              }}
-            >
-              <Line
-                type="monotone"
-                strokeWidth={2}
-                dataKey="y"
-                style={{
-                  stroke: "#16A34A",
-                }}
-                dot={false}
-              />
-              <XAxis dataKey="x" className="text-xs" />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+        <ChartContainer config={chartConfig}>
+          <LineChart
+            accessibilityLayer
+            data={chartData}
+            margin={{
+              left: 12,
+              right: 12,
+              top: 12,
+            }}
+          >
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey="x"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              interval="preserveStartEnd"
+            />
+            <Line
+              dataKey="y"
+              type="monotone"
+              stroke="var(--color-y)"
+              strokeWidth={3}
+              dot={false}
+            />
+          </LineChart>
+        </ChartContainer>
       </CardContent>
     </Card>
   )
