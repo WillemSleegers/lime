@@ -1,5 +1,5 @@
 import { effectColumns } from "@/components/tables/columns-effects"
-import { DataTable } from "@/components/tables/data-table"
+import { DataTable } from "@/components/tables/meta-analysis/data-table"
 import {
   Collapsible,
   CollapsibleContent,

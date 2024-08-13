@@ -9,9 +9,9 @@ import Link from "next/link"
 const FAQ = () => {
   return (
     <main className="m-auto max-w-3xl px-3 py-9">
-      <h1 className="text-center text-4xl font-bold tracking-tight">FAQ</h1>
+      <h1 className="mb-6 text-center text-4xl font-bold">FAQ</h1>
       <Accordion type="single" collapsible className="w-full">
-        <h2 className="mt-6 text-2xl font-semibold tracking-tight">General</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">General</h2>
         <AccordionItem value="q-1">
           <AccordionTrigger>
             What is the Meata-Analysis Project?
