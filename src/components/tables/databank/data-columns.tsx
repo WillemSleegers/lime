@@ -135,6 +135,20 @@ export const DataTableColumns: ColumnDef<Column>[] = [
     ),
   },
   {
+    id: "intervention_medium",
+    accessorKey: "intervention_medium",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Intervention medium" />
+    ),
+  },
+  {
+    id: "intervention_aspect",
+    accessorKey: "intervention_aspect",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Intervention aspect" />
+    ),
+  },
+  {
     id: "outcome_label",
     accessorKey: "outcome_label",
     header: ({ column }) => (

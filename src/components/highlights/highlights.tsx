@@ -67,7 +67,7 @@ export const Highlights = (props: HighLightsProps) => {
           />
           <HighlightText
             title={"~" + Math.round(participantsCount).toString()}
-            description={"Number of participants"}
+            description={"Number of observations"}
           />
           <HighlightPercentage
             title={openAccessCount.toString()}

@@ -1,8 +1,4 @@
 import data from "../assets/data/prepared-effects.json"
-import papers from "../assets/data/papers.json"
-import outcomes from "../assets/data/outcomes.json"
-import interventions from "../assets/data/interventions.json"
-import effects from "../assets/data/effects.json"
 
 export type dataProps = typeof data
 type dataKeys = keyof dataProps[0]
@@ -322,7 +318,7 @@ function mergeTableArrays(
   return result
 }
 
-function mergeArrays(arr1: any, arr2: any) {
+export function mergeArraysOld(arr1: any, arr2: any) {
   if (arr1.length === 0) return arr2
   if (arr2.length === 0) return arr1
 
@@ -352,34 +348,88 @@ function mergeArrays(arr1: any, arr2: any) {
   return result
 }
 
-const outcomeColumns = [
-  "outcome_label",
-  "outcome_category",
-  "outcome_subcategory",
-  "outcome_measurement_type",
-]
-const interventionColumns = [
-  "intervention_appeal",
-  "intervention_medium",
-  "intervention_aspect",
-]
-const effectColumns = ["effect_size_value"]
+export function mergeArraysOld2(
+  arr1: { [x: string]: any }[],
+  arr2: { [x: string]: any }[],
+) {
+  const keys1 = Object.keys(arr1[0])
+  const keys2 = Object.keys(arr2[0])
+  const matchingKeys = keys1.filter((element) => keys2.includes(element))
+  const nonMatchingKeys = [...keys1, ...keys2].filter(
+    (e) => !matchingKeys.includes(e),
+  )
 
-export const getTableData = (columns: string[]) => {
-  let tableData
-  tableData = papers
+  console.log(matchingKeys)
+  console.log(nonMatchingKeys)
 
-  if (columns.some((r) => outcomeColumns.includes(r))) {
-    tableData = mergeArrays(tableData, outcomes)
+  const [longerArr, shorterArr] =
+    arr1.length >= arr2.length ? [arr1, arr2] : [arr2, arr1]
+
+  const result = longerArr.map((obj1: { [x: string]: any }) => {
+    // Find the matching object in the shorter array
+    const matchingObj = shorterArr.find((obj2: { [x: string]: any }) =>
+      matchingKeys.every((key) => obj1[key] === obj2[key]),
+    )
+
+    if (matchingObj) {
+      const newObj = { ...obj1 }
+      nonMatchingKeys.forEach((key) => {
+        if (key in matchingObj) {
+          newObj[key] = matchingObj[key]
+        }
+      })
+      return newObj
+    } else {
+      return obj1
+    }
+  })
+
+  // 5. Return the new array of objects
+  return result
+}
+
+export function mergeArrays(
+  arr1: { [key: string]: unknown }[],
+  arr2: { [key: string]: unknown }[],
+) {
+  const result = []
+
+  // Helper function to get the common keys between two objects
+  function getCommonKeys(
+    obj1: { [key: string]: unknown },
+    obj2: { [key: string]: unknown },
+  ) {
+    return Object.keys(obj1).filter((key) => obj2.hasOwnProperty(key))
   }
 
-  if (columns.some((r) => interventionColumns.includes(r))) {
-    tableData = mergeArrays(tableData, interventions)
+  // Helper function to check if two objects can be merged based on common keys
+  function canMerge(
+    obj1: { [key: string]: unknown },
+    obj2: { [key: string]: unknown },
+    commonKeys: string[],
+  ) {
+    return commonKeys.every((key) => obj1[key] === obj2[key])
   }
 
-  if (columns.some((r) => effectColumns.includes(r))) {
-    tableData = mergeArrays(tableData, effects)
+  // Helper function to merge two objects
+  function mergeObjects(
+    obj1: { [key: string]: unknown },
+    obj2: { [key: string]: unknown },
+  ) {
+    return { ...obj1, ...obj2 }
   }
 
-  return tableData
+  // Iterate over each object in arr1
+  for (let obj1 of arr1) {
+    // Compare with every object in arr2
+    for (let obj2 of arr2) {
+      const commonKeys = getCommonKeys(obj1, obj2)
+      if (commonKeys.length > 0 && canMerge(obj1, obj2, commonKeys)) {
+        // Merge the objects if they can be merged and push to the result array
+        result.push(mergeObjects(obj1, obj2))
+      }
+    }
+  }
+
+  return result
 }
