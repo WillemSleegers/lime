@@ -1,3 +1,4 @@
+export const STUDY_COLUMNS = ["study"]
 export const OUTCOME_COLUMNS = [
   "outcome_label",
   "outcome_category",
@@ -57,6 +58,24 @@ export const COLUMNS_DATA = [
     ],
   },
   {
+    value: "intervention-info",
+    label: "Intervention-info",
+    columns: [
+      {
+        value: "intervention_appeal",
+        label: "Intervention appeal",
+      },
+      {
+        value: "intervention_medium",
+        label: "Intervention medium",
+      },
+      {
+        value: "intervention_aspect",
+        label: "Intervention aspect",
+      },
+    ],
+  },
+  {
     value: "outcome-info",
     label: "Outcome-info",
     columns: [
@@ -78,24 +97,7 @@ export const COLUMNS_DATA = [
       },
     ],
   },
-  {
-    value: "intervention-info",
-    label: "Intervention-info",
-    columns: [
-      {
-        value: "intervention_appeal",
-        label: "Intervention appeal",
-      },
-      {
-        value: "intervention_medium",
-        label: "Intervention medium",
-      },
-      {
-        value: "intervention_aspect",
-        label: "Intervention aspect",
-      },
-    ],
-  },
+
   {
     value: "effect-info",
     label: "Effect-info",

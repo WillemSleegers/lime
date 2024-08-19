@@ -12,30 +12,68 @@ const FAQ = () => {
       <h1 className="mb-6 text-center text-4xl font-bold">FAQ</h1>
       <Accordion type="single" collapsible className="w-full">
         <h2 className="text-2xl font-semibold tracking-tight">General</h2>
-        <AccordionItem value="q-1">
-          <AccordionTrigger>
-            What is the Meata-Analysis Project?
-          </AccordionTrigger>
+        <AccordionItem value="general-1">
+          <AccordionTrigger>What is LIME?</AccordionTrigger>
           <AccordionContent>
             <p className="leading-5">
-              In short, it is a live meta-analysis of psychological intervention
-              studies to reduce animal product consumption. You can find out
-              more about this project on the{" "}
-              <Link className="underline" href="/about/">
+              In short, it is a library of psychological intervention studies
+              aimed at reducing animal product consumption and for improving
+              attitudes towards animals. We are collecting information on all
+              studies on this topic to make it available via this website. You
+              can explore the studies with the{" "}
+              <Link
+                className="font-medium underline underline-offset-4"
+                href="/data/"
+              >
+                Data Explorer tool
+              </Link>{" "}
+              or conduct custom analyses with the{" "}
+              <Link
+                className="font-medium underline underline-offset-4"
+                href="/meta-analysis/"
+              >
+                Meta-analysis tool
+              </Link>
+              . You can find out more about this project on the{" "}
+              <Link
+                className="font-medium underline underline-offset-4"
+                href="/about/"
+              >
                 About
               </Link>{" "}
               page.
             </p>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="q-2">
+        <AccordionItem value="general-2">
           <AccordionTrigger>Who is the target audience?</AccordionTrigger>
           <AccordionContent>
             <p className="leading-5">
-              We mainly target researchers and/or activists familiar with
-              scientific research. While we try to make it easy to find out
-              which interventions are most effective, some background knowledge
-              of statistics and meta-analyses in particular is recommended.
+              LIME was primarily built for researchers and activists or policy
+              makers who are somewhat familiar with scientific research. In many
+              ways, the website is designed to make scientific results more
+              accessible for non-scientists. It facilitates the exploration and
+              analysis of scientific studies, especially for people who do not
+              regularly search for and read scientific publications. However,
+              some background knowledge in statistics and scientific research is
+              recommended, especially when using the meta-analysis tool.
+            </p>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="general-3">
+          <AccordionTrigger>Who built LIME?</AccordionTrigger>
+          <AccordionContent>
+            <p className="leading-5">
+              LIME was mainly created by dr. Willem Sleegers and dr. Bastian
+              Jaeger. You can find out more about who collaborated on LIME on
+              the{" "}
+              <Link
+                className="font-medium underline underline-offset-4"
+                href="/data/"
+              >
+                Contributors
+              </Link>{" "}
+              page.
             </p>
           </AccordionContent>
         </AccordionItem>

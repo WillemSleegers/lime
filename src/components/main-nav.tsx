@@ -3,10 +3,10 @@
 import * as React from "react"
 import Link from "next/link"
 
-import { Button } from "./ui/button"
-import { Menu } from "lucide-react"
+import { Button, buttonVariants } from "./ui/button"
 import { useState } from "react"
 import { Lime } from "./lime"
+import { cn } from "@/lib/utils"
 
 const items = [
   {
@@ -14,7 +14,7 @@ const items = [
     href: "/about/",
   },
   {
-    title: "Databank",
+    title: "Data Explorer",
     href: "/data/",
   },
   {
@@ -40,9 +40,9 @@ export function MainNav() {
 
   return (
     <div
-      className={`flex flex-col items-stretch justify-between gap-3 border-b p-3 md:flex-row md:items-center`}
+      className={`flex flex-col items-stretch justify-between gap-3 p-3 align-middle md:flex-row md:items-center`}
     >
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <div className="flex flex-row items-center gap-3 p-1">
           <Link href="/" className="text-2xl font-semibold leading-normal">
             LIME
@@ -51,20 +51,41 @@ export function MainNav() {
         </div>
 
         <Button
+          className="flex md:hidden"
           variant="ghost"
           size="sm"
-          className="flex md:hidden"
           onClick={() => setOpen(!open)}
         >
-          <Menu />
-          <span className="sr-only">Toggle</span>
+          <div className="flex flex-col items-center justify-center">
+            <span
+              className={`block h-0.5 w-5 rounded-sm bg-foreground transition-all duration-300 ease-out ${
+                open ? "translate-y-1 rotate-45" : "-translate-y-0.5"
+              }`}
+            ></span>
+            <span
+              className={`my-0.5 block h-0.5 w-5 rounded-sm bg-foreground transition-all duration-300 ease-out ${
+                open ? "opacity-0" : "opacity-100"
+              }`}
+            ></span>
+            <span
+              className={`block h-0.5 w-5 rounded-sm bg-foreground transition-all duration-300 ease-out ${
+                open ? "-translate-y-1 -rotate-45" : "translate-y-0.5"
+              }`}
+            ></span>
+            <span className="sr-only">Toggle</span>
+          </div>
         </Button>
       </div>
 
-      <nav className={`m-auto md:m-0 md:flex ${open ? "flex" : "hidden"}`}>
+      <nav
+        className={`m-auto flex-wrap justify-center md:m-0 md:flex ${open ? "flex" : "hidden"}`}
+      >
         {items.map((e) => (
           <Link
-            className="rounded-lg px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-black"
+            className={cn(
+              buttonVariants({ variant: "ghost" }),
+              "whitespace-nowrap text-base",
+            )}
             href={e.href}
             key={e.title}
           >

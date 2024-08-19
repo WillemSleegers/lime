@@ -3,7 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table"
 import { DataTableColumnHeader } from "../data-columns-header"
 import { round } from "@/lib/utils"
-import { Badge, badgeVariants } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge"
 import { PaperDialog } from "@/components/paper-dialog"
 import Link from "next/link"
 import { CheckIcon, X, LinkIcon } from "lucide-react"
@@ -31,7 +31,7 @@ export const DataTableColumns: ColumnDef<Column>[] = [
     ),
     cell: ({ row }) => {
       const value = row.getValue("paper_label") as string
-      return <PaperDialog trigger={value} title={value} />
+      return <PaperDialog paper_label={value} />
     },
   },
   {
@@ -133,6 +133,19 @@ export const DataTableColumns: ColumnDef<Column>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Intervention appeal" />
     ),
+    cell: ({ row }) => {
+      const value = row.getValue("intervention_appeal") as string
+      const content = value?.split("; ").map((e) => (
+        <Badge
+          key={e}
+          variant="secondary"
+          className="whitespace-nowrap text-sm font-normal"
+        >
+          {e}
+        </Badge>
+      ))
+      return <div className="flex flex-wrap gap-1">{content}</div>
+    },
   },
   {
     id: "intervention_medium",
@@ -140,6 +153,19 @@ export const DataTableColumns: ColumnDef<Column>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Intervention medium" />
     ),
+    cell: ({ row }) => {
+      const value = row.getValue("intervention_medium") as string
+      const content = value?.split("; ").map((e) => (
+        <Badge
+          key={e}
+          variant="secondary"
+          className="whitespace-nowrap text-sm font-normal"
+        >
+          {e}
+        </Badge>
+      ))
+      return <div className="flex flex-wrap gap-1">{content}</div>
+    },
   },
   {
     id: "intervention_aspect",
@@ -147,6 +173,19 @@ export const DataTableColumns: ColumnDef<Column>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Intervention aspect" />
     ),
+    cell: ({ row }) => {
+      const value = row.getValue("intervention_appeal") as string
+      const content = value?.split("; ").map((e) => (
+        <Badge
+          key={e}
+          variant="secondary"
+          className="whitespace-nowrap text-sm font-normal"
+        >
+          {e}
+        </Badge>
+      ))
+      return <div className="flex flex-wrap gap-1">{content}</div>
+    },
   },
   {
     id: "outcome_label",

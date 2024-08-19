@@ -1,83 +1,80 @@
-import { cn } from "@/lib/utils"
 import Link from "next/link"
-import { buttonVariants } from "@/components/ui/button"
 import Image from "next/image"
-import imageLibrary from "../assets/images/library.png"
-import imagePlot from "../assets/images/forest-plot.png"
+
+import { buttonVariants } from "@/components/ui/button"
 import { Counter } from "@/components/counter"
 
-import data from "../assets/data/prepared-effects.json"
+import imageLibrary from "@/assets/images/library.png"
+import imagePlot from "@/assets/images/forest-plot.png"
+
+import counts from "@/assets/data/counts.json"
 
 export default function Home() {
-  const effects = data.length
-  const papers = [...new Set(data.map((column) => column["paper"]))].length
-
   return (
-    <main className="pb-16">
-      <section className="p-3">
-        <div className="m-auto max-w-3xl py-12 text-center lg:py-16">
-          <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-            Library of Interventions for Meat Elimination
-          </h1>
-          <p className="text-lg font-normal text-gray-500 lg:text-xl">
-            A library of social psychological intervention studies to reduce the
-            consumption of animal products.
-          </p>
-          <div className="my-8 flex flex-row justify-center gap-4 md:gap-6 lg:gap-8">
-            <Link
-              href="/about/"
-              className={cn(buttonVariants({ variant: "outline" }), "rounded")}
-            >
-              Learn More
-            </Link>
-            <Link
-              href="/meta-analysis"
-              className={cn(
-                buttonVariants(),
-                "bg-green-700 hover:bg-green-800",
-              )}
-            >
-              Get Started
-            </Link>
-          </div>
-        </div>
+    <div>
+      <section className="m-auto my-12 max-w-3xl space-y-8 p-3 text-center">
+        <h1 className="text-4xl font-bold leading-none text-gray-900 md:text-5xl lg:text-6xl">
+          Library of Interventions for Meat Elimination
+        </h1>
+        <p className="text-lg font-normal text-muted-foreground lg:text-xl">
+          A library of social psychological intervention studies to reduce the
+          consumption of animal products.
+        </p>
+        <Link href="/about/" className={buttonVariants({ variant: "outline" })}>
+          Learn More
+        </Link>
       </section>
-      <section className="py-3">
-        <div className="flex flex-wrap justify-center gap-12 bg-gray-100 p-6">
+      <section className="my-12 bg-muted p-3">
+        <div className="m-auto my-6 grid w-full grid-cols-1 gap-6 text-center sm:grid-cols-2 md:max-w-xl lg:max-w-4xl lg:grid-cols-4">
           <div>
-            <div className="text-xl font-semibold">Number of papers</div>
-            <div className="text-xl text-gray-500">
-              <Counter initialValue={0} targetValue={papers} />
+            <div className="whitespace-nowrap text-xl font-semibold">
+              Number of papers
+            </div>
+            <div className="text-4xl font-semibold text-primary">
+              <Counter duration={1000} target={counts.papers} />
             </div>
           </div>
           <div>
-            <div className="text-xl font-semibold">Number of effects</div>
-            <div className="text-xl text-gray-500">
-              <Counter initialValue={0} targetValue={effects} />
+            <div className="whitespace-nowrap text-xl font-semibold">
+              Number of studies
+            </div>
+            <div className="text-4xl font-semibold text-primary">
+              <Counter duration={1250} target={counts.studies} />
+            </div>
+          </div>
+          <div>
+            <div className="whitespace-nowrap text-xl font-semibold">
+              Number of effects
+            </div>
+            <div className="text-4xl font-semibold text-primary">
+              <Counter duration={1500} target={counts.effects} />
+            </div>
+          </div>
+          <div>
+            <div className="whitespace-nowrap text-xl font-semibold">
+              Number of observations
+            </div>
+            <div className="text-4xl font-semibold text-primary">
+              <Counter duration={1750} target={counts.observations} />
             </div>
           </div>
         </div>
       </section>
-      <section className="my-6 flex flex-wrap-reverse items-center justify-center gap-3">
-        <div className="w-[500px] p-6">
-          <h1 className="text-xl font-semibold">Explore the database</h1>
+      <section className="flex flex-wrap-reverse items-center justify-center gap-3">
+        <div className="w-[500px] space-y-6">
+          <h1 className="text-2xl font-semibold">Explore the database</h1>
           <p>
             A comprehensive database of studies that tested interventions aimed
             at reducing meat consumption and related outcomes.
           </p>
           <ul className="list-inside list-disc">
             <li>Regularly updated</li>
-            <li>
-              Studies are coded on many dimensions (e.g., intervention type)
-            </li>
             <li>Openly accessible</li>
+            <li>Lots of information per paper</li>
           </ul>
           <Link
             href="/about/"
-            className={cn(
-              buttonVariants({ variant: "default" }),
-              "mt-3 rounded bg-green-700 hover:bg-green-800",
-            )}
+            className={buttonVariants({ variant: "outline" })}
           >
             Learn More
           </Link>
@@ -86,32 +83,29 @@ export default function Home() {
           <Image src={imageLibrary} alt="file cabinet" />
         </div>
       </section>
-      <section className="my-6 flex flex-wrap-reverse items-center justify-center gap-3 bg-gray-100">
+      <section className="my-12 flex flex-wrap-reverse items-center justify-center gap-6 bg-muted py-12">
         <div className="w-80">
           <Image src={imagePlot} alt="boxplots" />
         </div>
-        <div className="w-[500px] p-6">
-          <h1 className="text-xl font-semibold">Analyze the literature</h1>
+        <div className="w-[500px] space-y-6">
+          <h1 className="text-2xl font-semibold">Analyze the literature</h1>
           <p>
             The analysis tool enables users to explore, analyze, and visualize
             study results.
           </p>
-          <ul className="list-inside list-disc">
+          <ul className="ms-4 list-outside list-disc">
             <li>Meta-analytic estimates of intervention effectiveness</li>
             <li>Customizable: focus on specific interventions or outcomes</li>
             <li>Explore trends in the literature</li>
           </ul>
           <Link
             href="/about/"
-            className={cn(
-              buttonVariants({ variant: "default" }),
-              "mt-3 rounded bg-green-700 hover:bg-green-800",
-            )}
+            className={buttonVariants({ variant: "outline" })}
           >
             Learn More
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

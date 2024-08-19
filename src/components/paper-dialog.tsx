@@ -1,3 +1,7 @@
+import Link from "next/link"
+
+import { LinkIcon } from "lucide-react"
+
 import {
   Dialog,
   DialogContent,
@@ -6,43 +10,42 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { badgeVariants } from "@/components/ui/badge"
+
+import { cn } from "@/lib/utils"
 
 import papers from "@/assets/data/papers.json"
-import Link from "next/link"
-import { badgeVariants } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
-import { LinkIcon } from "lucide-react"
+import interventions from "@/assets/data/interventions.json"
 
 type PaperDialogProps = {
-  trigger: string
-  title: string
+  paper_label: string
 }
 
-export const PaperDialog = ({ trigger, title }: PaperDialogProps) => {
-  const paper_title = papers.find(
-    (paper) => paper.paper_label == title,
-  )?.paper_title
+export const PaperDialog = ({ paper_label }: PaperDialogProps) => {
+  const paper = papers.find((p) => p.paper_label == paper_label)?.paper
 
-  const paper_authors = papers.find(
-    (paper) => paper.paper_label == title,
-  )?.paper_authors
+  const paper_title = papers.find((p) => p.paper == paper)?.paper_title
 
-  const paper_source = papers.find(
-    (paper) => paper.paper_label == title,
-  )?.paper_source
+  const paper_authors = papers.find((p) => p.paper == paper)?.paper_authors
 
-  const paper_link = papers.find(
-    (paper) => paper.paper_label == title,
-  )?.paper_link
+  const paper_source = papers.find((p) => p.paper == paper)?.paper_source
+
+  const paper_link = papers.find((p) => p.paper == paper)?.paper_link
+
+  const intervention_description = interventions.filter((p) => p.paper == paper)
+
+  console.log(intervention_description)
 
   return (
     <Dialog>
       <DialogTrigger asChild className="cursor-pointer">
-        <span className="underline-offset-2 hover:underline">{trigger}</span>
+        <span className="underline-offset-2 hover:underline">
+          {paper_label}
+        </span>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-center">{title}</DialogTitle>
+          <DialogTitle className="text-center">{paper_label}</DialogTitle>
           <DialogDescription>
             <span className="block border-b text-xl font-semibold text-foreground">
               Paper
@@ -66,6 +69,19 @@ export const PaperDialog = ({ trigger, title }: PaperDialogProps) => {
               >
                 Link <LinkIcon className="ms-1" width={14} />
               </Link>
+            )}
+
+            {intervention_description && (
+              <>
+                <span className="mt-3 block border-b text-xl font-semibold text-foreground">
+                  Interventions
+                </span>
+                {intervention_description.map((e, i) => (
+                  <span key={e.paper + "-" + i} className="block">
+                    {e.intervention_description}
+                  </span>
+                ))}
+              </>
             )}
           </DialogDescription>
         </DialogHeader>

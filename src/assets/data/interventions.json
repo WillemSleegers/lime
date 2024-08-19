@@ -1,1 +1,875 @@
-[{"paper":1,"study":1,"intervention_condition":2,"intervention_aspect":"personal image","intervention_medium":"text","intervention_appeal":"factual"},{"paper":2,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare; personal health; environment","intervention_medium":"presentation","intervention_appeal":"factual; negative emotional; perspective taking; goal pursuit; norms"},{"paper":3,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare","intervention_medium":"video","intervention_appeal":"factual; negative emotional"},{"paper":3,"study":1,"intervention_condition":3,"intervention_aspect":"animal welfare","intervention_medium":"3D video","intervention_appeal":"factual; negative emotional; perspective taking"},{"paper":4,"study":3,"intervention_condition":2,"intervention_aspect":"animal welfare","intervention_medium":"text; image","intervention_appeal":"factual"},{"paper":4,"study":3,"intervention_condition":3,"intervention_aspect":"animal welfare","intervention_medium":"text; image","intervention_appeal":"factual"},{"paper":5,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare","intervention_medium":"text; image; video","intervention_appeal":"negative emotional; goal pursuit"},{"paper":5,"study":1,"intervention_condition":3,"intervention_aspect":"animal welfare","intervention_medium":"text; image; video","intervention_appeal":"negative emotional; goal pursuit"},{"paper":5,"study":1,"intervention_condition":4,"intervention_aspect":"animal welfare","intervention_medium":"text; image; video","intervention_appeal":"negative emotional; goal pursuit; perspective taking"},{"paper":5,"study":1,"intervention_condition":5,"intervention_aspect":"animal welfare","intervention_medium":"text; image; video","intervention_appeal":"negative emotional; goal pursuit; perspective taking"},{"paper":7,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare","intervention_medium":"video","intervention_appeal":"infotainment; origin of animal product; celebrity"},{"paper":9,"study":2,"intervention_condition":2,"intervention_aspect":"personal health","intervention_medium":"text","intervention_appeal":"goal pursuit"},{"paper":10,"study":1,"intervention_condition":2,"intervention_aspect":"personal health","intervention_medium":"text","intervention_appeal":"goal pursuit"},{"paper":11,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit"},{"paper":11,"study":1,"intervention_condition":3,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit"},{"paper":11,"study":1,"intervention_condition":4,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit"},{"paper":11,"study":1,"intervention_condition":5,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit"},{"paper":11,"study":1,"intervention_condition":6,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit"},{"paper":11,"study":1,"intervention_condition":7,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit"},{"paper":11,"study":1,"intervention_condition":8,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit"},{"paper":11,"study":1,"intervention_condition":9,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit"},{"paper":13,"study":1,"intervention_condition":2,"intervention_aspect":"none","intervention_medium":"presentation","intervention_appeal":"symbolic meaning; negative emotional"},{"paper":13,"study":1,"intervention_condition":3,"intervention_aspect":"none","intervention_medium":"presentation","intervention_appeal":"symbolic meaning; negative emotional"},{"paper":14,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit; celebrity"},{"paper":14,"study":1,"intervention_condition":3,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit; celebrity"},{"paper":14,"study":1,"intervention_condition":4,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit; celebrity"},{"paper":14,"study":1,"intervention_condition":5,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional; goal pursuit; celebrity"},{"paper":17,"study":1,"intervention_condition":2,"intervention_aspect":"personal health","intervention_medium":"video","intervention_appeal":"factual; goal pursuit"},{"paper":17,"study":1,"intervention_condition":3,"intervention_aspect":"personal health","intervention_medium":"video","intervention_appeal":"factual"},{"paper":18,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare; personal health","intervention_medium":"text; image","intervention_appeal":"positive emotional; negative emotional; origin of animal product; norms; factual; goal pursuit"},{"paper":23,"study":1,"intervention_condition":1,"intervention_aspect":"environment; animal welfare; health","intervention_medium":"text","intervention_appeal":"factual"},{"paper":23,"study":1,"intervention_condition":2,"intervention_aspect":"environment; animal welfare; health","intervention_medium":"text","intervention_appeal":"factual; goal pursuit"},{"paper":25,"study":1,"intervention_condition":2,"intervention_aspect":"none","intervention_medium":"video","intervention_appeal":"positive emotional"},{"paper":25,"study":1,"intervention_condition":3,"intervention_aspect":"animal welfare","intervention_medium":"video","intervention_appeal":"positive emotional; negative emotional; symbolic meaning; factual"},{"paper":26,"study":1,"intervention_condition":2,"intervention_aspect":"disgust","intervention_medium":"text","intervention_appeal":"negative emotional; factual"},{"paper":26,"study":1,"intervention_condition":3,"intervention_aspect":"personal health","intervention_medium":"text","intervention_appeal":"factual"},{"paper":26,"study":1,"intervention_condition":4,"intervention_aspect":"environment; animal welfare","intervention_medium":"text","intervention_appeal":"factual"},{"paper":26,"study":2,"intervention_condition":2,"intervention_aspect":"disgust","intervention_medium":"text","intervention_appeal":"negative emotional; factual"},{"paper":26,"study":2,"intervention_condition":3,"intervention_aspect":"personal health","intervention_medium":"text","intervention_appeal":"factual"},{"paper":26,"study":2,"intervention_condition":4,"intervention_aspect":"environment","intervention_medium":"text","intervention_appeal":"factual"},{"paper":26,"study":2,"intervention_condition":5,"intervention_aspect":"animal welfare","intervention_medium":"text","intervention_appeal":"factual"},{"paper":26,"study":3,"intervention_condition":2,"intervention_aspect":"disgust","intervention_medium":"presentation","intervention_appeal":"factual"},{"paper":26,"study":3,"intervention_condition":3,"intervention_aspect":"animal welfare","intervention_medium":"presentation","intervention_appeal":"factual"},{"paper":31,"study":2,"intervention_condition":2,"intervention_aspect":"none","intervention_medium":"text","intervention_appeal":"norms"},{"paper":31,"study":2,"intervention_condition":3,"intervention_aspect":"none","intervention_medium":"text","intervention_appeal":"norms"},{"paper":31,"study":4,"intervention_condition":2,"intervention_aspect":"none","intervention_medium":"text","intervention_appeal":"norms"},{"paper":31,"study":4,"intervention_condition":3,"intervention_aspect":"none","intervention_medium":"text","intervention_appeal":"norms"},{"paper":33,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare","intervention_medium":"text; image","intervention_appeal":"origin of animal product"},{"paper":33,"study":1,"intervention_condition":4,"intervention_aspect":"animal welfare","intervention_medium":"text; image","intervention_appeal":"origin of animal product"},{"paper":33,"study":2,"intervention_condition":2,"intervention_aspect":"animal welfare","intervention_medium":"image","intervention_appeal":"origin of animal product"},{"paper":33,"study":2,"intervention_condition":4,"intervention_aspect":"animal welfare","intervention_medium":"image","intervention_appeal":"origin of animal product"},{"paper":37,"study":1,"intervention_condition":2,"intervention_aspect":"none","intervention_medium":"image","intervention_appeal":"positive emotional; origin of animal product"},{"paper":40,"study":1,"intervention_condition":3,"intervention_aspect":"animal welfare","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional"},{"paper":40,"study":1,"intervention_condition":4,"intervention_aspect":"animal welfare","intervention_medium":"text","intervention_appeal":"factual; norms; negative emotional"},{"paper":50,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare","intervention_medium":"text; video; in-person","intervention_appeal":"negative emotional; factual"},{"paper":52,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare; environment; personal health","intervention_medium":"video","intervention_appeal":"factual; negative emotional; norms; origin of animal product; goal pursuit"},{"paper":52,"study":2,"intervention_condition":2,"intervention_aspect":"animal welfare; environment; personal health","intervention_medium":"video","intervention_appeal":"factual; negative emotional; norms"},{"paper":52,"study":3,"intervention_condition":2,"intervention_aspect":"animal welfare; environment; personal health","intervention_medium":"video; text","intervention_appeal":"factual; negative emotional; norms; origin of animal product; goal pursuit"},{"paper":53,"study":1,"intervention_condition":2,"intervention_aspect":"none","intervention_medium":"text; image","intervention_appeal":"norms"},{"paper":53,"study":1,"intervention_condition":3,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":53,"study":1,"intervention_condition":4,"intervention_aspect":"none","intervention_medium":"text; image","intervention_appeal":"positive emotional"},{"paper":53,"study":1,"intervention_condition":5,"intervention_aspect":"none","intervention_medium":"text; image","intervention_appeal":"positive emotional"},{"paper":54,"study":1,"intervention_condition":2,"intervention_aspect":"personal health","intervention_medium":"text","intervention_appeal":"factual"},{"paper":54,"study":1,"intervention_condition":3,"intervention_aspect":"personal health","intervention_medium":"text","intervention_appeal":"factual"},{"paper":56,"study":1,"intervention_condition":2,"intervention_aspect":"personal health; environment","intervention_medium":"text","intervention_appeal":"factual, negative emotional"},{"paper":56,"study":1,"intervention_condition":3,"intervention_aspect":"personal health; environment","intervention_medium":"text","intervention_appeal":"factual"},{"paper":58,"study":1,"intervention_condition":1,"intervention_aspect":"environment","intervention_medium":"text","intervention_appeal":"factual; goal pursuit"},{"paper":58,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare","intervention_medium":"text","intervention_appeal":"factual; goal pursuit"},{"paper":58,"study":1,"intervention_condition":3,"intervention_aspect":"animal welfare","intervention_medium":"text","intervention_appeal":"factual; goal pursuit"},{"paper":58,"study":1,"intervention_condition":4,"intervention_aspect":"animal welfare","intervention_medium":"text","intervention_appeal":"factual; goal pursuit"},{"paper":60,"study":1,"intervention_condition":1,"intervention_aspect":"animal welfare","intervention_medium":"text; video; in-person","intervention_appeal":"negative emotional; factual; origin of animal product"},{"paper":60,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare","intervention_medium":"text; in-person","intervention_appeal":"negative emotional; factual; origin of animal product"},{"paper":61,"study":1,"intervention_condition":1,"intervention_aspect":"personal health","intervention_medium":"text","intervention_appeal":"factual; origin of animal product"},{"paper":61,"study":1,"intervention_condition":2,"intervention_aspect":"animal welfare","intervention_medium":"text","intervention_appeal":"factual; origin of animal product"},{"paper":62,"study":1,"intervention_condition":2,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":63,"study":1,"intervention_condition":2,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":64,"study":1,"intervention_condition":1,"intervention_aspect":"none","intervention_medium":"text","intervention_appeal":"goal pursuit"},{"paper":64,"study":1,"intervention_condition":2,"intervention_aspect":"none","intervention_medium":"text","intervention_appeal":"goal pursuit"},{"paper":65,"study":1,"intervention_condition":2,"intervention_aspect":"none","intervention_medium":"text","intervention_appeal":"choice architecture"},{"paper":67,"study":1,"intervention_condition":2,"intervention_aspect":"environment","intervention_medium":"text; image","intervention_appeal":"choice architecture; norms"},{"paper":67,"study":1,"intervention_condition":3},{"paper":68,"study":1,"intervention_condition":2,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":68,"study":1,"intervention_condition":4,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":68,"study":1,"intervention_condition":6,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":68,"study":2,"intervention_condition":2,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":68,"study":2,"intervention_condition":4,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":70,"study":1,"intervention_condition":1,"intervention_medium":"in-person","intervention_appeal":"positive emotional"},{"paper":70,"study":1,"intervention_condition":2,"intervention_medium":"in-person"},{"paper":75,"study":1,"intervention_condition":1,"intervention_aspect":"environment; health","intervention_medium":"text; image","intervention_appeal":"factual"},{"paper":77,"study":1,"intervention_condition":1,"intervention_aspect":"environment","intervention_medium":"text","intervention_appeal":"factual"},{"paper":77,"study":1,"intervention_condition":2,"intervention_aspect":"environment","intervention_medium":"text","intervention_appeal":"factual"},{"paper":77,"study":1,"intervention_condition":3,"intervention_aspect":"environment","intervention_medium":"text","intervention_appeal":"factual"},{"paper":78,"study":1,"intervention_condition":2,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":79,"study":1,"intervention_condition":1,"intervention_aspect":"animal welfare","intervention_medium":"video","intervention_appeal":"negative emotional"},{"paper":79,"study":2,"intervention_condition":1,"intervention_aspect":"animal welfare","intervention_medium":"video","intervention_appeal":"negative emotional"},{"paper":80,"study":1,"intervention_condition":1,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":81,"study":1,"intervention_condition":1,"intervention_aspect":"none","intervention_appeal":"choice architecture"},{"paper":81,"study":1,"intervention_condition":2,"intervention_aspect":"environment","intervention_medium":"text","intervention_appeal":"choice architecture; factual"},{"paper":81,"study":1,"intervention_condition":3,"intervention_aspect":"none","intervention_medium":"text","intervention_appeal":"choice architecture; taste"}]
+[
+  {
+    "paper": 1,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Informed participants that previous research had found that people who consume more meat endorse hierarchy and dominance values, whereas people who consume more fruits and vegetables reject hierarchy and dominance values",
+    "intervention_aspect": "personal image",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 2,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "A presentation describing emerging social norms that show a significant reduction in meat-eating since 1980 in Canada and the negative effects of meat-eating, especially red and processed meats, on human health, animal welfare, and the environment (including 2 PETA videos); a mind attribution task; increased self-efficacy by receiving concrete tips on planning meat-free meals, substituting meat products, and choosing meatless meals in restaurants; setting goals",
+    "intervention_aspect": "animal welfare; health; environment",
+    "intervention_medium": "presentation",
+    "intervention_appeal": "factual; negative emotional; perspective taking; goal pursuit; norms"
+  },
+  {
+    "paper": 3,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "A 2D flat-screen condition",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "video",
+    "intervention_appeal": "factual; negative emotional"
+  },
+  {
+    "paper": 3,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "A 360-degree virtual reality condition",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "3D video",
+    "intervention_appeal": "factual; negative emotional; perspective taking"
+  },
+  {
+    "paper": 4,
+    "study": 3,
+    "intervention_condition": 2,
+    "intervention_description": "Humane farm description",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; image",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 4,
+    "study": 3,
+    "intervention_condition": 3,
+    "intervention_description": "Factory farm description",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; image",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 5,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Facebook posts showing the horrifying reality that farmed animals endure in factory farms + promotion focused framing of the DV",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; image; video",
+    "intervention_appeal": "negative emotional; goal pursuit"
+  },
+  {
+    "paper": 5,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Facebook posts showing the horrifying reality that farmed animals endure in factory farms + prevention focused framing of the DV",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; image; video",
+    "intervention_appeal": "negative emotional; goal pursuit"
+  },
+  {
+    "paper": 5,
+    "study": 1,
+    "intervention_condition": 4,
+    "intervention_description": "Facebook posts showing the special characteristics of animals presented as unique individuals + promotion focused framing of the DV",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; image; video",
+    "intervention_appeal": "negative emotional; goal pursuit; perspective taking"
+  },
+  {
+    "paper": 5,
+    "study": 1,
+    "intervention_condition": 5,
+    "intervention_description": "Facebook posts showing the special characteristics of animals presented as unique individuals + prevention focused framing of the DV",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; image; video",
+    "intervention_appeal": "negative emotional; goal pursuit; perspective taking"
+  },
+  {
+    "paper": 7,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Watched the \"Lisa the vegetarian\" Simpson's episode",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "video",
+    "intervention_appeal": "infotainment; origin of animal product; celebrity"
+  },
+  {
+    "paper": 9,
+    "study": 2,
+    "intervention_condition": 2,
+    "intervention_description": "Completed food diary daily and received a daily SMS to remind them to monitor their red meat consumption at 200g per week",
+    "intervention_aspect": "health",
+    "intervention_medium": "text",
+    "intervention_appeal": "goal pursuit"
+  },
+  {
+    "paper": 10,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Completed food diary daily and received a daily SMS focused on anticipated regret and urged to self-monitor processed meat consumption",
+    "intervention_aspect": "health",
+    "intervention_medium": "text",
+    "intervention_appeal": "goal pursuit"
+  },
+  {
+    "paper": 11,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Booklet focussing primarily on cruelty, discussing all farm animals, and why to go vegetarian",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit"
+  },
+  {
+    "paper": 11,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Booklet focussing primarily on cruelty, discussing only chickens and why to go vegetarian",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit"
+  },
+  {
+    "paper": 11,
+    "study": 1,
+    "intervention_condition": 4,
+    "intervention_description": "Booklet focussing primarily on cruelty, discussing all farm animals, and how to go vegetarian",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit"
+  },
+  {
+    "paper": 11,
+    "study": 1,
+    "intervention_condition": 5,
+    "intervention_description": "Booklet focussing primarily on cruelty, discussing only chickens, and how to go vegetarian",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit"
+  },
+  {
+    "paper": 11,
+    "study": 1,
+    "intervention_condition": 6,
+    "intervention_description": "Booklet focussing primarily on health benefits, discussing all farm animals, and why to go vegetarian",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit"
+  },
+  {
+    "paper": 11,
+    "study": 1,
+    "intervention_condition": 7,
+    "intervention_description": "Booklet focussing primarily on health benefits, discussing only chickens, and why to go vegetarian",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit"
+  },
+  {
+    "paper": 11,
+    "study": 1,
+    "intervention_condition": 8,
+    "intervention_description": "Booklet focussing primarily on health benefits, discussing all farm animals, and how to go vegetarian",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit"
+  },
+  {
+    "paper": 11,
+    "study": 1,
+    "intervention_condition": 9,
+    "intervention_description": "Booklet focussing primarily on health benefits, discussing only chickens, and how to go vegetarian",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit"
+  },
+  {
+    "paper": 13,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Picture of a high-cuteness pig together with three different pork-meals",
+    "intervention_aspect": "none",
+    "intervention_medium": "presentation",
+    "intervention_appeal": "symbolic meaning; negative emotional"
+  },
+  {
+    "paper": 13,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Picture of a low-cuteness pig together with three different pork-meals",
+    "intervention_aspect": "none",
+    "intervention_medium": "presentation",
+    "intervention_appeal": "symbolic meaning; negative emotional"
+  },
+  {
+    "paper": 14,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Booklet encouraging the reader to go vegan",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit; celebrity"
+  },
+  {
+    "paper": 14,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Booklet encouraging the reader to go vegetarian",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit; celebrity"
+  },
+  {
+    "paper": 14,
+    "study": 1,
+    "intervention_condition": 4,
+    "intervention_description": "Booklet encouraging the reader to eat less meat",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit; celebrity"
+  },
+  {
+    "paper": 14,
+    "study": 1,
+    "intervention_condition": 5,
+    "intervention_description": "Booklet encouraging the reader to cut out or cut back on meat and other animal products",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional; goal pursuit; celebrity"
+  },
+  {
+    "paper": 17,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "A 7-minute video that informed viewers of the negative health effects of high meat consumption (high threat) and suggested easy ways to reduce their meat consumption (high efficacy)",
+    "intervention_aspect": "health",
+    "intervention_medium": "video",
+    "intervention_appeal": "factual; goal pursuit"
+  },
+  {
+    "paper": 17,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "A 4-minute video containing the same information about the negative health effects of high meat consumption along with the recommended action to eat less meat, but only included a very minor efficacy component in the conclusion",
+    "intervention_aspect": "health",
+    "intervention_medium": "video",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 18,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Participants received a leaflet \"​Maak het Verschil\"​, a Dutch translation of a highly popular leaflet distributed by Vegan Outreach, Compassionate Choices",
+    "intervention_aspect": "animal welfare; health",
+    "intervention_medium": "text; image",
+    "intervention_appeal": "positive emotional; negative emotional; origin of animal product; norms; factual; goal pursuit"
+  },
+  {
+    "paper": 23,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Completed a food diary",
+    "intervention_aspect": "environment; animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 23,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Completed a food diary",
+    "intervention_aspect": "environment; animal welfare; health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; goal pursuit"
+  },
+  {
+    "paper": 25,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Watched the movie 'Babe: The gallant pig'",
+    "intervention_aspect": "none",
+    "intervention_medium": "video",
+    "intervention_appeal": "positive emotional"
+  },
+  {
+    "paper": 25,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Watched the movie 'The Ghost in Our Machine'",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "video",
+    "intervention_appeal": "positive emotional; negative emotional; symbolic meaning; factual"
+  },
+  {
+    "paper": 26,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Persuasive essay describing disgust-evoking aspects of meat production and consumption",
+    "intervention_aspect": "disgust",
+    "intervention_medium": "text",
+    "intervention_appeal": "negative emotional; factual"
+  },
+  {
+    "paper": 26,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Persuasive essay describing health issues of meat consumption",
+    "intervention_aspect": "health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 26,
+    "study": 1,
+    "intervention_condition": 4,
+    "intervention_description": "Persuasive essay describing the moral (environmental and animal welfare) issues of meat consumption",
+    "intervention_aspect": "environment; animal welfare",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 26,
+    "study": 2,
+    "intervention_condition": 2,
+    "intervention_description": "Persuasive essay describing disgust-evoking aspects of meat production and consumption",
+    "intervention_aspect": "disgust",
+    "intervention_medium": "text",
+    "intervention_appeal": "negative emotional; factual"
+  },
+  {
+    "paper": 26,
+    "study": 2,
+    "intervention_condition": 3,
+    "intervention_description": "Persuasive essay describing health issues of meat consumption",
+    "intervention_aspect": "health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 26,
+    "study": 2,
+    "intervention_condition": 4,
+    "intervention_description": "Persuasive essay describing the environmental issues of meat consumption",
+    "intervention_aspect": "environment",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 26,
+    "study": 2,
+    "intervention_condition": 5,
+    "intervention_description": "Persuasive essay describing the animal welfare issues of meat consumption",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 26,
+    "study": 3,
+    "intervention_condition": 2,
+    "intervention_description": "Slideshow that included images and short paragraphs of text on disgust-evoking aspects of meat production and consumption",
+    "intervention_aspect": "disgust",
+    "intervention_medium": "presentation",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 26,
+    "study": 3,
+    "intervention_condition": 3,
+    "intervention_description": "Slideshow that included images and short paragraphs of animal welfare concerns related to meat",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "presentation",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 31,
+    "study": 2,
+    "intervention_condition": 2,
+    "intervention_description": "Saw the message: \"Recent research has shown that, in the last 5 years, 30% of Americans have now started to make an effort to limit their meat consumption. That means that, in recent years, 3 in 10 people have changed their behavior and begun to eat less meat than they otherwise would.\"",
+    "intervention_aspect": "none",
+    "intervention_medium": "text",
+    "intervention_appeal": "norms"
+  },
+  {
+    "paper": 31,
+    "study": 2,
+    "intervention_condition": 3,
+    "intervention_description": "Saw the message: \"Recent research has shown that 30% of Americans make an effort to limit their meat consumption. That means that 3 in 10 people eat less meat than they otherwise would.\"",
+    "intervention_aspect": "none",
+    "intervention_medium": "text",
+    "intervention_appeal": "norms"
+  },
+  {
+    "paper": 31,
+    "study": 4,
+    "intervention_condition": 2,
+    "intervention_description": "Saw the message: \"Some people are starting to limit how much meat they eat. This is true both nationally and here at Stanford. Specifically, recent research has shown that, over the last 5 years, 30% of Americans have started to make an effort to limit their meat consumption. That means that, in recent years, 3 in 10 people have changed their behavior and begun to eat less meat than they otherwise would.\"",
+    "intervention_aspect": "none",
+    "intervention_medium": "text",
+    "intervention_appeal": "norms"
+  },
+  {
+    "paper": 31,
+    "study": 4,
+    "intervention_condition": 3,
+    "intervention_description": "Saw the message: \"Some people limit how much meat they eat. This is true both nationally and here at Stanford. Specifically, recent research has shown that 30% of Americans make an effort to limit their meat consumption. That means that 3 in 10 people eat less meat than they otherwise would.\"",
+    "intervention_aspect": "none",
+    "intervention_medium": "text",
+    "intervention_appeal": "norms"
+  },
+  {
+    "paper": 33,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "A photo of a cow with a short statement saying that the cow will be sent to the abattoir tomorrow",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; image",
+    "intervention_appeal": "origin of animal product"
+  },
+  {
+    "paper": 33,
+    "study": 1,
+    "intervention_condition": 4,
+    "intervention_description": "A photo of a cow with a short statement saying that the cow will be sent to the abattoir tomorrow",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; image",
+    "intervention_appeal": "origin of animal product"
+  },
+  {
+    "paper": 33,
+    "study": 2,
+    "intervention_condition": 2,
+    "intervention_description": "Meat recipe in a short text with a photo of a cow, illustrating the source of beef in the dish",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "image",
+    "intervention_appeal": "origin of animal product"
+  },
+  {
+    "paper": 33,
+    "study": 2,
+    "intervention_condition": 4,
+    "intervention_description": "Meat recipe in a short text with a photo of a cow, illustrating the source of beef in the dish",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "image",
+    "intervention_appeal": "origin of animal product"
+  },
+  {
+    "paper": 37,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "An advertisement for lamb chops including the picture of a cute lamb",
+    "intervention_aspect": "none",
+    "intervention_medium": "image",
+    "intervention_appeal": "positive emotional; origin of animal product"
+  },
+  {
+    "paper": 40,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "A pork policy article that discusses the policy commitments of major companies to transition the pigs in their supply chains from gestation crates to crate-free environments",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional"
+  },
+  {
+    "paper": 40,
+    "study": 1,
+    "intervention_condition": 4,
+    "intervention_description": "A pork legislation article that discusses the legislation implemented by many U.S. states banning the use of gestation crates",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; norms; negative emotional"
+  },
+  {
+    "paper": 50,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Read James Rachels' article “The Basic Argument for Vegetarianism”; students were also encouraged to view on their own outside of class an optional eleven-minute vegetarianism advocacy video “What Came Before”",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; video; in-person",
+    "intervention_appeal": "negative emotional; factual"
+  },
+  {
+    "paper": 52,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "20-min documentary entitled \"Good For Us\", which encourages plant-based diets that reduce consumption of all meats and animal products",
+    "intervention_aspect": "animal welfare; environment; health",
+    "intervention_medium": "video",
+    "intervention_appeal": "factual; negative emotional; norms; origin of animal product; goal pursuit"
+  },
+  {
+    "paper": 52,
+    "study": 2,
+    "intervention_condition": 2,
+    "intervention_description": "20-min documentary entitled \"Good For Us\", which encourages plant-based diets that reduce consumption of all meats and animal products",
+    "intervention_aspect": "animal welfare; environment; health",
+    "intervention_medium": "video",
+    "intervention_appeal": "factual; negative emotional; norms"
+  },
+  {
+    "paper": 52,
+    "study": 3,
+    "intervention_condition": 2,
+    "intervention_description": "20-min documentary entitled \"Good For Us\", which encourages plant-based diets that reduce consumption of all meats and animal products. Each segment was followed by free-response questions about the content presented. After the documentary, participants were asked whether they would like to pledge to reduce their consumption, pledge to eliminate their consumption, or to make no pledge. For participants who had chosen to make at least one “reduce” or “eliminate” pledge, several items designed to improve general and specific goal-setting and self-monitoring were presented. One week after T0, we sent a customized email to pledge-making participants to remind them.",
+    "intervention_aspect": "animal welfare; environment; health",
+    "intervention_medium": "video; text",
+    "intervention_appeal": "factual; negative emotional; norms; origin of animal product; goal pursuit"
+  },
+  {
+    "paper": 53,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Saw the message: “Many here choose green!”, which was accompanied by a minimalistic illustration of three people.",
+    "intervention_aspect": "none",
+    "intervention_medium": "text; image",
+    "intervention_appeal": "norms"
+  },
+  {
+    "paper": 53,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Moving the icon representing the “Green” category from the sixth position in the grid of icons in the menu (out of 10) to the first position",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 53,
+    "study": 1,
+    "intervention_condition": 4,
+    "intervention_description": "Saw the message: “The green option feels good!” which was accompanied by a happy emoji with a halo, conveying a sense of feeling good by doing good.",
+    "intervention_aspect": "none",
+    "intervention_medium": "text; image",
+    "intervention_appeal": "positive emotional"
+  },
+  {
+    "paper": 53,
+    "study": 1,
+    "intervention_condition": 5,
+    "intervention_description": "Saw the message: “The green option tastes good!” which was accompanied by an emoji with its tongue on one side of its mouth, conveying a sense of tastiness and fun.",
+    "intervention_aspect": "none",
+    "intervention_medium": "text; image",
+    "intervention_appeal": "positive emotional"
+  },
+  {
+    "paper": 54,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "The World Health Organization (WHO) classified red meat as a possible carcinogen, meaning it could cause cancer. Based on estimates from the Global Disease Burden Project, the WHO states that >34.000 cancer deaths per year worldwide are attributable to high intake of processed meat, while the total number of deaths attributable to a diet rich in red meat was 644.000.",
+    "intervention_aspect": "health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 54,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "The World Health Organization (WHO) classified red meat as a possible carcinogen, meaning it could cause cancer. Just 50 g of red or processed meat consumed in a regular daily diet can increase cancer incidence by 18%. It is known that high consumption of red or processed meat can increase the risk of other chronic diseases (such as stroke and type II diabetes).",
+    "intervention_aspect": "health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 56,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Received daily persuasive messages that cited the same health/environmental outcomes of RPMC presented in the informational messages, but evoking the anticipated regret related to them",
+    "intervention_aspect": "health; environment",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; negative emotional"
+  },
+  {
+    "paper": 56,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Received daily persuasive messages that cited the health/environmental outcomes of RPMC presented in the informational messages",
+    "intervention_aspect": "health; environment",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 58,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Saw the message: \"One type of diet that some people endorse is a Climatarian diet significantly reducing or eliminating red meat from one's diet. The reasoning is as follows: Livestock agriculture contributes up to a quarter of global greenhouse gas emissions, with almost all of this coming from cows and sheep. In Australia, producing 1 kg of beef requires an average of 15,182 L of water. Furthermore, livestock agriculture drives 80% of deforestation worldwide, using up a third of the world s ice-free land. Adopting a Climatarian diet is a powerfulway to reduce your impact on the climate. Shifting to a Climatarian diet will reduce your carbon footprint by approximately 1000 kg of CO2 every year, or the equivalent of driving from Perth to Brisbane.\"",
+    "intervention_aspect": "environment",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; goal pursuit"
+  },
+  {
+    "paper": 58,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Saw the message: \"One type of diet that some people endorse is the ‘One step for the animals diet' eliminating chicken from our diets. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factory farms in Australia today. The vast majorityof these animals today are birds. It takes more than 200 chickens to provide the same number of meals as one cow.If we can convince someone to stop eating birds, they would go from being responsible for the factory farming and slaughtering of more than two dozen land animals per year to fewer than one. Furthermore, while most cows and sheep raised in Australia spend most of their life grazing, the vast majority of chickens are raised in crowded factory farms.\"",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; goal pursuit"
+  },
+  {
+    "paper": 58,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Saw the message: \"One type of diet that some people endorse is a Reducetarian diet reducing the amount of meat that we eat. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factoryfarms in Australia today. This includes cows, pigs, sheep and chickens. Adopting a reductionist diet is appealing because not everyone is willing to follow an all-or-nothing diet. It is also a powerful way to reduce animal cruelty. For example, halving your meat consumption will spare around 50 innocent lives every year. This includes about 13 land animals, and 37 fish and shellfish every year.\"",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; goal pursuit"
+  },
+  {
+    "paper": 58,
+    "study": 1,
+    "intervention_condition": 4,
+    "intervention_description": "Saw the message: \"One type of diet that somepeople endorse is a Vegetarian diet eliminating all meat and fish from one's diet. The reasoningis as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factory farms in Australia today. This includes cows, pigs, sheep and chickens. Adopting a vegetarian diet is the most powerful way to object to animal cruelty, and by doing so, you will spare approximately 100 animal lives (25 land animals and 75 fish and shellfish) every year.\"",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; goal pursuit"
+  },
+  {
+    "paper": 60,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Read James Rachels’ article “The Basic Argument for Vegetarianism”. TAs played the 11-minute vegetarianism advocacy video “What Came Before” that contained factory farm footage. TAs presented both pro and con considerations in their discussion sections, encouraging debate among students.",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; video; in-person",
+    "intervention_appeal": "negative emotional; factual; origin of animal product"
+  },
+  {
+    "paper": 60,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Read James Rachels’ article “The Basic Argument for Vegetarianism”. TAs presented both pro and con considerations in their discussion sections, encouraging debate among students.",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text; in-person",
+    "intervention_appeal": "negative emotional; factual; origin of animal product"
+  },
+  {
+    "paper": 61,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "A brief paragraph that either highlighted the connections between zoonotic diseases and factory farming",
+    "intervention_aspect": "health",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; origin of animal product"
+  },
+  {
+    "paper": 61,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "A brief paragraph that either highlighted the connections between animal cruelty and factory farming",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual; origin of animal product"
+  },
+  {
+    "paper": 62,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "A vegetarian dish was listed as the first item on the menu and was also visible to customers at the counter",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 63,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "A vegetarian dish was listed as the first item on the menu",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 64,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Rank a list of 10 values and then briefly describe a situation or example that shows how the first-ranked value is reflected in their personal experience; a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats.",
+    "intervention_aspect": "none",
+    "intervention_medium": "text",
+    "intervention_appeal": "goal pursuit"
+  },
+  {
+    "paper": 64,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Rank a list of 10 values and then briefly describe a situation or example that shows how the first-ranked value is reflected in their group experience; a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats.",
+    "intervention_aspect": "none",
+    "intervention_medium": "text",
+    "intervention_appeal": "goal pursuit"
+  },
+  {
+    "paper": 65,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Chef’s recommendation stickers on the sandwich bags. One vegetarian sandwich was displayed on a plate at eye-level with the content clearly visible. This plate was accompanied by a sign that read “Kokken anbefaler” and a brief description of the café’s sustainability goals. All vegetarian sandwiches were placed in first line-of-sight from the typical customer flow direction. The labels on vegetarian sandwiches were slightly more colourful and the bags were closed more aesthetically than meat sandwiches.",
+    "intervention_aspect": "none",
+    "intervention_medium": "text",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 67,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "A 2-day workshop with the canteen kitchen staff on the relevance of promoting plant-based eating, basic principles of plant-based nutritional literacy, and practical demonstrations of how to improve the visual and sensory appeal of plant-based meals. Posters advertising the \"Sustainability Week\" initiative. A menu that presented the vegetarian option as the \"suggestion of the day\" with an increased font sze above the meat and fish options.",
+    "intervention_aspect": "environment",
+    "intervention_medium": "text; image",
+    "intervention_appeal": "choice architecture; norms"
+  },
+  {
+    "paper": 67,
+    "study": 1,
+    "intervention_condition": 3
+  },
+  {
+    "paper": 68,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Students passed by a vegetarian option first when entering",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 68,
+    "study": 1,
+    "intervention_condition": 4,
+    "intervention_description": "Students passed by a vegetarian option first when entering",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 68,
+    "study": 1,
+    "intervention_condition": 6,
+    "intervention_description": "Students passed by a vegetarian option first when entering",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 68,
+    "study": 2,
+    "intervention_condition": 2,
+    "intervention_description": "Students passed by a vegetarian option first when entering",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 68,
+    "study": 2,
+    "intervention_condition": 4,
+    "intervention_description": "Students passed by a vegetarian option first when entering",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 70,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Participants are introduced to a way to offer love to themselves, other people, or animals. Affect dyad situations were applied where partners sit face to face, and one partner contemplates a situation to a specific theme of the main topics. The other partner listens attentively without giving any verbal or non-verbal feedback.",
+    "intervention_medium": "in-person",
+    "intervention_appeal": "positive emotional"
+  },
+  {
+    "paper": 70,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Elements of meditation: body scan, mindful eating, emphasizing the breath, and sitting and walking meditation training. Every session contained a talk about specific topics such as different forms of meditation and problems that may arise with them. The focus of this mindfulness group was on the rather cognitive elements of mindfulness and its qualities of awareness.",
+    "intervention_medium": "in-person"
+  },
+  {
+    "paper": 75,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Signage promoting the planetary health diet was posted",
+    "intervention_aspect": "environment; health",
+    "intervention_medium": "text; image",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 77,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "All meat dishes were labeled as “High CO2” dishes, all fish dishes as “Medium CO2” and all vegetarian as “Low CO2” dishes.",
+    "intervention_aspect": "environment",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 77,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Only the vegetarian dish was labeled with the “Low CO2” sign",
+    "intervention_aspect": "environment",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 77,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Exclusively marked the meat dish with a “High CO2” label",
+    "intervention_aspect": "environment",
+    "intervention_medium": "text",
+    "intervention_appeal": "factual"
+  },
+  {
+    "paper": 78,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "RSVP survey for an event in which the vegetarian option was the default meal preference",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 79,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "A video (2:48 minutes long) was presented which showed a parallel world wherein the roles of humans and animals were reversed. The video presented illustrations of situations in which animals are harmed, but where the humans took the role of the animals and vice versa.",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "video",
+    "intervention_appeal": "negative emotional"
+  },
+  {
+    "paper": 79,
+    "study": 2,
+    "intervention_condition": 1,
+    "intervention_description": "A video (2:48 minutes long) was presented which showed a parallel world wherein the roles of humans and animals were reversed. The video presented illustrations of situations in which animals are harmed, but where the humans took the role of the animals and vice versa.",
+    "intervention_aspect": "animal welfare",
+    "intervention_medium": "video",
+    "intervention_appeal": "negative emotional"
+  },
+  {
+    "paper": 80,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "The menu differed by listing the daily vegetarian and fish dishes but not the meat dish and a sentence stating, “An option containing meat is available on request.”",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 81,
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the sustainable plant-based default conditions, the plant-based sausage was selected and a pop-up message said \"We have selected the most sustainable sausage for you”.",
+    "intervention_aspect": "none",
+    "intervention_appeal": "choice architecture"
+  },
+  {
+    "paper": 81,
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the two conditions with framing, a pop-up message read: “We have selected the most sustainable/tastiest sausage for you ”. All par ticipants could opt-out by clicking on text that read: “Rather have a plant-based/pork sausage?“. Our baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo",
+    "intervention_aspect": "environment",
+    "intervention_medium": "text",
+    "intervention_appeal": "choice architecture; factual"
+  },
+  {
+    "paper": 81,
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the sustainable plant-based default conditions, the plant-based sausage was selected and a pop-up message said \"We have selected the tastiest sausage for you”.",
+    "intervention_aspect": "none",
+    "intervention_medium": "text",
+    "intervention_appeal": "choice architecture; taste"
+  }
+]

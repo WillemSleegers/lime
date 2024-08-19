@@ -3,32 +3,29 @@
 import { useState, useEffect } from "react"
 
 type CounterProps = {
-  initialValue: number
-  targetValue: number
+  duration: number
+  target: number
 }
 
-export const Counter = (props: CounterProps) => {
-  const { initialValue, targetValue } = props
+const easeOutQuad = (t: number) => t * (2 - t)
+const frameDuration = 1000 / 60
 
-  const [count, setCount] = useState(initialValue)
-  const duration = (1000 / targetValue) * 10
+export const Counter = ({ duration, target }: CounterProps) => {
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
-    let startValue = initialValue
-    const interval = Math.floor(duration / (targetValue - initialValue))
-
+    let frame = 0
+    const totalFrames = Math.round(duration / frameDuration)
     const counter = setInterval(() => {
-      startValue += 1
-      setCount(startValue)
-      if (startValue >= targetValue) {
+      frame++
+      const progress = easeOutQuad(frame / totalFrames)
+      setCount(Math.round(target * progress))
+
+      if (frame === totalFrames) {
         clearInterval(counter)
       }
-    }, interval)
+    }, frameDuration)
+  }, [])
 
-    return () => {
-      clearInterval(counter)
-    }
-  }, [targetValue, initialValue, duration])
-
-  return <span>{count}</span>
+  return count
 }
