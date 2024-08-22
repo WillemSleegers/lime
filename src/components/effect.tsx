@@ -84,7 +84,7 @@ export const Effect = (props: EffectProps) => {
               </div>
             </div>
 
-            <Button variant="secondary" className="mb-1 w-[108px]">
+            <Button variant="secondary" className="whitespace-nowrap">
               <a href="https://rpsychologist.com/cohend/" target="_blank">
                 Learn more
               </a>

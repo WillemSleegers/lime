@@ -27,17 +27,17 @@ export const Highlights = (props: HighLightsProps) => {
 
   const participantsCount = [
     ...data
-      .reduce((map, { paper, study, total_n }) => {
+      .reduce((map, { paper, study, study_n }) => {
         return map.set(`${paper}-${study}`, {
           paper,
           study,
-          total_n,
+          study_n,
         })
       }, new Map())
       .values(),
   ]
-    .map((e) => e.total_n)
-    .reduce((partialSum, a) => partialSum + a, 0)
+    .map((e) => e.study_n)
+    .reduce((partialSum, a) => Math.round(partialSum) + a, 0)
 
   const effectsCount = data.length
   const papersCount = getUniqueData(data, "paper")

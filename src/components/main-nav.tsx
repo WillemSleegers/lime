@@ -3,10 +3,9 @@
 import * as React from "react"
 import Link from "next/link"
 
-import { Button, buttonVariants } from "./ui/button"
+import { Button } from "./ui/button"
 import { useState } from "react"
 import { Lime } from "./lime"
-import { cn } from "@/lib/utils"
 
 const items = [
   {
@@ -14,7 +13,7 @@ const items = [
     href: "/about/",
   },
   {
-    title: "Data Explorer",
+    title: "Data explorer",
     href: "/data/",
   },
   {
@@ -40,15 +39,16 @@ export function MainNav() {
 
   return (
     <div
-      className={`flex flex-col items-stretch justify-between gap-3 p-3 align-middle md:flex-row md:items-center`}
+      className={`flex flex-col items-stretch justify-between gap-3 p-3 md:flex-row md:items-center`}
     >
-      <div className="flex items-center justify-between">
-        <div className="flex flex-row items-center gap-3 p-1">
-          <Link href="/" className="text-2xl font-semibold leading-normal">
-            LIME
-          </Link>
+      <div className="flex h-10 items-center justify-between">
+        <Link
+          href="/"
+          className="flex flex-row items-center gap-3 text-2xl font-semibold leading-normal"
+        >
           <Lime />
-        </div>
+          LIME
+        </Link>
 
         <Button
           className="flex md:hidden"
@@ -78,14 +78,11 @@ export function MainNav() {
       </div>
 
       <nav
-        className={`m-auto flex-wrap justify-center md:m-0 md:flex ${open ? "flex" : "hidden"}`}
+        className={`flex-wrap justify-center gap-4 space-x-1 md:flex ${open ? "flex" : "hidden"}`}
       >
         {items.map((e) => (
           <Link
-            className={cn(
-              buttonVariants({ variant: "ghost" }),
-              "whitespace-nowrap text-base",
-            )}
+            className="text-muted-foreground transition-colors hover:text-foreground"
             href={e.href}
             key={e.title}
           >

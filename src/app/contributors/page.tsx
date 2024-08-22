@@ -7,16 +7,15 @@ import bastian from "@/assets/images/bastian.jpeg"
 
 import { LinkIcon } from "lucide-react"
 import Link from "next/link"
-import { buttonVariants } from "@/components/ui/button"
 
 const Contributors = () => {
   return (
-    <main className="m-auto max-w-3xl space-y-12 px-3 py-9">
+    <main className="container max-w-3xl space-y-12 py-12">
       <h1 className="text-center text-4xl font-bold tracking-tight">
         Contributors
       </h1>
       <div className="flex flex-wrap justify-center gap-6">
-        <div className="max-w-64 space-y-3">
+        <div className="max-w-48 space-y-3">
           <Image
             className="rounded-lg"
             src={willem}
@@ -37,7 +36,7 @@ const Contributors = () => {
           </Link>
         </div>
 
-        <div className="max-w-64 space-y-3">
+        <div className="max-w-48 space-y-3">
           <Image
             className="rounded-lg"
             src={bastian}

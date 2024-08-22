@@ -8,7 +8,7 @@ import Link from "next/link"
 
 const FAQ = () => {
   return (
-    <main className="m-auto max-w-3xl px-3 py-9">
+    <main className="container max-w-3xl py-12">
       <h1 className="mb-6 text-center text-4xl font-bold">FAQ</h1>
       <Accordion type="single" collapsible className="w-full">
         <h2 className="text-2xl font-semibold tracking-tight">General</h2>

@@ -31,7 +31,6 @@ export const HighlightLineChart = ({
   description,
   chartData,
 }: HighlightLineChartProps) => {
-  console.log(chartData)
   return (
     <Card>
       <CardHeader>

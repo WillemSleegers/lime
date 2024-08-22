@@ -37,7 +37,7 @@ const measurements = getOptions("outcome_measurement_type")
 const aspects = getOptions("intervention_aspect")
 const mediums = getOptions("intervention_medium")
 const appeals = getOptions("intervention_appeal")
-const countries = getOptions("intervention_sample_country")
+const countries = getOptions("sample_intervention_country")
 
 const formSchema = z.object({
   outcomes: z
@@ -117,8 +117,8 @@ export const Filters = (props: FiltersProps) => {
     // Filter on cell size
     subset = subset.filter(
       (datum) =>
-        datum.control_n > values.minimumCellSize &&
-        datum.intervention_n > values.minimumCellSize,
+        datum.effect_control_n > values.minimumCellSize &&
+        datum.effect_intervention_n > values.minimumCellSize,
     )
 
     // Filter on intervention aspect
@@ -133,7 +133,7 @@ export const Filters = (props: FiltersProps) => {
     subset = subset.filter((datum) => {
       return values.mediums.some(
         (medium) =>
-          datum.intervention_medium.includes(medium.toLowerCase()) ||
+          datum.intervention_medium?.includes(medium.toLowerCase()) ||
           datum.intervention_medium == "",
       )
     })
@@ -148,7 +148,7 @@ export const Filters = (props: FiltersProps) => {
 
     // Filter on country (intervention sample only)
     subset = subset.filter((e) =>
-      values.countries.includes(e.intervention_sample_country),
+      values.countries.includes(e.sample_intervention_country),
     )
 
     if (subset.length == 0) {

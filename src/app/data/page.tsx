@@ -92,18 +92,20 @@ export default function DemoPage() {
   }, [selectedColumns])
 
   return (
-    <main className="container mx-auto space-y-6 py-9">
-      <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
-      <p>
-        Use the table below to explore the data. You can select and remove
-        columns with the button below. You can also click on each label in the
-        Paper column to see an overview of each paper.
-      </p>
-      <SelectTableColumns
-        data={COLUMNS_DATA}
-        selectedColumns={selectedColumns}
-        setSelectedColumns={setSelectedColumns}
-      />
+    <main className="container space-y-6 py-12">
+      <div className="m-auto max-w-3xl space-y-6">
+        <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
+        <p>
+          Use the table below to explore the data. You can select and remove
+          columns with the button below. You can also click on each label in the
+          Paper column to see an overview of each paper.
+        </p>
+        <SelectTableColumns
+          data={COLUMNS_DATA}
+          selectedColumns={selectedColumns}
+          setSelectedColumns={setSelectedColumns}
+        />
+      </div>
       <DataTable columns={tableColumns} data={tableData} />
     </main>
   )

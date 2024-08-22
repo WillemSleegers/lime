@@ -20,9 +20,17 @@ export default function Home() {
           A library of social psychological intervention studies to reduce the
           consumption of animal products.
         </p>
-        <Link href="/about/" className={buttonVariants({ variant: "outline" })}>
-          Learn More
-        </Link>
+        <div className="flex justify-center gap-3">
+          <div className="whitespace-nowrap px-3 py-2 font-semibold text-destructive">
+            Currently in beta
+          </div>
+          <Link
+            href="/about/"
+            className={buttonVariants({ variant: "outline" })}
+          >
+            Learn More
+          </Link>
+        </div>
       </section>
       <section className="my-12 bg-muted p-3">
         <div className="m-auto my-6 grid w-full grid-cols-1 gap-6 text-center sm:grid-cols-2 md:max-w-xl lg:max-w-4xl lg:grid-cols-4">

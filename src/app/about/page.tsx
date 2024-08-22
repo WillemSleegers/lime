@@ -2,7 +2,7 @@ import Link from "next/link"
 
 const About = () => {
   return (
-    <main className="m-auto max-w-3xl px-3 py-9">
+    <main className="container max-w-3xl py-12">
       <h1 className="mb-6 text-center text-4xl font-bold">About</h1>
       <p className="italic">
         LIME is currently in beta and you are viewing a prototype of the

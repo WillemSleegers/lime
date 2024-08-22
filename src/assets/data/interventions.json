@@ -717,11 +717,6 @@
     "intervention_appeal": "choice architecture; norms"
   },
   {
-    "paper": 67,
-    "study": 1,
-    "intervention_condition": 3
-  },
-  {
     "paper": 68,
     "study": 1,
     "intervention_condition": 2,
@@ -766,6 +761,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "Participants are introduced to a way to offer love to themselves, other people, or animals. Affect dyad situations were applied where partners sit face to face, and one partner contemplates a situation to a specific theme of the main topics. The other partner listens attentively without giving any verbal or non-verbal feedback.",
+    "intervention_aspect": "none",
     "intervention_medium": "in-person",
     "intervention_appeal": "positive emotional"
   },
@@ -774,7 +770,9 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Elements of meditation: body scan, mindful eating, emphasizing the breath, and sitting and walking meditation training. Every session contained a talk about specific topics such as different forms of meditation and problems that may arise with them. The focus of this mindfulness group was on the rather cognitive elements of mindfulness and its qualities of awareness.",
-    "intervention_medium": "in-person"
+    "intervention_aspect": "none",
+    "intervention_medium": "in-person",
+    "intervention_appeal": "goal pursuit"
   },
   {
     "paper": 75,

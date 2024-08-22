@@ -69,7 +69,7 @@ export const getOptions = (
     | "intervention_aspect"
     | "intervention_medium"
     | "intervention_appeal"
-    | "intervention_sample_country",
+    | "sample_intervention_country",
 ) => {
   let options
 
@@ -121,7 +121,7 @@ export const getOptions = (
       options = [...new Set(options)]
       options = options.map((e) => e)
       break
-    case "intervention_sample_country":
+    case "sample_intervention_country":
       options = [...new Set(data.map((d) => d[x]))]
       options.push(options.splice(options.indexOf("N/A"), 1)[0])
       break
