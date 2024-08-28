@@ -1,9 +1,10 @@
-import "./globals.css"
 import type { Metadata } from "next"
-import Link from "next/link"
+
 import { Inter } from "next/font/google"
+
 import { MainNav } from "@/components/main-nav"
-import Image from "next/image"
+
+import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
