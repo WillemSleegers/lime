@@ -17,8 +17,8 @@ export default function Home() {
           Library of Interventions for Meat Elimination
         </h1>
         <p className="text-lg font-normal text-muted-foreground lg:text-xl">
-          A library of social psychological intervention studies to reduce the
-          consumption of animal products.
+          A library of intervention studies to reduce the consumption of animal
+          products.
         </p>
         <div className="flex justify-center gap-3">
           <div className="whitespace-nowrap px-3 py-2 font-semibold text-destructive">
