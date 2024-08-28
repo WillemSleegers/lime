@@ -174,7 +174,7 @@ export const DataTableColumns: ColumnDef<Column>[] = [
       <DataTableColumnHeader column={column} title="Intervention aspect" />
     ),
     cell: ({ row }) => {
-      const value = row.getValue("intervention_appeal") as string
+      const value = row.getValue("intervention_aspect") as string
       const content = value?.split("; ").map((e) => (
         <Badge
           key={e}
