@@ -1,12 +1,14 @@
 "use client"
 
+import Link from "next/link"
 import { ColumnDef } from "@tanstack/react-table"
-import { DataTableColumnHeader } from "../data-columns-header"
-import { round } from "@/lib/utils"
+import { CheckIcon, X, LinkIcon } from "lucide-react"
+
 import { Badge } from "@/components/ui/badge"
 import { PaperDialog } from "@/components/paper-dialog"
-import Link from "next/link"
-import { CheckIcon, X, LinkIcon } from "lucide-react"
+import { DataTableColumnHeader } from "@/components/tables/data-columns-header"
+
+import { round } from "@/lib/utils"
 
 export type Column = {
   paper_label: string
@@ -30,8 +32,7 @@ export const DataTableColumns: ColumnDef<Column>[] = [
       <DataTableColumnHeader column={column} title="Paper" />
     ),
     cell: ({ row }) => {
-      const value = row.getValue("paper_label") as string
-      return <PaperDialog paper_label={value} />
+      return <PaperDialog row={row} />
     },
   },
   {

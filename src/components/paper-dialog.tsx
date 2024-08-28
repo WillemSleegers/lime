@@ -16,12 +16,14 @@ import { cn } from "@/lib/utils"
 
 import papers from "@/assets/data/papers.json"
 import interventions from "@/assets/data/interventions.json"
+import { Row } from "@tanstack/react-table"
 
 type PaperDialogProps = {
-  paper_label: string
+  row: Row<any>
 }
 
-export const PaperDialog = ({ paper_label }: PaperDialogProps) => {
+export const PaperDialog = ({ row }: PaperDialogProps) => {
+  const paper_label = row.getValue("paper_label") as string
   const paper = papers.find((p) => p.paper_label == paper_label)?.paper
 
   const paper_title = papers.find((p) => p.paper == paper)?.paper_title
@@ -34,12 +36,10 @@ export const PaperDialog = ({ paper_label }: PaperDialogProps) => {
 
   const intervention_description = interventions.filter((p) => p.paper == paper)
 
-  console.log(intervention_description)
-
   return (
     <Dialog>
       <DialogTrigger asChild className="cursor-pointer">
-        <span className="underline-offset-2 hover:underline">
+        <span className="whitespace-nowrap underline-offset-2 hover:underline">
           {paper_label}
         </span>
       </DialogTrigger>

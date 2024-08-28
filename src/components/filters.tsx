@@ -102,6 +102,8 @@ export const Filters = (props: FiltersProps) => {
 
     let subset: typeof data
 
+    console.log([...new Set(data.map((d) => d.paper))])
+
     // Filter on outcome
     subset = data.filter((datum) =>
       values.outcomes.includes(datum.outcome_subcategory),
@@ -137,6 +139,8 @@ export const Filters = (props: FiltersProps) => {
           datum.intervention_medium == "",
       )
     })
+
+    console.log([...new Set(subset.map((d) => d.paper))])
 
     subset = subset.filter((datum) => {
       return values.appeals.some(

@@ -39,6 +39,10 @@ export const Highlights = (props: HighLightsProps) => {
     .map((e) => e.study_n)
     .reduce((partialSum, a) => Math.round(partialSum) + a, 0)
 
+  const studiesCount = [
+    ...new Set(data.map((datum) => datum.paper + "-" + datum.study)),
+  ].length
+
   const effectsCount = data.length
   const papersCount = getUniqueData(data, "paper")
   const openAccessCount = getCount(data, "paper", "paper_open_access", "yes")
@@ -60,6 +64,10 @@ export const Highlights = (props: HighLightsProps) => {
           <HighlightText
             title={papersCount.toString()}
             description={"Number of papers"}
+          />
+          <HighlightText
+            title={studiesCount.toString()}
+            description={"Number of studies"}
           />
           <HighlightText
             title={effectsCount.toString()}

@@ -21,7 +21,7 @@
     "paper": 3,
     "study": 1,
     "intervention_condition": 2,
-    "intervention_description": "A 2D flat-screen condition",
+    "intervention_description": "Participants watched a video about pigs in animal agriculture on a tablet.",
     "intervention_aspect": "animal welfare",
     "intervention_medium": "video",
     "intervention_appeal": "factual; negative emotional"
@@ -30,7 +30,7 @@
     "paper": 3,
     "study": 1,
     "intervention_condition": 3,
-    "intervention_description": "A 360-degree virtual reality condition",
+    "intervention_description": "Participants watched a 360 degrees video about pigs in animal agriculture. They wore Samsung headsets, which allow viewers to pan in any direction for the duration of each frame",
     "intervention_aspect": "animal welfare",
     "intervention_medium": "3D video",
     "intervention_appeal": "factual; negative emotional; perspective taking"
@@ -536,6 +536,7 @@
     "intervention_condition": 3,
     "intervention_description": "Moving the icon representing the “Green” category from the sixth position in the grid of icons in the menu (out of 10) to the first position",
     "intervention_aspect": "none",
+    "intervention_medium": "food options",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -670,6 +671,7 @@
     "intervention_condition": 2,
     "intervention_description": "A vegetarian dish was listed as the first item on the menu and was also visible to customers at the counter",
     "intervention_aspect": "none",
+    "intervention_medium": "food options",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -678,6 +680,7 @@
     "intervention_condition": 2,
     "intervention_description": "A vegetarian dish was listed as the first item on the menu",
     "intervention_aspect": "none",
+    "intervention_medium": "food options",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -722,6 +725,7 @@
     "intervention_condition": 2,
     "intervention_description": "Students passed by a vegetarian option first when entering",
     "intervention_aspect": "none",
+    "intervention_medium": "food options",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -730,6 +734,7 @@
     "intervention_condition": 4,
     "intervention_description": "Students passed by a vegetarian option first when entering",
     "intervention_aspect": "none",
+    "intervention_medium": "food options",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -738,6 +743,7 @@
     "intervention_condition": 6,
     "intervention_description": "Students passed by a vegetarian option first when entering",
     "intervention_aspect": "none",
+    "intervention_medium": "food options",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -746,6 +752,7 @@
     "intervention_condition": 2,
     "intervention_description": "Students passed by a vegetarian option first when entering",
     "intervention_aspect": "none",
+    "intervention_medium": "food options",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -754,6 +761,7 @@
     "intervention_condition": 4,
     "intervention_description": "Students passed by a vegetarian option first when entering",
     "intervention_aspect": "none",
+    "intervention_medium": "food options",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -816,6 +824,7 @@
     "intervention_condition": 2,
     "intervention_description": "RSVP survey for an event in which the vegetarian option was the default meal preference",
     "intervention_aspect": "none",
+    "intervention_medium": "food options",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -842,6 +851,7 @@
     "intervention_condition": 1,
     "intervention_description": "The menu differed by listing the daily vegetarian and fish dishes but not the meat dish and a sentence stating, “An option containing meat is available on request.”",
     "intervention_aspect": "none",
+    "intervention_medium": "food options",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -850,6 +860,7 @@
     "intervention_condition": 1,
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the sustainable plant-based default conditions, the plant-based sausage was selected and a pop-up message said \"We have selected the most sustainable sausage for you”.",
     "intervention_aspect": "none",
+    "intervention_medium": "food options; text",
     "intervention_appeal": "choice architecture"
   },
   {
@@ -858,7 +869,7 @@
     "intervention_condition": 2,
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the two conditions with framing, a pop-up message read: “We have selected the most sustainable/tastiest sausage for you ”. All par ticipants could opt-out by clicking on text that read: “Rather have a plant-based/pork sausage?“. Our baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo",
     "intervention_aspect": "environment",
-    "intervention_medium": "text",
+    "intervention_medium": "food options; text",
     "intervention_appeal": "choice architecture; factual"
   },
   {
@@ -867,7 +878,7 @@
     "intervention_condition": 3,
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the sustainable plant-based default conditions, the plant-based sausage was selected and a pop-up message said \"We have selected the tastiest sausage for you”.",
     "intervention_aspect": "none",
-    "intervention_medium": "text",
+    "intervention_medium": "food options; text",
     "intervention_appeal": "choice architecture; taste"
   }
 ]

@@ -48,7 +48,7 @@
     "paper": 5,
     "study": 1,
     "outcome": 1,
-    "outcome_label": "animal Attitude Scale",
+    "outcome_label": "animal attitude scale",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "animal attitude",
     "outcome_measurement_type": "survey"
@@ -57,7 +57,7 @@
     "paper": 5,
     "study": 1,
     "outcome": 2,
-    "outcome_label": "animal Products Consumption",
+    "outcome_label": "animal products consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "survey"
