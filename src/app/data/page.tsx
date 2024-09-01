@@ -18,7 +18,7 @@ export default function DemoPage() {
         <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
         <p>
           Use the table below to explore the data. You can filter out rows and
-          select columns of interest using the 'Filter table' section. You can
+          select columns of interest using the Filter table section. You can
           also click on the labels of each paper for more information about the
           paper.
         </p>

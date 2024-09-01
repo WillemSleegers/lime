@@ -1,10 +1,5 @@
 import { useState } from "react"
-import {
-  dataProps,
-  getCount,
-  getCounts,
-  getUniqueData,
-} from "@/lib/json-functions"
+import { Data, getCount, getCounts, getUniqueData } from "@/lib/json-functions"
 import { HighlightLineChart } from "@/components/highlights/highlight-line-chart"
 import {
   Collapsible,
@@ -17,7 +12,7 @@ import { HighlightText } from "@/components/highlights/highlight-text"
 import { HighlightPercentage } from "@/components/highlights/highlight-radial-percentage"
 
 type HighLightsProps = {
-  data: dataProps
+  data: Data
 }
 
 export const Highlights = (props: HighLightsProps) => {

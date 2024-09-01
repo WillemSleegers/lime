@@ -19,7 +19,7 @@ import {
 } from "./ui/collapsible"
 import { ChevronRight } from "lucide-react"
 import { cn, round } from "@/lib/utils"
-import { dataProps } from "@/lib/json-functions"
+import { Data } from "@/lib/json-functions"
 import {
   NameType,
   ValueType,
@@ -35,7 +35,7 @@ import {
 import effects from "../assets/data/prepared-effects.json"
 
 type ForestPlotProps = {
-  data: dataProps
+  data: Data
 }
 
 export const ForestPlot = (props: ForestPlotProps) => {

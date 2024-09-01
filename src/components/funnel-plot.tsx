@@ -17,7 +17,7 @@ import {
 } from "./ui/collapsible"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { dataProps } from "@/lib/json-functions"
+import { Data } from "@/lib/json-functions"
 import {
   NameType,
   ValueType,
@@ -25,7 +25,7 @@ import {
 
 type FunnelPlotProps = {
   effect: number
-  data: dataProps
+  data: Data
 }
 
 export const FunnelPlot = (props: FunnelPlotProps) => {
