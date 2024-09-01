@@ -39,7 +39,9 @@ import {
   OUTCOME_COLUMNS,
   OUTCOME_COLUMNS_DEFAULT,
   SAMPLE_COLUMNS,
+  SAMPLE_COLUMNS_DEFAULT,
   EFFECT_COLUMNS,
+  EFFECT_COLUMNS_DEFAULT,
 } from "@/lib/constants"
 import { DataTableColumns } from "./tables/databank/data-columns"
 
@@ -125,9 +127,9 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
       outcome_columns: OUTCOME_COLUMNS_DEFAULT,
       outcomes: ["meat consumption", "meat consumption intention"],
       measurements: ["survey"],
-      sample_columns: [],
+      sample_columns: SAMPLE_COLUMNS_DEFAULT,
       sample_country: countries.map((country) => country.value),
-      effect_columns: [],
+      effect_columns: EFFECT_COLUMNS_DEFAULT,
       effect_size: [
         round(Math.min(...data.map((datum) => datum.effect_size_value)), 2),
         round(Math.max(...data.map((datum) => datum.effect_size_value)), 2),

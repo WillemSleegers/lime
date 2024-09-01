@@ -16,6 +16,8 @@ import { cn } from "@/lib/utils"
 
 import papers from "@/assets/data/papers.json"
 import interventions from "@/assets/data/interventions.json"
+import outcomes from "@/assets/data/outcomes.json"
+
 import { Row } from "@tanstack/react-table"
 
 type PaperDialogProps = {
@@ -35,6 +37,8 @@ export const PaperDialog = ({ row }: PaperDialogProps) => {
   const paper_link = papers.find((p) => p.paper == paper)?.paper_link
 
   const intervention_description = interventions.filter((p) => p.paper == paper)
+
+  const outcome_description = outcomes.filter((p) => p.paper == paper)
 
   return (
     <Dialog>
@@ -74,11 +78,24 @@ export const PaperDialog = ({ row }: PaperDialogProps) => {
             {intervention_description && (
               <>
                 <span className="mt-3 block border-b text-xl font-semibold text-foreground">
-                  Interventions
+                  Intervention(s)
                 </span>
                 {intervention_description.map((e, i) => (
-                  <span key={e.paper + "-" + i} className="block">
+                  <span key={e.paper + "-" + i} className="mt-3 block">
                     {e.intervention_description}
+                  </span>
+                ))}
+              </>
+            )}
+
+            {outcome_description && (
+              <>
+                <span className="mt-3 block border-b text-xl font-semibold text-foreground">
+                  Outcome(s)
+                </span>
+                {outcome_description.map((e, i) => (
+                  <span key={e.paper + "-" + i} className="mt-3 block">
+                    {e.outcome_description}
                   </span>
                 ))}
               </>
