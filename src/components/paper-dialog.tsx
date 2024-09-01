@@ -32,8 +32,6 @@ export const PaperDialog = ({ row }: PaperDialogProps) => {
 
   const paper_authors = papers.find((p) => p.paper == paper)?.paper_authors
 
-  const paper_source = papers.find((p) => p.paper == paper)?.paper_source
-
   const paper_link = papers.find((p) => p.paper == paper)?.paper_link
 
   const intervention_description = interventions.filter((p) => p.paper == paper)
