@@ -12,16 +12,26 @@ import { round } from "@/lib/utils"
 
 export type Column = {
   paper_label: string
-  paper_authors: string
   paper_title: string
+  paper_authors: string
   paper_year: number
-  paper_source: string
-  paper_link: string
+  paper_source?: string
+  paper_link?: string
   paper_open_access: string
-  paper_data_available: string
+  paper_data_available?: string
   study: number
+  study_n: number
+  intervention_appeal: string
+  intervention_medium: string
+  intervention_aspect: string
   outcome_label: string
+  outcome_category: string
+  outcome_subcategory: string
+  outcome_measurement_type: string
+  sample_intervention_country: string
   effect_size_value: number
+  effect_control_n: number
+  effect_intervention_n: number
 }
 
 export const DataTableColumns: ColumnDef<Column>[] = [
@@ -129,6 +139,13 @@ export const DataTableColumns: ColumnDef<Column>[] = [
     ),
   },
   {
+    id: "study_n",
+    accessorKey: "study_n",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Sample size" />
+    ),
+  },
+  {
     id: "intervention_appeal",
     accessorKey: "intervention_appeal",
     header: ({ column }) => (
@@ -217,6 +234,13 @@ export const DataTableColumns: ColumnDef<Column>[] = [
     ),
   },
   {
+    id: "sample_intervention_country",
+    accessorKey: "sample_intervention_country",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Country" />
+    ),
+  },
+  {
     id: "effect_size_value",
     accessorKey: "effect_size_value",
     header: ({ column }) => (
@@ -226,5 +250,19 @@ export const DataTableColumns: ColumnDef<Column>[] = [
       const amount = parseFloat(row.getValue("effect_size_value"))
       return round(amount, 2)
     },
+  },
+  {
+    id: "effect_control_n",
+    accessorKey: "effect_control_n",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Cell size (control)" />
+    ),
+  },
+  {
+    id: "effect_intervention_n",
+    accessorKey: "effect_intervention_n",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Cell size (intervention)" />
+    ),
   },
 ]

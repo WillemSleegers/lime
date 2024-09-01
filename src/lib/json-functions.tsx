@@ -1,9 +1,9 @@
-import data from "../assets/data/prepared-effects.json"
+import data from "@/assets/data/prepared-effects.json"
 
-export type dataProps = typeof data
-type dataKeys = keyof dataProps[0]
+export type Data = typeof data
+type dataKeys = keyof Data[0]
 
-export const getUniqueData = (data: dataProps, x: dataKeys) => {
+export const getUniqueData = (data: Data, x: dataKeys) => {
   const array = data.map((e) => {
     return e[x]
   })
@@ -11,7 +11,7 @@ export const getUniqueData = (data: dataProps, x: dataKeys) => {
   return new Set(array).size
 }
 
-export const getCounts = (data: dataProps, by: dataKeys, x: dataKeys) => {
+export const getCounts = (data: Data, by: dataKeys, x: dataKeys) => {
   const unique = data.filter(
     (value, index, self) =>
       index === self.findIndex((t) => t[by] === value[by]),
@@ -33,7 +33,7 @@ export const getCounts = (data: dataProps, by: dataKeys, x: dataKeys) => {
 }
 
 export const getCount = (
-  data: dataProps,
+  data: Data,
   by: dataKeys,
   x: dataKeys,
   y: string | number,
@@ -129,7 +129,9 @@ export const getOptions = (
       options = [...new Set(data.map((d) => d[x]))]
   }
 
-  return options
+  return options.map((option) => {
+    return { label: option, value: option }
+  })
 }
 
 type JSON = string | number | boolean | { [x: string]: JSON } | Array<JSON>
@@ -428,6 +430,29 @@ export function mergeArrays(
         // Merge the objects if they can be merged and push to the result array
         result.push(mergeObjects(obj1, obj2))
       }
+    }
+  }
+
+  return result
+}
+
+export const filterTableData = (data: any, columns: string[]) => {
+  const seen = new Set()
+  const result = []
+
+  for (const obj of data) {
+    const filteredObj = {} as any
+    for (const prop of columns) {
+      if (obj.hasOwnProperty(prop)) {
+        filteredObj[prop] = obj[prop]
+      }
+    }
+
+    const key = columns.map((prop) => `${prop}:${filteredObj[prop]}`).join("|")
+
+    if (!seen.has(key)) {
+      seen.add(key)
+      result.push(filteredObj)
     }
   }
 

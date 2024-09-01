@@ -18,7 +18,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { CommandSeparator } from "cmdk"
-import { ScrollArea } from "@/components/ui/scroll-area"
 
 type SelectTableColumnsProps = {
   data: {
@@ -57,46 +56,42 @@ export const SelectTableColumns = ({
         <Command>
           <CommandInput placeholder="Search columns..." />
           <CommandEmpty>No column found.</CommandEmpty>
-          <CommandGroup>
-            <ScrollArea className="h-72">
-              {data.map((datum) => {
-                return (
-                  <div key={datum.value}>
-                    <CommandSeparator className="px-2 py-1.5 text-sm font-semibold">
-                      {datum.label}
-                    </CommandSeparator>
-                    {datum.columns.map((column) => (
-                      <CommandItem
-                        key={column.value}
-                        value={column.value}
-                        onSelect={(currentValue) => {
-                          selectedColumns.includes(currentValue)
-                            ? setSelectedColumns(
-                                selectedColumns.filter(
-                                  (v) => v != currentValue,
-                                ),
-                              )
-                            : setSelectedColumns([
-                                ...selectedColumns,
-                                currentValue,
-                              ])
-                        }}
-                      >
-                        <Check
-                          className={cn(
-                            "mr-2 h-4 w-4",
-                            selectedColumns.includes(column.value)
-                              ? "opacity-100"
-                              : "opacity-0",
-                          )}
-                        />
-                        {column.label}
-                      </CommandItem>
-                    ))}
-                  </div>
-                )
-              })}
-            </ScrollArea>
+          <CommandGroup className="max-h-80 overflow-y-auto">
+            {data.map((datum) => {
+              return (
+                <div key={datum.value}>
+                  <CommandSeparator className="px-2 py-1.5 text-sm font-semibold">
+                    {datum.label}
+                  </CommandSeparator>
+                  {datum.columns.map((column) => (
+                    <CommandItem
+                      key={column.value}
+                      value={column.value}
+                      onSelect={(currentValue) => {
+                        selectedColumns.includes(currentValue)
+                          ? setSelectedColumns(
+                              selectedColumns.filter((v) => v != currentValue),
+                            )
+                          : setSelectedColumns([
+                              ...selectedColumns,
+                              currentValue,
+                            ])
+                      }}
+                    >
+                      <Check
+                        className={cn(
+                          "mr-2 h-4 w-4",
+                          selectedColumns.includes(column.value)
+                            ? "opacity-100"
+                            : "opacity-0",
+                        )}
+                      />
+                      {column.label}
+                    </CommandItem>
+                  ))}
+                </div>
+              )
+            })}
           </CommandGroup>
         </Command>
       </PopoverContent>

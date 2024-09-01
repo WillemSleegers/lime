@@ -29,6 +29,7 @@ import data from "../assets/data/prepared-effects.json"
 
 import { getOptions } from "@/lib/json-functions"
 import { MultiPillsForm } from "./form/multi-pills-form"
+import { Separator } from "./ui/separator"
 
 const behaviors = getOptions("behaviors")
 const intentions = getOptions("intentions")
@@ -91,18 +92,14 @@ export const Filters = (props: FiltersProps) => {
       aspects: ["animal welfare"],
       mediums: ["text"],
       appeals: ["factual"],
-      countries: countries,
+      countries: countries.map((country) => country.value),
       minimumCellSize: 50,
     },
     mode: "onSubmit",
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("Submit")
-
     let subset: typeof data
-
-    console.log([...new Set(data.map((d) => d.paper))])
 
     // Filter on outcome
     subset = data.filter((datum) =>
@@ -139,8 +136,6 @@ export const Filters = (props: FiltersProps) => {
           datum.intervention_medium == "",
       )
     })
-
-    console.log([...new Set(subset.map((d) => d.paper))])
 
     subset = subset.filter((datum) => {
       return values.appeals.some(
@@ -210,148 +205,80 @@ export const Filters = (props: FiltersProps) => {
 
   return (
     <Collapsible
-      className="rounded-lg bg-gray-100 p-3"
+      className="rounded-lg border bg-gray-100 p-3"
       open={open}
       onOpenChange={setOpen}
     >
-      <CollapsibleTrigger>
-        <div className="m-1 flex flex-row items-center gap-1">
-          <h2 className="text-2xl font-bold tracking-tight">
-            Inclusion criteria
-          </h2>
-          <ChevronRight
-            className={cn("transition", open ? "rotate-90" : "rotate-0")}
-          />
-        </div>
+      <CollapsibleTrigger className="m-1 flex flex-row items-center gap-1">
+        <h2 className="text-2xl font-bold tracking-tight">
+          Inclusion criteria
+        </h2>
+        <ChevronRight
+          className={cn("transition", open ? "rotate-90" : "rotate-0")}
+        />
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="m-1 mt-4 space-y-4"
+            className="m-1 mt-4 space-y-1"
           >
-            <div>
-              <h3 className="mb-3 text-xl font-semibold">Outcomes</h3>
-              <FormField
-                control={form.control}
-                name="outcomes"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <>
-                        <FormLabel className="text-base">
-                          Behavior outcomes
-                        </FormLabel>
-                        <FormDescription></FormDescription>
-                        <MultiPillsForm field={field} options={behaviors} />
-                        <FormLabel className="text-base">
-                          Intention outcomes
-                        </FormLabel>
-                        <FormDescription></FormDescription>
-                        <MultiPillsForm field={field} options={intentions} />
-                        <FormLabel className="text-base">
-                          Attitude/belief outcomes
-                        </FormLabel>
-                        <FormDescription></FormDescription>
-                        <MultiPillsForm field={field} options={attitudes} />
-                      </>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <hr className="mb-3 mt-1" />
-              <FormField
-                control={form.control}
-                name="measurements"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <>
-                        <FormLabel className="text-base">
-                          Measurement type
-                        </FormLabel>
-                        <FormDescription></FormDescription>
-                        <MultiPillsForm field={field} options={measurements} />
-                      </>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div>
-              <h3 className="mb-3 text-xl font-semibold">Interventions</h3>
-              <FormField
-                control={form.control}
-                name="aspects"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <>
-                        <FormLabel className="text-base">
-                          Intervention aspect
-                        </FormLabel>
-                        <FormDescription></FormDescription>
-                        <MultiPillsForm field={field} options={aspects} />
-                      </>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="mediums"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <>
-                        <FormLabel className="text-base">
-                          Intervention medium
-                        </FormLabel>
-                        <FormDescription></FormDescription>
-                        <MultiPillsForm field={field} options={mediums} />
-                      </>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="appeals"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <>
-                        <FormLabel className="text-base">
-                          Intervention appeal
-                        </FormLabel>
-                        <FormDescription></FormDescription>
-                        <MultiPillsForm field={field} options={appeals} />
-                      </>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <div>
-              <div>
-                <h3 className="text-xl font-semibold">Samples</h3>
-              </div>
-              <div className="flex gap-3">
+            <div className="space-y-6">
+              <div className="space-y-3">
+                <h3 className="mb-3 text-xl font-semibold">Outcomes</h3>
                 <FormField
                   control={form.control}
-                  name="countries"
+                  name="outcomes"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <div className="space-y-3">
+                          <div>
+                            <FormLabel className="text-base">
+                              Behavior outcomes
+                            </FormLabel>
+
+                            <MultiPillsForm field={field} options={behaviors} />
+                          </div>
+                          <div>
+                            <FormLabel className="text-base">
+                              Intention outcomes
+                            </FormLabel>
+
+                            <MultiPillsForm
+                              field={field}
+                              options={intentions}
+                            />
+                          </div>
+                          <div>
+                            <FormLabel className="text-base">
+                              Attitude/belief outcomes
+                            </FormLabel>
+
+                            <MultiPillsForm field={field} options={attitudes} />
+                          </div>
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Separator />
+                <FormField
+                  control={form.control}
+                  name="measurements"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
                         <>
-                          <FormLabel className="text-base">Country</FormLabel>
+                          <FormLabel className="text-base">
+                            Measurement type
+                          </FormLabel>
                           <FormDescription></FormDescription>
-                          <MultiPillsForm field={field} options={countries} />
+                          <MultiPillsForm
+                            field={field}
+                            options={measurements}
+                          />
                         </>
                       </FormControl>
                       <FormMessage />
@@ -359,15 +286,95 @@ export const Filters = (props: FiltersProps) => {
                   )}
                 />
               </div>
+              <div>
+                <h3 className="mb-3 text-xl font-semibold">Interventions</h3>
+                <FormField
+                  control={form.control}
+                  name="aspects"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <>
+                          <FormLabel className="text-base">
+                            Intervention aspect
+                          </FormLabel>
+                          <FormDescription></FormDescription>
+                          <MultiPillsForm field={field} options={aspects} />
+                        </>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="mediums"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <>
+                          <FormLabel className="text-base">
+                            Intervention medium
+                          </FormLabel>
+                          <FormDescription></FormDescription>
+                          <MultiPillsForm field={field} options={mediums} />
+                        </>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="appeals"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <>
+                          <FormLabel className="text-base">
+                            Intervention appeal
+                          </FormLabel>
+                          <FormDescription></FormDescription>
+                          <MultiPillsForm field={field} options={appeals} />
+                        </>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div>
+                <div>
+                  <h3 className="text-xl font-semibold">Samples</h3>
+                </div>
+                <div className="flex gap-3">
+                  <FormField
+                    control={form.control}
+                    name="countries"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <>
+                            <FormLabel className="text-base">Country</FormLabel>
+                            <FormDescription></FormDescription>
+                            <MultiPillsForm field={field} options={countries} />
+                          </>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
+              <FilterInput
+                form={form}
+                name="minimumCellSize"
+                label="Minimum cell size"
+                description="This is the minimum cell size in either the control or intervention condition."
+                placeholder="1"
+                type="number"
+              />
             </div>
-            <FilterInput
-              form={form}
-              name="minimumCellSize"
-              label="Minimum cell size"
-              description="This is the minimum cell size in either the control or intervention condition."
-              placeholder="1"
-              type="number"
-            />
             <FormField
               name="error"
               render={() => (
