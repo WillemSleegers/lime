@@ -121,12 +121,16 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
       study_columns: STUDY_COLUMNS_DEFAULT,
       study_n: 1,
       intervention_columns: INTERVENTION_COLUMNS_DEFAULT,
-      intervention_aspect: ["animal welfare"],
-      intervention_medium: ["text"],
-      intervention_appeal: ["factual"],
+      intervention_aspect: intervention_aspects.map((e) => e.value),
+      intervention_medium: intervention_mediums.map((e) => e.value),
+      intervention_appeal: intervention_appeals.map((e) => e.value),
       outcome_columns: OUTCOME_COLUMNS_DEFAULT,
-      outcomes: ["meat consumption", "meat consumption intention"],
-      measurements: ["survey"],
+      outcomes: [
+        ...behaviors.map((e) => e.value),
+        ...intentions.map((e) => e.value),
+        ...attitudes.map((e) => e.value),
+      ],
+      measurements: measurements.map((e) => e.value),
       sample_columns: SAMPLE_COLUMNS_DEFAULT,
       sample_country: countries.map((country) => country.value),
       effect_columns: EFFECT_COLUMNS_DEFAULT,
@@ -166,19 +170,18 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
 
     // Intervention-level filters
     subset = subset.filter((datum) => {
-      return values.intervention_aspect.some(
-        (aspect) =>
-          datum.intervention_aspect.includes(aspect.toLowerCase()) ||
-          datum.intervention_aspect == "",
+      return values.intervention_aspect.some((aspect) =>
+        datum.intervention_aspect.includes(aspect),
       )
     })
 
     subset = subset.filter((datum) => {
-      return values.intervention_medium.some(
-        (medium) =>
-          datum.intervention_medium?.includes(medium.toLowerCase()) ||
-          datum.intervention_medium == "",
-      )
+      return values.intervention_medium.some((aspect) => {
+        console.log(values.intervention_medium)
+        console.log(aspect)
+
+        return datum.intervention_medium.includes(aspect)
+      })
     })
 
     subset = subset.filter((datum) => {
@@ -190,7 +193,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
     })
 
     // Outcome-level filters
-    subset = data.filter((datum) =>
+    subset = subset.filter((datum) =>
       values.outcomes.includes(datum.outcome_subcategory),
     )
 
