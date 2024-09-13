@@ -30,7 +30,7 @@ const Contributors = () => {
             href="https://willemsleegers.com"
             target="_blank"
           >
-            <Badge>
+            <Badge variant={"secondary"}>
               Website <LinkIcon height={12} />
             </Badge>
           </Link>
@@ -51,7 +51,7 @@ const Contributors = () => {
             href="https://bastianjaeger.wordpress.com"
             target="_blank"
           >
-            <Badge>
+            <Badge variant={"secondary"}>
               Website <LinkIcon height={12} />
             </Badge>
           </Link>

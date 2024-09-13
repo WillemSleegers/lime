@@ -57,37 +57,19 @@ const countries = getOptions("sample_intervention_country")
 const formSchema = z.object({
   paper_columns: z.string().array(),
   paper_year: z.number().array(),
-  paper_open_access: z.string().optional(),
+  paper_open_access: z.string().array(),
   paper_data_available: z.string().optional(),
   study_columns: z.string().array(),
   study_n: z.coerce.number().min(1),
   intervention_columns: z.string().array(),
-  intervention_aspect: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one intervention aspect." }),
-  intervention_medium: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one intervention medium." }),
-  intervention_appeal: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one intervention appeal." }),
+  intervention_aspect: z.string().array(),
+  intervention_medium: z.string().array(),
+  intervention_appeal: z.string().array(),
   outcome_columns: z.string().array(),
-  outcomes: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one outcome." }),
-  measurements: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one outcome measurement." }),
+  outcomes: z.string().array(),
+  measurements: z.string().array(),
   sample_columns: z.string().array(),
-  sample_country: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one country." }),
+  sample_country: z.string().array(),
   effect_columns: z.string().array(),
   effect_cell_size: z.coerce.number().min(1),
   effect_size: z.number().array(),
@@ -118,6 +100,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
         Math.min(...data.map((datum) => datum.paper_year)),
         Math.max(...data.map((datum) => datum.paper_year)),
       ],
+      paper_open_access: ["yes", "no"],
       study_columns: STUDY_COLUMNS_DEFAULT,
       study_n: 1,
       intervention_columns: INTERVENTION_COLUMNS_DEFAULT,
@@ -144,6 +127,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values.paper_open_access)
     let subset = data
 
     // Paper-level filters
@@ -153,10 +137,12 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
         datum.paper_year <= values.paper_year[1],
     )
 
-    if (values.paper_open_access) {
-      subset = subset.filter(
-        (datum) => datum.paper_open_access == values.paper_open_access,
-      )
+    if (values.paper_open_access.length > 0) {
+      subset = subset.filter((datum) => {
+        return values.paper_open_access.some((open_acess) =>
+          datum.intervention_aspect.includes(open_acess),
+        )
+      })
     }
 
     if (values.paper_data_available) {
@@ -177,9 +163,6 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
 
     subset = subset.filter((datum) => {
       return values.intervention_medium.some((aspect) => {
-        console.log(values.intervention_medium)
-        console.log(aspect)
-
         return datum.intervention_medium.includes(aspect)
       })
     })
@@ -257,7 +240,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
       <CollapsibleContent className="CollapsibleContent">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="mb-3 space-y-4">
+            <div className="mb-3 space-y-3">
               <Collapsible
                 className="space-y-3 rounded-lg bg-gray-100"
                 open={openPaper}
@@ -272,7 +255,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                     )}
                   />
                 </CollapsibleTrigger>
-                <CollapsibleContent className="CollapsibleContent space-y-3 ps-3">
+                <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
                   <FormField
                     control={form.control}
                     name="paper_columns"
@@ -280,7 +263,9 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                       <FormItem>
                         <FormControl>
                           <>
-                            <FormLabel className="text-base">Columns</FormLabel>
+                            <FormLabel className="text-base">
+                              Show columns
+                            </FormLabel>
                             <FormDescription></FormDescription>
                             <MultiPillsForm
                               field={field}
@@ -337,9 +322,10 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             </FormLabel>
                             <FormDescription></FormDescription>
                             <ToggleGroup
-                              type="single"
+                              type="multiple"
                               onValueChange={field.onChange}
                               className="justify-start"
+                              defaultValue={["yes", "no"]}
                             >
                               <ToggleGroupItem
                                 value="yes"
@@ -352,6 +338,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                                 value="no"
                                 aria-label="Exclude open access papers"
                                 className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                                defaultChecked
                               >
                                 no
                               </ToggleGroupItem>
@@ -415,7 +402,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                     )}
                   />
                 </CollapsibleTrigger>
-                <CollapsibleContent className="CollapsibleContent space-y-3 ps-3">
+                <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
                   <FormField
                     control={form.control}
                     name="study_columns"
@@ -423,7 +410,9 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                       <FormItem>
                         <FormControl>
                           <>
-                            <FormLabel className="text-base">Columns</FormLabel>
+                            <FormLabel className="text-base">
+                              Show columns
+                            </FormLabel>
                             <FormDescription></FormDescription>
                             <MultiPillsForm
                               field={field}
@@ -460,7 +449,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                     )}
                   />
                 </CollapsibleTrigger>
-                <CollapsibleContent className="CollapsibleContent space-y-3 ps-3">
+                <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
                   <FormField
                     control={form.control}
                     name="intervention_columns"
@@ -468,7 +457,9 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                       <FormItem>
                         <FormControl>
                           <>
-                            <FormLabel className="text-base">Columns</FormLabel>
+                            <FormLabel className="text-base">
+                              Show columns
+                            </FormLabel>
                             <FormDescription></FormDescription>
                             <MultiPillsForm
                               field={field}
@@ -491,7 +482,6 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             <FormLabel className="text-base">
                               Intervention aspect
                             </FormLabel>
-                            <FormDescription></FormDescription>
                             <MultiPillsForm
                               field={field}
                               options={intervention_aspects}
@@ -512,7 +502,6 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             <FormLabel className="text-base">
                               Intervention medium
                             </FormLabel>
-                            <FormDescription></FormDescription>
                             <MultiPillsForm
                               field={field}
                               options={intervention_mediums}
@@ -533,7 +522,6 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             <FormLabel className="text-base">
                               Intervention appeal
                             </FormLabel>
-                            <FormDescription></FormDescription>
                             <MultiPillsForm
                               field={field}
                               options={intervention_appeals}
@@ -560,7 +548,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                     )}
                   />
                 </CollapsibleTrigger>
-                <CollapsibleContent className="CollapsibleContent space-y-3 ps-3">
+                <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
                   <FormField
                     control={form.control}
                     name="outcome_columns"
@@ -568,8 +556,9 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                       <FormItem>
                         <FormControl>
                           <>
-                            <FormLabel className="text-base">Columns</FormLabel>
-                            <FormDescription></FormDescription>
+                            <FormLabel className="text-base">
+                              Show columns
+                            </FormLabel>
                             <MultiPillsForm
                               field={field}
                               options={OUTCOME_COLUMNS}
@@ -587,9 +576,9 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
-                          <div className="space-y-6">
+                          <div className="space-y-3">
                             <div>
-                              <FormLabel className="text-base">
+                              <FormLabel className="block pb-2 text-base">
                                 Behavior outcomes
                               </FormLabel>
                               <MultiPillsForm
@@ -598,7 +587,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                               />
                             </div>
                             <div>
-                              <FormLabel className="text-base">
+                              <FormLabel className="block pb-2 text-base">
                                 Intention outcomes
                               </FormLabel>
                               <MultiPillsForm
@@ -607,7 +596,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                               />
                             </div>
                             <div>
-                              <FormLabel className="text-base">
+                              <FormLabel className="block pb-2 text-base">
                                 Attitude/belief outcomes
                               </FormLabel>
                               <MultiPillsForm
@@ -631,7 +620,6 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             <FormLabel className="text-base">
                               Measurement type
                             </FormLabel>
-                            <FormDescription></FormDescription>
                             <MultiPillsForm
                               field={field}
                               options={measurements}
@@ -658,7 +646,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                     )}
                   />
                 </CollapsibleTrigger>
-                <CollapsibleContent className="CollapsibleContent space-y-3 ps-3">
+                <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
                   <FormField
                     control={form.control}
                     name="sample_columns"
@@ -666,8 +654,9 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                       <FormItem>
                         <FormControl>
                           <>
-                            <FormLabel className="text-base">Columns</FormLabel>
-                            <FormDescription></FormDescription>
+                            <FormLabel className="text-base">
+                              Show columns
+                            </FormLabel>
                             <MultiPillsForm
                               field={field}
                               options={SAMPLE_COLUMNS}
@@ -714,7 +703,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                     )}
                   />
                 </CollapsibleTrigger>
-                <CollapsibleContent className="CollapsibleContent space-y-3 ps-3">
+                <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
                   <FormField
                     control={form.control}
                     name="effect_columns"
@@ -722,7 +711,9 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                       <FormItem>
                         <FormControl>
                           <>
-                            <FormLabel className="text-base">Columns</FormLabel>
+                            <FormLabel className="text-base">
+                              Show columns
+                            </FormLabel>
                             <FormDescription></FormDescription>
                             <MultiPillsForm
                               field={field}
@@ -780,8 +771,8 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                   <FilterInput
                     form={form}
                     name="effect_cell_size"
-                    label="Minimum cell size"
-                    description="This is the minimum cell size in either the control or intervention condition."
+                    label="Minimum sample size"
+                    description="This is the minimum sample size in either the control or intervention condition."
                     placeholder="1"
                     type="number"
                   />

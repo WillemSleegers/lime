@@ -1,6 +1,6 @@
 "use client"
 
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -56,6 +56,7 @@ export const HighlightLineChart = ({
               tickMargin={8}
               interval="preserveStartEnd"
             />
+            <YAxis tickLine={false} axisLine={false} width={4} />
             <Line
               dataKey="y"
               type="monotone"

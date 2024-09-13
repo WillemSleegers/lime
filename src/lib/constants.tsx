@@ -115,11 +115,11 @@ export const EFFECT_COLUMNS = [
   },
   {
     value: "effect_control_n",
-    label: "Cell size (control)",
+    label: "Sample size (control)",
   },
   {
     value: "effect_intervention_n",
-    label: "Cell size (intervention)",
+    label: "Sample size (intervention)",
   },
 ]
 
@@ -127,4 +127,14 @@ export const EFFECT_COLUMNS_DEFAULT = [
   "effect_size_value",
   "effect_control_n",
   "effect_intervention_n",
+]
+
+export const META_ANALYSIS_OUTCOMES_DEFAULT = [
+  "meat consumption",
+  "animal product consumption",
+  "egg consumption",
+  "dairy consumption",
+  "vegetarian consumption",
+  "diet",
+  "signing a petition",
 ]
