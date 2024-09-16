@@ -1,8 +1,12 @@
 "use client"
 
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { ChevronRight } from "lucide-react"
+
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -18,32 +22,26 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import { useState } from "react"
-import { ChevronRight } from "lucide-react"
-import { cn, round } from "@/lib/utils"
-import { FilterInput } from "./filters/input"
+import { FilterInput } from "@/components/filters/input"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Slider } from "@/components/ui/slider"
 import { Separator } from "@/components/ui/separator"
+import { ToggleGroupAll } from "@/components/forms/toggle-group-all"
+import { DataTableColumns } from "@/components/tables/databank/data-columns"
 
+import { cn, round } from "@/lib/utils"
 import { Data, filterTableData, getOptions } from "@/lib/json-functions"
-import { MultiPillsForm } from "./form/multi-pills-form"
-import { Slider } from "./ui/slider"
-import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group"
 
 import {
   PAPER_COLUMNS,
-  PAPER_COLUMNS_DEFAULT,
   STUDY_COLUMNS,
-  STUDY_COLUMNS_DEFAULT,
   INTERVENTION_COLUMNS,
-  INTERVENTION_COLUMNS_DEFAULT,
   OUTCOME_COLUMNS,
-  OUTCOME_COLUMNS_DEFAULT,
   SAMPLE_COLUMNS,
-  SAMPLE_COLUMNS_DEFAULT,
   EFFECT_COLUMNS,
-  EFFECT_COLUMNS_DEFAULT,
 } from "@/lib/constants"
-import { DataTableColumns } from "./tables/databank/data-columns"
+import { DEFAULT_COLUMNS } from "@/components/forms/data-explorer/constants"
+import { DEFAULT_VALUES } from "@/components/forms/data-explorer/constants"
 
 const intervention_aspects = getOptions("intervention_aspect")
 const intervention_mediums = getOptions("intervention_medium")
@@ -57,31 +55,55 @@ const countries = getOptions("sample_intervention_country")
 const formSchema = z.object({
   paper_columns: z.string().array(),
   paper_year: z.number().array(),
-  paper_open_access: z.string().array(),
-  paper_data_available: z.string().optional(),
+  paper_open_access: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  paper_data_available: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
   study_columns: z.string().array(),
   study_n: z.coerce.number().min(1),
   intervention_columns: z.string().array(),
-  intervention_aspect: z.string().array(),
-  intervention_medium: z.string().array(),
-  intervention_appeal: z.string().array(),
+  intervention_aspect: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one intervention aspect." }),
+  intervention_medium: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one intervention medium." }),
+  intervention_appeal: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one intervention appeal." }),
   outcome_columns: z.string().array(),
-  outcomes: z.string().array(),
-  measurements: z.string().array(),
+  outcomes: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one outcome." }),
+  measurements: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one measurement type." }),
   sample_columns: z.string().array(),
-  sample_country: z.string().array(),
+  sample_country: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one country." }),
   effect_columns: z.string().array(),
   effect_cell_size: z.coerce.number().min(1),
   effect_size: z.number().array(),
 })
 
-type DataExplorerFilterProps = {
+type FilterProps = {
   data: Data
   setColumns: Function
   setData: Function
 }
 
-export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
+export const Filter = (props: FilterProps) => {
   const { data, setColumns, setData } = props
 
   const [open, setOpen] = useState(false)
@@ -94,40 +116,40 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    mode: "onChange",
     defaultValues: {
-      paper_columns: PAPER_COLUMNS_DEFAULT,
+      paper_columns: DEFAULT_COLUMNS.paper,
       paper_year: [
         Math.min(...data.map((datum) => datum.paper_year)),
         Math.max(...data.map((datum) => datum.paper_year)),
       ],
-      paper_open_access: ["yes", "no"],
-      study_columns: STUDY_COLUMNS_DEFAULT,
+      paper_open_access: DEFAULT_VALUES.paper_open_access,
+      paper_data_available: DEFAULT_VALUES.paper_data_available,
+      study_columns: DEFAULT_COLUMNS.study,
       study_n: 1,
-      intervention_columns: INTERVENTION_COLUMNS_DEFAULT,
+      intervention_columns: DEFAULT_COLUMNS.intervention,
       intervention_aspect: intervention_aspects.map((e) => e.value),
       intervention_medium: intervention_mediums.map((e) => e.value),
       intervention_appeal: intervention_appeals.map((e) => e.value),
-      outcome_columns: OUTCOME_COLUMNS_DEFAULT,
+      outcome_columns: DEFAULT_COLUMNS.outcome,
       outcomes: [
         ...behaviors.map((e) => e.value),
         ...intentions.map((e) => e.value),
         ...attitudes.map((e) => e.value),
       ],
       measurements: measurements.map((e) => e.value),
-      sample_columns: SAMPLE_COLUMNS_DEFAULT,
+      sample_columns: DEFAULT_COLUMNS.sample,
       sample_country: countries.map((country) => country.value),
-      effect_columns: EFFECT_COLUMNS_DEFAULT,
+      effect_columns: DEFAULT_COLUMNS.effect,
       effect_size: [
         round(Math.min(...data.map((datum) => datum.effect_size_value)), 2),
         round(Math.max(...data.map((datum) => datum.effect_size_value)), 2),
       ],
       effect_cell_size: 1,
     },
-    mode: "onSubmit",
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values.paper_open_access)
     let subset = data
 
     // Paper-level filters
@@ -140,15 +162,17 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
     if (values.paper_open_access.length > 0) {
       subset = subset.filter((datum) => {
         return values.paper_open_access.some((open_acess) =>
-          datum.intervention_aspect.includes(open_acess),
+          datum.paper_open_access.includes(open_acess),
         )
       })
     }
 
-    if (values.paper_data_available) {
-      subset = subset.filter(
-        (datum) => datum.paper_data_available == values.paper_data_available,
-      )
+    if (values.paper_data_available.length > 0) {
+      subset = subset.filter((datum) => {
+        return values.paper_data_available.some((open_acess) =>
+          datum.paper_data_available.includes(open_acess),
+        )
+      })
     }
 
     // Study-level filters
@@ -267,7 +291,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                               Show columns
                             </FormLabel>
                             <FormDescription></FormDescription>
-                            <MultiPillsForm
+                            <ToggleGroupAll
                               field={field}
                               options={PAPER_COLUMNS}
                             />
@@ -325,12 +349,13 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                               type="multiple"
                               onValueChange={field.onChange}
                               className="justify-start"
-                              defaultValue={["yes", "no"]}
+                              defaultValue={field.value}
                             >
                               <ToggleGroupItem
                                 value="yes"
                                 aria-label="Include open access papers"
                                 className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                                size="sm"
                               >
                                 yes
                               </ToggleGroupItem>
@@ -338,7 +363,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                                 value="no"
                                 aria-label="Exclude open access papers"
                                 className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                                defaultChecked
+                                size="sm"
                               >
                                 no
                               </ToggleGroupItem>
@@ -361,23 +386,31 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             </FormLabel>
                             <FormDescription></FormDescription>
                             <ToggleGroup
-                              type="single"
+                              type="multiple"
+                              defaultValue={field.value}
                               onValueChange={field.onChange}
                               className="justify-start"
                             >
                               <ToggleGroupItem
                                 value="yes"
-                                aria-label="Include data available papers"
                                 className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                                size="sm"
                               >
                                 yes
                               </ToggleGroupItem>
                               <ToggleGroupItem
                                 value="no"
-                                aria-label="Exclude data available papers"
                                 className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                                size="sm"
                               >
                                 no
+                              </ToggleGroupItem>
+                              <ToggleGroupItem
+                                value="n/a"
+                                className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                                size="sm"
+                              >
+                                n/a
                               </ToggleGroupItem>
                             </ToggleGroup>
                           </>
@@ -414,7 +447,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                               Show columns
                             </FormLabel>
                             <FormDescription></FormDescription>
-                            <MultiPillsForm
+                            <ToggleGroupAll
                               field={field}
                               options={STUDY_COLUMNS}
                             />
@@ -461,7 +494,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                               Show columns
                             </FormLabel>
                             <FormDescription></FormDescription>
-                            <MultiPillsForm
+                            <ToggleGroupAll
                               field={field}
                               options={INTERVENTION_COLUMNS}
                             />
@@ -482,7 +515,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             <FormLabel className="text-base">
                               Intervention aspect
                             </FormLabel>
-                            <MultiPillsForm
+                            <ToggleGroupAll
                               field={field}
                               options={intervention_aspects}
                             />
@@ -502,7 +535,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             <FormLabel className="text-base">
                               Intervention medium
                             </FormLabel>
-                            <MultiPillsForm
+                            <ToggleGroupAll
                               field={field}
                               options={intervention_mediums}
                             />
@@ -522,7 +555,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             <FormLabel className="text-base">
                               Intervention appeal
                             </FormLabel>
-                            <MultiPillsForm
+                            <ToggleGroupAll
                               field={field}
                               options={intervention_appeals}
                             />
@@ -559,7 +592,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             <FormLabel className="text-base">
                               Show columns
                             </FormLabel>
-                            <MultiPillsForm
+                            <ToggleGroupAll
                               field={field}
                               options={OUTCOME_COLUMNS}
                             />
@@ -581,7 +614,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                               <FormLabel className="block pb-2 text-base">
                                 Behavior outcomes
                               </FormLabel>
-                              <MultiPillsForm
+                              <ToggleGroupAll
                                 field={field}
                                 options={behaviors}
                               />
@@ -590,7 +623,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                               <FormLabel className="block pb-2 text-base">
                                 Intention outcomes
                               </FormLabel>
-                              <MultiPillsForm
+                              <ToggleGroupAll
                                 field={field}
                                 options={intentions}
                               />
@@ -599,7 +632,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                               <FormLabel className="block pb-2 text-base">
                                 Attitude/belief outcomes
                               </FormLabel>
-                              <MultiPillsForm
+                              <ToggleGroupAll
                                 field={field}
                                 options={attitudes}
                               />
@@ -620,7 +653,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             <FormLabel className="text-base">
                               Measurement type
                             </FormLabel>
-                            <MultiPillsForm
+                            <ToggleGroupAll
                               field={field}
                               options={measurements}
                             />
@@ -657,7 +690,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                             <FormLabel className="text-base">
                               Show columns
                             </FormLabel>
-                            <MultiPillsForm
+                            <ToggleGroupAll
                               field={field}
                               options={SAMPLE_COLUMNS}
                             />
@@ -676,7 +709,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                         <FormControl>
                           <>
                             <FormLabel className="text-base">Country</FormLabel>
-                            <MultiPillsForm field={field} options={countries} />
+                            <ToggleGroupAll field={field} options={countries} />
                             <FormDescription>
                               N/A means the country information is not
                               available.
@@ -715,7 +748,7 @@ export const DataExplorerFilter = (props: DataExplorerFilterProps) => {
                               Show columns
                             </FormLabel>
                             <FormDescription></FormDescription>
-                            <MultiPillsForm
+                            <ToggleGroupAll
                               field={field}
                               options={EFFECT_COLUMNS}
                             />

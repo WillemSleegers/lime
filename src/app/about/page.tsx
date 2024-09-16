@@ -38,7 +38,7 @@ const About = () => {
         This database can be accessed with the{" "}
         <Link
           className="font-medium underline underline-offset-4"
-          href={"/data/"}
+          href={"/data-explorer/"}
         >
           Data Explorer tool
         </Link>

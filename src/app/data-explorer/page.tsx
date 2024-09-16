@@ -4,12 +4,12 @@ import React, { useState } from "react"
 
 import { DataTableColumns } from "@/components/tables/databank/data-columns"
 import { DataTable } from "@/components/tables/databank/data-table"
-import { DataExplorerFilter } from "@/components/data-explorer-filter"
+import { Filter } from "@/components/forms/data-explorer/filter"
 
 import data from "@/assets/data/prepared-effects.json"
 import { Button } from "@/components/ui/button"
 
-export default function DemoPage() {
+export default function DataExplorer() {
   const [tableColumns, setTableColumns] = useState(DataTableColumns)
   const [tableData, setTableData] = useState(data)
 
@@ -57,11 +57,7 @@ export default function DemoPage() {
       <Button onClick={handleDownload} className="me-0 ms-auto block">
         Download table
       </Button>
-      <DataExplorerFilter
-        data={data}
-        setColumns={setTableColumns}
-        setData={setTableData}
-      />
+      <Filter data={data} setColumns={setTableColumns} setData={setTableData} />
 
       <DataTable columns={tableColumns} data={tableData} />
     </main>

@@ -4,889 +4,889 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
+    "outcome_description": "whether participants reduced their red meat consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "decrease red meat in last few weeks"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 1,
     "study": 1,
     "outcome": 2,
     "outcome_label": "white meat consumption",
+    "outcome_description": "whether participants reduced their white meat consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "decrease white meat in last few weeks"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 2,
     "study": 1,
     "outcome": 1,
     "outcome_label": "total meat consumption",
+    "outcome_description": "total meat consumption based on a food diary in which participants recorded their food intake, including portion sizes, over two weekdays and one weekend day",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "food diary",
-    "outcome_description": "dietary journal"
+    "outcome_measurement_type": "food diary"
   },
   {
     "paper": 3,
     "study": 1,
     "outcome": 1,
     "outcome_label": "pork consumption",
+    "outcome_description": "number of times participants ate meals or snacks that contained any type of pork over the past 30 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Thinking about your diet over the past 30 DAYS, how often did you eat meals or snacks that contained ANY TYPE OF PORK (bacon, ham, pork chops, spare ribs, bacon bits, etc.)?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 4,
     "study": 3,
     "outcome": 1,
     "outcome_label": "likelihood of eating again",
+    "outcome_description": "likelihood of eating the sampled pork again",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Likelihood of eating again"
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 5,
     "study": 1,
     "outcome": 1,
     "outcome_label": "animal attitude scale",
+    "outcome_description": "five items from the Animal Attitude Scale that reference farmed animals (e.g., I think people who object to raising animals for meat are too sentimental)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "animal attitude",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Animal Attitude Scale"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 5,
     "study": 1,
     "outcome": 2,
     "outcome_label": "animal products consumption",
+    "outcome_description": "number of times participants consumed animal products (poultry, fish, beef, pork, eggs, dairy) during the past week",
     "outcome_category": "behavior",
     "outcome_subcategory": "animal product consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Animal Products Consumption"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 7,
     "study": 1,
     "outcome": 1,
     "outcome_label": "attitude",
+    "outcome_description": "agreement with three items (e.g., there is nothing wrong with eating meat.)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "moral judgment",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "There is nothing wrong with eating meat."
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 7,
     "study": 1,
     "outcome": 2,
     "outcome_label": "intended behavior",
+    "outcome_description": "agreement with three items (e.g., I plan to become a vegetarian.)",
     "outcome_category": "intentions",
     "outcome_subcategory": "diet intentions",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "I plan to become a vegetarian."
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 9,
     "study": 2,
     "outcome": 1,
     "outcome_label": "intention",
+    "outcome_description": "agreement with three items (e.g., I intend to eat less than two medium portions of red meat over the next week)",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Three items (adapted from Sparks et al., 1997; e.g., \"I intend to eat less than two medium portions of red meat over the next week … deﬁnitely do not - deﬁnitely do\")"
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 9,
     "study": 2,
     "outcome": 2,
     "outcome_label": "affective attitude",
+    "outcome_description": "agreement with three items (e.g., eating less than two medium portion of red meat in the next weeks is unenjoyable - enjoyable)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Three items (e.g., \"Eating less than two medium portion of red meat in the next weeks is unenjoyable - enjoyable\")"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 9,
     "study": 2,
     "outcome": 3,
     "outcome_label": "instrumental attitude",
+    "outcome_description": "agreement with three items (e.g., eating less than two medium portion of red meat in the next weeks is not worthwhile- worthwhile)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Three items (e.g., \"Eating less than two medium portion of red meat in the next weeks is not worthwhile- worthwhile\")"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 9,
     "study": 2,
     "outcome": 4,
     "outcome_label": "red meat consumption",
+    "outcome_description": "total number of red meat portions weighted by portion size (small, medium, large) based on an online food diary",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "food diary",
-    "outcome_description": "Online food diary"
+    "outcome_measurement_type": "food diary"
   },
   {
     "paper": 10,
     "study": 1,
     "outcome": 1,
     "outcome_label": "intention",
+    "outcome_description": "agreement with three items (e.g., in the next week, I intend to not eat more than one portion of processed meat [50 g])",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Three items (e.g., \"In the next week, I intend to not eat more than one portion of processed meat (50 g)\")"
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 10,
     "study": 1,
     "outcome": 2,
     "outcome_label": "affective attitude",
+    "outcome_description": "agreement with three items (e.g., in the next week, not eating more than one portion of processed meat [50 g] is unenjoyable-enjoyable)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Three items (e.g., \"In the next week, not eating more than one portion of processed meat (50 g) is unenjoyable-enjoyable\")"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 10,
     "study": 1,
     "outcome": 3,
     "outcome_label": "instrumental attitude",
+    "outcome_description": "agreement with three items (e.g., in the next week, not eating more than one portion of processed meat [50 g] is not worthwhile-worthwhile)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Three items (e.g., \"In the next week, not eating more than one portion of processed meat (50 g) is not worthwhile-worthwhile\")"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 10,
     "study": 1,
     "outcome": 4,
     "outcome_label": "processed meat consumption",
+    "outcome_description": "total number of processed meat portions weighted by portion size (small, medium, large) based on an online food diary",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "food diary",
-    "outcome_description": "Online food diary"
+    "outcome_measurement_type": "food diary"
   },
   {
     "paper": 11,
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
+    "outcome_description": "number of meals in a typical week that include beef or pork?",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "In a typical week...how many of your meals include beef or pork?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 11,
     "study": 1,
     "outcome": 2,
     "outcome_label": "poultry consumption",
+    "outcome_description": "number of meals in a typical week that include chicken or turkey?",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "In a typical week...how many of your meals include chicken or turkey?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 11,
     "study": 1,
     "outcome": 3,
     "outcome_label": "fish consumption",
+    "outcome_description": "number of meals in a typical week that include fish?",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "In a typical week...how many of your meals include fish?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 11,
     "study": 1,
     "outcome": 4,
     "outcome_label": "eggs consumption",
+    "outcome_description": "number of meals in a typical week that include eggs?",
     "outcome_category": "behavior",
     "outcome_subcategory": "egg consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "In a typical week...how many of your meals include eggs?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 11,
     "study": 1,
     "outcome": 5,
     "outcome_label": "animal product consumption",
+    "outcome_description": "average number of meals in a typical week that include animal products (red meat, poultry, fish, eggs)",
     "outcome_category": "behavior",
     "outcome_subcategory": "animal product consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Average of the specific animal product categories"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 13,
     "study": 1,
     "outcome": 1,
     "outcome_label": "valence/pleasantness",
+    "outcome_description": "rated valence of the pork meal shown in the image (negative/positive)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat hedonics",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "“How negative/positive is the meal represented in the image?”"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 13,
     "study": 1,
     "outcome": 2,
     "outcome_label": "desire to eat",
+    "outcome_description": "desire to eat the pork meal sown in the image",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat hedonics",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "“How much would you like to eat this meal?”"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 13,
     "study": 1,
     "outcome": 3,
     "outcome_label": "willingness to reduce meat consumption",
+    "outcome_description": "willingness to reduce meat consumption",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "\"Please tell us about your willingness to reduce meat consumption\""
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 13,
     "study": 1,
     "outcome": 4,
     "outcome_label": "willingness to avoid eating meat",
+    "outcome_description": "willingness to avoid eating meat",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "\"Please tell us about your willingness to avoid eating meat\""
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 13,
     "study": 1,
     "outcome": 5,
     "outcome_label": "willingness to follow a plant-based diet",
+    "outcome_description": "willingness to follow a plant-based diet",
     "outcome_category": "intentions",
     "outcome_subcategory": "diet intentions",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "\"Please tell us about your willingness to follow a plant-based diet\""
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 14,
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
+    "outcome_description": "number of meals in a typical week that contain beef or pork",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "In a typical week... how many of your meals include beef or pork?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 14,
     "study": 1,
     "outcome": 2,
     "outcome_label": "poultry consumption",
+    "outcome_description": "number of meals in a typical week that contain chicken or turkey",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "In a typical week... how many of your meals include chicken or turkey?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 14,
     "study": 1,
     "outcome": 3,
     "outcome_label": "fish consumption",
+    "outcome_description": "number of meals in a typical week that contain fish",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "In a typical week... how many of your meals include fish?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 14,
     "study": 1,
     "outcome": 4,
     "outcome_label": "eggs consumption",
+    "outcome_description": "number of meals in a typical week that contain eggs",
     "outcome_category": "behavior",
     "outcome_subcategory": "egg consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "In a typical week... how many of your meals include eggs?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 14,
     "study": 1,
     "outcome": 5,
     "outcome_label": "dairy consumption",
+    "outcome_description": "number of meals in a typical week that contain dairy",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "In a typical week... how many of your meals include dairy?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 14,
     "study": 1,
     "outcome": 6,
     "outcome_label": "animal product consumption",
+    "outcome_description": "average number of meals in a typical week that include animal products (red meat, poultry, fish, eggs, dairy)",
     "outcome_category": "behavior",
     "outcome_subcategory": "animal product consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Average of the specific animal product categories"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 17,
     "study": 1,
     "outcome": 1,
     "outcome_label": "intended meat consumption",
+    "outcome_description": "intention to eat less meat in the next seven days",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "\"In the next seven days, I intend to eat less meat\""
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 17,
     "study": 1,
     "outcome": 2,
     "outcome_label": "attitude toward reducing meat consumption",
+    "outcome_description": "responses to the statement \"Changing my diet to eat less meat is...\" along seven dimensions: very bad—very good, very disadvantageous—very advantageous, very undesirable—very desirable, very negative—very positive, very harmful—very beneficial, very unimportant—very important, very useless—very useful",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "\"Participants responded to the phrase, ‘Changing my diet to eat less meat is:’ followed by the following five-point semantic differential items: ‘very bad—very good, very disadvantageous—very advantageous, very undesirable—very desirable, very negative—very positive, very harmful—very beneficial, very unimportant—very important, very useless—very useful’\""
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 18,
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported change in chicken consumption",
+    "outcome_description": "change in the consumption of chicken in the last 3 months",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "if they changed their consumption in the last 3 months for 14 food categories. Each category could be rated on a 9-point scale, ranging from item response -4 (participants stopped consuming a food category; decrease of 100%) to item response 4 (participants started consuming a food category; increase of 100%)."
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 18,
     "study": 1,
     "outcome": 2,
     "outcome_label": "reported change in beef consumption",
+    "outcome_description": "change in the consumption of beef in the last 3 months",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "if they changed their consumption in the last 3 months for 14 food categories. Each category could be rated on a 9-point scale, ranging from item response -4 (participants stopped consuming a food category; decrease of 100%) to item response 4 (participants started consuming a food category; increase of 100%)."
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 18,
     "study": 1,
     "outcome": 3,
     "outcome_label": "reported change in pork consumption",
+    "outcome_description": "change in the consumption of pork in the last 3 months",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "if they changed their consumption in the last 3 months for 14 food categories. Each category could be rated on a 9-point scale, ranging from item response -4 (participants stopped consuming a food category; decrease of 100%) to item response 4 (participants started consuming a food category; increase of 100%)."
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 18,
     "study": 1,
     "outcome": 4,
     "outcome_label": "reported change in fish consumption",
+    "outcome_description": "change in the consumption of fish in the last 3 months",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "if they changed their consumption in the last 3 months for 14 food categories. Each category could be rated on a 9-point scale, ranging from item response -4 (participants stopped consuming a food category; decrease of 100%) to item response 4 (participants started consuming a food category; increase of 100%)."
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 23,
     "study": 1,
     "outcome": 1,
     "outcome_label": "reduction in meat consumption compared to baseline",
+    "outcome_description": "reduction in average weight of meat consumed for each meal based on the food diary",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "food diary",
-    "outcome_description": "Reduction in average weight of meat consumed for each meal (none, less than 50 g, 50–100 g, 100–150 g, 150–200 g, 200–250 g, 250–300 g, and more than 300 g)"
+    "outcome_measurement_type": "food diary"
   },
   {
     "paper": 25,
     "study": 1,
     "outcome": 1,
     "outcome_label": "beef consumption",
+    "outcome_description": "frequency of beef consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Participants were asked to mark their consumption of beef on a five-point scale from ‘never’ to ‘almost every day’"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 25,
     "study": 1,
     "outcome": 2,
     "outcome_label": "chicken consumption",
+    "outcome_description": "frequency of chicken consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Participants were asked to mark their consumption of chicken on a five-point scale from ‘never’ to ‘almost every day’"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 25,
     "study": 1,
     "outcome": 3,
     "outcome_label": "dairy consumption",
+    "outcome_description": "frequency of dairy consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Participants were asked to mark their consumption of dairy on a five-point scale from ‘never’ to ‘almost every day’"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 25,
     "study": 1,
     "outcome": 4,
     "outcome_label": "egg consumption",
+    "outcome_description": "frequency of egg consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "egg consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Participants were asked to mark their consumption of eggs on a five-point scale from ‘never’ to ‘almost every day’"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 25,
     "study": 1,
     "outcome": 5,
     "outcome_label": "fish consumption",
+    "outcome_description": "frequency of fish consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Participants were asked to mark their consumption of fish on a five-point scale from ‘never’ to ‘almost every day’"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 25,
     "study": 1,
     "outcome": 6,
     "outcome_label": "pork consumption",
+    "outcome_description": "frequency of pork consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Participants were asked to mark their consumption of pork on a five-point scale from ‘never’ to ‘almost every day’"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 25,
     "study": 1,
     "outcome": 7,
     "outcome_label": "red meat consumption",
+    "outcome_description": "average frequency of beef and pork consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Average of the beef and pork categories"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 25,
     "study": 1,
     "outcome": 8,
     "outcome_label": "animal product consumption",
+    "outcome_description": "average frequency of animal product consumption (beef, pork, chicken, eggs, fish, dairy)",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Average of the specific animal product categories"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 26,
     "study": 1,
     "outcome": 1,
     "outcome_label": "purchasing intentions for five meat items",
+    "outcome_description": "likelihood of buying the meat item in the photo",
     "outcome_category": "intentions",
     "outcome_subcategory": "purchasing intentions",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "If you saw this food in the grocery store, how likely would you be to buy it?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 26,
     "study": 2,
     "outcome": 1,
     "outcome_label": "purchasing intentions for five meat items",
+    "outcome_description": "likelihood of buying the meat item in the photo",
     "outcome_category": "intentions",
     "outcome_subcategory": "purchasing intentions",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "If you saw this food in the grocery store, how likely would you be to buy it?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 26,
     "study": 3,
     "outcome": 1,
     "outcome_label": "purchasing intentions for five meat items",
+    "outcome_description": "likelihood of buying the meat item in the photo",
     "outcome_category": "intentions",
     "outcome_subcategory": "purchasing intentions",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "If you saw this food in the grocery store, how likely would you be to buy it?"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 31,
     "study": 2,
     "outcome": 1,
     "outcome_label": "interest in eating less meat",
+    "outcome_description": "interest in eating less meat",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "“How interested are you in eating less meat?”"
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 31,
     "study": 4,
     "outcome": 1,
     "outcome_label": "meat purchase",
+    "outcome_description": "presence of meat in the purchased meal based on the receipt",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Participants’ receipts were collected at the end of each lunch period and coded for the presence of meat."
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 33,
     "study": 1,
     "outcome": 1,
     "outcome_label": "willingness to eat beef",
+    "outcome_description": "average agreement to two questions on the desire to eat beef in the next days and the intention to reduce bef consumption during the coming year",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Average of \"to what extent do you want to eat beef [pork, lamb] within the next days\" and \"regarding your consumption of beef [pork, lamb] products, during the coming year you think you will… [1 decrease, 4 stay constant, 7 increase]\""
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 33,
     "study": 2,
     "outcome": 1,
     "outcome_label": "willingness to eat beef",
+    "outcome_description": "average agreement to two questions on the desire to eat beef in the next days and the intention to reduce bef consumption during the coming year",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Average of \"to what extent do you want to eat beef [pork, lamb] within the next days\" and \"regarding your consumption of beef [pork, lamb] products, during the coming year you think you will… [1 decrease, 4 stay constant, 7 increase]\""
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 37,
     "study": 1,
     "outcome": 1,
     "outcome_label": "willing to eat meat",
+    "outcome_description": "how negative or positive they felt about eating the meat on a slider ranging from extremely negative 0 to extremely positive 100",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat hedonics",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "how negative or positive they felt about eating the meat on a slider ranging from extremely negative 0 to extremely positive 100"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 40,
     "study": 1,
     "outcome": 1,
     "outcome_label": "intention to reduce pork consumption",
+    "outcome_description": "intention to change their pork consumption over the next few months",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "whether they intended to change their pork consumption over the next few months"
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 50,
     "study": 1,
     "outcome": 1,
     "outcome_label": "intended meat consumption",
+    "outcome_description": "intention to choose non-factory farmed or vegetarian foods when available",
     "outcome_category": "intentions",
     "outcome_subcategory": "purchasing intentions",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "“I plan to choose non-factory farmed or vegetarian foods when they are available.”"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 50,
     "study": 1,
     "outcome": 2,
     "outcome_label": "meat purchase with voucher",
+    "outcome_description": "percentage of students who bought a mean containing meat with a restaurant voucher",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Students received a $10 voucher for a restaurant on campus. Purchases with vouchers were tracked."
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 50,
     "study": 1,
     "outcome": 3,
     "outcome_label": "% meat purchase among all food purchases above $4.99 with university dining card",
+    "outcome_description": "percentage of main meals (>$4.99) purchased at the univerity's dining hall that contained meat",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "\"campus vendor Oracle provided us with every student ID card purchase from April 17 to June 7, 2017, and from October 6, to December 29, 2017, for the campus dining locations they serviced\", \"Student IDs were converted to unique identifiers using the same encryption code as was used in the questionnaire portion of the study.\""
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 52,
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported meat consumption in the past week",
+    "outcome_description": "total frequency of consuming eight animal products (chicke, turkey, fish, pork, beef, other meat, dairy, eggs) multiplied by the portion size over the past week",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "“Over the past week, how often did you eat [food category]?” multiplied by “Each time you ate [food category], how much did you usually eat?”"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 52,
     "study": 2,
     "outcome": 1,
     "outcome_label": "intended change in meat and animal product consumption",
+    "outcome_description": "intended change in meat and animal product consumption over the next 7 days",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "“How is your consumption of meat and animal products likely to change over the next 7 days?”"
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 52,
     "study": 3,
     "outcome": 1,
     "outcome_label": "reported meat consumption in the past week",
+    "outcome_description": "total frequency of consuming eight animal products (chicke, turkey, fish, pork, beef, other meat, dairy, eggs) multiplied by the portion size over the past week",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "“Over the past week, how often did you eat [food category]?” multiplied by “Each time you ate [food category], how much did you usually eat?”"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 53,
     "study": 1,
     "outcome": 1,
     "outcome_label": "% vegetarian food sales",
+    "outcome_description": "percentage of vegetarian sales",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "\"total vegetarian sales included the total number of sales of single food alternatives on MAX's menu\""
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 54,
     "study": 1,
     "outcome": 1,
     "outcome_label": "intended meat consumption",
+    "outcome_description": "percentage of participants intending to cosnume less red and processed meat in the future",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Percentage of people who choose less on the question: “Considering your current consumption, do you believe that in the future your consumptionof red and processed meat will be... ” with ‘more’, ‘the same ’, or ‘less ’ as possible response options.\""
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 56,
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported red processed meat consumption",
+    "outcome_description": "total number of red, processed meat portions weighted by portion size (small, medium, large) consumed in the last two weeks based on an online food diary",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "food diary",
-    "outcome_description": "\"Participants were asked to fill in an online food diary for two weeks. They were asked to report all food eaten during the day (breakfast, lunch, dinner, and snacks). Only answers related to RPMC were selected.\""
+    "outcome_measurement_type": "food diary"
   },
   {
     "paper": 58,
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported meat consumption",
+    "outcome_description": "total number of servings they had eaten of 10 common meat types over the past seven days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "food diary",
-    "outcome_description": "\"Participants were sent daily surveys to record their meat intake for each day. Participants estimated the number of servings (0–10+ servings) they had eaten of 10 common meat types (e.g., “Beef”, “Chicken”, etc.) over the past seven days. The number of servings eaten of each meat type was aggregated to\""
+    "outcome_measurement_type": "food diary"
   },
   {
     "paper": 60,
     "study": 1,
     "outcome": 1,
     "outcome_label": "ethicality of eating factory farmed meat",
+    "outcome_description": "agreement with the statement that eating the meat of factory farmed animals is unethical",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "moral judgment",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "“Eating the meat of factory farmed animals is unethical.”"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 60,
     "study": 1,
     "outcome": 2,
     "outcome_label": "intention to not eat factory farmed meat",
+    "outcome_description": "agreement with the statement that for at least the next month, I will eat no factory farmed meat at all – or if I find it too difficult to stick to that, I will eat it at most once per week",
     "outcome_category": "intentions",
     "outcome_subcategory": "diet intentions",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "“For at least the next month, I will eat no factory farmed meat at all – or if I find it too difficult to stick to that, I will eat it at most once per week.”"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 61,
     "study": 1,
     "outcome": 1,
     "outcome_label": "meat consumption willingness",
+    "outcome_description": "extent to which participants want to reduce consumption of animal products from factory farms",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "e.g., “To what extent do you want to reduce your consumption of animal products from factory farms?”"
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 62,
     "study": 1,
     "outcome": 1,
     "outcome_label": "percentage vegetarian sales",
+    "outcome_description": "percentage of times the vegetarian dish was sold (out of a total of three dishes)",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Percentage of times the vegetarian dish was sold (out of a total of three dishes)"
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 63,
     "study": 1,
     "outcome": 1,
     "outcome_label": "percentage vegetarian sales",
+    "outcome_description": "percentage of times the vegetarian dish was sold (out of a total of three dishes)",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Percentage of times the vegetarian dish was sold (out of a total of three dishes)"
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 64,
     "study": 1,
     "outcome": 1,
     "outcome_label": "openness to meat reduction",
+    "outcome_description": "openness to meat reduction measured with five items (interest in learning more about the topic, readiness to reconsider meat consumption habits, readiness to reduce meat consumption in the following 6 months, acceptability of the idea of plant-based protein, acceptability of the idea of lab-grown meat)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "participants indicated their (a) interest in learning more about the topic, (b) their readiness to reconsider meat consumption habits, (c) their readiness to reduce meat consumption in the following 6 months, (d) the acceptability of the idea of plant-based protein, and (e) the acceptability of the idea of lab-grown meat."
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 65,
     "study": 1,
     "outcome": 1,
     "outcome_label": "percentage vegetarian sandwich sales",
+    "outcome_description": "percentage of times the vegetarian sandwich was sold",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Percentage of times the vegetarian sandwich was sold"
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 67,
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian lunch sales",
+    "outcome_description": "percentage of vegetarian lunch meals sold",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "proportion of vegetarian lunch meals sold"
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 68,
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian meal sales",
+    "outcome_description": "percentage of times the vegetarian meal was sold",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Percentage of times the vegetarian meal was sold"
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 68,
     "study": 2,
     "outcome": 1,
     "outcome_label": "vegetarian meal sales",
+    "outcome_description": "percentage of times the vegetarian meal was sold",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Percentage of times the vegetarian meal was sold"
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 70,
     "study": 1,
     "outcome": 1,
     "outcome_label": "eating habit (vegan, vegetarian, or omnivorous)",
+    "outcome_description": "percentage of participants identifying as vegan or vegetarian",
     "outcome_category": "behavior",
     "outcome_subcategory": "diet",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "percentage of participants identifying as vegan or vegetarian"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 75,
     "study": 1,
     "outcome": 1,
     "outcome_label": "total meat dish weight",
+    "outcome_description": "total amount of taken from the meat tray",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Research assistants weighed each  serving  tray of  meat  as it came from the kitchen and again before returning the used serving tray to the kitchen, to determine the total amount of meat taken from the tray."
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 77,
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian dish sales",
+    "outcome_description": "percentage of times the vegetarian dish was sold (out of a total of three dishes: meat, fish, vegetarian)",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Percentage of times the vegetarian dish was sold (out of a total of three dishes: meat, fish, vegetarian)"
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 78,
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian meal selection",
+    "outcome_description": "percentage of times the vegetarian meal was selected",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Percentage of times the vegetarian meal was selected"
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 79,
     "study": 1,
     "outcome": 1,
     "outcome_label": "speciesism",
+    "outcome_description": "score on the Speciesism Scale (e.g., morally, animals always count for less than humans)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "animal attitude",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Speciesism Scale (Caviola et al., 2018)"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 79,
     "study": 1,
     "outcome": 2,
     "outcome_label": "intended reduction in harmful behaviors",
+    "outcome_description": "intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)",
     "outcome_category": "intentions",
     "outcome_subcategory": "animal product intentions",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "extent to which they intended to change their behavior regarding (in)directly harmful behavior toward animals. For each of the seven categories of the intervention, two items were included, except for the category “offered as products” as it was akin to the other categories (e.g., “I intend to consume meat ...” and “Regarding the cruelty-free cosmetic products I intend to buy ...”). As not all people have pets and/or hunt and the categories regarding pets and hunting focused more on attitudes than on behavioral intentions, these items were not included in the final scale."
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 79,
     "study": 1,
     "outcome": 3,
     "outcome_label": "petition",
+    "outcome_description": "willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans",
     "outcome_category": "behavior",
     "outcome_subcategory": "signing a petition",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "asked to read a fictitious animal rights petition that promoted giving animals the same rights as humans. They were asked whether they wanted to sign it or not"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 79,
     "study": 2,
     "outcome": 1,
     "outcome_label": "speciesism",
+    "outcome_description": "score on the Speciesism Scale (e.g., morally, animals always count for less than humans)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "animal attitude",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Speciesism Scale (Caviola et al., 2018)"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 79,
     "study": 2,
     "outcome": 2,
     "outcome_label": "intended reduction in harmful behaviors",
+    "outcome_description": "intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)",
     "outcome_category": "intentions",
     "outcome_subcategory": "animal product intentions",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "extent to which they intended to change their behavior regarding (in)directly harmful behavior toward animals. For each of the seven categories of the intervention, two items were included, except for the category “offered as products” as it was akin to the other categories (e.g., “I intend to consume meat ...” and “Regarding the cruelty-free cosmetic products I intend to buy ...”). As not all people have pets and/or hunt and the categories regarding pets and hunting focused more on attitudes than on behavioral intentions, these items were not included in the final scale. Also an item that measured intention to consume eggs."
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 79,
     "study": 2,
     "outcome": 3,
     "outcome_label": "petition",
+    "outcome_description": "willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans",
     "outcome_category": "behavior",
     "outcome_subcategory": "signing a petition",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "asked to read a fictitious animal rights petition that promoted giving animals the same rights as humans. They were asked whether they wanted to sign it or not"
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 80,
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian sales",
+    "outcome_description": "percentage of times the vegetarian meal was selected",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "sales data",
-    "outcome_description": "Percentage of times the vegetarian meal was selected"
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 81,
     "study": 1,
     "outcome": 1,
     "outcome_label": "plant-based choice",
+    "outcome_description": "percentage of times the meal with the plant-based sausage was selected",
     "outcome_category": "intentions",
-    "outcome_subcategory": "vegetarian consumption intention",
-    "outcome_measurement_type": "survey",
-    "outcome_description": "Percentage of times the meal with the plant-based sausage was selected"
+    "outcome_subcategory": "vegetarian consumption intentions",
+    "outcome_measurement_type": "survey"
   }
 ]

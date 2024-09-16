@@ -1,11 +1,10 @@
 "use client"
 
-import * as React from "react"
+import { useState } from "react"
 import Link from "next/link"
 
-import { Button } from "./ui/button"
-import { useState } from "react"
-import { Lime } from "./lime"
+import { Lime } from "@/components/icons/lime"
+import { Button } from "@/components/ui/button"
 
 const items = [
   {
@@ -14,7 +13,7 @@ const items = [
   },
   {
     title: "Data explorer",
-    href: "/data/",
+    href: "/data-explorer/",
   },
   {
     title: "Meta-analysis",

@@ -25,7 +25,7 @@ const FAQ = () => {
               can explore the studies with the{" "}
               <Link
                 className="font-medium underline underline-offset-4"
-                href="/data/"
+                href="/data-explorer/"
               >
                 Data Explorer tool
               </Link>{" "}
@@ -171,8 +171,8 @@ const FAQ = () => {
               between-subject designs, which compare the scores of participants
               who were exposed to the intervention to scores of a control group
               of participants who were not exposed to an intervention, and
-              within-subject designs, which compare participants' scores before
-              and after an intervention.
+              within-subject designs, which compare participants&apos; scores
+              before and after an intervention.
             </p>
           </AccordionContent>
         </AccordionItem>
@@ -295,7 +295,7 @@ const FAQ = () => {
               population could be more resistant to change (e.g., older adults).
               The original study may have only assessed intentions to reduce
               meat consumption, which could overstate the true effectiveness
-              because people don't always follow up on their intentions.
+              because people don&apos;t always follow up on their intentions.
             </p>
             <p className="leading-5">
               Even when we replicate a study design under very similar
@@ -466,19 +466,19 @@ const FAQ = () => {
           </AccordionTrigger>
           <AccordionContent>
             <p className="leading-5">
-              Effect size measures such as Cohen's d can be used to quantify
-              differences between groups on some variable of interest. For
-              example, if an intervention leads to a larger reduction in meat
-              consumption relative to a control group, this will be reflected in
-              a larger effect size. This{" "}
+              Effect size measures such as Cohen&apos;s d can be used to
+              quantify differences between groups on some variable of interest.
+              For example, if an intervention leads to a larger reduction in
+              meat consumption relative to a control group, this will be
+              reflected in a larger effect size. This{" "}
               <Link
                 className="font-medium underline underline-offset-4"
                 href="https://www.google.com/url?q=https://rpsychologist.com/cohend/&sa=D&source=docs&ust=1725811165465879&usg=AOvVaw0VfZVEum-4rb6a6qNnpIwL"
               >
                 website
               </Link>{" "}
-              provides a visual explanation of how Cohen's d (and other effect
-              size measures that we include here) corresponds to group
+              provides a visual explanation of how Cohen&apos;s d (and other
+              effect size measures that we include here) corresponds to group
               differences of varying sizes.
             </p>
           </AccordionContent>

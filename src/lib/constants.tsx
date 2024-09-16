@@ -29,16 +29,6 @@ export const PAPER_COLUMNS = [
   },
 ]
 
-export const PAPER_COLUMNS_DEFAULT = [
-  "paper_year",
-  "paper_title",
-  "paper_authors",
-  "paper_source",
-  "paper_link",
-  "paper_open_access",
-  "paper_data_available",
-]
-
 export const STUDY_COLUMNS = [
   {
     value: "study",
@@ -49,8 +39,6 @@ export const STUDY_COLUMNS = [
     label: "Sample size",
   },
 ]
-
-export const STUDY_COLUMNS_DEFAULT = ["study", "study_n"]
 
 export const INTERVENTION_COLUMNS = [
   {
@@ -65,12 +53,6 @@ export const INTERVENTION_COLUMNS = [
     value: "intervention_aspect",
     label: "Intervention aspect",
   },
-]
-
-export const INTERVENTION_COLUMNS_DEFAULT = [
-  "intervention_appeal",
-  "intervention_medium",
-  "intervention_aspect",
 ]
 
 export const OUTCOME_COLUMNS = [
@@ -92,21 +74,12 @@ export const OUTCOME_COLUMNS = [
   },
 ]
 
-export const OUTCOME_COLUMNS_DEFAULT = [
-  "outcome_label",
-  "outcome_category",
-  "outcome_subcategory",
-  "outcome_measurement_type",
-]
-
 export const SAMPLE_COLUMNS = [
   {
     value: "sample_intervention_country",
     label: "Country",
   },
 ]
-
-export const SAMPLE_COLUMNS_DEFAULT = ["sample_intervention_country"]
 
 export const EFFECT_COLUMNS = [
   {
@@ -121,12 +94,6 @@ export const EFFECT_COLUMNS = [
     value: "effect_intervention_n",
     label: "Sample size (intervention)",
   },
-]
-
-export const EFFECT_COLUMNS_DEFAULT = [
-  "effect_size_value",
-  "effect_control_n",
-  "effect_intervention_n",
 ]
 
 export const META_ANALYSIS_OUTCOMES_DEFAULT = [

@@ -28,7 +28,7 @@ import { FilterInput } from "./filters/input"
 import data from "../assets/data/prepared-effects.json"
 
 import { getOptions } from "@/lib/json-functions"
-import { MultiPillsForm } from "./form/multi-pills-form"
+import { MultiPillsForm } from "./forms/multi-pills-form"
 import { Separator } from "./ui/separator"
 
 const behaviors = getOptions("behaviors")
