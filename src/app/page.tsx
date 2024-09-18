@@ -9,6 +9,7 @@ import imagePlot from "@/assets/images/forest-plot.png"
 
 import counts from "@/assets/data/counts.json"
 import { Badge } from "@/components/ui/badge"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
@@ -113,6 +114,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

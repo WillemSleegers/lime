@@ -302,6 +302,7 @@ const FAQ = () => {
               conditions, results often look{" "}
               <Link
                 className="font-medium underline underline-offset-4"
+                target="_blank"
                 href="https://www.science.org/doi/10.1126/science.aac4716"
               >
                 different
@@ -310,8 +311,10 @@ const FAQ = () => {
               accepted for publication and some researchers engage in
               <Link
                 className="font-medium underline underline-offset-4"
+                target="_blank"
                 href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.01832/full"
               >
+                {" "}
                 questionable research practices
               </Link>{" "}
               to distort their results so that they are more likely to be
@@ -473,7 +476,8 @@ const FAQ = () => {
               reflected in a larger effect size. This{" "}
               <Link
                 className="font-medium underline underline-offset-4"
-                href="https://www.google.com/url?q=https://rpsychologist.com/cohend/&sa=D&source=docs&ust=1725811165465879&usg=AOvVaw0VfZVEum-4rb6a6qNnpIwL"
+                target="_blank"
+                href="https://rpsychologist.com/cohend/"
               >
                 website
               </Link>{" "}

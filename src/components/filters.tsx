@@ -40,7 +40,7 @@ const mediums = getOptions("intervention_medium")
 const appeals = getOptions("intervention_appeal")
 const countries = getOptions("sample_intervention_country")
 
-import { META_ANALYSIS_OUTCOMES_DEFAULT } from "@/lib/constants"
+import { META_ANALYSIS_DEFAULTS } from "@/lib/constants"
 
 const formSchema = z.object({
   outcomes: z
@@ -88,16 +88,16 @@ export const Filters = (props: FiltersProps) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    mode: "onChange",
     defaultValues: {
-      outcomes: META_ANALYSIS_OUTCOMES_DEFAULT,
-      measurements: ["survey"],
-      aspects: ["animal welfare"],
-      mediums: ["text"],
-      appeals: ["factual"],
+      outcomes: META_ANALYSIS_DEFAULTS.outcomes,
+      measurements: META_ANALYSIS_DEFAULTS.measurement_type,
+      aspects: META_ANALYSIS_DEFAULTS.intervention_aspect,
+      mediums: META_ANALYSIS_DEFAULTS.intervention_medium,
+      appeals: META_ANALYSIS_DEFAULTS.intervention_appeal,
       countries: countries.map((country) => country.value),
-      minimumCellSize: 50,
+      minimumCellSize: 1,
     },
-    mode: "onSubmit",
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {

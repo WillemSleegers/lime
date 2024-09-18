@@ -96,12 +96,35 @@ export const EFFECT_COLUMNS = [
   },
 ]
 
-export const META_ANALYSIS_OUTCOMES_DEFAULT = [
-  "meat consumption",
-  "animal product consumption",
-  "egg consumption",
-  "dairy consumption",
-  "vegetarian consumption",
-  "diet",
-  "signing a petition",
-]
+export const META_ANALYSIS_DEFAULTS = {
+  outcomes: [
+    "meat consumption",
+    "animal product consumption",
+    "egg consumption",
+    "dairy consumption",
+    "vegetarian consumption",
+    "diet",
+    "signing a petition",
+    "meat consumption intentions",
+    "diet intentions",
+    "purchasing intentions",
+    "animal product intentions",
+    "vegetarian consumption intentions",
+  ],
+  measurement_type: ["survey", "food diary"],
+  intervention_aspect: ["animal welfare", "health", "environment"],
+  intervention_medium: ["text", "presentation", "video", "3D video", "image"],
+  intervention_appeal: [
+    "factual",
+    "negative emotional",
+    "perspective taking",
+    "goal pursuit",
+    "norms",
+    "origin of animal product",
+    "infotainment",
+    "celebrity",
+    "symbolic meaning",
+    "positive emotional",
+    "taste",
+  ],
+}

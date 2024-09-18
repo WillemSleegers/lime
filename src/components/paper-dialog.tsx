@@ -96,7 +96,8 @@ export const PaperDialog = ({ row }: PaperDialogProps) => {
                     className="text-sm text-muted-foreground"
                     key={paper.paper + "-outcome-" + i}
                   >
-                    {paper.outcome_description}
+                    {paper.outcome_description.charAt(0).toUpperCase() +
+                      paper.outcome_description.slice(1)}
                   </li>
                 ))}
               </ul>
