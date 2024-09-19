@@ -28,7 +28,7 @@ import { FilterInput } from "./filters/input"
 import data from "../assets/data/prepared-effects.json"
 
 import { getOptions } from "@/lib/json-functions"
-import { MultiPillsForm } from "./form/multi-pills-form"
+import { MultiPillsForm } from "./forms/multi-pills-form"
 import { Separator } from "./ui/separator"
 
 const behaviors = getOptions("behaviors")
@@ -39,6 +39,8 @@ const aspects = getOptions("intervention_aspect")
 const mediums = getOptions("intervention_medium")
 const appeals = getOptions("intervention_appeal")
 const countries = getOptions("sample_intervention_country")
+
+import { META_ANALYSIS_DEFAULTS } from "@/lib/constants"
 
 const formSchema = z.object({
   outcomes: z
@@ -86,16 +88,16 @@ export const Filters = (props: FiltersProps) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    mode: "onChange",
     defaultValues: {
-      outcomes: ["meat consumption", "meat consumption intention"],
-      measurements: ["survey"],
-      aspects: ["animal welfare"],
-      mediums: ["text"],
-      appeals: ["factual"],
+      outcomes: META_ANALYSIS_DEFAULTS.outcomes,
+      measurements: META_ANALYSIS_DEFAULTS.measurement_type,
+      aspects: META_ANALYSIS_DEFAULTS.intervention_aspect,
+      mediums: META_ANALYSIS_DEFAULTS.intervention_medium,
+      appeals: META_ANALYSIS_DEFAULTS.intervention_appeal,
       countries: countries.map((country) => country.value),
-      minimumCellSize: 50,
+      minimumCellSize: 1,
     },
-    mode: "onSubmit",
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -205,11 +207,11 @@ export const Filters = (props: FiltersProps) => {
 
   return (
     <Collapsible
-      className="rounded-lg border bg-gray-100 p-3"
+      className="space-y-3 rounded-lg border bg-gray-100 p-3"
       open={open}
       onOpenChange={setOpen}
     >
-      <CollapsibleTrigger className="m-1 flex flex-row items-center gap-1">
+      <CollapsibleTrigger className="flex flex-row items-center gap-1">
         <h2 className="text-2xl font-bold tracking-tight">
           Inclusion criteria
         </h2>
@@ -219,11 +221,8 @@ export const Filters = (props: FiltersProps) => {
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="m-1 mt-4 space-y-1"
-          >
-            <div className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="mb-3 space-y-4">
               <div className="space-y-3">
                 <h3 className="mb-3 text-xl font-semibold">Outcomes</h3>
                 <FormField
@@ -232,29 +231,26 @@ export const Filters = (props: FiltersProps) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <div className="space-y-3">
+                        <div className="space-y-3 pb-3 ps-3">
                           <div>
-                            <FormLabel className="text-base">
+                            <FormLabel className="block pb-3 text-base">
                               Behavior outcomes
                             </FormLabel>
-
                             <MultiPillsForm field={field} options={behaviors} />
                           </div>
                           <div>
-                            <FormLabel className="text-base">
+                            <FormLabel className="block pb-3 text-base">
                               Intention outcomes
                             </FormLabel>
-
                             <MultiPillsForm
                               field={field}
                               options={intentions}
                             />
                           </div>
                           <div>
-                            <FormLabel className="text-base">
+                            <FormLabel className="block pb-3 text-base">
                               Attitude/belief outcomes
                             </FormLabel>
-
                             <MultiPillsForm field={field} options={attitudes} />
                           </div>
                         </div>
@@ -286,7 +282,7 @@ export const Filters = (props: FiltersProps) => {
                   )}
                 />
               </div>
-              <div>
+              <div className="space-y-3">
                 <h3 className="mb-3 text-xl font-semibold">Interventions</h3>
                 <FormField
                   control={form.control}
@@ -369,8 +365,8 @@ export const Filters = (props: FiltersProps) => {
               <FilterInput
                 form={form}
                 name="minimumCellSize"
-                label="Minimum cell size"
-                description="This is the minimum cell size in either the control or intervention condition."
+                label="Minimum sample size"
+                description="This is the minimum sample size in either the control or intervention condition."
                 placeholder="1"
                 type="number"
               />

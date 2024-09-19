@@ -50,7 +50,7 @@
     "paper_authors": "Bertolaso, C.",
     "paper_year": 2015,
     "paper_link": "https://scripties.uba.uva.nl/download?fid=605831",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -72,7 +72,7 @@
     "paper_year": 2017,
     "paper_source": "Social Science & Medicine",
     "paper_link": "https://doi.org/10.1016/j.socscimed.2017.01.005",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -83,7 +83,7 @@
     "paper_year": 2017,
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2017.06.025",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -124,7 +124,8 @@
     "paper_title": "Designing messages to reduce meat consumption: A test of the extended parallel process model",
     "paper_authors": "Fehrenbach, K. S.",
     "paper_year": 2015,
-    "paper_open_access": "yes"
+    "paper_open_access": "yes",
+    "paper_data_available": "n/a"
   },
   {
     "paper": 18,
@@ -177,7 +178,7 @@
     "paper_year": 2017,
     "paper_source": "Psychological Science",
     "paper_link": "https://doi.org/10.1177/0956797617719950",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -188,7 +189,7 @@
     "paper_year": 2016,
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2015.09.009",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -199,7 +200,7 @@
     "paper_year": 2018,
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2017.08.038",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "yes"
   },
   {
@@ -221,7 +222,7 @@
     "paper_year": 2020,
     "paper_source": "Cognition",
     "paper_link": "https://doi.org/10.1016/j.cognition.2020.104397",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -265,7 +266,7 @@
     "paper_year": 2019,
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2019.104331",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -276,7 +277,7 @@
     "paper_year": 2021,
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2021.105285",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -292,13 +293,13 @@
   },
   {
     "paper": 61,
-    "paper_label": "Gunter et al. (2023)",
+    "paper_label": "Gunther et al. (2023)",
     "paper_title": "Addressing Behavior and Policy Around Meat: Associating Factory Farming with Animal Cruelty “Works” Better than Zoonotic Disease",
     "paper_authors": "Gunther, O. E.; MacInnisa, C. C.; Hodson, G.; Dhont, K.",
     "paper_year": 2023,
     "paper_source": "Anthrozoös",
     "paper_link": "https://doi.org/10.1080/08927936.2023.2243738",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -309,7 +310,7 @@
     "paper_year": 2018,
     "paper_source": "Journal of Environmental Economics and Management",
     "paper_link": "https://doi.org/10.1016/j.jeem.2018.06.005",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -364,7 +365,7 @@
     "paper_year": 2020,
     "paper_source": "Nature Food",
     "paper_link": "https://doi.org/10.1038/s43016-020-0132-8",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "yes"
   },
   {
@@ -430,7 +431,7 @@
     "paper_year": 2019,
     "paper_source": "Behavioural Public Policy",
     "paper_link": "https://doi.org/10.1017/bpp.2019.11",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   },
   {
@@ -441,7 +442,7 @@
     "paper_year": 2023,
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2023.107005",
-    "paper_open_access": "yes",
+    "paper_open_access": "no",
     "paper_data_available": "no"
   }
 ]

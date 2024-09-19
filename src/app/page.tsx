@@ -8,11 +8,14 @@ import imageLibrary from "@/assets/images/library.png"
 import imagePlot from "@/assets/images/forest-plot.png"
 
 import counts from "@/assets/data/counts.json"
+import { Badge } from "@/components/ui/badge"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
     <div>
       <section className="m-auto my-12 max-w-3xl space-y-8 p-3 text-center">
+        <Badge variant="destructive">Currently in beta</Badge>
         <h1 className="text-4xl font-bold leading-none text-gray-900 md:text-5xl lg:text-6xl">
           Library of Interventions for Meat Elimination
         </h1>
@@ -21,9 +24,6 @@ export default function Home() {
           products.
         </p>
         <div className="flex justify-center gap-3">
-          <div className="whitespace-nowrap px-3 py-2 font-semibold text-destructive">
-            Currently in beta
-          </div>
           <Link
             href="/about/"
             className={buttonVariants({ variant: "outline" })}
@@ -114,6 +114,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

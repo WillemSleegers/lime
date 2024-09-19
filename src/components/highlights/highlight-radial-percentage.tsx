@@ -3,7 +3,6 @@
 import {
   Label,
   PolarAngleAxis,
-  PolarGrid,
   PolarRadiusAxis,
   RadialBar,
   RadialBarChart,
@@ -81,7 +80,7 @@ export const HighlightPercentage = ({
                         y={viewBox.cy}
                         textAnchor="middle"
                         dominantBaseline="middle"
-                        className="fill-foreground text-2xl font-bold"
+                        className="block fill-foreground p-3 text-xl font-bold"
                       >
                         {chartData[0].percentage.toLocaleString() + "%"}
                       </text>

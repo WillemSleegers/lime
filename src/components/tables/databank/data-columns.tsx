@@ -148,9 +148,7 @@ export const DataTableColumns: ColumnDef<Column>[] = [
   {
     id: "intervention_appeal",
     accessorKey: "intervention_appeal",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Intervention appeal" />
-    ),
+    header: "Intervention appeal",
     cell: ({ row }) => {
       const value = row.getValue("intervention_appeal") as string
       const content = value?.split("; ").map((e) => (
@@ -168,9 +166,7 @@ export const DataTableColumns: ColumnDef<Column>[] = [
   {
     id: "intervention_medium",
     accessorKey: "intervention_medium",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Intervention medium" />
-    ),
+    header: "Intervention medium",
     cell: ({ row }) => {
       const value = row.getValue("intervention_medium") as string
       const content = value?.split("; ").map((e) => (
@@ -188,9 +184,7 @@ export const DataTableColumns: ColumnDef<Column>[] = [
   {
     id: "intervention_aspect",
     accessorKey: "intervention_aspect",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Intervention aspect" />
-    ),
+    header: "Intervention aspect",
     cell: ({ row }) => {
       const value = row.getValue("intervention_aspect") as string
       const content = value?.split("; ").map((e) => (
@@ -255,14 +249,17 @@ export const DataTableColumns: ColumnDef<Column>[] = [
     id: "effect_control_n",
     accessorKey: "effect_control_n",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Cell size (control)" />
+      <DataTableColumnHeader column={column} title="Sample size (control)" />
     ),
   },
   {
     id: "effect_intervention_n",
     accessorKey: "effect_intervention_n",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Cell size (intervention)" />
+      <DataTableColumnHeader
+        column={column}
+        title="Sample size (intervention)"
+      />
     ),
   },
 ]
