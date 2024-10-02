@@ -48,6 +48,7 @@
     "zod": "latest"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "@types/d3": "latest",
     "@types/node": "latest",
     "@types/react": "latest",

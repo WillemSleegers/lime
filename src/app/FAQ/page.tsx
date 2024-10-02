@@ -8,42 +8,24 @@ import Link from "next/link"
 
 const FAQ = () => {
   return (
-    <main className="container max-w-3xl py-12">
-      <h1 className="mb-6 text-center text-4xl font-bold">FAQ</h1>
+    <main className="container py-12">
+      <h1 className="text-center">FAQ</h1>
       <Accordion type="single" collapsible className="w-full">
-        <h2 className="text-2xl font-semibold tracking-tight">General</h2>
+        <h2 className="">General</h2>
         <AccordionItem value="general-1">
-          <AccordionTrigger className="text-left">
-            What is LIME?
-          </AccordionTrigger>
-          <AccordionContent>
-            <p className="leading-5">
+          <AccordionTrigger className="py-0">What is LIME?</AccordionTrigger>
+          <AccordionContent className="py-0">
+            <p className="my-0">
               In short, it is a library of psychological intervention studies
               aimed at reducing animal product consumption and for improving
               attitudes towards animals. We are collecting information on all
               studies on this topic to make it available via this website. You
               can explore the studies with the{" "}
-              <Link
-                className="font-medium underline underline-offset-4"
-                href="/data-explorer/"
-              >
-                Data Explorer tool
-              </Link>{" "}
-              or conduct custom analyses with the{" "}
-              <Link
-                className="font-medium underline underline-offset-4"
-                href="/meta-analysis/"
-              >
-                Meta-analysis tool
-              </Link>
-              . You can find out more about this project on the{" "}
-              <Link
-                className="font-medium underline underline-offset-4"
-                href="/about/"
-              >
-                About
-              </Link>{" "}
-              page.
+              <Link href="/data-explorer/">Data Explorer tool</Link> or conduct
+              custom analyses with the{" "}
+              <Link href="/meta-analysis/">Meta-analysis tool</Link>. You can
+              find out more about this project on the{" "}
+              <Link href="/about/">About</Link> page.
             </p>
           </AccordionContent>
         </AccordionItem>

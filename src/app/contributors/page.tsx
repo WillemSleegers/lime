@@ -10,14 +10,12 @@ import Link from "next/link"
 
 const Contributors = () => {
   return (
-    <main className="container max-w-3xl space-y-12 py-12">
-      <h1 className="text-center text-4xl font-bold tracking-tight">
-        Contributors
-      </h1>
+    <main className="prose container py-12">
+      <h1 className="text-center">Contributors</h1>
       <div className="flex flex-wrap justify-center gap-6">
-        <div className="max-w-48 space-y-3">
+        <div className="max-w-60 space-y-2 text-center">
           <Image
-            className="rounded-lg"
+            className="mb-5 rounded-lg"
             src={willem}
             alt={"dr. Willem Sleegers"}
           />
@@ -36,9 +34,9 @@ const Contributors = () => {
           </Link>
         </div>
 
-        <div className="max-w-48 space-y-3">
+        <div className="max-w-60 space-y-2">
           <Image
-            className="rounded-lg"
+            className="mb-5 rounded-lg"
             src={bastian}
             alt={"dr. Bastian Jaeger"}
           />
