@@ -1,24 +1,24 @@
+import { Alert } from "@/components/ui/alert"
 import Link from "next/link"
 
 const About = () => {
   return (
-    <main className="prose container py-12">
+    <main className="container prose py-12">
       <h1 className="text-center">About</h1>
-      <p className="italic">
+      <Alert variant="destructive" className="not-prose">
         LIME is currently in beta and you are viewing a prototype of the
         website. We are still in the process of building the database and
         website. Any feedback is welcome and can be given{" "}
         <Link href="/contact/">here</Link>.
-      </p>
+      </Alert>
       <p>
-        <strong>LIME</strong> stands for <strong>L</strong>ibrary of{" "}
-        <strong>I</strong>nterventions for <strong>M</strong>eat{" "}
-        <strong>E</strong>limination. In short, LIME is a continuously growing
-        collection of all experimental studies that tested the effectiveness of
-        a psychological intervention in reducing animal product consumption,
-        improving attitudes towards animals, or changing related outcomes. This
-        website was designed to make this literature more accessible to
-        researchers, advocates, and policy makers.
+        <strong>LIME</strong> stands for Library of Interventions for Meat
+        Elimination. In short, LIME is a continuously growing collection of all
+        experimental studies that tested the effectiveness of a psychological
+        intervention in reducing animal product consumption, improving attitudes
+        towards animals, or changing related outcomes. This website was designed
+        to make this literature more accessible to researchers, advocates, and
+        policy makers.
       </p>
       <p>
         At the core of LIME is a machine-readable, continuously growing database
