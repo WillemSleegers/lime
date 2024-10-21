@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Check } from "lucide-react"
+import { LibraryBigIcon, LockOpenIcon, SearchIcon } from "lucide-react"
 
 import { buttonVariants } from "@/components/ui/button"
 import { Counter } from "@/components/counter"
@@ -16,26 +16,17 @@ import { cn } from "@/lib/utils"
 
 export default function Home() {
   return (
-    <div className="space-y-40">
+    <div className="space-y-20">
       {/* Hero */}
-      <section className="prose m-auto mt-24 max-w-3xl space-y-8 p-3 text-center">
+      <section className="m-auto mt-24 max-w-3xl space-y-8 p-3 text-center">
         <Badge variant="destructive">Currently in beta</Badge>
-        <h1 className="text-4xl font-bold leading-none md:text-5xl lg:text-6xl">
+        <h1 className="text-balance text-center text-5xl font-bold tracking-tight">
           Library of Interventions for Meat Elimination
         </h1>
-        <p className="text-lg md:text-xl">
+        <p className="mx-auto mt-5 max-w-screen-md text-center text-xl text-muted-foreground">
           A library of intervention studies to reduce the consumption of animal
           products.
         </p>
-        <Link
-          href="/about/"
-          className={cn(
-            buttonVariants({ variant: "default" }),
-            "not-prose border-none",
-          )}
-        >
-          Learn More
-        </Link>
       </section>
       {/* Statistics */}
       <section className="bg-muted py-12">
@@ -66,40 +57,39 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* Data explorer tool */}
       <section className="prose mx-auto grid max-w-4xl gap-12 p-3 md:grid-cols-2">
         <div className="space-y-6">
-          <h2 className="my-0 text-3xl md:text-4xl lg:text-5xl">
-            Data Explorer
-          </h2>
+          <h2 className="my-0 text-3xl md:text-4xl lg:text-5xl">Explore</h2>
           <p className="max-w-xl text-left text-lg text-muted-foreground">
             Explore a database of studies that tested interventions aimed at
             reducing meat consumption and related outcomes.
           </p>
-          <div>
-            <div className="flex flex-row items-start gap-3">
-              <Check className="mt-2 h-4 w-4 stroke-[4px] text-primary" />
+          <div className="space-y-3">
+            <div className="flex items-center justify-center gap-3">
+              <LibraryBigIcon width={40} />
               <div className="flex flex-col gap-1">
-                <span>Regularly updated</span>
-                <span className="text-sm text-muted-foreground">
+                <span className="font-semibold">Regularly updated</span>
+                <span className="text-muted-foreground">
                   Browse through a regularly updated library of papers.
                 </span>
               </div>
             </div>
-            <div className="flex flex-row items-start gap-3">
-              <Check className="mt-2 h-4 w-4 stroke-[4px] text-primary" />
+            <div className="flex items-center justify-center gap-3">
+              <SearchIcon width={40} />
               <div className="flex flex-col gap-1">
-                <span>Comprehensive</span>
-                <span className="text-sm text-muted-foreground">
+                <span className="font-semibold">Comprehensive</span>
+                <span className="text-base text-muted-foreground">
                   Inspect many pieces of information about each paper.
                 </span>
               </div>
             </div>
-            <div className="flex flex-row items-start gap-3">
-              <Check className="mt-2 h-4 w-4 stroke-[4px] text-primary" />
+            <div className="flex items-center justify-center gap-3">
+              <LockOpenIcon width={40} />
               <div className="flex flex-col gap-1">
-                <span>Open</span>
-                <span className="text-sm text-muted-foreground">
+                <span className="font-semibold">Open</span>
+                <span className="text-muted-foreground">
                   The data is freely available for use in other projects.
                 </span>
               </div>
