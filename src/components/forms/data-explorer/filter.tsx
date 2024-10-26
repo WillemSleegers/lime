@@ -290,7 +290,6 @@ export const Filter = (props: FilterProps) => {
                             <FormLabel className="text-base">
                               Show columns
                             </FormLabel>
-                            <FormDescription></FormDescription>
                             <ToggleGroupAll
                               field={field}
                               options={PAPER_COLUMNS}
