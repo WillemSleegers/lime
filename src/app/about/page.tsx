@@ -1,30 +1,24 @@
+import { Alert } from "@/components/ui/alert"
 import Link from "next/link"
 
 const About = () => {
   return (
-    <main className="container max-w-3xl py-12">
-      <h1 className="mb-6 text-center text-4xl font-bold">About</h1>
-      <p className="italic">
+    <main className="container prose py-12">
+      <h1 className="text-center">About</h1>
+      <Alert variant="destructive" className="not-prose">
         LIME is currently in beta and you are viewing a prototype of the
         website. We are still in the process of building the database and
         website. Any feedback is welcome and can be given{" "}
-        <Link
-          className="font-medium underline underline-offset-4"
-          href="/contact/"
-        >
-          here
-        </Link>
-        .
-      </p>
+        <Link href="/contact/">here</Link>.
+      </Alert>
       <p>
-        <strong>LIME</strong> stands for <strong>L</strong>ibrary of{" "}
-        <strong>I</strong>nterventions for <strong>M</strong>eat{" "}
-        <strong>E</strong>limination. In short, LIME is a continuously growing
-        collection of all experimental studies that tested the effectiveness of
-        a psychological intervention in reducing animal product consumption,
-        improving attitudes towards animals, or changing related outcomes. This
-        website was designed to make this literature more accessible to
-        researchers, advocates, and policy makers.
+        <strong>LIME</strong> stands for Library of Interventions for Meat
+        Elimination. In short, LIME is a continuously growing collection of all
+        experimental studies that tested the effectiveness of a psychological
+        intervention in reducing animal product consumption, improving attitudes
+        towards animals, or changing related outcomes. This website was designed
+        to make this literature more accessible to researchers, advocates, and
+        policy makers.
       </p>
       <p>
         At the core of LIME is a machine-readable, continuously growing database
@@ -36,15 +30,10 @@ const About = () => {
       </p>
       <p>
         This database can be accessed with the{" "}
-        <Link
-          className="font-medium underline underline-offset-4"
-          href={"/data-explorer/"}
-        >
-          Data Explorer tool
-        </Link>
-        . You can explore the data with a customizable table that allows you to
+        <Link href={"/data-explorer/"}>Data Explorer tool</Link>. You can
+        explore the data with a customizable table that allows you to
       </p>
-      <ul className="list-outside list-disc ps-6">
+      <ul>
         <li>Select which of the many variables you want to inspect</li>
         <li>
           Include or exclude specific studies based on different criteria (e.g.,
@@ -53,17 +42,10 @@ const About = () => {
         <li>Download your customized database</li>
       </ul>
       <p>
-        The{" "}
-        <Link
-          className="font-medium underline underline-offset-4"
-          href={"/meta-analysis/"}
-        >
-          Meta-analysis tool
-        </Link>{" "}
-        allows you to synthesize the evidence across many studies. It allows you
-        to:
+        The <Link href={"/meta-analysis/"}>Meta-analysis tool</Link> allows you
+        to synthesize the evidence across many studies. It allows you to:
       </p>
-      <ul className="list-outside list-disc ps-6">
+      <ul>
         <li>
           Specify which types of studies should be included in the analysis with
           the help of various filters

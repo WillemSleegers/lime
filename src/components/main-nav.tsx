@@ -38,7 +38,7 @@ export function MainNav() {
 
   return (
     <div
-      className={`flex flex-col items-stretch justify-between gap-3 p-3 md:flex-row md:items-center`}
+      className={`mx-auto flex max-w-6xl flex-col items-stretch justify-center gap-6 p-3 md:flex-row md:items-center`}
     >
       <div className="flex h-10 items-center justify-between">
         <Link

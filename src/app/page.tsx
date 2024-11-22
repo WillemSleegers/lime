@@ -1,119 +1,141 @@
 import Link from "next/link"
 import Image from "next/image"
 
-import { buttonVariants } from "@/components/ui/button"
+import { Footer } from "@/components/footer"
+import { Badge } from "@/components/ui/badge"
 import { Counter } from "@/components/counter"
-
-import imageLibrary from "@/assets/images/library.png"
-import imagePlot from "@/assets/images/forest-plot.png"
+import { Button } from "@/components/ui/button"
+import { PaperCarousel } from "@/components/paper-carousel"
 
 import counts from "@/assets/data/counts.json"
-import { Badge } from "@/components/ui/badge"
-import { Footer } from "@/components/footer"
+import imageLibrary from "@/assets/images/library.png"
 
 export default function Home() {
   return (
-    <div>
-      <section className="m-auto my-12 max-w-3xl space-y-8 p-3 text-center">
+    <div className="space-y-14 md:space-y-28">
+      {/* Hero */}
+      <section className="md:mt-18 m-auto mt-3 max-w-2xl space-y-8 p-3 text-center md:mt-12 lg:mt-24">
         <Badge variant="destructive">Currently in beta</Badge>
-        <h1 className="text-4xl font-bold leading-none text-gray-900 md:text-5xl lg:text-6xl">
+        <h1 className="text-balance text-center text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
           Library of Interventions for Meat Elimination
         </h1>
-        <p className="text-lg font-normal text-muted-foreground lg:text-xl">
+        <p className="mx-auto mt-5 max-w-screen-md text-center text-lg text-muted-foreground md:text-xl">
           A library of intervention studies to reduce the consumption of animal
           products.
         </p>
-        <div className="flex justify-center gap-3">
-          <Link
-            href="/about/"
-            className={buttonVariants({ variant: "outline" })}
-          >
-            Learn More
-          </Link>
-        </div>
-      </section>
-      <section className="my-12 bg-muted p-3">
-        <div className="m-auto my-6 grid w-full grid-cols-1 gap-6 text-center sm:grid-cols-2 md:max-w-xl lg:max-w-4xl lg:grid-cols-4">
-          <div>
-            <div className="whitespace-nowrap text-xl font-semibold">
-              Number of papers
-            </div>
-            <div className="text-4xl font-semibold text-primary">
+        <div className="grid grid-cols-2 gap-x-12 gap-y-6 md:grid-cols-4">
+          <div className="space-y-2 text-right md:text-center">
+            <h2 className="text-3xl font-bold sm:text-4xl">
               <Counter duration={1000} target={counts.papers} />
-            </div>
+            </h2>
+            <p className="text-xl text-muted-foreground">Papers</p>
           </div>
-          <div>
-            <div className="whitespace-nowrap text-xl font-semibold">
-              Number of studies
-            </div>
-            <div className="text-4xl font-semibold text-primary">
+          <div className="space-y-2 text-left md:text-center">
+            <h2 className="text-3xl font-bold sm:text-4xl">
               <Counter duration={1250} target={counts.studies} />
-            </div>
+            </h2>
+            <p className="text-xl text-muted-foreground">Studies</p>
           </div>
-          <div>
-            <div className="whitespace-nowrap text-xl font-semibold">
-              Number of effects
-            </div>
-            <div className="text-4xl font-semibold text-primary">
+          <div className="space-y-2 text-right md:text-center">
+            <h2 className="text-3xl font-bold sm:text-4xl">
               <Counter duration={1500} target={counts.effects} />
-            </div>
+            </h2>
+            <p className="text-xl text-muted-foreground">Effects</p>
           </div>
-          <div>
-            <div className="whitespace-nowrap text-xl font-semibold">
-              Number of observations
-            </div>
-            <div className="text-4xl font-semibold text-primary">
+          <div className="space-y-2 text-left md:text-center">
+            <h2 className="text-3xl font-bold sm:text-4xl">
               <Counter duration={1750} target={counts.observations} />
-            </div>
+            </h2>
+            <p className="text-xl text-muted-foreground">Observations</p>
           </div>
         </div>
       </section>
-      <section className="flex flex-wrap-reverse items-center justify-center gap-3">
-        <div className="w-[500px] space-y-6">
-          <h1 className="text-2xl font-semibold">Explore the database</h1>
-          <p>
-            A comprehensive database of studies that tested interventions aimed
-            at reducing meat consumption and related outcomes.
+
+      {/* About */}
+      <section>
+        <div className="mx-auto max-w-4xl p-6">
+          <h2 className="text-3xl font-bold md:text-4xl">
+            <span className="text-primary">About </span>
+            LIME
+          </h2>
+
+          <p className="text-lg text-muted-foreground">
+            LIME is a continuously growing collection of experimental studies
+            examining psychological interventions to reduce animal product
+            consumption and improve attitudes towards animals. With LIME, you
+            can explore individual studies, understand the current state of
+            research, and evaluate which interventions have the strongest
+            evidence behind them.
           </p>
-          <ul className="list-inside list-disc">
-            <li>Regularly updated</li>
-            <li>Openly accessible</li>
-            <li>Lots of information per paper</li>
-          </ul>
-          <Link
-            href="/about/"
-            className={buttonVariants({ variant: "outline" })}
-          >
-            Learn More
-          </Link>
-        </div>
-        <div className="w-80">
-          <Image src={imageLibrary} alt="file cabinet" />
+          <Button className="mt-3 rounded-3xl" asChild variant="secondary">
+            <Link href="/about/">Learn more</Link>
+          </Button>
         </div>
       </section>
-      <section className="my-12 flex flex-wrap-reverse items-center justify-center gap-6 bg-muted py-12">
-        <div className="w-80">
-          <Image src={imagePlot} alt="boxplots" />
-        </div>
-        <div className="w-[500px] space-y-6">
-          <h1 className="text-2xl font-semibold">Analyze the literature</h1>
-          <p>
-            The analysis tool enables users to explore, analyze, and visualize
-            study results.
+
+      {/* Data explorer */}
+      <section className="text-center">
+        <div className="mx-6">
+          <h2 className="text-3xl font-bold md:text-4xl">
+            <span className="text-primary">Explore</span> Studies
+          </h2>
+          <p className="mx-auto mb-8 mt-4 text-lg text-muted-foreground md:w-3/4">
+            Browse our database of research papers testing interventions to
+            reduce meat consumption. Filter, sort, and explore study details,
+            methods, and outcomes.
           </p>
-          <ul className="ms-4 list-outside list-disc">
-            <li>Meta-analytic estimates of intervention effectiveness</li>
-            <li>Customizable: focus on specific interventions or outcomes</li>
-            <li>Explore trends in the literature</li>
-          </ul>
-          <Link
-            href="/about/"
-            className={buttonVariants({ variant: "outline" })}
-          >
-            Learn More
-          </Link>
         </div>
+        <PaperCarousel />
+        <Button className="mt-6 rounded-3xl" asChild variant="secondary">
+          <Link href="/data-explorer/">Begin exploring</Link>
+        </Button>
       </section>
+
+      {/* Meta-analysis */}
+      <section className="mx-6 text-center">
+        <h2 className="text-3xl font-bold md:text-4xl">
+          <span className="text-primary">Analyze</span> Data
+        </h2>
+        <p className="mx-auto mb-8 mt-4 text-lg text-muted-foreground md:w-3/4">
+          Use our analysis tools to aggregate study results and find out how
+          strong the evidence is.
+        </p>
+
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto max-w-80">
+            <h3 className="whitespace-nowrap text-xl font-semibold leading-none tracking-tight">
+              Summary statistics
+            </h3>
+            <p className="text-muted-foreground">
+              Get statistics on selected papers such as sample sizes and open
+              science practices.
+            </p>
+          </div>
+          <div className="mx-auto max-w-80">
+            <h3 className="whitespace-nowrap text-xl font-semibold leading-none tracking-tight">
+              Meta-analysis
+            </h3>
+            <p className="text-muted-foreground">
+              Calculate meta-analytic effect sizes and see them translated into
+              intuitive measures of effectiveness.
+            </p>
+          </div>
+          <div className="mx-auto max-w-80">
+            <h3 className="whitespace-nowrap text-xl font-semibold leading-none tracking-tight">
+              Data visualization
+            </h3>
+            <p className="text-muted-foreground">
+              Inspect interactive data visualizations showing effect size
+              distributions and more.
+            </p>
+          </div>
+        </div>
+
+        <Button className="mt-6 rounded-3xl" variant="secondary" asChild>
+          <Link href="/data-explorer/">Begin analyzing</Link>
+        </Button>
+      </section>
+
       <Footer />
     </div>
   )
