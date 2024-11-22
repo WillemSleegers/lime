@@ -261,7 +261,7 @@ export const Filter = (props: FilterProps) => {
           className={cn("transition", open ? "rotate-90" : "rotate-0")}
         />
       </CollapsibleTrigger>
-      <CollapsibleContent className="CollapsibleContent">
+      <CollapsibleContent className="CollapsibleContent ps-3">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="mb-3 space-y-3">
@@ -285,16 +285,14 @@ export const Filter = (props: FilterProps) => {
                     name="paper_columns"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Show columns
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Show columns
-                            </FormLabel>
-                            <ToggleGroupAll
-                              field={field}
-                              options={PAPER_COLUMNS}
-                            />
-                          </>
+                          <ToggleGroupAll
+                            field={field}
+                            options={PAPER_COLUMNS}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -306,28 +304,26 @@ export const Filter = (props: FilterProps) => {
                     name="paper_year"
                     render={({ field }) => (
                       <FormItem className="max-w-60">
+                        <FormLabel className="text-base">
+                          Publication year
+                        </FormLabel>
+                        <FormDescription>
+                          From {field.value[0]} to {field.value[1]}
+                        </FormDescription>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Publication year
-                            </FormLabel>
-                            <FormDescription>
-                              From {field.value[0]} to {field.value[1]}
-                            </FormDescription>
-                            <Slider
-                              defaultValue={field.value}
-                              minStepsBetweenThumbs={1}
-                              max={Math.max(
-                                ...data.map((datum) => datum.paper_year),
-                              )}
-                              min={Math.min(
-                                ...data.map((datum) => datum.paper_year),
-                              )}
-                              step={1}
-                              onValueChange={field.onChange}
-                              className={cn("w-full")}
-                            />
-                          </>
+                          <Slider
+                            defaultValue={field.value}
+                            minStepsBetweenThumbs={1}
+                            max={Math.max(
+                              ...data.map((datum) => datum.paper_year),
+                            )}
+                            min={Math.min(
+                              ...data.map((datum) => datum.paper_year),
+                            )}
+                            step={1}
+                            onValueChange={field.onChange}
+                            className={cn("w-full")}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -338,36 +334,31 @@ export const Filter = (props: FilterProps) => {
                     name="paper_open_access"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">Open access</FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Open access
-                            </FormLabel>
-                            <FormDescription></FormDescription>
-                            <ToggleGroup
-                              type="multiple"
-                              onValueChange={field.onChange}
-                              className="justify-start"
-                              defaultValue={field.value}
+                          <ToggleGroup
+                            type="multiple"
+                            onValueChange={field.onChange}
+                            className="justify-start"
+                            defaultValue={field.value}
+                          >
+                            <ToggleGroupItem
+                              value="yes"
+                              aria-label="Include open access papers"
+                              className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                              size="sm"
                             >
-                              <ToggleGroupItem
-                                value="yes"
-                                aria-label="Include open access papers"
-                                className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                                size="sm"
-                              >
-                                yes
-                              </ToggleGroupItem>
-                              <ToggleGroupItem
-                                value="no"
-                                aria-label="Exclude open access papers"
-                                className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                                size="sm"
-                              >
-                                no
-                              </ToggleGroupItem>
-                            </ToggleGroup>
-                          </>
+                              yes
+                            </ToggleGroupItem>
+                            <ToggleGroupItem
+                              value="no"
+                              aria-label="Exclude open access papers"
+                              className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                              size="sm"
+                            >
+                              no
+                            </ToggleGroupItem>
+                          </ToggleGroup>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -378,41 +369,38 @@ export const Filter = (props: FilterProps) => {
                     name="paper_data_available"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Data available
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Data available
-                            </FormLabel>
-                            <FormDescription></FormDescription>
-                            <ToggleGroup
-                              type="multiple"
-                              defaultValue={field.value}
-                              onValueChange={field.onChange}
-                              className="justify-start"
+                          <ToggleGroup
+                            type="multiple"
+                            defaultValue={field.value}
+                            onValueChange={field.onChange}
+                            className="justify-start"
+                          >
+                            <ToggleGroupItem
+                              value="yes"
+                              className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                              size="sm"
                             >
-                              <ToggleGroupItem
-                                value="yes"
-                                className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                                size="sm"
-                              >
-                                yes
-                              </ToggleGroupItem>
-                              <ToggleGroupItem
-                                value="no"
-                                className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                                size="sm"
-                              >
-                                no
-                              </ToggleGroupItem>
-                              <ToggleGroupItem
-                                value="n/a"
-                                className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
-                                size="sm"
-                              >
-                                n/a
-                              </ToggleGroupItem>
-                            </ToggleGroup>
-                          </>
+                              yes
+                            </ToggleGroupItem>
+                            <ToggleGroupItem
+                              value="no"
+                              className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                              size="sm"
+                            >
+                              no
+                            </ToggleGroupItem>
+                            <ToggleGroupItem
+                              value="n/a"
+                              className="w-12 rounded-full bg-black/5 hover:bg-primary/80 hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
+                              size="sm"
+                            >
+                              n/a
+                            </ToggleGroupItem>
+                          </ToggleGroup>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -440,17 +428,14 @@ export const Filter = (props: FilterProps) => {
                     name="study_columns"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Show columns
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Show columns
-                            </FormLabel>
-                            <FormDescription></FormDescription>
-                            <ToggleGroupAll
-                              field={field}
-                              options={STUDY_COLUMNS}
-                            />
-                          </>
+                          <ToggleGroupAll
+                            field={field}
+                            options={STUDY_COLUMNS}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -487,17 +472,14 @@ export const Filter = (props: FilterProps) => {
                     name="intervention_columns"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Show columns
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Show columns
-                            </FormLabel>
-                            <FormDescription></FormDescription>
-                            <ToggleGroupAll
-                              field={field}
-                              options={INTERVENTION_COLUMNS}
-                            />
-                          </>
+                          <ToggleGroupAll
+                            field={field}
+                            options={INTERVENTION_COLUMNS}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -509,16 +491,14 @@ export const Filter = (props: FilterProps) => {
                     name="intervention_aspect"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Intervention aspect
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Intervention aspect
-                            </FormLabel>
-                            <ToggleGroupAll
-                              field={field}
-                              options={intervention_aspects}
-                            />
-                          </>
+                          <ToggleGroupAll
+                            field={field}
+                            options={intervention_aspects}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -529,16 +509,14 @@ export const Filter = (props: FilterProps) => {
                     name="intervention_medium"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Intervention medium
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Intervention medium
-                            </FormLabel>
-                            <ToggleGroupAll
-                              field={field}
-                              options={intervention_mediums}
-                            />
-                          </>
+                          <ToggleGroupAll
+                            field={field}
+                            options={intervention_mediums}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -549,16 +527,14 @@ export const Filter = (props: FilterProps) => {
                     name="intervention_appeal"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Intervention appeal
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Intervention appeal
-                            </FormLabel>
-                            <ToggleGroupAll
-                              field={field}
-                              options={intervention_appeals}
-                            />
-                          </>
+                          <ToggleGroupAll
+                            field={field}
+                            options={intervention_appeals}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -586,16 +562,14 @@ export const Filter = (props: FilterProps) => {
                     name="outcome_columns"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Show columns
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Show columns
-                            </FormLabel>
-                            <ToggleGroupAll
-                              field={field}
-                              options={OUTCOME_COLUMNS}
-                            />
-                          </>
+                          <ToggleGroupAll
+                            field={field}
+                            options={OUTCOME_COLUMNS}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -647,16 +621,14 @@ export const Filter = (props: FilterProps) => {
                     name="measurements"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Measurement type
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Measurement type
-                            </FormLabel>
-                            <ToggleGroupAll
-                              field={field}
-                              options={measurements}
-                            />
-                          </>
+                          <ToggleGroupAll
+                            field={field}
+                            options={measurements}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -684,16 +656,14 @@ export const Filter = (props: FilterProps) => {
                     name="sample_columns"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Show columns
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Show columns
-                            </FormLabel>
-                            <ToggleGroupAll
-                              field={field}
-                              options={SAMPLE_COLUMNS}
-                            />
-                          </>
+                          <ToggleGroupAll
+                            field={field}
+                            options={SAMPLE_COLUMNS}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -705,16 +675,14 @@ export const Filter = (props: FilterProps) => {
                     name="sample_country"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">Country</FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">Country</FormLabel>
-                            <ToggleGroupAll field={field} options={countries} />
-                            <FormDescription>
-                              N/A means the country information is not
-                              available.
-                            </FormDescription>
-                          </>
+                          <ToggleGroupAll field={field} options={countries} />
                         </FormControl>
+                        <FormDescription>
+                          N/A means the country information is not available.
+                        </FormDescription>
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -741,17 +709,14 @@ export const Filter = (props: FilterProps) => {
                     name="effect_columns"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Show columns
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Show columns
-                            </FormLabel>
-                            <FormDescription></FormDescription>
-                            <ToggleGroupAll
-                              field={field}
-                              options={EFFECT_COLUMNS}
-                            />
-                          </>
+                          <ToggleGroupAll
+                            field={field}
+                            options={EFFECT_COLUMNS}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -763,38 +728,30 @@ export const Filter = (props: FilterProps) => {
                     name="effect_size"
                     render={({ field }) => (
                       <FormItem className="max-w-60">
+                        <FormLabel className="text-base">Effect size</FormLabel>
+                        <FormDescription>
+                          From {field.value[0]} to {field.value[1]}
+                        </FormDescription>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">
-                              Effect size
-                            </FormLabel>
-                            <FormDescription>
-                              From {field.value[0]} to {field.value[1]}
-                            </FormDescription>
-                            <Slider
-                              defaultValue={field.value}
-                              minStepsBetweenThumbs={0.5}
-                              max={round(
-                                Math.max(
-                                  ...data.map(
-                                    (datum) => datum.effect_size_value,
-                                  ),
-                                ),
-                                2,
-                              )}
-                              min={round(
-                                Math.min(
-                                  ...data.map(
-                                    (datum) => datum.effect_size_value,
-                                  ),
-                                ),
-                                2,
-                              )}
-                              step={0.1}
-                              onValueChange={field.onChange}
-                              className={cn("w-full")}
-                            />
-                          </>
+                          <Slider
+                            defaultValue={field.value}
+                            minStepsBetweenThumbs={0.5}
+                            max={round(
+                              Math.max(
+                                ...data.map((datum) => datum.effect_size_value),
+                              ),
+                              2,
+                            )}
+                            min={round(
+                              Math.min(
+                                ...data.map((datum) => datum.effect_size_value),
+                              ),
+                              2,
+                            )}
+                            step={0.1}
+                            onValueChange={field.onChange}
+                            className={cn("w-full")}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
