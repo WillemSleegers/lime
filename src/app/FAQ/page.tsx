@@ -11,9 +11,9 @@ const FAQ = () => {
     <main className="container prose py-12">
       <h1 className="text-center">FAQ</h1>
       <Accordion type="single" collapsible>
-        <h2 className="mb-0">General</h2>
+        <h2>General</h2>
         <AccordionItem value="general-1">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             What is LIME?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -32,7 +32,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="general-2">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             Who is the target audience?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -49,7 +49,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="general-3">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             Who built LIME?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -61,7 +61,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="general-4">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             Who has funded LIME?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -74,7 +74,7 @@ const FAQ = () => {
         </AccordionItem>
         <h2>The database</h2>
         <AccordionItem value="database-1">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             What types of interventions are included?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -98,7 +98,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-2">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             What types of outcomes are included?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -129,7 +129,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-3">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             What types of studies are included?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -148,7 +148,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-4">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             How were the studies coded?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -179,7 +179,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-5">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             Are all relevant studies included in the database?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -193,7 +193,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-6">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             Can I suggest a paper for the database?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -206,11 +206,9 @@ const FAQ = () => {
             </p>
           </AccordionContent>
         </AccordionItem>
-        <h2 className="mt-6 text-2xl font-semibold tracking-tight">
-          Data explorer
-        </h2>
+        <h2>Data explorer</h2>
         <AccordionItem value="explorer-1">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             How does the Data explorer tool work?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -244,7 +242,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="explorer-2">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             If I implement the same intervention as one of the studies, will it
             have the same effect for me?
           </AccordionTrigger>
@@ -297,7 +295,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="explorer-3">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             Are some study results more informative and how can I tell?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -339,7 +337,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="explorer-4">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             Can I download the data?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -349,11 +347,9 @@ const FAQ = () => {
             </p>
           </AccordionContent>
         </AccordionItem>
-        <h2 className="mt-6 text-2xl font-semibold tracking-tight">
-          Meta-analysis
-        </h2>
+        <h2>Meta-analysis</h2>
         <AccordionItem value="meta-1">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             What is a meta-analysis?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -374,7 +370,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="meta-2">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             How does the Meta-analysis tool work?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -407,7 +403,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="meta-3">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             How narrow or wide should my inclusion criteria be?
           </AccordionTrigger>
           <AccordionContent className="prose">
@@ -427,7 +423,7 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q-4">
-          <AccordionTrigger className="py-0 text-left">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
             How should I interpret the effect size estimates?
           </AccordionTrigger>
           <AccordionContent className="prose">
