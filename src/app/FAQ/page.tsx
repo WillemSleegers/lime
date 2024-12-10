@@ -8,14 +8,16 @@ import Link from "next/link"
 
 const FAQ = () => {
   return (
-    <main className="container py-12">
+    <main className="container prose py-12">
       <h1 className="text-center">FAQ</h1>
-      <Accordion type="single" collapsible className="w-full">
-        <h2 className="">General</h2>
+      <Accordion type="single" collapsible>
+        <h2 className="mb-0">General</h2>
         <AccordionItem value="general-1">
-          <AccordionTrigger className="py-0">What is LIME?</AccordionTrigger>
-          <AccordionContent className="py-0">
-            <p className="my-0">
+          <AccordionTrigger className="py-0 text-left">
+            What is LIME?
+          </AccordionTrigger>
+          <AccordionContent className="prose">
+            <p>
               In short, it is a library of psychological intervention studies
               aimed at reducing animal product consumption and for improving
               attitudes towards animals. We are collecting information on all
@@ -30,11 +32,11 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="general-2">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             Who is the target audience?
           </AccordionTrigger>
-          <AccordionContent>
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               LIME was primarily built for researchers and activists or policy
               makers who are somewhat familiar with scientific research. In many
               ways, the website is designed to make scientific results more
@@ -47,59 +49,48 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="general-3">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             Who built LIME?
           </AccordionTrigger>
-          <AccordionContent>
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               LIME was mainly created by dr. Willem Sleegers and dr. Bastian
               Jaeger. You can find out more about who collaborated on LIME on
-              the{" "}
-              <Link
-                className="font-medium underline underline-offset-4"
-                href="/contributors/"
-              >
-                Contributors
-              </Link>{" "}
-              page.
+              the <Link href="/contributors/">Contributors</Link> page.
             </p>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="general-4">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             Who has funded LIME?
           </AccordionTrigger>
-          <AccordionContent>
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               So far we have not yet received funding to work on this project.
               We are looking for funders, however, so if you know of an
               opportunity, please contact us to let us know!
             </p>
           </AccordionContent>
         </AccordionItem>
-        <h2 className="mt-6 text-2xl font-semibold tracking-tight">
-          The database
-        </h2>
+        <h2>The database</h2>
         <AccordionItem value="database-1">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             What types of interventions are included?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               We include studies that tested whether an intervention, such as
               letting participants read a text on factory farm conditions,
               influences an outcome related to meat consumption or attitudes
               towards animals. These interventions differed on various aspects.
             </p>
-            <ul className="list-outside ps-6">
-              <li className="list-disc">
+            <ul>
+              <li>
                 Medium: flyers, 2D and 3D videos, in-person lectures, classroom
                 discussions, etc.
               </li>
-              <li className="list-disc">
-                Mechanism: presenting facts and statistics, menu design,
-              </li>
-              <li className="list-disc">
+              <li>Mechanism: presenting facts and statistics, menu design,</li>
+              <li>
                 Content: appeals to animal welfare, the environment and
                 sustainability, personal health, etc.
               </li>
@@ -107,30 +98,28 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-2">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             What types of outcomes are included?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               We include studies that measured (intended) meat consumption,
               attitudes towards animals, or closely related outcomes. We
               distinguish between three general types of measures.
             </p>
-            <ul className="list-outside ps-6">
-              <li className="list-disc">
-                Behavior: sales data from restaurants, food diaries, etc.
-              </li>
-              <li className="list-disc">
+            <ul>
+              <li>Behavior: sales data from restaurants, food diaries, etc.</li>
+              <li>
                 Intentions: intended future meat consumption, intentions to
                 adopt a vegetarian diet, etc.
               </li>
-              <li className="list-disc">
+              <li>
                 Attitudes & beliefs: beliefs about the ethicality of meat
                 consumption, feelings of guilt when thinking about meat
                 consumption, etc.
               </li>
             </ul>
-            <p className="leading-5">
+            <p>
               These outcomes were measured online, in research laboratories, or
               in the field. In most cases, measures were taken immediately after
               the intervention. Most measures focus on meat consumption in
@@ -140,11 +129,11 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-3">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             What types of studies are included?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               The database includes data from different types of publications,
               including peer-reviewed articles published in scientific journals,
               unpublished scientific papers and theses, and reports by advocacy
@@ -159,42 +148,42 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-4">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             How were the studies coded?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               Every relevant study was coded on various relevant dimensions
               related to:
             </p>
-            <ul className="list-outside ps-6">
-              <li className="list-disc">
+            <ul>
+              <li>
                 The paper: title, authors, publication year, accessibility of
                 data, etc.
               </li>
-              <li className="list-disc">
+              <li>
                 The participants: sample size, country, recruitment location,
                 etc.
               </li>
-              <li className="list-disc">
+              <li>
                 The intervention: medium, content, targeted mechanism, etc.
               </li>
-              <li className="list-disc">
+              <li>
                 The outcomes: type, measure, time since intervention, etc.
               </li>
             </ul>
-            <p className="leading-5">
+            <p>
               We will also work on a codebook that will contain a description of
               each recorded variable.
             </p>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-5">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             Are all relevant studies included in the database?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               No. LIME currently contains a relatively small selection of
               studies from the relevant literature. Our current focus is on
               adding features to the website. We are, however, continuously
@@ -204,22 +193,16 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-6">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             Can I suggest a paper for the database?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               Eventually, we want to include all studies that experimentally
               tested the effect of an intervention on meat consumption or
               attitudes towards animals in the database. If you know a study
               that has not been included yet, you can let us know{" "}
-              <Link
-                className="font-medium underline underline-offset-4"
-                href="/contact"
-              >
-                here
-              </Link>
-              .
+              <Link href="/contact">here</Link>.
             </p>
           </AccordionContent>
         </AccordionItem>
@@ -227,33 +210,33 @@ const FAQ = () => {
           Data explorer
         </h2>
         <AccordionItem value="explorer-1">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             How does the Data explorer tool work?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               We extracted a lot of information from the studies. Most papers
               report multiple effect sizes, which are tied to specific studies,
               participant samples, interventions, and outcome measures. The Data
               Explorer allows you to explore this wealth of information in an
               accessible way via a customizable table.
             </p>
-            <ul className="list-outside ps-6">
-              <li className="list-disc">
+            <ul>
+              <li>
                 You can select relevant columns to only display information that
                 you are interested in
               </li>
-              <li className="list-disc">
+              <li>
                 You can decide which studies to include by using the
                 column-specific filters (e.g., only studies with sales data,
                 only studies with environmental appeals)
               </li>
-              <li className="list-disc">
+              <li>
                 You can group or sort the data based on information from a
                 specific column (e.g., sorting by publication year or effect
                 size)
               </li>
-              <li className="list-disc">
+              <li>
                 You can click on a specific paper label to see more information
                 in a pop-up window, which also includes a link to the paper.
               </li>
@@ -261,12 +244,12 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="explorer-2">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             If I implement the same intervention as one of the studies, will it
             have the same effect for me?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               There are many reasons why you should not be too confident that an
               intervention will be equally effective, or even effective at all,
               under different circumstances. The effectiveness of an
@@ -279,11 +262,10 @@ const FAQ = () => {
               meat consumption, which could overstate the true effectiveness
               because people don&apos;t always follow up on their intentions.
             </p>
-            <p className="leading-5">
+            <p>
               Even when we replicate a study design under very similar
               conditions, results often look{" "}
               <Link
-                className="font-medium underline underline-offset-4"
                 target="_blank"
                 href="https://www.science.org/doi/10.1126/science.aac4716"
               >
@@ -292,7 +274,6 @@ const FAQ = () => {
               . Larger, statistically significant results are more likely to be
               accepted for publication and some researchers engage in
               <Link
-                className="font-medium underline underline-offset-4"
                 target="_blank"
                 href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.01832/full"
               >
@@ -305,7 +286,7 @@ const FAQ = () => {
               we see in the literature may overstate how large the true effect
               sizes really are.
             </p>
-            <p className="leading-5">
+            <p>
               To address these difficulties, you could use LIME to find studies
               that have tested interventions that more closely match the sample
               you have in mind or have applied the intervention in a setting
@@ -316,17 +297,17 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="explorer-3">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             Are some study results more informative and how can I tell?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               It is difficult to judge how reliable and generalizable the
               results of a specific study are. But, all else being equal, there
               are three indicators that you could pay attention to.
             </p>
-            <ul className="list-outside ps-6">
-              <li className="list-disc">
+            <ul>
+              <li>
                 <strong>Sample size</strong>: Studies with larger participant
                 samples will provide more reliable estimates of group
                 differences. For example, to be 90% certain that you will find a
@@ -339,7 +320,7 @@ const FAQ = () => {
                 studies can cancel out, leading to more reliable estimates of
                 the true effect size.
               </li>
-              <li className="list-disc">
+              <li>
                 <strong>Outcome measure</strong>: If you are interested in
                 reducing meat consumption, then you could only focus on studies
                 that measured consumption more directly. Many studies assessed
@@ -351,18 +332,18 @@ const FAQ = () => {
                 the researcher wants to hear.
               </li>
             </ul>
-            <p className="leading-5">
+            <p>
               You can find these indicators using the Data explorer and you can
               also use them as inclusion criteria for a meta-analysis.
             </p>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="explorer-4">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             Can I download the data?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               Yes. There is a button to download the data as a CSV file. The
               file contains the data that is currently visible in the table.
             </p>
@@ -372,11 +353,11 @@ const FAQ = () => {
           Meta-analysis
         </h2>
         <AccordionItem value="meta-1">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             What is a meta-analysis?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               Generally speaking, the goal of a meta-analysis is to combine the
               results of many studies on a specific question in a quantitative
               way. For example, we may want to know if informing people about
@@ -393,11 +374,11 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="meta-2">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             How does the Meta-analysis tool work?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               The meta-analysis tool allows you to conduct customizable
               meta-analyses on specific sets of studies. First, you can select
               which studies should be included in the meta-analysis. You can
@@ -408,17 +389,17 @@ const FAQ = () => {
               other indicators. The website then displays various results for
               the selected set of studies:
             </p>
-            <ul className="list-outside ps-6">
-              <li className="list-disc">
+            <ul>
+              <li>
                 The meta-analytic effect size (Cohen’s d) across all studies,
                 including the 95% confidence interval and other effect size
                 measures
               </li>
-              <li className="list-disc">
+              <li>
                 A forest plot that visualizes the effect sizes of all included
                 studies
               </li>
-              <li className="list-disc">
+              <li>
                 A funnel plot showing the the relation between effect size and
                 standard error
               </li>
@@ -426,11 +407,11 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="meta-3">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             How narrow or wide should my inclusion criteria be?
           </AccordionTrigger>
-          <AccordionContent className="space-y-3">
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               Meta-analyses provide the average effect across many studies. This
               average is more meaningful if we compare studies that are more
               similar to each other. Comparing, or averaging, apples and oranges
@@ -446,21 +427,17 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q-4">
-          <AccordionTrigger className="text-left">
+          <AccordionTrigger className="py-0 text-left">
             How should I interpret the effect size estimates?
           </AccordionTrigger>
-          <AccordionContent>
-            <p className="leading-5">
+          <AccordionContent className="prose">
+            <p>
               Effect size measures such as Cohen&apos;s d can be used to
               quantify differences between groups on some variable of interest.
               For example, if an intervention leads to a larger reduction in
               meat consumption relative to a control group, this will be
               reflected in a larger effect size. This{" "}
-              <Link
-                className="font-medium underline underline-offset-4"
-                target="_blank"
-                href="https://rpsychologist.com/cohend/"
-              >
+              <Link target="_blank" href="https://rpsychologist.com/cohend/">
                 website
               </Link>{" "}
               provides a visual explanation of how Cohen&apos;s d (and other

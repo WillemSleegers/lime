@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 
 import { Footer } from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
@@ -8,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { PaperCarousel } from "@/components/paper-carousel"
 
 import counts from "@/assets/data/counts.json"
-import imageLibrary from "@/assets/images/library.png"
 
 export default function Home() {
   return (
