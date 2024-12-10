@@ -54,7 +54,7 @@ export default function DataExplorer() {
           paper.
         </p>
       </div>
-      <Button onClick={handleDownload} className="me-0 ms-auto block">
+      <Button onClick={handleDownload} className="rounded-3xl">
         Download table
       </Button>
       <Filter data={data} setColumns={setTableColumns} setData={setTableData} />
