@@ -2,81 +2,140 @@
 
 import React, { useState } from "react"
 
-import { DataTableColumns } from "@/components/tables/databank/data-columns"
-import { DataTable } from "@/components/tables/databank/data-table"
-import { Filter } from "@/components/forms/data-explorer/filter"
+import { InfoIcon } from "lucide-react"
 
-import data from "@/assets/data/prepared-effects.json"
+import {
+  ColumnsPapers,
+  ColumnsInterventions,
+  ColumnsStudies,
+} from "@/components/data-explorer/table-columns"
+import { DataTable } from "@/components/data-explorer/table"
+import { FilterPapers, FilterStudies } from "@/components/data-explorer/filters"
 import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Bubbles } from "@/components/bubbles"
+
+import papers from "@/assets/data/papers.json"
+import studies from "@/assets/data/studies.json"
 
 export default function DataExplorer() {
-  const [tableColumns, setTableColumns] = useState(DataTableColumns)
-  const [tableData, setTableData] = useState(data)
+  const [level, setLevel] = useState("paper")
+  const [dataPaperLevel, setDataPaperLevel] = useState(papers)
+  const [dataStudyLevel, setDataStudyLevel] = useState(studies)
+  const [dataConditionLevel, setDataConditionLevel] = useState(papers)
 
   const handleDownload = () => {
-    const columnNames = tableColumns.map((tableColumn) => tableColumn.id!)
-
+    //const columnNames = tableColumns.map((tableColumn) => tableColumn.id!)
     // Loop over the table data and extract values for each column
-    const rowsData: string[] = []
-    tableData.map((row: { [key: string]: unknown }) => {
-      const rowData: string[] = []
-      columnNames.forEach((columnName: string) => {
-        const value = String(row[columnName])
-
-        const escapedValue = value.includes(",") ? `"${value}"` : value
-        rowData.push(escapedValue)
-      })
-      rowsData.push(rowData.join(", "))
-    })
-
-    const text = columnNames.join(", ") + "\n" + rowsData.join("\n")
-
-    const element = document.createElement("a")
-    element.setAttribute(
-      "href",
-      "data:text/csv;charset=utf-8," + encodeURIComponent(text),
-    )
-    element.setAttribute("download", "lime-table.csv")
-    element.style.display = "none"
-    document.body.appendChild(element)
-    element.click()
-    document.body.removeChild(element)
+    // const rowsData: string[] = []
+    // tableData.map((row: { [key: string]: unknown }) => {
+    //   const rowData: string[] = []
+    //   columnNames.forEach((columnName: string) => {
+    //     const value = String(row[columnName])
+    //     const escapedValue = value.includes(",") ? `"${value}"` : value
+    //     rowData.push(escapedValue)
+    //   })
+    //   rowsData.push(rowData.join(", "))
+    // })
+    // const text = columnNames.join(", ") + "\n" + rowsData.join("\n")
+    // const element = document.createElement("a")
+    // element.setAttribute(
+    //   "href",
+    //   "data:text/csv;charset=utf-8," + encodeURIComponent(text),
+    // )
+    // element.setAttribute("download", "lime-table.csv")
+    // element.style.display = "none"
+    // document.body.appendChild(element)
+    // element.click()
+    // document.body.removeChild(element)
   }
 
   return (
     <main className="container space-y-6 py-12">
       <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
-      <Tabs defaultValue="one">
-        <TabsList className="text-center">
-          <TabsTrigger value="one">Version 1</TabsTrigger>
-          <TabsTrigger value="two">Version 2</TabsTrigger>
-        </TabsList>
-        <TabsContent value="one">
-          <div className="m-auto max-w-3xl space-y-6">
-            <p>
-              Use the table below to explore the data. You can filter out rows
-              and select columns of interest using the Filter table section. You
-              can also click on the labels of each paper for more information
-              about the paper.
-            </p>
-          </div>
-          <Button onClick={handleDownload} className="rounded-3xl">
-            Download table
-          </Button>
-          <Filter
-            data={data}
-            setColumns={setTableColumns}
-            setData={setTableData}
-          />
+      <Tabs defaultValue={level} className="space-y-6">
+        <div className="mx-auto flex w-fit items-center gap-3">
+          <TabsList className="rounded-full bg-primary text-white">
+            <TabsTrigger
+              className="rounded-full"
+              value="paper"
+              onClick={() => setLevel("paper")}
+            >
+              Paper-level
+            </TabsTrigger>
+            <TabsTrigger
+              className="rounded-full"
+              value="study"
+              onClick={() => setLevel("study")}
+            >
+              Study-level
+            </TabsTrigger>
+            <TabsTrigger
+              className="rounded-full"
+              value="intervention"
+              onClick={() => setLevel("intervention")}
+            >
+              Intervention-level
+            </TabsTrigger>
+            <TabsTrigger className="rounded-full" value="outcome">
+              Outcome-level
+            </TabsTrigger>
+            <TabsTrigger className="rounded-full" value="effects">
+              Effects-level
+            </TabsTrigger>
+          </TabsList>
 
-          <DataTable columns={tableColumns} data={tableData} />
+          <Dialog>
+            <DialogTrigger asChild>
+              <InfoIcon className="stroke-bg-primary h-6 w-6 hover:cursor-pointer hover:text-primary" />
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Data explorer help</DialogTitle>
+                <DialogDescription>
+                  Use the table below to explore the data. You can filter out
+                  rows and select columns of interest using the Filter table
+                  section. You can also click on the labels of each paper for
+                  more information about the paper.
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+        </div>
+
+        <TabsContent value="paper" className="space-y-3" tabIndex={-1}>
+          <FilterPapers data={papers} setData={setDataPaperLevel} />
+          <div>
+            Showing {dataPaperLevel.length} out of {papers.length} rows.
+          </div>
+          <DataTable columns={ColumnsPapers} data={dataPaperLevel} />
         </TabsContent>
-        <TabsContent value="two">
-          <Bubbles />
+        <TabsContent value="study" className="space-y-3" tabIndex={-1}>
+          <FilterStudies data={studies} setData={setDataStudyLevel} />
+          <div>
+            Showing {dataStudyLevel.length} out of {studies.length} rows.
+          </div>
+          <DataTable columns={ColumnsStudies} data={dataStudyLevel} />
+        </TabsContent>
+        <TabsContent value="intervention" className="space-y-3" tabIndex={-1}>
+          <FilterPapers data={dataPaperLevel} setData={setDataPaperLevel} />
+          <DataTable columns={ColumnsInterventions} data={dataConditionLevel} />
         </TabsContent>
       </Tabs>
+
+      <Button
+        onClick={handleDownload}
+        className="rounded-full bg-primary text-white"
+      >
+        Download table
+      </Button>
     </main>
   )
 }

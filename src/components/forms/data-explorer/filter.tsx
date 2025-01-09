@@ -27,10 +27,10 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Slider } from "@/components/ui/slider"
 import { Separator } from "@/components/ui/separator"
 import { ToggleGroupAll } from "@/components/forms/toggle-group-all"
-import { DataTableColumns } from "@/components/tables/databank/data-columns"
+import { DataTableColumns } from "@/components/data-explorer/table-columns"
 
 import { cn, round } from "@/lib/utils"
-import { Data, filterTableData, getOptions } from "@/lib/json-functions"
+import { Data, getOptions } from "@/lib/json-functions"
 
 import {
   PAPER_COLUMNS,
@@ -40,8 +40,6 @@ import {
   SAMPLE_COLUMNS,
   EFFECT_COLUMNS,
 } from "@/lib/constants"
-import { DEFAULT_COLUMNS } from "@/components/forms/data-explorer/constants"
-import { DEFAULT_VALUES } from "@/components/forms/data-explorer/constants"
 
 const intervention_aspects = getOptions("intervention_aspect")
 const intervention_mediums = getOptions("intervention_medium")
@@ -53,7 +51,6 @@ const measurements = getOptions("outcome_measurement_type")
 const countries = getOptions("sample_intervention_country")
 
 const formSchema = z.object({
-  paper_columns: z.string().array(),
   paper_year: z.number().array(),
   paper_open_access: z
     .string()
@@ -63,7 +60,6 @@ const formSchema = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
-  study_columns: z.string().array(),
   study_n: z.coerce.number().min(1),
   intervention_columns: z.string().array(),
   intervention_aspect: z
@@ -78,7 +74,6 @@ const formSchema = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one intervention appeal." }),
-  outcome_columns: z.string().array(),
   outcomes: z
     .string()
     .array()
@@ -87,24 +82,21 @@ const formSchema = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one measurement type." }),
-  sample_columns: z.string().array(),
   sample_country: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one country." }),
-  effect_columns: z.string().array(),
   effect_cell_size: z.coerce.number().min(1),
   effect_size: z.number().array(),
 })
 
 type FilterProps = {
   data: Data
-  setColumns: Function
   setData: Function
 }
 
 export const Filter = (props: FilterProps) => {
-  const { data, setColumns, setData } = props
+  const { data, setData } = props
 
   const [open, setOpen] = useState(false)
   const [openPaper, setOpenPaper] = useState(true)
@@ -118,29 +110,21 @@ export const Filter = (props: FilterProps) => {
     resolver: zodResolver(formSchema),
     mode: "onChange",
     defaultValues: {
-      paper_columns: DEFAULT_COLUMNS.paper,
       paper_year: [
         Math.min(...data.map((datum) => datum.paper_year)),
         Math.max(...data.map((datum) => datum.paper_year)),
       ],
-      paper_open_access: DEFAULT_VALUES.paper_open_access,
-      paper_data_available: DEFAULT_VALUES.paper_data_available,
-      study_columns: DEFAULT_COLUMNS.study,
       study_n: 1,
-      intervention_columns: DEFAULT_COLUMNS.intervention,
       intervention_aspect: intervention_aspects.map((e) => e.value),
       intervention_medium: intervention_mediums.map((e) => e.value),
       intervention_appeal: intervention_appeals.map((e) => e.value),
-      outcome_columns: DEFAULT_COLUMNS.outcome,
       outcomes: [
         ...behaviors.map((e) => e.value),
         ...intentions.map((e) => e.value),
         ...attitudes.map((e) => e.value),
       ],
       measurements: measurements.map((e) => e.value),
-      sample_columns: DEFAULT_COLUMNS.sample,
       sample_country: countries.map((country) => country.value),
-      effect_columns: DEFAULT_COLUMNS.effect,
       effect_size: [
         round(Math.min(...data.map((datum) => datum.effect_size_value)), 2),
         round(Math.max(...data.map((datum) => datum.effect_size_value)), 2),
@@ -229,23 +213,6 @@ export const Filter = (props: FilterProps) => {
         datum.effect_intervention_n > values.effect_cell_size,
     )
 
-    // Select only relevant columns
-    const selectedColumns = ["paper_label"].concat(
-      values.paper_columns,
-      values.study_columns,
-      values.intervention_columns,
-      values.outcome_columns,
-      values.sample_columns,
-      values.effect_columns,
-    )
-
-    const newColumns = DataTableColumns.filter((column: any) =>
-      selectedColumns.includes(column.id),
-    )
-
-    subset = filterTableData(subset, selectedColumns)
-
-    setColumns(newColumns)
     setData(subset)
   }
 
@@ -280,25 +247,6 @@ export const Filter = (props: FilterProps) => {
                   />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
-                  <FormField
-                    control={form.control}
-                    name="paper_columns"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">
-                          Show columns
-                        </FormLabel>
-                        <FormControl>
-                          <ToggleGroupAll
-                            field={field}
-                            options={PAPER_COLUMNS}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Separator />
                   <FormField
                     control={form.control}
                     name="paper_year"
@@ -423,25 +371,6 @@ export const Filter = (props: FilterProps) => {
                   />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
-                  <FormField
-                    control={form.control}
-                    name="study_columns"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">
-                          Show columns
-                        </FormLabel>
-                        <FormControl>
-                          <ToggleGroupAll
-                            field={field}
-                            options={STUDY_COLUMNS}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Separator />
                   <FilterInput
                     form={form}
                     name="study_n"
@@ -559,25 +488,6 @@ export const Filter = (props: FilterProps) => {
                 <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
                   <FormField
                     control={form.control}
-                    name="outcome_columns"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">
-                          Show columns
-                        </FormLabel>
-                        <FormControl>
-                          <ToggleGroupAll
-                            field={field}
-                            options={OUTCOME_COLUMNS}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Separator />
-                  <FormField
-                    control={form.control}
                     name="outcomes"
                     render={({ field }) => (
                       <FormItem>
@@ -653,25 +563,6 @@ export const Filter = (props: FilterProps) => {
                 <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
                   <FormField
                     control={form.control}
-                    name="sample_columns"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">
-                          Show columns
-                        </FormLabel>
-                        <FormControl>
-                          <ToggleGroupAll
-                            field={field}
-                            options={SAMPLE_COLUMNS}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Separator />
-                  <FormField
-                    control={form.control}
                     name="sample_country"
                     render={({ field }) => (
                       <FormItem>
@@ -704,25 +595,6 @@ export const Filter = (props: FilterProps) => {
                   />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="CollapsibleContent space-y-3 pb-3 ps-3">
-                  <FormField
-                    control={form.control}
-                    name="effect_columns"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">
-                          Show columns
-                        </FormLabel>
-                        <FormControl>
-                          <ToggleGroupAll
-                            field={field}
-                            options={EFFECT_COLUMNS}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Separator />
                   <FormField
                     control={form.control}
                     name="effect_size"

@@ -34,6 +34,35 @@ export type Column = {
   effect_intervention_n: number
 }
 
+export type ColumnsPapers = {
+  paper_label: string
+  paper_title: string
+  paper_authors: string
+  paper_year: number
+  paper_type: string
+  paper_source?: string
+  paper_link?: string
+  paper_open_access: string
+}
+
+export type ColumnsStudies = {
+  paper_label: string
+  study: number
+  study_n: number
+  study_preregistered: string
+  study_pregistration_link?: string
+  study_data_available: string
+  study_data_link?: string
+}
+
+export type ColumnsInterventions = {
+  paper_label: string
+  study: number
+  intervention_appeal: string
+  intervention_medium: string
+  intervention_aspect: string
+}
+
 export const DataTableColumns: ColumnDef<Column>[] = [
   {
     id: "paper_label",
@@ -261,5 +290,219 @@ export const DataTableColumns: ColumnDef<Column>[] = [
         title="Sample size (intervention)"
       />
     ),
+  },
+]
+
+export const ColumnsPapers: ColumnDef<ColumnsPapers>[] = [
+  {
+    id: "paper_label",
+    accessorKey: "paper_label",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Paper" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} />
+    },
+  },
+  {
+    id: "paper_authors",
+    accessorKey: "paper_authors",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Authors" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("paper_authors")
+      const content = value.split("; ").map((e) => (
+        <Badge
+          key={e}
+          variant="secondary"
+          className="whitespace-nowrap text-sm font-normal"
+        >
+          {e}
+        </Badge>
+      ))
+      return <div className="flex flex-wrap gap-1">{content}</div>
+    },
+  },
+  {
+    id: "paper_title",
+    accessorKey: "paper_title",
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        className="min-w-96"
+        column={column}
+        title="Title"
+      />
+    ),
+  },
+  {
+    id: "paper_year",
+    accessorKey: "paper_year",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Year" />
+    ),
+  },
+  {
+    id: "paper_type",
+    accessorKey: "paper_type",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Type" />
+    ),
+  },
+  {
+    id: "paper_source",
+    accessorKey: "paper_source",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Source" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue("paper_source")
+      return value ? value : "-"
+    },
+  },
+  {
+    id: "paper_open_access",
+    accessorKey: "paper_open_access",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Open access" />
+    ),
+    cell: ({ row }) => {
+      return row.getValue("paper_open_access") == "yes" ? <CheckIcon /> : <X />
+    },
+  },
+  {
+    id: "paper_link",
+    accessorKey: "paper_link",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="URL" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue("paper_link")
+
+      if (value) {
+        return (
+          <Link href={value} target="_blank">
+            <LinkIcon width={14} />
+          </Link>
+        )
+      } else return "-"
+    },
+  },
+]
+
+export const ColumnsStudies: ColumnDef<ColumnsStudies>[] = [
+  {
+    id: "paper_label",
+    accessorKey: "paper_label",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Paper" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} />
+    },
+  },
+  {
+    id: "study",
+    accessorKey: "study",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Study" />
+    ),
+  },
+  {
+    id: "study_n",
+    accessorKey: "study_n",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Sample size" />
+    ),
+  },
+  {
+    id: "study_preregistered",
+    accessorKey: "study_preregistered",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Preregistered" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("study_preregistered")
+
+      return value == "yes" ? <CheckIcon strokeWidth={2} /> : <X />
+    },
+  },
+  {
+    id: "study_pregistration_link",
+    accessorKey: "study_pregistration_link",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Preregistration URL" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue("study_pregistration_link")
+
+      if (value) {
+        return (
+          <Link href={value} target="_blank">
+            <LinkIcon width={14} />
+          </Link>
+        )
+      } else return "-"
+    },
+  },
+  {
+    id: "paper_data_available",
+    accessorKey: "paper_data_available",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Data available" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue("paper_data_available") as string
+
+      return value == "yes" ? <CheckIcon strokeWidth={2} /> : <X />
+    },
+  },
+]
+
+export const ColumnsInterventions: ColumnDef<ColumnsPapers>[] = [
+  {
+    accessorKey: "intervention_aspect",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Aspect" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue("intervention_aspect") as string
+      const content = value.split("; ").map((e) => (
+        <Badge key={e} variant="secondary" className="whitespace-nowrap">
+          {e}
+        </Badge>
+      ))
+      return <div className="flex flex-wrap gap-1">{content}</div>
+    },
+  },
+  {
+    accessorKey: "intervention_medium",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Medium" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue("intervention_medium") as string
+      const content = value.split("; ").map((e) => (
+        <Badge key={e} variant="secondary" className="whitespace-nowrap">
+          {e}
+        </Badge>
+      ))
+      return <div className="flex flex-wrap gap-1">{content}</div>
+    },
+  },
+  {
+    accessorKey: "intervention_appeal",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Type of appeal" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue("intervention_appeal") as string
+      const content = value.split("; ").map((e) => (
+        <Badge key={e} variant="secondary" className="whitespace-nowrap">
+          {e}
+        </Badge>
+      ))
+      return <div className="flex flex-wrap gap-1">{content}</div>
+    },
   },
 ]
