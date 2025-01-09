@@ -9,6 +9,8 @@ import { PaperDialog } from "@/components/paper-dialog"
 import { DataTableColumnHeader } from "@/components/tables/data-columns-header"
 
 import { round } from "@/lib/utils"
+import { Button } from "../ui/button"
+import { DescriptionDialog } from "./description-dialog"
 
 export type Column = {
   paper_label: string
@@ -459,7 +461,52 @@ export const ColumnsStudies: ColumnDef<ColumnsStudies>[] = [
   },
 ]
 
-export const ColumnsInterventions: ColumnDef<ColumnsPapers>[] = [
+export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
+  {
+    id: "paper_label",
+    accessorKey: "paper_label",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Paper" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} />
+    },
+  },
+  {
+    id: "study",
+    accessorKey: "study",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Study" />
+    ),
+  },
+  {
+    id: "intervention_description",
+    accessorKey: "intervention_description",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Intervention" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("intervention_description")
+      const limit = 115
+      return (
+        <div className="min-w-64">
+          <span
+            className={
+              value.length > limit ? "line-clamp-3" : "line-clamp-none"
+            }
+          >
+            {value}
+          </span>
+          {value.length > limit && (
+            <DescriptionDialog
+              title="Intervention condition description"
+              description={value}
+            />
+          )}
+        </div>
+      )
+    },
+  },
   {
     accessorKey: "intervention_aspect",
     header: ({ column }) => (
@@ -467,8 +514,12 @@ export const ColumnsInterventions: ColumnDef<ColumnsPapers>[] = [
     ),
     cell: ({ row }) => {
       const value = row.getValue("intervention_aspect") as string
-      const content = value.split("; ").map((e) => (
-        <Badge key={e} variant="secondary" className="whitespace-nowrap">
+      const content = value.split(", ").map((e) => (
+        <Badge
+          key={e}
+          variant="secondary"
+          className="whitespace-nowrap text-sm font-normal"
+        >
           {e}
         </Badge>
       ))
@@ -482,8 +533,12 @@ export const ColumnsInterventions: ColumnDef<ColumnsPapers>[] = [
     ),
     cell: ({ row }) => {
       const value = row.getValue("intervention_medium") as string
-      const content = value.split("; ").map((e) => (
-        <Badge key={e} variant="secondary" className="whitespace-nowrap">
+      const content = value.split(", ").map((e) => (
+        <Badge
+          key={e}
+          variant="secondary"
+          className="whitespace-nowrap text-sm font-normal"
+        >
           {e}
         </Badge>
       ))
@@ -497,12 +552,48 @@ export const ColumnsInterventions: ColumnDef<ColumnsPapers>[] = [
     ),
     cell: ({ row }) => {
       const value = row.getValue("intervention_appeal") as string
-      const content = value.split("; ").map((e) => (
-        <Badge key={e} variant="secondary" className="whitespace-nowrap">
+      const content = value.split(", ").map((e) => (
+        <Badge
+          key={e}
+          variant="secondary"
+          className="whitespace-nowrap text-sm font-normal"
+        >
           {e}
         </Badge>
       ))
       return <div className="flex flex-wrap gap-1">{content}</div>
+    },
+  },
+  {
+    id: "control_description",
+    accessorKey: "control_description",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Control" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string | undefined>("control_description")
+      if (value) {
+        const limit = 115
+        return (
+          <div className="min-w-64">
+            <span
+              className={
+                value.length > limit ? "line-clamp-3" : "line-clamp-none"
+              }
+            >
+              {value}
+            </span>
+            {value.length > limit && (
+              <DescriptionDialog
+                title="Control condition description"
+                description={value}
+              />
+            )}
+          </div>
+        )
+      } else {
+        return "-"
+      }
     },
   },
 ]

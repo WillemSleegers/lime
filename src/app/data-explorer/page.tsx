@@ -10,7 +10,11 @@ import {
   ColumnsStudies,
 } from "@/components/data-explorer/table-columns"
 import { DataTable } from "@/components/data-explorer/table"
-import { FilterPapers, FilterStudies } from "@/components/data-explorer/filters"
+import {
+  FilterInterventions,
+  FilterPapers,
+  FilterStudies,
+} from "@/components/data-explorer/filters"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -24,12 +28,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import papers from "@/assets/data/papers.json"
 import studies from "@/assets/data/studies.json"
+import interventions from "@/assets/data/interventions.json"
 
 export default function DataExplorer() {
   const [level, setLevel] = useState("paper")
   const [dataPaperLevel, setDataPaperLevel] = useState(papers)
   const [dataStudyLevel, setDataStudyLevel] = useState(studies)
-  const [dataConditionLevel, setDataConditionLevel] = useState(papers)
+  const [dataInterventionLevel, setDataInterventionLevel] =
+    useState(interventions)
 
   const handleDownload = () => {
     //const columnNames = tableColumns.map((tableColumn) => tableColumn.id!)
@@ -125,8 +131,18 @@ export default function DataExplorer() {
           <DataTable columns={ColumnsStudies} data={dataStudyLevel} />
         </TabsContent>
         <TabsContent value="intervention" className="space-y-3" tabIndex={-1}>
-          <FilterPapers data={dataPaperLevel} setData={setDataPaperLevel} />
-          <DataTable columns={ColumnsInterventions} data={dataConditionLevel} />
+          <FilterInterventions
+            data={dataInterventionLevel}
+            setData={setDataInterventionLevel}
+          />
+          <div>
+            Showing {dataInterventionLevel.length} out of {interventions.length}{" "}
+            rows.
+          </div>
+          <DataTable
+            columns={ColumnsInterventions}
+            data={dataInterventionLevel}
+          />
         </TabsContent>
       </Tabs>
 

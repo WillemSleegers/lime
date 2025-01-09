@@ -51,6 +51,21 @@ const formSchemaStudies = z.object({
     .nonempty({ message: "Must select at least one option." }),
 })
 
+const formSchemaInterventions = z.object({
+  intervention_aspect: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  intervention_medium: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  intervention_appeal: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+})
+
 type FilterPapersProps = {
   data: {
     paper: number
@@ -367,11 +382,168 @@ type FilterInterventionsProps = {
   data: {
     paper: number
     paper_label: string
-    paper_title: string
-    paper_authors: string
-    paper_year: number
-    paper_open_access: string
-    paper_data_available: string
+    study: number
+    intervention_appeal: string
+    intervention_medium: string
+    intervention_aspect: string
   }[]
   setData: Function
+}
+
+export const FilterInterventions = (props: FilterInterventionsProps) => {
+  const { data, setData } = props
+
+  const intervention_aspect_options = [
+    ...new Set(
+      data
+        .map((datum) => datum.intervention_aspect)
+        .flatMap((str) => str.split(",").map((s) => s.trim())),
+    ),
+  ]
+  const intervention_medium_options = [
+    ...new Set(
+      data
+        .map((datum) => datum.intervention_medium)
+        .flatMap((str) => str.split(",").map((s) => s.trim())),
+    ),
+  ]
+  const intervention_appeal_options = [
+    ...new Set(
+      data
+        .map((datum) => datum.intervention_appeal)
+        .flatMap((str) => str.split(",").map((s) => s.trim())),
+    ),
+  ]
+
+  const form = useForm<z.infer<typeof formSchemaInterventions>>({
+    resolver: zodResolver(formSchemaInterventions),
+    mode: "onChange",
+    defaultValues: {
+      intervention_aspect: intervention_aspect_options,
+      intervention_medium: intervention_medium_options,
+      intervention_appeal: intervention_appeal_options,
+    },
+  })
+
+  async function onSubmit(values: z.infer<typeof formSchemaInterventions>) {
+    let subset = data
+
+    console.log(values)
+
+    setData(subset)
+  }
+
+  return (
+    <FilterCollapsible title="Filter">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
+          <div className="flex flex-wrap gap-x-12 gap-y-4">
+            <FormField
+              control={form.control}
+              name="intervention_aspect"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Aspect</FormLabel>
+                  <FormControl className="justify-start">
+                    <ToggleGroup
+                      type="multiple"
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      {intervention_aspect_options.map((option, i) => (
+                        <ToggleGroupItem
+                          value={option}
+                          key={"intervention-aspect-" + i}
+                          aria-label={"toggle" + option}
+                          className="rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          size="sm"
+                        >
+                          {option}
+                        </ToggleGroupItem>
+                      ))}
+                    </ToggleGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="intervention_medium"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Medium</FormLabel>
+                  <FormControl className="justify-start">
+                    <ToggleGroup
+                      type="multiple"
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      {intervention_medium_options.map((option, i) => (
+                        <ToggleGroupItem
+                          value={option}
+                          key={"intervention-medium-" + i}
+                          aria-label={"toggle" + option}
+                          className="rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          size="sm"
+                        >
+                          {option}
+                        </ToggleGroupItem>
+                      ))}
+                    </ToggleGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="intervention_appeal"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Appeal</FormLabel>
+                  <FormControl className="justify-start">
+                    <ToggleGroup
+                      className="flex flex-wrap gap-3"
+                      type="multiple"
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      {intervention_appeal_options.map((option, i) => (
+                        <ToggleGroupItem
+                          value={option}
+                          key={"intervention-appeal-" + i}
+                          aria-label={"toggle" + option}
+                          className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          size="sm"
+                        >
+                          {option}
+                        </ToggleGroupItem>
+                      ))}
+                    </ToggleGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              name="error"
+              render={() => (
+                <FormItem>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <Button type="submit" className="h-auto rounded-full text-white">
+            Update table
+          </Button>
+        </form>
+      </Form>
+    </FilterCollapsible>
+  )
 }
