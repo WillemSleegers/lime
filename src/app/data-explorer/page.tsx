@@ -132,7 +132,7 @@ export default function DataExplorer() {
         </TabsContent>
         <TabsContent value="intervention" className="space-y-3" tabIndex={-1}>
           <FilterInterventions
-            data={dataInterventionLevel}
+            data={interventions}
             setData={setDataInterventionLevel}
           />
           <div>

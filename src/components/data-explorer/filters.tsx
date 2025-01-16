@@ -1,9 +1,8 @@
 "use client"
 
-import { useForm } from "react-hook-form"
-
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -19,9 +18,6 @@ import { Input } from "@/components/ui/input"
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Slider } from "@/components/ui/slider"
-
-import { ToggleGroupAll } from "@/components/forms/toggle-group-all"
-import { DataTableColumns } from "@/components/data-explorer/table-columns"
 
 import { cn } from "@/lib/utils"
 
@@ -52,15 +48,15 @@ const formSchemaStudies = z.object({
 })
 
 const formSchemaInterventions = z.object({
-  intervention_aspect: z
+  intervention_appeal: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  intervention_mechanism: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
   intervention_medium: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-  intervention_appeal: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
@@ -79,20 +75,6 @@ type FilterPapersProps = {
   setData: Function
 }
 
-type FilterStudiesProps = {
-  data: {
-    paper: number
-    paper_label: string
-    study: number
-    study_n: number
-    study_preregistered: string
-    study_pregistration_link?: string
-    study_data_available: string
-    study_data_link?: string
-  }[]
-  setData: Function
-}
-
 export const FilterPapers = (props: FilterPapersProps) => {
   const { data, setData } = props
 
@@ -103,7 +85,8 @@ export const FilterPapers = (props: FilterPapersProps) => {
 
   const form = useForm<z.infer<typeof formSchemaPapers>>({
     resolver: zodResolver(formSchemaPapers),
-    mode: "onChange",
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
     defaultValues: {
       paper_year: [
         Math.min(...data.map((datum) => datum.paper_year)),
@@ -151,7 +134,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                   <FormLabel>Publication year</FormLabel>
                   <FormControl>
                     <Slider
-                      defaultValue={field.value}
+                      value={field.value}
                       minStepsBetweenThumbs={1}
                       max={Math.max(...data.map((datum) => datum.paper_year))}
                       min={Math.min(...data.map((datum) => datum.paper_year))}
@@ -177,7 +160,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                     <ToggleGroup
                       type="multiple"
                       onValueChange={field.onChange}
-                      defaultValue={field.value}
+                      value={field.value}
                     >
                       {paper_type_options.map((option, i) => (
                         <ToggleGroupItem
@@ -206,7 +189,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                     <ToggleGroup
                       type="multiple"
                       onValueChange={field.onChange}
-                      defaultValue={field.value}
+                      value={field.value}
                     >
                       {paper_open_access_options.map((option, i) => (
                         <ToggleGroupItem
@@ -244,6 +227,20 @@ export const FilterPapers = (props: FilterPapersProps) => {
   )
 }
 
+type FilterStudiesProps = {
+  data: {
+    paper: number
+    paper_label: string
+    study: number
+    study_n: number
+    study_preregistered: string
+    study_pregistration_link?: string
+    study_data_available: string
+    study_data_link?: string
+  }[]
+  setData: Function
+}
+
 export const FilterStudies = (props: FilterStudiesProps) => {
   const { data, setData } = props
 
@@ -256,7 +253,8 @@ export const FilterStudies = (props: FilterStudiesProps) => {
 
   const form = useForm<z.infer<typeof formSchemaStudies>>({
     resolver: zodResolver(formSchemaStudies),
-    mode: "onChange",
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
     defaultValues: {
       study_pregistered: study_preregistered_options,
       study_data_available: study_data_available_options,
@@ -265,8 +263,6 @@ export const FilterStudies = (props: FilterStudiesProps) => {
 
   async function onSubmit(values: z.infer<typeof formSchemaStudies>) {
     let subset = data
-
-    console.log(values)
 
     subset = subset.filter((datum) => {
       return values.study_data_available.some((open_acess) =>
@@ -310,7 +306,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                     <ToggleGroup
                       type="multiple"
                       onValueChange={field.onChange}
-                      defaultValue={field.value}
+                      value={field.value}
                     >
                       {study_preregistered_options.map((option, i) => (
                         <ToggleGroupItem
@@ -340,7 +336,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                     <ToggleGroup
                       type="multiple"
                       onValueChange={field.onChange}
-                      defaultValue={field.value}
+                      value={field.value}
                     >
                       {study_data_available_options.map((option, i) => (
                         <ToggleGroupItem
@@ -384,8 +380,8 @@ type FilterInterventionsProps = {
     paper_label: string
     study: number
     intervention_appeal: string
+    intervention_mechanism: string
     intervention_medium: string
-    intervention_aspect: string
   }[]
   setData: Function
 }
@@ -393,10 +389,18 @@ type FilterInterventionsProps = {
 export const FilterInterventions = (props: FilterInterventionsProps) => {
   const { data, setData } = props
 
-  const intervention_aspect_options = [
+  const intervention_appeal_options = [
     ...new Set(
       data
-        .map((datum) => datum.intervention_aspect)
+        .map((datum) => datum.intervention_appeal)
+        .flatMap((str) => str.split(", ").map((s) => s)),
+    ),
+  ]
+
+  const intervention_mechanism_options = [
+    ...new Set(
+      data
+        .map((datum) => datum.intervention_mechanism)
         .flatMap((str) => str.split(",").map((s) => s.trim())),
     ),
   ]
@@ -407,28 +411,38 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
         .flatMap((str) => str.split(",").map((s) => s.trim())),
     ),
   ]
-  const intervention_appeal_options = [
-    ...new Set(
-      data
-        .map((datum) => datum.intervention_appeal)
-        .flatMap((str) => str.split(",").map((s) => s.trim())),
-    ),
-  ]
 
   const form = useForm<z.infer<typeof formSchemaInterventions>>({
     resolver: zodResolver(formSchemaInterventions),
-    mode: "onChange",
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
     defaultValues: {
-      intervention_aspect: intervention_aspect_options,
-      intervention_medium: intervention_medium_options,
       intervention_appeal: intervention_appeal_options,
+      intervention_mechanism: intervention_mechanism_options,
+      intervention_medium: intervention_medium_options,
     },
   })
 
   async function onSubmit(values: z.infer<typeof formSchemaInterventions>) {
     let subset = data
 
-    console.log(values)
+    subset = subset.filter((datum) => {
+      return values.intervention_appeal.some((appeal) =>
+        datum.intervention_appeal.includes(appeal),
+      )
+    })
+
+    subset = subset.filter((datum) => {
+      return values.intervention_mechanism.some((mechanism) =>
+        datum.intervention_mechanism.includes(mechanism),
+      )
+    })
+
+    subset = subset.filter((datum) => {
+      return values.intervention_medium.some((medium) =>
+        datum.intervention_medium.includes(medium),
+      )
+    })
 
     setData(subset)
   }
@@ -440,76 +454,16 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
           <div className="flex flex-wrap gap-x-12 gap-y-4">
             <FormField
               control={form.control}
-              name="intervention_aspect"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Aspect</FormLabel>
-                  <FormControl className="justify-start">
-                    <ToggleGroup
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      {intervention_aspect_options.map((option, i) => (
-                        <ToggleGroupItem
-                          value={option}
-                          key={"intervention-aspect-" + i}
-                          aria-label={"toggle" + option}
-                          className="rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                    </ToggleGroup>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="intervention_medium"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Medium</FormLabel>
-                  <FormControl className="justify-start">
-                    <ToggleGroup
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      {intervention_medium_options.map((option, i) => (
-                        <ToggleGroupItem
-                          value={option}
-                          key={"intervention-medium-" + i}
-                          aria-label={"toggle" + option}
-                          className="rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                    </ToggleGroup>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
               name="intervention_appeal"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Appeal</FormLabel>
+                  <FormLabel>Type of appeal</FormLabel>
                   <FormControl className="justify-start">
                     <ToggleGroup
                       className="flex flex-wrap gap-3"
                       type="multiple"
                       onValueChange={field.onChange}
-                      defaultValue={field.value}
+                      value={field.value}
                     >
                       {intervention_appeal_options.map((option, i) => (
                         <ToggleGroupItem
@@ -522,13 +476,125 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                           {option}
                         </ToggleGroupItem>
                       ))}
+                      <Button
+                        type="button"
+                        variant="link"
+                        className="text-foreground"
+                        onClick={() =>
+                          field.onChange(intervention_appeal_options)
+                        }
+                      >
+                        Select all
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="link"
+                        className="text-foreground"
+                        onClick={() => field.onChange([])}
+                      >
+                        Deselect all
+                      </Button>
                     </ToggleGroup>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-
+            <FormField
+              control={form.control}
+              name="intervention_mechanism"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Aspect</FormLabel>
+                  <FormControl className="justify-start">
+                    <ToggleGroup
+                      className="flex flex-wrap"
+                      type="multiple"
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      {intervention_mechanism_options.map((option, i) => (
+                        <ToggleGroupItem
+                          value={option}
+                          key={"intervention-aspect-" + i}
+                          aria-label={"toggle" + option}
+                          className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          size="sm"
+                        >
+                          {option}
+                        </ToggleGroupItem>
+                      ))}
+                      <Button
+                        type="button"
+                        variant="link"
+                        className="text-foreground"
+                        onClick={() =>
+                          field.onChange(intervention_mechanism_options)
+                        }
+                      >
+                        Select all
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="link"
+                        className="text-foreground"
+                        onClick={() => field.onChange([])}
+                      >
+                        Deselect all
+                      </Button>
+                    </ToggleGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="intervention_medium"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Medium</FormLabel>
+                  <FormControl className="justify-start">
+                    <ToggleGroup
+                      type="multiple"
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      {intervention_medium_options.map((option, i) => (
+                        <ToggleGroupItem
+                          value={option}
+                          key={"intervention-medium-" + i}
+                          aria-label={"toggle" + option}
+                          className="rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          size="sm"
+                        >
+                          {option}
+                        </ToggleGroupItem>
+                      ))}
+                      <Button
+                        type="button"
+                        variant="link"
+                        className="text-foreground"
+                        onClick={() =>
+                          field.onChange(intervention_medium_options)
+                        }
+                      >
+                        Select all
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="link"
+                        className="text-foreground"
+                        onClick={() => field.onChange([])}
+                      >
+                        Deselect all
+                      </Button>
+                    </ToggleGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               name="error"
               render={() => (

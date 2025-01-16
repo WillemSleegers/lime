@@ -9,7 +9,6 @@ import { PaperDialog } from "@/components/paper-dialog"
 import { DataTableColumnHeader } from "@/components/tables/data-columns-header"
 
 import { round } from "@/lib/utils"
-import { Button } from "../ui/button"
 import { DescriptionDialog } from "./description-dialog"
 
 export type Column = {
@@ -60,9 +59,11 @@ export type ColumnsStudies = {
 export type ColumnsInterventions = {
   paper_label: string
   study: number
+  intervention_description: string
   intervention_appeal: string
+  intervention_mechanism: string
   intervention_medium: string
-  intervention_aspect: string
+  control_description?: string
 }
 
 export const DataTableColumns: ColumnDef<Column>[] = [
@@ -508,12 +509,31 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
     },
   },
   {
-    accessorKey: "intervention_aspect",
+    accessorKey: "intervention_appeal",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Aspect" />
+      <DataTableColumnHeader column={column} title="Type of appeal" />
     ),
     cell: ({ row }) => {
-      const value = row.getValue("intervention_aspect") as string
+      const value = row.getValue<string>("intervention_appeal")
+      const content = value.split(", ").map((e) => (
+        <Badge
+          key={e}
+          variant="secondary"
+          className="whitespace-nowrap text-sm font-normal"
+        >
+          {e}
+        </Badge>
+      ))
+      return <div className="flex flex-wrap gap-1">{content}</div>
+    },
+  },
+  {
+    accessorKey: "intervention_mechanism",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Mechanism" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("intervention_mechanism")
       const content = value.split(", ").map((e) => (
         <Badge
           key={e}
@@ -532,26 +552,7 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
       <DataTableColumnHeader column={column} title="Medium" />
     ),
     cell: ({ row }) => {
-      const value = row.getValue("intervention_medium") as string
-      const content = value.split(", ").map((e) => (
-        <Badge
-          key={e}
-          variant="secondary"
-          className="whitespace-nowrap text-sm font-normal"
-        >
-          {e}
-        </Badge>
-      ))
-      return <div className="flex flex-wrap gap-1">{content}</div>
-    },
-  },
-  {
-    accessorKey: "intervention_appeal",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Type of appeal" />
-    ),
-    cell: ({ row }) => {
-      const value = row.getValue("intervention_appeal") as string
+      const value = row.getValue<string>("intervention_medium")
       const content = value.split(", ").map((e) => (
         <Badge
           key={e}
