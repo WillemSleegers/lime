@@ -66,6 +66,26 @@ export type ColumnsInterventions = {
   control_description?: string
 }
 
+export type ColumnsOutcomes = {
+  paper_label: string
+  study: number
+  outcome_label: string
+  outcome_description: string
+  outcome_category: string
+  outcome_subcategory: string
+  outcome_measurement_type: string
+}
+
+export type ColumnsEffects = {
+  paper_label: string
+  study: number
+  effect_size_name: string
+  effect_size_value: number
+  effect_size_var: number
+  effect_intervention_n: number
+  effect_control_n: number
+}
+
 export const DataTableColumns: ColumnDef<Column>[] = [
   {
     id: "paper_label",
@@ -491,13 +511,7 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
       const limit = 115
       return (
         <div className="min-w-64">
-          <span
-            className={
-              value.length > limit ? "line-clamp-3" : "line-clamp-none"
-            }
-          >
-            {value}
-          </span>
+          <span className="line-clamp-3">{value}</span>
           {value.length > limit && (
             <DescriptionDialog
               title="Intervention condition description"
@@ -577,13 +591,7 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
         const limit = 115
         return (
           <div className="min-w-64">
-            <span
-              className={
-                value.length > limit ? "line-clamp-3" : "line-clamp-none"
-              }
-            >
-              {value}
-            </span>
+            <span className="line-clamp-3">{value}</span>
             {value.length > limit && (
               <DescriptionDialog
                 title="Control condition description"
@@ -596,5 +604,133 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
         return "-"
       }
     },
+  },
+]
+
+export const ColumnsOutcomes: ColumnDef<ColumnsOutcomes>[] = [
+  {
+    id: "paper_label",
+    accessorKey: "paper_label",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Paper" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} />
+    },
+  },
+  {
+    id: "study",
+    accessorKey: "study",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Study" />
+    ),
+  },
+  {
+    id: "outcome_label",
+    accessorKey: "outcome_label",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Outcome" />
+    ),
+  },
+  {
+    id: "outcome_description",
+    accessorKey: "outcome_description",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Description" />
+    ),
+    cell: ({ row, column }) => {
+      const value = row.getValue<string>("outcome_description")
+      console.log(column.getSize())
+      const limit = 115
+      return (
+        <div className="w-80">
+          <span className="line-clamp-3">{value}</span>
+          {value.length > limit && (
+            <DescriptionDialog
+              title="Outcome description"
+              description={value}
+            />
+          )}
+        </div>
+      )
+    },
+  },
+  {
+    id: "outcome_category",
+    accessorKey: "outcome_category",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Category" />
+    ),
+  },
+  {
+    id: "outcome_subcategory",
+    accessorKey: "outcome_subcategory",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Subcategory" />
+    ),
+  },
+  {
+    id: "outcome_measurement_type",
+    accessorKey: "outcome_measurement_type",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Measure" />
+    ),
+  },
+]
+export const ColumnsEffects: ColumnDef<ColumnsEffects>[] = [
+  {
+    id: "paper_label",
+    accessorKey: "paper_label",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Paper" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} />
+    },
+  },
+  {
+    id: "study",
+    accessorKey: "study",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Study" />
+    ),
+  },
+  {
+    id: "effect_size_name",
+    accessorKey: "effect_size_name",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Type" />
+    ),
+  },
+  {
+    id: "effect_size_value",
+    accessorKey: "effect_size_value",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Effect size" />
+    ),
+  },
+  {
+    id: "effect_size_var",
+    accessorKey: "effect_size_var",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Effect variance" />
+    ),
+  },
+  {
+    id: "effect_intervention_n",
+    accessorKey: "effect_intervention_n",
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title="Sample size (intervention)"
+      />
+    ),
+  },
+  {
+    id: "effect_control_n",
+    accessorKey: "effect_control_n",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Sample size (control)" />
+    ),
   },
 ]

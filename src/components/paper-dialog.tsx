@@ -40,7 +40,7 @@ export const PaperDialog = ({ row }: PaperDialogProps) => {
           {paper_label}
         </span>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-h-screen overflow-auto">
         <DialogHeader>
           <DialogTitle>{paper_label}</DialogTitle>
           <DialogDescription>

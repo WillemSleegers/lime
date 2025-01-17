@@ -19,10 +19,9 @@ import { Input } from "@/components/ui/input"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Slider } from "@/components/ui/slider"
 
-import { cn } from "@/lib/utils"
+import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
-import { FilterCollapsible } from "./filter-collapsible"
-
+/* Paper-level */
 const formSchemaPapers = z.object({
   paper_year: z.number().array(),
   paper_type: z
@@ -35,39 +34,8 @@ const formSchemaPapers = z.object({
     .nonempty({ message: "Must select at least one option." }),
 })
 
-const formSchemaStudies = z.object({
-  study_n: z.number(),
-  study_pregistered: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-  study_data_available: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-})
-
-const formSchemaInterventions = z.object({
-  intervention_appeal: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-  intervention_mechanism: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-  intervention_medium: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-})
-
 type FilterPapersProps = {
   data: {
-    paper: number
-    paper_label: string
-    paper_title: string
-    paper_authors: string
     paper_year: number
     paper_type: string
     paper_open_access: string
@@ -140,7 +108,6 @@ export const FilterPapers = (props: FilterPapersProps) => {
                       min={Math.min(...data.map((datum) => datum.paper_year))}
                       step={1}
                       onValueChange={field.onChange}
-                      className={cn("w-full")}
                     />
                   </FormControl>
                   <FormDescription>
@@ -227,11 +194,21 @@ export const FilterPapers = (props: FilterPapersProps) => {
   )
 }
 
+/* Study-level */
+const formSchemaStudies = z.object({
+  study_n: z.number(),
+  study_pregistered: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  study_data_available: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+})
+
 type FilterStudiesProps = {
   data: {
-    paper: number
-    paper_label: string
-    study: number
     study_n: number
     study_preregistered: string
     study_pregistration_link?: string
@@ -374,11 +351,24 @@ export const FilterStudies = (props: FilterStudiesProps) => {
   )
 }
 
+/* Intervention-level */
+const formSchemaInterventions = z.object({
+  intervention_appeal: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  intervention_mechanism: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  intervention_medium: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+})
+
 type FilterInterventionsProps = {
   data: {
-    paper: number
-    paper_label: string
-    study: number
     intervention_appeal: string
     intervention_mechanism: string
     intervention_medium: string
@@ -516,7 +506,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       {intervention_mechanism_options.map((option, i) => (
                         <ToggleGroupItem
                           value={option}
-                          key={"intervention-aspect-" + i}
+                          key={"intervention-mechanism-" + i}
                           aria-label={"toggle" + option}
                           className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
                           size="sm"
@@ -595,6 +585,464 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                 </FormItem>
               )}
             />
+            <FormField
+              name="error"
+              render={() => (
+                <FormItem>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <Button type="submit" className="h-auto rounded-full text-white">
+            Update table
+          </Button>
+        </form>
+      </Form>
+    </FilterCollapsible>
+  )
+}
+
+/* Outcome-level */
+const formSchemaOutcomes = z
+  .object({
+    outcome_subcategory_behavior: z.string().array(),
+    outcome_subcategory_intention: z.string().array(),
+    outcome_subcategory_attitude: z.string().array(),
+    outcome_measurement_type: z
+      .string()
+      .array()
+      .nonempty({ message: "Must select at least one option." }),
+  })
+  .superRefine((values, ctx) => {
+    if (
+      values.outcome_subcategory_behavior.length +
+        values.outcome_subcategory_intention.length +
+        values.outcome_subcategory_attitude.length ==
+      0
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Must select at least one outcome category.",
+        path: ["outcome_subcategory_behavior"],
+      })
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Must select at least one outcome category.",
+        path: ["outcome_subcategory_intention"],
+      })
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Must select at least one outcome category.",
+        path: ["outcome_subcategory_attitude"],
+      })
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Must select at least one outcome category.",
+        path: ["error-test"],
+      })
+    }
+  })
+
+type FilterOutcomesProps = {
+  data: {
+    outcome_category: string
+    outcome_subcategory: string
+    outcome_measurement_type: string
+  }[]
+  setData: Function
+}
+
+export const FilterOutcomes = (props: FilterOutcomesProps) => {
+  const { data, setData } = props
+
+  const outcome_subcategory_behavior_options = [
+    ...new Set(
+      data
+        .filter((d) => d.outcome_category === "behavior")
+        .map((d) => d.outcome_subcategory),
+    ),
+  ]
+  const outcome_subcategory_intention_options = [
+    ...new Set(
+      data
+        .filter((d) => d.outcome_category === "intentions")
+        .map((d) => d.outcome_subcategory),
+    ),
+  ]
+  const outcome_subcategory_attitude_options = [
+    ...new Set(
+      data
+        .filter((d) => d.outcome_category === "attitudes/beliefs")
+        .map((d) => d.outcome_subcategory),
+    ),
+  ]
+
+  const outcome_measurement_type_options = [
+    ...new Set(data.map((d) => d.outcome_measurement_type)),
+  ]
+
+  const form = useForm<z.infer<typeof formSchemaOutcomes>>({
+    resolver: zodResolver(formSchemaOutcomes),
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
+    defaultValues: {
+      outcome_subcategory_behavior: outcome_subcategory_behavior_options,
+      outcome_subcategory_intention: outcome_subcategory_intention_options,
+      outcome_subcategory_attitude: outcome_subcategory_attitude_options,
+      outcome_measurement_type: outcome_measurement_type_options,
+    },
+  })
+
+  async function onSubmit(values: z.infer<typeof formSchemaOutcomes>) {
+    let subset = data
+
+    const outcome_subcategory = [
+      ...values.outcome_subcategory_behavior,
+      ...values.outcome_subcategory_intention,
+      ...values.outcome_subcategory_attitude,
+    ]
+
+    subset = subset.filter((datum) => {
+      return outcome_subcategory.some(
+        (value) => datum.outcome_subcategory === value,
+      )
+    })
+
+    subset = subset.filter((datum) => {
+      return values.outcome_measurement_type.some(
+        (value) => datum.outcome_measurement_type === value,
+      )
+    })
+
+    setData(subset)
+  }
+
+  return (
+    <FilterCollapsible title="Filter">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
+          <div className="flex flex-col gap-x-12 gap-y-3">
+            <FormLabel>Outcome categories</FormLabel>
+            <div className="space-y-3 px-3">
+              <FormField
+                control={form.control}
+                name="outcome_subcategory_behavior"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Behaviors</FormLabel>
+                    <FormControl className="justify-start">
+                      <ToggleGroup
+                        className="flex flex-wrap gap-x-3"
+                        type="multiple"
+                        onValueChange={field.onChange}
+                        value={field.value}
+                      >
+                        {outcome_subcategory_behavior_options.map(
+                          (option, i) => (
+                            <ToggleGroupItem
+                              value={option}
+                              key={"outcome-behaviors-" + i}
+                              aria-label={"toggle" + option}
+                              className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                              size="sm"
+                            >
+                              {option}
+                            </ToggleGroupItem>
+                          ),
+                        )}
+                        <Button
+                          type="button"
+                          variant="link"
+                          className="text-foreground"
+                          onClick={() =>
+                            field.onChange(outcome_subcategory_behavior_options)
+                          }
+                        >
+                          Select all
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="link"
+                          className="text-foreground"
+                          onClick={() => field.onChange([])}
+                        >
+                          Deselect all
+                        </Button>
+                      </ToggleGroup>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="outcome_subcategory_intention"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Intentions</FormLabel>
+                    <FormControl className="justify-start">
+                      <ToggleGroup
+                        className="flex flex-wrap gap-x-3"
+                        type="multiple"
+                        onValueChange={field.onChange}
+                        value={field.value}
+                      >
+                        {outcome_subcategory_intention_options.map(
+                          (option, i) => (
+                            <ToggleGroupItem
+                              value={option}
+                              key={"outcome-behaviors-" + i}
+                              aria-label={"toggle" + option}
+                              className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                              size="sm"
+                            >
+                              {option}
+                            </ToggleGroupItem>
+                          ),
+                        )}
+                        <Button
+                          type="button"
+                          variant="link"
+                          className="text-foreground"
+                          onClick={() =>
+                            field.onChange(
+                              outcome_subcategory_intention_options,
+                            )
+                          }
+                        >
+                          Select all
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="link"
+                          className="text-foreground"
+                          onClick={() => field.onChange([])}
+                        >
+                          Deselect all
+                        </Button>
+                      </ToggleGroup>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="outcome_subcategory_attitude"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Attitudes/beliefs</FormLabel>
+                    <FormControl className="justify-start">
+                      <ToggleGroup
+                        className="flex flex-wrap gap-x-3"
+                        type="multiple"
+                        onValueChange={field.onChange}
+                        value={field.value}
+                      >
+                        {outcome_subcategory_attitude_options.map(
+                          (option, i) => (
+                            <ToggleGroupItem
+                              value={option}
+                              key={"outcome-attitudes-" + i}
+                              aria-label={"toggle" + option}
+                              className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                              size="sm"
+                            >
+                              {option}
+                            </ToggleGroupItem>
+                          ),
+                        )}
+                        <Button
+                          type="button"
+                          variant="link"
+                          className="text-foreground"
+                          onClick={() =>
+                            field.onChange(outcome_subcategory_attitude_options)
+                          }
+                        >
+                          Select all
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="link"
+                          className="text-foreground"
+                          onClick={() => field.onChange([])}
+                        >
+                          Deselect all
+                        </Button>
+                      </ToggleGroup>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+            <FormField
+              name="error-test"
+              render={() => (
+                <FormItem>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="outcome_measurement_type"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Measurement type</FormLabel>
+                  <FormControl className="justify-start">
+                    <ToggleGroup
+                      className="flex flex-wrap gap-3"
+                      type="multiple"
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      {outcome_measurement_type_options.map((option, i) => (
+                        <ToggleGroupItem
+                          value={option}
+                          key={"outcome-measurement-type-" + i}
+                          aria-label={"toggle" + option}
+                          className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          size="sm"
+                        >
+                          {option}
+                        </ToggleGroupItem>
+                      ))}
+                      <Button
+                        type="button"
+                        variant="link"
+                        className="text-foreground"
+                        onClick={() =>
+                          field.onChange(outcome_measurement_type_options)
+                        }
+                      >
+                        Select all
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="link"
+                        className="text-foreground"
+                        onClick={() => field.onChange([])}
+                      >
+                        Deselect all
+                      </Button>
+                    </ToggleGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          <Button type="submit" className="h-auto rounded-full text-white">
+            Update table
+          </Button>
+        </form>
+      </Form>
+    </FilterCollapsible>
+  )
+}
+
+const formSchemaEffects = z.object({
+  effect_size: z.number().array(),
+  sample_size: z.string(),
+})
+
+type FilterEffectsProps = {
+  data: {
+    effect_size_value: number
+    effect_intervention_n: number
+    effect_control_n: number
+  }[]
+  setData: Function
+}
+
+export const FilterEffects = (props: FilterEffectsProps) => {
+  const { data, setData } = props
+
+  const effect_size_min = Math.min(
+    ...data.map((datum) => datum.effect_size_value),
+  )
+  const effect_size_max = Math.max(
+    ...data.map((datum) => datum.effect_size_value),
+  )
+
+  const form = useForm<z.infer<typeof formSchemaEffects>>({
+    resolver: zodResolver(formSchemaEffects),
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
+    defaultValues: {
+      effect_size: [effect_size_min, effect_size_max],
+      sample_size: "1",
+    },
+  })
+
+  async function onSubmit(values: z.infer<typeof formSchemaEffects>) {
+    let subset = data
+
+    subset = subset.filter(
+      (datum) =>
+        datum.effect_size_value >= values.effect_size[0] &&
+        datum.effect_size_value <= values.effect_size[1],
+    )
+
+    const sample_size = Number(values.sample_size)
+
+    subset = subset.filter(
+      (datum) =>
+        datum.effect_intervention_n >= sample_size &&
+        datum.effect_control_n >= sample_size,
+    )
+
+    setData(subset)
+  }
+
+  return (
+    <FilterCollapsible title="Filter">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
+          <div className="flex flex-wrap gap-x-12 gap-y-4">
+            <FormField
+              control={form.control}
+              name="effect_size"
+              render={({ field }) => (
+                <FormItem className="w-60">
+                  <FormLabel>Effect size</FormLabel>
+                  <FormControl>
+                    <Slider
+                      value={field.value}
+                      minStepsBetweenThumbs={0.1}
+                      min={effect_size_min}
+                      max={effect_size_max}
+                      step={0.1}
+                      onValueChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    From {field.value[0]} to {field.value[1]}
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="sample_size"
+              render={({ field }) => (
+                <FormItem className="w-60">
+                  <FormLabel>Minimum sample size</FormLabel>
+                  <FormControl>
+                    <Input placeholder={"1"} type="number" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    This is the minimum sample size in either the control or
+                    intervention condition.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               name="error"
               render={() => (

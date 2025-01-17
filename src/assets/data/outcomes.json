@@ -1,6 +1,7 @@
 [
   {
     "paper": 1,
+    "paper_label": "Allen & Baines (2002)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
@@ -11,6 +12,7 @@
   },
   {
     "paper": 1,
+    "paper_label": "Allen & Baines (2002)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "white meat consumption",
@@ -21,6 +23,7 @@
   },
   {
     "paper": 2,
+    "paper_label": "Amiot et al. (2018)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "total meat consumption",
@@ -31,6 +34,7 @@
   },
   {
     "paper": 3,
+    "paper_label": "Anderson (2017)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "pork consumption",
@@ -41,6 +45,7 @@
   },
   {
     "paper": 4,
+    "paper_label": "Anderson & Feldman Barrett (2016)",
     "study": 3,
     "outcome": 1,
     "outcome_label": "likelihood of eating again",
@@ -51,6 +56,7 @@
   },
   {
     "paper": 5,
+    "paper_label": "Bertolaso (2015)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "animal attitude scale",
@@ -61,6 +67,7 @@
   },
   {
     "paper": 5,
+    "paper_label": "Bertolaso (2015)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "animal products consumption",
@@ -71,6 +78,7 @@
   },
   {
     "paper": 7,
+    "paper_label": "Byrd-Bredbenner et al. (2010)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "attitude",
@@ -81,6 +89,7 @@
   },
   {
     "paper": 7,
+    "paper_label": "Byrd-Bredbenner et al. (2010)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "intended behavior",
@@ -91,6 +100,7 @@
   },
   {
     "paper": 9,
+    "paper_label": "Carfora et al. (2017a)",
     "study": 2,
     "outcome": 1,
     "outcome_label": "intention",
@@ -101,6 +111,7 @@
   },
   {
     "paper": 9,
+    "paper_label": "Carfora et al. (2017a)",
     "study": 2,
     "outcome": 2,
     "outcome_label": "affective attitude",
@@ -111,6 +122,7 @@
   },
   {
     "paper": 9,
+    "paper_label": "Carfora et al. (2017a)",
     "study": 2,
     "outcome": 3,
     "outcome_label": "instrumental attitude",
@@ -121,6 +133,7 @@
   },
   {
     "paper": 9,
+    "paper_label": "Carfora et al. (2017a)",
     "study": 2,
     "outcome": 4,
     "outcome_label": "red meat consumption",
@@ -131,6 +144,7 @@
   },
   {
     "paper": 10,
+    "paper_label": "Carfora et al. (2017b)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "intention",
@@ -141,6 +155,7 @@
   },
   {
     "paper": 10,
+    "paper_label": "Carfora et al. (2017b)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "affective attitude",
@@ -151,6 +166,7 @@
   },
   {
     "paper": 10,
+    "paper_label": "Carfora et al. (2017b)",
     "study": 1,
     "outcome": 3,
     "outcome_label": "instrumental attitude",
@@ -161,6 +177,7 @@
   },
   {
     "paper": 10,
+    "paper_label": "Carfora et al. (2017b)",
     "study": 1,
     "outcome": 4,
     "outcome_label": "processed meat consumption",
@@ -171,6 +188,7 @@
   },
   {
     "paper": 11,
+    "paper_label": "Cooney (2014)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
@@ -181,6 +199,7 @@
   },
   {
     "paper": 11,
+    "paper_label": "Cooney (2014)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "poultry consumption",
@@ -191,6 +210,7 @@
   },
   {
     "paper": 11,
+    "paper_label": "Cooney (2014)",
     "study": 1,
     "outcome": 3,
     "outcome_label": "fish consumption",
@@ -201,6 +221,7 @@
   },
   {
     "paper": 11,
+    "paper_label": "Cooney (2014)",
     "study": 1,
     "outcome": 4,
     "outcome_label": "eggs consumption",
@@ -211,6 +232,7 @@
   },
   {
     "paper": 11,
+    "paper_label": "Cooney (2014)",
     "study": 1,
     "outcome": 5,
     "outcome_label": "animal product consumption",
@@ -221,6 +243,7 @@
   },
   {
     "paper": 13,
+    "paper_label": "da Silva (2016)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "valence/pleasantness",
@@ -231,6 +254,7 @@
   },
   {
     "paper": 13,
+    "paper_label": "da Silva (2016)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "desire to eat",
@@ -241,6 +265,7 @@
   },
   {
     "paper": 13,
+    "paper_label": "da Silva (2016)",
     "study": 1,
     "outcome": 3,
     "outcome_label": "willingness to reduce meat consumption",
@@ -251,6 +276,7 @@
   },
   {
     "paper": 13,
+    "paper_label": "da Silva (2016)",
     "study": 1,
     "outcome": 4,
     "outcome_label": "willingness to avoid eating meat",
@@ -261,6 +287,7 @@
   },
   {
     "paper": 13,
+    "paper_label": "da Silva (2016)",
     "study": 1,
     "outcome": 5,
     "outcome_label": "willingness to follow a plant-based diet",
@@ -271,6 +298,7 @@
   },
   {
     "paper": 14,
+    "paper_label": "Doebel et al. (2015)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
@@ -281,6 +309,7 @@
   },
   {
     "paper": 14,
+    "paper_label": "Doebel et al. (2015)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "poultry consumption",
@@ -291,6 +320,7 @@
   },
   {
     "paper": 14,
+    "paper_label": "Doebel et al. (2015)",
     "study": 1,
     "outcome": 3,
     "outcome_label": "fish consumption",
@@ -301,6 +331,7 @@
   },
   {
     "paper": 14,
+    "paper_label": "Doebel et al. (2015)",
     "study": 1,
     "outcome": 4,
     "outcome_label": "eggs consumption",
@@ -311,6 +342,7 @@
   },
   {
     "paper": 14,
+    "paper_label": "Doebel et al. (2015)",
     "study": 1,
     "outcome": 5,
     "outcome_label": "dairy consumption",
@@ -321,6 +353,7 @@
   },
   {
     "paper": 14,
+    "paper_label": "Doebel et al. (2015)",
     "study": 1,
     "outcome": 6,
     "outcome_label": "animal product consumption",
@@ -331,6 +364,7 @@
   },
   {
     "paper": 17,
+    "paper_label": "Fehrenbach (2015)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "intended meat consumption",
@@ -341,6 +375,7 @@
   },
   {
     "paper": 17,
+    "paper_label": "Fehrenbach (2015)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "attitude toward reducing meat consumption",
@@ -351,6 +386,7 @@
   },
   {
     "paper": 18,
+    "paper_label": "Flens et al. (2018)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported change in chicken consumption",
@@ -361,6 +397,7 @@
   },
   {
     "paper": 18,
+    "paper_label": "Flens et al. (2018)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "reported change in beef consumption",
@@ -371,6 +408,7 @@
   },
   {
     "paper": 18,
+    "paper_label": "Flens et al. (2018)",
     "study": 1,
     "outcome": 3,
     "outcome_label": "reported change in pork consumption",
@@ -381,6 +419,7 @@
   },
   {
     "paper": 18,
+    "paper_label": "Flens et al. (2018)",
     "study": 1,
     "outcome": 4,
     "outcome_label": "reported change in fish consumption",
@@ -391,6 +430,7 @@
   },
   {
     "paper": 23,
+    "paper_label": "Loy et al. (2016)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "reduction in meat consumption compared to baseline",
@@ -401,6 +441,7 @@
   },
   {
     "paper": 25,
+    "paper_label": "Novotná (2019)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "beef consumption",
@@ -411,6 +452,7 @@
   },
   {
     "paper": 25,
+    "paper_label": "Novotná (2019)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "chicken consumption",
@@ -421,6 +463,7 @@
   },
   {
     "paper": 25,
+    "paper_label": "Novotná (2019)",
     "study": 1,
     "outcome": 3,
     "outcome_label": "dairy consumption",
@@ -431,6 +474,7 @@
   },
   {
     "paper": 25,
+    "paper_label": "Novotná (2019)",
     "study": 1,
     "outcome": 4,
     "outcome_label": "egg consumption",
@@ -441,6 +485,7 @@
   },
   {
     "paper": 25,
+    "paper_label": "Novotná (2019)",
     "study": 1,
     "outcome": 5,
     "outcome_label": "fish consumption",
@@ -451,6 +496,7 @@
   },
   {
     "paper": 25,
+    "paper_label": "Novotná (2019)",
     "study": 1,
     "outcome": 6,
     "outcome_label": "pork consumption",
@@ -461,6 +507,7 @@
   },
   {
     "paper": 25,
+    "paper_label": "Novotná (2019)",
     "study": 1,
     "outcome": 7,
     "outcome_label": "red meat consumption",
@@ -471,6 +518,7 @@
   },
   {
     "paper": 25,
+    "paper_label": "Novotná (2019)",
     "study": 1,
     "outcome": 8,
     "outcome_label": "animal product consumption",
@@ -481,6 +529,7 @@
   },
   {
     "paper": 26,
+    "paper_label": "Palomo-Vélez et al. (2018)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "purchasing intentions for five meat items",
@@ -491,6 +540,7 @@
   },
   {
     "paper": 26,
+    "paper_label": "Palomo-Vélez et al. (2018)",
     "study": 2,
     "outcome": 1,
     "outcome_label": "purchasing intentions for five meat items",
@@ -501,6 +551,7 @@
   },
   {
     "paper": 26,
+    "paper_label": "Palomo-Vélez et al. (2018)",
     "study": 3,
     "outcome": 1,
     "outcome_label": "purchasing intentions for five meat items",
@@ -511,6 +562,7 @@
   },
   {
     "paper": 31,
+    "paper_label": "Sparkman & Walton (2017)",
     "study": 2,
     "outcome": 1,
     "outcome_label": "interest in eating less meat",
@@ -521,6 +573,7 @@
   },
   {
     "paper": 31,
+    "paper_label": "Sparkman & Walton (2017)",
     "study": 4,
     "outcome": 1,
     "outcome_label": "meat purchase",
@@ -531,6 +584,7 @@
   },
   {
     "paper": 33,
+    "paper_label": "Tian et al. (2016)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "willingness to eat beef",
@@ -541,6 +595,7 @@
   },
   {
     "paper": 33,
+    "paper_label": "Tian et al. (2016)",
     "study": 2,
     "outcome": 1,
     "outcome_label": "willingness to eat beef",
@@ -551,6 +606,7 @@
   },
   {
     "paper": 37,
+    "paper_label": "Zickfeld et al. (2018)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "willing to eat meat",
@@ -561,6 +617,7 @@
   },
   {
     "paper": 40,
+    "paper_label": "Mercy for Animals (2016a)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "intention to reduce pork consumption",
@@ -571,6 +628,7 @@
   },
   {
     "paper": 50,
+    "paper_label": "Schwitzgebel et al. (2020)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "intended meat consumption",
@@ -581,6 +639,7 @@
   },
   {
     "paper": 50,
+    "paper_label": "Schwitzgebel et al. (2020)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "meat purchase with voucher",
@@ -591,6 +650,7 @@
   },
   {
     "paper": 50,
+    "paper_label": "Schwitzgebel et al. (2020)",
     "study": 1,
     "outcome": 3,
     "outcome_label": "% meat purchase among all food purchases above $4.99 with university dining card",
@@ -601,6 +661,7 @@
   },
   {
     "paper": 52,
+    "paper_label": "Mathur et al. (2021)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported meat consumption in the past week",
@@ -611,6 +672,7 @@
   },
   {
     "paper": 52,
+    "paper_label": "Mathur et al. (2021)",
     "study": 2,
     "outcome": 1,
     "outcome_label": "intended change in meat and animal product consumption",
@@ -621,6 +683,7 @@
   },
   {
     "paper": 52,
+    "paper_label": "Mathur et al. (2021)",
     "study": 3,
     "outcome": 1,
     "outcome_label": "reported meat consumption in the past week",
@@ -631,6 +694,7 @@
   },
   {
     "paper": 53,
+    "paper_label": "Reinholdsson et al. (2022)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "% vegetarian food sales",
@@ -641,6 +705,7 @@
   },
   {
     "paper": 54,
+    "paper_label": "Caso et al. (2023)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "intended meat consumption",
@@ -651,6 +716,7 @@
   },
   {
     "paper": 56,
+    "paper_label": "Carfora et al. (2019)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported red processed meat consumption",
@@ -661,6 +727,7 @@
   },
   {
     "paper": 58,
+    "paper_label": "Dakin et al. (2021)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported meat consumption",
@@ -671,6 +738,7 @@
   },
   {
     "paper": 60,
+    "paper_label": "Schwitzgebel et al. (2021)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "ethicality of eating factory farmed meat",
@@ -681,6 +749,7 @@
   },
   {
     "paper": 60,
+    "paper_label": "Schwitzgebel et al. (2021)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "intention to not eat factory farmed meat",
@@ -691,6 +760,7 @@
   },
   {
     "paper": 61,
+    "paper_label": "Gunther et al. (2023)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "meat consumption willingness",
@@ -701,6 +771,7 @@
   },
   {
     "paper": 62,
+    "paper_label": "Kurz (2018)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "percentage vegetarian sales",
@@ -711,6 +782,7 @@
   },
   {
     "paper": 63,
+    "paper_label": "Andersson & Nelander (2021)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "percentage vegetarian sales",
@@ -721,6 +793,7 @@
   },
   {
     "paper": 64,
+    "paper_label": "Branković et al. (2023)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "openness to meat reduction",
@@ -731,6 +804,7 @@
   },
   {
     "paper": 65,
+    "paper_label": "Venema & Jensen (2023)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "percentage vegetarian sandwich sales",
@@ -741,6 +815,7 @@
   },
   {
     "paper": 67,
+    "paper_label": "Guedes et al. (2023)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian lunch sales",
@@ -751,6 +826,7 @@
   },
   {
     "paper": 68,
+    "paper_label": "Garnett et al. (2020)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian meal sales",
@@ -761,6 +837,7 @@
   },
   {
     "paper": 68,
+    "paper_label": "Garnett et al. (2020)",
     "study": 2,
     "outcome": 1,
     "outcome_label": "vegetarian meal sales",
@@ -771,6 +848,7 @@
   },
   {
     "paper": 70,
+    "paper_label": "Winkelmair & Jansen (2023)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "eating habit (vegan, vegetarian, or omnivorous)",
@@ -781,6 +859,7 @@
   },
   {
     "paper": 75,
+    "paper_label": "Marcone et al. (2023)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "total meat dish weight",
@@ -791,6 +870,7 @@
   },
   {
     "paper": 77,
+    "paper_label": "Slapø & Karevold (2019)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian dish sales",
@@ -801,6 +881,7 @@
   },
   {
     "paper": 78,
+    "paper_label": "Boronowsky et al. (2022)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian meal selection",
@@ -811,6 +892,7 @@
   },
   {
     "paper": 79,
+    "paper_label": "Banach & Stel (2024)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "speciesism",
@@ -821,6 +903,7 @@
   },
   {
     "paper": 79,
+    "paper_label": "Banach & Stel (2024)",
     "study": 1,
     "outcome": 2,
     "outcome_label": "intended reduction in harmful behaviors",
@@ -831,6 +914,7 @@
   },
   {
     "paper": 79,
+    "paper_label": "Banach & Stel (2024)",
     "study": 1,
     "outcome": 3,
     "outcome_label": "petition",
@@ -841,6 +925,7 @@
   },
   {
     "paper": 79,
+    "paper_label": "Banach & Stel (2024)",
     "study": 2,
     "outcome": 1,
     "outcome_label": "speciesism",
@@ -851,6 +936,7 @@
   },
   {
     "paper": 79,
+    "paper_label": "Banach & Stel (2024)",
     "study": 2,
     "outcome": 2,
     "outcome_label": "intended reduction in harmful behaviors",
@@ -861,6 +947,7 @@
   },
   {
     "paper": 79,
+    "paper_label": "Banach & Stel (2024)",
     "study": 2,
     "outcome": 3,
     "outcome_label": "petition",
@@ -871,6 +958,7 @@
   },
   {
     "paper": 80,
+    "paper_label": "Gravert & Kurz (2019)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian sales",
@@ -881,6 +969,7 @@
   },
   {
     "paper": 81,
+    "paper_label": "Erhard et al. (2023)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "plant-based choice",

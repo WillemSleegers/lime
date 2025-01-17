@@ -8,12 +8,16 @@ import {
   ColumnsPapers,
   ColumnsInterventions,
   ColumnsStudies,
+  ColumnsOutcomes,
+  ColumnsEffects,
 } from "@/components/data-explorer/table-columns"
 import { DataTable } from "@/components/data-explorer/table"
 import {
+  FilterOutcomes,
   FilterInterventions,
   FilterPapers,
   FilterStudies,
+  FilterEffects,
 } from "@/components/data-explorer/filters"
 import { Button } from "@/components/ui/button"
 import {
@@ -29,6 +33,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import papers from "@/assets/data/papers.json"
 import studies from "@/assets/data/studies.json"
 import interventions from "@/assets/data/interventions.json"
+import outcomes from "@/assets/data/outcomes.json"
+import effects from "@/assets/data/effects.json"
 
 export default function DataExplorer() {
   const [level, setLevel] = useState("paper")
@@ -36,6 +42,8 @@ export default function DataExplorer() {
   const [dataStudyLevel, setDataStudyLevel] = useState(studies)
   const [dataInterventionLevel, setDataInterventionLevel] =
     useState(interventions)
+  const [dataOutcomeLevel, setDataOutcomeLevel] = useState(outcomes)
+  const [dataEffectLevel, setDataEffectLevel] = useState(effects)
 
   const handleDownload = () => {
     //const columnNames = tableColumns.map((tableColumn) => tableColumn.id!)
@@ -93,8 +101,8 @@ export default function DataExplorer() {
             <TabsTrigger className="rounded-full" value="outcome">
               Outcome-level
             </TabsTrigger>
-            <TabsTrigger className="rounded-full" value="effects">
-              Effects-level
+            <TabsTrigger className="rounded-full" value="effect">
+              Effect-level
             </TabsTrigger>
           </TabsList>
 
@@ -143,6 +151,20 @@ export default function DataExplorer() {
             columns={ColumnsInterventions}
             data={dataInterventionLevel}
           />
+        </TabsContent>
+        <TabsContent value="outcome" className="space-y-3" tabIndex={-1}>
+          <FilterOutcomes data={outcomes} setData={setDataOutcomeLevel} />
+          <div>
+            Showing {dataOutcomeLevel.length} out of {outcomes.length} rows.
+          </div>
+          <DataTable columns={ColumnsOutcomes} data={dataOutcomeLevel} />
+        </TabsContent>
+        <TabsContent value="effect" className="space-y-3" tabIndex={-1}>
+          <FilterEffects data={effects} setData={setDataEffectLevel} />
+          <div>
+            Showing {dataEffectLevel.length} out of {effects.length} rows.
+          </div>
+          <DataTable columns={ColumnsEffects} data={dataEffectLevel} />
         </TabsContent>
       </Tabs>
 
