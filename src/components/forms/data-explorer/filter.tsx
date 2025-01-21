@@ -7,7 +7,6 @@ import { ChevronRight } from "lucide-react"
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -25,21 +24,14 @@ import {
 import { FilterInput } from "@/components/filters/input"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Slider } from "@/components/ui/slider"
+import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { ToggleGroupAll } from "@/components/forms/toggle-group-all"
-import { DataTableColumns } from "@/components/data-explorer/table-columns"
 
 import { cn, round } from "@/lib/utils"
 import { Data, getOptions } from "@/lib/json-functions"
 
-import {
-  PAPER_COLUMNS,
-  STUDY_COLUMNS,
-  INTERVENTION_COLUMNS,
-  OUTCOME_COLUMNS,
-  SAMPLE_COLUMNS,
-  EFFECT_COLUMNS,
-} from "@/lib/constants"
+import { INTERVENTION_COLUMNS } from "@/lib/constants"
 
 const intervention_aspects = getOptions("intervention_aspect")
 const intervention_mediums = getOptions("intervention_medium")

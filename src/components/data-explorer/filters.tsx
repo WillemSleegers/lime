@@ -21,8 +21,18 @@ import { Slider } from "@/components/ui/slider"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
-const TOGGLE_GROUP_ITEM_CLASSNAMES =
-  "rounded-full border bg-background data-[state=on]:bg-primary data-[state=on]:text-white hover:bg-primary hover:text-foreground"
+const StyledToggleGroupItem = ({ option }: { option: string }) => {
+  return (
+    <ToggleGroupItem
+      value={option}
+      aria-label={"toggle" + option}
+      className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+      size="sm"
+    >
+      {option}
+    </ToggleGroupItem>
+  )
+}
 
 /* Paper-level */
 const formSchemaPapers = z.object({
@@ -132,16 +142,8 @@ export const FilterPapers = (props: FilterPapersProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {paper_type_options.map((option, i) => (
-                        <ToggleGroupItem
-                          value={option}
-                          key={"paper-type-" + i}
-                          aria-label={"toggle" + option}
-                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
+                      {paper_type_options.map((option) => (
+                        <StyledToggleGroupItem key={option} option={option} />
                       ))}
                     </ToggleGroup>
                   </FormControl>
@@ -161,16 +163,8 @@ export const FilterPapers = (props: FilterPapersProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {paper_open_access_options.map((option, i) => (
-                        <ToggleGroupItem
-                          value={option}
-                          key={"paper-open-access-" + i}
-                          aria-label={"toggle" + option}
-                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
+                      {paper_open_access_options.map((option) => (
+                        <StyledToggleGroupItem key={option} option={option} />
                       ))}
                     </ToggleGroup>
                   </FormControl>
@@ -199,7 +193,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
 
 /* Study-level */
 const formSchemaStudies = z.object({
-  study_n: z.number(),
+  study_n: z.coerce.number().min(1),
   study_pregistered: z
     .string()
     .array()
@@ -236,6 +230,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     defaultValues: {
+      study_n: 1,
       study_pregistered: study_preregistered_options,
       study_data_available: study_data_available_options,
     },
@@ -245,8 +240,18 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     let subset = data
 
     subset = subset.filter((datum) => {
-      return values.study_data_available.some((open_acess) =>
-        datum.study_data_available.includes(open_acess),
+      return datum.study_n > values.study_n
+    })
+
+    subset = subset.filter((datum) => {
+      return values.study_pregistered.some((value) =>
+        datum.study_preregistered.includes(value),
+      )
+    })
+
+    subset = subset.filter((datum) => {
+      return values.study_data_available.some((value) =>
+        datum.study_data_available.includes(value),
       )
     })
 
@@ -265,7 +270,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                 <FormItem className="w-60">
                   <FormLabel>Minimum sample size</FormLabel>
                   <FormControl>
-                    <Input placeholder={"1"} type="number" {...field} />
+                    <Input type="number" {...field} />
                   </FormControl>
                   <FormDescription>
                     This is the total sample size across all conditions in a
@@ -288,16 +293,8 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {study_preregistered_options.map((option, i) => (
-                        <ToggleGroupItem
-                          value={option}
-                          key={"study-preregistered-" + i}
-                          aria-label={"toggle" + option}
-                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
+                      {study_preregistered_options.map((option) => (
+                        <StyledToggleGroupItem key={option} option={option} />
                       ))}
                     </ToggleGroup>
                   </FormControl>
@@ -319,15 +316,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                       value={field.value}
                     >
                       {study_data_available_options.map((option, i) => (
-                        <ToggleGroupItem
-                          value={option}
-                          key={"study-data-available-" + i}
-                          aria-label={"toggle" + option}
-                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
+                        <StyledToggleGroupItem key={option} option={option} />
                       ))}
                     </ToggleGroup>
                   </FormControl>
@@ -458,16 +447,8 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {intervention_appeal_options.map((option, i) => (
-                        <ToggleGroupItem
-                          value={option}
-                          key={"intervention-appeal-" + i}
-                          aria-label={"toggle" + option}
-                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
+                      {intervention_appeal_options.map((option) => (
+                        <StyledToggleGroupItem key={option} option={option} />
                       ))}
                       <Button
                         type="button"
@@ -506,16 +487,8 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {intervention_mechanism_options.map((option, i) => (
-                        <ToggleGroupItem
-                          value={option}
-                          key={"intervention-mechanism-" + i}
-                          aria-label={"toggle" + option}
-                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
+                      {intervention_mechanism_options.map((option) => (
+                        <StyledToggleGroupItem key={option} option={option} />
                       ))}
                       <Button
                         type="button"
@@ -553,16 +526,8 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {intervention_medium_options.map((option, i) => (
-                        <ToggleGroupItem
-                          value={option}
-                          key={"intervention-medium-" + i}
-                          aria-label={"toggle" + option}
-                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
+                      {intervention_medium_options.map((option) => (
+                        <StyledToggleGroupItem key={option} option={option} />
                       ))}
                       <Button
                         type="button"
@@ -742,19 +707,9 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         onValueChange={field.onChange}
                         value={field.value}
                       >
-                        {outcome_subcategory_behavior_options.map(
-                          (option, i) => (
-                            <ToggleGroupItem
-                              value={option}
-                              key={"outcome-behaviors-" + i}
-                              aria-label={"toggle" + option}
-                              className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                              size="sm"
-                            >
-                              {option}
-                            </ToggleGroupItem>
-                          ),
-                        )}
+                        {outcome_subcategory_behavior_options.map((option) => (
+                          <StyledToggleGroupItem key={option} option={option} />
+                        ))}
                         <Button
                           type="button"
                           variant="link"
@@ -791,19 +746,9 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         onValueChange={field.onChange}
                         value={field.value}
                       >
-                        {outcome_subcategory_intention_options.map(
-                          (option, i) => (
-                            <ToggleGroupItem
-                              value={option}
-                              key={"outcome-behaviors-" + i}
-                              aria-label={"toggle" + option}
-                              className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                              size="sm"
-                            >
-                              {option}
-                            </ToggleGroupItem>
-                          ),
-                        )}
+                        {outcome_subcategory_intention_options.map((option) => (
+                          <StyledToggleGroupItem key={option} option={option} />
+                        ))}
                         <Button
                           type="button"
                           variant="link"
@@ -842,19 +787,9 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         onValueChange={field.onChange}
                         value={field.value}
                       >
-                        {outcome_subcategory_attitude_options.map(
-                          (option, i) => (
-                            <ToggleGroupItem
-                              value={option}
-                              key={"outcome-attitudes-" + i}
-                              aria-label={"toggle" + option}
-                              className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                              size="sm"
-                            >
-                              {option}
-                            </ToggleGroupItem>
-                          ),
-                        )}
+                        {outcome_subcategory_attitude_options.map((option) => (
+                          <StyledToggleGroupItem key={option} option={option} />
+                        ))}
                         <Button
                           type="button"
                           variant="link"
@@ -900,16 +835,8 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {outcome_measurement_type_options.map((option, i) => (
-                        <ToggleGroupItem
-                          value={option}
-                          key={"outcome-measurement-type-" + i}
-                          aria-label={"toggle" + option}
-                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
+                      {outcome_measurement_type_options.map((option) => (
+                        <StyledToggleGroupItem key={option} option={option} />
                       ))}
                       <Button
                         type="button"
@@ -948,7 +875,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
 
 const formSchemaEffects = z.object({
   effect_size: z.number().array(),
-  sample_size: z.string(),
+  sample_size: z.coerce.number().min(1),
 })
 
 type FilterEffectsProps = {
@@ -976,7 +903,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
     reValidateMode: "onSubmit",
     defaultValues: {
       effect_size: [effect_size_min, effect_size_max],
-      sample_size: "1",
+      sample_size: 1,
     },
   })
 
@@ -1022,7 +949,8 @@ export const FilterEffects = (props: FilterEffectsProps) => {
                     />
                   </FormControl>
                   <FormDescription>
-                    From {field.value[0]} to {field.value[1]}
+                    From {field.value[0].toFixed(2)} to{" "}
+                    {field.value[1].toFixed(2)}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -1035,7 +963,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
                 <FormItem className="w-60">
                   <FormLabel>Minimum sample size</FormLabel>
                   <FormControl>
-                    <Input placeholder={"1"} type="number" {...field} />
+                    <Input type="number" {...field} />
                   </FormControl>
                   <FormDescription>
                     This is the minimum sample size in either the control or

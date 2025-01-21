@@ -75,33 +75,39 @@ export default function DataExplorer() {
     <main className="container space-y-6 py-12">
       <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
       <Tabs defaultValue={level} className="space-y-6">
-        <div className="mx-auto flex w-fit items-center gap-3">
-          <TabsList className="rounded-full bg-primary text-white">
+        <div className="mx-auto flex w-fit flex-wrap items-center justify-center gap-3">
+          <TabsList className="flex h-auto flex-wrap items-center gap-1 rounded-full bg-primary bg-white p-0 align-middle text-white sm:flex-nowrap sm:bg-primary">
             <TabsTrigger
-              className="rounded-full"
+              className="rounded-full border-4 border-primary bg-primary text-white"
               value="paper"
               onClick={() => setLevel("paper")}
             >
               Paper-level
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-full"
+              className="rounded-full border-4 border-primary bg-primary text-white"
               value="study"
               onClick={() => setLevel("study")}
             >
               Study-level
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-full"
+              className="rounded-full border-4 border-primary bg-primary text-white"
               value="intervention"
               onClick={() => setLevel("intervention")}
             >
               Intervention-level
             </TabsTrigger>
-            <TabsTrigger className="rounded-full" value="outcome">
+            <TabsTrigger
+              className="rounded-full border-4 border-primary bg-primary text-white"
+              value="outcome"
+            >
               Outcome-level
             </TabsTrigger>
-            <TabsTrigger className="rounded-full" value="effect">
+            <TabsTrigger
+              className="rounded-full border-4 border-primary bg-primary text-white"
+              value="effect"
+            >
               Effect-level
             </TabsTrigger>
           </TabsList>
