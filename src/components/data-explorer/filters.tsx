@@ -21,6 +21,9 @@ import { Slider } from "@/components/ui/slider"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
+const TOGGLE_GROUP_ITEM_CLASSNAMES =
+  "rounded-full border bg-background data-[state=on]:bg-primary data-[state=on]:text-white hover:bg-primary hover:text-foreground"
+
 /* Paper-level */
 const formSchemaPapers = z.object({
   paper_year: z.number().array(),
@@ -134,7 +137,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                           value={option}
                           key={"paper-type-" + i}
                           aria-label={"toggle" + option}
-                          className="rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                           size="sm"
                         >
                           {option}
@@ -163,7 +166,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                           value={option}
                           key={"paper-open-access-" + i}
                           aria-label={"toggle" + option}
-                          className="rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                           size="sm"
                         >
                           {option}
@@ -290,7 +293,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                           value={option}
                           key={"study-preregistered-" + i}
                           aria-label={"toggle" + option}
-                          className="rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                           size="sm"
                         >
                           {option}
@@ -320,7 +323,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                           value={option}
                           key={"study-data-available-" + i}
                           aria-label={"toggle" + option}
-                          className="rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                           size="sm"
                         >
                           {option}
@@ -460,7 +463,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                           value={option}
                           key={"intervention-appeal-" + i}
                           aria-label={"toggle" + option}
-                          className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                           size="sm"
                         >
                           {option}
@@ -508,7 +511,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                           value={option}
                           key={"intervention-mechanism-" + i}
                           aria-label={"toggle" + option}
-                          className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                           size="sm"
                         >
                           {option}
@@ -555,7 +558,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                           value={option}
                           key={"intervention-medium-" + i}
                           aria-label={"toggle" + option}
-                          className="rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                           size="sm"
                         >
                           {option}
@@ -745,7 +748,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                               value={option}
                               key={"outcome-behaviors-" + i}
                               aria-label={"toggle" + option}
-                              className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                              className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                               size="sm"
                             >
                               {option}
@@ -794,7 +797,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                               value={option}
                               key={"outcome-behaviors-" + i}
                               aria-label={"toggle" + option}
-                              className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                              className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                               size="sm"
                             >
                               {option}
@@ -845,7 +848,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                               value={option}
                               key={"outcome-attitudes-" + i}
                               aria-label={"toggle" + option}
-                              className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                              className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                               size="sm"
                             >
                               {option}
@@ -902,7 +905,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                           value={option}
                           key={"outcome-measurement-type-" + i}
                           aria-label={"toggle" + option}
-                          className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-secondary-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+                          className={TOGGLE_GROUP_ITEM_CLASSNAMES}
                           size="sm"
                         >
                           {option}
