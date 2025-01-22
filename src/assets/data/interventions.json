@@ -237,7 +237,7 @@
     "intervention_condition": 2,
     "intervention_description": "A picture of a high-cuteness pig together with three different pork-meals.",
     "intervention_appeal": "none",
-    "intervention_mechanism": "symbolic meaning, negative emotional",
+    "intervention_mechanism": "origin of animal product, positive emotional",
     "intervention_medium": "presentation",
     "control_description": "A white frame together with three different pork-meals."
   },
@@ -248,7 +248,7 @@
     "intervention_condition": 3,
     "intervention_description": "A picture of a low-cuteness pig together with three different pork-meals.",
     "intervention_appeal": "none",
-    "intervention_mechanism": "symbolic meaning, negative emotional",
+    "intervention_mechanism": "origin of animal product",
     "intervention_medium": "presentation",
     "control_description": "A white frame together with three different pork-meals."
   },
@@ -367,7 +367,7 @@
     "intervention_condition": 3,
     "intervention_description": "Participants watched \"The Ghost in Our Machine\", a movie about the animal rights activist and photographer Jo-Ann McArthur.",
     "intervention_appeal": "animal welfare",
-    "intervention_mechanism": "positive emotional, negative emotional, symbolic meaning, factual",
+    "intervention_mechanism": "positive emotional, negative emotional, factual",
     "intervention_medium": "video",
     "control_description": "Participants for the control group were recruited via the Facebook events of the movie screenings with a message that encouraged anybody who couldn’t attend the screenings but still wanted to join the experiment to fill in the survey."
   },
@@ -377,7 +377,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants read a persuasive essay describing disgust-evoking aspects of meat production and consumption.",
-    "intervention_appeal": "disgust",
+    "intervention_appeal": "taste/ disgust",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text",
     "control_description": ""
@@ -410,7 +410,7 @@
     "study": 2,
     "intervention_condition": 2,
     "intervention_description": "Participants read a persuasive essay describing disgust-evoking aspects of meat production and consumption.",
-    "intervention_appeal": "disgust",
+    "intervention_appeal": "taste/ disgust",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics."
@@ -454,7 +454,7 @@
     "study": 3,
     "intervention_condition": 2,
     "intervention_description": "Participants watched a slideshow that included images and short paragraphs of text on disgust-evoking aspects of meat production and consumption.",
-    "intervention_appeal": "disgust",
+    "intervention_appeal": "taste/ disgust",
     "intervention_mechanism": "factual",
     "intervention_medium": "presentation",
     "control_description": "Participants watched a slideshow on the 1980 Winter Olympics."
@@ -608,7 +608,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants watched a 20-min documentary entitled \"Good For Us\", which encourages plant-based diets that reduce consumption of all meats and animal products. Each segment was followed by free-response questions about the content presented. After the documentary, participants were asked whether they would like to pledge to reduce their consumption, pledge to eliminate their consumption, or to make no pledge. For participants who had chosen to make at least one “reduce” or “eliminate” pledge, several items designed to improve general and specific goal-setting and self-monitoring were presented. One week after the baseline measurement, a customized reminder email was sent to pledge-making participants.",
-    "intervention_appeal": "animal welfare, environment, health, disgust",
+    "intervention_appeal": "animal welfare, health, taste/ disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms, origin of animal product, goal pursuit",
     "intervention_medium": "video",
     "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable."
@@ -619,7 +619,7 @@
     "study": 2,
     "intervention_condition": 2,
     "intervention_description": "Participants watched a 20-min documentary entitled \"Good For Us\", which encourages plant-based diets that reduce consumption of all meats and animal products. Each segment was followed by free-response questions about the content presented. After the documentary, participants were asked whether they would like to pledge to reduce their consumption, pledge to eliminate their consumption, or to make no pledge. For participants who had chosen to make at least one “reduce” or “eliminate” pledge, several items designed to improve general and specific goal-setting and self-monitoring were presented. One week after the baseline measurement, a customized reminder email was sent to pledge-making participants.",
-    "intervention_appeal": "animal welfare, environment, health, disgust",
+    "intervention_appeal": "animal welfare, health, taste/ disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms",
     "intervention_medium": "video",
     "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable."
@@ -630,7 +630,7 @@
     "study": 3,
     "intervention_condition": 2,
     "intervention_description": "Participants watched a 20-min documentary entitled \"Good For Us\", which encourages plant-based diets that reduce consumption of all meats and animal products. Each segment was followed by free-response questions about the content presented. After the documentary, participants were asked whether they would like to pledge to reduce their consumption, pledge to eliminate their consumption, or to make no pledge. For participants who had chosen to make at least one “reduce” or “eliminate” pledge, several items designed to improve general and specific goal-setting and self-monitoring were presented. One week after the baseline measurement, a customized reminder email was sent to pledge-making participants.",
-    "intervention_appeal": "animal welfare, environment, health, disgust",
+    "intervention_appeal": "animal welfare, health, taste/ disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms, origin of animal product, goal pursuit",
     "intervention_medium": "video, text",
     "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable."
@@ -654,7 +654,7 @@
     "intervention_description": "The icon representing the “green” food category was moved from the sixth position in the grid of icons in the digital menu (out of 10) to the first position.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options",
+    "intervention_medium": "menu/ food options",
     "control_description": ""
   },
   {
@@ -809,12 +809,12 @@
     "paper": 62,
     "paper_label": "Kurz (2018)",
     "study": 1,
-    "intervention_condition": 2,
+    "intervention_condition": 1,
     "intervention_description": "A vegetarian dish was listed as the first item on the menu and was also made visible to customers at the counter",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options",
-    "control_description": "A meat dish was listed as the first item on the menu and was also made visible to customers at the counter."
+    "intervention_medium": "menu/ food options",
+    "control_description": "A meat dish was listed as the first item on the menu and was also made visible to customers at the counter., A meat dish was listed as the first item on the menu and was also made visible to customers at the counter"
   },
   {
     "paper": 63,
@@ -824,7 +824,7 @@
     "intervention_description": "A vegetarian dish was listed as the first item on the menu.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options",
+    "intervention_medium": "menu/ food options",
     "control_description": "A meat dish was listed as the first item on the menu."
   },
   {
@@ -853,7 +853,7 @@
     "paper": 65,
     "paper_label": "Venema & Jensen (2023)",
     "study": 1,
-    "intervention_condition": 2,
+    "intervention_condition": 1,
     "intervention_description": "\"Chef’s recommendation\" stickers were placed on the vegetarian sandwich bags. One vegetarian sandwich was displayed on a plate at eye-level with the content clearly visible. This plate was accompanied by a sign that read “Kokken anbefaler” (Chef's recommendation) and a brief description of the café’s sustainability goals. All vegetarian sandwiches were placed in first line-of-sight from the typical customer flow direction. The labels on vegetarian sandwiches were slightly more colourful and the bags were closed more aesthetically than meat sandwiches.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
@@ -864,7 +864,7 @@
     "paper": 67,
     "paper_label": "Guedes et al. (2023)",
     "study": 1,
-    "intervention_condition": 2,
+    "intervention_condition": 1,
     "intervention_description": "A 2-day workshop with the canteen kitchen staff on the relevance of promoting plant-based eating, basic principles of plant-based nutritional literacy, and practical demonstrations of how to improve the visual and sensory appeal of plant-based meals was conducted. Posters advertising the \"Sustainability Week\" initiative were placed in the cafeteria. The menu presented the vegetarian option as the \"suggestion of the day\" with an increased font size above the meat and fish options.",
     "intervention_appeal": "environment",
     "intervention_mechanism": "choice architecture, norms",
@@ -879,7 +879,7 @@
     "intervention_description": "Students passed by a vegetarian option first the cafeteria.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options",
+    "intervention_medium": "menu/ food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria."
   },
   {
@@ -890,7 +890,7 @@
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options",
+    "intervention_medium": "menu/ food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria."
   },
   {
@@ -901,7 +901,7 @@
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options",
+    "intervention_medium": "menu/ food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria."
   },
   {
@@ -912,7 +912,7 @@
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options",
+    "intervention_medium": "menu/ food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria."
   },
   {
@@ -923,7 +923,7 @@
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options",
+    "intervention_medium": "menu/ food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria."
   },
   {
@@ -998,7 +998,7 @@
     "intervention_description": "Individuals responded to an RSVP survey for an event in which the vegetarian option was the default meal preference.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options",
+    "intervention_medium": "menu/ food options",
     "control_description": "Individuals responded to an RSVP survey for an event in which the meat option was the default meal preference."
   },
   {
@@ -1031,7 +1031,7 @@
     "intervention_description": "The menu listed the daily vegetarian and fish dishes but not the meat dish and a sentence stated that “an option containing meat is available on request.”",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options",
+    "intervention_medium": "menu/ food options",
     "control_description": "The menu contained, as before, the daily meat and fish options for the whole week, and had an additional sentence stating that “a vegetarian option is available on request.”"
   },
   {
@@ -1042,7 +1042,7 @@
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the plant-based default condition, the plant-based sausage was selected.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options, text",
+    "intervention_medium": "menu/ food options, text",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo."
   },
   {
@@ -1053,7 +1053,7 @@
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the sustainable plant-based default condition, the plant-based sausage was selected and a pop-up message said \"We have selected the most sustainable sausage for you”.",
     "intervention_appeal": "environment",
     "intervention_mechanism": "choice architecture, factual",
-    "intervention_medium": "food options, text",
+    "intervention_medium": "menu/ food options, text",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo."
   },
   {
@@ -1064,7 +1064,7 @@
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the tasty plant-based default conditions, the plant-based sausage was selected and a pop-up message said \"We have selected the tastiest sausage for you”.",
     "intervention_appeal": "none",
     "intervention_mechanism": "choice architecture",
-    "intervention_medium": "food options, text",
+    "intervention_medium": "menu/ food options, text",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo."
   }
 ]

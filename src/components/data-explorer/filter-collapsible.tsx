@@ -22,7 +22,7 @@ export const FilterCollapsible = (props: FilterCollapsibleProps) => {
       open={open}
       onOpenChange={setOpen}
     >
-      <CollapsibleTrigger className="flex flex-row items-center gap-1 px-3 py-2 focus:rounded focus:outline focus:outline-2 focus:outline-primary">
+      <CollapsibleTrigger className="ms-0.5 flex flex-row items-center gap-1 px-3 py-2 focus:rounded-2xl focus:outline focus:outline-2 focus:outline-primary">
         <h2 className="font-semibold tracking-tight">{title}</h2>
         <ChevronRight
           className={cn("transition", open ? "rotate-90" : "rotate-0")}

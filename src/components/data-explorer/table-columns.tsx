@@ -6,8 +6,10 @@ import { CheckIcon, X, LinkIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { PaperDialog } from "@/components/paper-dialog"
-import { DataTableColumnHeader } from "@/components/tables/data-columns-header"
+import { DataTableColumnHeader } from "@/components/data-explorer/table-header"
 import { DescriptionDialog } from "@/components/data-explorer/description-dialog"
+
+import { round } from "@/lib/utils"
 
 export type ColumnsPapers = {
   paper_label: string
@@ -160,7 +162,6 @@ export const ColumnsStudies: ColumnDef<ColumnsStudies>[] = [
     ),
     cell: ({ row }) => {
       const value = row.getValue<string>("study_preregistered")
-
       return value == "yes" ? <CheckIcon strokeWidth={2} /> : <X />
     },
   },
@@ -453,6 +454,9 @@ export const ColumnsEffects: ColumnDef<ColumnsEffects>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Effect size" />
     ),
+    cell: ({ row }) => {
+      return round(row.getValue<number>("effect_size_value"), 2)
+    },
   },
   {
     id: "effect_size_var",
@@ -460,6 +464,9 @@ export const ColumnsEffects: ColumnDef<ColumnsEffects>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Effect variance" />
     ),
+    cell: ({ row }) => {
+      return round(row.getValue<number>("effect_size_var"), 2)
+    },
   },
   {
     id: "effect_intervention_n",
@@ -470,6 +477,9 @@ export const ColumnsEffects: ColumnDef<ColumnsEffects>[] = [
         title="Sample size (intervention)"
       />
     ),
+    cell: ({ row }) => {
+      return round(row.getValue<number>("effect_intervention_n"), 2)
+    },
   },
   {
     id: "effect_control_n",
@@ -477,5 +487,8 @@ export const ColumnsEffects: ColumnDef<ColumnsEffects>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Sample size (control)" />
     ),
+    cell: ({ row }) => {
+      return round(row.getValue<number>("effect_control_n"), 2)
+    },
   },
 ]

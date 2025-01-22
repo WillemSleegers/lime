@@ -479,7 +479,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               name="intervention_mechanism"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Aspect</FormLabel>
+                  <FormLabel>Mechanism</FormLabel>
                   <FormControl className="justify-start">
                     <ToggleGroup
                       className="flex flex-wrap"
