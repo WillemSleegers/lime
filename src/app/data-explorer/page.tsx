@@ -72,9 +72,9 @@ export default function DataExplorer() {
         const escapedValue = value.includes(",") ? `"${value}"` : value
         rowData.push(escapedValue)
       })
-      rowsData.push(rowData.join(", "))
+      rowsData.push(rowData.join(","))
     })
-    const text = columnNames.join(", ") + "\n" + rowsData.join("\n")
+    const text = columnNames.join(",") + "\n" + rowsData.join("\n")
     const element = document.createElement("a")
     element.setAttribute(
       "href",
