@@ -60,7 +60,7 @@
     "postcss": "latest",
     "prettier": "latest",
     "prettier-plugin-tailwindcss": "latest",
-    "tailwindcss": "latest",
+    "tailwindcss": "^3",
     "typescript": "latest"
   }
 }
