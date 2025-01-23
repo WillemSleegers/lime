@@ -23,7 +23,6 @@ import { WebR } from "webr"
 import { runMetaAnalysis } from "@/lib/r-functions"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { FilterInput } from "./filters/input"
 
 import data from "../assets/data/prepared-effects.json"
 
@@ -41,6 +40,7 @@ const appeals = getOptions("intervention_appeal")
 const countries = getOptions("sample_intervention_country")
 
 import { META_ANALYSIS_DEFAULTS } from "@/lib/constants"
+import { Input } from "./ui/input"
 
 const formSchema = z.object({
   outcomes: z
@@ -159,7 +159,6 @@ export const Filters = (props: FiltersProps) => {
       setData(subset)
 
       if (webR) {
-        console.log("Running meta-analysis...")
         setStatus("Running meta-analysis...")
         setDisabled(true)
 
@@ -207,7 +206,7 @@ export const Filters = (props: FiltersProps) => {
 
   return (
     <Collapsible
-      className="space-y-3 rounded-lg border bg-gray-100 p-3"
+      className="rounded-lg border bg-gray-100 p-3"
       open={open}
       onOpenChange={setOpen}
     >
@@ -219,7 +218,7 @@ export const Filters = (props: FiltersProps) => {
           className={cn("transition", open ? "rotate-90" : "rotate-0")}
         />
       </CollapsibleTrigger>
-      <CollapsibleContent className="CollapsibleContent">
+      <CollapsibleContent className="CollapsibleContent p-2">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="mb-3 space-y-4">
@@ -231,7 +230,7 @@ export const Filters = (props: FiltersProps) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <div className="space-y-3 pb-3 ps-3">
+                        <div className="space-y-3 ps-3 pb-3">
                           <div>
                             <FormLabel className="block pb-3 text-base">
                               Behavior outcomes
@@ -259,117 +258,108 @@ export const Filters = (props: FiltersProps) => {
                     </FormItem>
                   )}
                 />
-                <Separator />
                 <FormField
                   control={form.control}
                   name="measurements"
                   render={({ field }) => (
                     <FormItem>
+                      <FormLabel className="text-base">
+                        Measurement type
+                      </FormLabel>
                       <FormControl>
-                        <>
-                          <FormLabel className="text-base">
-                            Measurement type
-                          </FormLabel>
-                          <FormDescription></FormDescription>
-                          <MultiPillsForm
-                            field={field}
-                            options={measurements}
-                          />
-                        </>
+                        <MultiPillsForm field={field} options={measurements} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-              </div>
-              <div className="space-y-3">
-                <h3 className="mb-3 text-xl font-semibold">Interventions</h3>
-                <FormField
-                  control={form.control}
-                  name="aspects"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <>
-                          <FormLabel className="text-base">
-                            Intervention aspect
-                          </FormLabel>
-                          <FormDescription></FormDescription>
-                          <MultiPillsForm field={field} options={aspects} />
-                        </>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="mediums"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <>
-                          <FormLabel className="text-base">
-                            Intervention medium
-                          </FormLabel>
-                          <FormDescription></FormDescription>
-                          <MultiPillsForm field={field} options={mediums} />
-                        </>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="appeals"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <>
-                          <FormLabel className="text-base">
-                            Intervention appeal
-                          </FormLabel>
-                          <FormDescription></FormDescription>
-                          <MultiPillsForm field={field} options={appeals} />
-                        </>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div>
-                <div>
-                  <h3 className="text-xl font-semibold">Samples</h3>
-                </div>
-                <div className="flex gap-3">
+                <Separator />
+                <div className="space-y-3">
+                  <h3 className="mb-3 text-xl font-semibold">Interventions</h3>
                   <FormField
                     control={form.control}
-                    name="countries"
+                    name="aspects"
                     render={({ field }) => (
                       <FormItem>
+                        <FormLabel className="text-base">
+                          Intervention aspect
+                        </FormLabel>
                         <FormControl>
-                          <>
-                            <FormLabel className="text-base">Country</FormLabel>
-                            <FormDescription></FormDescription>
-                            <MultiPillsForm field={field} options={countries} />
-                          </>
+                          <MultiPillsForm field={field} options={aspects} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="mediums"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-base">
+                          Intervention medium
+                        </FormLabel>
+                        <FormControl>
+                          <MultiPillsForm field={field} options={mediums} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="appeals"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-base">
+                          Intervention appeal
+                        </FormLabel>
+                        <FormControl>
+                          <MultiPillsForm field={field} options={appeals} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                 </div>
+                <div>
+                  <div>
+                    <h3 className="text-xl font-semibold">Samples</h3>
+                  </div>
+                  <div className="flex gap-3">
+                    <FormField
+                      control={form.control}
+                      name="countries"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-base">Country</FormLabel>
+                          <FormControl>
+                            <MultiPillsForm field={field} options={countries} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </div>
+                <FormField
+                  control={form.control}
+                  name="minimumCellSize"
+                  render={({ field }) => (
+                    <FormItem className="w-60">
+                      <FormLabel>Minimum sample size</FormLabel>
+                      <FormControl>
+                        <Input className="my-2" type="number" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        This is the minimum sample size in either the control or
+                        intervention condition.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
-              <FilterInput
-                form={form}
-                name="minimumCellSize"
-                label="Minimum sample size"
-                description="This is the minimum sample size in either the control or intervention condition."
-                placeholder="1"
-                type="number"
-              />
             </div>
             <FormField
               name="error"

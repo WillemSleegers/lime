@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
-import { MainNav } from "@/components/main-nav"
+import { MainNav } from "@/components/navigation/main-nav"
 
 import "./globals.css"
 
