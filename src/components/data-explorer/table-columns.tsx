@@ -45,7 +45,7 @@ export const ColumnsPapers: ColumnDef<ColumnsPapers>[] = [
         <Badge
           key={e}
           variant="secondary"
-          className="whitespace-nowrap text-sm font-normal"
+          className="text-sm font-normal whitespace-nowrap"
         >
           {e}
         </Badge>
@@ -258,7 +258,7 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
         <Badge
           key={e}
           variant="secondary"
-          className="whitespace-nowrap text-sm font-normal"
+          className="text-sm font-normal whitespace-nowrap"
         >
           {e}
         </Badge>
@@ -277,7 +277,7 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
         <Badge
           key={e}
           variant="secondary"
-          className="whitespace-nowrap text-sm font-normal"
+          className="text-sm font-normal whitespace-nowrap"
         >
           {e}
         </Badge>
@@ -296,7 +296,7 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
         <Badge
           key={e}
           variant="secondary"
-          className="whitespace-nowrap text-sm font-normal"
+          className="text-sm font-normal whitespace-nowrap"
         >
           {e}
         </Badge>
@@ -416,7 +416,7 @@ export const ColumnsOutcomes: ColumnDef<ColumnsOutcomes>[] = [
 export type ColumnsEffects = {
   paper_label: string
   study: number
-  effect_size_name: string
+  //effect_size_name: string
   effect_size_value: number
   effect_size_var: number
   effect_intervention_n: number
@@ -441,13 +441,13 @@ export const ColumnsEffects: ColumnDef<ColumnsEffects>[] = [
       <DataTableColumnHeader column={column} title="Study" />
     ),
   },
-  {
-    id: "effect_size_name",
-    accessorKey: "effect_size_name",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Type" />
-    ),
-  },
+  // {
+  //   id: "effect_size_name",
+  //   accessorKey: "effect_size_name",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="Type" />
+  //   ),
+  // },
   {
     id: "effect_size_value",
     accessorKey: "effect_size_value",

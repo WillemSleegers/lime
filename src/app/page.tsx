@@ -10,65 +10,73 @@ import counts from "@/assets/data/counts.json"
 
 export default function Home() {
   return (
-    <div className="space-y-14 md:space-y-28">
+    <div className="mt-6 space-y-12 p-3 md:mt-12 md:mt-18 md:space-y-24 lg:mt-24">
       {/* Hero */}
-      <section className="md:mt-18 m-auto mt-3 max-w-2xl space-y-8 p-3 text-center md:mt-12 lg:mt-24">
+      <section className="mx-auto max-w-xl space-y-8 text-center sm:max-w-2xl md:space-y-12">
         <Badge variant="destructive">Currently in beta</Badge>
-        <h1 className="text-balance text-center text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-          Library of Interventions for Meat Elimination
-        </h1>
-        <p className="mx-auto mt-5 max-w-(--breakpoint-md) text-center text-lg text-muted-foreground md:text-xl">
-          A library of intervention studies to reduce the consumption of animal
-          products.
-        </p>
-        <div className="grid grid-cols-2 gap-x-12 gap-y-6 md:grid-cols-4">
-          <div className="space-y-2 text-right md:text-center">
-            <h2 className="text-3xl font-bold sm:text-4xl">
+        <div className="space-y-4">
+          <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl md:text-5xl">
+            Library of Interventions for Meat Elimination
+          </h1>
+          <p className="text-muted-foreground mx-auto text-center text-lg md:text-xl">
+            A library of intervention studies to reduce the consumption of
+            animal products.
+          </p>
+        </div>
+        <div className="mx-auto flex max-w-xs flex-wrap justify-center gap-6 text-center sm:max-w-md sm:justify-between">
+          <div className="flex flex-col gap-y-2">
+            <span className="text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1000} target={counts.papers} />
-            </h2>
-            <p className="text-xl text-muted-foreground">Papers</p>
+            </span>
+            <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
+              Papers
+            </span>
           </div>
-          <div className="space-y-2 text-left md:text-center">
-            <h2 className="text-3xl font-bold sm:text-4xl">
+          <div className="flex flex-col gap-y-2">
+            <span className="text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1250} target={counts.studies} />
-            </h2>
-            <p className="text-xl text-muted-foreground">Studies</p>
+            </span>
+            <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
+              Studies
+            </span>
           </div>
-          <div className="space-y-2 text-right md:text-center">
-            <h2 className="text-3xl font-bold sm:text-4xl">
+          <div className="flex flex-col gap-y-2">
+            <span className="text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1500} target={counts.effects} />
-            </h2>
-            <p className="text-xl text-muted-foreground">Effects</p>
+            </span>
+            <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
+              Effects
+            </span>
           </div>
-          <div className="space-y-2 text-left md:text-center">
-            <h2 className="text-3xl font-bold sm:text-4xl">
+          <div className="flex flex-col gap-y-2">
+            <span className="text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1750} target={counts.observations} />
-            </h2>
-            <p className="text-xl text-muted-foreground">Observations</p>
+            </span>
+            <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
+              Observations
+            </span>
           </div>
         </div>
       </section>
 
       {/* About */}
-      <section>
-        <div className="mx-auto max-w-4xl p-6">
-          <h2 className="text-3xl font-bold md:text-4xl">
-            <span className="text-primary">About </span>
-            LIME
-          </h2>
+      <section className="mx-auto max-w-4xl p-6">
+        <h2 className="text-3xl font-bold md:text-4xl">
+          <span className="text-primary">About </span>
+          LIME
+        </h2>
 
-          <p className="text-lg text-muted-foreground">
-            LIME is a continuously growing collection of experimental studies
-            examining psychological interventions to reduce animal product
-            consumption and improve attitudes towards animals. With LIME, you
-            can explore individual studies, understand the current state of
-            research, and evaluate which interventions have the strongest
-            evidence behind them.
-          </p>
-          <Button className="mt-3 rounded-3xl" asChild variant="secondary">
-            <Link href="/about/">Learn more</Link>
-          </Button>
-        </div>
+        <p className="text-muted-foreground text-lg">
+          LIME is a continuously growing collection of experimental studies
+          examining psychological interventions to reduce animal product
+          consumption and improve attitudes towards animals. With LIME, you can
+          explore individual studies, understand the current state of research,
+          and evaluate which interventions have the strongest evidence behind
+          them.
+        </p>
+        <Button className="mt-3 rounded-3xl" asChild variant="secondary">
+          <Link href="/about/">Learn more</Link>
+        </Button>
       </section>
 
       {/* Data explorer */}
@@ -77,7 +85,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold md:text-4xl">
             <span className="text-primary">Explore</span> Studies
           </h2>
-          <p className="mx-auto mb-8 mt-4 text-lg text-muted-foreground md:w-3/4">
+          <p className="text-muted-foreground mx-auto mt-4 mb-8 text-lg md:w-3/4">
             Browse our database of research papers testing interventions to
             reduce meat consumption. Filter, sort, and explore study details,
             methods, and outcomes.
@@ -94,14 +102,14 @@ export default function Home() {
         <h2 className="text-3xl font-bold md:text-4xl">
           <span className="text-primary">Analyze</span> Data
         </h2>
-        <p className="mx-auto mb-8 mt-4 text-lg text-muted-foreground md:w-3/4">
+        <p className="text-muted-foreground mx-auto mt-4 mb-8 text-lg md:w-3/4">
           Use our analysis tools to aggregate study results and find out how
           strong the evidence is.
         </p>
 
         <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div className="mx-auto max-w-80">
-            <h3 className="whitespace-nowrap text-xl font-semibold leading-none tracking-tight">
+            <h3 className="text-xl leading-none font-semibold tracking-tight whitespace-nowrap">
               Summary statistics
             </h3>
             <p className="text-muted-foreground">
@@ -110,7 +118,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto max-w-80">
-            <h3 className="whitespace-nowrap text-xl font-semibold leading-none tracking-tight">
+            <h3 className="text-xl leading-none font-semibold tracking-tight whitespace-nowrap">
               Meta-analysis
             </h3>
             <p className="text-muted-foreground">
@@ -119,7 +127,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto max-w-80">
-            <h3 className="whitespace-nowrap text-xl font-semibold leading-none tracking-tight">
+            <h3 className="text-xl leading-none font-semibold tracking-tight whitespace-nowrap">
               Data visualization
             </h3>
             <p className="text-muted-foreground">

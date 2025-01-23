@@ -43,7 +43,7 @@ export function MainNav() {
       <div className="flex h-10 items-center justify-between">
         <Link
           href="/"
-          className="flex flex-row items-center gap-3 text-2xl font-semibold leading-normal"
+          className="flex flex-row items-center gap-3 text-2xl leading-normal font-semibold"
         >
           <Lime />
           LIME
@@ -57,17 +57,17 @@ export function MainNav() {
         >
           <div className="flex flex-col items-center justify-center">
             <span
-              className={`block h-0.5 w-5 rounded-sm bg-foreground transition-all duration-300 ease-out ${
+              className={`bg-foreground block h-0.5 w-5 rounded-sm transition-all duration-300 ease-out ${
                 open ? "translate-y-1 rotate-45" : "-translate-y-0.5"
               }`}
             ></span>
             <span
-              className={`my-0.5 block h-0.5 w-5 rounded-sm bg-foreground transition-all duration-300 ease-out ${
+              className={`bg-foreground my-0.5 block h-0.5 w-5 rounded-sm transition-all duration-300 ease-out ${
                 open ? "opacity-0" : "opacity-100"
               }`}
             ></span>
             <span
-              className={`block h-0.5 w-5 rounded-sm bg-foreground transition-all duration-300 ease-out ${
+              className={`bg-foreground block h-0.5 w-5 rounded-sm transition-all duration-300 ease-out ${
                 open ? "-translate-y-1 -rotate-45" : "translate-y-0.5"
               }`}
             ></span>
@@ -81,7 +81,7 @@ export function MainNav() {
       >
         {items.map((e) => (
           <Link
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground transition-colors"
             href={e.href}
             key={e.title}
           >

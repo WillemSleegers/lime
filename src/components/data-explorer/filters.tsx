@@ -26,7 +26,7 @@ const StyledToggleGroupItem = ({ option }: { option: string }) => {
     <ToggleGroupItem
       value={option}
       aria-label={"toggle" + option}
-      className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
+      className="bg-background hover:bg-primary hover:text-foreground data-[state=on]:bg-primary rounded-full border whitespace-nowrap data-[state=on]:text-white"
       size="sm"
     >
       {option}
@@ -115,6 +115,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                   <FormLabel>Publication year</FormLabel>
                   <FormControl>
                     <Slider
+                      className="my-2"
                       value={field.value}
                       minStepsBetweenThumbs={1}
                       max={Math.max(...data.map((datum) => datum.paper_year))}
@@ -138,6 +139,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                   <FormLabel>Paper type</FormLabel>
                   <FormControl className="justify-start">
                     <ToggleGroup
+                      className="my-2"
                       type="multiple"
                       onValueChange={field.onChange}
                       value={field.value}
@@ -159,6 +161,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                   <FormLabel>Open access</FormLabel>
                   <FormControl className="justify-start">
                     <ToggleGroup
+                      className="my-2"
                       type="multiple"
                       onValueChange={field.onChange}
                       value={field.value}
@@ -270,7 +273,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                 <FormItem className="w-60">
                   <FormLabel>Minimum sample size</FormLabel>
                   <FormControl>
-                    <Input type="number" {...field} />
+                    <Input className="my-2" type="number" {...field} />
                   </FormControl>
                   <FormDescription>
                     This is the total sample size across all conditions in a
@@ -289,6 +292,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                   <FormLabel>Preregistered</FormLabel>
                   <FormControl className="justify-start">
                     <ToggleGroup
+                      className="my-2"
                       type="multiple"
                       onValueChange={field.onChange}
                       value={field.value}
@@ -312,6 +316,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                   <FormControl className="justify-start">
                     <ToggleGroup
                       type="multiple"
+                      className="my-2"
                       onValueChange={field.onChange}
                       value={field.value}
                     >
@@ -440,9 +445,13 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Type of appeal</FormLabel>
+                  <FormDescription>
+                    Content categories of different appeals used in the
+                    intervention
+                  </FormDescription>
                   <FormControl className="justify-start">
                     <ToggleGroup
-                      className="flex flex-wrap gap-3"
+                      className="flex flex-wrap gap-x-2"
                       type="multiple"
                       onValueChange={field.onChange}
                       value={field.value}
@@ -453,7 +462,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground"
+                        className="text-foreground h-auto"
                         onClick={() =>
                           field.onChange(intervention_appeal_options)
                         }
@@ -463,7 +472,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground"
+                        className="text-foreground h-auto"
                         onClick={() => field.onChange([])}
                       >
                         Deselect all
@@ -480,9 +489,12 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Mechanism</FormLabel>
+                  <FormDescription>
+                    The psychological mechanism targeted by the intervention
+                  </FormDescription>
                   <FormControl className="justify-start">
                     <ToggleGroup
-                      className="flex flex-wrap"
+                      className="flex flex-wrap gap-x-2"
                       type="multiple"
                       onValueChange={field.onChange}
                       value={field.value}
@@ -493,7 +505,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground"
+                        className="text-foreground h-auto"
                         onClick={() =>
                           field.onChange(intervention_mechanism_options)
                         }
@@ -503,7 +515,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground"
+                        className="text-foreground h-auto"
                         onClick={() => field.onChange([])}
                       >
                         Deselect all
@@ -520,9 +532,13 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Medium</FormLabel>
+                  <FormDescription>
+                    The medium in which the intervention was adminstered
+                  </FormDescription>
                   <FormControl className="justify-start">
                     <ToggleGroup
                       type="multiple"
+                      className="flex flex-wrap gap-x-2"
                       onValueChange={field.onChange}
                       value={field.value}
                     >
@@ -532,7 +548,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground"
+                        className="text-foreground h-auto"
                         onClick={() =>
                           field.onChange(intervention_medium_options)
                         }
@@ -542,7 +558,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground"
+                        className="text-foreground h-auto"
                         onClick={() => field.onChange([])}
                       >
                         Deselect all
@@ -702,7 +718,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                     <FormLabel>Behaviors</FormLabel>
                     <FormControl className="justify-start">
                       <ToggleGroup
-                        className="flex flex-wrap gap-x-3"
+                        className="my-2 flex flex-wrap gap-x-2"
                         type="multiple"
                         onValueChange={field.onChange}
                         value={field.value}
@@ -713,7 +729,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground"
+                          className="text-foreground h-auto"
                           onClick={() =>
                             field.onChange(outcome_subcategory_behavior_options)
                           }
@@ -723,7 +739,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground"
+                          className="text-foreground h-auto"
                           onClick={() => field.onChange([])}
                         >
                           Deselect all
@@ -741,7 +757,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                     <FormLabel>Intentions</FormLabel>
                     <FormControl className="justify-start">
                       <ToggleGroup
-                        className="flex flex-wrap gap-x-3"
+                        className="my-2 flex flex-wrap gap-x-2"
                         type="multiple"
                         onValueChange={field.onChange}
                         value={field.value}
@@ -752,7 +768,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground"
+                          className="text-foreground h-auto"
                           onClick={() =>
                             field.onChange(
                               outcome_subcategory_intention_options,
@@ -764,7 +780,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground"
+                          className="text-foreground h-auto"
                           onClick={() => field.onChange([])}
                         >
                           Deselect all
@@ -782,7 +798,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                     <FormLabel>Attitudes/beliefs</FormLabel>
                     <FormControl className="justify-start">
                       <ToggleGroup
-                        className="flex flex-wrap gap-x-3"
+                        className="my-2 flex flex-wrap gap-x-2"
                         type="multiple"
                         onValueChange={field.onChange}
                         value={field.value}
@@ -793,7 +809,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground"
+                          className="text-foreground h-auto"
                           onClick={() =>
                             field.onChange(outcome_subcategory_attitude_options)
                           }
@@ -803,7 +819,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground"
+                          className="text-foreground h-auto"
                           onClick={() => field.onChange([])}
                         >
                           Deselect all
@@ -830,7 +846,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                   <FormLabel>Measurement type</FormLabel>
                   <FormControl className="justify-start">
                     <ToggleGroup
-                      className="flex flex-wrap gap-3"
+                      className="my-2 flex flex-wrap gap-x-2"
                       type="multiple"
                       onValueChange={field.onChange}
                       value={field.value}
@@ -841,7 +857,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground"
+                        className="text-foreground h-auto"
                         onClick={() =>
                           field.onChange(outcome_measurement_type_options)
                         }
@@ -851,7 +867,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground"
+                        className="text-foreground h-auto"
                         onClick={() => field.onChange([])}
                       >
                         Deselect all
@@ -940,6 +956,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
                   <FormLabel>Effect size</FormLabel>
                   <FormControl>
                     <Slider
+                      className="my-2"
                       value={field.value}
                       minStepsBetweenThumbs={0.1}
                       min={effect_size_min}
@@ -963,7 +980,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
                 <FormItem className="w-60">
                   <FormLabel>Minimum sample size</FormLabel>
                   <FormControl>
-                    <Input type="number" {...field} />
+                    <Input className="my-2" type="number" {...field} />
                   </FormControl>
                   <FormDescription>
                     This is the minimum sample size in either the control or
