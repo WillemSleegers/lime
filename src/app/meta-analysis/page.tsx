@@ -36,7 +36,7 @@ const MetaAnalysis = () => {
   }, [])
 
   return (
-    <main className="m-auto max-w-screen-lg">
+    <main className="m-auto max-w-(--breakpoint-lg)">
       <div className="m-3">
         <div className="my-5">
           <span className="font-semibold">Status:</span> {status}

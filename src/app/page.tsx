@@ -17,7 +17,7 @@ export default function Home() {
         <h1 className="text-balance text-center text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
           Library of Interventions for Meat Elimination
         </h1>
-        <p className="mx-auto mt-5 max-w-screen-md text-center text-lg text-muted-foreground md:text-xl">
+        <p className="mx-auto mt-5 max-w-(--breakpoint-md) text-center text-lg text-muted-foreground md:text-xl">
           A library of intervention studies to reduce the consumption of animal
           products.
         </p>
