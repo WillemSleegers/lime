@@ -26,7 +26,7 @@ const StyledToggleGroupItem = ({ option }: { option: string }) => {
     <ToggleGroupItem
       value={option}
       aria-label={"toggle" + option}
-      className="bg-background hover:bg-primary hover:text-foreground data-[state=on]:bg-primary rounded-full border whitespace-nowrap data-[state=on]:text-white"
+      className="whitespace-nowrap rounded-full border bg-background hover:bg-primary hover:text-foreground data-[state=on]:bg-primary data-[state=on]:text-white"
       size="sm"
     >
       {option}
@@ -350,7 +350,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
 
 /* Intervention-level */
 const formSchemaInterventions = z.object({
-  intervention_appeal: z
+  intervention_content: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
@@ -366,7 +366,7 @@ const formSchemaInterventions = z.object({
 
 type FilterInterventionsProps = {
   data: {
-    intervention_appeal: string
+    intervention_content: string
     intervention_mechanism: string
     intervention_medium: string
   }[]
@@ -376,10 +376,10 @@ type FilterInterventionsProps = {
 export const FilterInterventions = (props: FilterInterventionsProps) => {
   const { data, setData } = props
 
-  const intervention_appeal_options = [
+  const intervention_content_options = [
     ...new Set(
       data
-        .map((datum) => datum.intervention_appeal)
+        .map((datum) => datum.intervention_content)
         .flatMap((str) => str.split(", ").map((s) => s)),
     ),
   ]
@@ -404,7 +404,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     defaultValues: {
-      intervention_appeal: intervention_appeal_options,
+      intervention_content: intervention_content_options,
       intervention_mechanism: intervention_mechanism_options,
       intervention_medium: intervention_medium_options,
     },
@@ -414,20 +414,20 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
     let subset = data
 
     subset = subset.filter((datum) => {
-      return values.intervention_appeal.some((appeal) =>
-        datum.intervention_appeal.includes(appeal),
+      return values.intervention_content.some((value) =>
+        datum.intervention_content.includes(value),
       )
     })
 
     subset = subset.filter((datum) => {
-      return values.intervention_mechanism.some((mechanism) =>
-        datum.intervention_mechanism.includes(mechanism),
+      return values.intervention_mechanism.some((value) =>
+        datum.intervention_mechanism.includes(value),
       )
     })
 
     subset = subset.filter((datum) => {
-      return values.intervention_medium.some((medium) =>
-        datum.intervention_medium.includes(medium),
+      return values.intervention_medium.some((value) =>
+        datum.intervention_medium.includes(value),
       )
     })
 
@@ -441,13 +441,12 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
           <div className="flex flex-wrap gap-x-12 gap-y-4">
             <FormField
               control={form.control}
-              name="intervention_appeal"
+              name="intervention_content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Type of appeal</FormLabel>
+                  <FormLabel>Content</FormLabel>
                   <FormDescription>
-                    Content categories of different appeals used in the
-                    intervention
+                    Content categories of the appeals used in the interventions
                   </FormDescription>
                   <FormControl className="justify-start">
                     <ToggleGroup
@@ -456,15 +455,15 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {intervention_appeal_options.map((option) => (
+                      {intervention_content_options.map((option) => (
                         <StyledToggleGroupItem key={option} option={option} />
                       ))}
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground h-auto"
+                        className="h-auto text-foreground"
                         onClick={() =>
-                          field.onChange(intervention_appeal_options)
+                          field.onChange(intervention_content_options)
                         }
                       >
                         Select all
@@ -472,7 +471,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground h-auto"
+                        className="h-auto text-foreground"
                         onClick={() => field.onChange([])}
                       >
                         Deselect all
@@ -490,7 +489,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                 <FormItem>
                   <FormLabel>Mechanism</FormLabel>
                   <FormDescription>
-                    The psychological mechanism targeted by the intervention
+                    The psychological mechanisms targeted by the interventions
                   </FormDescription>
                   <FormControl className="justify-start">
                     <ToggleGroup
@@ -505,7 +504,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground h-auto"
+                        className="h-auto text-foreground"
                         onClick={() =>
                           field.onChange(intervention_mechanism_options)
                         }
@@ -515,7 +514,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground h-auto"
+                        className="h-auto text-foreground"
                         onClick={() => field.onChange([])}
                       >
                         Deselect all
@@ -533,7 +532,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                 <FormItem>
                   <FormLabel>Medium</FormLabel>
                   <FormDescription>
-                    The medium in which the intervention was adminstered
+                    The medium in which the interventions are adminstered
                   </FormDescription>
                   <FormControl className="justify-start">
                     <ToggleGroup
@@ -548,7 +547,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground h-auto"
+                        className="h-auto text-foreground"
                         onClick={() =>
                           field.onChange(intervention_medium_options)
                         }
@@ -558,7 +557,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground h-auto"
+                        className="h-auto text-foreground"
                         onClick={() => field.onChange([])}
                       >
                         Deselect all
@@ -729,7 +728,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground h-auto"
+                          className="h-auto text-foreground"
                           onClick={() =>
                             field.onChange(outcome_subcategory_behavior_options)
                           }
@@ -739,7 +738,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground h-auto"
+                          className="h-auto text-foreground"
                           onClick={() => field.onChange([])}
                         >
                           Deselect all
@@ -768,7 +767,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground h-auto"
+                          className="h-auto text-foreground"
                           onClick={() =>
                             field.onChange(
                               outcome_subcategory_intention_options,
@@ -780,7 +779,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground h-auto"
+                          className="h-auto text-foreground"
                           onClick={() => field.onChange([])}
                         >
                           Deselect all
@@ -809,7 +808,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground h-auto"
+                          className="h-auto text-foreground"
                           onClick={() =>
                             field.onChange(outcome_subcategory_attitude_options)
                           }
@@ -819,7 +818,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         <Button
                           type="button"
                           variant="link"
-                          className="text-foreground h-auto"
+                          className="h-auto text-foreground"
                           onClick={() => field.onChange([])}
                         >
                           Deselect all
@@ -857,7 +856,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground h-auto"
+                        className="h-auto text-foreground"
                         onClick={() =>
                           field.onChange(outcome_measurement_type_options)
                         }
@@ -867,7 +866,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                       <Button
                         type="button"
                         variant="link"
-                        className="text-foreground h-auto"
+                        className="h-auto text-foreground"
                         onClick={() => field.onChange([])}
                       >
                         Deselect all

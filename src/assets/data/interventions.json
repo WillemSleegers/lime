@@ -5,7 +5,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Informed participants that previous research had found that people who consume more meat endorse hierarchy and dominance values, whereas people who consume more fruits and vegetables reject hierarchy and dominance values.",
-    "intervention_appeal": "personal image",
+    "intervention_content": "personal image",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": ""
@@ -16,7 +16,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "A presentation describing emerging social norms that show a significant reduction in meat-eating since 1980 in Canada and the negative effects of meat-eating, especially red and processed meats, on human health, animal welfare, and the environment (including 2 PETA videos). A mind attribution task during which participants had to write aparagraph about the cow’s inner thoughts, feelings, intentions, and emotions. To increase self-efficacy participants received concrete tips on planning meat-free meals, substituting meat products, and choosing meatless meals in restaurants. Participants set agoal for the following month regarding their meat consumption by choosing one of the three following options: reduce the quantity of meat they consume, stay at the same level of meat consumption, or increase meat consumption., Text-messaging reinforcement of the informational and self-monitoring components. The messages sent upbeat and educational information that reminded participants of the benefits of reducing meat consumption and provided them with additional tips and links to recipes.",
-    "intervention_appeal": "environment, animal welfare, health",
+    "intervention_content": "environment, animal welfare, health",
     "intervention_mechanism": "factual, negative emotional, perspective taking, goal pursuit, norms",
     "intervention_medium": "presentation, text",
     "control_description": ""
@@ -27,7 +27,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants watched a video about pigs in animal agriculture on a tablet.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, negative emotional",
     "intervention_medium": "video",
     "control_description": "Control participants were not exposed to a video, but it was not a truly neutral control condition, in that the canopy used for the study was covered in graphic images of farm animals"
@@ -38,7 +38,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Participants watched a 360 degrees video about pigs in animal agriculture. They wore Samsung headsets, which allow viewers to pan in any direction for the duration of each frame.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, negative emotional, perspective taking",
     "intervention_medium": "3D video",
     "control_description": "Control participants were not exposed to a video, but it was not a truly neutral control condition, in that the canopy used for the study was covered in graphic images of farm animals"
@@ -49,7 +49,7 @@
     "study": 3,
     "intervention_condition": 2,
     "intervention_description": "Humane farm description of the ham sampled by participants: \"This ham was raised on a farm that focused on animal welfare. The animals were allowed to roam in grassy outdoor pastures where they could graze and exercise. The animals were not isolated so were able to engage in social behaviors with other pigs.\"",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
     "control_description": ""
@@ -60,7 +60,7 @@
     "study": 3,
     "intervention_condition": 3,
     "intervention_description": "Factory farm description for the ham sampled by participants: \"This ham was produced at a factory farm that focused on production. The animals were confined to concrete indoor pens where they were unable to lie down or go outside. The animals were isolated so could not engage in social behaviors with other pigs.\"",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
     "control_description": ""
@@ -71,7 +71,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Facebook posts showing what farmed animals endure in factory farms. Promotion-focused framing of the outcome variable (e.g., \"each vegan saves 200 animals per year\").",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit",
     "intervention_medium": "text, image, video",
     "control_description": ""
@@ -82,7 +82,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Facebook posts showing what farmed animals endure in factory farms. Prevention-focused framing of the outcome variable (e.g., \"each vegan prevents 270 animals per year from being killed\").",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit",
     "intervention_medium": "text, image, video",
     "control_description": ""
@@ -93,7 +93,7 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "Facebook posts showing the special characteristics of animals presented as unique individuals. Promotion-focused framing of the outcome variable (e.g., \"each vegan saves 200 animals per year\").",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit, perspective taking",
     "intervention_medium": "text, image, video",
     "control_description": ""
@@ -104,7 +104,7 @@
     "study": 1,
     "intervention_condition": 5,
     "intervention_description": "Facebook posts showing the special characteristics of animals presented as unique individuals. Prevention-focused framing of the outcome variable (e.g., \"each vegan prevents 270 animals per year from being killed\").",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit, perspective taking",
     "intervention_medium": "text, image, video",
     "control_description": ""
@@ -115,7 +115,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants watched the \"Lisa the vegetarian\" Simpson's episode.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "infotainment, origin of animal product, celebrity",
     "intervention_medium": "video",
     "control_description": ""
@@ -126,7 +126,7 @@
     "study": 2,
     "intervention_condition": 2,
     "intervention_description": "Participants received a daily email to remind them of their goal to monitor their red meat consumption and not exceed 200g per week.",
-    "intervention_appeal": "health",
+    "intervention_content": "health",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "text",
     "control_description": ""
@@ -137,7 +137,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants received a daily text message via WhatsApp focused on anticipated regret that urged participants to self-monitor processed meat consumption.",
-    "intervention_appeal": "health",
+    "intervention_content": "health",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "text",
     "control_description": ""
@@ -148,7 +148,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Booklet focusing primarily on cruelty, discussing all farm animals, and why to go vegetarian.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
     "control_description": ""
@@ -159,7 +159,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Booklet focusing primarily on cruelty, discussing only chickens and why to go vegetarian.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
     "control_description": ""
@@ -170,7 +170,7 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "Booklet focusing primarily on cruelty, discussing all farm animals, and how to go vegetarian.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
     "control_description": ""
@@ -181,7 +181,7 @@
     "study": 1,
     "intervention_condition": 5,
     "intervention_description": "Booklet focusing primarily on cruelty, discussing only chickens, and how to go vegetarian.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
     "control_description": ""
@@ -192,7 +192,7 @@
     "study": 1,
     "intervention_condition": 6,
     "intervention_description": "Booklet focusing primarily on health benefits, discussing all farm animals, and why to go vegetarian.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
     "control_description": ""
@@ -203,7 +203,7 @@
     "study": 1,
     "intervention_condition": 7,
     "intervention_description": "Booklet focusing primarily on health benefits, discussing only chickens, and why to go vegetarian.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
     "control_description": ""
@@ -214,7 +214,7 @@
     "study": 1,
     "intervention_condition": 8,
     "intervention_description": "Booklet focusing primarily on health benefits, discussing all farm animals, and how to go vegetarian.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
     "control_description": ""
@@ -225,7 +225,7 @@
     "study": 1,
     "intervention_condition": 9,
     "intervention_description": "Booklet focusing primarily on health benefits, discussing only chickens, and how to go vegetarian.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
     "control_description": ""
@@ -236,7 +236,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "A picture of a high-cuteness pig together with three different pork-meals.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "origin of animal product, positive emotional",
     "intervention_medium": "presentation",
     "control_description": "A white frame together with three different pork-meals."
@@ -247,7 +247,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "A picture of a low-cuteness pig together with three different pork-meals.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "presentation",
     "control_description": "A white frame together with three different pork-meals."
@@ -258,7 +258,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "A booklet that discussed the cruelty of animal farming and the health benefits of of removing animal products from one's diet and encouraged the reader to go vegan.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
     "intervention_medium": "text",
     "control_description": ""
@@ -269,7 +269,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "A booklet that discussed the cruelty of animal farming and the health benefits of of removing animal products from one's diet and encouraged the reader to go vegetarian.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
     "intervention_medium": "text",
     "control_description": ""
@@ -280,7 +280,7 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "A booklet that discussed the cruelty of animal farming and the health benefits of of removing animal products from one's diet and encouraged the reader to eat less meat.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
     "intervention_medium": "text",
     "control_description": ""
@@ -291,7 +291,7 @@
     "study": 1,
     "intervention_condition": 5,
     "intervention_description": "A booklet that discussed the cruelty of animal farming and the health benefits of of removing animal products from one's diet and encouraged the reader to cut out or cut back on meat and other animal products.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
     "intervention_medium": "text",
     "control_description": ""
@@ -302,7 +302,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants watched a 7-minute video that informed viewers of the negative health effects of high meat consumption (high threat) and suggested easy ways to reduce their meat consumption to increase perceived efficacy.",
-    "intervention_appeal": "health",
+    "intervention_content": "health",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "video",
     "control_description": ""
@@ -313,7 +313,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Participants watched a 4-minute video containing the same information about the negative health effects of high meat consumption (high threat) along with the recommended action to eat less meat, but it only included a very minor efficacy component in the conclusion.",
-    "intervention_appeal": "health",
+    "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "video",
     "control_description": ""
@@ -324,7 +324,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants received a leaflet \"​Maak het Verschil\"​, a Dutch translation of a highly popular leaflet distributed by Vegan Outreach, Compassionate Choices.",
-    "intervention_appeal": "animal welfare, health",
+    "intervention_content": "animal welfare, health",
     "intervention_mechanism": "positive emotional, negative emotional, origin of animal product, norms, factual, goal pursuit",
     "intervention_medium": "text, image",
     "control_description": ""
@@ -335,7 +335,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "Participants read a text providing information about meat consumption, adressing environmental consequences of meat consumption and other arguments for reduced consumption.",
-    "intervention_appeal": "environment, animal welfare, health",
+    "intervention_content": "environment, animal welfare, health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text"
   },
@@ -345,7 +345,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants read a text providing information about meat consumption, adressing environmental consequences of meat consumption and other arguments for reduced consumption. Participants completed a procedure for mental contrasting with implementation intentions in which individuals wrote down (1) a personal goal, (2) positive outcomes of goal achievement, the best outcome, and respective associations, (3) obstacles of goal achievement, their two main obstacles, and respective associations, and finally (4) four IIs addressing their two main obstacles.",
-    "intervention_appeal": "environment, animal welfare, health",
+    "intervention_content": "environment, animal welfare, health",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text"
   },
@@ -355,7 +355,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants watched \"Babe: The gallant pig\", a movie about a pig who wants to become a sheepdog.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "positive emotional, negative emotional, factual",
     "intervention_medium": "video",
     "control_description": "Participants for the control group were recruited via the Facebook events of the movie screenings with a message that encouraged anybody who couldn’t attend the screenings but still wanted to join the experiment to fill in the survey."
@@ -366,7 +366,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Participants watched \"The Ghost in Our Machine\", a movie about the animal rights activist and photographer Jo-Ann McArthur.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "positive emotional, negative emotional, factual",
     "intervention_medium": "video",
     "control_description": "Participants for the control group were recruited via the Facebook events of the movie screenings with a message that encouraged anybody who couldn’t attend the screenings but still wanted to join the experiment to fill in the survey."
@@ -377,7 +377,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants read a persuasive essay describing disgust-evoking aspects of meat production and consumption.",
-    "intervention_appeal": "taste/ disgust",
+    "intervention_content": "taste/ disgust",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text",
     "control_description": ""
@@ -388,7 +388,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Participants read a persuasive essay describing health issues of meat consumption.",
-    "intervention_appeal": "health",
+    "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": ""
@@ -399,7 +399,7 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "Participants read a persuasive essay describing the moral (environmental and animal welfare) issues of meat consumption.",
-    "intervention_appeal": "environment, animal welfare",
+    "intervention_content": "environment, animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": ""
@@ -410,7 +410,7 @@
     "study": 2,
     "intervention_condition": 2,
     "intervention_description": "Participants read a persuasive essay describing disgust-evoking aspects of meat production and consumption.",
-    "intervention_appeal": "taste/ disgust",
+    "intervention_content": "taste/ disgust",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics."
@@ -421,7 +421,7 @@
     "study": 2,
     "intervention_condition": 3,
     "intervention_description": "Participants read a persuasive essay describing health issues of meat consumption.",
-    "intervention_appeal": "health",
+    "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics."
@@ -432,7 +432,7 @@
     "study": 2,
     "intervention_condition": 4,
     "intervention_description": "Participants read a persuasive essay describing the environmental issues of meat consumption.",
-    "intervention_appeal": "environment",
+    "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics."
@@ -443,7 +443,7 @@
     "study": 2,
     "intervention_condition": 5,
     "intervention_description": "Participants read a persuasive essay describing the animal welfare issues of meat consumption.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics."
@@ -454,7 +454,7 @@
     "study": 3,
     "intervention_condition": 2,
     "intervention_description": "Participants watched a slideshow that included images and short paragraphs of text on disgust-evoking aspects of meat production and consumption.",
-    "intervention_appeal": "taste/ disgust",
+    "intervention_content": "taste/ disgust",
     "intervention_mechanism": "factual",
     "intervention_medium": "presentation",
     "control_description": "Participants watched a slideshow on the 1980 Winter Olympics."
@@ -465,7 +465,7 @@
     "study": 3,
     "intervention_condition": 3,
     "intervention_description": "Participants watched a slideshow that included images and short paragraphs of animal welfare concerns related to meat.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "presentation",
     "control_description": "Participants watched a slideshow on the 1980 Winter Olympics."
@@ -476,7 +476,7 @@
     "study": 2,
     "intervention_condition": 2,
     "intervention_description": "Partcipants saw the message: \"Recent research has shown that, in the last 5 years, 30% of Americans have now started to make an effort to limit their meat consumption. That means that, in recent years, 3 in 10 people have changed their behavior and begun to eat less meat than they otherwise would.\"",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
     "control_description": ""
@@ -487,7 +487,7 @@
     "study": 2,
     "intervention_condition": 3,
     "intervention_description": "Partcipants saw the message: \"Recent research has shown that 30% of Americans make an effort to limit their meat consumption. That means that 3 in 10 people eat less meat than they otherwise would.\"",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
     "control_description": ""
@@ -498,7 +498,7 @@
     "study": 4,
     "intervention_condition": 2,
     "intervention_description": "Partcipants saw the message: \"Some people are starting to limit how much meat they eat. This is true both nationally and here at Stanford. Specifically, recent research has shown that, over the last 5 years, 30% of Americans have started to make an effort to limit their meat consumption. That means that, in recent years, 3 in 10 people have changed their behavior and begun to eat less meat than they otherwise would.\"",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
     "control_description": ""
@@ -509,7 +509,7 @@
     "study": 4,
     "intervention_condition": 3,
     "intervention_description": "Partcipants saw the message: \"Some people limit how much meat they eat. This is true both nationally and here at Stanford. Specifically, recent research has shown that 30% of Americans make an effort to limit their meat consumption. That means that 3 in 10 people eat less meat than they otherwise would.\"",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
     "control_description": ""
@@ -520,7 +520,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants saw a photo of a cow with a short statement saying that the cow will be sent to the abattoir tomorrow.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
     "control_description": ""
@@ -531,7 +531,7 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "Participants saw a photo of a cow with a short statement saying that the cow will be sent to the abattoir tomorrow.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
     "control_description": ""
@@ -542,7 +542,7 @@
     "study": 2,
     "intervention_condition": 2,
     "intervention_description": "Participants saw a beef dish recipe in a short text with a photo of a cow, illustrating the source of beef in the dish.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "image",
     "control_description": ""
@@ -553,7 +553,7 @@
     "study": 2,
     "intervention_condition": 4,
     "intervention_description": "Participants saw a beef dish recipe in a short text with a photo of a cow, illustrating the source of beef in the dish.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "image",
     "control_description": ""
@@ -564,7 +564,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants saw an advertisement for lamb chops including the picture of a cute lamb.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "positive emotional, origin of animal product",
     "intervention_medium": "image",
     "control_description": "Participants saw an advertisement for lamb chops."
@@ -575,7 +575,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Participants read a pork policy article that discusses the policy commitments of major companies to transition the pigs in their supply chains from gestation crates to crate-free environments.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, norms, negative emotional",
     "intervention_medium": "text",
     "control_description": "Participants read a policy article that discusses the policy commitments of major companies to transition from plastic bags to paper bags."
@@ -586,7 +586,7 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "Participants read a pork legislation article that discusses the legislation implemented by many U.S. states banning the use of gestation crates.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, norms, negative emotional",
     "intervention_medium": "text",
     "control_description": "Participants read a legislation article that discusses the legislation implemented by many U.S. states banning the use of plastic bags."
@@ -597,7 +597,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants read James Rachels' article “The Basic Argument for Vegetarianism” and were also encouraged to view, on their own outside of class, an optional eleven-minute vegetarianism advocacy video “What Came Before”.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text, video, in-person",
     "control_description": "Participants read Peter Singer's article “The Singer Solution to World Poverty” and were encouraged to view, on their own outside of class, an optional nineteen-minute video advocating donation to hunger-relief initiatives: “Ending Hunger Now”."
@@ -608,7 +608,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants watched a 20-min documentary entitled \"Good For Us\", which encourages plant-based diets that reduce consumption of all meats and animal products. Each segment was followed by free-response questions about the content presented. After the documentary, participants were asked whether they would like to pledge to reduce their consumption, pledge to eliminate their consumption, or to make no pledge. For participants who had chosen to make at least one “reduce” or “eliminate” pledge, several items designed to improve general and specific goal-setting and self-monitoring were presented. One week after the baseline measurement, a customized reminder email was sent to pledge-making participants.",
-    "intervention_appeal": "animal welfare, health, taste/ disgust, environment",
+    "intervention_content": "animal welfare, health, taste/ disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms, origin of animal product, goal pursuit",
     "intervention_medium": "video",
     "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable."
@@ -619,7 +619,7 @@
     "study": 2,
     "intervention_condition": 2,
     "intervention_description": "Participants watched a 20-min documentary entitled \"Good For Us\", which encourages plant-based diets that reduce consumption of all meats and animal products. Each segment was followed by free-response questions about the content presented. After the documentary, participants were asked whether they would like to pledge to reduce their consumption, pledge to eliminate their consumption, or to make no pledge. For participants who had chosen to make at least one “reduce” or “eliminate” pledge, several items designed to improve general and specific goal-setting and self-monitoring were presented. One week after the baseline measurement, a customized reminder email was sent to pledge-making participants.",
-    "intervention_appeal": "animal welfare, health, taste/ disgust, environment",
+    "intervention_content": "animal welfare, health, taste/ disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms",
     "intervention_medium": "video",
     "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable."
@@ -630,7 +630,7 @@
     "study": 3,
     "intervention_condition": 2,
     "intervention_description": "Participants watched a 20-min documentary entitled \"Good For Us\", which encourages plant-based diets that reduce consumption of all meats and animal products. Each segment was followed by free-response questions about the content presented. After the documentary, participants were asked whether they would like to pledge to reduce their consumption, pledge to eliminate their consumption, or to make no pledge. For participants who had chosen to make at least one “reduce” or “eliminate” pledge, several items designed to improve general and specific goal-setting and self-monitoring were presented. One week after the baseline measurement, a customized reminder email was sent to pledge-making participants.",
-    "intervention_appeal": "animal welfare, health, taste/ disgust, environment",
+    "intervention_content": "animal welfare, health, taste/ disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms, origin of animal product, goal pursuit",
     "intervention_medium": "video, text",
     "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable."
@@ -641,7 +641,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "The digital menu included the message “Many here choose green!” next to the \"green food category\", which was accompanied by a minimalistic illustration of three people.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text, image",
     "control_description": ""
@@ -652,7 +652,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "The icon representing the “green” food category was moved from the sixth position in the grid of icons in the digital menu (out of 10) to the first position.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
     "control_description": ""
@@ -663,7 +663,7 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "The digital menu included the message  “The green option feels good!” which was accompanied by a happy emoji with a halo, conveying a sense of feeling good by doing good.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "positive emotional",
     "intervention_medium": "text, image",
     "control_description": ""
@@ -674,7 +674,7 @@
     "study": 1,
     "intervention_condition": 5,
     "intervention_description": "The digital menu included the message “The green option tastes good!” which was accompanied by an emoji with its tongue on one side of its mouth, conveying a sense of tastiness and fun.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "positive emotional",
     "intervention_medium": "text, image",
     "control_description": ""
@@ -685,7 +685,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants read that \"The World Health Organization (WHO) classified red meat as a possible carcinogen, meaning it could cause cancer. Based on estimates from the Global Disease Burden Project, the WHO states that >34.000 cancer deaths per year worldwide are attributable to high intake of processed meat, while the total number of deaths attributable to a diet rich in red meat was 644.000.\"",
-    "intervention_appeal": "health",
+    "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": ""
@@ -696,7 +696,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Participants read that \"The World Health Organization (WHO) classified red meat as a possible carcinogen, meaning it could cause cancer. Just 50 g of red or processed meat consumed in a regular daily diet can increase cancer incidence by 18%. It is known that high consumption of red or processed meat can increase the risk of other chronic diseases (such as stroke and type II diabetes).\"",
-    "intervention_appeal": "health",
+    "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": ""
@@ -707,7 +707,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants received daily persuasive messages that cited the health and environmental outcomes of red processed meat cosumption. The information was presented in a way that was meant to evoke anticipated regret (e.g., “If you eat an excessive amount of red/processed meat, you could feel regret for not protecting your health from cancer and the environment from the release of harmful greenhouse gases”).",
-    "intervention_appeal": "health, environment",
+    "intervention_content": "health, environment",
     "intervention_mechanism": "factual, negative emotional",
     "intervention_medium": "text",
     "control_description": "Participants received daily persuasive messages describing the health and environmental consequences of eating sugar."
@@ -718,7 +718,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Participants received daily persuasive messages that cited the health and environmental outcomes of red processed meat cosumption.",
-    "intervention_appeal": "health, environment",
+    "intervention_content": "health, environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": "Participants received daily persuasive messages describing the health and environmental consequences of eating sugar."
@@ -729,7 +729,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "Participants read: \"One type of diet that some people endorse is a Climatarian diet significantly reducing or eliminating red meat from one's diet. The reasoning is as follows: Livestock agriculture contributes up to a quarter of global greenhouse gas emissions, with almost all of this coming from cows and sheep. In Australia, producing 1 kg of beef requires an average of 15,182 L of water. Furthermore, livestock agriculture drives 80% of deforestation worldwide, using up a third of the world s ice-free land. Adopting a Climatarian diet is a powerfulway to reduce your impact on the climate. Shifting to a Climatarian diet will reduce your carbon footprint by approximately 1000 kg of CO2 every year, or the equivalent of driving from Perth to Brisbane.\"",
-    "intervention_appeal": "environment",
+    "intervention_content": "environment",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text"
   },
@@ -739,7 +739,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants read: \"One type of diet that some people endorse is the ‘One step for the animals diet' eliminating chicken from our diets. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factory farms in Australia today. The vast majorityof these animals today are birds. It takes more than 200 chickens to provide the same number of meals as one cow.If we can convince someone to stop eating birds, they would go from being responsible for the factory farming and slaughtering of more than two dozen land animals per year to fewer than one. Furthermore, while most cows and sheep raised in Australia spend most of their life grazing, the vast majority of chickens are raised in crowded factory farms.\"",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text"
   },
@@ -749,7 +749,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Participants read: \"One type of diet that some people endorse is a Reducetarian diet reducing the amount of meat that we eat. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factoryfarms in Australia today. This includes cows, pigs, sheep and chickens. Adopting a reductionist diet is appealing because not everyone is willing to follow an all-or-nothing diet. It is also a powerful way to reduce animal cruelty. For example, halving your meat consumption will spare around 50 innocent lives every year. This includes about 13 land animals, and 37 fish and shellfish every year.\"",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text"
   },
@@ -759,7 +759,7 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "Participants read:  \"One type of diet that somepeople endorse is a Vegetarian diet eliminating all meat and fish from one's diet. The reasoningis as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factory farms in Australia today. This includes cows, pigs, sheep and chickens. Adopting a vegetarian diet is the most powerful way to object to animal cruelty, and by doing so, you will spare approximately 100 animal lives (25 land animals and 75 fish and shellfish) every year.\"",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text"
   },
@@ -769,7 +769,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "Participants read James Rachels’ article “The Basic Argument for Vegetarianism”. Teaching assistants played the 11-minute vegetarianism advocacy video “What Came Before” that contained factory farm footage. They also presented both pro and con considerations in their discussion sections, encouraging debate among students.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, factual, origin of animal product",
     "intervention_medium": "text, video, in-person"
   },
@@ -779,7 +779,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants read James Rachels’ article “The Basic Argument for Vegetarianism”. Teaching assistants presented both pro and con considerations in their discussion sections, encouraging debate among students.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, factual, origin of animal product",
     "intervention_medium": "text, in-person"
   },
@@ -789,7 +789,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "Participants read a brief paragraph that highlighted the connections between zoonotic diseases and factory farming.",
-    "intervention_appeal": "health",
+    "intervention_content": "health",
     "intervention_mechanism": "factual, origin of animal product",
     "intervention_medium": "text",
     "control_description": "Participants read a brief paragraphon geocaching."
@@ -800,7 +800,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants read a brief paragraph that highlighted the connections between animal cruelty and factory farming.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, origin of animal product",
     "intervention_medium": "text",
     "control_description": "Participants read a brief paragraphon geocaching."
@@ -811,7 +811,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "A vegetarian dish was listed as the first item on the menu and was also made visible to customers at the counter",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
     "control_description": "A meat dish was listed as the first item on the menu and was also made visible to customers at the counter., A meat dish was listed as the first item on the menu and was also made visible to customers at the counter"
@@ -822,7 +822,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "A vegetarian dish was listed as the first item on the menu.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
     "control_description": "A meat dish was listed as the first item on the menu."
@@ -833,7 +833,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "Participants were asked to create a ranked list of 10 values and briefly describe a situation or example that shows how the first-ranked value is reflected in their personal experience. Participants then read a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "text",
     "control_description": "Participants were asked to create a ranked list of their favorite colors and explained how this color is personally appealing, e.g., to describe an object or context in which it was appealing. Participants then read a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats."
@@ -844,7 +844,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants were asked to create a ranked list of 10 values and briefly describe a situation or example that shows how the first-ranked value is reflected in their group experience. Participants then read a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "text",
     "control_description": "Participants were asked to create a ranked list of their favorite colors and explained how this color is personally appealing, e.g., to describe an object or context in which it was appealing. Participants then read a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats."
@@ -855,7 +855,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "\"Chef’s recommendation\" stickers were placed on the vegetarian sandwich bags. One vegetarian sandwich was displayed on a plate at eye-level with the content clearly visible. This plate was accompanied by a sign that read “Kokken anbefaler” (Chef's recommendation) and a brief description of the café’s sustainability goals. All vegetarian sandwiches were placed in first line-of-sight from the typical customer flow direction. The labels on vegetarian sandwiches were slightly more colourful and the bags were closed more aesthetically than meat sandwiches.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "text",
     "control_description": ""
@@ -866,7 +866,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "A 2-day workshop with the canteen kitchen staff on the relevance of promoting plant-based eating, basic principles of plant-based nutritional literacy, and practical demonstrations of how to improve the visual and sensory appeal of plant-based meals was conducted. Posters advertising the \"Sustainability Week\" initiative were placed in the cafeteria. The menu presented the vegetarian option as the \"suggestion of the day\" with an increased font size above the meat and fish options.",
-    "intervention_appeal": "environment",
+    "intervention_content": "environment",
     "intervention_mechanism": "choice architecture, norms",
     "intervention_medium": "text, image",
     "control_description": ""
@@ -877,7 +877,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Students passed by a vegetarian option first the cafeteria.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria."
@@ -888,7 +888,7 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria."
@@ -899,7 +899,7 @@
     "study": 1,
     "intervention_condition": 6,
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria."
@@ -910,7 +910,7 @@
     "study": 2,
     "intervention_condition": 2,
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria."
@@ -921,7 +921,7 @@
     "study": 2,
     "intervention_condition": 4,
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria."
@@ -932,7 +932,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "Participants completed a 12-week compassion and cating-based training which consisted of weekly sessions á 75 min and weekly homework assignments. Participants were introduced to a way to offer love to themselves, other people, or animals. Affect dyad situations were applied where partners sit face to face, and one partner contemplates a situation to a specific theme of the main topics. The other partner listens attentively without giving any verbal or non-verbal feedback.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "positive emotional",
     "intervention_medium": "in-person"
   },
@@ -942,7 +942,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Participants completed a 12-week mindfulness-based stress reduction program that included various elements of meditation: body scan, mindful eating, emphasizing the breath, and sitting and walking meditation training. Every session contained a talk about specific topics such as different forms of meditation and problems that may arise with them. The focus of this mindfulness group was on the rather cognitive elements of mindfulness and its qualities of awareness.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "in-person"
   },
@@ -952,7 +952,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "Signs with a Planetary Health Plate graphic featuring a diet based on the EAT Lancet Planetary Health Diet were posted. The sign included information on top of the sign: “Today, our diets have a large impact on our global ecosystem. In February 2019, scientists collaborated with The Lancet medical journal to establish this realistic diet that maintains both human and planetary health.” And on the bottom of the sign “Modeling your plate like this one builds a healthy diet and a sustainable world”.",
-    "intervention_appeal": "environment, health",
+    "intervention_content": "environment, health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text, image",
     "control_description": ""
@@ -963,7 +963,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "All meat dishes were labeled as “High CO2” dishes, all fish dishes as “Medium CO2”, and all vegetarian as “Low CO2” dishes.",
-    "intervention_appeal": "environment",
+    "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": ""
@@ -974,7 +974,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "The vegetarian dish was labeled with the “Low CO2” sign.",
-    "intervention_appeal": "environment",
+    "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": ""
@@ -985,7 +985,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "The meat dish was labeled with a “High CO2” sign.",
-    "intervention_appeal": "environment",
+    "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": ""
@@ -996,7 +996,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Individuals responded to an RSVP survey for an event in which the vegetarian option was the default meal preference.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
     "control_description": "Individuals responded to an RSVP survey for an event in which the meat option was the default meal preference."
@@ -1007,7 +1007,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "A video (2:48 minutes long) was presented which showed a parallel world wherein the roles of humans and animals were reversed. The video presented illustrations of situations in which animals are harmed, but where the humans took the role of the animals and vice versa.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional",
     "intervention_medium": "video",
     "control_description": ""
@@ -1018,7 +1018,7 @@
     "study": 2,
     "intervention_condition": 1,
     "intervention_description": "A video (2:48 minutes long) was presented which showed a parallel world wherein the roles of humans and animals were reversed. The video presented illustrations of situations in which animals are harmed, but where the humans took the role of the animals and vice versa.",
-    "intervention_appeal": "animal welfare",
+    "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional",
     "intervention_medium": "video",
     "control_description": ""
@@ -1029,7 +1029,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "The menu listed the daily vegetarian and fish dishes but not the meat dish and a sentence stated that “an option containing meat is available on request.”",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
     "control_description": "The menu contained, as before, the daily meat and fish options for the whole week, and had an additional sentence stating that “a vegetarian option is available on request.”"
@@ -1040,7 +1040,7 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the plant-based default condition, the plant-based sausage was selected.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options, text",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo."
@@ -1051,7 +1051,7 @@
     "study": 1,
     "intervention_condition": 2,
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the sustainable plant-based default condition, the plant-based sausage was selected and a pop-up message said \"We have selected the most sustainable sausage for you”.",
-    "intervention_appeal": "environment",
+    "intervention_content": "environment",
     "intervention_mechanism": "choice architecture, factual",
     "intervention_medium": "menu/ food options, text",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo."
@@ -1062,7 +1062,7 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the tasty plant-based default conditions, the plant-based sausage was selected and a pop-up message said \"We have selected the tastiest sausage for you”.",
-    "intervention_appeal": "none",
+    "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options, text",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo."

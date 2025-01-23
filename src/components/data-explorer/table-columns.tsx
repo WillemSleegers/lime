@@ -201,7 +201,7 @@ export type ColumnsInterventions = {
   paper_label: string
   study: number
   intervention_description: string
-  intervention_appeal: string
+  intervention_content: string
   intervention_mechanism: string
   intervention_medium: string
   control_description?: string
@@ -248,12 +248,12 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
     },
   },
   {
-    accessorKey: "intervention_appeal",
+    accessorKey: "intervention_content",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Type of appeal" />
+      <DataTableColumnHeader column={column} title="Content" />
     ),
     cell: ({ row }) => {
-      const value = row.getValue<string>("intervention_appeal")
+      const value = row.getValue<string>("intervention_content")
       const content = value.split(", ").map((e) => (
         <Badge
           key={e}
