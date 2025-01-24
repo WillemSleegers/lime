@@ -54,10 +54,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-<<<<<<< Updated upstream
-=======
     "autoprefixer": "^10.4.20",
->>>>>>> Stashed changes
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
