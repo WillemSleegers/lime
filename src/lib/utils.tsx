@@ -43,22 +43,56 @@ export const u1 = (x: number) => {
   return 1 - 2 * cdfNormal((-1 * Math.abs(x)) / 2)
 }
 
-// From https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-export function shuffle<T>(array: T[]): T[] {
-  let currentIndex = array.length
-
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-    // Pick a remaining element...
-    let randomIndex = Math.floor(Math.random() * currentIndex)
-    currentIndex--
-
-    // And swap it with the current element.
-    ;[array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ]
+export function generateTicks(min: number, max: number, targetCount = 5) {
+  // Handle edge cases
+  if (min === max) {
+    return [min]
+  }
+  if (min > max) {
+    ;[min, max] = [max, min]
   }
 
-  return array
+  // Calculate the ideal spacing between ticks
+  const range = max - min
+  const idealSpacing = range / (targetCount - 1)
+
+  // Find the best base unit (1, 2, 5, 10, 20, 50, etc.)
+  const magnitude = Math.floor(Math.log10(idealSpacing))
+  const normalizedSpacing = idealSpacing / Math.pow(10, magnitude)
+
+  let baseUnit
+  if (normalizedSpacing < 1.5) baseUnit = 1
+  else if (normalizedSpacing < 3) baseUnit = 2
+  else if (normalizedSpacing < 7.5) baseUnit = 5
+  else baseUnit = 10
+
+  const spacing = baseUnit * Math.pow(10, magnitude)
+
+  // Generate ticks
+  const firstTick = Math.ceil(min / spacing) * spacing
+  const lastTick = Math.floor(max / spacing) * spacing
+  const ticks = []
+
+  for (let tick = firstTick; tick <= lastTick + spacing / 2; tick += spacing) {
+    // Round to avoid floating point errors
+    const roundedTick = Number(tick.toFixed(10))
+    if (roundedTick >= min && roundedTick <= max) {
+      ticks.push(roundedTick)
+    }
+  }
+
+  // Ensure min and max are included if they're "nice" numbers
+  if (!ticks.includes(min) && isNiceNumber(min)) {
+    ticks.unshift(min)
+  }
+  if (!ticks.includes(max) && isNiceNumber(max)) {
+    ticks.push(max)
+  }
+
+  return ticks
+}
+
+function isNiceNumber(num: number) {
+  // Check if number is whole or half
+  return Number.isInteger(num) || Number.isInteger(num * 2)
 }

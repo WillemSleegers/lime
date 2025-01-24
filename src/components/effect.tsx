@@ -11,6 +11,7 @@ import { Button } from "./ui/button"
 import { ChartHalfPie } from "./charts/chart-half-pie"
 import { RadialChartProportion } from "./charts/radial-chart-proportion"
 import { PieChartProportion } from "./charts/pie-chart-proportion"
+import ChartEffect from "./charts/chart-effect"
 
 type EffectProps = {
   effect: {
@@ -38,19 +39,11 @@ export const Effect = (props: EffectProps) => {
       <CollapsibleContent className="CollapsibleContent">
         {effect.value ? (
           <div className="flex flex-col items-center gap-3">
-            <span className="text-base text-gray-500">
-              The average effect is a Cohen&apos;s d of:
-            </span>
-            <span className="text-4xl font-semibold">
-              {round(effect.value)}
-            </span>
-            <span className="text-base text-gray-500">
-              {"95% CI [" +
-                round(effect.lower) +
-                ", " +
-                round(effect.upper) +
-                "]"}
-            </span>
+            <ChartEffect
+              effect={effect.value}
+              lower={effect.lower}
+              upper={effect.upper}
+            />
             <div className="mt-6 flex flex-row flex-wrap justify-center gap-3">
               <div className="flex w-[200px] flex-col gap-3">
                 <div className="mb-1 h-[100px] w-full">
