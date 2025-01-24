@@ -8,8 +8,6 @@ import { useState } from "react"
 import { cn, u1, pSup, round, u3 } from "@/lib/utils"
 import { Skeleton } from "./ui/skeleton"
 import { Button } from "./ui/button"
-import { ChartHalfPie } from "./charts/chart-half-pie"
-import { RadialChartProportion } from "./charts/radial-chart-proportion"
 import { PieChartProportion } from "./charts/pie-chart-proportion"
 import ChartEffect from "./charts/chart-effect"
 
