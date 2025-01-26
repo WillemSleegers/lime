@@ -47,7 +47,7 @@ export const Highlights = (props: HighLightsProps) => {
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger>
-        <div className="m-1 flex flex-row items-center gap-1">
+        <div className="flex flex-row items-center gap-1">
           <h2 className="text-2xl font-bold tracking-tight">Highlights</h2>
           <ChevronRight
             className={cn("transition", open ? "rotate-90" : "rotate-0")}

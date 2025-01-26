@@ -16,6 +16,10 @@ type EffectProps = {
     value: number
     lower: number
     upper: number
+    egger_b: number
+    egger_se: number
+    egger_z: number
+    egger_p: number
   }
 }
 
@@ -27,7 +31,7 @@ export const Effect = (props: EffectProps) => {
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger>
-        <div className="m-1 flex flex-row items-center gap-1">
+        <div className="flex flex-row items-center gap-1">
           <h2 className="text-2xl font-bold tracking-tight">Effect</h2>
           <ChevronRight
             className={cn("transition", open ? "rotate-90" : "rotate-0")}

@@ -1,4 +1,4 @@
-import data from "@/assets/data/prepared-effects.json"
+import data from "@/assets/data/data.json"
 
 export type Data = typeof data
 type dataKeys = keyof Data[0]
@@ -66,9 +66,9 @@ export const getOptions = (
     | "intentions"
     | "attitudes"
     | "outcome_measurement_type"
-    | "intervention_aspect"
+    | "intervention_content"
+    | "intervention_mechanism"
     | "intervention_medium"
-    | "intervention_appeal"
     | "sample_intervention_country",
 ) => {
   let options
@@ -101,8 +101,8 @@ export const getOptions = (
         ),
       ]
       break
-    case "intervention_aspect":
-      options = [...new Set(data.map((d) => d["intervention_aspect"]))]
+    case "intervention_content":
+      options = [...new Set(data.map((d) => d["intervention_content"]))]
       options = options.toString().replaceAll("; ", ",").split(",")
       options = [...new Set(options)]
       options = options.filter((option) => option) // Remove empty strings
@@ -115,8 +115,8 @@ export const getOptions = (
       options = options.filter((option) => option) // Remove empty strings
       options = options.map((e) => e)
       break
-    case "intervention_appeal":
-      options = [...new Set(data.map((d) => d["intervention_appeal"]))]
+    case "intervention_mechanism":
+      options = [...new Set(data.map((d) => d["intervention_mechanism"]))]
       options = options.toString().replaceAll("; ", ",").split(",")
       options = [...new Set(options)]
       options = options.map((e) => e)

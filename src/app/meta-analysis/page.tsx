@@ -1,21 +1,28 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Effects } from "@/components/effects"
 import { Filters } from "@/components/filters"
 import { Highlights } from "@/components/highlights/highlights"
 import { Effect } from "@/components/effect"
 import { ForestPlot } from "@/components/forest-plot"
-import { FunnelPlot } from "@/components/funnel-plot"
+import { PublicationBias } from "@/components/meta-analysis/publication-bias"
 
-import allData from "../../assets/data/prepared-effects.json"
+import allData from "../../assets/data/data.json"
 import { WebR } from "webr"
 
 const MetaAnalysis = () => {
   const [status, setStatus] = useState("Loading webR...")
   const [data, setData] = useState(allData)
 
-  const [effect, setEffect] = useState({ value: 0, lower: 0, upper: 0 })
+  const [effect, setEffect] = useState({
+    value: 0,
+    lower: 0,
+    upper: 0,
+    egger_b: 0,
+    egger_se: 0,
+    egger_z: 0,
+    egger_p: 0,
+  })
   const [webR, setWebR] = useState<WebR>()
 
   useEffect(() => {
@@ -28,7 +35,7 @@ const MetaAnalysis = () => {
 
       setStatus("Installing packages...")
       await newWebR.installPackages(["metafor"])
-      await newWebR.installPackages(["poibin"])
+      await newWebR.installPackages(["clubSandwich"])
 
       setStatus("Ready")
     }
@@ -50,9 +57,15 @@ const MetaAnalysis = () => {
         />
         <Highlights data={data} />
         <Effect effect={effect} />
+        <PublicationBias
+          data={data}
+          effect={effect.value}
+          egger_b={effect.egger_b}
+          egger_se={effect.egger_se}
+          egger_z={effect.egger_z}
+          egger_p={effect.egger_p}
+        />
         <ForestPlot data={data} />
-        <FunnelPlot data={data} effect={effect.value} />
-        {/* <Effects data={data} /> */}
       </div>
     </main>
   )

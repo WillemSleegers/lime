@@ -68,7 +68,7 @@ export const ForestPlot = (props: ForestPlotProps) => {
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger>
-        <div className="m-1 flex flex-row items-center gap-1">
+        <div className="flex flex-row items-center gap-1">
           <h2 className="text-2xl font-bold tracking-tight">Forest plot</h2>
           <ChevronRight
             className={cn("transition", open ? "rotate-90" : "rotate-0")}
@@ -188,7 +188,7 @@ class CustomizedAxisTick extends PureComponent {
           <DialogHeader>
             <DialogTitle className="text-center">{payload.value}</DialogTitle>
             <DialogDescription>
-              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight text-black first:mt-0">
+              <h1 className="border-b pt-2 pb-1 text-xl font-semibold tracking-tight text-black first:mt-0">
                 Paper
               </h1>
 
@@ -210,7 +210,7 @@ class CustomizedAxisTick extends PureComponent {
                 </a>
               </div>
 
-              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight text-black first:mt-0">
+              <h1 className="border-b pt-2 pb-1 text-xl font-semibold tracking-tight text-black first:mt-0">
                 Outcome
               </h1>
               <div className="my-3">
@@ -224,7 +224,7 @@ class CustomizedAxisTick extends PureComponent {
                 <span>{effect[0].outcome_category}</span>
               </div>
 
-              <h1 className="border-b pb-1 pt-2 text-xl font-semibold tracking-tight text-black first:mt-0">
+              <h1 className="border-b pt-2 pb-1 text-xl font-semibold tracking-tight text-black first:mt-0">
                 Effect
               </h1>
               <div className="my-3">

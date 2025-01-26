@@ -24,7 +24,7 @@ import { runMetaAnalysis } from "@/lib/r-functions"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-import data from "../assets/data/prepared-effects.json"
+import data from "../assets/data/data.json"
 
 import { getOptions } from "@/lib/json-functions"
 import { MultiPillsForm } from "./forms/multi-pills-form"
@@ -34,9 +34,9 @@ const behaviors = getOptions("behaviors")
 const intentions = getOptions("intentions")
 const attitudes = getOptions("attitudes")
 const measurements = getOptions("outcome_measurement_type")
-const aspects = getOptions("intervention_aspect")
+const contents = getOptions("intervention_content")
 const mediums = getOptions("intervention_medium")
-const appeals = getOptions("intervention_appeal")
+const mechanisms = getOptions("intervention_mechanism")
 const countries = getOptions("sample_intervention_country")
 
 import { META_ANALYSIS_DEFAULTS } from "@/lib/constants"
@@ -51,18 +51,18 @@ const formSchema = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one outcome measurement." }),
-  aspects: z
+  contents: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one intervention aspect." }),
+  mechanisms: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one intervention appeal." }),
   mediums: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one intervention medium." }),
-  appeals: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one intervention appeal." }),
   countries: z
     .string()
     .array()
@@ -92,9 +92,9 @@ export const Filters = (props: FiltersProps) => {
     defaultValues: {
       outcomes: META_ANALYSIS_DEFAULTS.outcomes,
       measurements: META_ANALYSIS_DEFAULTS.measurement_type,
-      aspects: META_ANALYSIS_DEFAULTS.intervention_aspect,
+      contents: META_ANALYSIS_DEFAULTS.intervention_content,
+      mechanisms: META_ANALYSIS_DEFAULTS.intervention_mechanism,
       mediums: META_ANALYSIS_DEFAULTS.intervention_medium,
-      appeals: META_ANALYSIS_DEFAULTS.intervention_appeal,
       countries: countries.map((country) => country.value),
       minimumCellSize: 1,
     },
@@ -124,10 +124,18 @@ export const Filters = (props: FiltersProps) => {
 
     // Filter on intervention aspect
     subset = subset.filter((datum) => {
-      return values.aspects.some(
-        (aspect) =>
-          datum.intervention_aspect.includes(aspect.toLowerCase()) ||
-          datum.intervention_aspect == "",
+      return values.contents.some(
+        (value) =>
+          datum.intervention_content.includes(value.toLowerCase()) ||
+          datum.intervention_content == "",
+      )
+    })
+
+    subset = subset.filter((datum) => {
+      return values.mechanisms.some(
+        (value) =>
+          datum.intervention_mechanism.includes(value.toLowerCase()) ||
+          datum.intervention_mechanism == "",
       )
     })
 
@@ -136,14 +144,6 @@ export const Filters = (props: FiltersProps) => {
         (medium) =>
           datum.intervention_medium?.includes(medium.toLowerCase()) ||
           datum.intervention_medium == "",
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.appeals.some(
-        (appeal) =>
-          datum.intervention_appeal.includes(appeal.toLowerCase()) ||
-          datum.intervention_appeal == "",
       )
     })
 
@@ -166,23 +166,37 @@ export const Filters = (props: FiltersProps) => {
           (({
             effect_size_value,
             effect_size_var,
+            effect_se,
             paper_study,
+            paper,
+            study,
             outcome,
-            group_1,
-            group_2,
+            intervention_condition,
+            control_condition,
           }) => ({
             effect_size_value,
             effect_size_var,
+            effect_se,
             paper_study,
+            paper,
+            study,
             outcome,
-            group_1,
-            group_2,
+            intervention_condition,
+            control_condition,
           }))(e),
         )
         const df = await new webR.RObject(data)
         await webR.objs.globalEnv.bind("data", df)
         const results = await runMetaAnalysis(webR)
-        setEffect({ value: results[0], lower: results[1], upper: results[2] })
+        setEffect({
+          value: results[0],
+          lower: results[1],
+          upper: results[2],
+          egger_b: results[3],
+          egger_se: results[4],
+          egger_z: results[5],
+          egger_p: results[6],
+        })
 
         setStatus("Ready")
         setDisabled(false)
@@ -278,14 +292,14 @@ export const Filters = (props: FiltersProps) => {
                   <h3 className="mb-3 text-xl font-semibold">Interventions</h3>
                   <FormField
                     control={form.control}
-                    name="aspects"
+                    name="contents"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-base">
-                          Intervention aspect
+                          Intervention content
                         </FormLabel>
                         <FormControl>
-                          <MultiPillsForm field={field} options={aspects} />
+                          <MultiPillsForm field={field} options={contents} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -308,14 +322,14 @@ export const Filters = (props: FiltersProps) => {
                   />
                   <FormField
                     control={form.control}
-                    name="appeals"
+                    name="mechanisms"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-base">
                           Intervention appeal
                         </FormLabel>
                         <FormControl>
-                          <MultiPillsForm field={field} options={appeals} />
+                          <MultiPillsForm field={field} options={mechanisms} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

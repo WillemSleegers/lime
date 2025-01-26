@@ -112,9 +112,8 @@ export const META_ANALYSIS_DEFAULTS = {
     "vegetarian consumption intentions",
   ],
   measurement_type: ["survey", "food diary"],
-  intervention_aspect: ["animal welfare", "health", "environment"],
-  intervention_medium: ["text", "presentation", "video", "3D video", "image"],
-  intervention_appeal: [
+  intervention_content: ["animal welfare", "health", "environment"],
+  intervention_mechanism: [
     "factual",
     "negative emotional",
     "perspective taking",
@@ -127,4 +126,5 @@ export const META_ANALYSIS_DEFAULTS = {
     "positive emotional",
     "taste",
   ],
+  intervention_medium: ["text", "presentation", "video", "3D video", "image"],
 }
