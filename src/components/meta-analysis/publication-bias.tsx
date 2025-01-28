@@ -73,7 +73,7 @@ export const PublicationBias = (props: PublicationBiasProps) => {
           {egger_p < 0.05 ? (
             <span className="font-semibold text-red-500">evidence</span>
           ) : (
-            <span className="text-primary font-semibold">no evidence</span>
+            <span>no evidence</span>
           )}{" "}
           of publication bias using the{" "}
           <Link href="https://doi.org/10.1080/00220973.2019.1582470">

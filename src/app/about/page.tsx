@@ -3,9 +3,9 @@ import Link from "next/link"
 
 const About = () => {
   return (
-    <main className="container prose py-12">
+    <main className="prose container py-12">
       <h1 className="text-center">About</h1>
-      <Alert variant="destructive" className="not-prose">
+      <Alert variant="destructive" className="bg-destructive/10">
         LIME is currently in beta and you are viewing a prototype of the
         website. We are still in the process of building the database and
         website. Any feedback is welcome and can be given{" "}

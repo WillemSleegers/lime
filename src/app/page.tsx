@@ -10,9 +10,9 @@ import counts from "@/assets/data/counts.json"
 
 export default function Home() {
   return (
-    <div className="mt-6 space-y-12 p-3 md:mt-12 md:mt-18 md:space-y-24 lg:mt-24">
+    <div className="mt-6 space-y-12 md:mt-18 md:space-y-24 lg:mt-24">
       {/* Hero */}
-      <section className="mx-auto max-w-xl space-y-8 text-center sm:max-w-2xl md:space-y-12">
+      <section className="mx-auto max-w-xl space-y-8 p-4 text-center sm:max-w-2xl md:space-y-12">
         <Badge variant="destructive">Currently in beta</Badge>
         <div className="space-y-4">
           <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl md:text-5xl">
@@ -23,9 +23,9 @@ export default function Home() {
             animal products.
           </p>
         </div>
-        <div className="mx-auto flex max-w-xs flex-wrap justify-center gap-6 text-center sm:max-w-md sm:justify-between">
+        <div className="mx-auto flex max-w-xs flex-wrap justify-center gap-6 text-center sm:max-w-lg sm:justify-between">
           <div className="flex flex-col gap-y-2">
-            <span className="text-2xl font-bold sm:text-3xl md:text-4xl">
+            <span className="w-20 text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1000} target={counts.papers} />
             </span>
             <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
@@ -33,7 +33,7 @@ export default function Home() {
             </span>
           </div>
           <div className="flex flex-col gap-y-2">
-            <span className="text-2xl font-bold sm:text-3xl md:text-4xl">
+            <span className="w-25 text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1250} target={counts.studies} />
             </span>
             <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
@@ -41,7 +41,7 @@ export default function Home() {
             </span>
           </div>
           <div className="flex flex-col gap-y-2">
-            <span className="text-2xl font-bold sm:text-3xl md:text-4xl">
+            <span className="w-30 text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1500} target={counts.effects} />
             </span>
             <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
@@ -49,7 +49,7 @@ export default function Home() {
             </span>
           </div>
           <div className="flex flex-col gap-y-2">
-            <span className="text-2xl font-bold sm:text-3xl md:text-4xl">
+            <span className="w-35 text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1750} target={counts.observations} />
             </span>
             <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
@@ -60,13 +60,13 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="mx-auto max-w-4xl p-6">
+      <section className="mx-auto max-w-4xl p-4">
         <h2 className="text-3xl font-bold md:text-4xl">
           <span className="text-primary">About </span>
           LIME
         </h2>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-base md:text-lg">
           LIME is a continuously growing collection of experimental studies
           examining psychological interventions to reduce animal product
           consumption and improve attitudes towards animals. With LIME, you can
@@ -81,11 +81,11 @@ export default function Home() {
 
       {/* Data explorer */}
       <section className="text-center">
-        <div className="mx-6">
+        <div className="mx-4">
           <h2 className="text-3xl font-bold md:text-4xl">
             <span className="text-primary">Explore</span> Studies
           </h2>
-          <p className="text-muted-foreground mx-auto mt-4 mb-8 text-lg md:w-3/4">
+          <p className="text-muted-foreground mx-auto mt-4 mb-8 text-base md:w-3/4 md:text-lg">
             Browse our database of research papers testing interventions to
             reduce meat consumption. Filter, sort, and explore study details,
             methods, and outcomes.
@@ -98,11 +98,11 @@ export default function Home() {
       </section>
 
       {/* Meta-analysis */}
-      <section className="mx-6 text-center">
+      <section className="p-4 text-center">
         <h2 className="text-3xl font-bold md:text-4xl">
           <span className="text-primary">Analyze</span> Data
         </h2>
-        <p className="text-muted-foreground mx-auto mt-4 mb-8 text-lg md:w-3/4">
+        <p className="text-muted-foreground mx-auto mt-4 mb-8 text-base md:w-3/4 md:text-lg">
           Use our analysis tools to aggregate study results and find out how
           strong the evidence is.
         </p>
@@ -112,7 +112,7 @@ export default function Home() {
             <h3 className="text-xl leading-none font-semibold tracking-tight whitespace-nowrap">
               Summary statistics
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-sm md:text-base">
               Get statistics on selected papers such as sample sizes and open
               science practices.
             </p>
@@ -121,7 +121,7 @@ export default function Home() {
             <h3 className="text-xl leading-none font-semibold tracking-tight whitespace-nowrap">
               Meta-analysis
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-sm md:text-base">
               Calculate meta-analytic effect sizes and see them translated into
               intuitive measures of effectiveness.
             </p>
@@ -130,7 +130,7 @@ export default function Home() {
             <h3 className="text-xl leading-none font-semibold tracking-tight whitespace-nowrap">
               Data visualization
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-sm md:text-base">
               Inspect interactive data visualizations showing effect size
               distributions and more.
             </p>
