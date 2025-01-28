@@ -8,7 +8,7 @@ import Link from "next/link"
 
 const FAQ = () => {
   return (
-    <main className="container prose py-12">
+    <main className="prose container py-12">
       <h1 className="text-center">FAQ</h1>
       <Accordion type="single" collapsible>
         <h2>General</h2>
@@ -66,9 +66,14 @@ const FAQ = () => {
           </AccordionTrigger>
           <AccordionContent className="prose">
             <p>
-              So far we have not yet received funding to work on this project.
-              We are looking for funders, however, so if you know of an
-              opportunity, please contact us to let us know!
+              We are happy to report that we have received a grant from the{" "}
+              <Link href="https://www.fsrfund.org">
+                Food System Research Fund
+              </Link>
+              . This grant provides us with the opportunity to spend more time
+              than before on building LIME. It will enable us to significantly
+              expand on the functionality of the website, as well as expand the
+              database with more effect sizes to meta-analyze.
             </p>
           </AccordionContent>
         </AccordionItem>
