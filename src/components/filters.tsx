@@ -29,6 +29,7 @@ import data from "../assets/data/data.json"
 import { getOptions } from "@/lib/json-functions"
 import { MultiPillsForm } from "./forms/multi-pills-form"
 import { Separator } from "./ui/separator"
+import { Input } from "@/components/ui/input"
 
 const behaviors = getOptions("behaviors")
 const intentions = getOptions("intentions")
@@ -40,7 +41,6 @@ const mechanisms = getOptions("intervention_mechanism")
 const countries = getOptions("sample_intervention_country")
 
 import { META_ANALYSIS_DEFAULTS } from "@/lib/constants"
-import { Input } from "./ui/input"
 
 const formSchema = z.object({
   outcomes: z
@@ -84,7 +84,7 @@ export const Filters = (props: FiltersProps) => {
   const [open, setOpen] = useState(false)
   const [ranOnce, setRanOnce] = useState(false)
   const [disabled, setDisabled] = useState(true)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState<string | undefined>()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -153,9 +153,13 @@ export const Filters = (props: FiltersProps) => {
     )
 
     if (subset.length == 0) {
-      setError(true)
+      setError("No papers match these criteria")
+    } else if (new Set(subset.map((d) => d.paper)).size < 2) {
+      setError(
+        "Only 1 paper matches these criteria; please relax the inclusion criteria to include effects from more papers",
+      )
     } else {
-      setError(false)
+      setError(undefined)
       setData(subset)
 
       if (webR) {
@@ -389,8 +393,8 @@ export const Filters = (props: FiltersProps) => {
           </form>
         </Form>
         {error && (
-          <div className="ms-1 mt-2 text-sm text-red-500">
-            No papers match these criteria
+          <div className="text-destructive ms-1 mt-2 text-sm font-semibold">
+            {error}
           </div>
         )}
       </CollapsibleContent>
