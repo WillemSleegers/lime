@@ -33,8 +33,8 @@
     "clsx": "^2.0.0",
     "cmdk": "^1.0",
     "embla-carousel-react": "^8.3.0",
-    "lucide-react": "^0.474",
-    "mathjs": "latest",
+    "lucide-react": "^0",
+    "mathjs": "^14.1",
     "next": "^15.1",
     "react": "^19",
     "react-dom": "^19",
@@ -49,16 +49,14 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "latest",
-    "@types/react": "latest",
+    "@types/node": "^22.12",
+    "@types/react": "19.0",
     "@types/react-dom": "latest",
-    "autoprefixer": "^10.4.20",
-    "eslint": "latest",
+    "eslint": "^9.19",
     "eslint-config-next": "latest",
-    "postcss": "latest",
     "prettier": "latest",
-    "prettier-plugin-tailwindcss": "^0.6.10",
-    "tailwindcss": "^4.0.0",
+    "prettier-plugin-tailwindcss": "^0.6",
+    "tailwindcss": "^4.0",
     "typescript": "latest"
   }
 }
