@@ -136,6 +136,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                           key={option}
                           value={option}
                           variant="pill"
+                          size="sm"
                         >
                           {option}
                         </ToggleGroupItem>
@@ -164,6 +165,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                           key={option}
                           value={option}
                           variant="pill"
+                          size="sm"
                         >
                           {option}
                         </ToggleGroupItem>
@@ -301,6 +303,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                           key={option}
                           value={option}
                           variant="pill"
+                          size="sm"
                         >
                           {option}
                         </ToggleGroupItem>
@@ -330,6 +333,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                           key={option}
                           value={option}
                           variant="pill"
+                          size="sm"
                         >
                           {option}
                         </ToggleGroupItem>
@@ -470,6 +474,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                           key={option}
                           value={option}
                           variant="pill"
+                          size="sm"
                         >
                           {option}
                         </ToggleGroupItem>
@@ -519,6 +524,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                           key={option}
                           value={option}
                           variant="pill"
+                          size="sm"
                         >
                           {option}
                         </ToggleGroupItem>
@@ -568,6 +574,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                           key={option}
                           value={option}
                           variant="pill"
+                          size="sm"
                         >
                           {option}
                         </ToggleGroupItem>
@@ -755,6 +762,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                             key={option}
                             value={option}
                             variant="pill"
+                            size="sm"
                           >
                             {option}
                           </ToggleGroupItem>
@@ -800,6 +808,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                             key={option}
                             value={option}
                             variant="pill"
+                            size="sm"
                           >
                             {option}
                           </ToggleGroupItem>
@@ -847,6 +856,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                             key={option}
                             value={option}
                             variant="pill"
+                            size="sm"
                           >
                             {option}
                           </ToggleGroupItem>
@@ -901,6 +911,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                           key={option}
                           value={option}
                           variant="pill"
+                          size="sm"
                         >
                           {option}
                         </ToggleGroupItem>
