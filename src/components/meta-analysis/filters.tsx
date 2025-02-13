@@ -26,59 +26,19 @@ import data from "../../assets/data/data.json"
 
 import { Separator } from "../ui/separator"
 import { Input } from "@/components/ui/input"
-
-const outcome_subcategory_behavior_options = [
-  ...new Set(
-    data
-      .filter((d) => d.outcome_category === "behavior")
-      .map((d) => d.outcome_subcategory),
-  ),
-]
-const outcome_subcategory_intention_options = [
-  ...new Set(
-    data
-      .filter((d) => d.outcome_category === "intentions")
-      .map((d) => d.outcome_subcategory),
-  ),
-]
-const outcome_subcategory_attitude_options = [
-  ...new Set(
-    data
-      .filter((d) => d.outcome_category === "attitudes/beliefs")
-      .map((d) => d.outcome_subcategory),
-  ),
-]
-
-const outcome_measurement_type_options = [
-  ...new Set(data.map((d) => d.outcome_measurement_type)),
-]
-const intervention_content_options = [
-  ...new Set(
-    data
-      .map((datum) => datum.intervention_content)
-      .flatMap((str) => str.split(", ").map((s) => s)),
-  ),
-]
-const intervention_mechanism_options = [
-  ...new Set(
-    data
-      .map((datum) => datum.intervention_mechanism)
-      .flatMap((str) => str.split(",").map((s) => s.trim())),
-  ),
-]
-const intervention_medium_options = [
-  ...new Set(
-    data
-      .map((datum) => datum.intervention_medium)
-      .flatMap((str) => str.split(",").map((s) => s.trim())),
-  ),
-]
-const country_options = [
-  ...new Set(data.map((d) => d.sample_intervention_country)),
-]
-
-import { META_ANALYSIS_DEFAULTS } from "@/lib/constants"
 import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group"
+
+import {
+  INTERVENTION_CONTENT_OPTIONS,
+  INTERVENTION_COUNTRY_OPTIONS,
+  INTERVENTION_MECHANISM_OPTIONS,
+  INTERVENTION_MEDIUM_OPTIONS,
+  OUTCOME_MEASUREMENT_TYPE_OPTIONS,
+  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+} from "@/constants/constants-filters"
+import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
 
 const formSchema = z
   .object({
@@ -163,7 +123,7 @@ export const Filters = (props: FiltersProps) => {
       intervention_content: META_ANALYSIS_DEFAULTS.intervention_content,
       intervention_mechanism: META_ANALYSIS_DEFAULTS.intervention_mechanism,
       intervention_medium: META_ANALYSIS_DEFAULTS.intervention_medium,
-      sample_country: country_options,
+      sample_country: INTERVENTION_COUNTRY_OPTIONS,
       sample_size: 1,
     },
   })
@@ -180,14 +140,14 @@ export const Filters = (props: FiltersProps) => {
 
     subset = data.filter((datum) => {
       return outcome_subcategory.some(
-        (value) => datum.outcome_subcategory === value,
+        (value) => datum.outcome_subcategory === value
       )
     })
 
     // Filter on outcome measurement
     subset = subset.filter((datum) => {
       return values.outcome_measurement_type.some((value) =>
-        datum.outcome_measurement_type.includes(value.toLowerCase()),
+        datum.outcome_measurement_type.includes(value.toLowerCase())
       )
     })
 
@@ -195,38 +155,38 @@ export const Filters = (props: FiltersProps) => {
     subset = subset.filter(
       (datum) =>
         datum.effect_control_n > values.sample_size &&
-        datum.effect_intervention_n > values.sample_size,
+        datum.effect_intervention_n > values.sample_size
     )
 
     // Filter on intervention aspect
     subset = subset.filter((datum) => {
       return values.intervention_content.some((value) =>
-        datum.intervention_content.includes(value),
+        datum.intervention_content.includes(value)
       )
     })
 
     subset = subset.filter((datum) => {
       return values.intervention_mechanism.some((value) =>
-        datum.intervention_mechanism.includes(value),
+        datum.intervention_mechanism.includes(value)
       )
     })
 
     subset = subset.filter((datum) => {
       return values.intervention_medium.some((value) =>
-        datum.intervention_medium.includes(value),
+        datum.intervention_medium.includes(value)
       )
     })
 
     // Filter on country (intervention sample only)
     subset = subset.filter((e) =>
-      values.sample_country.includes(e.sample_intervention_country),
+      values.sample_country.includes(e.sample_intervention_country)
     )
 
     if (subset.length == 0) {
       setError("No papers match these criteria")
     } else if (new Set(subset.map((d) => d.paper)).size < 2) {
       setError(
-        "Only 1 paper matches these criteria; please relax the inclusion criteria to include effects from more papers",
+        "Only 1 paper matches these criteria; please relax the inclusion criteria to include effects from more papers"
       )
     } else {
       setError(undefined)
@@ -287,7 +247,7 @@ export const Filters = (props: FiltersProps) => {
                                 onValueChange={field.onChange}
                                 value={field.value}
                               >
-                                {outcome_subcategory_behavior_options.map(
+                                {OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS.map(
                                   (option) => (
                                     <ToggleGroupItem
                                       key={option}
@@ -297,7 +257,7 @@ export const Filters = (props: FiltersProps) => {
                                     >
                                       {option}
                                     </ToggleGroupItem>
-                                  ),
+                                  )
                                 )}
                                 <Button
                                   type="button"
@@ -305,7 +265,7 @@ export const Filters = (props: FiltersProps) => {
                                   className="text-foreground h-auto px-2"
                                   onClick={() =>
                                     field.onChange(
-                                      outcome_subcategory_behavior_options,
+                                      OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS
                                     )
                                   }
                                 >
@@ -339,7 +299,7 @@ export const Filters = (props: FiltersProps) => {
                                 onValueChange={field.onChange}
                                 value={field.value}
                               >
-                                {outcome_subcategory_intention_options.map(
+                                {OUTCOME_SUBCATEGORY_INTENTION_OPTIONS.map(
                                   (option) => (
                                     <ToggleGroupItem
                                       key={option}
@@ -349,7 +309,7 @@ export const Filters = (props: FiltersProps) => {
                                     >
                                       {option}
                                     </ToggleGroupItem>
-                                  ),
+                                  )
                                 )}
                                 <Button
                                   type="button"
@@ -357,7 +317,7 @@ export const Filters = (props: FiltersProps) => {
                                   className="text-foreground h-auto px-2"
                                   onClick={() =>
                                     field.onChange(
-                                      outcome_subcategory_intention_options,
+                                      OUTCOME_SUBCATEGORY_INTENTION_OPTIONS
                                     )
                                   }
                                 >
@@ -391,7 +351,7 @@ export const Filters = (props: FiltersProps) => {
                                 onValueChange={field.onChange}
                                 value={field.value}
                               >
-                                {outcome_subcategory_attitude_options.map(
+                                {OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS.map(
                                   (option) => (
                                     <ToggleGroupItem
                                       key={option}
@@ -401,7 +361,7 @@ export const Filters = (props: FiltersProps) => {
                                     >
                                       {option}
                                     </ToggleGroupItem>
-                                  ),
+                                  )
                                 )}
                                 <Button
                                   type="button"
@@ -409,7 +369,7 @@ export const Filters = (props: FiltersProps) => {
                                   className="text-foreground h-auto px-2"
                                   onClick={() =>
                                     field.onChange(
-                                      outcome_subcategory_attitude_options,
+                                      OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS
                                     )
                                   }
                                 >
@@ -455,7 +415,7 @@ export const Filters = (props: FiltersProps) => {
                             onValueChange={field.onChange}
                             value={field.value}
                           >
-                            {outcome_measurement_type_options.map((option) => (
+                            {OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => (
                               <ToggleGroupItem
                                 key={option}
                                 value={option}
@@ -470,7 +430,7 @@ export const Filters = (props: FiltersProps) => {
                               variant="link"
                               className="text-foreground h-auto px-2"
                               onClick={() =>
-                                field.onChange(outcome_measurement_type_options)
+                                field.onChange(OUTCOME_MEASUREMENT_TYPE_OPTIONS)
                               }
                             >
                               Select all
@@ -508,7 +468,7 @@ export const Filters = (props: FiltersProps) => {
                             onValueChange={field.onChange}
                             value={field.value}
                           >
-                            {intervention_content_options.map((option) => (
+                            {INTERVENTION_CONTENT_OPTIONS.map((option) => (
                               <ToggleGroupItem
                                 key={option}
                                 value={option}
@@ -523,7 +483,7 @@ export const Filters = (props: FiltersProps) => {
                               variant="link"
                               className="text-foreground h-auto px-2"
                               onClick={() =>
-                                field.onChange(intervention_content_options)
+                                field.onChange(INTERVENTION_CONTENT_OPTIONS)
                               }
                             >
                               Select all
@@ -556,7 +516,7 @@ export const Filters = (props: FiltersProps) => {
                             onValueChange={field.onChange}
                             value={field.value}
                           >
-                            {intervention_mechanism_options.map((option) => (
+                            {INTERVENTION_MECHANISM_OPTIONS.map((option) => (
                               <ToggleGroupItem
                                 key={option}
                                 value={option}
@@ -571,7 +531,7 @@ export const Filters = (props: FiltersProps) => {
                               variant="link"
                               className="text-foreground h-auto px-2"
                               onClick={() =>
-                                field.onChange(intervention_mechanism_options)
+                                field.onChange(INTERVENTION_MECHANISM_OPTIONS)
                               }
                             >
                               Select all
@@ -604,7 +564,7 @@ export const Filters = (props: FiltersProps) => {
                             onValueChange={field.onChange}
                             value={field.value}
                           >
-                            {intervention_medium_options.map((option) => (
+                            {INTERVENTION_MEDIUM_OPTIONS.map((option) => (
                               <ToggleGroupItem
                                 key={option}
                                 value={option}
@@ -619,7 +579,7 @@ export const Filters = (props: FiltersProps) => {
                               variant="link"
                               className="text-foreground h-auto px-2"
                               onClick={() =>
-                                field.onChange(intervention_medium_options)
+                                field.onChange(INTERVENTION_MEDIUM_OPTIONS)
                               }
                             >
                               Select all
@@ -657,7 +617,7 @@ export const Filters = (props: FiltersProps) => {
                             onValueChange={field.onChange}
                             value={field.value}
                           >
-                            {country_options.map((option) => (
+                            {INTERVENTION_COUNTRY_OPTIONS.map((option) => (
                               <ToggleGroupItem
                                 key={option}
                                 value={option}
@@ -671,7 +631,9 @@ export const Filters = (props: FiltersProps) => {
                               type="button"
                               variant="link"
                               className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange(country_options)}
+                              onClick={() =>
+                                field.onChange(INTERVENTION_COUNTRY_OPTIONS)
+                              }
                             >
                               Select all
                             </Button>

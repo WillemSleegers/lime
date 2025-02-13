@@ -347,8 +347,9 @@ const FAQ = () => {
           </AccordionTrigger>
           <AccordionContent className="prose">
             <p>
-              Yes. There is a button to download the data as a CSV file. The
-              file contains the data that is currently visible in the table.
+              Yes. There is a button to select which data you want to download.
+              You can download the entire dataset or only data from a particular
+              level (e.g., all paper-level data).
             </p>
           </AccordionContent>
         </AccordionItem>

@@ -8,7 +8,8 @@
     "intervention_content": "personal image",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Australia"
   },
   {
     "paper": 2,
@@ -19,7 +20,8 @@
     "intervention_content": "environment, animal welfare, health",
     "intervention_mechanism": "factual, negative emotional, perspective taking, goal pursuit, norms",
     "intervention_medium": "presentation, text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Canada"
   },
   {
     "paper": 3,
@@ -30,7 +32,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, negative emotional",
     "intervention_medium": "video",
-    "control_description": "Control participants were not exposed to a video, but it was not a truly neutral control condition, in that the canopy used for the study was covered in graphic images of farm animals"
+    "control_description": "Control participants were not exposed to a video, but it was not a truly neutral control condition, in that the canopy used for the study was covered in graphic images of farm animals",
+    "intervention_country": "United States"
   },
   {
     "paper": 3,
@@ -41,7 +44,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, negative emotional, perspective taking",
     "intervention_medium": "3D video",
-    "control_description": "Control participants were not exposed to a video, but it was not a truly neutral control condition, in that the canopy used for the study was covered in graphic images of farm animals"
+    "control_description": "Control participants were not exposed to a video, but it was not a truly neutral control condition, in that the canopy used for the study was covered in graphic images of farm animals",
+    "intervention_country": "United States"
   },
   {
     "paper": 4,
@@ -52,7 +56,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 4,
@@ -63,7 +68,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 5,
@@ -74,7 +80,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit",
     "intervention_medium": "text, image, video",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "N/A"
   },
   {
     "paper": 5,
@@ -85,7 +92,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit",
     "intervention_medium": "text, image, video",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "N/A"
   },
   {
     "paper": 5,
@@ -96,7 +104,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit, perspective taking",
     "intervention_medium": "text, image, video",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "N/A"
   },
   {
     "paper": 5,
@@ -107,7 +116,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit, perspective taking",
     "intervention_medium": "text, image, video",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "N/A"
   },
   {
     "paper": 7,
@@ -118,7 +128,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "infotainment, origin of animal product, celebrity",
     "intervention_medium": "video",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 9,
@@ -129,7 +140,8 @@
     "intervention_content": "health",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Italy"
   },
   {
     "paper": 10,
@@ -140,7 +152,8 @@
     "intervention_content": "health",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Italy"
   },
   {
     "paper": 11,
@@ -151,7 +164,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 11,
@@ -162,7 +176,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 11,
@@ -173,7 +188,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 11,
@@ -184,7 +200,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 11,
@@ -195,7 +212,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 11,
@@ -206,7 +224,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 11,
@@ -217,7 +236,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 11,
@@ -228,7 +248,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 13,
@@ -239,7 +260,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "origin of animal product, positive emotional",
     "intervention_medium": "presentation",
-    "control_description": "A white frame together with three different pork-meals."
+    "control_description": "A white frame together with three different pork-meals.",
+    "intervention_country": "Portugal"
   },
   {
     "paper": 13,
@@ -250,7 +272,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "presentation",
-    "control_description": "A white frame together with three different pork-meals."
+    "control_description": "A white frame together with three different pork-meals.",
+    "intervention_country": "Portugal"
   },
   {
     "paper": 14,
@@ -261,7 +284,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "N/A"
   },
   {
     "paper": 14,
@@ -272,7 +296,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "N/A"
   },
   {
     "paper": 14,
@@ -283,7 +308,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "N/A"
   },
   {
     "paper": 14,
@@ -294,7 +320,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "N/A"
   },
   {
     "paper": 17,
@@ -305,7 +332,8 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "video",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 17,
@@ -316,7 +344,8 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "video",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 18,
@@ -327,7 +356,8 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "positive emotional, negative emotional, origin of animal product, norms, factual, goal pursuit",
     "intervention_medium": "text, image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Netherlands"
   },
   {
     "paper": 23,
@@ -337,7 +367,8 @@
     "intervention_description": "Participants read a text providing information about meat consumption, adressing environmental consequences of meat consumption and other arguments for reduced consumption.",
     "intervention_content": "environment, animal welfare, health",
     "intervention_mechanism": "factual",
-    "intervention_medium": "text"
+    "intervention_medium": "text",
+    "intervention_country": "Germany"
   },
   {
     "paper": 23,
@@ -347,7 +378,8 @@
     "intervention_description": "Participants read a text providing information about meat consumption, adressing environmental consequences of meat consumption and other arguments for reduced consumption. Participants completed a procedure for mental contrasting with implementation intentions in which individuals wrote down (1) a personal goal, (2) positive outcomes of goal achievement, the best outcome, and respective associations, (3) obstacles of goal achievement, their two main obstacles, and respective associations, and finally (4) four IIs addressing their two main obstacles.",
     "intervention_content": "environment, animal welfare, health",
     "intervention_mechanism": "factual, goal pursuit",
-    "intervention_medium": "text"
+    "intervention_medium": "text",
+    "intervention_country": "Germany"
   },
   {
     "paper": 25,
@@ -358,7 +390,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "positive emotional, negative emotional, factual",
     "intervention_medium": "video",
-    "control_description": "Participants for the control group were recruited via the Facebook events of the movie screenings with a message that encouraged anybody who couldn’t attend the screenings but still wanted to join the experiment to fill in the survey."
+    "control_description": "Participants for the control group were recruited via the Facebook events of the movie screenings with a message that encouraged anybody who couldn’t attend the screenings but still wanted to join the experiment to fill in the survey.",
+    "intervention_country": "Czechia"
   },
   {
     "paper": 25,
@@ -369,7 +402,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "positive emotional, negative emotional, factual",
     "intervention_medium": "video",
-    "control_description": "Participants for the control group were recruited via the Facebook events of the movie screenings with a message that encouraged anybody who couldn’t attend the screenings but still wanted to join the experiment to fill in the survey."
+    "control_description": "Participants for the control group were recruited via the Facebook events of the movie screenings with a message that encouraged anybody who couldn’t attend the screenings but still wanted to join the experiment to fill in the survey.",
+    "intervention_country": "Czechia"
   },
   {
     "paper": 26,
@@ -380,7 +414,8 @@
     "intervention_content": "taste/ disgust",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 26,
@@ -391,7 +426,8 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 26,
@@ -402,7 +438,8 @@
     "intervention_content": "environment, animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 26,
@@ -413,7 +450,8 @@
     "intervention_content": "taste/ disgust",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text",
-    "control_description": "Participants read a neutral essay about the 1980 Winter Olympics."
+    "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
+    "intervention_country": "United States"
   },
   {
     "paper": 26,
@@ -424,7 +462,8 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": "Participants read a neutral essay about the 1980 Winter Olympics."
+    "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
+    "intervention_country": "United States"
   },
   {
     "paper": 26,
@@ -435,7 +474,8 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": "Participants read a neutral essay about the 1980 Winter Olympics."
+    "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
+    "intervention_country": "United States"
   },
   {
     "paper": 26,
@@ -446,7 +486,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": "Participants read a neutral essay about the 1980 Winter Olympics."
+    "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
+    "intervention_country": "United States"
   },
   {
     "paper": 26,
@@ -457,7 +498,8 @@
     "intervention_content": "taste/ disgust",
     "intervention_mechanism": "factual",
     "intervention_medium": "presentation",
-    "control_description": "Participants watched a slideshow on the 1980 Winter Olympics."
+    "control_description": "Participants watched a slideshow on the 1980 Winter Olympics.",
+    "intervention_country": "United States"
   },
   {
     "paper": 26,
@@ -468,7 +510,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "presentation",
-    "control_description": "Participants watched a slideshow on the 1980 Winter Olympics."
+    "control_description": "Participants watched a slideshow on the 1980 Winter Olympics.",
+    "intervention_country": "United States"
   },
   {
     "paper": 31,
@@ -479,7 +522,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 31,
@@ -490,7 +534,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 31,
@@ -501,7 +546,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 31,
@@ -512,7 +558,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 33,
@@ -523,7 +570,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "France"
   },
   {
     "paper": 33,
@@ -534,7 +582,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "China"
   },
   {
     "paper": 33,
@@ -545,7 +594,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "France"
   },
   {
     "paper": 33,
@@ -556,7 +606,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "China"
   },
   {
     "paper": 37,
@@ -567,7 +618,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "positive emotional, origin of animal product",
     "intervention_medium": "image",
-    "control_description": "Participants saw an advertisement for lamb chops."
+    "control_description": "Participants saw an advertisement for lamb chops.",
+    "intervention_country": "United States"
   },
   {
     "paper": 40,
@@ -578,7 +630,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, norms, negative emotional",
     "intervention_medium": "text",
-    "control_description": "Participants read a policy article that discusses the policy commitments of major companies to transition from plastic bags to paper bags."
+    "control_description": "Participants read a policy article that discusses the policy commitments of major companies to transition from plastic bags to paper bags.",
+    "intervention_country": "United States"
   },
   {
     "paper": 40,
@@ -589,7 +642,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, norms, negative emotional",
     "intervention_medium": "text",
-    "control_description": "Participants read a legislation article that discusses the legislation implemented by many U.S. states banning the use of plastic bags."
+    "control_description": "Participants read a legislation article that discusses the legislation implemented by many U.S. states banning the use of plastic bags.",
+    "intervention_country": "United States"
   },
   {
     "paper": 50,
@@ -600,7 +654,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text, video, in-person",
-    "control_description": "Participants read Peter Singer's article “The Singer Solution to World Poverty” and were encouraged to view, on their own outside of class, an optional nineteen-minute video advocating donation to hunger-relief initiatives: “Ending Hunger Now”."
+    "control_description": "Participants read Peter Singer's article “The Singer Solution to World Poverty” and were encouraged to view, on their own outside of class, an optional nineteen-minute video advocating donation to hunger-relief initiatives: “Ending Hunger Now”.",
+    "intervention_country": "United States"
   },
   {
     "paper": 52,
@@ -611,7 +666,8 @@
     "intervention_content": "animal welfare, health, taste/ disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms, origin of animal product, goal pursuit",
     "intervention_medium": "video",
-    "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable."
+    "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable.",
+    "intervention_country": "United States"
   },
   {
     "paper": 52,
@@ -622,7 +678,8 @@
     "intervention_content": "animal welfare, health, taste/ disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms",
     "intervention_medium": "video",
-    "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable."
+    "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable.",
+    "intervention_country": "United States"
   },
   {
     "paper": 52,
@@ -633,7 +690,8 @@
     "intervention_content": "animal welfare, health, taste/ disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms, origin of animal product, goal pursuit",
     "intervention_medium": "video, text",
-    "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable."
+    "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable.",
+    "intervention_country": "United States"
   },
   {
     "paper": 53,
@@ -644,7 +702,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text, image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Sweden"
   },
   {
     "paper": 53,
@@ -655,7 +714,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Sweden"
   },
   {
     "paper": 53,
@@ -666,7 +726,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "positive emotional",
     "intervention_medium": "text, image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Sweden"
   },
   {
     "paper": 53,
@@ -677,7 +738,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "positive emotional",
     "intervention_medium": "text, image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Sweden"
   },
   {
     "paper": 54,
@@ -688,7 +750,8 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Italy"
   },
   {
     "paper": 54,
@@ -699,7 +762,8 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Italy"
   },
   {
     "paper": 56,
@@ -710,7 +774,8 @@
     "intervention_content": "health, environment",
     "intervention_mechanism": "factual, negative emotional",
     "intervention_medium": "text",
-    "control_description": "Participants received daily persuasive messages describing the health and environmental consequences of eating sugar."
+    "control_description": "Participants received daily persuasive messages describing the health and environmental consequences of eating sugar.",
+    "intervention_country": "Italy"
   },
   {
     "paper": 56,
@@ -721,7 +786,8 @@
     "intervention_content": "health, environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": "Participants received daily persuasive messages describing the health and environmental consequences of eating sugar."
+    "control_description": "Participants received daily persuasive messages describing the health and environmental consequences of eating sugar.",
+    "intervention_country": "Italy"
   },
   {
     "paper": 58,
@@ -731,7 +797,8 @@
     "intervention_description": "Participants read: \"One type of diet that some people endorse is a Climatarian diet significantly reducing or eliminating red meat from one's diet. The reasoning is as follows: Livestock agriculture contributes up to a quarter of global greenhouse gas emissions, with almost all of this coming from cows and sheep. In Australia, producing 1 kg of beef requires an average of 15,182 L of water. Furthermore, livestock agriculture drives 80% of deforestation worldwide, using up a third of the world s ice-free land. Adopting a Climatarian diet is a powerfulway to reduce your impact on the climate. Shifting to a Climatarian diet will reduce your carbon footprint by approximately 1000 kg of CO2 every year, or the equivalent of driving from Perth to Brisbane.\"",
     "intervention_content": "environment",
     "intervention_mechanism": "factual, goal pursuit",
-    "intervention_medium": "text"
+    "intervention_medium": "text",
+    "intervention_country": "Australia"
   },
   {
     "paper": 58,
@@ -741,7 +808,8 @@
     "intervention_description": "Participants read: \"One type of diet that some people endorse is the ‘One step for the animals diet' eliminating chicken from our diets. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factory farms in Australia today. The vast majorityof these animals today are birds. It takes more than 200 chickens to provide the same number of meals as one cow.If we can convince someone to stop eating birds, they would go from being responsible for the factory farming and slaughtering of more than two dozen land animals per year to fewer than one. Furthermore, while most cows and sheep raised in Australia spend most of their life grazing, the vast majority of chickens are raised in crowded factory farms.\"",
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
-    "intervention_medium": "text"
+    "intervention_medium": "text",
+    "intervention_country": "Australia"
   },
   {
     "paper": 58,
@@ -751,7 +819,8 @@
     "intervention_description": "Participants read: \"One type of diet that some people endorse is a Reducetarian diet reducing the amount of meat that we eat. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factoryfarms in Australia today. This includes cows, pigs, sheep and chickens. Adopting a reductionist diet is appealing because not everyone is willing to follow an all-or-nothing diet. It is also a powerful way to reduce animal cruelty. For example, halving your meat consumption will spare around 50 innocent lives every year. This includes about 13 land animals, and 37 fish and shellfish every year.\"",
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
-    "intervention_medium": "text"
+    "intervention_medium": "text",
+    "intervention_country": "Australia"
   },
   {
     "paper": 58,
@@ -761,7 +830,8 @@
     "intervention_description": "Participants read:  \"One type of diet that somepeople endorse is a Vegetarian diet eliminating all meat and fish from one's diet. The reasoningis as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factory farms in Australia today. This includes cows, pigs, sheep and chickens. Adopting a vegetarian diet is the most powerful way to object to animal cruelty, and by doing so, you will spare approximately 100 animal lives (25 land animals and 75 fish and shellfish) every year.\"",
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
-    "intervention_medium": "text"
+    "intervention_medium": "text",
+    "intervention_country": "Australia"
   },
   {
     "paper": 60,
@@ -771,7 +841,8 @@
     "intervention_description": "Participants read James Rachels’ article “The Basic Argument for Vegetarianism”. Teaching assistants played the 11-minute vegetarianism advocacy video “What Came Before” that contained factory farm footage. They also presented both pro and con considerations in their discussion sections, encouraging debate among students.",
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, factual, origin of animal product",
-    "intervention_medium": "text, video, in-person"
+    "intervention_medium": "text, video, in-person",
+    "intervention_country": "United States"
   },
   {
     "paper": 60,
@@ -781,7 +852,8 @@
     "intervention_description": "Participants read James Rachels’ article “The Basic Argument for Vegetarianism”. Teaching assistants presented both pro and con considerations in their discussion sections, encouraging debate among students.",
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, factual, origin of animal product",
-    "intervention_medium": "text, in-person"
+    "intervention_medium": "text, in-person",
+    "intervention_country": "United States"
   },
   {
     "paper": 61,
@@ -792,7 +864,8 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual, origin of animal product",
     "intervention_medium": "text",
-    "control_description": "Participants read a brief paragraphon geocaching."
+    "control_description": "Participants read a brief paragraphon geocaching.",
+    "intervention_country": "Canada"
   },
   {
     "paper": 61,
@@ -803,7 +876,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, origin of animal product",
     "intervention_medium": "text",
-    "control_description": "Participants read a brief paragraphon geocaching."
+    "control_description": "Participants read a brief paragraphon geocaching.",
+    "intervention_country": "Canada"
   },
   {
     "paper": 62,
@@ -814,7 +888,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
-    "control_description": "A meat dish was listed as the first item on the menu and was also made visible to customers at the counter., A meat dish was listed as the first item on the menu and was also made visible to customers at the counter"
+    "control_description": "A meat dish was listed as the first item on the menu and was also made visible to customers at the counter., A meat dish was listed as the first item on the menu and was also made visible to customers at the counter",
+    "intervention_country": "Sweden"
   },
   {
     "paper": 63,
@@ -825,7 +900,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
-    "control_description": "A meat dish was listed as the first item on the menu."
+    "control_description": "A meat dish was listed as the first item on the menu.",
+    "intervention_country": "Sweden"
   },
   {
     "paper": 64,
@@ -836,7 +912,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "text",
-    "control_description": "Participants were asked to create a ranked list of their favorite colors and explained how this color is personally appealing, e.g., to describe an object or context in which it was appealing. Participants then read a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats."
+    "control_description": "Participants were asked to create a ranked list of their favorite colors and explained how this color is personally appealing, e.g., to describe an object or context in which it was appealing. Participants then read a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats.",
+    "intervention_country": "Serbia"
   },
   {
     "paper": 64,
@@ -847,7 +924,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "text",
-    "control_description": "Participants were asked to create a ranked list of their favorite colors and explained how this color is personally appealing, e.g., to describe an object or context in which it was appealing. Participants then read a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats."
+    "control_description": "Participants were asked to create a ranked list of their favorite colors and explained how this color is personally appealing, e.g., to describe an object or context in which it was appealing. Participants then read a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats.",
+    "intervention_country": "Serbia"
   },
   {
     "paper": 65,
@@ -858,7 +936,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Denmark"
   },
   {
     "paper": 67,
@@ -869,7 +948,8 @@
     "intervention_content": "environment",
     "intervention_mechanism": "choice architecture, norms",
     "intervention_medium": "text, image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Portugal"
   },
   {
     "paper": 68,
@@ -880,7 +960,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
-    "control_description": "Students passed by a meat option first when entering the cafeteria."
+    "control_description": "Students passed by a meat option first when entering the cafeteria.",
+    "intervention_country": "England"
   },
   {
     "paper": 68,
@@ -891,7 +972,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
-    "control_description": "Students passed by a meat option first when entering the cafeteria."
+    "control_description": "Students passed by a meat option first when entering the cafeteria.",
+    "intervention_country": "England"
   },
   {
     "paper": 68,
@@ -902,7 +984,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
-    "control_description": "Students passed by a meat option first when entering the cafeteria."
+    "control_description": "Students passed by a meat option first when entering the cafeteria.",
+    "intervention_country": "England"
   },
   {
     "paper": 68,
@@ -913,7 +996,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
-    "control_description": "Students passed by a meat option first when entering the cafeteria."
+    "control_description": "Students passed by a meat option first when entering the cafeteria.",
+    "intervention_country": "England"
   },
   {
     "paper": 68,
@@ -924,7 +1008,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
-    "control_description": "Students passed by a meat option first when entering the cafeteria."
+    "control_description": "Students passed by a meat option first when entering the cafeteria.",
+    "intervention_country": "England"
   },
   {
     "paper": 70,
@@ -934,7 +1019,8 @@
     "intervention_description": "Participants completed a 12-week compassion and cating-based training which consisted of weekly sessions á 75 min and weekly homework assignments. Participants were introduced to a way to offer love to themselves, other people, or animals. Affect dyad situations were applied where partners sit face to face, and one partner contemplates a situation to a specific theme of the main topics. The other partner listens attentively without giving any verbal or non-verbal feedback.",
     "intervention_content": "none",
     "intervention_mechanism": "positive emotional",
-    "intervention_medium": "in-person"
+    "intervention_medium": "in-person",
+    "intervention_country": "Germany"
   },
   {
     "paper": 70,
@@ -944,7 +1030,8 @@
     "intervention_description": "Participants completed a 12-week mindfulness-based stress reduction program that included various elements of meditation: body scan, mindful eating, emphasizing the breath, and sitting and walking meditation training. Every session contained a talk about specific topics such as different forms of meditation and problems that may arise with them. The focus of this mindfulness group was on the rather cognitive elements of mindfulness and its qualities of awareness.",
     "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
-    "intervention_medium": "in-person"
+    "intervention_medium": "in-person",
+    "intervention_country": "Germany"
   },
   {
     "paper": 75,
@@ -955,7 +1042,8 @@
     "intervention_content": "environment, health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text, image",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "United States"
   },
   {
     "paper": 77,
@@ -966,7 +1054,8 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Norway"
   },
   {
     "paper": 77,
@@ -977,7 +1066,8 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Norway"
   },
   {
     "paper": 77,
@@ -988,7 +1078,8 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Norway"
   },
   {
     "paper": 78,
@@ -999,7 +1090,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
-    "control_description": "Individuals responded to an RSVP survey for an event in which the meat option was the default meal preference."
+    "control_description": "Individuals responded to an RSVP survey for an event in which the meat option was the default meal preference.",
+    "intervention_country": "United States"
   },
   {
     "paper": 79,
@@ -1010,7 +1102,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional",
     "intervention_medium": "video",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "Netherlands"
   },
   {
     "paper": 79,
@@ -1021,7 +1114,8 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional",
     "intervention_medium": "video",
-    "control_description": ""
+    "control_description": "",
+    "intervention_country": "N/A"
   },
   {
     "paper": 80,
@@ -1032,7 +1126,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options",
-    "control_description": "The menu contained, as before, the daily meat and fish options for the whole week, and had an additional sentence stating that “a vegetarian option is available on request.”"
+    "control_description": "The menu contained, as before, the daily meat and fish options for the whole week, and had an additional sentence stating that “a vegetarian option is available on request.”",
+    "intervention_country": "Sweden"
   },
   {
     "paper": 81,
@@ -1043,7 +1138,8 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options, text",
-    "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo."
+    "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo.",
+    "intervention_country": "N/A"
   },
   {
     "paper": 81,
@@ -1054,7 +1150,8 @@
     "intervention_content": "environment",
     "intervention_mechanism": "choice architecture, factual",
     "intervention_medium": "menu/ food options, text",
-    "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo."
+    "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo.",
+    "intervention_country": "N/A"
   },
   {
     "paper": 81,
@@ -1065,6 +1162,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "choice architecture",
     "intervention_medium": "menu/ food options, text",
-    "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo."
+    "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo.",
+    "intervention_country": "N/A"
   }
 ]

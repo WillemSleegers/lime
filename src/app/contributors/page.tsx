@@ -11,7 +11,7 @@ import Link from "next/link"
 
 const Contributors = () => {
   return (
-    <main className="container prose py-12 text-center">
+    <main className="container prose py-12 text-center grow">
       <h1>Contributors</h1>
       <div className="grid justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div className="max-w-60 space-y-2">

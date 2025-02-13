@@ -77,7 +77,7 @@ const MetaAnalysis = () => {
             outcome,
             intervention_condition,
             control_condition,
-          }))(e),
+          }))(e)
         )
 
         const df = await new webR.RObject(subset)
@@ -100,7 +100,7 @@ const MetaAnalysis = () => {
   }, [data])
 
   return (
-    <main className="m-auto max-w-(--breakpoint-lg)">
+    <main className="m-auto max-w-(--breakpoint-lg) mb-12">
       <div className="m-3">
         <div className="my-5">
           <span className="font-semibold">Status:</span> {status}

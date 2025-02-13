@@ -141,8 +141,6 @@ export default function Home() {
           <Link href="/data-explorer/">Begin analyzing</Link>
         </Button>
       </section>
-
-      <Footer />
     </div>
   )
 }

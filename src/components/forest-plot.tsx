@@ -73,7 +73,7 @@ export const ForestPlot = (props: ForestPlotProps) => {
           <ChevronRight
             className={cn("transition", open ? "rotate-90" : "rotate-0")}
           />
-        </div>
+          </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
         <div className="py-5">

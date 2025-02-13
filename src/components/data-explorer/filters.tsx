@@ -21,6 +21,20 @@ import { Slider } from "@/components/ui/slider"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
+import {
+  PAPER_TYPE_OPTIONS,
+  PAPER_OPEN_ACCESS_OPTIONS,
+  INTERVENTION_CONTENT_OPTIONS,
+  INTERVENTION_MECHANISM_OPTIONS,
+  INTERVENTION_MEDIUM_OPTIONS,
+  STUDY_PREREGISTERED_OPTIONS,
+  STUDY_DATA_AVAILABLE_OPTIONS,
+  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+  OUTCOME_MEASUREMENT_TYPE_OPTIONS,
+} from "@/constants/constants-filters"
+
 /* Paper-level */
 const formSchemaPapers = z.object({
   paper_year: z.number().array(),
@@ -46,11 +60,6 @@ type FilterPapersProps = {
 export const FilterPapers = (props: FilterPapersProps) => {
   const { data, setData } = props
 
-  const paper_type_options = [...new Set(data.map((d) => d.paper_type))]
-  const paper_open_access_options = [
-    ...new Set(data.map((d) => d.paper_open_access)),
-  ]
-
   const form = useForm<z.infer<typeof formSchemaPapers>>({
     resolver: zodResolver(formSchemaPapers),
     mode: "onSubmit",
@@ -60,8 +69,8 @@ export const FilterPapers = (props: FilterPapersProps) => {
         Math.min(...data.map((datum) => datum.paper_year)),
         Math.max(...data.map((datum) => datum.paper_year)),
       ],
-      paper_type: paper_type_options,
-      paper_open_access: paper_open_access_options,
+      paper_type: PAPER_TYPE_OPTIONS,
+      paper_open_access: PAPER_OPEN_ACCESS_OPTIONS,
     },
   })
 
@@ -71,18 +80,18 @@ export const FilterPapers = (props: FilterPapersProps) => {
     subset = subset.filter(
       (datum) =>
         datum.paper_year >= values.paper_year[0] &&
-        datum.paper_year <= values.paper_year[1],
+        datum.paper_year <= values.paper_year[1]
     )
 
     subset = subset.filter((datum) => {
       return values.paper_type.some((paper_type) =>
-        datum.paper_type.includes(paper_type),
+        datum.paper_type.includes(paper_type)
       )
     })
 
     subset = subset.filter((datum) => {
       return values.paper_open_access.some((open_acess) =>
-        datum.paper_open_access.includes(open_acess),
+        datum.paper_open_access.includes(open_acess)
       )
     })
 
@@ -131,7 +140,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {paper_type_options.map((option) => (
+                      {PAPER_TYPE_OPTIONS.map((option) => (
                         <ToggleGroupItem
                           key={option}
                           value={option}
@@ -160,7 +169,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {paper_open_access_options.map((option) => (
+                      {PAPER_OPEN_ACCESS_OPTIONS.map((option) => (
                         <ToggleGroupItem
                           key={option}
                           value={option}
@@ -222,21 +231,14 @@ type FilterStudiesProps = {
 export const FilterStudies = (props: FilterStudiesProps) => {
   const { data, setData } = props
 
-  const study_preregistered_options = [
-    ...new Set(data.map((d) => d.study_preregistered)),
-  ]
-  const study_data_available_options = [
-    ...new Set(data.map((d) => d.study_data_available)),
-  ]
-
   const form = useForm<z.infer<typeof formSchemaStudies>>({
     resolver: zodResolver(formSchemaStudies),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     defaultValues: {
       study_n: 1,
-      study_pregistered: study_preregistered_options,
-      study_data_available: study_data_available_options,
+      study_pregistered: STUDY_PREREGISTERED_OPTIONS,
+      study_data_available: STUDY_DATA_AVAILABLE_OPTIONS,
     },
   })
 
@@ -249,13 +251,13 @@ export const FilterStudies = (props: FilterStudiesProps) => {
 
     subset = subset.filter((datum) => {
       return values.study_pregistered.some((value) =>
-        datum.study_preregistered.includes(value),
+        datum.study_preregistered.includes(value)
       )
     })
 
     subset = subset.filter((datum) => {
       return values.study_data_available.some((value) =>
-        datum.study_data_available.includes(value),
+        datum.study_data_available.includes(value)
       )
     })
 
@@ -298,7 +300,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {study_preregistered_options.map((option) => (
+                      {STUDY_PREREGISTERED_OPTIONS.map((option) => (
                         <ToggleGroupItem
                           key={option}
                           value={option}
@@ -328,7 +330,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {study_data_available_options.map((option, i) => (
+                      {STUDY_DATA_AVAILABLE_OPTIONS.map((option) => (
                         <ToggleGroupItem
                           key={option}
                           value={option}
@@ -391,36 +393,14 @@ type FilterInterventionsProps = {
 export const FilterInterventions = (props: FilterInterventionsProps) => {
   const { data, setData } = props
 
-  const intervention_content_options = [
-    ...new Set(
-      data
-        .map((datum) => datum.intervention_content)
-        .flatMap((str) => str.split(", ").map((s) => s)),
-    ),
-  ]
-  const intervention_mechanism_options = [
-    ...new Set(
-      data
-        .map((datum) => datum.intervention_mechanism)
-        .flatMap((str) => str.split(",").map((s) => s.trim())),
-    ),
-  ]
-  const intervention_medium_options = [
-    ...new Set(
-      data
-        .map((datum) => datum.intervention_medium)
-        .flatMap((str) => str.split(",").map((s) => s.trim())),
-    ),
-  ]
-
   const form = useForm<z.infer<typeof formSchemaInterventions>>({
     resolver: zodResolver(formSchemaInterventions),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     defaultValues: {
-      intervention_content: intervention_content_options,
-      intervention_mechanism: intervention_mechanism_options,
-      intervention_medium: intervention_medium_options,
+      intervention_content: INTERVENTION_CONTENT_OPTIONS,
+      intervention_mechanism: INTERVENTION_MECHANISM_OPTIONS,
+      intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
     },
   })
 
@@ -429,19 +409,19 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
 
     subset = subset.filter((datum) => {
       return values.intervention_content.some((value) =>
-        datum.intervention_content.includes(value),
+        datum.intervention_content.includes(value)
       )
     })
 
     subset = subset.filter((datum) => {
       return values.intervention_mechanism.some((value) =>
-        datum.intervention_mechanism.includes(value),
+        datum.intervention_mechanism.includes(value)
       )
     })
 
     subset = subset.filter((datum) => {
       return values.intervention_medium.some((value) =>
-        datum.intervention_medium.includes(value),
+        datum.intervention_medium.includes(value)
       )
     })
 
@@ -469,7 +449,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {intervention_content_options.map((option) => (
+                      {INTERVENTION_CONTENT_OPTIONS.map((option) => (
                         <ToggleGroupItem
                           key={option}
                           value={option}
@@ -484,7 +464,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                         variant="link"
                         className="text-foreground h-auto px-2"
                         onClick={() =>
-                          field.onChange(intervention_content_options)
+                          field.onChange(INTERVENTION_CONTENT_OPTIONS)
                         }
                       >
                         Select all
@@ -519,7 +499,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {intervention_mechanism_options.map((option) => (
+                      {INTERVENTION_MECHANISM_OPTIONS.map((option) => (
                         <ToggleGroupItem
                           key={option}
                           value={option}
@@ -534,7 +514,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                         variant="link"
                         className="text-foreground h-auto px-2"
                         onClick={() =>
-                          field.onChange(intervention_mechanism_options)
+                          field.onChange(INTERVENTION_MECHANISM_OPTIONS)
                         }
                       >
                         Select all
@@ -569,7 +549,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {intervention_medium_options.map((option) => (
+                      {INTERVENTION_MEDIUM_OPTIONS.map((option) => (
                         <ToggleGroupItem
                           key={option}
                           value={option}
@@ -584,7 +564,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                         variant="link"
                         className="text-foreground h-auto px-2"
                         onClick={() =>
-                          field.onChange(intervention_medium_options)
+                          field.onChange(INTERVENTION_MEDIUM_OPTIONS)
                         }
                       >
                         Select all
@@ -675,41 +655,15 @@ type FilterOutcomesProps = {
 export const FilterOutcomes = (props: FilterOutcomesProps) => {
   const { data, setData } = props
 
-  const outcome_subcategory_behavior_options = [
-    ...new Set(
-      data
-        .filter((d) => d.outcome_category === "behavior")
-        .map((d) => d.outcome_subcategory),
-    ),
-  ]
-  const outcome_subcategory_intention_options = [
-    ...new Set(
-      data
-        .filter((d) => d.outcome_category === "intentions")
-        .map((d) => d.outcome_subcategory),
-    ),
-  ]
-  const outcome_subcategory_attitude_options = [
-    ...new Set(
-      data
-        .filter((d) => d.outcome_category === "attitudes/beliefs")
-        .map((d) => d.outcome_subcategory),
-    ),
-  ]
-
-  const outcome_measurement_type_options = [
-    ...new Set(data.map((d) => d.outcome_measurement_type)),
-  ]
-
   const form = useForm<z.infer<typeof formSchemaOutcomes>>({
     resolver: zodResolver(formSchemaOutcomes),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     defaultValues: {
-      outcome_subcategory_behavior: outcome_subcategory_behavior_options,
-      outcome_subcategory_intention: outcome_subcategory_intention_options,
-      outcome_subcategory_attitude: outcome_subcategory_attitude_options,
-      outcome_measurement_type: outcome_measurement_type_options,
+      outcome_subcategory_behavior: OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+      outcome_subcategory_intention: OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+      outcome_subcategory_attitude: OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+      outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS,
     },
   })
 
@@ -724,13 +678,13 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
 
     subset = subset.filter((datum) => {
       return outcome_subcategory.some(
-        (value) => datum.outcome_subcategory === value,
+        (value) => datum.outcome_subcategory === value
       )
     })
 
     subset = subset.filter((datum) => {
       return values.outcome_measurement_type.some(
-        (value) => datum.outcome_measurement_type === value,
+        (value) => datum.outcome_measurement_type === value
       )
     })
 
@@ -757,7 +711,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         onValueChange={field.onChange}
                         value={field.value}
                       >
-                        {outcome_subcategory_behavior_options.map((option) => (
+                        {OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS.map((option) => (
                           <ToggleGroupItem
                             key={option}
                             value={option}
@@ -772,7 +726,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                           variant="link"
                           className="text-foreground h-auto px-2"
                           onClick={() =>
-                            field.onChange(outcome_subcategory_behavior_options)
+                            field.onChange(OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS)
                           }
                         >
                           Select all
@@ -803,7 +757,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         onValueChange={field.onChange}
                         value={field.value}
                       >
-                        {outcome_subcategory_intention_options.map((option) => (
+                        {OUTCOME_SUBCATEGORY_INTENTION_OPTIONS.map((option) => (
                           <ToggleGroupItem
                             key={option}
                             value={option}
@@ -819,7 +773,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                           className="text-foreground h-auto px-2"
                           onClick={() =>
                             field.onChange(
-                              outcome_subcategory_intention_options,
+                              OUTCOME_SUBCATEGORY_INTENTION_OPTIONS
                             )
                           }
                         >
@@ -851,7 +805,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         onValueChange={field.onChange}
                         value={field.value}
                       >
-                        {outcome_subcategory_attitude_options.map((option) => (
+                        {OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS.map((option) => (
                           <ToggleGroupItem
                             key={option}
                             value={option}
@@ -866,7 +820,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                           variant="link"
                           className="text-foreground h-auto px-2"
                           onClick={() =>
-                            field.onChange(outcome_subcategory_attitude_options)
+                            field.onChange(OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS)
                           }
                         >
                           Select all
@@ -906,7 +860,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                       onValueChange={field.onChange}
                       value={field.value}
                     >
-                      {outcome_measurement_type_options.map((option) => (
+                      {OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => (
                         <ToggleGroupItem
                           key={option}
                           value={option}
@@ -921,7 +875,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
                         variant="link"
                         className="text-foreground h-auto px-2"
                         onClick={() =>
-                          field.onChange(outcome_measurement_type_options)
+                          field.onChange(OUTCOME_MEASUREMENT_TYPE_OPTIONS)
                         }
                       >
                         Select all
@@ -969,10 +923,10 @@ export const FilterEffects = (props: FilterEffectsProps) => {
   const { data, setData } = props
 
   const effect_size_min = Math.min(
-    ...data.map((datum) => datum.effect_size_value),
+    ...data.map((datum) => datum.effect_size_value)
   )
   const effect_size_max = Math.max(
-    ...data.map((datum) => datum.effect_size_value),
+    ...data.map((datum) => datum.effect_size_value)
   )
 
   const form = useForm<z.infer<typeof formSchemaEffects>>({
@@ -991,7 +945,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
     subset = subset.filter(
       (datum) =>
         datum.effect_size_value >= values.effect_size[0] &&
-        datum.effect_size_value <= values.effect_size[1],
+        datum.effect_size_value <= values.effect_size[1]
     )
 
     const sample_size = Number(values.sample_size)
@@ -999,7 +953,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
     subset = subset.filter(
       (datum) =>
         datum.effect_intervention_n >= sample_size &&
-        datum.effect_control_n >= sample_size,
+        datum.effect_control_n >= sample_size
     )
 
     setData(subset)
