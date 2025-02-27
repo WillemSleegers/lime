@@ -71,7 +71,8 @@ export const PublicationBias = (props: PublicationBiasProps) => {
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent prose mx-auto">
         <div className="my-3">
-          <h3 className="text-center">Egger&apos;s Test</h3>
+          <h3 className="text-center">Small Study Effect Methods</h3>
+          <h4 className="text-center">Egger&apos;s Test</h4>
           <p>
             We found{" "}
             {egger_p < 0.05 ? (
@@ -86,7 +87,7 @@ export const PublicationBias = (props: PublicationBiasProps) => {
             (b = {round(egger_b, 2)}, SE = {round(egger_se, 2)}, z ={" "}
             {round(egger_z, 2)}, p = {round(egger_p, 2)}).
           </p>
-          <h3 className="text-center">Funnel plot</h3>
+          <h4 className="text-center">Funnel plot</h4>
           <div className="overflow-auto">
             <ResponsiveContainer height={500} width="100%" minWidth={600}>
               <ScatterChart
