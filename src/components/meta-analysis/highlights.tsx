@@ -79,8 +79,8 @@ export const Highlights = (props: HighLightsProps) => {
           />
         </div>
       </CollapsibleTrigger>
-      <CollapsibleContent className="CollapsibleContent py-3">
-        <div className="flex flex-wrap gap-3">
+      <CollapsibleContent className="CollapsibleContent">
+        <div className="flex flex-wrap gap-3 my-3">
           {/* Number of papers */}
           <Card className="grow">
             <CardHeader>

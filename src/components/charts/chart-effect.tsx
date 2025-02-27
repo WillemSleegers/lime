@@ -32,7 +32,8 @@ const ChartEffect = ({ effect, lower, upper }: ChartEffectProps) => {
   return (
     <div className="mx-auto w-full max-w-xl space-y-6 text-center">
       <div className="text-muted-foreground">
-        The average effect is a Cohen&apos;s d of:
+        The average effect is a Cohen&apos;s d with a 95% confidence interval
+        of:
       </div>
       <div className="grid grid-cols-3 gap-4">
         <div className="bg-muted rounded-lg p-4">
