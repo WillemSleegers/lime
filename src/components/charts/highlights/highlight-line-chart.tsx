@@ -11,7 +11,7 @@ const chartConfig = {
 
 type HighlightLineChartProps = {
   chartData: {
-    x: string
+    x: number | string
     y: number
   }[]
 }

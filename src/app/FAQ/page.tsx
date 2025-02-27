@@ -8,7 +8,7 @@ import Link from "next/link"
 
 const FAQ = () => {
   return (
-    <main className="prose container py-12">
+    <main className="prose container my-12 md:my-16">
       <h1 className="text-center">FAQ</h1>
       <Accordion type="single" collapsible>
         <h2>General</h2>

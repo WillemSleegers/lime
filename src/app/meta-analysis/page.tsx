@@ -1,32 +1,54 @@
 "use client"
 
+import { WebR } from "webr"
 import { useEffect, useState } from "react"
 
+import { Effect } from "@/components/effect"
+import { Button } from "@/components/ui/button"
+import { ForestPlot } from "@/components/forest-plot"
+import { RCode } from "@/components/meta-analysis/R-code"
 import { Filters } from "@/components/meta-analysis/filters"
 import { Highlights } from "@/components/meta-analysis/highlights"
-import { Effect } from "@/components/effect"
-import { ForestPlot } from "@/components/forest-plot"
 import { PublicationBias } from "@/components/meta-analysis/publication-bias"
 
-import allData from "../../assets/data/data.json"
-import { WebR } from "webr"
 import { runMetaAnalysis } from "@/lib/r-functions"
-import { Button } from "@/components/ui/button"
-import { RCode } from "@/components/meta-analysis/R-code"
 
-const handleDownload = (data: typeof allData, fileName: string) => {
-  const columnNames = Object.keys(data[0])
+import allData from "../../assets/data/data.json"
+import codebook from "@/assets/data/codebook.json"
+
+const handleDownload = (data: Record<string, unknown>[], fileName: string) => {
+  if (data.length === 0) {
+    console.warn("No data to download")
+    return
+  }
+
+  // Extract column names
+  const columnNames: string[] = []
+  data.forEach((item) => {
+    Object.keys(item).forEach((key) => {
+      if (!columnNames.includes(key)) {
+        columnNames.push(key)
+      }
+    })
+  })
+
   // Loop over the data and extract values for each column
   const rowsData: string[] = []
-  data.map((row: { [key: string]: unknown }) => {
+
+  data.forEach((row: Record<string, unknown>) => {
     const rowData: string[] = []
     columnNames.forEach((columnName: string) => {
-      const value = String(row[columnName])
-      const escapedValue = value.includes(",") ? `"${value}"` : value
+      const value = String(row[columnName] || "")
+      // Escape commas, quotes, and newlines
+      const escapedValue =
+        value.includes(",") || value.includes('"') || value.includes("\n")
+          ? `"${value.replace(/"/g, '""')}"`
+          : value
       rowData.push(escapedValue)
     })
     rowsData.push(rowData.join(","))
   })
+
   const text = columnNames.join(",") + "\n" + rowsData.join("\n")
   const element = document.createElement("a")
   element.setAttribute(
@@ -87,9 +109,9 @@ const MetaAnalysis = () => {
         console.log("Running meta-analysis")
         const subset = data.map((e: any) =>
           (({
-            effect_size_value,
+            effect_size,
             effect_size_var,
-            effect_se,
+            effect_size_se,
             paper_study,
             paper,
             study,
@@ -97,9 +119,9 @@ const MetaAnalysis = () => {
             intervention_condition,
             control_condition,
           }) => ({
-            effect_size_value,
+            effect_size,
             effect_size_var,
-            effect_se,
+            effect_size_se,
             paper_study,
             paper,
             study,
@@ -153,6 +175,13 @@ const MetaAnalysis = () => {
           onClick={() => handleDownload(data, "lime-data.csv")}
         >
           Download data
+        </Button>
+        <Button
+          variant="secondary"
+          className="rounded-2xl"
+          onClick={() => handleDownload(codebook, "codebook.csv")}
+        >
+          Download codebook
         </Button>
       </div>
     </main>

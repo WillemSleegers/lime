@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { ChevronRight } from "lucide-react"
+import Link from "next/link"
 import {
   ResponsiveContainer,
   ScatterChart,
@@ -10,19 +12,20 @@ import {
   TooltipProps,
   ReferenceLine,
 } from "recharts"
+
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../ui/collapsible"
-import { ChevronRight } from "lucide-react"
+
 import { cn, round } from "@/lib/utils"
-import { Data } from "@/lib/json-functions"
+import { Data } from "@/lib/types"
+
 import {
   NameType,
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent"
-import Link from "next/link"
 
 type PublicationBiasProps = {
   effect: number
@@ -44,9 +47,9 @@ export const PublicationBias = (props: PublicationBiasProps) => {
   useEffect(() => {
     const newData = data.map((e) => {
       return {
-        x: e.effect_size_value,
-        y: e.effect_se,
-        name: e.effect_label,
+        x: e.effect_size,
+        y: e.effect_size_se,
+        name: e.paper_label + " - " + e.effect,
       }
     })
 

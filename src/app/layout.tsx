@@ -1,11 +1,14 @@
-import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+
+import type { Metadata } from "next"
 
 import { MainNav } from "@/components/navigation/main-nav"
+import { Footer } from "@/components/footer"
+
+import { cn } from "@/lib/utils"
 
 import "./globals.css"
-import { Footer } from "@/components/footer"
-import { cn } from "@/lib/utils"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -25,6 +28,7 @@ export default function RootLayout({
         <MainNav />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   )

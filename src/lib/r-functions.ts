@@ -13,7 +13,7 @@ export const code = `
   
   # Run the meta-analysis
   res <- metafor::rma.mv(
-    yi = effect_size_value, 
+    yi = effect_size, 
     V = V, 
     random = ~ 1 | paper / study / outcome, 
     data = data
@@ -28,9 +28,9 @@ export const code = `
 
   # Run the Egger's test
   res_egger <- metafor::rma.mv(
-    effect_size_value, V, 
+    effect_size, V, 
     random = ~ 1 | paper / study / outcome,
-    mods = ~effect_se,
+    mods = ~effect_size_se,
     data = data
   )
 

@@ -17,7 +17,13 @@ import { HighlightLineChart } from "@/components/charts/highlights/highlight-lin
 import { HighlightRadialBarChart } from "@/components/charts/highlights/highlight-radial-bar-chart"
 
 import { cn, round } from "@/lib/utils"
-import { Data, getCount, getCounts, getUniqueData } from "@/lib/json-functions"
+import {
+  countUniqueFilteredValues,
+  countUniqueValues,
+  countUniqueValuesByGroup,
+  mapToXYArray,
+} from "@/lib/json-functions"
+import { Data } from "@/lib/types"
 
 type HighLightsProps = {
   data: Data
@@ -47,14 +53,21 @@ export const Highlights = (props: HighLightsProps) => {
   ].length
 
   const effectsCount = data.length
-  const papersCount = getUniqueData(data, "paper")
-  const openAccessCount = getCount(data, "paper", "paper_open_access", "yes")
-  const yearCounts = getCounts(data, "paper", "paper_year")
+  const papersCount = countUniqueValues(data, "paper")
+  const openAccessCount = countUniqueFilteredValues(
+    data,
+    "paper",
+    "paper_open_access",
+    "yes"
+  )
+  const preregistrationsCount = countUniqueFilteredValues(
+    data,
+    "paper_study",
+    "study_preregistered",
+    "yes"
+  )
+  const yearCounts = countUniqueValuesByGroup(data, "paper", "paper_year")
   const mostRecentYear = Math.max(...data.map((e) => e.paper_year))
-
-  const preregisteredPapers = data.filter(
-    (datum) => datum.study_preregistered === "yes"
-  ).length
 
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
@@ -123,14 +136,17 @@ export const Highlights = (props: HighLightsProps) => {
           {/* Percentage of open access papers */}
           <Card className="grow">
             <CardHeader>
-              <CardTitle>{preregisteredPapers.toString()}</CardTitle>
+              <CardTitle>{preregistrationsCount.toString()}</CardTitle>
               <CardDescription className="mt-0 leading-5">
-                Preregistrations
+                Preregistered studies
               </CardDescription>
             </CardHeader>
             <CardContent>
               <HighlightRadialBarChart
-                percentage={round((preregisteredPapers / papersCount) * 100, 0)}
+                percentage={round(
+                  (preregistrationsCount / studiesCount) * 100,
+                  0
+                )}
               />
             </CardContent>
           </Card>
@@ -143,7 +159,7 @@ export const Highlights = (props: HighLightsProps) => {
               </CardDescription>
             </CardHeader>
             <CardContent className="pb-0">
-              <HighlightLineChart chartData={yearCounts} />
+              <HighlightLineChart chartData={mapToXYArray(yearCounts)} />
             </CardContent>
           </Card>
         </div>

@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const Contact = () => {
   return (
-    <main className="prose container py-12 grow">
+    <main className="prose container my-12 md:my-16 grow">
       <h1 className="text-center">Contact</h1>
       <p>
         The best way to contact us is via e-mail. Click on one of the options
