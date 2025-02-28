@@ -1,6 +1,5 @@
 import Link from "next/link"
 
-import { Footer } from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
 import { Counter } from "@/components/counter"
 import { Button } from "@/components/ui/button"
@@ -10,7 +9,7 @@ import counts from "@/assets/data/counts.json"
 
 export default function Home() {
   return (
-    <div className="mt-6 space-y-12 md:mt-18 md:space-y-24 lg:mt-24">
+    <div className="mt-6 mb-12 md:mb-18 space-y-12 md:mt-18 md:space-y-24 lg:mt-24">
       {/* Hero */}
       <section className="mx-auto max-w-xl space-y-8 p-4 text-center sm:max-w-2xl md:space-y-12">
         <Badge variant="destructive">Currently in beta</Badge>
@@ -80,8 +79,8 @@ export default function Home() {
       </section>
 
       {/* Data explorer */}
-      <section className="text-center">
-        <div className="mx-4">
+      <section className="text-center max-w-6xl mx-auto">
+        <div className="px-4">
           <h2 className="text-3xl font-bold md:text-4xl">
             <span className="text-primary">Explore</span> Studies
           </h2>

@@ -1,15 +1,66 @@
 "use client"
 
+import { WebR } from "webr"
 import { useEffect, useState } from "react"
-import { Filters } from "@/components/meta-analysis/filters"
-import { Highlights } from "@/components/highlights/highlights"
+
 import { Effect } from "@/components/effect"
+import { Button } from "@/components/ui/button"
 import { ForestPlot } from "@/components/forest-plot"
+import { RCode } from "@/components/meta-analysis/R-code"
+import { Filters } from "@/components/meta-analysis/filters"
+import { Highlights } from "@/components/meta-analysis/highlights"
 import { PublicationBias } from "@/components/meta-analysis/publication-bias"
 
-import allData from "../../assets/data/data.json"
-import { WebR } from "webr"
 import { runMetaAnalysis } from "@/lib/r-functions"
+
+import allData from "../../assets/data/data.json"
+import codebook from "@/assets/data/codebook.json"
+
+const handleDownload = (data: Record<string, unknown>[], fileName: string) => {
+  if (data.length === 0) {
+    console.warn("No data to download")
+    return
+  }
+
+  // Extract column names
+  const columnNames: string[] = []
+  data.forEach((item) => {
+    Object.keys(item).forEach((key) => {
+      if (!columnNames.includes(key)) {
+        columnNames.push(key)
+      }
+    })
+  })
+
+  // Loop over the data and extract values for each column
+  const rowsData: string[] = []
+
+  data.forEach((row: Record<string, unknown>) => {
+    const rowData: string[] = []
+    columnNames.forEach((columnName: string) => {
+      const value = String(row[columnName] || "")
+      // Escape commas, quotes, and newlines
+      const escapedValue =
+        value.includes(",") || value.includes('"') || value.includes("\n")
+          ? `"${value.replace(/"/g, '""')}"`
+          : value
+      rowData.push(escapedValue)
+    })
+    rowsData.push(rowData.join(","))
+  })
+
+  const text = columnNames.join(",") + "\n" + rowsData.join("\n")
+  const element = document.createElement("a")
+  element.setAttribute(
+    "href",
+    "data:text/csv;charset=utf-8," + encodeURIComponent(text)
+  )
+  element.setAttribute("download", fileName)
+  element.style.display = "none"
+  document.body.appendChild(element)
+  element.click()
+  document.body.removeChild(element)
+}
 
 const MetaAnalysis = () => {
   const [status, setStatus] = useState("Loading webR...")
@@ -58,9 +109,9 @@ const MetaAnalysis = () => {
         console.log("Running meta-analysis")
         const subset = data.map((e: any) =>
           (({
-            effect_size_value,
+            effect_size,
             effect_size_var,
-            effect_se,
+            effect_size_se,
             paper_study,
             paper,
             study,
@@ -68,9 +119,9 @@ const MetaAnalysis = () => {
             intervention_condition,
             control_condition,
           }) => ({
-            effect_size_value,
+            effect_size,
             effect_size_var,
-            effect_se,
+            effect_size_se,
             paper_study,
             paper,
             study,
@@ -100,23 +151,38 @@ const MetaAnalysis = () => {
   }, [data])
 
   return (
-    <main className="m-auto max-w-(--breakpoint-lg) mb-12">
-      <div className="m-3">
-        <div className="my-5">
-          <span className="font-semibold">Status:</span> {status}
-        </div>
-        <Filters setData={setData} disabled={disableForm} />
-        <Highlights data={data} />
-        <Effect effect={effect} />
-        <PublicationBias
-          data={data}
-          effect={effect.value}
-          egger_b={effect.egger_b}
-          egger_se={effect.egger_se}
-          egger_z={effect.egger_z}
-          egger_p={effect.egger_p}
-        />
-        <ForestPlot data={data} />
+    <main className="mx-auto w-full flex flex-col gap-1 max-w-4xl mb-12 p-2 grow">
+      <div className="py-3">
+        <span className="font-semibold">Status:</span> {status}
+      </div>
+      <Filters setData={setData} disabled={disableForm} />
+      <Highlights data={data} />
+      <Effect effect={effect} />
+      <PublicationBias
+        data={data}
+        effect={effect.value}
+        egger_b={effect.egger_b}
+        egger_se={effect.egger_se}
+        egger_z={effect.egger_z}
+        egger_p={effect.egger_p}
+      />
+      <ForestPlot data={data} />
+      <div className="p-3 flex justify-center gap-3">
+        <RCode />
+        <Button
+          variant="secondary"
+          className="rounded-2xl"
+          onClick={() => handleDownload(data, "lime-data.csv")}
+        >
+          Download data
+        </Button>
+        <Button
+          variant="secondary"
+          className="rounded-2xl"
+          onClick={() => handleDownload(codebook, "codebook.csv")}
+        >
+          Download codebook
+        </Button>
       </div>
     </main>
   )

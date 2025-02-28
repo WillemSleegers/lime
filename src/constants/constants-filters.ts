@@ -48,8 +48,8 @@ export const INTERVENTION_MEDIUM_OPTIONS = customSort([
       .flatMap((str) => str.split(",").map((s) => s.trim()))
   ),
 ])
-export const INTERVENTION_COUNTRY_OPTIONS = customSort(
-  [...new Set(interventions.map((datum) => datum.intervention_country))],
+export const COUNTRY_OPTIONS = customSort(
+  [...new Set(interventions.map((datum) => datum.sample_country))],
   NA_OPTIONS
 )
 

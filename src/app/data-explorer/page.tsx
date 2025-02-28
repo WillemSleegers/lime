@@ -60,7 +60,7 @@ export default function DataExplorer() {
       | typeof outcomes
       | typeof effects
       | typeof all,
-    fileName: string,
+    fileName: string
   ) => {
     const columnNames = Object.keys(data[0])
     // Loop over the data and extract values for each column
@@ -78,7 +78,7 @@ export default function DataExplorer() {
     const element = document.createElement("a")
     element.setAttribute(
       "href",
-      "data:text/csv;charset=utf-8," + encodeURIComponent(text),
+      "data:text/csv;charset=utf-8," + encodeURIComponent(text)
     )
     element.setAttribute("download", fileName)
     element.style.display = "none"
@@ -88,7 +88,7 @@ export default function DataExplorer() {
   }
 
   return (
-    <main className="container space-y-6 py-12">
+    <main className="container space-y-6 my-12 md:my-16">
       <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
       <Tabs defaultValue={level} className="space-y-6">
         <div className="mx-auto flex w-fit flex-wrap items-center justify-center gap-3">

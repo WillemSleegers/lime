@@ -1,0 +1,624 @@
+[
+  {
+    "column": "paper",
+    "description": "A numeric identifier unique to each paper.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "paper_authors",
+    "description": "Authors of the paper (last name, first name initials), separated with a semicolon.",
+    "data_type": "string"
+  },
+  {
+    "column": "paper_year",
+    "description": "Publication year of the paper.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "paper_label",
+    "description": "A short label to identify the paper, based on APA's in-text citation style: authors and year of publication.",
+    "data_type": "string"
+  },
+  {
+    "column": "paper_title",
+    "description": "Title of the paper.",
+    "data_type": "string"
+  },
+  {
+    "column": "paper_type",
+    "description": "Type of paper.",
+    "data_type": "factor",
+    "factor_levels": "peer reviewed paper, report, thesis, preprint"
+  },
+  {
+    "column": "paper_source",
+    "description": "The source of the paper (e.g., the journal in which the paper was published or the website where it is hosted).",
+    "data_type": "string"
+  },
+  {
+    "column": "paper_link",
+    "description": "A link to the paper (usually the doi).",
+    "data_type": "string"
+  },
+  {
+    "column": "paper_open_access",
+    "description": "Whether the paper is open access or not.",
+    "data_type": "factor",
+    "factor_levels": "no, yes"
+  },
+  {
+    "column": "paper_data_available",
+    "description": "Whether the data from the paper is publicly available.",
+    "data_type": "factor",
+    "factor_levels": "no, yes, n/a",
+    "notes": "Moved to the study level; currently hidden to preserve information of non-coded papers."
+  },
+  {
+    "column": "paper_data_link",
+    "description": "A link to the data from the paper.",
+    "data_type": "string",
+    "notes": "Moved to the study level; currently hidden to preserve information of non-coded papers."
+  },
+  {
+    "column": "paper_notes",
+    "description": "Additional notes about the paper (e.g., whether relevant statistics are not reported and the authors have to be contacted; why a paper was not included even though it seems relevant).",
+    "data_type": "string"
+  },
+  {
+    "column": "paper_status",
+    "description": "The status of processing the paper; currently only says whether we've checked out the paper again or not.",
+    "data_type": "factor",
+    "factor_levels": "checked"
+  },
+  {
+    "column": "paper_included",
+    "description": "Whether we've included the paper in the meta-analysis (yes = included, no = not relevant, not yet = relevant but not included yet for example, because additional statistics have to be requested from the authors).",
+    "data_type": "factor",
+    "factor_levels": "yes, no, not yet"
+  },
+  {
+    "column": "paper_extracted_all_statistics",
+    "description": "Whether we've extracted all relevant statistics from the paper or not. \"No\" means that there may be additional data (usually less relevant dependent variables) that could be included.",
+    "data_type": "factor",
+    "factor_levels": "no, yes"
+  },
+  {
+    "column": "study",
+    "description": "A numeric identifier to identify the specific study from the paper.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "study_n",
+    "description": "Total number of participants/observations in the study. This number represents the sample size retained for analysis and the earliest time point for studies with multiple measurement time points.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "study_preregistered",
+    "description": "Whether the study was preregistered or not.",
+    "data_type": "factor",
+    "factor_levels": "no, yes"
+  },
+  {
+    "column": "study_preregistration_link",
+    "description": "A link to the study's preregistration.",
+    "data_type": "string"
+  },
+  {
+    "column": "study_data_available",
+    "description": "Whether the data from the paper is publicly available.",
+    "data_type": "factor",
+    "factor_levels": "no, yes"
+  },
+  {
+    "column": "study_data_link",
+    "description": "A link to the data from the paper.",
+    "data_type": "string"
+  },
+  {
+    "column": "study_notes",
+    "description": "Additional notes about the study.",
+    "data_type": "factor"
+  },
+  {
+    "column": "time",
+    "description": "A numeric identifier to identify the measurement point from the study.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample",
+    "description": "A numeric identifier to identify the specific sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_label",
+    "description": "A short label to describe the sample.",
+    "data_type": "string"
+  },
+  {
+    "column": "sample_n",
+    "description": "The sample size of the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_gender_f_n",
+    "description": "The number of female participants in the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_gender_f_pct",
+    "description": "The percentage of female participants in the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_gender_m_n",
+    "description": "The number of male participants in the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_gender_m_pct",
+    "description": "The percentage of male participants in the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_gender_other_n",
+    "description": "The number of non-female and non-male participants in the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_gender_other_pct",
+    "description": "The percentage of non-female and non-male participants in the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_age_mean",
+    "description": "The average age of the participants in the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_age_sd",
+    "description": "The standard deviation of the age of the participants in the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_age_min",
+    "description": "The minimum age of the participants in the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_age_max",
+    "description": "The maximum age of the participants in the sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "sample_description",
+    "description": "A brief description of the type of participants in the sample (e.g., residents of a moderate size city in Australia).",
+    "data_type": "string"
+  },
+  {
+    "column": "sample_type",
+    "description": "A categorization of the kind of participants that participated in the study: children, panel (i.e., participants recruited via a participant recruitment service such as MTurk, Prolific, or Kantar), public (i.e., people recruited from the general public via flyers, social media advertisement, or door-to-door canvassing), university (i.e., students and other people recruited in a university setting).",
+    "data_type": "factor",
+    "factor_levels": "public, university, children, panel"
+  },
+  {
+    "column": "sample_representative",
+    "description": "Whether the sample was broadly representative of the population of the country in which the study was conduced (e.g., in gender, age, income, political orientation).",
+    "data_type": "factor",
+    "factor_levels": "no, yes"
+  },
+  {
+    "column": "sample_recruitment_location",
+    "description": "A brief description of the location at which (e.g., a specific campus), or the medium with which (e.g., social media advertisements), the participants were recruited to participate in the study.",
+    "data_type": "string"
+  },
+  {
+    "column": "sample_country",
+    "description": "The name of the country in which the study was conducted.",
+    "data_type": "string"
+  },
+  {
+    "column": "sample_compensation",
+    "description": "The type and amount of compensation the participants received for participating in the study.",
+    "data_type": "string"
+  },
+  {
+    "column": "sample_notes",
+    "description": "Additional notes about the sample.",
+    "data_type": "string"
+  },
+  {
+    "column": "condition",
+    "description": "A numeric identifier to identify the specific condition.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "condition_label",
+    "description": "A brief description of the condition.",
+    "data_type": "string"
+  },
+  {
+    "column": "condition_category",
+    "description": "A categorization of the condition as a control condition or intervention condition.",
+    "data_type": "factor",
+    "factor_levels": "control, intervention"
+  },
+  {
+    "column": "condition_description",
+    "description": "A more detailed description of the condition (usually copied verbatim from the paper).",
+    "data_type": "string"
+  },
+  {
+    "column": "condition_assignment",
+    "description": "How participants were assigned to the conditions: random = fully random assignment, random clusters = random assignment of groups such as classrooms or random assignment of days or weeks to either intervention or control, non-random = participants self-selected into the condition (e.g., which documentary screening they want to attend, whether they want to accept a leaflet), quasi-random = participants self-selected but some aspect of the selection procedure ensured some randomness in the distribution (e.g., the attendance capacity for seminars was only gradually raised to force some students into the seminars with the non-preferred topics, the control group for the participants who selected which documentary to watch was drawn from people who showed interest in the documentary but did not show up to the screening).",
+    "data_type": "factor",
+    "factor_levels": "random, random clusters, non-random, quasi-random"
+  },
+  {
+    "column": "intervention_count",
+    "description": "A numeric value indicating how many different interventions participants in the intervention group were exposed to.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "intervention_duration",
+    "description": "Duration of the intervention, in days. If the intervention duration is less than half a day, it gets the value 0.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "intervention_content",
+    "description": "Content categories of different appeals to reduce meat consumption:\n- animal welfare \n- environment\n- health\n- personal image\n- taste/ disgust\n- none",
+    "data_type": "factor",
+    "factor_levels": "personal image, environment, animal welfare, health, none, taste/ disgust",
+    "notes": "if an intervention refers to the relative costs of a plant-based vs. meat-based diet, price should be added here"
+  },
+  {
+    "column": "intervention_mechanism",
+    "description": "The psychological mechanism targeted by the intervention(s):\n- factual \n- negative emotional (shocking, cruelty, disgust)\n- positive emotional (animal cuteness, affirming compassion)\n- symbolic meaning\n- norms\n- choice architecture\n- goal pursuit (self efficacy, goal setting, implementation intentions, self-monitoring)\n- perspective taking\n- infotainment\n- origin of animal product\n- celebrity\n- taste\n- identity\n- price",
+    "data_type": "factor",
+    "factor_levels": "factual, negative emotional, perspective taking, goal pursuit, norms, origin of animal product, infotainment, celebrity, choice architecture, factual , positive emotional, taste, identity, price"
+  },
+  {
+    "column": "intervention_medium",
+    "description": "The medium in which the intervention(s) were adminstered:\n- text \n- video\n- 3D\n- audio\n- in-person\n- presentation\n- image\n- price\n- taste\n- menu/ food options",
+    "data_type": "factor",
+    "factor_levels": "text, presentation, video, 3D video, image, menu/ food options, in-person, price"
+  },
+  {
+    "column": "condition_notes",
+    "description": "Additional notes about the condition.",
+    "data_type": "string"
+  },
+  {
+    "column": "outcome",
+    "description": "A numeric identifier to identify the outcome measure.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "outcome_label",
+    "description": "A description of the outcome measure.",
+    "data_type": "string"
+  },
+  {
+    "column": "outcome_description",
+    "description": "A more specific description of how the outcome was measured.",
+    "data_type": "string"
+  },
+  {
+    "column": "outcome_expectation",
+    "description": "Whether the intervention is expected to increase or decrease the outcome.",
+    "data_type": "factor",
+    "factor_levels": "increase, decrease"
+  },
+  {
+    "column": "outcome_category",
+    "description": "A categorization of the outcome: attitudes/beliefs, behavior, intentions",
+    "data_type": "factor",
+    "factor_levels": "behavior, attitudes/beliefs, intentions"
+  },
+  {
+    "column": "outcome_subcategory",
+    "description": "A more fine-grained categorization of the outcome",
+    "data_type": "factor",
+    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, purchasing intentions, vegetarian consumption, meat commitment, diet, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics, vegan consumption"
+  },
+  {
+    "column": "outcome_measurement_type",
+    "description": "A categoriziation of how the outcome was measured: food diary, sales data, survey.",
+    "data_type": "factor",
+    "factor_levels": "survey, food diary, sales data"
+  },
+  {
+    "column": "outcome_meat_type",
+    "description": "A categorization of what kind of meat consumption was measured.",
+    "data_type": "factor",
+    "factor_levels": "red meat, white meat, all, pork, processed meat, poultry, fish, eggs, dairy, chicken, beef, lamb, red and processed meat, factory farmed meat, animal products from factory farms"
+  },
+  {
+    "column": "outcome_scale",
+    "description": "The scale on which the outcome was assessed (e.g., 7-point Likert).",
+    "data_type": "string"
+  },
+  {
+    "column": "outcome_days_since_intervention",
+    "description": "The number of days since the intervention at the time of measuring the outcome; 0 indicates that the intervention took place on the same day as the measurement.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "outcome_notes",
+    "description": "Additional notes about the outcome.",
+    "data_type": "string"
+  },
+  {
+    "column": "time_1",
+    "description": "A numeric identifier to identify the measurement point from the study.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "condition_1",
+    "description": "A numeric identifier to identify the specific condition.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "condition_1_label",
+    "description": "A brief description of the condition.",
+    "data_type": "string"
+  },
+  {
+    "column": "condition_1_category",
+    "description": "A categorization of the condition as a control condition or intervention condition.",
+    "data_type": "factor",
+    "factor_levels": "control, intervention"
+  },
+  {
+    "column": "time_2",
+    "description": "For studies that report change scores: A numeric identifier to identify the specific condition with which the other condition was compared.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "condition_2",
+    "description": "For studies that report change scores: A numeric identifier to identify the specific condition with which the other condition was compared.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "condition_2_label",
+    "description": "For studies that report change scores: A brief description of the condition with which the other condition was compared.",
+    "data_type": "string"
+  },
+  {
+    "column": "condition_2_category",
+    "description": "For studies that report change scores: A categorization of the condition with which the other condition was compared as a control condition or intervention condition.",
+    "data_type": "factor",
+    "factor_levels": "control, intervention"
+  },
+  {
+    "column": "statistics",
+    "description": "A numeric identifier to identify the group of statistics.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "statistic",
+    "description": "A numeric identifier to identify the specific statistic.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "statistic_name",
+    "description": "The kind of statistic (e.g., mean, standard deviation).",
+    "data_type": "factor",
+    "factor_levels": "successes, failures, n, percentage, M, SD, SE, beta"
+  },
+  {
+    "column": "statistic_value",
+    "description": "The value of the statistic.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "statistic_from_paper",
+    "description": "Whether or not the statistic was directly taken from the paper.",
+    "data_type": "factor",
+    "factor_levels": "yes, no, approx."
+  },
+  {
+    "column": "statistic_notes",
+    "description": "Additional comments about the statistic.",
+    "data_type": "string"
+  },
+  {
+    "column": "time",
+    "description": "A numeric identifier to identify the specific sample.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "control_time",
+    "description": "A numeric identifier to identify the measurement point for the control condition.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "control_condition",
+    "description": "A numeric identifier to identify the specific condition from the study that serves as the control condition.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "control_label",
+    "description": "A brief description of the condition that serves as the control condition.",
+    "data_type": "string"
+  },
+  {
+    "column": "intervention_time",
+    "description": "A numeric identifier to identify the measurement point for the intervention condition.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "intervention_condition",
+    "description": "A numeric identifier to identify the specific condition from the study that serves as the intervention condition.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "intervention_label",
+    "description": "A brief description of the condition that serves as the intervention condition.",
+    "data_type": "string"
+  },
+  {
+    "column": "control_statistics",
+    "description": "A numeric identifier to identify the group of statistics from the control group used to calculate the effect.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "intervention_statistics",
+    "description": "A numeric identifier to identify the group of statistics from the intervention group used to calculate the effect.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "effect",
+    "description": "A numeric identifier to identify the effect.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "effect_size_name",
+    "description": "The name of the effect size.",
+    "data_type": "factor",
+    "factor_levels": "OR2DL, SMD, SMCC, eta squared , partial eta squared , d"
+  },
+  {
+    "column": "effect_size_value",
+    "description": "The value of the effect size.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "effect_size_lower",
+    "description": "The lower bound value of the effect size.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "effect_size_upper",
+    "description": "The upper bound value of the effect size.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "effect_size_var",
+    "description": "The variance of the effect size.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "effect_size_se",
+    "description": "The standard error of the effect size, calculated from the variance by taking its square root.",
+    "data_type": "numeric"
+  },
+  {
+    "column": "effect_analysis",
+    "description": "The type of analysis that was conducted to test the effect.",
+    "data_type": "factor",
+    "factor_levels": "Pearson's Chi-squared test, Fisher's exact test, Welch's two sample t-test, One-sample t-test, MANCOVA, ANOVA, ANCOVA , Planned contrast, Paired-sample t-test, Mixed regression model, Meta-analytic estimate"
+  },
+  {
+    "column": "effect_statistic_name",
+    "description": "The name of the test statistic.",
+    "data_type": "factor",
+    "factor_levels": "chi squared, t, F",
+    "notes": "Currently hidden; not sure if this is worth recording."
+  },
+  {
+    "column": "effect_statistic_value",
+    "description": "The value of the test statistic.",
+    "data_type": "numeric",
+    "notes": "Currently hidden; not sure if this is worth recording."
+  },
+  {
+    "column": "effect_df",
+    "description": "The degrees of freedom of the test.",
+    "data_type": "numeric",
+    "notes": "Currently hidden; not sure if this is worth recording."
+  },
+  {
+    "column": "effect_df_num",
+    "description": "The numerator degrees of freedom of the test.",
+    "data_type": "numeric",
+    "notes": "Currently hidden; not sure if this is worth recording."
+  },
+  {
+    "column": "effect_df_den",
+    "description": "The denominator degrees of freedom of the test.",
+    "data_type": "numeric",
+    "notes": "Currently hidden; not sure if this is worth recording."
+  },
+  {
+    "column": "effect_p",
+    "description": "The p-value of the test.",
+    "data_type": "numeric",
+    "notes": "Currently hidden; not sure if this is worth recording."
+  },
+  {
+    "column": "effect_from_paper",
+    "description": "Whether the statistics of the effect were directly taken from the paper.",
+    "data_type": "factor",
+    "factor_levels": "no, yes , yes"
+  },
+  {
+    "column": "effect_covariates",
+    "description": "Which covariates were included in calculating the effect size.",
+    "data_type": "string"
+  },
+  {
+    "column": "effect_exclude",
+    "description": "Whether the effect should be excluded from the meta-analysis.",
+    "data_type": "factor",
+    "factor_levels": "yes, no, maybe"
+  },
+  {
+    "column": "effect_notes",
+    "description": "Additional notes about the effect.",
+    "data_type": "string"
+  },
+  {
+    "column": "paper_study",
+    "description": "An identifier to uniquely identify each study by concatenating the paper identifier and the study identifier, separated with a dash (e.g., 1 - 1)",
+    "data_type": "string",
+    "notes": "Not included in the sheet; this variable is created as part of the R code to prepare the data for the website."
+  },
+  {
+    "column": "intervention_description",
+    "description": "A description of the intervention condition, usually taken verbatim from the paper.",
+    "data_type": "string",
+    "notes": "Not included in the sheet; this variable is created as part of the R code to prepare the data for the website."
+  },
+  {
+    "column": "control_description",
+    "description": "A description of the control condition, usually taken verbatim from the paper.",
+    "data_type": "string",
+    "notes": "Not included in the sheet; this variable is created as part of the R code to prepare the data for the website."
+  },
+  {
+    "column": "sample_intervention",
+    "description": "A numeric identifier to identify the specific sample of the intervention condition.",
+    "data_type": "numeric",
+    "notes": "Not included in the sheet; this variable is created as part of the R code to prepare the data for the website."
+  },
+  {
+    "column": "sample_intervention_n",
+    "description": "The sample size of the sample of the intervention condition. This may be different than the sample size of the effect due to missing data on the outcome variable or filters that the researchers applied.",
+    "data_type": "numeric",
+    "notes": "Not included in the sheet; this variable is created as part of the R code to prepare the data for the website."
+  },
+  {
+    "column": "sample_control",
+    "description": "A numeric identifier to identify the specific sample of the control condition.",
+    "data_type": "numeric",
+    "notes": "Not included in the sheet; this variable is created as part of the R code to prepare the data for the website."
+  },
+  {
+    "column": "sample_control_n",
+    "description": "The sample size of the sample of the control condition. This may be different than the sample size of the effect due to missing data on the outcome variable or filters that the researchers applied.",
+    "data_type": "numeric",
+    "notes": "Not included in the sheet; this variable is created as part of the R code to prepare the data for the website."
+  },
+  {
+    "column": "effect_intervention_n",
+    "description": "The sample size in the intervention condition of the current effect. This may be different than other sample sizes due to missing data or other filters that the researchers applied.",
+    "data_type": "numeric",
+    "notes": "Not included in the sheet; this variable is created as part of the R code to prepare the data for the website."
+  },
+  {
+    "column": "effect_control_n",
+    "description": "The sample size in the control condition of the current effect. This may be different than other sample sizes due to missing data or other filters that the researchers applied.",
+    "data_type": "numeric",
+    "notes": "Not included in the sheet; this variable is created as part of the R code to prepare the data for the website."
+  }
+]

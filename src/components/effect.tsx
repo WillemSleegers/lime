@@ -40,7 +40,7 @@ export const Effect = (props: EffectProps) => {
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
         {effect.value ? (
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-3 my-3">
             <ChartEffect
               effect={effect.value}
               lower={effect.lower}
@@ -79,7 +79,10 @@ export const Effect = (props: EffectProps) => {
               </div>
             </div>
 
-            <Button variant="secondary" className="whitespace-nowrap">
+            <Button
+              variant="secondary"
+              className="whitespace-nowrap rounded-2xl"
+            >
               <a href="https://rpsychologist.com/cohend/" target="_blank">
                 Learn more
               </a>

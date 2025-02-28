@@ -30,9 +30,9 @@ import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group"
 
 import {
   INTERVENTION_CONTENT_OPTIONS,
-  INTERVENTION_COUNTRY_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
+  COUNTRY_OPTIONS,
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
@@ -123,7 +123,7 @@ export const Filters = (props: FiltersProps) => {
       intervention_content: META_ANALYSIS_DEFAULTS.intervention_content,
       intervention_mechanism: META_ANALYSIS_DEFAULTS.intervention_mechanism,
       intervention_medium: META_ANALYSIS_DEFAULTS.intervention_medium,
-      sample_country: INTERVENTION_COUNTRY_OPTIONS,
+      sample_country: COUNTRY_OPTIONS,
       sample_size: 1,
     },
   })
@@ -177,9 +177,9 @@ export const Filters = (props: FiltersProps) => {
       )
     })
 
-    // Filter on country (intervention sample only)
+    // Filter on country
     subset = subset.filter((e) =>
-      values.sample_country.includes(e.sample_intervention_country)
+      values.sample_country.includes(e.sample_country)
     )
 
     if (subset.length == 0) {
@@ -617,7 +617,7 @@ export const Filters = (props: FiltersProps) => {
                             onValueChange={field.onChange}
                             value={field.value}
                           >
-                            {INTERVENTION_COUNTRY_OPTIONS.map((option) => (
+                            {COUNTRY_OPTIONS.map((option) => (
                               <ToggleGroupItem
                                 key={option}
                                 value={option}
@@ -632,7 +632,7 @@ export const Filters = (props: FiltersProps) => {
                               variant="link"
                               className="text-foreground h-auto px-2"
                               onClick={() =>
-                                field.onChange(INTERVENTION_COUNTRY_OPTIONS)
+                                field.onChange(COUNTRY_OPTIONS)
                               }
                             >
                               Select all

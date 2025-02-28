@@ -417,7 +417,7 @@ export type ColumnsEffects = {
   paper_label: string
   study: number
   //effect_size_name: string
-  effect_size_value: number
+  effect_size: number
   effect_size_var: number
   effect_intervention_n: number
   effect_control_n: number
@@ -449,13 +449,13 @@ export const ColumnsEffects: ColumnDef<ColumnsEffects>[] = [
   //   ),
   // },
   {
-    id: "effect_size_value",
-    accessorKey: "effect_size_value",
+    id: "effect_size",
+    accessorKey: "effect_size",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Effect size" />
     ),
     cell: ({ row }) => {
-      return round(row.getValue<number>("effect_size_value"), 2)
+      return round(row.getValue<number>("effect_size"), 2)
     },
   },
   {

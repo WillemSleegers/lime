@@ -19,7 +19,7 @@ import {
 } from "./ui/collapsible"
 import { ChevronRight } from "lucide-react"
 import { cn, round } from "@/lib/utils"
-import { Data } from "@/lib/json-functions"
+import { Data } from "@/lib/types"
 import {
   NameType,
   ValueType,
@@ -32,7 +32,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import effects from "../assets/data/prepared-effects.json"
+import effects from "../assets/data/data.json"
 
 type ForestPlotProps = {
   data: Data
@@ -45,19 +45,21 @@ export const ForestPlot = (props: ForestPlotProps) => {
   const [plotData, setPlotData] = useState<{}[]>([])
 
   const longestLabel = data
-    .map((e) => e.effect_label)
+    .map((e) => e.paper_label + " - " + e.effect)
     .reduce((a, b) => (a.length > b.length ? a : b))
 
   useEffect(() => {
     const newData = data
       .map((e) => {
         return {
-          name: e.effect_label,
-          value: e.effect_size_value,
-          summary: `${round(e.effect_size_value)} [${round(e.effect_size_lower)}; ${round(e.effect_size_upper)}]`,
+          name: e.paper_label + " - " + e.effect,
+          value: e.effect_size,
+          summary: `${round(e.effect_size)} [${round(
+            e.effect_size_lower
+          )}; ${round(e.effect_size_upper)}]`,
           error: [
-            Math.abs(e.effect_size_value - e.effect_size_lower),
-            Math.abs(e.effect_size_value - e.effect_size_upper),
+            Math.abs(e.effect_size - e.effect_size_lower),
+            Math.abs(e.effect_size - e.effect_size_upper),
           ],
         }
       })
@@ -73,7 +75,7 @@ export const ForestPlot = (props: ForestPlotProps) => {
           <ChevronRight
             className={cn("transition", open ? "rotate-90" : "rotate-0")}
           />
-          </div>
+        </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
         <div className="py-5">
@@ -168,7 +170,9 @@ class CustomizedAxisTick extends PureComponent {
   render() {
     const { x, y, payload }: any = this.props
 
-    const effect = effects.filter((e) => e.effect_label == payload.value)
+    const effect = effects.filter(
+      (e) => e.paper_label + " - " + e.effect == payload.value
+    )
 
     return (
       <Dialog>
@@ -230,7 +234,7 @@ class CustomizedAxisTick extends PureComponent {
               <div className="my-3">
                 <span className="font-semibold text-black">Value:</span>
                 <br />
-                <span>{effect[0].effect_size_value}</span>
+                <span>{effect[0].effect_size}</span>
               </div>
             </DialogDescription>
           </DialogHeader>

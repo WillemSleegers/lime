@@ -912,7 +912,7 @@ const formSchemaEffects = z.object({
 
 type FilterEffectsProps = {
   data: {
-    effect_size_value: number
+    effect_size: number
     effect_intervention_n: number
     effect_control_n: number
   }[]
@@ -923,10 +923,10 @@ export const FilterEffects = (props: FilterEffectsProps) => {
   const { data, setData } = props
 
   const effect_size_min = Math.min(
-    ...data.map((datum) => datum.effect_size_value)
+    ...data.map((datum) => datum.effect_size)
   )
   const effect_size_max = Math.max(
-    ...data.map((datum) => datum.effect_size_value)
+    ...data.map((datum) => datum.effect_size)
   )
 
   const form = useForm<z.infer<typeof formSchemaEffects>>({
@@ -944,8 +944,8 @@ export const FilterEffects = (props: FilterEffectsProps) => {
 
     subset = subset.filter(
       (datum) =>
-        datum.effect_size_value >= values.effect_size[0] &&
-        datum.effect_size_value <= values.effect_size[1]
+        datum.effect_size >= values.effect_size[0] &&
+        datum.effect_size <= values.effect_size[1]
     )
 
     const sample_size = Number(values.sample_size)
