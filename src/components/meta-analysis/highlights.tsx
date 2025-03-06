@@ -80,15 +80,18 @@ export const Highlights = (props: HighLightsProps) => {
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
-        <div className="flex flex-wrap gap-3 my-3">
+        <div className="my-3 gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
           {/* Number of papers */}
-          <Card className="grow">
+          <Card className="grow col-span-2">
             <CardHeader>
               <CardTitle>{papersCount.toString()}</CardTitle>
               <CardDescription className="mt-0 leading-5">
                 Number of papers
               </CardDescription>
             </CardHeader>
+            <CardContent>
+              <HighlightLineChart chartData={mapToXYArray(yearCounts)} />
+            </CardContent>
           </Card>
           {/* Number of studies */}
           <Card className="grow">
@@ -148,18 +151,6 @@ export const Highlights = (props: HighLightsProps) => {
                   0
                 )}
               />
-            </CardContent>
-          </Card>
-          {/* Most recent year */}
-          <Card className="grow">
-            <CardHeader>
-              <CardTitle>{mostRecentYear.toString()}</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Most recent publication year
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="pb-0">
-              <HighlightLineChart chartData={mapToXYArray(yearCounts)} />
             </CardContent>
           </Card>
         </div>
