@@ -28,9 +28,7 @@ export const FilterCollapsible = (props: FilterCollapsibleProps) => {
           className={cn("transition", open ? "rotate-90" : "rotate-0")}
         />
       </CollapsibleTrigger>
-      <CollapsibleContent className="CollapsibleContent">
-        {children}
-      </CollapsibleContent>
+      <CollapsibleContent>{children}</CollapsibleContent>
     </Collapsible>
   )
 }

@@ -375,7 +375,6 @@ export const ColumnsOutcomes: ColumnDef<ColumnsOutcomes>[] = [
     ),
     cell: ({ row, column }) => {
       const value = row.getValue<string>("outcome_description")
-      console.log(column.getSize())
       const limit = 115
       return (
         <div className="w-80">

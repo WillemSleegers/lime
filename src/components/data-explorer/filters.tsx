@@ -35,6 +35,10 @@ import {
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
 } from "@/constants/constants-filters"
 
+import { Toggle } from "../ui/toggle"
+import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
+import { Locks } from "@/lib/types"
+
 /* Paper-level */
 const formSchemaPapers = z.object({
   paper_year: z.number().array(),
@@ -55,10 +59,13 @@ type FilterPapersProps = {
     paper_open_access: string
   }[]
   setData: Function
+  lock: boolean
+  setLock: Function
+  setShouldHandleLocks: Function
 }
 
 export const FilterPapers = (props: FilterPapersProps) => {
-  const { data, setData } = props
+  const { data, setData, lock, setLock, setShouldHandleLocks } = props
 
   const form = useForm<z.infer<typeof formSchemaPapers>>({
     resolver: zodResolver(formSchemaPapers),
@@ -96,6 +103,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
     })
 
     setData(subset)
+    setShouldHandleLocks(true)
   }
 
   return (
@@ -195,9 +203,19 @@ export const FilterPapers = (props: FilterPapersProps) => {
             />
           </div>
 
-          <Button type="submit" className="h-auto rounded-full text-white">
-            Update table
-          </Button>
+          <div className="flex gap-2 justify-between">
+            <Button type="submit" className="h-auto rounded-full text-white">
+              Update table
+            </Button>
+            <Toggle
+              onClick={() => {
+                setLock((prev: boolean) => !prev)
+                setShouldHandleLocks(true)
+              }}
+            >
+              {lock ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
+            </Toggle>
+          </div>
         </form>
       </Form>
     </FilterCollapsible>
@@ -226,10 +244,13 @@ type FilterStudiesProps = {
     study_data_link?: string
   }[]
   setData: Function
+  lock: boolean
+  setLock: Function
+  setShouldHandleLocks: Function
 }
 
 export const FilterStudies = (props: FilterStudiesProps) => {
-  const { data, setData } = props
+  const { data, setData, lock, setLock, setShouldHandleLocks } = props
 
   const form = useForm<z.infer<typeof formSchemaStudies>>({
     resolver: zodResolver(formSchemaStudies),
@@ -262,6 +283,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     })
 
     setData(subset)
+    setShouldHandleLocks(true)
   }
 
   return (
@@ -356,9 +378,19 @@ export const FilterStudies = (props: FilterStudiesProps) => {
             />
           </div>
 
-          <Button type="submit" className="h-auto rounded-full text-white">
-            Update table
-          </Button>
+          <div className="flex gap-2 justify-between">
+            <Button type="submit" className="h-auto rounded-full text-white">
+              Update table
+            </Button>
+            <Toggle
+              onClick={() => {
+                setLock((prev: boolean) => !prev)
+                setShouldHandleLocks(true)
+              }}
+            >
+              {lock ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
+            </Toggle>
+          </div>
         </form>
       </Form>
     </FilterCollapsible>
@@ -388,10 +420,13 @@ type FilterInterventionsProps = {
     intervention_medium: string
   }[]
   setData: Function
+  lock: boolean
+  setLock: Function
+  setShouldHandleLocks: Function
 }
 
 export const FilterInterventions = (props: FilterInterventionsProps) => {
-  const { data, setData } = props
+  const { data, setData, lock, setLock, setShouldHandleLocks } = props
 
   const form = useForm<z.infer<typeof formSchemaInterventions>>({
     resolver: zodResolver(formSchemaInterventions),
@@ -426,6 +461,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
     })
 
     setData(subset)
+    setShouldHandleLocks(true)
   }
 
   return (
@@ -593,9 +629,19 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
             />
           </div>
 
-          <Button type="submit" className="h-auto rounded-full text-white">
-            Update table
-          </Button>
+          <div className="flex gap-2 justify-between">
+            <Button type="submit" className="h-auto rounded-full text-white">
+              Update table
+            </Button>
+            <Toggle
+              onClick={() => {
+                setLock((prev: boolean) => !prev)
+                setShouldHandleLocks(true)
+              }}
+            >
+              {lock ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
+            </Toggle>
+          </div>
         </form>
       </Form>
     </FilterCollapsible>
@@ -650,10 +696,13 @@ type FilterOutcomesProps = {
     outcome_measurement_type: string
   }[]
   setData: Function
+  lock: boolean
+  setLock: Function
+  setShouldHandleLocks: Function
 }
 
 export const FilterOutcomes = (props: FilterOutcomesProps) => {
-  const { data, setData } = props
+  const { data, setData, lock, setLock, setShouldHandleLocks } = props
 
   const form = useForm<z.infer<typeof formSchemaOutcomes>>({
     resolver: zodResolver(formSchemaOutcomes),
@@ -689,6 +738,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
     })
 
     setData(subset)
+    setShouldHandleLocks(true)
   }
 
   return (
@@ -896,9 +946,19 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
             />
           </div>
 
-          <Button type="submit" className="h-auto rounded-full text-white">
-            Update table
-          </Button>
+          <div className="flex gap-2 justify-between">
+            <Button type="submit" className="h-auto rounded-full text-white">
+              Update table
+            </Button>
+            <Toggle
+              onClick={() => {
+                setLock((prev: boolean) => !prev)
+                setShouldHandleLocks(true)
+              }}
+            >
+              {lock ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
+            </Toggle>
+          </div>
         </form>
       </Form>
     </FilterCollapsible>
@@ -917,17 +977,16 @@ type FilterEffectsProps = {
     effect_control_n: number
   }[]
   setData: Function
+  lock: boolean
+  setLock: Function
+  setShouldHandleLocks: Function
 }
 
 export const FilterEffects = (props: FilterEffectsProps) => {
-  const { data, setData } = props
+  const { data, setData, lock, setLock, setShouldHandleLocks } = props
 
-  const effect_size_min = Math.min(
-    ...data.map((datum) => datum.effect_size)
-  )
-  const effect_size_max = Math.max(
-    ...data.map((datum) => datum.effect_size)
-  )
+  const effect_size_min = Math.min(...data.map((datum) => datum.effect_size))
+  const effect_size_max = Math.max(...data.map((datum) => datum.effect_size))
 
   const form = useForm<z.infer<typeof formSchemaEffects>>({
     resolver: zodResolver(formSchemaEffects),
@@ -957,6 +1016,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
     )
 
     setData(subset)
+    setShouldHandleLocks(true)
   }
 
   return (
@@ -1017,9 +1077,19 @@ export const FilterEffects = (props: FilterEffectsProps) => {
             />
           </div>
 
-          <Button type="submit" className="h-auto rounded-full text-white">
-            Update table
-          </Button>
+          <div className="flex gap-2 justify-between">
+            <Button type="submit" className="h-auto rounded-full text-white">
+              Update table
+            </Button>
+            <Toggle
+              onClick={() => {
+                setLock((prev: boolean) => !prev)
+                setShouldHandleLocks(true)
+              }}
+            >
+              {lock ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
+            </Toggle>
+          </div>
         </form>
       </Form>
     </FilterCollapsible>
