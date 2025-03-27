@@ -6,12 +6,11 @@ import { CheckIcon, X, LinkIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { PaperDialog } from "@/components/paper-dialog"
+import { CellBadges } from "@/components/data-explorer/cell-badges"
+import { CellLongText } from "@/components/data-explorer/cell-long-text"
 import { DataTableColumnHeader } from "@/components/data-explorer/table-header"
-import { DescriptionDialog } from "@/components/data-explorer/description-dialog"
 
 import { round } from "@/lib/utils"
-import { CellBadges } from "./cell-badges"
-import { CellLongText } from "./cell-long-text"
 
 export type ColumnsPapers = {
   paper_label: string
