@@ -38,6 +38,7 @@ import {
 import { Toggle } from "../ui/toggle"
 import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 import { Locks } from "@/lib/types"
+import { useState } from "react"
 
 /* Paper-level */
 const formSchemaPapers = z.object({
@@ -66,6 +67,8 @@ type FilterPapersProps = {
 
 export const FilterPapers = (props: FilterPapersProps) => {
   const { data, setData, lock, setLock, setShouldHandleLocks } = props
+
+  const [rows, setRows] = useState(data.length)
 
   const form = useForm<z.infer<typeof formSchemaPapers>>({
     resolver: zodResolver(formSchemaPapers),
@@ -119,7 +122,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                   <FormLabel>Publication year</FormLabel>
                   <FormControl>
                     <Slider
-                      className="my-2"
+                      className="mt-4"
                       value={field.value}
                       minStepsBetweenThumbs={1}
                       max={Math.max(...data.map((datum) => datum.paper_year))}
@@ -298,7 +301,11 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                 <FormItem className="w-60">
                   <FormLabel>Minimum sample size</FormLabel>
                   <FormControl>
-                    <Input className="my-2" type="number" {...field} />
+                    <Input
+                      className="my-2 rounded-2xl"
+                      type="number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormDescription className="leading-5">
                     This is the total sample size across all conditions in a
@@ -1032,7 +1039,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
                   <FormLabel>Effect size</FormLabel>
                   <FormControl>
                     <Slider
-                      className="my-2"
+                      className="mt-4"
                       value={field.value}
                       minStepsBetweenThumbs={0.1}
                       min={effect_size_min}
@@ -1056,7 +1063,11 @@ export const FilterEffects = (props: FilterEffectsProps) => {
                 <FormItem className="w-60">
                   <FormLabel>Minimum sample size</FormLabel>
                   <FormControl>
-                    <Input className="my-2" type="number" {...field} />
+                    <Input
+                      className="my-2 rounded-2xl"
+                      type="number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormDescription className="leading-5">
                     This is the minimum sample size in either the control or

@@ -202,7 +202,7 @@ export default function DataExplorer() {
   }, [shouldHandleLocks])
 
   return (
-    <main className="container space-y-6 my-12 md:my-16">
+    <main className="mx-3 md:mx-6 lg:mx-12 space-y-6 my-12 md:my-16">
       <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
       <Tabs defaultValue={level} className="space-y-6">
         <div className="mx-auto flex w-fit flex-wrap items-center justify-center gap-3">
@@ -323,14 +323,13 @@ export default function DataExplorer() {
                 <li>
                   Outcomes: Review different measurement methods and approaches
                 </li>
-                <li>
-                  Effects: Analyze effect sizes of different types of
-                  comparisons
-                </li>
+                <li>Effects: Explore the effect sizes of interventions.</li>
               </ul>
               <p>
                 Each table includes filtering options to help you focus on
-                specific aspects of interest.
+                specific aspects of interest. You can lock the filters by
+                clicking on the lock icon so the filter options are carried over
+                between levels.
               </p>
               <p>
                 Want to work with the data directly? You can download
@@ -350,11 +349,11 @@ export default function DataExplorer() {
             setLock={setLockPapers}
             setShouldHandleLocks={setShouldHandleLocks}
           />
-
-          <DataTable columns={ColumnsPapers} data={dataPaperLevel} />
-          <div>
-            Showing {dataPaperLevel.length} out of {papers.length} rows.
-          </div>
+          <DataTable
+            columns={ColumnsPapers}
+            data={dataPaperLevel}
+            totalRows={papers.length}
+          />
         </TabsContent>
         <TabsContent value="study" className="space-y-3">
           <FilterStudies
@@ -364,10 +363,11 @@ export default function DataExplorer() {
             setLock={setLockStudies}
             setShouldHandleLocks={setShouldHandleLocks}
           />
-          <div>
-            Showing {dataStudyLevel.length} out of {studies.length} rows.
-          </div>
-          <DataTable columns={ColumnsStudies} data={dataStudyLevel} />
+          <DataTable
+            columns={ColumnsStudies}
+            data={dataStudyLevel}
+            totalRows={studies.length}
+          />
         </TabsContent>
         <TabsContent value="intervention" className="space-y-3">
           <FilterInterventions
@@ -377,13 +377,10 @@ export default function DataExplorer() {
             setLock={setLockInterventions}
             setShouldHandleLocks={setShouldHandleLocks}
           />
-          <div>
-            Showing {dataInterventionLevel.length} out of {interventions.length}{" "}
-            rows.
-          </div>
           <DataTable
             columns={ColumnsInterventions}
             data={dataInterventionLevel}
+            totalRows={interventions.length}
           />
         </TabsContent>
         <TabsContent value="outcome" className="space-y-3">
@@ -394,10 +391,11 @@ export default function DataExplorer() {
             setLock={setLockOutcomes}
             setShouldHandleLocks={setShouldHandleLocks}
           />
-          <div>
-            Showing {dataOutcomeLevel.length} out of {outcomes.length} rows.
-          </div>
-          <DataTable columns={ColumnsOutcomes} data={dataOutcomeLevel} />
+          <DataTable
+            columns={ColumnsOutcomes}
+            data={dataOutcomeLevel}
+            totalRows={outcomes.length}
+          />
         </TabsContent>
         <TabsContent value="effect" className="space-y-3">
           <FilterEffects
@@ -407,10 +405,11 @@ export default function DataExplorer() {
             setLock={setLockEffects}
             setShouldHandleLocks={setShouldHandleLocks}
           />
-          <div>
-            Showing {dataEffectLevel.length} out of {effects.length} rows.
-          </div>
-          <DataTable columns={ColumnsEffects} data={dataEffectLevel} />
+          <DataTable
+            columns={ColumnsEffects}
+            data={dataEffectLevel}
+            totalRows={effects.length}
+          />
         </TabsContent>
       </Tabs>
     </main>

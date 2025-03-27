@@ -10,6 +10,8 @@ import { DataTableColumnHeader } from "@/components/data-explorer/table-header"
 import { DescriptionDialog } from "@/components/data-explorer/description-dialog"
 
 import { round } from "@/lib/utils"
+import { CellBadges } from "./cell-badges"
+import { CellLongText } from "./cell-long-text"
 
 export type ColumnsPapers = {
   paper_label: string
@@ -37,31 +39,18 @@ export const ColumnsPapers: ColumnDef<ColumnsPapers>[] = [
     id: "paper_authors",
     accessorKey: "paper_authors",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Authors" />
+      <DataTableColumnHeader className="" column={column} title="Authors" />
     ),
     cell: ({ row }) => {
       const value = row.getValue<string>("paper_authors")
-      const content = value.split("; ").map((e) => (
-        <Badge
-          key={e}
-          variant="secondary"
-          className="text-sm font-normal whitespace-nowrap"
-        >
-          {e}
-        </Badge>
-      ))
-      return <div className="flex flex-wrap gap-1">{content}</div>
+      return <CellBadges value={value} />
     },
   },
   {
     id: "paper_title",
     accessorKey: "paper_title",
     header: ({ column }) => (
-      <DataTableColumnHeader
-        className="min-w-96"
-        column={column}
-        title="Title"
-      />
+      <DataTableColumnHeader column={column} title="Title" />
     ),
   },
   {
@@ -77,6 +66,11 @@ export const ColumnsPapers: ColumnDef<ColumnsPapers>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Type" />
     ),
+    cell: ({ row }) => {
+      return (
+        <span className="whitespace-nowrap">{row.getValue("paper_type")}</span>
+      )
+    },
   },
   {
     id: "paper_source",
@@ -85,8 +79,8 @@ export const ColumnsPapers: ColumnDef<ColumnsPapers>[] = [
       <DataTableColumnHeader column={column} title="Source" />
     ),
     cell: ({ row }) => {
-      const value = row.getValue("paper_source")
-      return value ? value : "-"
+      const value = row.getValue<string>("paper_source")
+      return <span className="whitespace-nowrap">{value ? value : "-"}</span>
     },
   },
   {
@@ -233,18 +227,7 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
     ),
     cell: ({ row }) => {
       const value = row.getValue<string>("intervention_description")
-      const limit = 115
-      return (
-        <div className="min-w-64">
-          <span className="line-clamp-3">{value}</span>
-          {value.length > limit && (
-            <DescriptionDialog
-              title="Intervention condition description"
-              description={value}
-            />
-          )}
-        </div>
-      )
+      return <CellLongText value={value} />
     },
   },
   {
@@ -313,18 +296,7 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
     cell: ({ row }) => {
       const value = row.getValue<string | undefined>("control_description")
       if (value) {
-        const limit = 115
-        return (
-          <div className="min-w-64">
-            <span className="line-clamp-3">{value}</span>
-            {value.length > limit && (
-              <DescriptionDialog
-                title="Control condition description"
-                description={value}
-              />
-            )}
-          </div>
-        )
+        return <CellLongText value={value} />
       } else {
         return "-"
       }
@@ -375,18 +347,7 @@ export const ColumnsOutcomes: ColumnDef<ColumnsOutcomes>[] = [
     ),
     cell: ({ row, column }) => {
       const value = row.getValue<string>("outcome_description")
-      const limit = 115
-      return (
-        <div className="w-80">
-          <span className="line-clamp-3">{value}</span>
-          {value.length > limit && (
-            <DescriptionDialog
-              title="Outcome description"
-              description={value}
-            />
-          )}
-        </div>
-      )
+      return <CellLongText value={value} />
     },
   },
   {
