@@ -64,48 +64,53 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="flex flex-col gap-4 mt-4">
-      <div className="flex flex-wrap justify-between sm:grid sm:grid-cols-3 w-full items-center gap-2">
-        <div className="text-sm text-center sm:text-left">
-          Page {table.getState().pagination.pageIndex + 1} of{" "}
-          {table.getPageCount()}
+      <div className="flex flex-wrap justify-center min-[575px]:justify-between w-full items-center gap-x-4 gap-y-2">
+        <div className="text-sm">
+          Showing {data.length} out of {totalRows} rows.
         </div>
-        <div className="flex items-center space-x-2 justify-center">
-          <Button
-            variant="outline"
-            className="hidden h-8 w-8 p-0 lg:flex border-0 rounded-xl"
-            onClick={() => table.setPageIndex(0)}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <span className="sr-only">Go to first page</span>
-            <ChevronsLeft />
-          </Button>
-          <Button
-            variant="outline"
-            className="h-8 w-8 p-0 border-0 rounded-xl"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <span className="sr-only">Go to previous page</span>
-            <ChevronLeft />
-          </Button>
-          <Button
-            variant="outline"
-            className="h-8 w-8 p-0 border-0 rounded-xl"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            <span className="sr-only">Go to next page</span>
-            <ChevronRight />
-          </Button>
-          <Button
-            variant="outline"
-            className="hidden h-8 w-8 p-0 lg:flex border-0 rounded-xl"
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
-          >
-            <span className="sr-only">Go to last page</span>
-            <ChevronsRight />
-          </Button>
+        <div className="flex gap-x-4 items-center">
+          <div className="flex items-center space-x-2 justify-center">
+            <Button
+              variant="outline"
+              className="hidden h-8 w-8 p-0 lg:flex border-0 rounded-xl"
+              onClick={() => table.setPageIndex(0)}
+              disabled={!table.getCanPreviousPage()}
+            >
+              <span className="sr-only">Go to first page</span>
+              <ChevronsLeft />
+            </Button>
+            <Button
+              variant="outline"
+              className="h-8 w-8 p-0 border-0 rounded-xl"
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              <span className="sr-only">Go to previous page</span>
+              <ChevronLeft />
+            </Button>
+            <div className="text-sm text-center sm:text-left">
+              Page {table.getState().pagination.pageIndex + 1} of{" "}
+              {table.getPageCount()}
+            </div>
+            <Button
+              variant="outline"
+              className="h-8 w-8 p-0 border-0 rounded-xl"
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              <span className="sr-only">Go to next page</span>
+              <ChevronRight />
+            </Button>
+            <Button
+              variant="outline"
+              className="hidden h-8 w-8 p-0 lg:flex border-0 rounded-xl"
+              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+              disabled={!table.getCanNextPage()}
+            >
+              <span className="sr-only">Go to last page</span>
+              <ChevronsRight />
+            </Button>
+          </div>
         </div>
         <div className="flex items-center space-x-2 justify-center sm:justify-end">
           <p className="text-sm">Rows per page</p>
@@ -186,11 +191,6 @@ export function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
-      </div>
-      <div className="flex justify-between">
-        <div className="text-sm">
-          Showing {data.length} out of {totalRows} rows.
-        </div>
       </div>
     </div>
   )

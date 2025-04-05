@@ -49,7 +49,11 @@ export const ColumnsPapers: ColumnDef<ColumnsPapers>[] = [
     id: "paper_title",
     accessorKey: "paper_title",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
+      <DataTableColumnHeader
+        className="min-w-100"
+        column={column}
+        title="Title"
+      />
     ),
   },
   {
