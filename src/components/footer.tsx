@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer
       id="footer"
-      className="flex gap-3 text-muted-foreground mb-12 md:mb-18 mx-auto"
+      className="flex gap-3 text-muted-foreground mb-12 md:mb-18 mx-auto grow items-end"
     >
       <CopyrightIcon strokeWidth={1.5} /> LIME 2025
     </footer>

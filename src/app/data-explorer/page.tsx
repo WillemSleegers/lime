@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { InfoIcon } from "lucide-react"
 
@@ -43,14 +43,33 @@ import outcomes from "@/assets/data/outcomes.json"
 import effects from "@/assets/data/effects.json"
 import all from "@/assets/data/data.json"
 
+import { semiJoin } from "@/lib/json-functions"
+
 export default function DataExplorer() {
   const [level, setLevel] = useState("paper")
+
+  const [dataPaper, setDataPaper] = useState(papers)
+  const [dataStudy, setDataStudy] = useState(studies)
+  const [dataIntervention, setDataIntervention] = useState(interventions)
+  const [dataOutcome, setDataOutcome] = useState(outcomes)
+  const [dataEffect, setDataEffect] = useState(effects)
+
+  // Rename to dataTable
   const [dataPaperLevel, setDataPaperLevel] = useState(papers)
   const [dataStudyLevel, setDataStudyLevel] = useState(studies)
   const [dataInterventionLevel, setDataInterventionLevel] =
     useState(interventions)
   const [dataOutcomeLevel, setDataOutcomeLevel] = useState(outcomes)
   const [dataEffectLevel, setDataEffectLevel] = useState(effects)
+
+  // Track lock toggles
+  const [lockPapers, setLockPapers] = useState(false)
+  const [lockStudies, setLockStudies] = useState(false)
+  const [lockInterventions, setLockInterventions] = useState(false)
+  const [lockOutcomes, setLockOutcomes] = useState(false)
+  const [lockEffects, setLockEffects] = useState(false)
+
+  const [shouldHandleLocks, setShouldHandleLocks] = useState(false)
 
   const handleDownload = (
     data:
@@ -87,8 +106,103 @@ export default function DataExplorer() {
     document.body.removeChild(element)
   }
 
+  useEffect(() => {
+    if (shouldHandleLocks) {
+      let lockedDataPapers = dataPaper
+      let lockedDataStudies = dataStudy
+      let lockedDataInterventions = dataIntervention
+      let lockedDataOutcomes = dataOutcome
+      let lockedDataEffects = dataEffect
+
+      if (lockPapers) {
+        lockedDataStudies = semiJoin(lockedDataStudies, dataPaper, "paper")
+        lockedDataInterventions = semiJoin(
+          lockedDataInterventions,
+          dataPaper,
+          "paper"
+        )
+        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataPaper, "paper")
+        lockedDataEffects = semiJoin(lockedDataEffects, dataPaper, "paper")
+      }
+
+      if (lockStudies) {
+        lockedDataPapers = semiJoin(lockedDataPapers, dataStudy, "paper")
+        lockedDataInterventions = semiJoin(lockedDataInterventions, dataStudy, [
+          "paper",
+          "study",
+        ])
+        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataStudy, [
+          "paper",
+          "study",
+        ])
+        lockedDataEffects = semiJoin(lockedDataEffects, dataStudy, [
+          "paper",
+          "study",
+        ])
+      }
+
+      if (lockInterventions) {
+        lockedDataPapers = semiJoin(lockedDataPapers, dataIntervention, "paper")
+        lockedDataStudies = semiJoin(lockedDataStudies, dataIntervention, [
+          "paper",
+          "study",
+        ])
+        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataIntervention, [
+          "paper",
+          "study",
+        ])
+        lockedDataEffects = semiJoin(lockedDataEffects, dataIntervention, [
+          "paper",
+          "study",
+        ])
+      }
+
+      if (lockOutcomes) {
+        lockedDataPapers = semiJoin(lockedDataPapers, dataOutcome, "paper")
+        lockedDataStudies = semiJoin(lockedDataStudies, dataOutcome, [
+          "paper",
+          "study",
+        ])
+        lockedDataInterventions = semiJoin(
+          lockedDataInterventions,
+          dataOutcome,
+          ["paper", "study"]
+        )
+        lockedDataEffects = semiJoin(lockedDataEffects, dataOutcome, [
+          "paper",
+          "study",
+        ])
+      }
+
+      if (lockEffects) {
+        lockedDataPapers = semiJoin(lockedDataPapers, dataEffect, "paper")
+        lockedDataStudies = semiJoin(lockedDataStudies, dataEffect, [
+          "paper",
+          "study",
+        ])
+        lockedDataInterventions = semiJoin(
+          lockedDataInterventions,
+          dataEffect,
+          ["paper", "study"]
+        )
+        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataEffect, [
+          "paper",
+          "study",
+        ])
+      }
+
+      setDataPaperLevel(lockedDataPapers)
+      setDataStudyLevel(lockedDataStudies)
+      setDataInterventionLevel(lockedDataInterventions)
+      setDataOutcomeLevel(lockedDataOutcomes)
+      setDataEffectLevel(lockedDataEffects)
+    }
+
+    setShouldHandleLocks(false)
+  }, [shouldHandleLocks])
+
   return (
-    <main className="container space-y-6 my-12 md:my-16">
+    <main className="mx-3 md:mx-6 lg:mx-12 space-y-6 my-12 md:my-16">
       <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
       <Tabs defaultValue={level} className="space-y-6">
         <div className="mx-auto flex w-fit flex-wrap items-center justify-center gap-3">
@@ -117,12 +231,14 @@ export default function DataExplorer() {
             <TabsTrigger
               className="rounded-3xl border-4 border-primary bg-primary text-white"
               value="outcome"
+              onClick={() => setLevel("outcome")}
             >
               Outcomes
             </TabsTrigger>
             <TabsTrigger
               className="rounded-3xl border-4 border-primary bg-primary text-white"
               value="effect"
+              onClick={() => setLevel("effect")}
             >
               Effects
             </TabsTrigger>
@@ -207,14 +323,13 @@ export default function DataExplorer() {
                 <li>
                   Outcomes: Review different measurement methods and approaches
                 </li>
-                <li>
-                  Effects: Analyze effect sizes of different types of
-                  comparisons
-                </li>
+                <li>Effects: Explore the effect sizes of interventions.</li>
               </ul>
               <p>
                 Each table includes filtering options to help you focus on
-                specific aspects of interest.
+                specific aspects of interest. You can lock the filters by
+                clicking on the lock icon so the filter options are carried over
+                between levels.
               </p>
               <p>
                 Want to work with the data directly? You can download
@@ -226,47 +341,75 @@ export default function DataExplorer() {
           </Dialog>
         </div>
 
-        <TabsContent value="paper" className="space-y-3" tabIndex={-1}>
-          <FilterPapers data={papers} setData={setDataPaperLevel} />
-          <div>
-            Showing {dataPaperLevel.length} out of {papers.length} rows.
-          </div>
-          <DataTable columns={ColumnsPapers} data={dataPaperLevel} />
+        <TabsContent value="paper" className="space-y-3">
+          <FilterPapers
+            data={papers}
+            setData={setDataPaper}
+            lock={lockPapers}
+            setLock={setLockPapers}
+            setShouldHandleLocks={setShouldHandleLocks}
+          />
+          <DataTable
+            columns={ColumnsPapers}
+            data={dataPaperLevel}
+            totalRows={papers.length}
+          />
         </TabsContent>
-        <TabsContent value="study" className="space-y-3" tabIndex={-1}>
-          <FilterStudies data={studies} setData={setDataStudyLevel} />
-          <div>
-            Showing {dataStudyLevel.length} out of {studies.length} rows.
-          </div>
-          <DataTable columns={ColumnsStudies} data={dataStudyLevel} />
+        <TabsContent value="study" className="space-y-3">
+          <FilterStudies
+            data={studies}
+            setData={setDataStudy}
+            lock={lockStudies}
+            setLock={setLockStudies}
+            setShouldHandleLocks={setShouldHandleLocks}
+          />
+          <DataTable
+            columns={ColumnsStudies}
+            data={dataStudyLevel}
+            totalRows={studies.length}
+          />
         </TabsContent>
-        <TabsContent value="intervention" className="space-y-3" tabIndex={-1}>
+        <TabsContent value="intervention" className="space-y-3">
           <FilterInterventions
             data={interventions}
-            setData={setDataInterventionLevel}
+            setData={setDataIntervention}
+            lock={lockInterventions}
+            setLock={setLockInterventions}
+            setShouldHandleLocks={setShouldHandleLocks}
           />
-          <div>
-            Showing {dataInterventionLevel.length} out of {interventions.length}{" "}
-            rows.
-          </div>
           <DataTable
             columns={ColumnsInterventions}
             data={dataInterventionLevel}
+            totalRows={interventions.length}
           />
         </TabsContent>
-        <TabsContent value="outcome" className="space-y-3" tabIndex={-1}>
-          <FilterOutcomes data={outcomes} setData={setDataOutcomeLevel} />
-          <div>
-            Showing {dataOutcomeLevel.length} out of {outcomes.length} rows.
-          </div>
-          <DataTable columns={ColumnsOutcomes} data={dataOutcomeLevel} />
+        <TabsContent value="outcome" className="space-y-3">
+          <FilterOutcomes
+            data={outcomes}
+            setData={setDataOutcome}
+            lock={lockOutcomes}
+            setLock={setLockOutcomes}
+            setShouldHandleLocks={setShouldHandleLocks}
+          />
+          <DataTable
+            columns={ColumnsOutcomes}
+            data={dataOutcomeLevel}
+            totalRows={outcomes.length}
+          />
         </TabsContent>
-        <TabsContent value="effect" className="space-y-3" tabIndex={-1}>
-          <FilterEffects data={effects} setData={setDataEffectLevel} />
-          <div>
-            Showing {dataEffectLevel.length} out of {effects.length} rows.
-          </div>
-          <DataTable columns={ColumnsEffects} data={dataEffectLevel} />
+        <TabsContent value="effect" className="space-y-3">
+          <FilterEffects
+            data={effects}
+            setData={setDataEffect}
+            lock={lockEffects}
+            setLock={setLockEffects}
+            setShouldHandleLocks={setShouldHandleLocks}
+          />
+          <DataTable
+            columns={ColumnsEffects}
+            data={dataEffectLevel}
+            totalRows={effects.length}
+          />
         </TabsContent>
       </Tabs>
     </main>

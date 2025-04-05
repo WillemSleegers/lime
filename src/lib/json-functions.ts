@@ -113,3 +113,31 @@ export const getUniqueData = (data: Data, x: DataKeys) => {
 
   return new Set(array).size
 }
+
+/**
+ * Performs a semi-join operation between two arrays of objects
+ * @param sourceArray - The source array of objects to filter
+ * @param lookupArray - The array of objects to match against
+ * @param keys - The property key(s) to match on
+ * @returns Filtered array containing only objects from sourceArray that have matching key-value pairs in lookupArray
+ */
+export function semiJoin<
+  S extends Record<string, any>,
+  L extends Record<string, any>,
+  K extends keyof S & keyof L
+>(
+  sourceArray: S[],
+  lookupArray: L[],
+  keys: K | ReadonlyArray<K>
+): S[] {
+  // Convert keys to array if only a string is provided
+  const keysArray = Array.isArray(keys) ? keys : [keys];
+  
+  // Filter the source array
+  return sourceArray.filter(sourceObj => {
+    // Check if there's at least one object in the lookup array that matches all the specified keys
+    return lookupArray.some(lookupObj => {
+      return keysArray.every(key => sourceObj[key] === lookupObj[key]);
+    });
+  });
+}

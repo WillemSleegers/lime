@@ -151,7 +151,7 @@ const MetaAnalysis = () => {
   }, [data])
 
   return (
-    <main className="mx-auto w-full flex flex-col gap-1 max-w-4xl mb-12 p-2 grow">
+    <main className="mx-auto w-full flex flex-col gap-1 max-w-4xl mb-12 p-2">
       <div className="py-3">
         <span className="font-semibold">Status:</span> {status}
       </div>

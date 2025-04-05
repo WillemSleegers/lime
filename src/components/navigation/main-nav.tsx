@@ -77,7 +77,9 @@ export function MainNav() {
       </div>
 
       <nav
-        className={`flex-wrap justify-center gap-4 space-x-1 md:flex ${open ? "flex" : "hidden"}`}
+        className={`flex-wrap justify-center gap-4 space-x-1 md:flex ${
+          open ? "flex" : "hidden"
+        }`}
       >
         {items.map((e) => (
           <Link
