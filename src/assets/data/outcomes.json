@@ -258,7 +258,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "desire to eat",
-    "outcome_description": "desire to eat the pork meal sown in the image",
+    "outcome_description": "desire to eat the pork meal shown in the image",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat hedonics",
     "outcome_measurement_type": "survey"
@@ -616,6 +616,94 @@
     "outcome_measurement_type": "survey"
   },
   {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "red meat consumption",
+    "outcome_description": "Frequency of red meat consumption in the last 7 days.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "poultry consumption",
+    "outcome_description": "Frequency of poultry consumption in the last 7 days.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "fish consumption",
+    "outcome_description": "Frequency of fish consumption in the last 7 days.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "outcome": 4,
+    "outcome_label": "eggs consumption",
+    "outcome_description": "Frequency of egg consumption in the last 7 days.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "egg consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "outcome": 5,
+    "outcome_label": "dairy consumption",
+    "outcome_description": "Frequency of dairy consumption in the last 7 days.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "outcome": 6,
+    "outcome_label": "vegetarian diet",
+    "outcome_description": "Describing their current diet as a vegetarian diet.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "diet",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "outcome": 7,
+    "outcome_label": "vegan diet",
+    "outcome_description": "Describing their current diet as a vegan diet.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "diet",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "outcome": 8,
+    "outcome_label": "meat reduction diet",
+    "outcome_description": "Describing their current diet as a meat reduction diet.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "diet",
+    "outcome_measurement_type": "survey"
+  },
+  {
     "paper": 40,
     "paper_label": "Mercy for Animals (2016a)",
     "study": 1,
@@ -709,9 +797,20 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "intended meat consumption",
-    "outcome_description": "percentage of participants intending to cosnume less red and processed meat in the future",
+    "outcome_description": "percentage of participants intending to consume less red and processed meat in the future",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 55,
+    "paper_label": "Oktar et al. (2023)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "moral acceptability of meat-eating",
+    "outcome_description": "Agreement with “To what extent do you find meat-eating morally acceptable or morally wrong?”, asked both at the start of the semester and the end of the semester.",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "moral judgment",
     "outcome_measurement_type": "survey"
   },
   {
@@ -976,6 +1075,160 @@
     "outcome_description": "percentage of times the meal with the plant-based sausage was selected",
     "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meatless meal order",
+    "outcome_description": "Percentage of meatless meal orders.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "meat reduction pledge",
+    "outcome_description": "Agreement with \"Are you willing to pledge to reduce the amount of meat you eat?\"",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "vegetarian diet pledge",
+    "outcome_description": "Agreement with \"Are you willing to pledge to stop eating meat?\"",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 474,
+    "paper_label": "Abrahamse et al. (2007)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "eating meat",
+    "outcome_description": "Participants reported on 27 energy-related behaviors, one of which was eating meat (in grams per meal).",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "total dairy servings",
+    "outcome_description": "Telephone adminstered 24-h recall of total dairy servings.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "milk servings",
+    "outcome_description": "Telephone adminstered 24-h recall of milk servings.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "yoghurt servings",
+    "outcome_description": "Telephone adminstered 24-h recall of yoghurt servings.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "outcome": 4,
+    "outcome_label": "cheese servings",
+    "outcome_description": "Telephone adminstered 24-h recall of cheese servings.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "outcome": 5,
+    "outcome_label": "meat, poultry, fish servings",
+    "outcome_description": "Telephone adminstered 24-h recall of meat, poulry, and fish servings.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "outcome": 6,
+    "outcome_label": "red meat servings",
+    "outcome_description": "Telephone adminstered 24-h recall of red meat servings.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "outcome": 7,
+    "outcome_label": "processed meat servings",
+    "outcome_description": "Telephone adminstered 24-h recall of processed meat servings.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "outcome": 8,
+    "outcome_label": "poultry servings",
+    "outcome_description": "Telephone adminstered 24-h recall of poultry servings.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "outcome": 9,
+    "outcome_label": "fish servings",
+    "outcome_description": "Telephone adminstered 24-h recall of fish servings.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "outcome": 10,
+    "outcome_label": "eggs servings",
+    "outcome_description": "Telephone adminstered 24-h recall of eggs servings.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   }
 ]

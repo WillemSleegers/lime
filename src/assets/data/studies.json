@@ -14,7 +14,7 @@
     "study_n": 32,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/wgh6v"
+    "study_data_link": "https://osf.io/8tgxr/"
   },
   {
     "paper": 3,
@@ -195,6 +195,16 @@
     "study_data_link": "https://osf.io/rk4ut/"
   },
   {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "study_n": 293,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://animalcharityevaluators.org/wp-content/uploads/2013/11/2013HumaneEdStudyProtocol.pdf",
+    "study_data_available": "yes",
+    "study_data_link": "https://docs.google.com/spreadsheets/d/1dylS7LDJKBF9MPSKdyfQ_y2OciogBPLHJd6LCABoWYs/edit?gid=0#gid=0"
+  },
+  {
     "paper": 40,
     "paper_label": "Mercy for Animals (2016a)",
     "study": 1,
@@ -257,6 +267,16 @@
     "study_n": 712,
     "study_preregistered": "no",
     "study_data_available": "no"
+  },
+  {
+    "paper": 55,
+    "paper_label": "Oktar et al. (2023)",
+    "study": 1,
+    "study_n": 199,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://aspredicted.org/LLB_21W",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/y5tdu/"
   },
   {
     "paper": 56,
@@ -424,6 +444,32 @@
     "paper_label": "Erhard et al. (2023)",
     "study": 1,
     "study_n": 543,
+    "study_preregistered": "no",
+    "study_data_available": "no"
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "study": 1,
+    "study_n": 833,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/3m8k5",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/kdjnc/"
+  },
+  {
+    "paper": 474,
+    "paper_label": "Abrahamse et al. (2007)",
+    "study": 1,
+    "study_n": 189,
+    "study_preregistered": "no",
+    "study_data_available": "no"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "study_n": 206,
     "study_preregistered": "no",
     "study_data_available": "no"
   }

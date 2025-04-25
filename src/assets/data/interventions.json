@@ -622,6 +622,18 @@
     "sample_country": "United States"
   },
   {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Participants attended a presentation that documents the abuse on factory farms, is pro animal, and asked students to reduce or eliminate animal meat and products from their diets. Focus was mainly on the ethical implications of factory farming, and also touched on health and environmental consequences.",
+    "intervention_content": "animal welfare, environment, health",
+    "intervention_mechanism": "negative emotional, factual",
+    "intervention_medium": "presentation",
+    "control_description": "Participants from a different class that did not attend the presentation.",
+    "sample_country": "United States"
+  },
+  {
     "paper": 40,
     "paper_label": "Mercy for Animals (2016a)",
     "study": 1,
@@ -764,6 +776,30 @@
     "intervention_medium": "text",
     "control_description": "",
     "sample_country": "Italy"
+  },
+  {
+    "paper": 55,
+    "paper_label": "Oktar et al. (2023)",
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Participants attended a moral philosophy course in which various controversial topics, including meat eating, were discussed. They read Alastair Norcross' Puppies, Pigs, and People. Participants were also instructed to reflect on their views as an additional manipulation.",
+    "intervention_content": "animal welfare",
+    "intervention_mechanism": "logical argument",
+    "intervention_medium": "text, in-person",
+    "control_description": "",
+    "sample_country": "United States"
+  },
+  {
+    "paper": 55,
+    "paper_label": "Oktar et al. (2023)",
+    "study": 1,
+    "intervention_condition": 3,
+    "intervention_description": "Participants attended a moral philosophy course in which various controversial topics, including meat eating, were discussed. They read Alastair Norcross' Puppies, Pigs, and People.",
+    "intervention_content": "animal welfare",
+    "intervention_mechanism": "logical argument",
+    "intervention_medium": "text, in-person",
+    "control_description": "",
+    "sample_country": "United States"
   },
   {
     "paper": 56,
@@ -1164,5 +1200,53 @@
     "intervention_medium": "menu/ food options, text",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo.",
     "sample_country": "N/A"
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Participants watched a video describing the diverse benefits of plant-based eating, showed some mild factory farm footage, and described changing social norms around meat consumption to convey a growing trend. Participants were also asked if they would be willing to take a dietary pledge to reduce their meat consumption.",
+    "intervention_content": "animal welfare, environment, health",
+    "intervention_mechanism": "factual, negative emotional, norms",
+    "intervention_medium": "video",
+    "control_description": "Participants watched a video with white text on a dark background describing how to complete the study. Participants were also asked if they would be willing to take a dietary pledge to reduce their meat consumption.",
+    "sample_country": "Canada"
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Participants watched a video describing the diverse benefits of plant-based eating, showed some mild factory farm footage, and described changing social norms around meat consumption to convey a growing trend. Participants were also asked if they would be willing to take a dietary pledge to adopt a vegetarian diet.",
+    "intervention_content": "animal welfare, environment, health",
+    "intervention_mechanism": "factual, negative emotional, norms",
+    "intervention_medium": "video",
+    "control_description": "Participants watched a video with white text on a dark background describing how to complete the study. Participants were also asked if they would be willing to take a dietary pledge to adopt a vegetarian diet.",
+    "sample_country": "Canada"
+  },
+  {
+    "paper": 474,
+    "paper_label": "Abrahamse et al. (2007)",
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "One group of households received a combination of tailored information about possibilities to reduce energy use, individual goal setting (5% reduction), and tailored individual feedback about their own energy savings. Households in another group received the same intervention but also received a group goal of 5% as well as group feedback about average and total energy savings of all participants. More specifically, information was given about energy related problems and the need to do something about them. The information contained an explanation of the global warming phenomenon. It also featured information about the increase in energy use over the last decades and the increased costs of energy use, with accompanying graphs depicting these trends. Households then received a list of tailored energy-saving measures. Each household only received those energy-saving options that were relevant for them. For each energy-saving measure an indication was given of the amount of energy that could potentially be saved. Households were then asked to try and save 5% energy during the course of the study. Households were free to choose which energy-saving measures they would adopt to attain the goal. Households in the group feedback condition were told the aim was to save 5% energy as a group of participants. It was emphasized that as a group, households in Groningen could make an important contribution to energy conservation and would help reduce energy-related problems. Tailored individual feedback was given about energy savings via a website in three different ways. First, as a percentage change in total energy use, compared to the ﬁrst measurement (viz., before the intervention). This was also related to the 5% goal, e.g. ‘‘You have (not) attained the 5% goal (yet)’’. Second, tailored feedback was given about the extent to which each energy-saving behavior had contributed to total changes in energy use. A bar chart was displayed, with a green bar indicating a reduction in energy use for a given option, and a red bar indicating an increase in energy use. Third, the amount of money (in Euros) each household had saved on their gas and electricity bills was displayed on the website. In addition, households in the group feedback condition received feedback about average as well as total energy savings of the entire group of participants, in relation to the group goal of 5%, one month after the second measurement via a newsletter.",
+    "intervention_content": "environment",
+    "intervention_mechanism": "goal pursuit, factual",
+    "intervention_medium": "text",
+    "control_description": "",
+    "sample_country": "Netherlands"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Regular supplies of soya foods were given free-of-charge to the intervention group. Based on individual preferences, the study dietitian made speciﬁc suggestions on how to incorporate soya foods into the daily menu, such as replacing meat with tofu in stew or fried dishes, cow milk with soyamilk, and cookies with a soya protein bar. To avoid weight gain, replacing other foods was emphasized over adding soya foods. To maintain compliance, all participants received individual dietary counselling by a registered dietitian and follow-up phone calls. They had at least six contacts with the dietitian during the ﬁrst year and were counselled on how to maintain a healthy diet according to the food guide pyramid.",
+    "intervention_content": "none",
+    "intervention_mechanism": "goal pursuit, other",
+    "intervention_medium": "in-person",
+    "control_description": "Women in the control group had, like in the experimental group, at least six contacts with the dietitian during the ﬁrst year and were counselled on how to maintain a healthy diet according to the food guide pyramid.",
+    "sample_country": "United States"
   }
 ]

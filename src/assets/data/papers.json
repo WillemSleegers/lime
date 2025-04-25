@@ -204,6 +204,17 @@
     "paper_open_access": "no"
   },
   {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "paper_title": "2013 humane education study",
+    "paper_authors": "Animal Charity Evaluators",
+    "paper_year": 2013,
+    "paper_type": "report",
+    "paper_source": "Animal Charity Evaluators",
+    "paper_link": "https://animalcharityevaluators.org/advocacy-interventions/archived-interventions/humane-education/2013-humane-education-study/#analysis",
+    "paper_open_access": "yes"
+  },
+  {
     "paper": 40,
     "paper_label": "Mercy for Animals (2016a)",
     "paper_title": "Welfare reforms and meat consumption",
@@ -257,6 +268,17 @@
     "paper_source": "Meat Science",
     "paper_link": "https://doi.org/10.1016/j.meatsci.2023.109135",
     "paper_open_access": "yes"
+  },
+  {
+    "paper": 55,
+    "paper_label": "Oktar et al. (2023)",
+    "paper_title": "Philosophy instruction changes views on moral controversies by decreasing reliance on intuition",
+    "paper_authors": "Oktar, K.; Lerner, A.; Malaviya, M.; Lombrozo, T.",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Cognition",
+    "paper_link": "https://doi.org/10.1016/j.cognition.2023.105434",
+    "paper_open_access": "no"
   },
   {
     "paper": 56,
@@ -443,6 +465,39 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2023.107005",
+    "paper_open_access": "no"
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "paper_title": "“Reduce” Or “Go Veg”? Effects On Meal Choice",
+    "paper_authors": "Anderson, Jo",
+    "paper_year": 2020,
+    "paper_type": "report",
+    "paper_source": "Faunalytics",
+    "paper_link": "https://osf.io/cwpfk",
+    "paper_open_access": "yes"
+  },
+  {
+    "paper": 474,
+    "paper_label": "Abrahamse et al. (2007)",
+    "paper_title": "The effect of tailored information, goal setting, and tailored feedback on household energy use, energy-related behaviors, and behavioral antecedents",
+    "paper_authors": "Abrahamse, Wokje; Steg, Linda; Vlek, Charles; Rothengatter, Talib",
+    "paper_year": 2007,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Journal of Environmental Psychology",
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2007.08.002",
+    "paper_open_access": "no"
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "paper_title": "Nutritional changes among premenopausal women undertaking a soya based dietary intervention study in Hawaii",
+    "paper_authors": "Acharya, S.; Maskarinec, G.; Williams, A. E.; Oshiro, C.; Hebshi, S.; Murphy, P.",
+    "paper_year": 2004,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Journal of Human Nutrition and Dietetics",
+    "paper_link": "https://doi.org/10.1111/j.1365-277X.2004.00537.x",
     "paper_open_access": "no"
   }
 ]

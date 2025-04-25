@@ -31,7 +31,7 @@
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@tanstack/react-table": "^8.20.5",
     "@vercel/analytics": "^1.5.0",
-    "babel-plugin-react-compiler": "^19.0.0-beta-aeaed83-20250323",
+    "babel-plugin-react-compiler": "19.1.0-rc.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cmdk": "^1.0",

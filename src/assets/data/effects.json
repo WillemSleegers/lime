@@ -1573,6 +1573,94 @@
     "effect_control_n": 126
   },
   {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "effect": 1,
+    "effect_size_name": "SMD",
+    "effect_size": 0.1828,
+    "effect_size_var": 0.0227,
+    "effect_intervention_n": 169,
+    "effect_control_n": 60
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "effect": 2,
+    "effect_size_name": "SMD",
+    "effect_size": 0.1491,
+    "effect_size_var": 0.0226,
+    "effect_intervention_n": 169,
+    "effect_control_n": 60
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "effect": 3,
+    "effect_size_name": "SMD",
+    "effect_size": 0.0673,
+    "effect_size_var": 0.0226,
+    "effect_intervention_n": 169,
+    "effect_control_n": 60
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "effect": 4,
+    "effect_size_name": "SMD",
+    "effect_size": -0.0788,
+    "effect_size_var": 0.0226,
+    "effect_intervention_n": 169,
+    "effect_control_n": 60
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "effect": 5,
+    "effect_size_name": "SMD",
+    "effect_size": 0.1305,
+    "effect_size_var": 0.0226,
+    "effect_intervention_n": 169,
+    "effect_control_n": 60
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "effect": 6,
+    "effect_size_name": "OR2DL",
+    "effect_size": -0.0772,
+    "effect_size_var": 0.0873,
+    "effect_intervention_n": 169,
+    "effect_control_n": 60
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "effect": 7,
+    "effect_size_name": "OR2DL",
+    "effect_size": -0.4388,
+    "effect_size_var": 0.1845,
+    "effect_intervention_n": 169,
+    "effect_control_n": 60
+  },
+  {
+    "paper": 38,
+    "paper_label": "Animal Charity Evaluators (2013a)",
+    "study": 1,
+    "effect": 8,
+    "effect_size_name": "OR2DL",
+    "effect_size": -0.9413,
+    "effect_size_var": 0.1706,
+    "effect_intervention_n": 169,
+    "effect_control_n": 60
+  },
+  {
     "paper": 40,
     "paper_label": "Mercy for Animals (2016a)",
     "study": 1,
@@ -1725,6 +1813,28 @@
     "effect_size_var": 0.016,
     "effect_intervention_n": 246,
     "effect_control_n": 223
+  },
+  {
+    "paper": 55,
+    "paper_label": "Oktar et al. (2023)",
+    "study": 1,
+    "effect": 1,
+    "effect_size_name": "SMD",
+    "effect_size": 0.5821,
+    "effect_size_var": 0.0298,
+    "effect_intervention_n": 80,
+    "effect_control_n": 62
+  },
+  {
+    "paper": 55,
+    "paper_label": "Oktar et al. (2023)",
+    "study": 1,
+    "effect": 2,
+    "effect_size_name": "SMD",
+    "effect_size": 0.6833,
+    "effect_size_var": 0.0356,
+    "effect_intervention_n": 57,
+    "effect_control_n": 62
   },
   {
     "paper": 56,
@@ -2176,5 +2286,170 @@
     "effect_size_var": 0.0189,
     "effect_intervention_n": 142,
     "effect_control_n": 126
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "study": 1,
+    "effect": 1,
+    "effect_size_name": "OR2DL",
+    "effect_size": 0.0758,
+    "effect_size_var": 0.0207,
+    "effect_intervention_n": 163,
+    "effect_control_n": 155
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "study": 1,
+    "effect": 2,
+    "effect_size_name": "OR2DL",
+    "effect_size": -0.1198,
+    "effect_size_var": 0.0251,
+    "effect_intervention_n": 143,
+    "effect_control_n": 156
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "study": 1,
+    "effect": 3,
+    "effect_size_name": "OR2DL",
+    "effect_size": 0.0656,
+    "effect_size_var": 0.0122,
+    "effect_intervention_n": 214,
+    "effect_control_n": 204
+  },
+  {
+    "paper": 144,
+    "paper_label": "Anderson (2020)",
+    "study": 1,
+    "effect": 4,
+    "effect_size_name": "OR2DL",
+    "effect_size": -0.0186,
+    "effect_size_var": 0.0244,
+    "effect_intervention_n": 210,
+    "effect_control_n": 204
+  },
+  {
+    "paper": 474,
+    "paper_label": "Abrahamse et al. (2007)",
+    "study": 1,
+    "effect": 1,
+    "effect_size_name": "SMD",
+    "effect_size": 0.181,
+    "effect_size_var": 0.032,
+    "effect_intervention_n": 103,
+    "effect_control_n": 45
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "effect": 1,
+    "effect_size_name": "SMD",
+    "effect_size": 0.4891,
+    "effect_size_var": 0.02,
+    "effect_intervention_n": 100,
+    "effect_control_n": 106
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "effect": 2,
+    "effect_size_name": "SMD",
+    "effect_size": 0.5613,
+    "effect_size_var": 0.0202,
+    "effect_intervention_n": 100,
+    "effect_control_n": 106
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "effect": 3,
+    "effect_size_name": "SMD",
+    "effect_size": -0,
+    "effect_size_var": 0.0194,
+    "effect_intervention_n": 100,
+    "effect_control_n": 106
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "effect": 4,
+    "effect_size_name": "SMD",
+    "effect_size": 0.3123,
+    "effect_size_var": 0.0197,
+    "effect_intervention_n": 100,
+    "effect_control_n": 106
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "effect": 5,
+    "effect_size_name": "SMD",
+    "effect_size": 0.1286,
+    "effect_size_var": 0.0195,
+    "effect_intervention_n": 100,
+    "effect_control_n": 106
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "effect": 6,
+    "effect_size_name": "SMD",
+    "effect_size": -0,
+    "effect_size_var": 0.0194,
+    "effect_intervention_n": 100,
+    "effect_control_n": 106
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "effect": 7,
+    "effect_size_name": "SMD",
+    "effect_size": -0,
+    "effect_size_var": 0.0194,
+    "effect_intervention_n": 100,
+    "effect_control_n": 106
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "effect": 8,
+    "effect_size_name": "SMD",
+    "effect_size": 0.1046,
+    "effect_size_var": 0.0195,
+    "effect_intervention_n": 100,
+    "effect_control_n": 106
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "effect": 9,
+    "effect_size_name": "SMD",
+    "effect_size": 0.163,
+    "effect_size_var": 0.0195,
+    "effect_intervention_n": 100,
+    "effect_control_n": 106
+  },
+  {
+    "paper": 475,
+    "paper_label": "Acharya et al. (2004)",
+    "study": 1,
+    "effect": 10,
+    "effect_size_name": "SMD",
+    "effect_size": 0.3886,
+    "effect_size_var": 0.0198,
+    "effect_intervention_n": 100,
+    "effect_control_n": 106
   }
 ]
