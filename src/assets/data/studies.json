@@ -205,6 +205,16 @@
     "study_data_link": "https://docs.google.com/spreadsheets/d/1dylS7LDJKBF9MPSKdyfQ_y2OciogBPLHJd6LCABoWYs/edit?gid=0#gid=0"
   },
   {
+    "paper": 39,
+    "paper_label": "Animal Charity Evaluators (2013b)",
+    "study": 1,
+    "study_n": 623,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://animalcharityevaluators.org/wp-content/uploads/2013/11/Leafleting-Study-Protocol.pdf",
+    "study_data_available": "yes",
+    "study_data_link": "https://docs.google.com/spreadsheets/d/1fGEfFkz-zehPRkhEHUVlkFSW4G7jPnxNfrCWnoida_w/edit?gid=0#gid=0"
+  },
+  {
     "paper": 40,
     "paper_label": "Mercy for Animals (2016a)",
     "study": 1,
@@ -212,6 +222,15 @@
     "study_preregistered": "no",
     "study_data_available": "yes",
     "study_data_link": "https://mfa.cachefly.net/mfa/images/uploads/2016/11/CleanWelfareReformsData.csv"
+  },
+  {
+    "paper": 42,
+    "paper_label": "Mercy for Animals (2016b)",
+    "study": 1,
+    "study_n": 1279,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://drive.google.com/open?id=0B-Eeb4c_dchsdmNmd1hmc3M4RDQ"
   },
   {
     "paper": 50,
@@ -287,6 +306,25 @@
     "study_data_available": "no"
   },
   {
+    "paper": 57,
+    "paper_label": "Piester et al. (2020)",
+    "study": 1,
+    "study_n": 228,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/dbnu9/?view_only=472e3fe33ef546d6be3232abda20dd48"
+  },
+  {
+    "paper": 57,
+    "paper_label": "Piester et al. (2020)",
+    "study": 2,
+    "study_n": 303,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "http://aspredicted.org/blind.php?x=nr8zq5",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/dbnu9/?view_only=472e3fe33ef546d6be3232abda20dd48"
+  },
+  {
     "paper": 58,
     "paper_label": "Dakin et al. (2021)",
     "study": 1,
@@ -295,6 +333,16 @@
     "study_preregistration_link": "osf.io/3s4yj/",
     "study_data_available": "no",
     "study_data_link": "https://osf.io/7kx8u/?view_only="
+  },
+  {
+    "paper": 59,
+    "paper_label": "Piazza et al. (2022)",
+    "study": 1,
+    "study_n": 325,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://aspredicted.org/tj6a3.pdf",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/u4j58/"
   },
   {
     "paper": 60,
@@ -385,6 +433,33 @@
     "study_preregistration_link": "https://osf.io/gbvua",
     "study_data_available": "yes",
     "study_data_link": "https://osf.io/x9jaq/?view_only=9a68fdb44e6f4b1d986565492dda9202"
+  },
+  {
+    "paper": 73,
+    "paper_label": "Pohlmann (2022)",
+    "study": 2,
+    "study_n": 335,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/fr7zh/"
+  },
+  {
+    "paper": 73,
+    "paper_label": "Pohlmann (2022)",
+    "study": 3,
+    "study_n": 3431,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/fr7zh/"
+  },
+  {
+    "paper": 73,
+    "paper_label": "Pohlmann (2022)",
+    "study": 4,
+    "study_n": 87,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/fr7zh/"
   },
   {
     "paper": 75,

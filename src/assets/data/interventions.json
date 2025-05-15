@@ -634,6 +634,18 @@
     "sample_country": "United States"
   },
   {
+    "paper": 39,
+    "paper_label": "Animal Charity Evaluators (2013b)",
+    "study": 1,
+    "intervention_condition": 1,
+    "intervention_description": "Participants were offered and took one of two Vegan Outreach: \"Compassionate Choices\" or \"Even If You Like Meat\".",
+    "intervention_content": "animal welfare, health",
+    "intervention_mechanism": "factual, origin of animal product, negative emotional",
+    "intervention_medium": "text, image",
+    "control_description": "Participants were offered and took a control flyer on puppy mills called \"The Cruelty Behind Cuteness\"",
+    "sample_country": "United States; Canada"
+  },
+  {
     "paper": 40,
     "paper_label": "Mercy for Animals (2016a)",
     "study": 1,
@@ -656,6 +668,18 @@
     "intervention_medium": "text",
     "control_description": "Participants read a legislation article that discusses the legislation implemented by many U.S. states banning the use of plastic bags.",
     "sample_country": "United States"
+  },
+  {
+    "paper": 42,
+    "paper_label": "Mercy for Animals (2016b)",
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Participants saw a pro-vegetarian Facebook and that, after clicking on it, directed them to a Mercy for Animals landing page with a video on cruelty to farm animals called Farm to Fridge.",
+    "intervention_content": "animal welfare",
+    "intervention_mechanism": "negative emotional",
+    "intervention_medium": "video",
+    "control_description": "Participants saw a pro-vegetarian Facebook and that, after clicking on it, directed them to a Mercy for Animals landing page with a video on fighting tropical diseases.",
+    "sample_country": "United States; United Kingdom; Ireland; Canada; Australia"
   },
   {
     "paper": 50,
@@ -826,6 +850,54 @@
     "sample_country": "Italy"
   },
   {
+    "paper": 57,
+    "paper_label": "Piester et al. (2020)",
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Participants saw a menu of 34 items divided into four categories (appetizers, entrees, “design your own bowl”, and salads), with text at the top of the menu reading, “Sustainability Rankings at the [name of café]\". The leaf rating that accompanies each menu item represented the sustainability of each item.",
+    "intervention_content": "environment",
+    "intervention_mechanism": "factual",
+    "intervention_medium": "menu/ food options",
+    "control_description": "Participants saw a menu of 34 items divided into four categories (appetizers, entrees, “design your own bowl”, and salads).",
+    "sample_country": "United States"
+  },
+  {
+    "paper": 57,
+    "paper_label": "Piester et al. (2020)",
+    "study": 2,
+    "intervention_condition": 2,
+    "intervention_description": "Participants saw a screen with a picture of a veggie burger and the label, “Sustainable Choice.” The text on this screen read, “Many people don’t know how much our food choices impact the environment. Eating sustainable foods is a good way we can fight climate change! The Garden Fresh Veggie Burger is an especially sustainable choice. Consider giving the Garden Fresh Veggie Burger a try today!”",
+    "intervention_content": "environment",
+    "intervention_mechanism": "factual",
+    "intervention_medium": "menu/ food options",
+    "control_description": "",
+    "sample_country": "United States"
+  },
+  {
+    "paper": 57,
+    "paper_label": "Piester et al. (2020)",
+    "study": 2,
+    "intervention_condition": 3,
+    "intervention_description": "Participants saw a screen with a picture of a veggie burger and the label, “Student Choice.” The text on the screen read, “The garden fresh veggie burger is a tasty choice! In a taste test we did at the [name of caf´e], 95% of people said that the veggie burger tasted good or very good! Consider giving the garden fresh veggie burger a try today!”",
+    "intervention_content": "taste/ disgust",
+    "intervention_mechanism": "factual",
+    "intervention_medium": "menu/ food options",
+    "control_description": "",
+    "sample_country": "United States"
+  },
+  {
+    "paper": 57,
+    "paper_label": "Piester et al. (2020)",
+    "study": 2,
+    "intervention_condition": 4,
+    "intervention_description": "Participants saw a screen with a picture of a veggie burger and the label, “Student Choice.” The text on the screen read, “The garden fresh veggie burger is a tasty choice! In a taste test we did at the [name of caf´e], 95% of people said that the veggie burger tasted good or very good! Consider giving the garden fresh veggie burger a try today!”. They also saw a screen with a picture of a veggie burger and the label, “Sustainable Choice.” The text on this screen read, “Many people don’t know how much our food choices impact the environment. Eating sustainable foods is a good way we can fight climate change! The Garden Fresh Veggie Burger is an especially sustainable choice. Consider giving the Garden Fresh Veggie Burger a try today!”.",
+    "intervention_content": "environment, taste/ disgust",
+    "intervention_mechanism": "factual",
+    "intervention_medium": "menu/ food options",
+    "control_description": "",
+    "sample_country": "United States"
+  },
+  {
     "paper": 58,
     "paper_label": "Dakin et al. (2021)",
     "study": 1,
@@ -867,6 +939,42 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "sample_country": "Australia"
+  },
+  {
+    "paper": 59,
+    "paper_label": "Piazza et al. (2022)",
+    "study": 1,
+    "intervention_condition": 2,
+    "intervention_description": "Participants were invited to take part in a 28-day commitment to eat meat-free and they were given the opportunity to freely opt out of the pledge, by withdrawing from the study, or continue with it, by offering their written consent. Participants were encouraged to “do their best” to try to eat meat-free for the duration of the study.",
+    "intervention_content": "none",
+    "intervention_mechanism": "goal pursuit",
+    "intervention_medium": "in-person",
+    "control_description": "",
+    "sample_country": "United Kingdom"
+  },
+  {
+    "paper": 59,
+    "paper_label": "Piazza et al. (2022)",
+    "study": 1,
+    "intervention_condition": 4,
+    "intervention_description": "Participants were invited to take part in a 28-day commitment to eat meat-free and they were given the opportunity to freely opt out of the pledge, by withdrawing from the study, or continue with it, by offering their written consent. Participants were encouraged to “do their best” to try to eat meat-free for the duration of the study.",
+    "intervention_content": "none",
+    "intervention_mechanism": "goal pursuit",
+    "intervention_medium": "in-person",
+    "control_description": "",
+    "sample_country": "Germany"
+  },
+  {
+    "paper": 59,
+    "paper_label": "Piazza et al. (2022)",
+    "study": 1,
+    "intervention_condition": 6,
+    "intervention_description": "Participants were invited to take part in a 28-day commitment to eat meat-free and they were given the opportunity to freely opt out of the pledge, by withdrawing from the study, or continue with it, by offering their written consent. Participants were encouraged to “do their best” to try to eat meat-free for the duration of the study.",
+    "intervention_content": "none",
+    "intervention_mechanism": "goal pursuit",
+    "intervention_medium": "in-person",
+    "control_description": "",
     "sample_country": "Australia"
   },
   {
@@ -1068,6 +1176,38 @@
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "in-person",
     "sample_country": "Germany"
+  },
+  {
+    "paper": 73,
+    "paper_label": "Pohlmann (2022)",
+    "study": 2,
+    "intervention_condition": 1,
+    "intervention_description": "With a visible timer counting down from 3 min, participants were asked to recall 10 behaviors where they acted “particularly masculine/manly” or “particularly feminine/womanly” (depending on their gender). Participants read that men and women can easily recall 12 behaviors. The task is intentionally difficult with the purpose of leading participants to infer that their performance is below purportedly acceptable standards for their respective gender, thus threatening gender identity. Then, participants were asked to evaluate photographic art prints that a restaurant is considering exhibiting in its dining areas: participants viewed a slideshow consisting of 15 pretested stock photographs portraying scenes of vulnerability, human connection, care-giving, and displays of emotional distress. The photos pictured female and male adults, as well as children and the elderly, and a range of ethnicities.",
+    "intervention_content": "personal image",
+    "intervention_mechanism": "identity",
+    "intervention_medium": "image",
+    "control_description": "With a visible timer counting down from 3 min, participants were asked to recall 10 behaviors where they acted “particularly masculine/manly” or “particularly feminine/womanly” (depending on their gender). Participants read that men and women can easily recall 12 behaviors. The task is intentionally difficult with the purpose of leading participants to infer that their performance is below purportedly acceptable standards for their respective gender, thus threatening gender identity. Then, participants were asked to evaluate photographic art prints that a restaurant is considering exhibiting in its dining areas: participants viewed a slideshow consisting of geometric shapes.",
+    "sample_country": "United States"
+  },
+  {
+    "paper": 73,
+    "paper_label": "Pohlmann (2022)",
+    "study": 3,
+    "intervention_condition": 1,
+    "intervention_description": "Installation of of visual manipulations under the guise of a photo exhibit at the restaurant. The photographic stimuli were chosen with the following in mind: the connection between human and animal needed to be emphasized by visual overlap between the subjects, suggesting a caring, devoted, and protecting attitude.",
+    "intervention_content": "personal image",
+    "intervention_mechanism": "identity",
+    "intervention_medium": "image",
+    "control_description": "",
+    "sample_country": "United States"
+  },
+  {
+    "paper": 73,
+    "paper_label": "Pohlmann (2022)",
+    "study": 4,
+    "intervention_condition": 2,
+    "control_description": "All participants completed an essay task that threatened gender identity and subsequently watched a slideshow. Participants were presented with a slideshow of geometric shapes. Participants then reviewed ingredients and nutritional information for the BLT, chicken, and falafel wrap presented in standard FDA tables.",
+    "sample_country": "United States"
   },
   {
     "paper": 75,

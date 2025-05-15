@@ -55,7 +55,7 @@
     "column": "paper_status",
     "description": "The status of processing the paper; currently only says whether we've checked out the paper again or not.",
     "data_type": "factor",
-    "factor_levels": "checked"
+    "factor_levels": "checked, contact authors, ready to add"
   },
   {
     "column": "paper_included",
@@ -116,13 +116,13 @@
     "column": "study_condition_assignment",
     "description": "A categorization of the level of analysis to which the conditions were assigned: individual (conditions assigned to individual participants), cluster (conditions assigned to clusters of participants, e.g., schools, restaurants), time (conditions assigned to time points, e.g., day 1 intervention, day 2 control, etc.)",
     "data_type": "factor",
-    "factor_levels": "individual, time point"
+    "factor_levels": "individual, time point, cluster"
   },
   {
     "column": "study_design",
     "description": "A categorization of the study design: between (e.g., different conditions were assigned to different groups of participants), within (e.g., a pre-post design in which the same participants provided data for different conditions), mixed (a pre-post design with multiple conditions such as a control and intervention condition), crossover (e.g., different groups of participants switched conditions across different time points)",
     "data_type": "factor",
-    "factor_levels": "between, within, mixed"
+    "factor_levels": "between, within, mixed, crossover"
   },
   {
     "column": "study_randomization",
@@ -328,19 +328,25 @@
     "column": "outcome_subcategory",
     "description": "A more fine-grained categorization of the outcome",
     "data_type": "factor",
-    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, purchasing intentions, diet, vegetarian consumption, meat commitment, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics, vegan consumption"
+    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, purchasing intentions, diet, ethical consumption, vegetarian consumption, meat commitment, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics, vegan consumption"
   },
   {
     "column": "outcome_measurement_type",
     "description": "A categoriziation of how the outcome was measured: food diary, sales data, survey.",
     "data_type": "factor",
-    "factor_levels": "survey, food diary, sales data"
+    "factor_levels": "survey, food diary, sales data, meal choice, other"
   },
   {
-    "column": "outcome_meat_type",
-    "description": "A categorization of what kind of meat consumption was measured.",
+    "column": "outcome_product_type",
+    "description": "The type of animal product that the outcome is about.",
     "data_type": "factor",
-    "factor_levels": "red meat, white meat, meat, pork, all, processed meat, poultry, fish, eggs, dairy, chicken, beef, lamb, red and processed meat, factory farmed meat, animal products from factory farms, milk, yoghurt, cheese"
+    "factor_levels": "meat, eggs, dairy"
+  },
+  {
+    "column": "outcome_product_subtype",
+    "description": "A more precise type of animal product that the outcome is about.",
+    "data_type": "factor",
+    "factor_levels": "red meat, white meat, pork, poultry, fish, beef, processed meat, chicken, turkey, lamb, seafood, red and processed meat, milk, yoghurt, cheese"
   },
   {
     "column": "outcome_scale",

@@ -215,6 +215,17 @@
     "paper_open_access": "yes"
   },
   {
+    "paper": 39,
+    "paper_label": "Animal Charity Evaluators (2013b)",
+    "paper_title": "2013 leafleting study",
+    "paper_authors": "Animal Charity Evaluators",
+    "paper_year": 2013,
+    "paper_type": "report",
+    "paper_source": "Animal Charity Evaluators",
+    "paper_link": "https://animalcharityevaluators.org/advocacy-interventions/interventions/leafleting/2014-march/2013-leafleting-study/",
+    "paper_open_access": "yes"
+  },
+  {
     "paper": 40,
     "paper_label": "Mercy for Animals (2016a)",
     "paper_title": "Welfare reforms and meat consumption",
@@ -223,6 +234,17 @@
     "paper_type": "report",
     "paper_source": "Mercy for Animals",
     "paper_link": "https://mercyforanimals.org/blog/welfare-reforms-survey/",
+    "paper_open_access": "yes"
+  },
+  {
+    "paper": 42,
+    "paper_label": "Mercy for Animals (2016b)",
+    "paper_title": "Do online videos of farmed animal cruelty change people’s diets and attitudes?",
+    "paper_authors": "Mercy for Animals",
+    "paper_year": 2016,
+    "paper_type": "report",
+    "paper_source": "Mercy for Animals",
+    "paper_link": "https://mercyforanimals.org/blog/impact-study/",
     "paper_open_access": "yes"
   },
   {
@@ -292,6 +314,17 @@
     "paper_open_access": "no"
   },
   {
+    "paper": 57,
+    "paper_label": "Piester et al. (2020)",
+    "paper_title": "“I’ll try the veggie burger ”: Increasing purchases of sustainable foods with information about sustainability and taste",
+    "paper_authors": "Piester, H. E.; DeRieux. C. M.; Tucker, J.; Buttrick, N. R.; Galloway,, J. N.; Wilson, T. D.",
+    "paper_year": 2020,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2020.104842",
+    "paper_open_access": "no"
+  },
+  {
     "paper": 58,
     "paper_label": "Dakin et al. (2021)",
     "paper_title": "Prescribing vegetarian or flexitarian diets leads to sustained reduction in meat intake",
@@ -301,6 +334,17 @@
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2021.105285",
     "paper_open_access": "no"
+  },
+  {
+    "paper": 59,
+    "paper_label": "Piazza et al. (2022)",
+    "paper_title": "Monitoring a meat-free pledge with smartphones: An experimental study",
+    "paper_authors": "Piazza, J.; Gregson, R.; Kordoni, A.; Pfeiler, T. M.; Ruby, M. B.; Ellis, D. A.; Sahin, E.; Reith, M.",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2021.105726",
+    "paper_open_access": "yes"
   },
   {
     "paper": 60,
@@ -400,6 +444,17 @@
     "paper_source": "Frontiers in Psychology",
     "paper_link": "https://doi.org/10.3389/fpsyg.2023.1158410",
     "paper_open_access": "yes"
+  },
+  {
+    "paper": 73,
+    "paper_label": "Pohlmann (2022)",
+    "paper_title": "The taste of compassion: Influencing meat attitudes with interhuman and interspecies moral appeals",
+    "paper_authors": "Pohlmann, A.",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2021.105654",
+    "paper_open_access": "no"
   },
   {
     "paper": 75,
