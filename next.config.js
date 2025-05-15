@@ -15,6 +15,10 @@ const nextConfig = {
   experimental: {
     reactCompiler: true,
   },
+  plugins: {
+    
+    "@tailwindcss/postcss": {},
+  },
 }
 
 module.exports = nextConfig
