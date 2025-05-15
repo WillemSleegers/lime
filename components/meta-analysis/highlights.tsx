@@ -67,7 +67,6 @@ export const Highlights = (props: HighLightsProps) => {
     "yes"
   )
   const yearCounts = countUniqueValuesByGroup(data, "paper", "paper_year")
-  const mostRecentYear = Math.max(...data.map((e) => e.paper_year))
 
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>

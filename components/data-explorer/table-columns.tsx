@@ -348,7 +348,7 @@ export const ColumnsOutcomes: ColumnDef<ColumnsOutcomes>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Description" />
     ),
-    cell: ({ row, column }) => {
+    cell: ({ row }) => {
       const value = row.getValue<string>("outcome_description")
       return <CellLongText value={value} />
     },

@@ -37,7 +37,6 @@ import {
 
 import { Toggle } from "../ui/toggle"
 import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
-import { Locks } from "@/lib/types"
 import { useState } from "react"
 
 /* Paper-level */
@@ -67,8 +66,6 @@ type FilterPapersProps = {
 
 export const FilterPapers = (props: FilterPapersProps) => {
   const { data, setData, lock, setLock, setShouldHandleLocks } = props
-
-  const [rows, setRows] = useState(data.length)
 
   const form = useForm<z.infer<typeof formSchemaPapers>>({
     resolver: zodResolver(formSchemaPapers),

@@ -1,12 +1,11 @@
 import { generateTicks } from "@/lib/utils"
-import React, { FC } from "react"
+import React from "react"
 import {
   ComposedChart,
   Line,
   ReferenceLine,
   XAxis,
   YAxis,
-  ResponsiveContainer,
   Scatter,
   ZAxis,
 } from "recharts"

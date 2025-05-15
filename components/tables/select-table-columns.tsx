@@ -70,7 +70,7 @@ export const SelectTableColumns = ({
                       onSelect={(currentValue) => {
                         selectedColumns.includes(currentValue)
                           ? setSelectedColumns(
-                              selectedColumns.filter((v) => v != currentValue),
+                              selectedColumns.filter((v) => v != currentValue)
                             )
                           : setSelectedColumns([
                               ...selectedColumns,
@@ -83,7 +83,7 @@ export const SelectTableColumns = ({
                           "mr-2 h-4 w-4",
                           selectedColumns.includes(column.value)
                             ? "opacity-100"
-                            : "opacity-0",
+                            : "opacity-0"
                         )}
                       />
                       {column.label}

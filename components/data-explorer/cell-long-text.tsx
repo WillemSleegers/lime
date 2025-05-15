@@ -9,8 +9,6 @@ type CellLongTextProps = {
 export const CellLongText = ({ value }: CellLongTextProps) => {
   const [showMore, setShowMore] = useState(false)
 
-  const textLength = value.length
-
   if (value.length < maxLength) return value
 
   if (showMore)

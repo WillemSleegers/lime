@@ -122,8 +122,8 @@ export const getUniqueData = (data: Data, x: DataKeys) => {
  * @returns Filtered array containing only objects from sourceArray that have matching key-value pairs in lookupArray
  */
 export function semiJoin<
-  S extends Record<string, any>,
-  L extends Record<string, any>,
+  S extends Record<string, unknown>,
+  L extends Record<string, unknown>,
   K extends keyof S & keyof L
 >(
   sourceArray: S[],
