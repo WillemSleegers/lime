@@ -249,4 +249,4 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 57,Piester et al. (2020),2,1,4,2,bought a vegetarian option,7,OR2DL,0.456834280413858,0.0837363900152834
 73,Pohlmann (2022),2,2,1,1,meat choice frequency,1,SMD,0.110024180363773,0.0119610266439687
 73,Pohlmann (2022),3,1,1,1,meat choice,2,OR2DL,-0.0940962433732422,0.00142403058479051
-73,Pohlmann (2022),4,2,2,1,wrap choice,3,OR2DL,-0.0649371909478595,0.0891385175139138
+73,Pohlmann (2022),4,2,1,1,wrap choice,3,OR2DL,-0.0649371909478595,0.0891385175139138

@@ -1205,7 +1205,11 @@
     "paper": 73,
     "paper_label": "Pohlmann (2022)",
     "study": 4,
-    "intervention_condition": 2,
+    "intervention_condition": 1,
+    "intervention_description": "All participants completed an essay task that threatened gender identity and subsequently watched a slideshow. Compassion was primed a slideshow using photographs showing people as having a caring, devoted, and protecting attitude. Participants then reviewed ingredients and nutritional information for the BLT, chicken, and falafel wrap presented in standard FDA tables.",
+    "intervention_content": "personal image",
+    "intervention_mechanism": "identity",
+    "intervention_medium": "image",
     "control_description": "All participants completed an essay task that threatened gender identity and subsequently watched a slideshow. Participants were presented with a slideshow of geometric shapes. Participants then reviewed ingredients and nutritional information for the BLT, chicken, and falafel wrap presented in standard FDA tables.",
     "sample_country": "United States"
   },
