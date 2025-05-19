@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
+import data from "@/assets/data/data.json"
 import papers from "@/assets/data/papers.json"
 import interventions from "@/assets/data/interventions.json"
 import outcomes from "@/assets/data/outcomes.json"
@@ -20,14 +21,14 @@ type PaperDialogProps = {
 }
 
 export const PaperDialog = ({ row }: PaperDialogProps) => {
-  const paper_label = row.getValue("paper_label") as string
-  const paper = papers.find((p) => p.paper_label == paper_label)?.paper
+  const paperData = data.filter((datum) => datum.paper === row.original.paper)
+  const studies = [...new Set(paperData.map((datum) => datum.study))]
 
-  const paper_title = papers.find((p) => p.paper == paper)?.paper_title
-
-  const paper_authors = papers.find((p) => p.paper == paper)?.paper_authors
-
-  const paper_link = papers.find((p) => p.paper == paper)?.paper_link
+  const paper = paperData[0].paper
+  const paper_label = paperData[0].paper_label
+  const paper_title = paperData[0].paper_title
+  const paper_authors = paperData[0].paper_authors
+  const paper_link = paperData[0].paper_link
 
   const intervention_description = interventions.filter((p) => p.paper == paper)
 
@@ -68,6 +69,14 @@ export const PaperDialog = ({ row }: PaperDialogProps) => {
               </div>
             </div>
           </div>
+
+          {/* {studies.map((study) => {
+            return (
+              <div key={study}>
+                <h1 className="font-semibold text-2xl">Study {study}</h1>
+              </div>
+            )
+          })} */}
 
           {intervention_description && (
             <div className="space-y-2">
