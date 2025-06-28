@@ -9,7 +9,6 @@ import {
   YAxis,
   Scatter,
   Tooltip,
-  TooltipProps,
   ReferenceLine,
 } from "recharts"
 
@@ -24,6 +23,7 @@ import { Data } from "@/lib/types"
 
 import {
   NameType,
+  Props,
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent"
 
@@ -120,7 +120,7 @@ export const PublicationBias = (props: PublicationBiasProps) => {
                   }}
                   reversed
                 />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip content={<CustomTooltip accessibilityLayer />} />
                 <ReferenceLine
                   x={effect}
                   stroke="black"
@@ -163,11 +163,8 @@ export const PublicationBias = (props: PublicationBiasProps) => {
   )
 }
 
-const CustomTooltip = ({
-  active,
-  payload,
-}: TooltipProps<ValueType, NameType>) => {
-  if (active && payload && payload.length) {
+const CustomTooltip = ({ payload }: Props<ValueType, NameType>) => {
+  if (payload && payload.length) {
     const dataPoint = payload[0].payload
     return (
       <div className="custom-tooltip rounded border border-gray-500 bg-white p-3">

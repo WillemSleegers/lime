@@ -5,7 +5,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
-    "outcome_description": "whether participants reduced their red meat consumption",
+    "outcome_description": "Percentage of participants who reduced red meat consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -16,7 +16,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "white meat consumption",
-    "outcome_description": "whether participants reduced their white meat consumption",
+    "outcome_description": "Percentage of participants who reduced white meat consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -27,7 +27,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "total meat consumption",
-    "outcome_description": "total meat consumption based on a food diary in which participants recorded their food intake, including portion sizes, over two weekdays and one weekend day",
+    "outcome_description": "Total meat consumption over two weekdays and one weekend day",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
@@ -38,7 +38,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "pork consumption",
-    "outcome_description": "number of times participants ate meals or snacks that contained any type of pork over the past 30 days",
+    "outcome_description": "Frequency of pork consumption over the past 30 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -49,7 +49,7 @@
     "study": 3,
     "outcome": 1,
     "outcome_label": "likelihood of eating again",
-    "outcome_description": "likelihood of eating the sampled pork again",
+    "outcome_description": "Likelihood of eating sampled pork again",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -60,7 +60,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "animal attitude scale",
-    "outcome_description": "five items from the Animal Attitude Scale that reference farmed animals (e.g., I think people who object to raising animals for meat are too sentimental)",
+    "outcome_description": "Average of five items from the Animal Attitude Scale that reference farmed animals",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "animal attitude",
     "outcome_measurement_type": "survey"
@@ -71,7 +71,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "animal products consumption",
-    "outcome_description": "number of times participants consumed animal products (poultry, fish, beef, pork, eggs, dairy) during the past week",
+    "outcome_description": "Frequency of animal product consumption (poultry, fish, beef, pork, eggs, dairy) during the past week",
     "outcome_category": "behavior",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "survey"
@@ -82,7 +82,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "attitude",
-    "outcome_description": "agreement with three items (e.g., there is nothing wrong with eating meat.)",
+    "outcome_description": "Average of three meat attitude items (e.g., there is nothing wrong with eating meat)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "moral judgment",
     "outcome_measurement_type": "survey"
@@ -93,7 +93,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "intended behavior",
-    "outcome_description": "agreement with three items (e.g., I plan to become a vegetarian.)",
+    "outcome_description": "Average of three intended behavior items (e.g., I plan to become a vegetarian)",
     "outcome_category": "intentions",
     "outcome_subcategory": "diet intentions",
     "outcome_measurement_type": "survey"
@@ -104,7 +104,7 @@
     "study": 2,
     "outcome": 1,
     "outcome_label": "intention",
-    "outcome_description": "agreement with three items (e.g., I intend to eat less than two medium portions of red meat over the next week)",
+    "outcome_description": "Average agreement with three intention items (e.g., I intend to eat less than two medium portions of red meat over the next week)",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -115,7 +115,7 @@
     "study": 2,
     "outcome": 2,
     "outcome_label": "affective attitude",
-    "outcome_description": "agreement with three items (e.g., eating less than two medium portion of red meat in the next weeks is unenjoyable - enjoyable)",
+    "outcome_description": "Average agreement with three affective attitude items (e.g., eating less than two medium portion of red meat in the next weeks is unenjoyable - enjoyable)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
     "outcome_measurement_type": "survey"
@@ -126,7 +126,7 @@
     "study": 2,
     "outcome": 3,
     "outcome_label": "instrumental attitude",
-    "outcome_description": "agreement with three items (e.g., eating less than two medium portion of red meat in the next weeks is not worthwhile- worthwhile)",
+    "outcome_description": "Average agreement with three instrumental attitude items (e.g., eating less than two medium portion of red meat in the next weeks is not worthwhile- worthwhile)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
     "outcome_measurement_type": "survey"
@@ -137,7 +137,7 @@
     "study": 2,
     "outcome": 4,
     "outcome_label": "red meat consumption",
-    "outcome_description": "total number of red meat portions weighted by portion size (small, medium, large) based on an online food diary",
+    "outcome_description": "Total number of red meat portions weighted by portion size",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
@@ -148,7 +148,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "intention",
-    "outcome_description": "agreement with three items (e.g., in the next week, I intend to not eat more than one portion of processed meat [50 g])",
+    "outcome_description": "Average agreement with three intention items (e.g., in the next week, I intend to not eat more than one portion of processed meat [50 g])",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -159,7 +159,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "affective attitude",
-    "outcome_description": "agreement with three items (e.g., in the next week, not eating more than one portion of processed meat [50 g] is unenjoyable-enjoyable)",
+    "outcome_description": "Average agreement with three affective attitude items (e.g., in the next week, not eating more than one portion of processed meat [50 g] is unenjoyable-enjoyable)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
     "outcome_measurement_type": "survey"
@@ -170,7 +170,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "instrumental attitude",
-    "outcome_description": "agreement with three items (e.g., in the next week, not eating more than one portion of processed meat [50 g] is not worthwhile-worthwhile)",
+    "outcome_description": "Average agreement with three instrumental attitude items (e.g., in the next week, not eating more than one portion of processed meat [50 g] is not worthwhile-worthwhile)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
     "outcome_measurement_type": "survey"
@@ -181,7 +181,7 @@
     "study": 1,
     "outcome": 4,
     "outcome_label": "processed meat consumption",
-    "outcome_description": "total number of processed meat portions weighted by portion size (small, medium, large) based on an online food diary",
+    "outcome_description": "Total number of processed meat portions weighted by portion size",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
@@ -192,7 +192,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
-    "outcome_description": "number of meals in a typical week that include beef or pork?",
+    "outcome_description": "Number of meals in a typical week that include beef or pork",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -203,7 +203,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "poultry consumption",
-    "outcome_description": "number of meals in a typical week that include chicken or turkey?",
+    "outcome_description": "Number of meals in a typical week that include chicken or turkey",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -214,7 +214,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "fish consumption",
-    "outcome_description": "number of meals in a typical week that include fish?",
+    "outcome_description": "Number of meals in a typical week that include fish",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -225,7 +225,7 @@
     "study": 1,
     "outcome": 4,
     "outcome_label": "eggs consumption",
-    "outcome_description": "number of meals in a typical week that include eggs?",
+    "outcome_description": "Number of meals in a typical week that include eggs",
     "outcome_category": "behavior",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
@@ -236,7 +236,7 @@
     "study": 1,
     "outcome": 5,
     "outcome_label": "animal product consumption",
-    "outcome_description": "average number of meals in a typical week that include animal products (red meat, poultry, fish, eggs)",
+    "outcome_description": "Average number of meals in a typical week that include animal products (red meat, poultry, fish, eggs)",
     "outcome_category": "behavior",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "survey"
@@ -247,7 +247,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "valence/pleasantness",
-    "outcome_description": "rated valence of the pork meal shown in the image (negative/positive)",
+    "outcome_description": "Valence of the pork meal shown in an image",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat hedonics",
     "outcome_measurement_type": "survey"
@@ -258,7 +258,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "desire to eat",
-    "outcome_description": "desire to eat the pork meal shown in the image",
+    "outcome_description": "Desire to eat the pork meal shown in an image",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat hedonics",
     "outcome_measurement_type": "survey"
@@ -269,7 +269,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "willingness to reduce meat consumption",
-    "outcome_description": "willingness to reduce meat consumption",
+    "outcome_description": "Willingness to reduce meat consumption",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -280,7 +280,7 @@
     "study": 1,
     "outcome": 4,
     "outcome_label": "willingness to avoid eating meat",
-    "outcome_description": "willingness to avoid eating meat",
+    "outcome_description": "Willingness to avoid eating meat",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -291,7 +291,7 @@
     "study": 1,
     "outcome": 5,
     "outcome_label": "willingness to follow a plant-based diet",
-    "outcome_description": "willingness to follow a plant-based diet",
+    "outcome_description": "Willingness to follow a plant-based diet",
     "outcome_category": "intentions",
     "outcome_subcategory": "diet intentions",
     "outcome_measurement_type": "survey"
@@ -302,7 +302,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
-    "outcome_description": "number of meals in a typical week that contain beef or pork",
+    "outcome_description": "Number of meals that contain beef or pork in a typical week",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -313,7 +313,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "poultry consumption",
-    "outcome_description": "number of meals in a typical week that contain chicken or turkey",
+    "outcome_description": "Number of meals that contain chicken or turkey in a typical week",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -324,7 +324,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "fish consumption",
-    "outcome_description": "number of meals in a typical week that contain fish",
+    "outcome_description": "Number of meals that contain fish in a typical week",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -335,7 +335,7 @@
     "study": 1,
     "outcome": 4,
     "outcome_label": "eggs consumption",
-    "outcome_description": "number of meals in a typical week that contain eggs",
+    "outcome_description": "Number of meals that contain eggs in a typical week",
     "outcome_category": "behavior",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
@@ -346,7 +346,7 @@
     "study": 1,
     "outcome": 5,
     "outcome_label": "dairy consumption",
-    "outcome_description": "number of meals in a typical week that contain dairy",
+    "outcome_description": "Number of meals that contain dairy in a typical week",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -357,7 +357,7 @@
     "study": 1,
     "outcome": 6,
     "outcome_label": "animal product consumption",
-    "outcome_description": "average number of meals in a typical week that include animal products (red meat, poultry, fish, eggs, dairy)",
+    "outcome_description": "Average number of meals that include animal products (beef, pork, chicken, turkey, fish, eggs, dairy) in a typical week",
     "outcome_category": "behavior",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "survey"
@@ -368,7 +368,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "intended meat consumption",
-    "outcome_description": "intention to eat less meat in the next seven days",
+    "outcome_description": "Intention to eat less meat in the next seven days",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -379,7 +379,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "attitude toward reducing meat consumption",
-    "outcome_description": "responses to the statement \"Changing my diet to eat less meat is...\" along seven dimensions: very bad—very good, very disadvantageous—very advantageous, very undesirable—very desirable, very negative—very positive, very harmful—very beneficial, very unimportant—very important, very useless—very useful",
+    "outcome_description": "Average attitude towards changing diet based on seven dimensions (e.g., bad/good, negative/positive, harmful/beneficial)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
     "outcome_measurement_type": "survey"
@@ -390,7 +390,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported change in chicken consumption",
-    "outcome_description": "change in the consumption of chicken in the last 3 months",
+    "outcome_description": "Change in chicken consumption in the last 3 months",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -401,7 +401,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "reported change in beef consumption",
-    "outcome_description": "change in the consumption of beef in the last 3 months",
+    "outcome_description": "Change in beef consumption in the last 3 months",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -412,7 +412,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "reported change in pork consumption",
-    "outcome_description": "change in the consumption of pork in the last 3 months",
+    "outcome_description": "Change in pork consumption in the last 3 months",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -423,7 +423,18 @@
     "study": 1,
     "outcome": 4,
     "outcome_label": "reported change in fish consumption",
-    "outcome_description": "change in the consumption of fish in the last 3 months",
+    "outcome_description": "Change in fish consumption in the last 3 months",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 18,
+    "paper_label": "Flens et al. (2018)",
+    "study": 1,
+    "outcome": 5,
+    "outcome_label": "reported change in dairy consumption",
+    "outcome_description": "Change in dairy consumption in the last 3 months",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -434,7 +445,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "reduction in meat consumption compared to baseline",
-    "outcome_description": "reduction in average weight of meat consumed for each meal based on the food diary",
+    "outcome_description": "Change in weight of meat consumed for each meal",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
@@ -445,7 +456,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "beef consumption",
-    "outcome_description": "frequency of beef consumption",
+    "outcome_description": "Frequency of beef consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -456,7 +467,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "chicken consumption",
-    "outcome_description": "frequency of chicken consumption",
+    "outcome_description": "Frequency of chicken consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -467,7 +478,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "dairy consumption",
-    "outcome_description": "frequency of dairy consumption",
+    "outcome_description": "Frequency of dairy consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -478,7 +489,7 @@
     "study": 1,
     "outcome": 4,
     "outcome_label": "egg consumption",
-    "outcome_description": "frequency of egg consumption",
+    "outcome_description": "Frequency of egg consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
@@ -489,7 +500,7 @@
     "study": 1,
     "outcome": 5,
     "outcome_label": "fish consumption",
-    "outcome_description": "frequency of fish consumption",
+    "outcome_description": "Frequency of fish consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -500,7 +511,7 @@
     "study": 1,
     "outcome": 6,
     "outcome_label": "pork consumption",
-    "outcome_description": "frequency of pork consumption",
+    "outcome_description": "Frequency of pork consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -511,7 +522,7 @@
     "study": 1,
     "outcome": 7,
     "outcome_label": "red meat consumption",
-    "outcome_description": "average frequency of beef and pork consumption",
+    "outcome_description": "Average frequency of beef and pork consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -522,7 +533,7 @@
     "study": 1,
     "outcome": 8,
     "outcome_label": "animal product consumption",
-    "outcome_description": "average frequency of animal product consumption (beef, pork, chicken, eggs, fish, dairy)",
+    "outcome_description": "Average frequency of beef, chicken, dairy, egg, fish, and pork consumption",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -533,7 +544,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "purchasing intentions for five meat items",
-    "outcome_description": "likelihood of buying the meat item in the photo",
+    "outcome_description": "Likelihood of buying meat items shown in photos",
     "outcome_category": "intentions",
     "outcome_subcategory": "purchasing intentions",
     "outcome_measurement_type": "survey"
@@ -544,7 +555,7 @@
     "study": 2,
     "outcome": 1,
     "outcome_label": "purchasing intentions for five meat items",
-    "outcome_description": "likelihood of buying the meat item in the photo",
+    "outcome_description": "Likelihood of buying meat items shown in photos",
     "outcome_category": "intentions",
     "outcome_subcategory": "purchasing intentions",
     "outcome_measurement_type": "survey"
@@ -555,7 +566,7 @@
     "study": 3,
     "outcome": 1,
     "outcome_label": "purchasing intentions for five meat items",
-    "outcome_description": "likelihood of buying the meat item in the photo",
+    "outcome_description": "Likelihood of buying meat items shown in photos",
     "outcome_category": "intentions",
     "outcome_subcategory": "purchasing intentions",
     "outcome_measurement_type": "survey"
@@ -566,7 +577,7 @@
     "study": 2,
     "outcome": 1,
     "outcome_label": "interest in eating less meat",
-    "outcome_description": "interest in eating less meat",
+    "outcome_description": "Interest in eating less meat",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -577,7 +588,7 @@
     "study": 4,
     "outcome": 1,
     "outcome_label": "meat purchase",
-    "outcome_description": "presence of meat in the purchased meal based on the receipt",
+    "outcome_description": "Percentage of purchased meals containing meat",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
@@ -588,7 +599,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "willingness to eat beef",
-    "outcome_description": "average agreement to two questions on the desire to eat beef in the next days and the intention to reduce beef consumption during the coming year",
+    "outcome_description": "Average of desire to eat beef in the next days and intention to reduce beef consumption during the coming year",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -599,7 +610,7 @@
     "study": 2,
     "outcome": 1,
     "outcome_label": "willingness to eat beef",
-    "outcome_description": "average agreement to two questions on the desire to eat beef in the next days and the intention to reduce beef consumption during the coming year",
+    "outcome_description": "Average of desire to eat beef in the next days and intention to reduce beef consumption during the coming year",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -610,7 +621,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "willing to eat meat",
-    "outcome_description": "how negative or positive they felt about eating the meat on a slider ranging from extremely negative 0 to extremely positive 100",
+    "outcome_description": "Feelings about eating meat",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat hedonics",
     "outcome_measurement_type": "survey"
@@ -621,7 +632,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
-    "outcome_description": "Frequency of red meat consumption in the last 7 days.",
+    "outcome_description": "Frequency of red meat consumption in the last 7 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -632,7 +643,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "poultry consumption",
-    "outcome_description": "Frequency of poultry consumption in the last 7 days.",
+    "outcome_description": "Frequency of poultry consumption in the last 7 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -643,7 +654,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "fish consumption",
-    "outcome_description": "Frequency of fish consumption in the last 7 days.",
+    "outcome_description": "Frequency of fish consumption in the last 7 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -654,7 +665,7 @@
     "study": 1,
     "outcome": 4,
     "outcome_label": "eggs consumption",
-    "outcome_description": "Frequency of egg consumption in the last 7 days.",
+    "outcome_description": "Frequency of egg consumption in the last 7 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
@@ -665,7 +676,7 @@
     "study": 1,
     "outcome": 5,
     "outcome_label": "dairy consumption",
-    "outcome_description": "Frequency of dairy consumption in the last 7 days.",
+    "outcome_description": "Frequency of dairy consumption in the last 7 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -676,7 +687,7 @@
     "study": 1,
     "outcome": 6,
     "outcome_label": "vegetarian diet",
-    "outcome_description": "Describing their current diet as a vegetarian diet.",
+    "outcome_description": "Percentage of participants describing their current diet as a vegetarian diet.",
     "outcome_category": "behavior",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
@@ -687,7 +698,7 @@
     "study": 1,
     "outcome": 7,
     "outcome_label": "vegan diet",
-    "outcome_description": "Describing their current diet as a vegan diet.",
+    "outcome_description": "Percentage of participants describing their current diet as a vegan diet.",
     "outcome_category": "behavior",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
@@ -698,7 +709,7 @@
     "study": 1,
     "outcome": 8,
     "outcome_label": "meat reduction diet",
-    "outcome_description": "Describing their current diet as a meat reduction diet.",
+    "outcome_description": "Percentage of participants describing their current diet as a meat reduction diet.",
     "outcome_category": "behavior",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
@@ -709,7 +720,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "red meat consumption",
-    "outcome_description": "Frequency of red meat consumption in the last 7 days.",
+    "outcome_description": "Frequency of red meat consumption in the last 7 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -720,7 +731,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "poultry consumption",
-    "outcome_description": "Frequency of poultry consumption in the last 7 days.",
+    "outcome_description": "Frequency of poultry consumption in the last 7 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -731,7 +742,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "fish consumption",
-    "outcome_description": "Frequency of fish consumption in the last 7 days.",
+    "outcome_description": "Frequency of fish consumption in the last 7 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -742,7 +753,7 @@
     "study": 1,
     "outcome": 4,
     "outcome_label": "eggs consumption",
-    "outcome_description": "Frequency of egg consumption in the last 7 days.",
+    "outcome_description": "Frequency of egg consumption in the last 7 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
@@ -753,7 +764,7 @@
     "study": 1,
     "outcome": 5,
     "outcome_label": "dairy consumption",
-    "outcome_description": "Frequency of dairy consumption in the last 7 days.",
+    "outcome_description": "Frequency of dairy consumption in the last 7 days",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -764,7 +775,7 @@
     "study": 1,
     "outcome": 6,
     "outcome_label": "vegetarian diet",
-    "outcome_description": "Describing their current diet as a vegetarian diet.",
+    "outcome_description": "Percentage of participants describing their current diet as a vegetarian diet.",
     "outcome_category": "behavior",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
@@ -775,7 +786,7 @@
     "study": 1,
     "outcome": 7,
     "outcome_label": "vegan diet",
-    "outcome_description": "Describing their current diet as a vegan diet.",
+    "outcome_description": "Percentage of participants describing their current diet as a vegan diet.",
     "outcome_category": "behavior",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
@@ -786,7 +797,7 @@
     "study": 1,
     "outcome": 8,
     "outcome_label": "meat reduction diet",
-    "outcome_description": "Describing their current diet as a meat reduction diet.",
+    "outcome_description": "Percentage of participants describing their current diet as a meat reduction diet.",
     "outcome_category": "behavior",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
@@ -797,7 +808,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "intention to reduce pork consumption",
-    "outcome_description": "intention to change their pork consumption over the next few months",
+    "outcome_description": "Intention to change pork consumption over the next few months",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -808,7 +819,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "meat consumption in past two days",
-    "outcome_description": "total number of pork, beef, chicken and turkey, and fish and seafood servings in the past two days",
+    "outcome_description": "Total pork, beef, chicken and turkey, and fish and seafood servings in the past two days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -819,7 +830,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "animal product consumption in the past two days",
-    "outcome_description": "total number of pork, beef, dairy, eggs, chicken and turkey, and fish and seafood servings in the past two days",
+    "outcome_description": "Total pork, beef, dairy, eggs, chicken and turkey, and fish and seafood servings in the past two days",
     "outcome_category": "behavior",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "survey"
@@ -830,7 +841,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "decrease in meat consumption at any time in the past four months",
-    "outcome_description": "decrease in the consumption of meat, chicken and fish at any time in the past four months",
+    "outcome_description": "Percentage of participants decreasing their consumption of meat, chicken and fish at any time in the past four months",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -841,7 +852,7 @@
     "study": 1,
     "outcome": 4,
     "outcome_label": "decrease in meat consumption compared to four months ago",
-    "outcome_description": "decrease in the consumption of meat, chicken and fish compared to four months ago",
+    "outcome_description": "Percentage of participants decreasing their consumption of meat, chicken and fish compared to four months ago",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -852,7 +863,7 @@
     "study": 1,
     "outcome": 5,
     "outcome_label": "intended reduction in meat consumption",
-    "outcome_description": "intended reduction or elimination of the consumption of meat, chicken and fish four months from now",
+    "outcome_description": "Percentage of participants intending to reduce or eliminate their consumption of meat, chicken and fish four months from now",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -863,7 +874,7 @@
     "study": 1,
     "outcome": 6,
     "outcome_label": "intended elimination of meat consumption",
-    "outcome_description": "intended elimination of the consumption of meat, chicken and fish four months from now",
+    "outcome_description": "Percentage of participants intending to eliminate their consumption of meat, chicken and fish four months from now",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -874,7 +885,7 @@
     "study": 1,
     "outcome": 7,
     "outcome_label": "attitude toward meat consumption",
-    "outcome_description": "agreement with the statement that eating less meat, chicken and fish is the right thing to do",
+    "outcome_description": "Agreement with 'Eating less meat, chicken and fish (in total) is the right thing to do'",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "moral judgment",
     "outcome_measurement_type": "survey"
@@ -885,7 +896,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "intended meat consumption",
-    "outcome_description": "intention to choose non-factory farmed or vegetarian foods when available",
+    "outcome_description": "Agreement with 'I plan to choose non-factory farmed or vegetarian foods when they are available.'",
     "outcome_category": "intentions",
     "outcome_subcategory": "purchasing intentions",
     "outcome_measurement_type": "survey"
@@ -896,7 +907,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "meat purchase with voucher",
-    "outcome_description": "percentage of students who bought a meal containing meat with a restaurant voucher",
+    "outcome_description": "Percentage of participants buying a meal containing meat with a restaurant voucher",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
@@ -907,7 +918,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "% meat purchase among all food purchases above $4.99 with university dining card",
-    "outcome_description": "percentage of main meals (>$4.99) purchased at the univerity's dining hall that contained meat",
+    "outcome_description": "Percentage of main meals containing meat purchased at the univerity's dining hall",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
@@ -918,7 +929,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported meat consumption in the past week",
-    "outcome_description": "total frequency of consuming eight animal products (chicken, turkey, fish, pork, beef, other meat, dairy, eggs) multiplied by the portion size over the past week",
+    "outcome_description": "Total weight of animal product consumption over the past week",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -929,7 +940,7 @@
     "study": 2,
     "outcome": 1,
     "outcome_label": "intended change in meat and animal product consumption",
-    "outcome_description": "intended change in meat and animal product consumption over the next 7 days",
+    "outcome_description": "Change in animal product consumption over the next 7 days",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -940,7 +951,7 @@
     "study": 3,
     "outcome": 1,
     "outcome_label": "reported meat consumption in the past week",
-    "outcome_description": "total frequency of consuming eight animal products (chicken, turkey, fish, pork, beef, other meat, dairy, eggs) multiplied by the portion size over the past week",
+    "outcome_description": "Total weight of animal product consumption over the past week",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -951,7 +962,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "% vegetarian food sales",
-    "outcome_description": "percentage of vegetarian sales",
+    "outcome_description": "Percentage of vegetarian sales",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
@@ -962,7 +973,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "intended meat consumption",
-    "outcome_description": "percentage of participants intending to consume less red and processed meat in the future",
+    "outcome_description": "Percentage of participants intending to consume less red and processed meat in the future",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -973,18 +984,18 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "moral acceptability of meat-eating",
-    "outcome_description": "Agreement with “To what extent do you find meat-eating morally acceptable or morally wrong?”, asked both at the start of the semester and the end of the semester.",
+    "outcome_description": "Agreement with 'To what extent do you find meat-eating morally acceptable or morally wrong?'",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "moral judgment",
     "outcome_measurement_type": "survey"
   },
   {
     "paper": 56,
-    "paper_label": "Carfora et al. (2019)",
+    "paper_label": "Carfora et al. (2019a)",
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported red processed meat consumption",
-    "outcome_description": "total number of red, processed meat portions weighted by portion size (small, medium, large) consumed in the last two weeks based on an online food diary",
+    "outcome_description": "Total number of processed red meat portions weighted by portion size",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
@@ -995,7 +1006,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "menu item choice with more than 4 leaves",
-    "outcome_description": "Percentage of participants choosing a menu item with more than 4 leaves.",
+    "outcome_description": "Percentage of participants choosing a sustainable menu item",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegan consumption",
     "outcome_measurement_type": "sales data"
@@ -1006,7 +1017,7 @@
     "study": 2,
     "outcome": 1,
     "outcome_label": "bought the veggie burger",
-    "outcome_description": "Percentage of participants who bought the veggie burger.",
+    "outcome_description": "Percentage of participants buying a veggie burger",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
@@ -1017,7 +1028,7 @@
     "study": 2,
     "outcome": 2,
     "outcome_label": "bought a vegetarian option",
-    "outcome_description": "Percentage of participants who bought a vegetarian item.",
+    "outcome_description": "Percentage of participants buying a vegetarian menu item",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
@@ -1028,7 +1039,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "reported meat consumption",
-    "outcome_description": "total number of servings they had eaten of 10 common meat types over the past seven days",
+    "outcome_description": "Total servings of 10 common meat types over the past seven days",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
@@ -1039,7 +1050,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "food frequency of beef, pork, chicken, turkey, and other meats",
-    "outcome_description": "Participants were presented a list of 17 food elements, including beef, pork, chicken, turkey, and other meats, and reported “how many meals or snacks contained elements the food category” within the past day, with “past day” defined as “what you ate yesterday from the moment you woke up until the moment you went to sleep”, using a 6-point scale ranging from “0” to “5 or more”.",
+    "outcome_description": "Daily consumption of beef, pork, chicken, turkey, and other meats",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
@@ -1050,7 +1061,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "ethicality of eating factory farmed meat",
-    "outcome_description": "agreement with the statement that eating the meat of factory farmed animals is unethical",
+    "outcome_description": "Agreement with 'Eating the meat of factory farmed animals is unethical.'",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "moral judgment",
     "outcome_measurement_type": "survey"
@@ -1061,7 +1072,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "intention to not eat factory farmed meat",
-    "outcome_description": "agreement with the statement that for at least the next month, I will eat no factory farmed meat at all – or if I find it too difficult to stick to that, I will eat it at most once per week",
+    "outcome_description": "Agreement with 'For at least the next month, I will eat no factory farmed meat at all – or if I find it too difficult to stick to that, I will eat it at most once per week.'",
     "outcome_category": "intentions",
     "outcome_subcategory": "diet intentions",
     "outcome_measurement_type": "survey"
@@ -1072,7 +1083,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "meat consumption willingness",
-    "outcome_description": "extent to which participants want to reduce consumption of animal products from factory farms",
+    "outcome_description": "Average attitude towards current meat consumption (e.g., to what extent do you want to reduce your consumption of animal products from factory farms?)",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -1083,7 +1094,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "percentage vegetarian sales",
-    "outcome_description": "percentage of times the vegetarian dish was sold (out of a total of three dishes)",
+    "outcome_description": "Percentage of vegetarian dish sales",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
@@ -1094,7 +1105,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "percentage vegetarian sales",
-    "outcome_description": "percentage of times the vegetarian dish was sold (out of a total of three dishes)",
+    "outcome_description": "Percentage of vegetarian dish sales",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
@@ -1105,7 +1116,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "openness to meat reduction",
-    "outcome_description": "openness to meat reduction measured with five items (interest in learning more about the topic, readiness to reconsider meat consumption habits, readiness to reduce meat consumption in the following 6 months, acceptability of the idea of plant-based protein, acceptability of the idea of lab-grown meat)",
+    "outcome_description": "Average openness to meat reduction measured with five items (e.g. their readiness to reduce meat consumption in the following 6 months)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
     "outcome_measurement_type": "survey"
@@ -1116,7 +1127,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "percentage vegetarian sandwich sales",
-    "outcome_description": "percentage of times the vegetarian sandwich was sold",
+    "outcome_description": "Percentage of vegetarian sandwich sales",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
@@ -1127,7 +1138,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian lunch sales",
-    "outcome_description": "percentage of vegetarian lunch meals sold",
+    "outcome_description": "Percentage of vegetarian lunch sales",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
@@ -1138,7 +1149,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian meal sales",
-    "outcome_description": "percentage of times the vegetarian meal was sold",
+    "outcome_description": "Percentage of vegetarian meal sales",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
@@ -1149,7 +1160,7 @@
     "study": 2,
     "outcome": 1,
     "outcome_label": "vegetarian meal sales",
-    "outcome_description": "percentage of times the vegetarian meal was sold",
+    "outcome_description": "Percentage of vegetarian meal sales",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
@@ -1160,7 +1171,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "eating habit (vegan, vegetarian, or omnivorous)",
-    "outcome_description": "percentage of participants identifying as vegan or vegetarian",
+    "outcome_description": "Percentage of participants identifying as vegan or vegetarian",
     "outcome_category": "behavior",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
@@ -1171,7 +1182,7 @@
     "study": 2,
     "outcome": 1,
     "outcome_label": "meat choice frequency",
-    "outcome_description": "Number of times the participant selected a meat entrée out of ten pairs of photographs of popular entrées that can be prepared with meat or in a vegetarian version–each accompanied by a descriptive label.",
+    "outcome_description": "Percentage of participants selecting a meat entrée out of ten pairs of photographs of popular entrées that can be prepared with meat or in a vegetarian version",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
@@ -1182,7 +1193,7 @@
     "study": 3,
     "outcome": 1,
     "outcome_label": "meat choice",
-    "outcome_description": "Number of sales of a menu item that contained meat",
+    "outcome_description": "Number of meat menu item sales",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
@@ -1193,7 +1204,7 @@
     "study": 4,
     "outcome": 1,
     "outcome_label": "wrap choice",
-    "outcome_description": "Whether the participant chose a wrap containing meat (BLT or chicken) over a falafel wrap",
+    "outcome_description": "Percentage of participants choosing a wrap containing meat (BLT or chicken) over a falafel wrap",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "other"
@@ -1203,8 +1214,8 @@
     "paper_label": "Marcone et al. (2023)",
     "study": 1,
     "outcome": 1,
-    "outcome_label": "total meat dish weight",
-    "outcome_description": "total amount of taken from the meat tray",
+    "outcome_label": "number of meat-dish servings",
+    "outcome_description": "Number of meat-dish servings",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
@@ -1215,7 +1226,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian dish sales",
-    "outcome_description": "percentage of times the vegetarian dish was sold (out of a total of three dishes: meat, fish, vegetarian)",
+    "outcome_description": "Percentage of vegetarian dish sales",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
@@ -1226,7 +1237,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian meal selection",
-    "outcome_description": "percentage of times the vegetarian meal was selected",
+    "outcome_description": "Percentage of vegetarian meal selections",
     "outcome_category": "behavior",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
@@ -1237,7 +1248,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "speciesism",
-    "outcome_description": "score on the Speciesism Scale (e.g., morally, animals always count for less than humans)",
+    "outcome_description": "Score on the Speciesism Scale (e.g., morally, animals always count for less than humans)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "animal attitude",
     "outcome_measurement_type": "survey"
@@ -1248,7 +1259,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "intended reduction in harmful behaviors",
-    "outcome_description": "intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)",
+    "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)",
     "outcome_category": "intentions",
     "outcome_subcategory": "animal product intentions",
     "outcome_measurement_type": "survey"
@@ -1259,7 +1270,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "petition",
-    "outcome_description": "willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans",
+    "outcome_description": "Willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans",
     "outcome_category": "behavior",
     "outcome_subcategory": "signing a petition",
     "outcome_measurement_type": "survey"
@@ -1270,7 +1281,7 @@
     "study": 2,
     "outcome": 1,
     "outcome_label": "speciesism",
-    "outcome_description": "score on the Speciesism Scale (e.g., morally, animals always count for less than humans)",
+    "outcome_description": "Score on the Speciesism Scale (e.g., morally, animals always count for less than humans)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "animal attitude",
     "outcome_measurement_type": "survey"
@@ -1281,7 +1292,7 @@
     "study": 2,
     "outcome": 2,
     "outcome_label": "intended reduction in harmful behaviors",
-    "outcome_description": "intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)",
+    "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)",
     "outcome_category": "intentions",
     "outcome_subcategory": "animal product intentions",
     "outcome_measurement_type": "survey"
@@ -1292,7 +1303,7 @@
     "study": 2,
     "outcome": 3,
     "outcome_label": "petition",
-    "outcome_description": "willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans",
+    "outcome_description": "Willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans",
     "outcome_category": "behavior",
     "outcome_subcategory": "signing a petition",
     "outcome_measurement_type": "survey"
@@ -1303,7 +1314,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "vegetarian sales",
-    "outcome_description": "percentage of times the vegetarian meal was selected",
+    "outcome_description": "Percentage of vegetarian meal selections",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
@@ -1314,10 +1325,274 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "plant-based choice",
-    "outcome_description": "percentage of times the meal with the plant-based sausage was selected in a mock meal-kit delivery service",
+    "outcome_description": "Percentage of times a meal with the plant-based sausage was selected in a mock meal-kit delivery service",
     "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 84,
+    "paper_label": "Bianchi et al. (2022)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat consumption",
+    "outcome_description": "Daily meat consumption",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "food diary"
+  },
+  {
+    "paper": 84,
+    "paper_label": "Bianchi et al. (2022)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "intentions to eat a low-meat diet",
+    "outcome_description": "Intention to eat low-meat diet",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 84,
+    "paper_label": "Bianchi et al. (2022)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "attitudes towards eating a low-meat diet",
+    "outcome_description": "Attitudes towards eating a low-meat diet",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "meat attitude",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 84,
+    "paper_label": "Bianchi et al. (2022)",
+    "study": 1,
+    "outcome": 4,
+    "outcome_label": "attachment to meat",
+    "outcome_description": "Score on the Meat Attachment Questionnaire (e.g., I love meals with meat)",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "meat attitude",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 84,
+    "paper_label": "Bianchi et al. (2022)",
+    "study": 1,
+    "outcome": 5,
+    "outcome_label": "non-meat-eating identity (vegetarian, vegan)",
+    "outcome_description": "Percentage of participants identifying as vegan or vegetarian",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "diet",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 85,
+    "paper_label": "Perino & Schwirplies (2022)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "intentions to reduce meat consumption",
+    "outcome_description": "Intention to reduce meat consumption by a little or a lot in the coming weeks",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 86,
+    "paper_label": "Çoker et a. (2022)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "plant-based meal sales",
+    "outcome_description": "Percentage of main meals that were plant-based",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 89,
+    "paper_label": "Carfora et al. (2019b)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "red and processed meat consumption",
+    "outcome_description": "Number of red and processed meat servings over the previous week",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 90,
+    "paper_label": "Garnett et al. (2021)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "vegetarian meal sales",
+    "outcome_description": "Percentage of main meals that were vegetarian",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 90,
+    "paper_label": "Garnett et al. (2021)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "meat meal sales",
+    "outcome_description": "Percentage of main meals that were meat-based",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 94,
+    "paper_label": "Hughes et al. (2024)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat meal selection",
+    "outcome_description": "Percentage of times participants selected the meat option",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 94,
+    "paper_label": "Hughes et al. (2024)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "meat meal appeal",
+    "outcome_description": "Desire to eat and perceived appeal of a meat burger",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "meat hedonics",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 94,
+    "paper_label": "Hughes et al. (2024)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "future intentions to purchase and consume meat meal",
+    "outcome_description": "Likelihood of buying and eating a meat burger in the next four weeks",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 94,
+    "paper_label": "Hughes et al. (2024)",
+    "study": 1,
+    "outcome": 4,
+    "outcome_label": "vegetarian meal appeal",
+    "outcome_description": "Desire to eat and perceived appeal of a vegetarian burger",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "vegetarian hedonics",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 94,
+    "paper_label": "Hughes et al. (2024)",
+    "study": 1,
+    "outcome": 5,
+    "outcome_label": "future intentions to purchase and consume vegetarian meal",
+    "outcome_description": "Likelihood of buying and eating a vegetarian burger in the next four weeks",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegetarian consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 94,
+    "paper_label": "Hughes et al. (2024)",
+    "study": 1,
+    "outcome": 6,
+    "outcome_label": "vegan meal appeal",
+    "outcome_description": "Desire to eat and perceived appeal of a vegan burger",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "vegan hedonics",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 94,
+    "paper_label": "Hughes et al. (2024)",
+    "study": 1,
+    "outcome": 7,
+    "outcome_label": "future intentions to purchase and consume vegan meal",
+    "outcome_description": "Likelihood of buying and eating a vegan burger in the next four weeks",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 96,
+    "paper_label": "Saulais et al. (2019)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "vegetarian meal choices",
+    "outcome_description": "Percentage of customers choosing the vegetarian dish advertised as the dish of the day",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 105,
+    "paper_label": "Karakaş & Jaeger (2024)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat commitment",
+    "outcome_description": "Average score on the Meat Commitment Scale",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "meat commitment",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 117,
+    "paper_label": "Egeler & Baur (2020)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "meat meals",
+    "outcome_description": "Percentage of dishes sold containing meat (excluding fish)",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 117,
+    "paper_label": "Egeler & Baur (2020)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "fish meals",
+    "outcome_description": "Percentage of dishes sold containing fish",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 117,
+    "paper_label": "Egeler & Baur (2020)",
+    "study": 1,
+    "outcome": 4,
+    "outcome_label": "vegetarian meals",
+    "outcome_description": "Percentage of dishes sold that were vegetarian (excluding vegan)",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 117,
+    "paper_label": "Egeler & Baur (2020)",
+    "study": 1,
+    "outcome": 5,
+    "outcome_label": "vegan meals",
+    "outcome_description": "Percentage of dishes sold that were vegan",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "vegan consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 120,
+    "paper_label": "Tschümperlin (2020)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "vegetarian meals sold",
+    "outcome_description": "Percentage of dishes sold that were vegetarian",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 144,
@@ -1325,7 +1600,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "meatless meal order",
-    "outcome_description": "Percentage of meatless meal orders.",
+    "outcome_description": "Percentage of meatless meal orders",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -1336,7 +1611,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "meat reduction pledge",
-    "outcome_description": "Agreement with \"Are you willing to pledge to reduce the amount of meat you eat?\"",
+    "outcome_description": "Agreement with 'Are you willing to pledge to reduce the amount of meat you eat?'",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -1347,7 +1622,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "vegetarian diet pledge",
-    "outcome_description": "Agreement with \"Are you willing to pledge to stop eating meat?\"",
+    "outcome_description": "Agreement with 'Are you willing to pledge to stop eating meat?'",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -1358,7 +1633,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "eating meat",
-    "outcome_description": "Participants reported on 27 energy-related behaviors, one of which was eating meat (in grams per meal).",
+    "outcome_description": "Meat consumption per meal",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
@@ -1369,7 +1644,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "total dairy servings",
-    "outcome_description": "Telephone adminstered 24-h recall of total dairy servings.",
+    "outcome_description": "Total dairy servings consumed during the previous day",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -1380,7 +1655,7 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "milk servings",
-    "outcome_description": "Telephone adminstered 24-h recall of milk servings.",
+    "outcome_description": "Milk servings consumed during the previous day",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -1391,7 +1666,7 @@
     "study": 1,
     "outcome": 3,
     "outcome_label": "yoghurt servings",
-    "outcome_description": "Telephone adminstered 24-h recall of yoghurt servings.",
+    "outcome_description": "Yoghurt servings consumed during the previous day",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -1402,7 +1677,7 @@
     "study": 1,
     "outcome": 4,
     "outcome_label": "cheese servings",
-    "outcome_description": "Telephone adminstered 24-h recall of cheese servings.",
+    "outcome_description": "Cheese servings consumed during the previous day",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -1413,7 +1688,7 @@
     "study": 1,
     "outcome": 5,
     "outcome_label": "meat, poultry, fish servings",
-    "outcome_description": "Telephone adminstered 24-h recall of meat, poultry, and fish servings.",
+    "outcome_description": "Meat, poultry, and fish servings consumed during the previous day",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -1424,7 +1699,7 @@
     "study": 1,
     "outcome": 6,
     "outcome_label": "red meat servings",
-    "outcome_description": "Telephone adminstered 24-h recall of red meat servings.",
+    "outcome_description": "Red meat servings consumed during the previous day",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -1435,7 +1710,7 @@
     "study": 1,
     "outcome": 7,
     "outcome_label": "processed meat servings",
-    "outcome_description": "Telephone adminstered 24-h recall of processed meat servings.",
+    "outcome_description": "Processed meat servings consumed during the previous day",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -1446,7 +1721,7 @@
     "study": 1,
     "outcome": 8,
     "outcome_label": "poultry servings",
-    "outcome_description": "Telephone adminstered 24-h recall of poultry servings.",
+    "outcome_description": "Poultry servings consumed during the previous day",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -1457,7 +1732,7 @@
     "study": 1,
     "outcome": 9,
     "outcome_label": "fish servings",
-    "outcome_description": "Telephone adminstered 24-h recall of fish servings.",
+    "outcome_description": "Fish servings consumed during the previous day",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
@@ -1468,7 +1743,7 @@
     "study": 1,
     "outcome": 10,
     "outcome_label": "eggs servings",
-    "outcome_description": "Telephone adminstered 24-h recall of eggs servings.",
+    "outcome_description": "Eggs servings consumed during the previous day",
     "outcome_category": "behavior",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"

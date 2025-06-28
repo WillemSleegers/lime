@@ -299,7 +299,7 @@
   },
   {
     "paper": 56,
-    "paper_label": "Carfora et al. (2019)",
+    "paper_label": "Carfora et al. (2019a)",
     "study": 1,
     "study_n": 166,
     "study_preregistered": "no",
@@ -519,6 +519,95 @@
     "paper_label": "Erhard et al. (2023)",
     "study": 1,
     "study_n": 543,
+    "study_preregistered": "no",
+    "study_data_available": "no"
+  },
+  {
+    "paper": 84,
+    "paper_label": "Bianchi et al. (2022)",
+    "study": 1,
+    "study_n": 115,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://bmjopen.bmj.com/content/9/5/e027016",
+    "study_data_available": "no"
+  },
+  {
+    "paper": 85,
+    "paper_label": "Perino & Schwirplies (2022)",
+    "study": 1,
+    "study_n": 559,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://www.socialscienceregistry.org/trials/3590",
+    "study_data_available": "no"
+  },
+  {
+    "paper": 86,
+    "paper_label": "Çoker et a. (2022)",
+    "study": 1,
+    "study_n": 22,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/3vrqj/",
+    "study_data_available": "no"
+  },
+  {
+    "paper": 89,
+    "paper_label": "Carfora et al. (2019b)",
+    "study": 1,
+    "study_n": 262,
+    "study_preregistered": "no",
+    "study_data_available": "no"
+  },
+  {
+    "paper": 90,
+    "paper_label": "Garnett et al. (2021)",
+    "study": 1,
+    "study_n": 13840,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://www.repository.cam.ac.uk/items/24be297d-f03e-4b96-b7c5-f19784a0aa74"
+  },
+  {
+    "paper": 94,
+    "paper_label": "Hughes et al. (2024)",
+    "study": 1,
+    "study_n": 1300,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/hka2d",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/gm3pr/"
+  },
+  {
+    "paper": 96,
+    "paper_label": "Saulais et al. (2019)",
+    "study": 1,
+    "study_n": 294,
+    "study_preregistered": "no",
+    "study_data_available": "no"
+  },
+  {
+    "paper": 105,
+    "paper_label": "Karakaş & Jaeger (2024)",
+    "study": 1,
+    "study_n": 101,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://aspredicted.org/C74_WG4",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/k2pcn/"
+  },
+  {
+    "paper": 117,
+    "paper_label": "Egeler & Baur (2020)",
+    "study": 1,
+    "study_n": 26340,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://zenodo.org/records/3890931"
+  },
+  {
+    "paper": 120,
+    "paper_label": "Tschümperlin (2020)",
+    "study": 1,
+    "study_n": 4915,
     "study_preregistered": "no",
     "study_data_available": "no"
   },

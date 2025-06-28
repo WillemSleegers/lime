@@ -5,7 +5,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import { CheckIcon, X, LinkIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
-import { PaperDialog } from "@/components/paper-dialog"
+import { PaperDialog } from "@/components/data-explorer/paper-dialog"
 import { CellBadges } from "@/components/data-explorer/cell-badges"
 import { CellLongText } from "@/components/data-explorer/cell-long-text"
 import { DataTableColumnHeader } from "@/components/data-explorer/table-header"

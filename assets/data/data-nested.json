@@ -19,11 +19,11 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "whether participants reduced their red meat consumption"
+            "outcome_description": "Percentage of participants who reduced red meat consumption"
           },
           {
             "outcome": 2,
-            "outcome_description": "whether participants reduced their white meat consumption"
+            "outcome_description": "Percentage of participants who reduced white meat consumption"
           }
         ]
       }
@@ -43,13 +43,13 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "A presentation describing emerging social norms that show a significant reduction in meat-eating since 1980 in Canada and the negative effects of meat-eating, especially red and processed meats, on human health, animal welfare, and the environment (including 2 PETA videos). A mind attribution task during which participants had to write aparagraph about the cow’s inner thoughts, feelings, intentions, and emotions. To increase self-efficacy participants received concrete tips on planning meat-free meals, substituting meat products, and choosing meatless meals in restaurants. Participants set agoal for the following month regarding their meat consumption by choosing one of the three following options: reduce the quantity of meat they consume, stay at the same level of meat consumption, or increase meat consumption., Text-messaging reinforcement of the informational and self-monitoring components. The messages sent upbeat and educational information that reminded participants of the benefits of reducing meat consumption and provided them with additional tips and links to recipes."
+            "intervention_description": "Participants received a presentation on declining meat consumption trends in Canada since 1980 and the negative health, animal welfare, and environmental impacts of meat consumption (including PETA videos). They completed a mind attribution task writing about a cow's thoughts and feelings, received practical tips for planning meat-free meals and making substitutions, and set a monthly goal to reduce, maintain, or increase their meat consumption. Text messages provided ongoing reinforcement with educational information, benefit reminders, and recipe links., Text-messaging reinforcement of the informational and self-monitoring components. The messages sent upbeat and educational information that reminded participants of the benefits of reducing meat consumption and provided them with additional tips and links to recipes."
           }
         ],
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "total meat consumption based on a food diary in which participants recorded their food intake, including portion sizes, over two weekdays and one weekend day"
+            "outcome_description": "Total meat consumption over two weekdays and one weekend day"
           }
         ]
       }
@@ -79,7 +79,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "number of times participants ate meals or snacks that contained any type of pork over the past 30 days"
+            "outcome_description": "Frequency of pork consumption over the past 30 days"
           }
         ]
       }
@@ -109,7 +109,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "likelihood of eating the sampled pork again"
+            "outcome_description": "Likelihood of eating sampled pork again"
           }
         ]
       }
@@ -147,11 +147,11 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "five items from the Animal Attitude Scale that reference farmed animals (e.g., I think people who object to raising animals for meat are too sentimental)"
+            "outcome_description": "Average of five items from the Animal Attitude Scale that reference farmed animals"
           },
           {
             "outcome": 2,
-            "outcome_description": "number of times participants consumed animal products (poultry, fish, beef, pork, eggs, dairy) during the past week"
+            "outcome_description": "Frequency of animal product consumption (poultry, fish, beef, pork, eggs, dairy) during the past week"
           }
         ]
       }
@@ -177,11 +177,11 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "agreement with three items (e.g., there is nothing wrong with eating meat.)"
+            "outcome_description": "Average of three meat attitude items (e.g., there is nothing wrong with eating meat)"
           },
           {
             "outcome": 2,
-            "outcome_description": "agreement with three items (e.g., I plan to become a vegetarian.)"
+            "outcome_description": "Average of three intended behavior items (e.g., I plan to become a vegetarian)"
           }
         ]
       }
@@ -207,19 +207,19 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "agreement with three items (e.g., I intend to eat less than two medium portions of red meat over the next week)"
+            "outcome_description": "Average agreement with three intention items (e.g., I intend to eat less than two medium portions of red meat over the next week)"
           },
           {
             "outcome": 2,
-            "outcome_description": "agreement with three items (e.g., eating less than two medium portion of red meat in the next weeks is unenjoyable - enjoyable)"
+            "outcome_description": "Average agreement with three affective attitude items (e.g., eating less than two medium portion of red meat in the next weeks is unenjoyable - enjoyable)"
           },
           {
             "outcome": 3,
-            "outcome_description": "agreement with three items (e.g., eating less than two medium portion of red meat in the next weeks is not worthwhile- worthwhile)"
+            "outcome_description": "Average agreement with three instrumental attitude items (e.g., eating less than two medium portion of red meat in the next weeks is not worthwhile- worthwhile)"
           },
           {
             "outcome": 4,
-            "outcome_description": "total number of red meat portions weighted by portion size (small, medium, large) based on an online food diary"
+            "outcome_description": "Total number of red meat portions weighted by portion size"
           }
         ]
       }
@@ -245,19 +245,19 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "agreement with three items (e.g., in the next week, I intend to not eat more than one portion of processed meat [50 g])"
+            "outcome_description": "Average agreement with three intention items (e.g., in the next week, I intend to not eat more than one portion of processed meat [50 g])"
           },
           {
             "outcome": 2,
-            "outcome_description": "agreement with three items (e.g., in the next week, not eating more than one portion of processed meat [50 g] is unenjoyable-enjoyable)"
+            "outcome_description": "Average agreement with three affective attitude items (e.g., in the next week, not eating more than one portion of processed meat [50 g] is unenjoyable-enjoyable)"
           },
           {
             "outcome": 3,
-            "outcome_description": "agreement with three items (e.g., in the next week, not eating more than one portion of processed meat [50 g] is not worthwhile-worthwhile)"
+            "outcome_description": "Average agreement with three instrumental attitude items (e.g., in the next week, not eating more than one portion of processed meat [50 g] is not worthwhile-worthwhile)"
           },
           {
             "outcome": 4,
-            "outcome_description": "total number of processed meat portions weighted by portion size (small, medium, large) based on an online food diary"
+            "outcome_description": "Total number of processed meat portions weighted by portion size"
           }
         ]
       }
@@ -311,23 +311,23 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "number of meals in a typical week that include beef or pork?"
+            "outcome_description": "Number of meals in a typical week that include beef or pork"
           },
           {
             "outcome": 2,
-            "outcome_description": "number of meals in a typical week that include chicken or turkey?"
+            "outcome_description": "Number of meals in a typical week that include chicken or turkey"
           },
           {
             "outcome": 3,
-            "outcome_description": "number of meals in a typical week that include fish?"
+            "outcome_description": "Number of meals in a typical week that include fish"
           },
           {
             "outcome": 4,
-            "outcome_description": "number of meals in a typical week that include eggs?"
+            "outcome_description": "Number of meals in a typical week that include eggs"
           },
           {
             "outcome": 5,
-            "outcome_description": "average number of meals in a typical week that include animal products (red meat, poultry, fish, eggs)"
+            "outcome_description": "Average number of meals in a typical week that include animal products (red meat, poultry, fish, eggs)"
           }
         ]
       }
@@ -357,23 +357,23 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "rated valence of the pork meal shown in the image (negative/positive)"
+            "outcome_description": "Valence of the pork meal shown in an image"
           },
           {
             "outcome": 2,
-            "outcome_description": "desire to eat the pork meal shown in the image"
+            "outcome_description": "Desire to eat the pork meal shown in an image"
           },
           {
             "outcome": 3,
-            "outcome_description": "willingness to reduce meat consumption"
+            "outcome_description": "Willingness to reduce meat consumption"
           },
           {
             "outcome": 4,
-            "outcome_description": "willingness to avoid eating meat"
+            "outcome_description": "Willingness to avoid eating meat"
           },
           {
             "outcome": 5,
-            "outcome_description": "willingness to follow a plant-based diet"
+            "outcome_description": "Willingness to follow a plant-based diet"
           }
         ]
       }
@@ -411,27 +411,27 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "number of meals in a typical week that contain beef or pork"
+            "outcome_description": "Number of meals that contain beef or pork in a typical week"
           },
           {
             "outcome": 2,
-            "outcome_description": "number of meals in a typical week that contain chicken or turkey"
+            "outcome_description": "Number of meals that contain chicken or turkey in a typical week"
           },
           {
             "outcome": 3,
-            "outcome_description": "number of meals in a typical week that contain fish"
+            "outcome_description": "Number of meals that contain fish in a typical week"
           },
           {
             "outcome": 4,
-            "outcome_description": "number of meals in a typical week that contain eggs"
+            "outcome_description": "Number of meals that contain eggs in a typical week"
           },
           {
             "outcome": 5,
-            "outcome_description": "number of meals in a typical week that contain dairy"
+            "outcome_description": "Number of meals that contain dairy in a typical week"
           },
           {
             "outcome": 6,
-            "outcome_description": "average number of meals in a typical week that include animal products (red meat, poultry, fish, eggs, dairy)"
+            "outcome_description": "Average number of meals that include animal products (beef, pork, chicken, turkey, fish, eggs, dairy) in a typical week"
           }
         ]
       }
@@ -460,11 +460,11 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "intention to eat less meat in the next seven days"
+            "outcome_description": "Intention to eat less meat in the next seven days"
           },
           {
             "outcome": 2,
-            "outcome_description": "responses to the statement \"Changing my diet to eat less meat is...\" along seven dimensions: very bad—very good, very disadvantageous—very advantageous, very undesirable—very desirable, very negative—very positive, very harmful—very beneficial, very unimportant—very important, very useless—very useful"
+            "outcome_description": "Average attitude towards changing diet based on seven dimensions (e.g., bad/good, negative/positive, harmful/beneficial)"
           }
         ]
       }
@@ -490,19 +490,23 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "change in the consumption of chicken in the last 3 months"
+            "outcome_description": "Change in chicken consumption in the last 3 months"
           },
           {
             "outcome": 2,
-            "outcome_description": "change in the consumption of beef in the last 3 months"
+            "outcome_description": "Change in beef consumption in the last 3 months"
           },
           {
             "outcome": 3,
-            "outcome_description": "change in the consumption of pork in the last 3 months"
+            "outcome_description": "Change in pork consumption in the last 3 months"
           },
           {
             "outcome": 4,
-            "outcome_description": "change in the consumption of fish in the last 3 months"
+            "outcome_description": "Change in fish consumption in the last 3 months"
+          },
+          {
+            "outcome": 5,
+            "outcome_description": "Change in dairy consumption in the last 3 months"
           }
         ]
       }
@@ -532,7 +536,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "reduction in average weight of meat consumed for each meal based on the food diary"
+            "outcome_description": "Change in weight of meat consumed for each meal"
           }
         ]
       }
@@ -562,35 +566,35 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "frequency of beef consumption"
+            "outcome_description": "Frequency of beef consumption"
           },
           {
             "outcome": 2,
-            "outcome_description": "frequency of chicken consumption"
+            "outcome_description": "Frequency of chicken consumption"
           },
           {
             "outcome": 3,
-            "outcome_description": "frequency of dairy consumption"
+            "outcome_description": "Frequency of dairy consumption"
           },
           {
             "outcome": 4,
-            "outcome_description": "frequency of egg consumption"
+            "outcome_description": "Frequency of egg consumption"
           },
           {
             "outcome": 5,
-            "outcome_description": "frequency of fish consumption"
+            "outcome_description": "Frequency of fish consumption"
           },
           {
             "outcome": 6,
-            "outcome_description": "frequency of pork consumption"
+            "outcome_description": "Frequency of pork consumption"
           },
           {
             "outcome": 7,
-            "outcome_description": "average frequency of beef and pork consumption"
+            "outcome_description": "Average frequency of beef and pork consumption"
           },
           {
             "outcome": 8,
-            "outcome_description": "average frequency of animal product consumption (beef, pork, chicken, eggs, fish, dairy)"
+            "outcome_description": "Average frequency of beef, chicken, dairy, egg, fish, and pork consumption"
           }
         ]
       }
@@ -624,7 +628,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "likelihood of buying the meat item in the photo"
+            "outcome_description": "Likelihood of buying meat items shown in photos"
           }
         ]
       },
@@ -652,7 +656,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "likelihood of buying the meat item in the photo"
+            "outcome_description": "Likelihood of buying meat items shown in photos"
           }
         ]
       },
@@ -672,7 +676,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "likelihood of buying the meat item in the photo"
+            "outcome_description": "Likelihood of buying meat items shown in photos"
           }
         ]
       }
@@ -702,7 +706,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "interest in eating less meat"
+            "outcome_description": "Interest in eating less meat"
           }
         ]
       },
@@ -722,7 +726,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "presence of meat in the purchased meal based on the receipt"
+            "outcome_description": "Percentage of purchased meals containing meat"
           }
         ]
       }
@@ -752,7 +756,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "average agreement to two questions on the desire to eat beef in the next days and the intention to reduce beef consumption during the coming year"
+            "outcome_description": "Average of desire to eat beef in the next days and intention to reduce beef consumption during the coming year"
           }
         ]
       },
@@ -772,7 +776,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "average agreement to two questions on the desire to eat beef in the next days and the intention to reduce beef consumption during the coming year"
+            "outcome_description": "Average of desire to eat beef in the next days and intention to reduce beef consumption during the coming year"
           }
         ]
       }
@@ -798,7 +802,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "how negative or positive they felt about eating the meat on a slider ranging from extremely negative 0 to extremely positive 100"
+            "outcome_description": "Feelings about eating meat"
           }
         ]
       }
@@ -824,35 +828,35 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Frequency of red meat consumption in the last 7 days."
+            "outcome_description": "Frequency of red meat consumption in the last 7 days"
           },
           {
             "outcome": 2,
-            "outcome_description": "Frequency of poultry consumption in the last 7 days."
+            "outcome_description": "Frequency of poultry consumption in the last 7 days"
           },
           {
             "outcome": 3,
-            "outcome_description": "Frequency of fish consumption in the last 7 days."
+            "outcome_description": "Frequency of fish consumption in the last 7 days"
           },
           {
             "outcome": 4,
-            "outcome_description": "Frequency of egg consumption in the last 7 days."
+            "outcome_description": "Frequency of egg consumption in the last 7 days"
           },
           {
             "outcome": 5,
-            "outcome_description": "Frequency of dairy consumption in the last 7 days."
+            "outcome_description": "Frequency of dairy consumption in the last 7 days"
           },
           {
             "outcome": 6,
-            "outcome_description": "Describing their current diet as a vegetarian diet."
+            "outcome_description": "Percentage of participants describing their current diet as a vegetarian diet."
           },
           {
             "outcome": 7,
-            "outcome_description": "Describing their current diet as a vegan diet."
+            "outcome_description": "Percentage of participants describing their current diet as a vegan diet."
           },
           {
             "outcome": 8,
-            "outcome_description": "Describing their current diet as a meat reduction diet."
+            "outcome_description": "Percentage of participants describing their current diet as a meat reduction diet."
           }
         ]
       }
@@ -878,35 +882,35 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Frequency of red meat consumption in the last 7 days."
+            "outcome_description": "Frequency of red meat consumption in the last 7 days"
           },
           {
             "outcome": 2,
-            "outcome_description": "Frequency of poultry consumption in the last 7 days."
+            "outcome_description": "Frequency of poultry consumption in the last 7 days"
           },
           {
             "outcome": 3,
-            "outcome_description": "Frequency of fish consumption in the last 7 days."
+            "outcome_description": "Frequency of fish consumption in the last 7 days"
           },
           {
             "outcome": 4,
-            "outcome_description": "Frequency of egg consumption in the last 7 days."
+            "outcome_description": "Frequency of egg consumption in the last 7 days"
           },
           {
             "outcome": 5,
-            "outcome_description": "Frequency of dairy consumption in the last 7 days."
+            "outcome_description": "Frequency of dairy consumption in the last 7 days"
           },
           {
             "outcome": 6,
-            "outcome_description": "Describing their current diet as a vegetarian diet."
+            "outcome_description": "Percentage of participants describing their current diet as a vegetarian diet."
           },
           {
             "outcome": 7,
-            "outcome_description": "Describing their current diet as a vegan diet."
+            "outcome_description": "Percentage of participants describing their current diet as a vegan diet."
           },
           {
             "outcome": 8,
-            "outcome_description": "Describing their current diet as a meat reduction diet."
+            "outcome_description": "Percentage of participants describing their current diet as a meat reduction diet."
           }
         ]
       }
@@ -936,7 +940,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "intention to change their pork consumption over the next few months"
+            "outcome_description": "Intention to change pork consumption over the next few months"
           }
         ]
       }
@@ -962,31 +966,31 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "total number of pork, beef, chicken and turkey, and fish and seafood servings in the past two days"
+            "outcome_description": "Total pork, beef, chicken and turkey, and fish and seafood servings in the past two days"
           },
           {
             "outcome": 2,
-            "outcome_description": "total number of pork, beef, dairy, eggs, chicken and turkey, and fish and seafood servings in the past two days"
+            "outcome_description": "Total pork, beef, dairy, eggs, chicken and turkey, and fish and seafood servings in the past two days"
           },
           {
             "outcome": 3,
-            "outcome_description": "decrease in the consumption of meat, chicken and fish at any time in the past four months"
+            "outcome_description": "Percentage of participants decreasing their consumption of meat, chicken and fish at any time in the past four months"
           },
           {
             "outcome": 4,
-            "outcome_description": "decrease in the consumption of meat, chicken and fish compared to four months ago"
+            "outcome_description": "Percentage of participants decreasing their consumption of meat, chicken and fish compared to four months ago"
           },
           {
             "outcome": 5,
-            "outcome_description": "intended reduction or elimination of the consumption of meat, chicken and fish four months from now"
+            "outcome_description": "Percentage of participants intending to reduce or eliminate their consumption of meat, chicken and fish four months from now"
           },
           {
             "outcome": 6,
-            "outcome_description": "intended elimination of the consumption of meat, chicken and fish four months from now"
+            "outcome_description": "Percentage of participants intending to eliminate their consumption of meat, chicken and fish four months from now"
           },
           {
             "outcome": 7,
-            "outcome_description": "agreement with the statement that eating less meat, chicken and fish is the right thing to do"
+            "outcome_description": "Agreement with 'Eating less meat, chicken and fish (in total) is the right thing to do'"
           }
         ]
       }
@@ -1012,15 +1016,15 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "intention to choose non-factory farmed or vegetarian foods when available"
+            "outcome_description": "Agreement with 'I plan to choose non-factory farmed or vegetarian foods when they are available.'"
           },
           {
             "outcome": 2,
-            "outcome_description": "percentage of students who bought a meal containing meat with a restaurant voucher"
+            "outcome_description": "Percentage of participants buying a meal containing meat with a restaurant voucher"
           },
           {
             "outcome": 3,
-            "outcome_description": "percentage of main meals (>$4.99) purchased at the univerity's dining hall that contained meat"
+            "outcome_description": "Percentage of main meals containing meat purchased at the univerity's dining hall"
           }
         ]
       }
@@ -1046,7 +1050,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "total frequency of consuming eight animal products (chicken, turkey, fish, pork, beef, other meat, dairy, eggs) multiplied by the portion size over the past week"
+            "outcome_description": "Total weight of animal product consumption over the past week"
           }
         ]
       },
@@ -1062,7 +1066,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "intended change in meat and animal product consumption over the next 7 days"
+            "outcome_description": "Change in animal product consumption over the next 7 days"
           }
         ]
       },
@@ -1078,7 +1082,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "total frequency of consuming eight animal products (chicken, turkey, fish, pork, beef, other meat, dairy, eggs) multiplied by the portion size over the past week"
+            "outcome_description": "Total weight of animal product consumption over the past week"
           }
         ]
       }
@@ -1116,7 +1120,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of vegetarian sales"
+            "outcome_description": "Percentage of vegetarian sales"
           }
         ]
       }
@@ -1146,7 +1150,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of participants intending to consume less red and processed meat in the future"
+            "outcome_description": "Percentage of participants intending to consume less red and processed meat in the future"
           }
         ]
       }
@@ -1176,7 +1180,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Agreement with “To what extent do you find meat-eating morally acceptable or morally wrong?”, asked both at the start of the semester and the end of the semester."
+            "outcome_description": "Agreement with 'To what extent do you find meat-eating morally acceptable or morally wrong?'"
           }
         ]
       }
@@ -1184,7 +1188,7 @@
   },
   {
     "paper": 56,
-    "paper_label": "Carfora et al. (2019)",
+    "paper_label": "Carfora et al. (2019a)",
     "paper_authors": "Carfora, V.; Bertolotti, M.; Catellani, P.",
     "paper_title": "Informational and emotional daily messages to reduce red and processed meat consumption",
     "paper_year": 2019,
@@ -1206,7 +1210,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "total number of red, processed meat portions weighted by portion size (small, medium, large) consumed in the last two weeks based on an online food diary"
+            "outcome_description": "Total number of processed red meat portions weighted by portion size"
           }
         ]
       }
@@ -1232,7 +1236,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Percentage of participants choosing a menu item with more than 4 leaves."
+            "outcome_description": "Percentage of participants choosing a sustainable menu item"
           }
         ]
       },
@@ -1256,11 +1260,11 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Percentage of participants who bought the veggie burger."
+            "outcome_description": "Percentage of participants buying a veggie burger"
           },
           {
             "outcome": 2,
-            "outcome_description": "Percentage of participants who bought a vegetarian item."
+            "outcome_description": "Percentage of participants buying a vegetarian menu item"
           }
         ]
       }
@@ -1298,7 +1302,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "total number of servings they had eaten of 10 common meat types over the past seven days"
+            "outcome_description": "Total servings of 10 common meat types over the past seven days"
           }
         ]
       }
@@ -1332,7 +1336,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Participants were presented a list of 17 food elements, including beef, pork, chicken, turkey, and other meats, and reported “how many meals or snacks contained elements the food category” within the past day, with “past day” defined as “what you ate yesterday from the moment you woke up until the moment you went to sleep”, using a 6-point scale ranging from “0” to “5 or more”."
+            "outcome_description": "Daily consumption of beef, pork, chicken, turkey, and other meats"
           }
         ]
       }
@@ -1362,11 +1366,11 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "agreement with the statement that eating the meat of factory farmed animals is unethical"
+            "outcome_description": "Agreement with 'Eating the meat of factory farmed animals is unethical.'"
           },
           {
             "outcome": 2,
-            "outcome_description": "agreement with the statement that for at least the next month, I will eat no factory farmed meat at all – or if I find it too difficult to stick to that, I will eat it at most once per week"
+            "outcome_description": "Agreement with 'For at least the next month, I will eat no factory farmed meat at all – or if I find it too difficult to stick to that, I will eat it at most once per week.'"
           }
         ]
       }
@@ -1396,7 +1400,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "extent to which participants want to reduce consumption of animal products from factory farms"
+            "outcome_description": "Average attitude towards current meat consumption (e.g., to what extent do you want to reduce your consumption of animal products from factory farms?)"
           }
         ]
       }
@@ -1422,7 +1426,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of times the vegetarian dish was sold (out of a total of three dishes)"
+            "outcome_description": "Percentage of vegetarian dish sales"
           }
         ]
       }
@@ -1448,7 +1452,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of times the vegetarian dish was sold (out of a total of three dishes)"
+            "outcome_description": "Percentage of vegetarian dish sales"
           }
         ]
       }
@@ -1478,7 +1482,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "openness to meat reduction measured with five items (interest in learning more about the topic, readiness to reconsider meat consumption habits, readiness to reduce meat consumption in the following 6 months, acceptability of the idea of plant-based protein, acceptability of the idea of lab-grown meat)"
+            "outcome_description": "Average openness to meat reduction measured with five items (e.g. their readiness to reduce meat consumption in the following 6 months)"
           }
         ]
       }
@@ -1504,7 +1508,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of times the vegetarian sandwich was sold"
+            "outcome_description": "Percentage of vegetarian sandwich sales"
           }
         ]
       }
@@ -1530,7 +1534,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of vegetarian lunch meals sold"
+            "outcome_description": "Percentage of vegetarian lunch sales"
           }
         ]
       }
@@ -1564,7 +1568,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of times the vegetarian meal was sold"
+            "outcome_description": "Percentage of vegetarian meal sales"
           }
         ]
       },
@@ -1584,7 +1588,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of times the vegetarian meal was sold"
+            "outcome_description": "Percentage of vegetarian meal sales"
           }
         ]
       }
@@ -1614,7 +1618,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of participants identifying as vegan or vegetarian"
+            "outcome_description": "Percentage of participants identifying as vegan or vegetarian"
           }
         ]
       }
@@ -1640,7 +1644,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Number of times the participant selected a meat entrée out of ten pairs of photographs of popular entrées that can be prepared with meat or in a vegetarian version–each accompanied by a descriptive label."
+            "outcome_description": "Percentage of participants selecting a meat entrée out of ten pairs of photographs of popular entrées that can be prepared with meat or in a vegetarian version"
           }
         ]
       },
@@ -1656,7 +1660,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Number of sales of a menu item that contained meat"
+            "outcome_description": "Number of meat menu item sales"
           }
         ]
       },
@@ -1672,7 +1676,33 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Whether the participant chose a wrap containing meat (BLT or chicken) over a falafel wrap"
+            "outcome_description": "Percentage of participants choosing a wrap containing meat (BLT or chicken) over a falafel wrap"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 75,
+    "paper_label": "Marcone et al. (2023)",
+    "paper_authors": "Marcone, A. L.; Darmstadt, G. L.; Challamel, G. A.; Mathur, M.; Gardner, C. D.",
+    "paper_title": "Effects of an educational planetary plate graphic on meat consumption in a Stanford University dining hall: a randomized controlled trial",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1186/s40795-023-00764-3",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 1178,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Signs with a Planetary Health Plate graphic featuring a diet based on the EAT Lancet Planetary Health Diet were posted. The sign included information on top of the sign: “Today, our diets have a large impact on our global ecosystem. In February 2019, scientists collaborated with The Lancet medical journal to establish this realistic diet that maintains both human and planetary health.” And on the bottom of the sign “Modeling your plate like this one builds a healthy diet and a sustainable world”."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Number of meat-dish servings"
           }
         ]
       }
@@ -1706,7 +1736,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of times the vegetarian dish was sold (out of a total of three dishes: meat, fish, vegetarian)"
+            "outcome_description": "Percentage of vegetarian dish sales"
           }
         ]
       }
@@ -1732,7 +1762,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of times the vegetarian meal was selected"
+            "outcome_description": "Percentage of vegetarian meal selections"
           }
         ]
       }
@@ -1758,15 +1788,15 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "score on the Speciesism Scale (e.g., morally, animals always count for less than humans)"
+            "outcome_description": "Score on the Speciesism Scale (e.g., morally, animals always count for less than humans)"
           },
           {
             "outcome": 2,
-            "outcome_description": "intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)"
+            "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)"
           },
           {
             "outcome": 3,
-            "outcome_description": "willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans"
+            "outcome_description": "Willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans"
           }
         ]
       },
@@ -1782,15 +1812,15 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "score on the Speciesism Scale (e.g., morally, animals always count for less than humans)"
+            "outcome_description": "Score on the Speciesism Scale (e.g., morally, animals always count for less than humans)"
           },
           {
             "outcome": 2,
-            "outcome_description": "intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)"
+            "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)"
           },
           {
             "outcome": 3,
-            "outcome_description": "willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans"
+            "outcome_description": "Willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans"
           }
         ]
       }
@@ -1816,7 +1846,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of times the vegetarian meal was selected"
+            "outcome_description": "Percentage of vegetarian meal selections"
           }
         ]
       }
@@ -1850,7 +1880,299 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "percentage of times the meal with the plant-based sausage was selected in a mock meal-kit delivery service"
+            "outcome_description": "Percentage of times a meal with the plant-based sausage was selected in a mock meal-kit delivery service"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 84,
+    "paper_label": "Bianchi et al. (2022)",
+    "paper_authors": "Bianchi, F.; Stewart, C.; Astbury, N. M.; Cook, B.; Aveyard, P.; Jebb, S. A.",
+    "paper_title": "Replacing meat with alternative plant-based products (RE-MAP): a randomized controlled trial of a multicomponent behavioral intervention to reduce meat consumption",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.1093/ajcn/nqab414",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 115,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "The intervention consisted of 4 components: 1) free meat substitutes for the household for 4 weeks; 2) information leaflets about the health and environmental benefits of eating less meat; 3) recipes; and 4) success stories in the form of vignettes of people who reduced their meat intake."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Daily meat consumption"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Intention to eat low-meat diet"
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Attitudes towards eating a low-meat diet"
+          },
+          {
+            "outcome": 4,
+            "outcome_description": "Score on the Meat Attachment Questionnaire (e.g., I love meals with meat)"
+          },
+          {
+            "outcome": 5,
+            "outcome_description": "Percentage of participants identifying as vegan or vegetarian"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 85,
+    "paper_label": "Perino & Schwirplies (2022)",
+    "paper_authors": "Perino, G.; Schwirplies, C.",
+    "paper_title": "Meaty arguments and fishy effects: Field experimental evidence on the impact of reasons to reduce meat consumption",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.1016/j.jeem.2022.102667",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 559,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants read an excerpt from a real newspaper article advocating a specific reason why reducing meat consumption is recommendable (e.g., \"Meat harms your health\"). All quotes refer to ‘‘scientific evidence’’ or a ‘‘study’’ without naming the specific source. Each quote was followed by an explicit statement with a dietary recommendation taken from the website of the German Nutrition Society."
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants read an excerpt from a real newspaper article advocating a specific reason why reducing meat consumption is recommendable (e.g., \"A little less meat on plates would help protect the climate more than many people think.\"). All quotes refer to ‘‘scientific evidence’’ or a ‘‘study’’ without naming the specific source. Each quote was followed by an explicit statement with a dietary recommendation taken from the website of the German Nutrition Society."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants read an excerpt from a real newspaper article advocating a specific reason why reducing meat consumption is recommendable (e.g., \"All scientific findings prove that animals are social creatures, capable of suffering\"). All quotes refer to ‘‘scientific evidence’’ or a ‘‘study’’ without naming the specific source. Each quote was followed by an explicit statement with a dietary recommendation taken from the website of the German Nutrition Society."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Intention to reduce meat consumption by a little or a lot in the coming weeks"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 86,
+    "paper_label": "Çoker et a. (2022)",
+    "paper_authors": "Çoker, E. N.; Pechey, R.; Frie, K.; Jebb, S. A.; Stewart, C.; Higgs, S.; Cook, B.",
+    "paper_title": "A dynamic social norm messaging intervention to reduce meat consumption: A randomized cross-over trial in retail store restaurants",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.1016/j.appet.2021.105824",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 22,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "The message “More and more [retail store name] customers are choosing our veggie options” appeared in a green circle on the top right corner of the image displayed on the digital boards, covering 1/8th of the screen, and was animated with a small stretching and wobbling effect to draw customers’ attention further. The message was displayed alongside a picture of the vegetarian breakfast option during the breakfast service hours, and a vegetarian main meal during the remaining trading hours."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of main meals that were plant-based"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 89,
+    "paper_label": "Carfora et al. (2019b)",
+    "paper_authors": "Carfora, V.; Catellania, P.; Casob, D.; Conner, M.",
+    "paper_title": "How to reduce red and processed meat consumption by daily text messages targeting environment or health benefits",
+    "paper_year": 2019,
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2019.101319",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 262,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "A chatbot was programmed by the researchers to send different daily messages. Participants in the health condition received messages focused on the health benefits of eating little red, processed meat (e.g. “If you eat little red and processed meat, you will protect your health from colon cancer/heart disease/respiratory disease)."
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "A chatbot was programmed by the researchers to send different daily messages. Participants in the environment condition participants received messages focused on the environmental benefits of eating little red, processed meat (e.g., “If you eat little red and processed meat, you will protect the environment from the release of harmful greenhouse gases/soil acidification/climate change”)."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "A chatbot was programmed by the researchers to send different daily messages. Participants in the health + environment condition participants received a combination of the two messages on eating little red, processed meat (e.g., “If you eat little red and processed meat, you will protect your health from colon cancer/heart disease/respiratory disease, and at the same time you will protect the environment from the release of harmful greenhouse gases/soil acidification/ climate change”)."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Number of red and processed meat servings over the previous week"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 90,
+    "paper_label": "Garnett et al. (2021)",
+    "paper_authors": "Garnett, E. E.; Balmford, A; Marteau, T. M.; Pilling, M. A.; Sandbrook, C.",
+    "paper_title": "Price of change: Does a small alteration to the price of meat and vegetarian options affect their sales?",
+    "paper_year": 2021,
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2021.101589",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 13840,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "The college cafeteria decreased the price of the vegetarian option by 20 pence (from £2.05 to £1.85) and increased the price of meat options by 20 pence (from £2.52 to £2.72)."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of main meals that were vegetarian"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Percentage of main meals that were meat-based"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 94,
+    "paper_label": "Hughes et al. (2024)",
+    "paper_authors": "Hughes, J. P.; Weick, M.; Vasiljevic, M.",
+    "paper_title": "Can environmental traffic light warning labels reduce meat meal selection? A randomised experimental study with UK meat consumers",
+    "paper_year": 2024,
+    "paper_link": "https://doi.org/10.1016/j.appet.2024.107500",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 1300,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "The meat option was labeled with a red “High Climate Impact” traffic light warning label"
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "The vegetarian and vegan options were labeled with a green “Low Climate Impact” traffic light warning label"
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "The meat option was labeled with a red “High Climate Impact” traffic light warning label. The vegetarian and vegan options were labeled with a green “Low Climate Impact” traffic light warning label. There was also an orange“Medium Climate Impact” traffic light warning label presented for the fish option."
+          },
+          {
+            "intervention_condition": 5,
+            "intervention_description": "The meat burger was labeled with a red “High Climate Impact” traffic light warning label"
+          },
+          {
+            "intervention_condition": 7,
+            "intervention_description": "The vegetarian burger was labeled with a green “Low Climate Impact” traffic light warning label"
+          },
+          {
+            "intervention_condition": 9,
+            "intervention_description": "The vegan option was labelled with a green “Low Climate Impact” traffic light warning label"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of times participants selected the meat option"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Desire to eat and perceived appeal of a meat burger"
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Likelihood of buying and eating a meat burger in the next four weeks"
+          },
+          {
+            "outcome": 4,
+            "outcome_description": "Desire to eat and perceived appeal of a vegetarian burger"
+          },
+          {
+            "outcome": 5,
+            "outcome_description": "Likelihood of buying and eating a vegetarian burger in the next four weeks"
+          },
+          {
+            "outcome": 6,
+            "outcome_description": "Desire to eat and perceived appeal of a vegan burger"
+          },
+          {
+            "outcome": 7,
+            "outcome_description": "Likelihood of buying and eating a vegan burger in the next four weeks"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 96,
+    "paper_label": "Saulais et al. (2019)",
+    "paper_authors": "Saulais, L.;Massey, C; Perez-Cueto, F. J. A.; Appleton, K. M.; Dinnella, C.; Monteleone, E.; Depezay, L.; Hartwell, H.; Giboreau, A.",
+    "paper_title": "When are “Dish of the Day” nudges most effective to increase vegetable selection?",
+    "paper_year": 2019,
+    "paper_link": "https://doi.org/10.1016/j.foodpol.2019.04.003",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 294,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "The vegetarian option (veggie burger) was labeled as the dish of the day"
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "The vegetarian option (veggie burger) was labeled as the dish of the day"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of customers choosing the vegetarian dish advertised as the dish of the day"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 105,
+    "paper_label": "Karakaş & Jaeger (2024)",
+    "paper_authors": "Karakaş, N., Jaeger, B.",
+    "paper_title": "Changes in attitudes toward meat consumption after chatting with a large language model",
+    "paper_year": 2024,
+    "paper_link": "https://osf.io/preprints/psyarxiv/8y2me",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 101,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants had an open-ended chat about meat consumption that lasted 5-10 minutes with ChatGPTT-4o. The same initial prompt was entered for all participants: “I want to have a conversation about meat consumption. I currently eat meat. Are there any reasons why I should limit my meat consumption or stop eating meat entirely?”. Participants were given a list of questions they could ask ChatGPT, but were also told that they could decide where to steer the conversation. The provided questions focused on the environment (e.g., “How does meat consumption impact the environment?”), personal health (e.g., “Is it necessary to eat meat to be healthy?”), and animal welfare (e.g., “What percentage of meat in Dutch supermarkets comes from factory farms?”), and also included more generic prompts (e.g., “It would be quite difficult to reduce my meat consumption by a lot. How can I make this easier?”)."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Average score on the Meat Commitment Scale"
           }
         ]
       }
@@ -1880,15 +2202,15 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Percentage of meatless meal orders."
+            "outcome_description": "Percentage of meatless meal orders"
           },
           {
             "outcome": 2,
-            "outcome_description": "Agreement with \"Are you willing to pledge to reduce the amount of meat you eat?\""
+            "outcome_description": "Agreement with 'Are you willing to pledge to reduce the amount of meat you eat?'"
           },
           {
             "outcome": 3,
-            "outcome_description": "Agreement with \"Are you willing to pledge to stop eating meat?\""
+            "outcome_description": "Agreement with 'Are you willing to pledge to stop eating meat?'"
           }
         ]
       }
@@ -1908,13 +2230,13 @@
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "One group of households received a combination of tailored information about possibilities to reduce energy use, individual goal setting (5% reduction), and tailored individual feedback about their own energy savings. Households in another group received the same intervention but also received a group goal of 5% as well as group feedback about average and total energy savings of all participants. More specifically, information was given about energy related problems and the need to do something about them. The information contained an explanation of the global warming phenomenon. It also featured information about the increase in energy use over the last decades and the increased costs of energy use, with accompanying graphs depicting these trends. Households then received a list of tailored energy-saving measures. Each household only received those energy-saving options that were relevant for them. For each energy-saving measure an indication was given of the amount of energy that could potentially be saved. Households were then asked to try and save 5% energy during the course of the study. Households were free to choose which energy-saving measures they would adopt to attain the goal. Households in the group feedback condition were told the aim was to save 5% energy as a group of participants. It was emphasized that as a group, households in Groningen could make an important contribution to energy conservation and would help reduce energy-related problems. Tailored individual feedback was given about energy savings via a website in three different ways. First, as a percentage change in total energy use, compared to the ﬁrst measurement (viz., before the intervention). This was also related to the 5% goal, e.g. ‘‘You have (not) attained the 5% goal (yet)’’. Second, tailored feedback was given about the extent to which each energy-saving behavior had contributed to total changes in energy use. A bar chart was displayed, with a green bar indicating a reduction in energy use for a given option, and a red bar indicating an increase in energy use. Third, the amount of money (in Euros) each household had saved on their gas and electricity bills was displayed on the website. In addition, households in the group feedback condition received feedback about average as well as total energy savings of the entire group of participants, in relation to the group goal of 5%, one month after the second measurement via a newsletter."
+            "intervention_description": "Two groups of households received tailored energy-saving information, including details about global warming and energy costs, plus a personalized list of relevant energy-saving measures. Both groups were asked to achieve a 5% energy reduction and received individual feedback via a website showing their percentage energy savings, the contribution of each behavior, and money saved. The first group received only individual goals and feedback, while the second group also received a collective 5% group goal and monthly feedback about the group's average and total energy savings via newsletter."
           }
         ],
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Participants reported on 27 energy-related behaviors, one of which was eating meat (in grams per meal)."
+            "outcome_description": "Meat consumption per meal"
           }
         ]
       }
@@ -1940,69 +2262,107 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Telephone adminstered 24-h recall of total dairy servings."
+            "outcome_description": "Total dairy servings consumed during the previous day"
           },
           {
             "outcome": 2,
-            "outcome_description": "Telephone adminstered 24-h recall of milk servings."
+            "outcome_description": "Milk servings consumed during the previous day"
           },
           {
             "outcome": 3,
-            "outcome_description": "Telephone adminstered 24-h recall of yoghurt servings."
+            "outcome_description": "Yoghurt servings consumed during the previous day"
           },
           {
             "outcome": 4,
-            "outcome_description": "Telephone adminstered 24-h recall of cheese servings."
+            "outcome_description": "Cheese servings consumed during the previous day"
           },
           {
             "outcome": 5,
-            "outcome_description": "Telephone adminstered 24-h recall of meat, poultry, and fish servings."
+            "outcome_description": "Meat, poultry, and fish servings consumed during the previous day"
           },
           {
             "outcome": 6,
-            "outcome_description": "Telephone adminstered 24-h recall of red meat servings."
+            "outcome_description": "Red meat servings consumed during the previous day"
           },
           {
             "outcome": 7,
-            "outcome_description": "Telephone adminstered 24-h recall of processed meat servings."
+            "outcome_description": "Processed meat servings consumed during the previous day"
           },
           {
             "outcome": 8,
-            "outcome_description": "Telephone adminstered 24-h recall of poultry servings."
+            "outcome_description": "Poultry servings consumed during the previous day"
           },
           {
             "outcome": 9,
-            "outcome_description": "Telephone adminstered 24-h recall of fish servings."
+            "outcome_description": "Fish servings consumed during the previous day"
           },
           {
             "outcome": 10,
-            "outcome_description": "Telephone adminstered 24-h recall of eggs servings."
+            "outcome_description": "Eggs servings consumed during the previous day"
           }
         ]
       }
     ]
   },
   {
-    "paper": 75,
-    "paper_label": "Marcone et al. (2023)",
-    "paper_authors": "Marcone, A. L.; Darmstadt, G. L.; Challamel, G. A.; Mathur, M.; Gardner, C. D.",
-    "paper_title": "Effects of an educational planetary plate graphic on meat consumption in a Stanford University dining hall: a randomized controlled trial",
-    "paper_year": 2023,
-    "paper_link": "https://doi.org/10.1186/s40795-023-00764-3",
+    "paper": 117,
+    "paper_label": "Egeler & Baur (2020)",
+    "paper_authors": "Egeler, G.; Baur, P.",
+    "paper_title": "Menüwahl in der Hochschulmensa : Fleisch oder Vegi? Ergebnisse eines 12-wöchigen Feldexperiments",
+    "paper_year": 2020,
+    "paper_link": "https://doi.org/10.21256/ZHAW-1405",
     "studies": [
       {
         "study": 1,
-        "study_n": 1178,
+        "study_n": 26340,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "33% of the meals offered in the cafeteria contained meat"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 2,
+            "outcome_description": "Percentage of dishes sold containing meat (excluding fish)"
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Percentage of dishes sold containing fish"
+          },
+          {
+            "outcome": 4,
+            "outcome_description": "Percentage of dishes sold that were vegetarian (excluding vegan)"
+          },
+          {
+            "outcome": 5,
+            "outcome_description": "Percentage of dishes sold that were vegan"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 120,
+    "paper_label": "Tschümperlin (2020)",
+    "paper_authors": "Tschümperlin, M.",
+    "paper_title": "Nudging – ein leichter Stups in Richtung weniger Fleisch",
+    "paper_year": 2020,
+    "paper_link": "https://doi.org/10.26041/fhnw-3640",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 4915,
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "Signs with a Planetary Health Plate graphic featuring a diet based on the EAT Lancet Planetary Health Diet were posted. The sign included information on top of the sign: “Today, our diets have a large impact on our global ecosystem. In February 2019, scientists collaborated with The Lancet medical journal to establish this realistic diet that maintains both human and planetary health.” And on the bottom of the sign “Modeling your plate like this one builds a healthy diet and a sustainable world”."
+            "intervention_description": "The vegetarian option was labeled as \"our recommendation\""
           }
         ],
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "total amount of taken from the meat tray"
+            "outcome_description": "Percentage of dishes sold that were vegetarian"
           }
         ]
       }

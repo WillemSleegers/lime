@@ -32,7 +32,7 @@ type HighLightsProps = {
 export const Highlights = (props: HighLightsProps) => {
   const { data } = props
 
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   const participantsCount = [
     ...data

@@ -6,8 +6,14 @@
   },
   {
     "column": "paper_label",
-    "description": "A short label to identify the paper, based on APA's in-text citation style: authors and year of publication.",
+    "description": "A short label to identify the paper, based on APA's in-text citation style: authors and year of publication. The first two authors are included, otherwise only the first author is included and others are combined into 'et al.'.",
     "data_type": "string"
+  },
+  {
+    "column": "paper_status",
+    "description": "The status of processing the paper: excluded = checked and does not meet inclusion criteria, contact authors = meets inclusion criteria but necesary information are not reported and authors need to be contacted, ready to code = paper (probably) meets inclusion criteria and needs to be coded, analyze raw data = necessary information not reported but can be extracted from the data that is shared, calculate effect size = paper has been coded and relevant effect sizes need to be calculated for the website, add to webiste = effect size has been calculated and paper can be added to the webiste, included = paper has been included in the website",
+    "data_type": "factor",
+    "factor_levels": "included, excluded, contact authors, calculate effect sizes, ready to code,  analyze raw data"
   },
   {
     "column": "paper_authors",
@@ -21,14 +27,14 @@
   },
   {
     "column": "paper_title",
-    "description": "Title of the paper.",
+    "description": "Title of the paper in sentence case.",
     "data_type": "string"
   },
   {
     "column": "paper_type",
     "description": "Type of paper.",
     "data_type": "factor",
-    "factor_levels": "peer reviewed paper, report, thesis, unpublished manuscript, preprint"
+    "factor_levels": "peer reviewed paper, report, thesis, unpublished manuscript, preprint, conference paper"
   },
   {
     "column": "paper_source",
@@ -50,18 +56,6 @@
     "column": "paper_notes",
     "description": "Additional notes about the paper (e.g., whether relevant statistics are not reported and the authors have to be contacted; why a paper was not included even though it seems relevant).",
     "data_type": "string"
-  },
-  {
-    "column": "paper_status",
-    "description": "The status of processing the paper; currently only says whether we've checked out the paper again or not.",
-    "data_type": "factor",
-    "factor_levels": "checked, contact authors, ready to add"
-  },
-  {
-    "column": "paper_included",
-    "description": "Whether we've included the paper in the meta-analysis (yes = included, no = not relevant, not yet = relevant but not included yet for example, because additional statistics have to be requested from the authors).",
-    "data_type": "factor",
-    "factor_levels": "yes, no, not yet"
   },
   {
     "column": "paper_extracted_all_statistics",
@@ -328,13 +322,13 @@
     "column": "outcome_subcategory",
     "description": "A more fine-grained categorization of the outcome",
     "data_type": "factor",
-    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, purchasing intentions, diet, ethical consumption, vegetarian consumption, meat commitment, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics, vegan consumption"
+    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, purchasing intentions, diet, ethical consumption, vegetarian consumption, vegan consumption, meat commitment, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics"
   },
   {
     "column": "outcome_measurement_type",
     "description": "A categoriziation of how the outcome was measured: food diary, sales data, survey.",
     "data_type": "factor",
-    "factor_levels": "survey, food diary, sales data, meal choice, other"
+    "factor_levels": "survey, food diary, sales data, other, meal choice"
   },
   {
     "column": "outcome_product_type",
@@ -346,7 +340,7 @@
     "column": "outcome_product_subtype",
     "description": "A more precise type of animal product that the outcome is about.",
     "data_type": "factor",
-    "factor_levels": "red meat, white meat, pork, poultry, fish, beef, processed meat, chicken, turkey, lamb, seafood, red and processed meat, milk, yoghurt, cheese"
+    "factor_levels": "red meat, white meat, pork, poultry, fish, beef, processed meat, chicken, turkey, dairy, lamb, seafood, red and processed meat, milk, yoghurt, cheese"
   },
   {
     "column": "outcome_scale",

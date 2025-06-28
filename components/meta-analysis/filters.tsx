@@ -201,7 +201,7 @@ export const Filters = (props: FiltersProps) => {
       }
       setRanOnce(true)
     }
-  }, [disabled])
+  }, [form, disabled])
 
   return (
     <Collapsible
