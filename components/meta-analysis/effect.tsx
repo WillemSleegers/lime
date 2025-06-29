@@ -3,13 +3,13 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "./ui/collapsible"
+} from "../ui/collapsible"
 import { useState } from "react"
 import { cn, u1, pSup, u3 } from "@/lib/utils"
-import { Skeleton } from "./ui/skeleton"
-import { Button } from "./ui/button"
-import { PieChartProportion } from "./charts/pie-chart-proportion"
-import ChartEffect from "./charts/chart-effect"
+import { Skeleton } from "../ui/skeleton"
+import { Button } from "../ui/button"
+import { PieChartProportion } from "../charts/pie-chart-proportion"
+import ChartEffect from "../charts/chart-effect"
 
 type EffectProps = {
   effect: {

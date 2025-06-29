@@ -37,7 +37,6 @@ import {
 
 import { Toggle } from "../ui/toggle"
 import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
-import { useState } from "react"
 
 /* Paper-level */
 const formSchemaPapers = z.object({

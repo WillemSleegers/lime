@@ -3,9 +3,9 @@
 import { WebR } from "webr"
 import { useEffect, useState } from "react"
 
-import { Effect } from "@/components/effect"
+import { Effect } from "@/components/meta-analysis/effect"
 import { Button } from "@/components/ui/button"
-import { ForestPlot } from "@/components/forest-plot"
+import { ForestPlot } from "@/components/meta-analysis/forest-plot"
 import { RCode } from "@/components/meta-analysis/R-code"
 import { Filters } from "@/components/meta-analysis/filters"
 import { Highlights } from "@/components/meta-analysis/highlights"

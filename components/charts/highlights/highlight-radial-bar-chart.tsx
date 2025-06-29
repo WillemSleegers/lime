@@ -37,7 +37,7 @@ export const HighlightRadialBarChart = ({
         startAngle={90}
         endAngle={-270}
         innerRadius={40}
-        outerRadius={60}
+        outerRadius={54}
       >
         <RadialBar
           dataKey="percentage"
@@ -59,21 +59,11 @@ export const HighlightRadialBarChart = ({
           domain={[0, 100]}
         >
           <Label
-            content={({ viewBox }) => {
-              if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                return (
-                  <text
-                    x={viewBox.cx}
-                    y={viewBox.cy}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    className="block fill-foreground p-3 text-xl font-bold"
-                  >
-                    {chartData[0].percentage.toLocaleString() + "%"}
-                  </text>
-                )
-              }
-            }}
+            value={percentage + "%"}
+            position="center"
+            fontWeight={600}
+            fontSize={20}
+            fill="black"
           />
         </PolarRadiusAxis>
       </RadialBarChart>

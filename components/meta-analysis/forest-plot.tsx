@@ -8,7 +8,6 @@ import {
   Scatter,
   ErrorBar,
   Tooltip,
-  TooltipProps,
   ReferenceLine,
   ZAxis,
 } from "recharts"
@@ -16,33 +15,42 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "./ui/collapsible"
+} from "../ui/collapsible"
 import { ChevronRight } from "lucide-react"
 import { cn, round } from "@/lib/utils"
 import { Data } from "@/lib/types"
 import {
-  NameType,
+  Props,
   ValueType,
+  NameType,
 } from "recharts/types/component/DefaultTooltipContent"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import effects from "../assets/data/data.json"
+import effects from "../../assets/data/data.json"
+
+import { EffectDialogContent } from "./effect-dialog-content"
 
 type ForestPlotProps = {
   data: Data
+}
+
+type ForestPlotDataProps = {
+  name: string
+  value: number
+  summary: string
+  error: number[]
 }
 
 export const ForestPlot = (props: ForestPlotProps) => {
   const { data } = props
 
   const [open, setOpen] = useState(false)
-  const [plotData, setPlotData] = useState<{}[]>([])
+  const [plotData, setPlotData] = useState<ForestPlotDataProps[]>([])
 
   const longestLabel = data
     .map((e) => e.paper_label + " - " + e.effect)
@@ -58,8 +66,8 @@ export const ForestPlot = (props: ForestPlotProps) => {
             e.effect_size_lower
           )}; ${round(e.effect_size_upper)}]`,
           error: [
-            Math.abs(e.effect_size - e.effect_size_lower),
-            Math.abs(e.effect_size - e.effect_size_upper),
+            round(Math.abs(e.effect_size - e.effect_size_lower), 2),
+            round(Math.abs(e.effect_size - e.effect_size_upper), 2),
           ],
         }
       })
@@ -121,7 +129,10 @@ export const ForestPlot = (props: ForestPlotProps) => {
                   tick={<CustomizedAxisTick />}
                 />
                 <ZAxis range={[40, 41]} />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip
+                  content={<CustomTooltip accessibilityLayer />}
+                  isAnimationActive={false}
+                />
                 <Scatter yAxisId="left">
                   <ErrorBar
                     dataKey="error"
@@ -147,13 +158,9 @@ export const ForestPlot = (props: ForestPlotProps) => {
   )
 }
 
-const CustomTooltip = ({
-  active,
-  payload,
-}: TooltipProps<ValueType, NameType>) => {
-  if (active && payload && payload.length) {
-    console.log(payload)
-    const dataPoint = payload[0].payload
+const CustomTooltip = (props: Props<ValueType, NameType>) => {
+  if (props.payload && props.payload.length) {
+    const dataPoint = props.payload[0].payload
     return (
       <div className="custom-tooltip rounded border border-gray-500 bg-white p-3">
         <span className="font-semibold">{`${dataPoint.name}`}</span>
@@ -170,9 +177,12 @@ class CustomizedAxisTick extends PureComponent {
   render() {
     const { x, y, payload }: any = this.props
 
-    const effect = effects.filter(
+    const effect = effects.find(
       (e) => e.paper_label + " - " + e.effect == payload.value
     )
+
+    // Return nothing if no effect is found; shouldn't happen though
+    if (!effect) return
 
     return (
       <Dialog>
@@ -188,56 +198,21 @@ class CustomizedAxisTick extends PureComponent {
             {payload.value}
           </text>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent
+          className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl overflow-auto p-4"
+          style={{ maxHeight: "95dvh" }}
+          aria-description={
+            "Effect information of " +
+            effect.paper_label +
+            " - " +
+            effect.effect
+          }
+          aria-describedby={effect.paper_label + " - " + effect.effect}
+        >
           <DialogHeader>
             <DialogTitle className="text-center">{payload.value}</DialogTitle>
-            <DialogDescription>
-              <h1 className="border-b pt-2 pb-1 text-xl font-semibold tracking-tight text-black first:mt-0">
-                Paper
-              </h1>
-
-              <div className="my-3">
-                <span className="font-semibold text-black">Title:</span>
-                <br />
-                <span>{effect[0].paper_title}</span>
-              </div>
-              <div className="my-3">
-                <span className="font-semibold text-black">Authors:</span>
-                <br />
-                <span>{effect[0].paper_authors}</span>
-              </div>
-              <div className="my-3">
-                <span className="font-semibold text-black">URL:</span>
-                <br />
-                <a target="_blank" href={effect[0].paper_link}>
-                  {effect[0].paper_link}
-                </a>
-              </div>
-
-              <h1 className="border-b pt-2 pb-1 text-xl font-semibold tracking-tight text-black first:mt-0">
-                Outcome
-              </h1>
-              <div className="my-3">
-                <span className="font-semibold text-black">Label:</span>
-                <br />
-                <span>{effect[0].outcome_label}</span>
-              </div>
-              <div className="my-3">
-                <span className="font-semibold text-black">Category:</span>
-                <br />
-                <span>{effect[0].outcome_category}</span>
-              </div>
-
-              <h1 className="border-b pt-2 pb-1 text-xl font-semibold tracking-tight text-black first:mt-0">
-                Effect
-              </h1>
-              <div className="my-3">
-                <span className="font-semibold text-black">Value:</span>
-                <br />
-                <span>{effect[0].effect_size}</span>
-              </div>
-            </DialogDescription>
           </DialogHeader>
+          <EffectDialogContent effect={effect} />
         </DialogContent>
       </Dialog>
     )

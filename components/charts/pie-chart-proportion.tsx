@@ -52,21 +52,11 @@ export const PieChartProportion = ({
           strokeWidth={5}
         >
           <Label
-            content={({ viewBox }) => {
-              if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                return (
-                  <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
-                    <tspan
-                      x={viewBox.cx}
-                      y={(viewBox.cy || 0) - 8}
-                      className="fill-foreground text-2xl font-bold"
-                    >
-                      {round(proportion * 100, 0) + "%"}
-                    </tspan>
-                  </text>
-                )
-              }
-            }}
+            value={round(proportion * 100, 0) + "%"}
+            fontSize={22}
+            fontWeight={600}
+            fill="black"
+            dy={-10}
           />
         </Pie>
       </PieChart>
