@@ -23,6 +23,18 @@ export const STUDY_DATA_AVAILABLE_OPTIONS = [
   ...new Set(studies.map((datum) => datum.study_data_available)),
 ]
 
+export const STUDY_CONDITION_ASSIGNMENT = [
+  ...new Set(studies.map((datum) => datum.study_condition_assignment)),
+]
+
+export const STUDY_DESIGN = [
+  ...new Set(studies.map((datum) => datum.study_design)),
+]
+
+export const STUDY_RANDOMIZATION = [
+  ...new Set(studies.map((datum) => datum.study_randomization)),
+]
+
 // Intervention-level
 export const INTERVENTION_CONTENT_OPTIONS = customSort(
   [

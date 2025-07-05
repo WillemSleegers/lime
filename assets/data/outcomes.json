@@ -1349,7 +1349,7 @@
     "outcome_label": "intentions to eat a low-meat diet",
     "outcome_description": "Intention to eat low-meat diet",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption",
+    "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
   },
   {
@@ -1393,7 +1393,7 @@
     "outcome_label": "intentions to reduce meat consumption",
     "outcome_description": "Intention to reduce meat consumption by a little or a lot in the coming weeks",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption",
+    "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
   },
   {
@@ -1613,7 +1613,7 @@
     "outcome_label": "meat reduction pledge",
     "outcome_description": "Agreement with 'Are you willing to pledge to reduce the amount of meat you eat?'",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption",
+    "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
   },
   {
@@ -1624,7 +1624,7 @@
     "outcome_label": "vegetarian diet pledge",
     "outcome_description": "Agreement with 'Are you willing to pledge to stop eating meat?'",
     "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption",
+    "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
   },
   {

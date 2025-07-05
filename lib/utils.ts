@@ -104,32 +104,35 @@ function isNiceNumber(num: number) {
   return Number.isInteger(num) || Number.isInteger(num * 2)
 }
 
-export const customSort = <T extends string | number>(inputArray: T[], excludeArray?: T[]): T[] => {
+export const customSort = <T extends string | number>(
+  inputArray: T[],
+  excludeArray?: T[]
+): T[] => {
   // If no exclude array is provided, just sort the input array
   if (!excludeArray || excludeArray.length === 0) {
-      return [...inputArray].sort((a, b) => String(a).localeCompare(String(b)));
+    return [...inputArray].sort((a, b) => String(a).localeCompare(String(b)))
   }
-  
+
   // Create sets for faster lookup
-  const excludeSet = new Set(excludeArray);
-  
+  const excludeSet = new Set(excludeArray)
+
   // Separate arrays for included and excluded items
-  const includedItems: T[] = [];
-  const excludedItems: T[] = [];
-  
+  const includedItems: T[] = []
+  const excludedItems: T[] = []
+
   // Separate items based on whether they're in the exclude array
-  inputArray.forEach(item => {
-      if (excludeSet.has(item)) {
-          excludedItems.push(item);
-      } else {
-          includedItems.push(item);
-      }
-  });
-  
+  inputArray.forEach((item) => {
+    if (excludeSet.has(item)) {
+      excludedItems.push(item)
+    } else {
+      includedItems.push(item)
+    }
+  })
+
   // Sort both arrays alphabetically
-  includedItems.sort((a, b) => String(a).localeCompare(String(b)));
-  excludedItems.sort((a, b) => String(a).localeCompare(String(b)));
-  
+  includedItems.sort((a, b) => String(a).localeCompare(String(b)))
+  excludedItems.sort((a, b) => String(a).localeCompare(String(b)))
+
   // Combine the arrays with excluded items at the end
-  return [...includedItems, ...excludedItems];
+  return [...includedItems, ...excludedItems]
 }

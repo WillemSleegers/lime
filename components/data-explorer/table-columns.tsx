@@ -124,6 +124,9 @@ export type ColumnsStudies = {
   study_pregistration_link?: string
   study_data_available: string
   study_data_link?: string
+  study_condition_assignment: string
+  study_design: string
+  study_randomization: string
 }
 
 export const ColumnsStudies: ColumnDef<ColumnsStudies>[] = [
@@ -188,6 +191,33 @@ export const ColumnsStudies: ColumnDef<ColumnsStudies>[] = [
     ),
     cell: ({ row }) => {
       const value = row.getValue<string>("study_data_available")
+
+      return value == "yes" ? <CheckIcon strokeWidth={2} /> : <X />
+    },
+  },
+  {
+    id: "study_design",
+    accessorKey: "study_design",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Design" />
+    ),
+  },
+  {
+    id: "study_condition_assignment",
+    accessorKey: "study_condition_assignment",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Condition assignment" />
+    ),
+  },
+
+  {
+    id: "study_randomization",
+    accessorKey: "study_randomization",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Randomization" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("study_randomization")
 
       return value == "yes" ? <CheckIcon strokeWidth={2} /> : <X />
     },

@@ -19,7 +19,7 @@ import {
 } from "../ui/collapsible"
 
 import { cn, round } from "@/lib/utils"
-import { Data } from "@/lib/types"
+import { Data, Effect } from "@/lib/types"
 
 import {
   NameType,
@@ -27,19 +27,18 @@ import {
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent"
 
-type PublicationBiasProps = {
-  effect: number
-  egger_b: number
-  egger_se: number
-  egger_z: number
-  egger_p: number
+type CollapsiblePublicationBiasProps = {
+  effect?: Effect
   data: Data
 }
 
-export const PublicationBias = (props: PublicationBiasProps) => {
-  const { effect, egger_b, egger_se, egger_z, egger_p, data } = props
+export const CollapsiblePublicationBias = (
+  props: CollapsiblePublicationBiasProps
+) => {
+  const { effect, data } = props
 
   const [open, setOpen] = useState(false)
+
   const [ymax, setYmax] = useState(0)
   const [plotData, setPlotData] =
     useState<{ x: number; y: number; name: string }[]>()
@@ -73,89 +72,97 @@ export const PublicationBias = (props: PublicationBiasProps) => {
         <div className="my-3">
           <h3 className="text-center">Small Study Effect Methods</h3>
           <h4 className="text-center">Egger&apos;s Test</h4>
-          <p>
-            We found{" "}
-            {egger_p < 0.05 ? (
-              <span className="font-semibold text-red-500">evidence</span>
-            ) : (
-              <span>no evidence</span>
-            )}{" "}
-            of publication bias using the{" "}
-            <Link href="https://doi.org/10.1080/00220973.2019.1582470">
-              Egger&apos;s regression test
-            </Link>{" "}
-            (b = {round(egger_b, 2)}, SE = {round(egger_se, 2)}, z ={" "}
-            {round(egger_z, 2)}, p = {round(egger_p, 2)}).
-          </p>
+          {effect && (
+            <p>
+              We found{" "}
+              {effect.egger_p < 0.05 ? (
+                <span className="font-semibold text-red-500">evidence</span>
+              ) : (
+                <span>no evidence</span>
+              )}{" "}
+              of publication bias using the{" "}
+              <Link href="https://doi.org/10.1080/00220973.2019.1582470">
+                Egger&apos;s regression test
+              </Link>{" "}
+              (b = {round(effect.egger_b, 2)}, SE = {round(effect.egger_se, 2)},
+              z = {round(effect.egger_z, 2)}, p = {round(effect.egger_p, 2)}).
+            </p>
+          )}
           <h4 className="text-center">Funnel plot</h4>
           <div className="overflow-auto">
-            <ResponsiveContainer height={500} width="100%" minWidth={600}>
-              <ScatterChart
-                data={plotData}
-                margin={{
-                  bottom: 20,
-                  left: 20,
-                  right: 20,
-                  top: 5,
-                }}
-              >
-                <CartesianGrid fill="whitesmoke" />
-                <XAxis
-                  dataKey="x"
-                  type="number"
-                  label={{
-                    value: "Effect size",
-                    dy: 20,
-                    fill: "black",
+            {effect && (
+              <ResponsiveContainer height={500} width="100%" minWidth={600}>
+                <ScatterChart
+                  data={plotData}
+                  margin={{
+                    bottom: 20,
+                    left: 20,
+                    right: 20,
+                    top: 5,
                   }}
-                />
-                <YAxis
-                  dataKey="y"
-                  type="number"
-                  label={{
-                    value: "Standard error",
-                    angle: -90,
-                    dx: -30,
-                    fill: "black",
-                  }}
-                  reversed
-                />
-                <Tooltip content={<CustomTooltip accessibilityLayer />} />
-                <ReferenceLine
-                  x={effect}
-                  stroke="black"
-                  strokeDasharray="3 3"
-                  strokeWidth={2}
-                />
-                <ReferenceLine
-                  segment={[
-                    { x: effect, y: 0 },
-                    {
-                      x: effect - 1.96 * Math.ceil(ymax),
-                      y: Math.ceil(ymax),
-                    },
-                  ]}
-                  stroke="black"
-                  strokeDasharray="3 3"
-                  strokeWidth={2}
-                  ifOverflow="hidden"
-                />
-                <ReferenceLine
-                  segment={[
-                    { x: effect, y: 0 },
-                    {
-                      x: effect + 1.96 * Math.ceil(ymax),
-                      y: Math.ceil(ymax),
-                    },
-                  ]}
-                  stroke="black"
-                  strokeDasharray="3 3"
-                  strokeWidth={2}
-                  ifOverflow="hidden"
-                />
-                <Scatter fill="lightgray" stroke="black" animationBegin={300} />
-              </ScatterChart>
-            </ResponsiveContainer>
+                >
+                  <CartesianGrid fill="whitesmoke" />
+                  <XAxis
+                    dataKey="x"
+                    type="number"
+                    label={{
+                      value: "Effect size",
+                      dy: 20,
+                      fill: "black",
+                    }}
+                  />
+                  <YAxis
+                    dataKey="y"
+                    type="number"
+                    label={{
+                      value: "Standard error",
+                      angle: -90,
+                      dx: -30,
+                      fill: "black",
+                    }}
+                    reversed
+                  />
+                  <Tooltip content={<CustomTooltip accessibilityLayer />} />
+                  <ReferenceLine
+                    x={effect.value}
+                    stroke="black"
+                    strokeDasharray="3 3"
+                    strokeWidth={2}
+                  />
+                  <ReferenceLine
+                    segment={[
+                      { x: effect.value, y: 0 },
+                      {
+                        x: effect.value - 1.96 * Math.ceil(ymax),
+                        y: Math.ceil(ymax),
+                      },
+                    ]}
+                    stroke="black"
+                    strokeDasharray="3 3"
+                    strokeWidth={2}
+                    ifOverflow="hidden"
+                  />
+                  <ReferenceLine
+                    segment={[
+                      { x: effect.value, y: 0 },
+                      {
+                        x: effect.value + 1.96 * Math.ceil(ymax),
+                        y: Math.ceil(ymax),
+                      },
+                    ]}
+                    stroke="black"
+                    strokeDasharray="3 3"
+                    strokeWidth={2}
+                    ifOverflow="hidden"
+                  />
+                  <Scatter
+                    fill="lightgray"
+                    stroke="black"
+                    animationBegin={300}
+                  />
+                </ScatterChart>
+              </ResponsiveContainer>
+            )}
           </div>
         </div>
       </CollapsibleContent>

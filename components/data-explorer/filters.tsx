@@ -33,6 +33,9 @@ import {
   OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
+  STUDY_CONDITION_ASSIGNMENT,
+  STUDY_DESIGN,
+  STUDY_RANDOMIZATION,
 } from "@/constants/constants-filters"
 
 import { Toggle } from "../ui/toggle"
@@ -231,6 +234,18 @@ const formSchemaStudies = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
+  study_condition_assignment: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  study_design: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  study_randomization: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
 })
 
 type FilterStudiesProps = {
@@ -240,6 +255,9 @@ type FilterStudiesProps = {
     study_pregistration_link?: string
     study_data_available: string
     study_data_link?: string
+    study_condition_assignment: string
+    study_design: string
+    study_randomization: string
   }[]
   setData: Function
   lock: boolean
@@ -258,6 +276,9 @@ export const FilterStudies = (props: FilterStudiesProps) => {
       study_n: 1,
       study_pregistered: STUDY_PREREGISTERED_OPTIONS,
       study_data_available: STUDY_DATA_AVAILABLE_OPTIONS,
+      study_condition_assignment: STUDY_CONDITION_ASSIGNMENT,
+      study_design: STUDY_DESIGN,
+      study_randomization: STUDY_RANDOMIZATION,
     },
   })
 
@@ -277,6 +298,24 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     subset = subset.filter((datum) => {
       return values.study_data_available.some((value) =>
         datum.study_data_available.includes(value)
+      )
+    })
+
+    subset = subset.filter((datum) => {
+      return values.study_condition_assignment.some((value) =>
+        datum.study_condition_assignment.includes(value)
+      )
+    })
+
+    subset = subset.filter((datum) => {
+      return values.study_design.some((value) =>
+        datum.study_design.includes(value)
+      )
+    })
+
+    subset = subset.filter((datum) => {
+      return values.study_randomization.some((value) =>
+        datum.study_randomization.includes(value)
       )
     })
 
@@ -368,6 +407,94 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                 </FormItem>
               )}
             />
+
+            <FormField
+              control={form.control}
+              name="study_design"
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-2">
+                  <FormLabel>Study design</FormLabel>
+                  <FormControl>
+                    <ToggleGroup
+                      type="multiple"
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      {STUDY_DESIGN.map((option) => (
+                        <ToggleGroupItem
+                          key={option}
+                          value={option}
+                          variant="pill"
+                          size="sm"
+                        >
+                          {option}
+                        </ToggleGroupItem>
+                      ))}
+                    </ToggleGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="study_condition_assignment"
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-2">
+                  <FormLabel>Condition assignment</FormLabel>
+                  <FormControl>
+                    <ToggleGroup
+                      type="multiple"
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      {STUDY_CONDITION_ASSIGNMENT.map((option) => (
+                        <ToggleGroupItem
+                          key={option}
+                          value={option}
+                          variant="pill"
+                          size="sm"
+                        >
+                          {option}
+                        </ToggleGroupItem>
+                      ))}
+                    </ToggleGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="study_randomization"
+              render={({ field }) => (
+                <FormItem className="flex flex-col gap-2">
+                  <FormLabel>Randomization</FormLabel>
+                  <FormControl>
+                    <ToggleGroup
+                      type="multiple"
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      {STUDY_RANDOMIZATION.map((option) => (
+                        <ToggleGroupItem
+                          key={option}
+                          value={option}
+                          variant="pill"
+                          size="sm"
+                        >
+                          {option}
+                        </ToggleGroupItem>
+                      ))}
+                    </ToggleGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               name="error"
               render={() => (

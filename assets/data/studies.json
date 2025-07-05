@@ -5,7 +5,10 @@
     "study": 1,
     "study_n": 220,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 2,
@@ -14,7 +17,10 @@
     "study_n": 32,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/8tgxr/"
+    "study_data_link": "https://osf.io/8tgxr/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 3,
@@ -23,7 +29,10 @@
     "study_n": 3068,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/7wh93/"
+    "study_data_link": "https://osf.io/7wh93/",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 4,
@@ -32,7 +41,10 @@
     "study_n": 114,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/ryhgx/"
+    "study_data_link": "https://osf.io/ryhgx/",
+    "study_condition_assignment": "individual",
+    "study_design": "within",
+    "study_randomization": "no"
   },
   {
     "paper": 5,
@@ -40,7 +52,10 @@
     "study": 1,
     "study_n": 511,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 7,
@@ -48,7 +63,10 @@
     "study": 1,
     "study_n": 71,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 9,
@@ -56,7 +74,10 @@
     "study": 2,
     "study_n": 238,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 10,
@@ -64,7 +85,10 @@
     "study": 1,
     "study_n": 124,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 11,
@@ -73,7 +97,10 @@
     "study_n": 3233,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/q5xfk/"
+    "study_data_link": "https://osf.io/q5xfk/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 13,
@@ -81,7 +108,10 @@
     "study": 1,
     "study_n": 201,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 14,
@@ -90,7 +120,10 @@
     "study_n": 1594,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/tfj9z/"
+    "study_data_link": "https://osf.io/tfj9z/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 17,
@@ -98,7 +131,10 @@
     "study": 1,
     "study_n": 373,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 18,
@@ -106,7 +142,10 @@
     "study": 1,
     "study_n": 252,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 23,
@@ -114,7 +153,10 @@
     "study": 1,
     "study_n": 55,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "within",
+    "study_randomization": "no"
   },
   {
     "paper": 25,
@@ -123,7 +165,10 @@
     "study_n": 99,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/yvgju/"
+    "study_data_link": "https://osf.io/yvgju/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 26,
@@ -132,7 +177,10 @@
     "study_n": 309,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://www.sciencedirect.com/science/article/pii/S0272494418300446#appsec1"
+    "study_data_link": "https://www.sciencedirect.com/science/article/pii/S0272494418300446#appsec1",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 26,
@@ -141,7 +189,10 @@
     "study_n": 383,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://www.sciencedirect.com/science/article/pii/S0272494418300446#appsec1"
+    "study_data_link": "https://www.sciencedirect.com/science/article/pii/S0272494418300446#appsec1",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 26,
@@ -150,7 +201,10 @@
     "study_n": 407,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://www.sciencedirect.com/science/article/pii/S0272494418300446#appsec1"
+    "study_data_link": "https://www.sciencedirect.com/science/article/pii/S0272494418300446#appsec1",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 31,
@@ -158,7 +212,10 @@
     "study": 2,
     "study_n": 292,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 31,
@@ -166,7 +223,10 @@
     "study": 4,
     "study_n": 304,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 33,
@@ -174,7 +234,10 @@
     "study": 1,
     "study_n": 520,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 33,
@@ -182,7 +245,10 @@
     "study": 2,
     "study_n": 518,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 37,
@@ -192,7 +258,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/rk4ut/",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/rk4ut/"
+    "study_data_link": "https://osf.io/rk4ut/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 38,
@@ -202,7 +271,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://animalcharityevaluators.org/wp-content/uploads/2013/11/2013HumaneEdStudyProtocol.pdf",
     "study_data_available": "yes",
-    "study_data_link": "https://docs.google.com/spreadsheets/d/1dylS7LDJKBF9MPSKdyfQ_y2OciogBPLHJd6LCABoWYs/edit?gid=0#gid=0"
+    "study_data_link": "https://docs.google.com/spreadsheets/d/1dylS7LDJKBF9MPSKdyfQ_y2OciogBPLHJd6LCABoWYs/edit?gid=0#gid=0",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 39,
@@ -212,7 +284,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://animalcharityevaluators.org/wp-content/uploads/2013/11/Leafleting-Study-Protocol.pdf",
     "study_data_available": "yes",
-    "study_data_link": "https://docs.google.com/spreadsheets/d/1fGEfFkz-zehPRkhEHUVlkFSW4G7jPnxNfrCWnoida_w/edit?gid=0#gid=0"
+    "study_data_link": "https://docs.google.com/spreadsheets/d/1fGEfFkz-zehPRkhEHUVlkFSW4G7jPnxNfrCWnoida_w/edit?gid=0#gid=0",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 40,
@@ -221,7 +296,10 @@
     "study_n": 806,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://mfa.cachefly.net/mfa/images/uploads/2016/11/CleanWelfareReformsData.csv"
+    "study_data_link": "https://mfa.cachefly.net/mfa/images/uploads/2016/11/CleanWelfareReformsData.csv",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 42,
@@ -230,7 +308,10 @@
     "study_n": 1279,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://drive.google.com/open?id=0B-Eeb4c_dchsdmNmd1hmc3M4RDQ"
+    "study_data_link": "https://drive.google.com/open?id=0B-Eeb4c_dchsdmNmd1hmc3M4RDQ",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 50,
@@ -239,7 +320,10 @@
     "study_n": 1032,
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/s2kv8",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 52,
@@ -249,7 +333,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/m3d2y",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/4bv6r/"
+    "study_data_link": "https://osf.io/4bv6r/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 52,
@@ -259,7 +346,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/etpvf",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/4bv6r/"
+    "study_data_link": "https://osf.io/4bv6r/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 52,
@@ -269,7 +359,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/n52yd",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/4bv6r/"
+    "study_data_link": "https://osf.io/4bv6r/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 53,
@@ -277,7 +370,10 @@
     "study": 1,
     "study_n": 346081,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 54,
@@ -285,7 +381,10 @@
     "study": 1,
     "study_n": 712,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "mixed",
+    "study_randomization": "yes"
   },
   {
     "paper": 55,
@@ -295,7 +394,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://aspredicted.org/LLB_21W",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/y5tdu/"
+    "study_data_link": "https://osf.io/y5tdu/",
+    "study_condition_assignment": "cluster",
+    "study_design": "mixed",
+    "study_randomization": "no"
   },
   {
     "paper": 56,
@@ -303,7 +405,10 @@
     "study": 1,
     "study_n": 166,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "mixed",
+    "study_randomization": "yes"
   },
   {
     "paper": 57,
@@ -312,7 +417,10 @@
     "study_n": 228,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/dbnu9/?view_only=472e3fe33ef546d6be3232abda20dd48"
+    "study_data_link": "https://osf.io/dbnu9/?view_only=472e3fe33ef546d6be3232abda20dd48",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 57,
@@ -322,7 +430,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "http://aspredicted.org/blind.php?x=nr8zq5",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/dbnu9/?view_only=472e3fe33ef546d6be3232abda20dd48"
+    "study_data_link": "https://osf.io/dbnu9/?view_only=472e3fe33ef546d6be3232abda20dd48",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 58,
@@ -332,7 +443,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "osf.io/3s4yj/",
     "study_data_available": "no",
-    "study_data_link": "https://osf.io/7kx8u/?view_only="
+    "study_data_link": "https://osf.io/7kx8u/?view_only=",
+    "study_condition_assignment": "individual",
+    "study_design": "mixed",
+    "study_randomization": "yes"
   },
   {
     "paper": 59,
@@ -342,7 +456,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://aspredicted.org/tj6a3.pdf",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/u4j58/"
+    "study_data_link": "https://osf.io/u4j58/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 60,
@@ -352,7 +469,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/exg7f/?view_only=557d3f45ff554eaab9837cc7abf3b23b",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/exg7f/"
+    "study_data_link": "https://osf.io/exg7f/",
+    "study_condition_assignment": "cluster",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 61,
@@ -361,7 +481,10 @@
     "study_n": 454,
     "study_preregistered": "yes",
     "study_preregistration_link": "https://aspredicted.org/NH9_G6P",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 62,
@@ -369,7 +492,10 @@
     "study": 1,
     "study_n": 8272,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "within",
+    "study_randomization": "no"
   },
   {
     "paper": 63,
@@ -377,7 +503,10 @@
     "study": 1,
     "study_n": 7968,
     "study_preregistered": "yes",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 64,
@@ -386,7 +515,10 @@
     "study_n": 271,
     "study_preregistered": "yes",
     "study_preregistration_link": "https://aspredicted.org/km3jh.pdf",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 65,
@@ -394,7 +526,10 @@
     "study": 1,
     "study_n": 3104,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 67,
@@ -404,7 +539,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://aspredicted.org/jp34m.pdf",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/nuhkv/"
+    "study_data_link": "https://osf.io/nuhkv/",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 68,
@@ -413,7 +551,10 @@
     "study_n": 54745,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://www.repository.cam.ac.uk/items/57700283-a8df-4610-9881-f734e7331324"
+    "study_data_link": "https://www.repository.cam.ac.uk/items/57700283-a8df-4610-9881-f734e7331324",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 68,
@@ -422,7 +563,10 @@
     "study_n": 48912,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://www.repository.cam.ac.uk/items/57700283-a8df-4610-9881-f734e7331324"
+    "study_data_link": "https://www.repository.cam.ac.uk/items/57700283-a8df-4610-9881-f734e7331324",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 70,
@@ -432,7 +576,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/gbvua",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/x9jaq/?view_only=9a68fdb44e6f4b1d986565492dda9202"
+    "study_data_link": "https://osf.io/x9jaq/?view_only=9a68fdb44e6f4b1d986565492dda9202",
+    "study_condition_assignment": "individual",
+    "study_design": "mixed",
+    "study_randomization": "yes"
   },
   {
     "paper": 73,
@@ -441,7 +588,10 @@
     "study_n": 335,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/fr7zh/"
+    "study_data_link": "https://osf.io/fr7zh/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 73,
@@ -450,7 +600,10 @@
     "study_n": 3431,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/fr7zh/"
+    "study_data_link": "https://osf.io/fr7zh/",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 73,
@@ -459,7 +612,10 @@
     "study_n": 87,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/fr7zh/"
+    "study_data_link": "https://osf.io/fr7zh/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 75,
@@ -469,7 +625,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://clinicaltrials.gov/study/NCT05565859?cond=NCT05565859&rank=1",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/7s8wq/?view_only=e3c057b7bc1f48c8841d0a1b01ffdb0e"
+    "study_data_link": "https://osf.io/7s8wq/?view_only=e3c057b7bc1f48c8841d0a1b01ffdb0e",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 77,
@@ -478,7 +637,10 @@
     "study_n": 177,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://www.frontiersin.org/articles/10.3389/fsufs.2019.00040/full#supplementary-material"
+    "study_data_link": "https://www.frontiersin.org/articles/10.3389/fsufs.2019.00040/full#supplementary-material",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 78,
@@ -486,7 +648,10 @@
     "study": 1,
     "study_n": 280,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 79,
@@ -495,7 +660,10 @@
     "study_n": 231,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/q6dvm/"
+    "study_data_link": "https://osf.io/q6dvm/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 79,
@@ -504,7 +672,10 @@
     "study_n": 399,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/q6dvm/"
+    "study_data_link": "https://osf.io/q6dvm/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 80,
@@ -512,7 +683,10 @@
     "study": 1,
     "study_n": 1388,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "cluster",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 81,
@@ -520,7 +694,10 @@
     "study": 1,
     "study_n": 543,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 84,
@@ -529,7 +706,10 @@
     "study_n": 115,
     "study_preregistered": "yes",
     "study_preregistration_link": "https://bmjopen.bmj.com/content/9/5/e027016",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "mixed",
+    "study_randomization": "yes"
   },
   {
     "paper": 85,
@@ -538,7 +718,10 @@
     "study_n": 559,
     "study_preregistered": "yes",
     "study_preregistration_link": "https://www.socialscienceregistry.org/trials/3590",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "mixed",
+    "study_randomization": "yes"
   },
   {
     "paper": 86,
@@ -547,7 +730,10 @@
     "study_n": 22,
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/3vrqj/",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "cluster",
+    "study_design": "crossover",
+    "study_randomization": "no"
   },
   {
     "paper": 89,
@@ -555,7 +741,10 @@
     "study": 1,
     "study_n": 262,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "within",
+    "study_randomization": "yes"
   },
   {
     "paper": 90,
@@ -564,7 +753,10 @@
     "study_n": 13840,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://www.repository.cam.ac.uk/items/24be297d-f03e-4b96-b7c5-f19784a0aa74"
+    "study_data_link": "https://www.repository.cam.ac.uk/items/24be297d-f03e-4b96-b7c5-f19784a0aa74",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 94,
@@ -574,7 +766,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/hka2d",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/gm3pr/"
+    "study_data_link": "https://osf.io/gm3pr/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 96,
@@ -582,7 +777,10 @@
     "study": 1,
     "study_n": 294,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 105,
@@ -592,7 +790,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://aspredicted.org/C74_WG4",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/k2pcn/"
+    "study_data_link": "https://osf.io/k2pcn/",
+    "study_condition_assignment": "individual",
+    "study_design": "within",
+    "study_randomization": "no"
   },
   {
     "paper": 117,
@@ -601,7 +802,10 @@
     "study_n": 26340,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "https://zenodo.org/records/3890931"
+    "study_data_link": "https://zenodo.org/records/3890931",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 120,
@@ -609,7 +813,10 @@
     "study": 1,
     "study_n": 4915,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 144,
@@ -619,7 +826,10 @@
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/3m8k5",
     "study_data_available": "yes",
-    "study_data_link": "https://osf.io/kdjnc/"
+    "study_data_link": "https://osf.io/kdjnc/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
   },
   {
     "paper": 474,
@@ -627,7 +837,10 @@
     "study": 1,
     "study_n": 189,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "mixed",
+    "study_randomization": "yes"
   },
   {
     "paper": 475,
@@ -635,6 +848,9 @@
     "study": 1,
     "study_n": 206,
     "study_preregistered": "no",
-    "study_data_available": "no"
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "mixed",
+    "study_randomization": "yes"
   }
 ]
