@@ -37,6 +37,7 @@ import {
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
   OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+  STUDY_PREREGISTERED_OPTIONS,
 } from "@/constants/constants-filters"
 import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
 
@@ -65,6 +66,10 @@ const formSchema = z
       .array()
       .nonempty({ message: "Must select at least one country." }),
     sample_size: z.coerce.number().min(1),
+    study_preregistered: z
+      .string()
+      .array()
+      .nonempty({ message: "Must select at least one option." }),
   })
   .superRefine((values, ctx) => {
     if (
@@ -125,10 +130,11 @@ export const Filters = (props: FiltersProps) => {
       intervention_medium: META_ANALYSIS_DEFAULTS.intervention_medium,
       sample_country: COUNTRY_OPTIONS,
       sample_size: 1,
+      study_preregistered: META_ANALYSIS_DEFAULTS.study_preregistered,
     },
   })
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
     let subset: typeof data
 
     // Filter on outcome subcategory
@@ -180,6 +186,11 @@ export const Filters = (props: FiltersProps) => {
     // Filter on country
     subset = subset.filter((e) =>
       values.sample_country.includes(e.sample_country)
+    )
+
+    // Filter on preregistration
+    subset = subset.filter((e) =>
+      values.study_preregistered.includes(e.study_preregistered)
     )
 
     if (subset.length == 0) {
@@ -592,6 +603,43 @@ export const Filters = (props: FiltersProps) => {
                             >
                               Deselect all
                             </Button>
+                          </ToggleGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <Separator />
+                {/* Samples-level */}
+                <h2 className="text-xl font-semibold">Study</h2>
+                <div className="mx-3 space-y-3">
+                  {/* Sample country */}
+                  <FormField
+                    control={form.control}
+                    name="study_preregistered"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-base">
+                          Preregistered
+                        </FormLabel>
+                        <FormControl className="justify-start">
+                          <ToggleGroup
+                            className="flex flex-wrap gap-x-2 gap-y-1"
+                            type="multiple"
+                            onValueChange={field.onChange}
+                            value={field.value}
+                          >
+                            {STUDY_PREREGISTERED_OPTIONS.map((option) => (
+                              <ToggleGroupItem
+                                key={option}
+                                value={option}
+                                variant="pill"
+                                size="sm"
+                              >
+                                {option}
+                              </ToggleGroupItem>
+                            ))}
                           </ToggleGroup>
                         </FormControl>
                         <FormMessage />

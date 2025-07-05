@@ -1,4 +1,3 @@
-
 export const META_ANALYSIS_DEFAULTS = {
   outcome_subcategory_behavior: [
     "meat consumption",
@@ -33,5 +32,5 @@ export const META_ANALYSIS_DEFAULTS = {
     "taste",
   ],
   intervention_medium: ["text", "presentation", "video", "3D video", "image"],
+  study_preregistered: ["yes"],
 }
-

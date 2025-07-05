@@ -1,6 +1,5 @@
 import { PureComponent, useEffect, useState } from "react"
 import {
-  ResponsiveContainer,
   ScatterChart,
   CartesianGrid,
   XAxis,
@@ -34,6 +33,7 @@ import {
 import effects from "../../assets/data/data.json"
 
 import { EffectDialogContent } from "./effect-dialog-content"
+import { ChartConfig, ChartContainer } from "../ui/chart"
 
 type ForestPlotProps = {
   data: Data
@@ -75,6 +75,13 @@ export const ForestPlot = (props: ForestPlotProps) => {
     setPlotData(newData)
   }, [data])
 
+  const chartConfig = {
+    desktop: {
+      label: "Desktop",
+      color: "var(--chart-1)",
+    },
+  } satisfies ChartConfig
+
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger>
@@ -86,72 +93,66 @@ export const ForestPlot = (props: ForestPlotProps) => {
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
-        <div className="py-5">
-          <div className="flex flex-col overflow-auto p-3">
-            <ResponsiveContainer
-              height={40 * plotData.length + 50}
-              width="100%"
-              minWidth={600}
+        <div className="py-5" style={{ height: 30 * plotData.length }}>
+          <ChartContainer config={chartConfig} className="h-full aspect-auto">
+            <ScatterChart
+              data={plotData}
+              margin={{
+                bottom: 20,
+                left: 20,
+                right: 20,
+                top: 5,
+              }}
             >
-              <ScatterChart
-                data={plotData}
-                margin={{
-                  bottom: 20,
-                  left: 20,
-                  right: 20,
-                  top: 5,
+              <CartesianGrid
+                horizontal={false}
+                fill="#F5F5F5"
+                verticalValues={[-1, 1]}
+              />
+              <XAxis
+                dataKey="value"
+                type="number"
+                label={{
+                  value: "Effect size",
+                  dy: 20,
+                  fill: "black",
                 }}
-              >
-                <CartesianGrid
-                  horizontal={false}
-                  fill="#F5F5F5"
-                  verticalValues={[-1, 1]}
+                domain={[-2, 2]}
+                ticks={[-2, -1, 0, 1, 2]}
+                allowDataOverflow
+              />
+              <YAxis
+                yAxisId="left"
+                dataKey="name"
+                type="category"
+                width={longestLabel.length * 8}
+                axisLine={false}
+                tickLine={false}
+                tick={<CustomizedAxisTick />}
+              />
+              <ZAxis range={[40, 41]} />
+              <Tooltip
+                content={<CustomTooltip accessibilityLayer />}
+                isAnimationActive={false}
+              />
+              <Scatter yAxisId="left">
+                <ErrorBar
+                  dataKey="error"
+                  direction="x"
+                  strokeWidth={1}
+                  width={5}
+                  stroke="black"
                 />
-                <XAxis
-                  dataKey="value"
-                  type="number"
-                  label={{
-                    value: "Effect size",
-                    dy: 20,
-                    fill: "black",
-                  }}
-                  domain={[-2, 2]}
-                  ticks={[-2, -1, 0, 1, 2]}
-                  allowDataOverflow
-                />
-                <YAxis
-                  yAxisId="left"
-                  dataKey="name"
-                  type="category"
-                  width={longestLabel.length * 8}
-                  axisLine={false}
-                  tickLine={false}
-                  tick={<CustomizedAxisTick />}
-                />
-                <ZAxis range={[40, 41]} />
-                <Tooltip
-                  content={<CustomTooltip accessibilityLayer />}
-                  isAnimationActive={false}
-                />
-                <Scatter yAxisId="left">
-                  <ErrorBar
-                    dataKey="error"
-                    direction="x"
-                    strokeWidth={1}
-                    width={5}
-                    stroke="black"
-                  />
-                </Scatter>
-                <ReferenceLine
-                  yAxisId="left"
-                  x={0}
-                  strokeWidth={2}
-                  stroke="gray"
-                  strokeDasharray="3 3"
-                />
-              </ScatterChart>
-            </ResponsiveContainer>
-          </div>
+              </Scatter>
+              <ReferenceLine
+                yAxisId="left"
+                x={0}
+                strokeWidth={2}
+                stroke="gray"
+                strokeDasharray="3 3"
+              />
+            </ScatterChart>
+          </ChartContainer>
         </div>
       </CollapsibleContent>
     </Collapsible>

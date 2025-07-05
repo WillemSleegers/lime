@@ -3,18 +3,19 @@
 import { WebR } from "webr"
 import { useEffect, useState } from "react"
 
-import { Effect } from "@/components/meta-analysis/effect"
+import { CollapsibleEffect } from "@/components/meta-analysis/effect"
 import { Button } from "@/components/ui/button"
 import { ForestPlot } from "@/components/meta-analysis/forest-plot"
 import { RCode } from "@/components/meta-analysis/R-code"
 import { Filters } from "@/components/meta-analysis/filters"
 import { Highlights } from "@/components/meta-analysis/highlights"
-import { PublicationBias } from "@/components/meta-analysis/publication-bias"
+import { CollapsiblePublicationBias } from "@/components/meta-analysis/publication-bias"
 
 import { runMetaAnalysis } from "@/lib/r-functions"
 
 import allData from "../../assets/data/data.json"
 import codebook from "@/assets/data/codebook.json"
+import { Effect } from "@/lib/types"
 
 const handleDownload = (data: Record<string, unknown>[], fileName: string) => {
   if (data.length === 0) {
@@ -67,15 +68,7 @@ const MetaAnalysis = () => {
   const [data, setData] = useState(allData)
   const [disableForm, setDisableForm] = useState(true)
 
-  const [effect, setEffect] = useState({
-    value: 0,
-    lower: 0,
-    upper: 0,
-    egger_b: 0,
-    egger_se: 0,
-    egger_z: 0,
-    egger_p: 0,
-  })
+  const [effect, setEffect] = useState<Effect | undefined>()
   const [webR, setWebR] = useState<WebR>()
 
   useEffect(() => {
@@ -97,15 +90,7 @@ const MetaAnalysis = () => {
     const analyze = async (data: any) => {
       if (webR && data) {
         setStatus("Running meta-analysis...")
-        setEffect({
-          value: 0,
-          lower: 0,
-          upper: 0,
-          egger_b: 0,
-          egger_se: 0,
-          egger_z: 0,
-          egger_p: 0,
-        })
+        setEffect(undefined)
         console.log("Running meta-analysis")
         const subset = data.map((e: any) =>
           (({
@@ -157,15 +142,8 @@ const MetaAnalysis = () => {
       </div>
       <Filters setData={setData} disabled={disableForm} />
       <Highlights data={data} />
-      <Effect effect={effect} />
-      <PublicationBias
-        data={data}
-        effect={effect.value}
-        egger_b={effect.egger_b}
-        egger_se={effect.egger_se}
-        egger_z={effect.egger_z}
-        egger_p={effect.egger_p}
-      />
+      <CollapsibleEffect effect={effect} />
+      <CollapsiblePublicationBias data={data} effect={effect} />
       <ForestPlot data={data} />
       <div className="p-3 flex justify-center gap-3">
         <RCode />

@@ -18,7 +18,7 @@ const chartConfig = {
 } satisfies ChartConfig
 
 type PieChartProportionProps = {
-  proportion: number
+  proportion?: number
   start: 0 | 0.5
 }
 
@@ -27,13 +27,13 @@ export const PieChartProportion = ({
   start,
 }: PieChartProportionProps) => {
   const chartData = [
-    { proportion: start, fill: "var(--color-half)" },
+    { proportion: proportion ? start : 0, fill: "var(--color-half)" },
     {
-      proportion: proportion - start,
+      proportion: proportion ? proportion - start : 0,
       fill: "var(--color-proportion)",
     },
     {
-      proportion: 1 - proportion,
+      proportion: proportion ? 1 - proportion : 1,
       fill: "var(--color-remainder",
     },
   ]
@@ -50,9 +50,10 @@ export const PieChartProportion = ({
           endAngle={0}
           innerRadius={50}
           strokeWidth={5}
+          animationDuration={proportion ? 1000 : 0}
         >
           <Label
-            value={round(proportion * 100, 0) + "%"}
+            value={proportion ? round(proportion * 100, 0) + "%" : "-"}
             fontSize={22}
             fontWeight={600}
             fill="black"

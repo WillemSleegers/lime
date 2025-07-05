@@ -12,9 +12,19 @@ export type Studies = typeof studies
 export type StudiesKeys = keyof Studies[0]
 
 export type Locks = {
-    paper: boolean,
-    study: boolean,
-    intervention: boolean,
-    outcome: boolean,
-    effect: boolean
+  paper: boolean
+  study: boolean
+  intervention: boolean
+  outcome: boolean
+  effect: boolean
+}
+
+export type Effect = {
+  value: number
+  lower: number
+  upper: number
+  egger_b: number
+  egger_se: number
+  egger_z: number
+  egger_p: number
 }
