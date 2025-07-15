@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { ChevronRight } from "lucide-react"
 import Link from "next/link"
 import {
@@ -19,7 +19,7 @@ import {
 } from "../ui/collapsible"
 
 import { cn, round } from "@/lib/utils"
-import { Data, Effect } from "@/lib/types"
+import { Data, Estimate } from "@/lib/types"
 
 import {
   NameType,
@@ -28,8 +28,8 @@ import {
 } from "recharts/types/component/DefaultTooltipContent"
 
 type CollapsiblePublicationBiasProps = {
-  effect?: Effect
-  data: Data
+  effect?: Estimate
+  data?: Data
 }
 
 export const CollapsiblePublicationBias = (
@@ -39,12 +39,11 @@ export const CollapsiblePublicationBias = (
 
   const [open, setOpen] = useState(false)
 
-  const [ymax, setYmax] = useState(0)
-  const [plotData, setPlotData] =
-    useState<{ x: number; y: number; name: string }[]>()
+  let plotData
+  let ymax
 
-  useEffect(() => {
-    const newData = data.map((e) => {
+  if (data) {
+    plotData = data.map((e) => {
       return {
         x: e.effect_size,
         y: e.effect_size_se,
@@ -52,9 +51,10 @@ export const CollapsiblePublicationBias = (
       }
     })
 
-    setYmax(Math.max(...newData.map((e) => e.y)))
-    setPlotData(newData)
-  }, [data])
+    ymax = Math.max(...plotData.map((e) => e.y))
+  } else {
+    ymax = 0
+  }
 
   return (
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>

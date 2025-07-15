@@ -1,4 +1,4 @@
-import { PureComponent, useEffect, useState } from "react"
+import { useState } from "react"
 import {
   ScatterChart,
   CartesianGrid,
@@ -30,34 +30,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+
 import effects from "../../assets/data/data.json"
 
 import { EffectDialogContent } from "./effect-dialog-content"
 import { ChartConfig, ChartContainer } from "../ui/chart"
 
 type ForestPlotProps = {
-  data: Data
+  data?: Data
 }
 
-type ForestPlotDataProps = {
-  name: string
-  value: number
-  summary: string
-  error: number[]
-}
-
-export const ForestPlot = (props: ForestPlotProps) => {
-  const { data } = props
-
+export const ForestPlot = ({ data }: ForestPlotProps) => {
   const [open, setOpen] = useState(false)
-  const [plotData, setPlotData] = useState<ForestPlotDataProps[]>([])
 
-  const longestLabel = data
-    .map((e) => e.paper_label + " - " + e.effect)
-    .reduce((a, b) => (a.length > b.length ? a : b))
+  let plotData
+  let longestLabel
 
-  useEffect(() => {
-    const newData = data
+  if (data) {
+    plotData = data
       .map((e) => {
         return {
           name: e.paper_label + " - " + e.effect,
@@ -72,8 +62,13 @@ export const ForestPlot = (props: ForestPlotProps) => {
         }
       })
       .sort((a, b) => a.value - b.value)
-    setPlotData(newData)
-  }, [data])
+
+    longestLabel = data
+      .map((e) => e.paper_label + " - " + e.effect)
+      .reduce((a, b) => (a.length > b.length ? a : b))
+  } else {
+    longestLabel = []
+  }
 
   const chartConfig = {
     desktop: {
@@ -93,67 +88,71 @@ export const ForestPlot = (props: ForestPlotProps) => {
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent className="CollapsibleContent">
-        <div className="py-5" style={{ height: 30 * plotData.length }}>
-          <ChartContainer config={chartConfig} className="h-full aspect-auto">
-            <ScatterChart
-              data={plotData}
-              margin={{
-                bottom: 20,
-                left: 20,
-                right: 20,
-                top: 5,
-              }}
-            >
-              <CartesianGrid
-                horizontal={false}
-                fill="#F5F5F5"
-                verticalValues={[-1, 1]}
-              />
-              <XAxis
-                dataKey="value"
-                type="number"
-                label={{
-                  value: "Effect size",
-                  dy: 20,
-                  fill: "black",
+        {plotData ? (
+          <div className="py-5" style={{ height: 30 * plotData.length }}>
+            <ChartContainer config={chartConfig} className="h-full aspect-auto">
+              <ScatterChart
+                data={plotData}
+                margin={{
+                  bottom: 20,
+                  left: 20,
+                  right: 20,
+                  top: 5,
                 }}
-                domain={[-2, 2]}
-                ticks={[-2, -1, 0, 1, 2]}
-                allowDataOverflow
-              />
-              <YAxis
-                yAxisId="left"
-                dataKey="name"
-                type="category"
-                width={longestLabel.length * 8}
-                axisLine={false}
-                tickLine={false}
-                tick={<CustomizedAxisTick />}
-              />
-              <ZAxis range={[40, 41]} />
-              <Tooltip
-                content={<CustomTooltip accessibilityLayer />}
-                isAnimationActive={false}
-              />
-              <Scatter yAxisId="left">
-                <ErrorBar
-                  dataKey="error"
-                  direction="x"
-                  strokeWidth={1}
-                  width={5}
-                  stroke="black"
+              >
+                <CartesianGrid
+                  horizontal={false}
+                  fill="#F5F5F5"
+                  verticalValues={[-1, 1]}
                 />
-              </Scatter>
-              <ReferenceLine
-                yAxisId="left"
-                x={0}
-                strokeWidth={2}
-                stroke="gray"
-                strokeDasharray="3 3"
-              />
-            </ScatterChart>
-          </ChartContainer>
-        </div>
+                <XAxis
+                  dataKey="value"
+                  type="number"
+                  label={{
+                    value: "Effect size",
+                    dy: 20,
+                    fill: "black",
+                  }}
+                  domain={[-2, 2]}
+                  ticks={[-2, -1, 0, 1, 2]}
+                  allowDataOverflow
+                />
+                <YAxis
+                  yAxisId="left"
+                  dataKey="name"
+                  type="category"
+                  width={longestLabel.length * 8}
+                  axisLine={false}
+                  tickLine={false}
+                  tick={<CustomizedAxisTick />}
+                />
+                <ZAxis range={[40, 41]} />
+                <Tooltip
+                  content={<CustomTooltip accessibilityLayer />}
+                  isAnimationActive={false}
+                />
+                <Scatter yAxisId="left">
+                  <ErrorBar
+                    dataKey="error"
+                    direction="x"
+                    strokeWidth={1}
+                    width={5}
+                    stroke="black"
+                  />
+                </Scatter>
+                <ReferenceLine
+                  yAxisId="left"
+                  x={0}
+                  strokeWidth={2}
+                  stroke="gray"
+                  strokeDasharray="3 3"
+                />
+              </ScatterChart>
+            </ChartContainer>
+          </div>
+        ) : (
+          "Test"
+        )}
       </CollapsibleContent>
     </Collapsible>
   )
@@ -174,48 +173,56 @@ const CustomTooltip = (props: Props<ValueType, NameType>) => {
   return null
 }
 
-class CustomizedAxisTick extends PureComponent {
-  render() {
-    const { x, y, payload }: any = this.props
-
-    const effect = effects.find(
-      (e) => e.paper_label + " - " + e.effect == payload.value
-    )
-
-    // Return nothing if no effect is found; shouldn't happen though
-    if (!effect) return
-
-    return (
-      <Dialog>
-        <DialogTrigger asChild className="cursor-pointer">
-          <text
-            transform={`translate(${x},${y})`}
-            x={0}
-            y={0}
-            dy={5}
-            textAnchor="end"
-            fill="#666"
-          >
-            {payload.value}
-          </text>
-        </DialogTrigger>
-        <DialogContent
-          className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl overflow-auto p-4"
-          style={{ maxHeight: "95dvh" }}
-          aria-description={
-            "Effect information of " +
-            effect.paper_label +
-            " - " +
-            effect.effect
-          }
-          aria-describedby={effect.paper_label + " - " + effect.effect}
-        >
-          <DialogHeader>
-            <DialogTitle className="text-center">{payload.value}</DialogTitle>
-          </DialogHeader>
-          <EffectDialogContent effect={effect} />
-        </DialogContent>
-      </Dialog>
-    )
+type CustomAxisTickProps = {
+  x?: number
+  y?: number
+  payload?: {
+    value: string | number // ✅ Specific union type
+    index: number
+    offset: number
+    coordinate: number
   }
+}
+
+const CustomizedAxisTick = (props: CustomAxisTickProps) => {
+  const { x, y, payload } = props
+
+  if (!payload) return
+
+  const effect = effects.find(
+    (e) => e.paper_label + " - " + e.effect == payload.value
+  )
+
+  // Return nothing if no effect is found; shouldn't happen though
+  if (!effect) return
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild className="cursor-pointer">
+        <text
+          transform={`translate(${x},${y})`}
+          x={0}
+          y={0}
+          dy={5}
+          textAnchor="end"
+          fill="#666"
+        >
+          {payload.value}
+        </text>
+      </DialogTrigger>
+      <DialogContent
+        className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl overflow-auto p-4"
+        style={{ maxHeight: "95dvh" }}
+        aria-description={
+          "Effect information of " + effect.paper_label + " - " + effect.effect
+        }
+        aria-describedby={effect.paper_label + " - " + effect.effect}
+      >
+        <DialogHeader>
+          <DialogTitle className="text-center">{payload.value}</DialogTitle>
+        </DialogHeader>
+        <EffectDialogContent effect={effect} />
+      </DialogContent>
+    </Dialog>
+  )
 }

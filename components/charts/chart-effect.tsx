@@ -10,7 +10,7 @@ import {
   ZAxis,
 } from "recharts"
 import { ChartConfig, ChartContainer } from "@/components/ui/chart"
-import { Effect } from "@/lib/types"
+import { Estimate } from "@/lib/types"
 
 const chartConfig = {
   fill: {
@@ -19,7 +19,7 @@ const chartConfig = {
 } satisfies ChartConfig
 
 type ChartEffectProps = {
-  effect?: Effect
+  effect?: Estimate
 }
 
 const ChartEffect = ({ effect }: ChartEffectProps) => {

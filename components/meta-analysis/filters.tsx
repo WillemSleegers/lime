@@ -18,7 +18,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -40,6 +40,7 @@ import {
   STUDY_PREREGISTERED_OPTIONS,
 } from "@/constants/constants-filters"
 import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
+import { Data } from "@/lib/types"
 
 const formSchema = z
   .object({
@@ -102,16 +103,12 @@ const formSchema = z
   })
 
 type FiltersProps = {
-  setData: Function
-  disabled: boolean
+  status: string
+  setData: Dispatch<SetStateAction<Data | undefined>>
 }
 
-export const Filters = (props: FiltersProps) => {
-  const { setData, disabled } = props
-
-  const [open, setOpen] = useState(false)
-  const [ranOnce, setRanOnce] = useState(false)
-
+export const Filters = ({ status, setData }: FiltersProps) => {
+  const [open, setOpen] = useState(true)
   const [error, setError] = useState<string | undefined>()
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -205,25 +202,14 @@ export const Filters = (props: FiltersProps) => {
     }
   }
 
-  useEffect(() => {
-    if (!disabled) {
-      if (!ranOnce) {
-        form.handleSubmit(onSubmit)()
-      }
-      setRanOnce(true)
-    }
-  }, [form, disabled])
-
   return (
     <Collapsible
-      className="bg-muted rounded-lg border p-3"
+      className="bg-muted p-4 rounded-2xl"
       open={open}
       onOpenChange={setOpen}
     >
       <CollapsibleTrigger className="flex flex-row items-center gap-1">
-        <h1 className="text-2xl font-bold tracking-tight">
-          Inclusion criteria
-        </h1>
+        <h1 className="text-xl font-bold tracking-tight">Inclusion criteria</h1>
         <ChevronRight
           className={cn("transition", open ? "rotate-90" : "rotate-0")}
         />
@@ -726,10 +712,10 @@ export const Filters = (props: FiltersProps) => {
 
               <Button
                 type="submit"
-                disabled={disabled}
-                className="h-auto w-30 rounded-full text-white"
+                disabled={status != "Ready"}
+                className="h-auto w-fit rounded-full "
               >
-                Update
+                Run meta-analysis
               </Button>
             </div>
           </form>

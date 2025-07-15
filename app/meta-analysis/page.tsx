@@ -1,7 +1,7 @@
 "use client"
 
 import { WebR } from "webr"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { CollapsibleEffect } from "@/components/meta-analysis/effect"
 import { Button } from "@/components/ui/button"
@@ -13,11 +13,13 @@ import { CollapsiblePublicationBias } from "@/components/meta-analysis/publicati
 
 import { runMetaAnalysis } from "@/lib/r-functions"
 
-import allData from "../../assets/data/data.json"
 import codebook from "@/assets/data/codebook.json"
-import { Effect } from "@/lib/types"
+import { Data, Datum, Estimate, Status } from "@/lib/types"
+import Link from "next/link"
 
-const handleDownload = (data: Record<string, unknown>[], fileName: string) => {
+const handleDownload = (fileName: string, data?: Record<string, unknown>[]) => {
+  if (!data) return
+
   if (data.length === 0) {
     console.warn("No data to download")
     return
@@ -63,36 +65,42 @@ const handleDownload = (data: Record<string, unknown>[], fileName: string) => {
   document.body.removeChild(element)
 }
 
-const MetaAnalysis = () => {
-  const [status, setStatus] = useState("Loading webR...")
-  const [data, setData] = useState(allData)
-  const [disableForm, setDisableForm] = useState(true)
+const MetaAnalysisPage = () => {
+  const webR = useRef<WebR>(null)
 
-  const [effect, setEffect] = useState<Effect | undefined>()
-  const [webR, setWebR] = useState<WebR>()
+  const [status, setStatus] = useState<Status>("Loading webR...")
 
+  const [data, setData] = useState<Data>()
+  const [estimate, setEstimate] = useState<Estimate | undefined>()
+
+  // Setup
   useEffect(() => {
     const initializeR = async () => {
-      const newWebR = new WebR()
-      setWebR(newWebR)
+      webR.current = new WebR()
 
-      await newWebR.init()
+      await webR.current.init()
 
       setStatus("Installing packages...")
-      await newWebR.installPackages(["metafor"])
-      await newWebR.installPackages(["clubSandwich"])
-      setDisableForm(false)
+      await webR.current.installPackages(["metafor"])
+      await webR.current.installPackages(["clubSandwich"])
+
+      setStatus("Ready")
     }
     initializeR()
   }, [])
 
+  // Run meta-analysis when data changes
   useEffect(() => {
-    const analyze = async (data: any) => {
-      if (webR && data) {
+    console.log("runing analysis")
+    const analyze = async (data: Data) => {
+      if (webR.current && data) {
+        // Update status
         setStatus("Running meta-analysis...")
-        setEffect(undefined)
-        console.log("Running meta-analysis")
-        const subset = data.map((e: any) =>
+
+        // Reset the effect
+        setEstimate(undefined)
+
+        const subset = data.map((datum: Datum) =>
           (({
             effect_size,
             effect_size_var,
@@ -113,14 +121,14 @@ const MetaAnalysis = () => {
             outcome,
             intervention_condition,
             control_condition,
-          }))(e)
+          }))(datum)
         )
 
-        const df = await new webR.RObject(subset)
-        await webR.objs.globalEnv.bind("data", df)
-        const results = await runMetaAnalysis(webR)
+        const df = await new webR.current.RObject(subset)
+        await webR.current.objs.globalEnv.bind("data", df)
+        const results = await runMetaAnalysis(webR.current)
 
-        setEffect({
+        setEstimate({
           value: results[0],
           lower: results[1],
           upper: results[2],
@@ -132,32 +140,45 @@ const MetaAnalysis = () => {
         setStatus("Ready")
       }
     }
-    analyze(data)
+    if (data) analyze(data)
   }, [data])
 
+  useEffect(() => {
+    console.log(status)
+  }, [status])
+
   return (
-    <main className="mx-auto w-full flex flex-col gap-1 max-w-4xl mb-12 p-2">
-      <div className="py-3">
-        <span className="font-semibold">Status:</span> {status}
+    <main className="w-full max-w-4xl mx-auto space-y-6 my-12 md:my-16">
+      <h1 className="text-center text-4xl font-bold">Meta-Analysis</h1>
+      <div className="text-muted-foreground">
+        Run a meta-analysis on selected effects from various intervention
+        studies. For more information on what to take into account when running
+        a meta-analysis, see the meta-analysis section in our{" "}
+        <Link className="font-medium underline text-foreground" href="/FAQ">
+          FAQ
+        </Link>
+        .
       </div>
-      <Filters setData={setData} disabled={disableForm} />
+
+      <Filters status={status} setData={setData} />
+      <CollapsibleEffect effect={estimate} />
       <Highlights data={data} />
-      <CollapsibleEffect effect={effect} />
-      <CollapsiblePublicationBias data={data} effect={effect} />
+      <CollapsiblePublicationBias data={data} effect={estimate} />
       <ForestPlot data={data} />
       <div className="p-3 flex justify-center gap-3">
         <RCode />
         <Button
           variant="secondary"
           className="rounded-2xl"
-          onClick={() => handleDownload(data, "lime-data.csv")}
+          disabled={data == undefined}
+          onClick={() => handleDownload("lime-data.csv", data)}
         >
           Download data
         </Button>
         <Button
           variant="secondary"
           className="rounded-2xl"
-          onClick={() => handleDownload(codebook, "codebook.csv")}
+          onClick={() => handleDownload("codebook.csv", codebook)}
         >
           Download codebook
         </Button>
@@ -166,4 +187,4 @@ const MetaAnalysis = () => {
   )
 }
 
-export default MetaAnalysis
+export default MetaAnalysisPage

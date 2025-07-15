@@ -10,18 +10,18 @@ const chartConfig = {
 } satisfies ChartConfig
 
 type HighlightLineChartProps = {
-  chartData: {
+  data: {
     x: number | string
     y: number
   }[]
 }
 
-export const HighlightLineChart = ({ chartData }: HighlightLineChartProps) => {
+export const HighlightLineChart = ({ data }: HighlightLineChartProps) => {
   return (
     <ChartContainer config={chartConfig} className="h-[80px] w-full">
       <LineChart
         accessibilityLayer
-        data={chartData}
+        data={data}
         margin={{
           left: 12,
           right: 12,

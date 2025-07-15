@@ -40,6 +40,8 @@ import {
 
 import { Toggle } from "../ui/toggle"
 import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
+import { Dispatch, SetStateAction } from "react"
+import { Effects, Interventions, Outcomes, Papers, Studies } from "@/lib/types"
 
 /* Paper-level */
 const formSchemaPapers = z.object({
@@ -55,15 +57,11 @@ const formSchemaPapers = z.object({
 })
 
 type FilterPapersProps = {
-  data: {
-    paper_year: number
-    paper_type: string
-    paper_open_access: string
-  }[]
-  setData: Function
+  data: Papers
+  setData: Dispatch<SetStateAction<Papers>>
   lock: boolean
-  setLock: Function
-  setShouldHandleLocks: Function
+  setLock: Dispatch<SetStateAction<boolean>>
+  setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
 }
 
 export const FilterPapers = (props: FilterPapersProps) => {
@@ -249,20 +247,11 @@ const formSchemaStudies = z.object({
 })
 
 type FilterStudiesProps = {
-  data: {
-    study_n: number
-    study_preregistered: string
-    study_pregistration_link?: string
-    study_data_available: string
-    study_data_link?: string
-    study_condition_assignment: string
-    study_design: string
-    study_randomization: string
-  }[]
-  setData: Function
+  data: Studies
+  setData: Dispatch<SetStateAction<Studies>>
   lock: boolean
-  setLock: Function
-  setShouldHandleLocks: Function
+  setLock: Dispatch<SetStateAction<boolean>>
+  setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
 }
 
 export const FilterStudies = (props: FilterStudiesProps) => {
@@ -541,15 +530,11 @@ const formSchemaInterventions = z.object({
 })
 
 type FilterInterventionsProps = {
-  data: {
-    intervention_content: string
-    intervention_mechanism: string
-    intervention_medium: string
-  }[]
-  setData: Function
+  data: Interventions
+  setData: Dispatch<SetStateAction<Interventions>>
   lock: boolean
-  setLock: Function
-  setShouldHandleLocks: Function
+  setLock: Dispatch<SetStateAction<boolean>>
+  setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
 }
 
 export const FilterInterventions = (props: FilterInterventionsProps) => {
@@ -817,15 +802,11 @@ const formSchemaOutcomes = z
   })
 
 type FilterOutcomesProps = {
-  data: {
-    outcome_category: string
-    outcome_subcategory: string
-    outcome_measurement_type: string
-  }[]
-  setData: Function
+  data: Outcomes
+  setData: Dispatch<SetStateAction<Outcomes>>
   lock: boolean
-  setLock: Function
-  setShouldHandleLocks: Function
+  setLock: Dispatch<SetStateAction<boolean>>
+  setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
 }
 
 export const FilterOutcomes = (props: FilterOutcomesProps) => {
@@ -1098,15 +1079,11 @@ const formSchemaEffects = z.object({
 })
 
 type FilterEffectsProps = {
-  data: {
-    effect_size: number
-    effect_intervention_n: number
-    effect_control_n: number
-  }[]
-  setData: Function
+  data: Effects
+  setData: Dispatch<SetStateAction<Effects>>
   lock: boolean
-  setLock: Function
-  setShouldHandleLocks: Function
+  setLock: Dispatch<SetStateAction<boolean>>
+  setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
 }
 
 export const FilterEffects = (props: FilterEffectsProps) => {

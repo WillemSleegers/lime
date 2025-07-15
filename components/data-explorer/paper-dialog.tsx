@@ -12,9 +12,10 @@ import {
 } from "@/components/ui/dialog"
 
 import data from "@/assets/data/data-nested.json"
+import { Effect, Intervention, Outcome, Paper, Study } from "@/lib/types"
 
 type PaperDialogProps = {
-  row: Row<any>
+  row: Row<Paper | Study | Intervention | Outcome | Effect>
 }
 
 export const PaperDialog = ({ row }: PaperDialogProps) => {

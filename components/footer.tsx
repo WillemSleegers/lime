@@ -1,12 +1,10 @@
-import { CopyrightIcon } from "lucide-react"
-
 export const Footer = () => {
   return (
     <footer
       id="footer"
-      className="flex gap-3 text-muted-foreground mb-12 md:mb-18 mx-auto grow items-end"
+      className="mx-auto flex grow items-end py-4 text-muted-foreground "
     >
-      <CopyrightIcon strokeWidth={1.5} /> LIME 2025
+      LIME 2025
     </footer>
   )
 }

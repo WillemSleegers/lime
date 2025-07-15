@@ -199,7 +199,19 @@ export default function DataExplorer() {
     }
 
     setShouldHandleLocks(false)
-  }, [shouldHandleLocks])
+  }, [
+    shouldHandleLocks,
+    dataPaper,
+    dataStudy,
+    dataOutcome,
+    dataIntervention,
+    dataEffect,
+    lockPapers,
+    lockStudies,
+    lockInterventions,
+    lockOutcomes,
+    lockEffects,
+  ])
 
   return (
     <main className="mx-3 md:mx-6 lg:mx-12 space-y-6 my-12 md:my-16">

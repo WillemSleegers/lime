@@ -9,10 +9,10 @@ import { cn, u1, pSup, u3 } from "@/lib/utils"
 import { Button } from "../ui/button"
 import { PieChartProportion } from "../charts/pie-chart-proportion"
 import ChartEffect from "../charts/chart-effect"
-import { Effect } from "@/lib/types"
+import { Estimate } from "@/lib/types"
 
 type CollapsibleEffectProps = {
-  effect?: Effect
+  effect?: Estimate
 }
 
 export const CollapsibleEffect = (props: CollapsibleEffectProps) => {

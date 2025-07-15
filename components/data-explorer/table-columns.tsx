@@ -11,19 +11,9 @@ import { CellLongText } from "@/components/data-explorer/cell-long-text"
 import { DataTableColumnHeader } from "@/components/data-explorer/table-header"
 
 import { round } from "@/lib/utils"
+import { Effect, Intervention, Outcome, Paper, Study } from "@/lib/types"
 
-export type ColumnsPapers = {
-  paper_label: string
-  paper_title: string
-  paper_authors: string
-  paper_year: number
-  paper_type: string
-  paper_source?: string
-  paper_open_access: string
-  paper_link?: string
-}
-
-export const ColumnsPapers: ColumnDef<ColumnsPapers>[] = [
+export const ColumnsPapers: ColumnDef<Paper>[] = [
   {
     id: "paper_label",
     accessorKey: "paper_label",
@@ -116,20 +106,7 @@ export const ColumnsPapers: ColumnDef<ColumnsPapers>[] = [
   },
 ]
 
-export type ColumnsStudies = {
-  paper_label: string
-  study: number
-  study_n: number
-  study_preregistered: string
-  study_pregistration_link?: string
-  study_data_available: string
-  study_data_link?: string
-  study_condition_assignment: string
-  study_design: string
-  study_randomization: string
-}
-
-export const ColumnsStudies: ColumnDef<ColumnsStudies>[] = [
+export const ColumnsStudies: ColumnDef<Study>[] = [
   {
     id: "paper_label",
     accessorKey: "paper_label",
@@ -224,17 +201,7 @@ export const ColumnsStudies: ColumnDef<ColumnsStudies>[] = [
   },
 ]
 
-export type ColumnsInterventions = {
-  paper_label: string
-  study: number
-  intervention_description: string
-  intervention_content: string
-  intervention_mechanism: string
-  intervention_medium: string
-  control_description?: string
-}
-
-export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
+export const ColumnsInterventions: ColumnDef<Intervention>[] = [
   {
     id: "paper_label",
     accessorKey: "paper_label",
@@ -337,17 +304,7 @@ export const ColumnsInterventions: ColumnDef<ColumnsInterventions>[] = [
   },
 ]
 
-export type ColumnsOutcomes = {
-  paper_label: string
-  study: number
-  outcome_label: string
-  outcome_description: string
-  outcome_category: string
-  outcome_subcategory: string
-  outcome_measurement_type: string
-}
-
-export const ColumnsOutcomes: ColumnDef<ColumnsOutcomes>[] = [
+export const ColumnsOutcomes: ColumnDef<Outcome>[] = [
   {
     id: "paper_label",
     accessorKey: "paper_label",
@@ -406,17 +363,7 @@ export const ColumnsOutcomes: ColumnDef<ColumnsOutcomes>[] = [
   },
 ]
 
-export type ColumnsEffects = {
-  paper_label: string
-  study: number
-  //effect_size_name: string
-  effect_size: number
-  effect_size_var: number
-  effect_intervention_n: number
-  effect_control_n: number
-}
-
-export const ColumnsEffects: ColumnDef<ColumnsEffects>[] = [
+export const ColumnsEffects: ColumnDef<Effect>[] = [
   {
     id: "paper_label",
     accessorKey: "paper_label",
