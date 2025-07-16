@@ -168,7 +168,6 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 42,Mercy for Animals (2016b),1,1,2,5,intended reduction in meat consumption,5,OR2DL,0.162725574262564,0.00479603162834063
 42,Mercy for Animals (2016b),1,1,2,6,intended elimination of meat consumption,6,OR2DL,0.220327068507646,0.0111334010336825
 42,Mercy for Animals (2016b),1,1,2,7,attitude toward meat consumption,7,SMD,0.00832613878993023,0.0031300898981274
-50,Schwitzgebel et al. (2020),1,1,2,1,intended meat consumption,1,SMD,0.154542972384983,0.00389525661336131
 50,Schwitzgebel et al. (2020),1,1,2,2,meat purchase with voucher,2,OR2DL,-0.00981620403259108,0.0373818897921003
 50,Schwitzgebel et al. (2020),1,1,2,3,% meat purchase among all food purchases above $4.99 with university dining card,3,OR2DL,0.183545144640805,0.0160168031891116
 52,Mathur et al. (2021),1,1,2,1,reported meat consumption in the past week,1,SMD,-0.0393231866931658,0.00697007268127947

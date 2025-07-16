@@ -322,7 +322,7 @@
     "column": "outcome_subcategory",
     "description": "A more fine-grained categorization of the outcome",
     "data_type": "factor",
-    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, purchasing intentions, diet, ethical consumption, vegetarian consumption, vegan consumption, meat commitment, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics"
+    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, diet, ethical consumption, other, vegetarian consumption, vegan consumption, meat commitment, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics"
   },
   {
     "column": "outcome_measurement_type",

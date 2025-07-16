@@ -546,7 +546,7 @@
     "outcome_label": "purchasing intentions for five meat items",
     "outcome_description": "Likelihood of buying meat items shown in photos",
     "outcome_category": "intentions",
-    "outcome_subcategory": "purchasing intentions",
+    "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
   },
   {
@@ -557,7 +557,7 @@
     "outcome_label": "purchasing intentions for five meat items",
     "outcome_description": "Likelihood of buying meat items shown in photos",
     "outcome_category": "intentions",
-    "outcome_subcategory": "purchasing intentions",
+    "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
   },
   {
@@ -568,7 +568,7 @@
     "outcome_label": "purchasing intentions for five meat items",
     "outcome_description": "Likelihood of buying meat items shown in photos",
     "outcome_category": "intentions",
-    "outcome_subcategory": "purchasing intentions",
+    "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
   },
   {
@@ -894,17 +894,6 @@
     "paper": 50,
     "paper_label": "Schwitzgebel et al. (2020)",
     "study": 1,
-    "outcome": 1,
-    "outcome_label": "intended meat consumption",
-    "outcome_description": "Agreement with 'I plan to choose non-factory farmed or vegetarian foods when they are available.'",
-    "outcome_category": "intentions",
-    "outcome_subcategory": "purchasing intentions",
-    "outcome_measurement_type": "survey"
-  },
-  {
-    "paper": 50,
-    "paper_label": "Schwitzgebel et al. (2020)",
-    "study": 1,
     "outcome": 2,
     "outcome_label": "meat purchase with voucher",
     "outcome_description": "Percentage of participants buying a meal containing meat with a restaurant voucher",
@@ -1207,7 +1196,7 @@
     "outcome_description": "Percentage of participants choosing a wrap containing meat (BLT or chicken) over a falafel wrap",
     "outcome_category": "behavior",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "other"
+    "outcome_measurement_type": "meal choice"
   },
   {
     "paper": 75,
@@ -1514,7 +1503,7 @@
     "outcome_label": "future intentions to purchase and consume vegan meal",
     "outcome_description": "Likelihood of buying and eating a vegan burger in the next four weeks",
     "outcome_category": "intentions",
-    "outcome_subcategory": "vegan consumption",
+    "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "survey"
   },
   {

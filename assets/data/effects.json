@@ -1862,17 +1862,6 @@
     "paper": 50,
     "paper_label": "Schwitzgebel et al. (2020)",
     "study": 1,
-    "effect": 1,
-    "effect_size_name": "SMD",
-    "effect_size": 0.1545,
-    "effect_size_var": 0.0039,
-    "effect_intervention_n": 539,
-    "effect_control_n": 493
-  },
-  {
-    "paper": 50,
-    "paper_label": "Schwitzgebel et al. (2020)",
-    "study": 1,
     "effect": 2,
     "effect_size_name": "OR2DL",
     "effect_size": -0.0098,

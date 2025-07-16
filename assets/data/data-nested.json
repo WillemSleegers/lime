@@ -1015,10 +1015,6 @@
         ],
         "outcomes": [
           {
-            "outcome": 1,
-            "outcome_description": "Agreement with 'I plan to choose non-factory farmed or vegetarian foods when they are available.'"
-          },
-          {
             "outcome": 2,
             "outcome_description": "Percentage of participants buying a meal containing meat with a restaurant voucher"
           },
@@ -1296,7 +1292,7 @@
           },
           {
             "intervention_condition": 4,
-            "intervention_description": "Participants read:  \"One type of diet that somepeople endorse is a Vegetarian diet eliminating all meat and fish from one's diet. The reasoningis as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factory farms in Australia today. This includes cows, pigs, sheep and chickens. Adopting a vegetarian diet is the most powerful way to object to animal cruelty, and by doing so, you will spare approximately 100 animal lives (25 land animals and 75 fish and shellfish) every year.\""
+            "intervention_description": "Participants read:  \"One type of diet that some people endorse is a Vegetarian diet eliminating all meat and fish from one's diet. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factory farms in Australia today. This includes cows, pigs, sheep and chickens. Adopting a vegetarian diet is the most powerful way to object to animal cruelty, and by doing so, you will spare approximately 100 animal lives (25 land animals and 75 fish and shellfish) every year.\""
           }
         ],
         "outcomes": [
