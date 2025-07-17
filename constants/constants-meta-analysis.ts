@@ -7,7 +7,6 @@ export const META_ANALYSIS_DEFAULTS = {
   outcome_subcategory_intention: [
     "meat consumption intentions",
     "vegetarian consumption intentions",
-    "vegan consumption intentions",
   ],
   outcome_subcategory_attitude: [],
   outcome_measurement_type: [

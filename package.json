@@ -41,7 +41,7 @@
     "recharts": "^3.0",
     "tailwind-merge": "^3.3",
     "webr": "^0.5",
-    "zod": "^3.25"
+    "zod": "^4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,8 +1,11 @@
 "use client"
 
 import * as z from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { ChevronRight } from "lucide-react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Dispatch, SetStateAction, useState } from "react"
+
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -18,15 +21,13 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import { Dispatch, SetStateAction, useState } from "react"
-import { ChevronRight } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Separator } from "@/components/ui/separator"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+
 import { cn } from "@/lib/utils"
 
-import data from "../../assets/data/data.json"
-
-import { Separator } from "../ui/separator"
-import { Input } from "@/components/ui/input"
-import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group"
+import data from "@/assets/data/data.json"
 
 import {
   INTERVENTION_CONTENT_OPTIONS,
@@ -40,6 +41,7 @@ import {
   STUDY_PREREGISTERED_OPTIONS,
 } from "@/constants/constants-filters"
 import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
+
 import { Data } from "@/lib/types"
 
 const formSchema = z
@@ -50,52 +52,58 @@ const formSchema = z
     outcome_measurement_type: z
       .string()
       .array()
-      .nonempty({ message: "Must select at least one outcome measurement." }),
+      .nonempty({ error: "Must select at least one outcome measurement." }),
     intervention_content: z
       .string()
       .array()
-      .nonempty({ message: "Must select at least one intervention content." }),
+      .nonempty({ error: "Must select at least one intervention content." }),
     intervention_mechanism: z.string().array().nonempty({
-      message: "Must select at least one intervention mechanism.",
+      error: "Must select at least one intervention mechanism.",
     }),
     intervention_medium: z
       .string()
       .array()
-      .nonempty({ message: "Must select at least one intervention medium." }),
+      .nonempty({ error: "Must select at least one intervention medium." }),
     sample_country: z
       .string()
       .array()
-      .nonempty({ message: "Must select at least one country." }),
-    sample_size: z.coerce.number().min(1),
+      .nonempty({ error: "Must select at least one country." }),
+    sample_size: z.coerce
+      .number()
+      .min(1, { error: "Must be a positive number." }) as z.ZodNumber,
     study_preregistered: z
       .string()
       .array()
-      .nonempty({ message: "Must select at least one option." }),
+      .nonempty({ error: "Must select at least one option." }),
   })
-  .superRefine((values, ctx) => {
+  .check((ctx) => {
     if (
-      values.outcome_subcategory_behavior.length +
-        values.outcome_subcategory_intention.length +
-        values.outcome_subcategory_attitude.length ==
+      ctx.value.outcome_subcategory_behavior.length +
+        ctx.value.outcome_subcategory_intention.length +
+        ctx.value.outcome_subcategory_attitude.length ==
       0
     ) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+      ctx.issues.push({
+        input: ctx.value,
+        code: "custom",
         message: "Must select at least one outcome category.",
         path: ["outcome_subcategory_behavior"],
       })
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+      ctx.issues.push({
+        input: ctx.value,
+        code: "custom",
         message: "Must select at least one outcome category.",
         path: ["outcome_subcategory_intention"],
       })
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+      ctx.issues.push({
+        input: ctx.value,
+        code: "custom",
         message: "Must select at least one outcome category.",
         path: ["outcome_subcategory_attitude"],
       })
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+      ctx.issues.push({
+        input: ctx.value,
+        code: "custom",
         message: "Must select at least one outcome category.",
         path: ["outcome_subcategory"],
       })
@@ -109,11 +117,11 @@ type FiltersProps = {
 
 export const Filters = ({ status, setData }: FiltersProps) => {
   const [open, setOpen] = useState(true)
-  const [error, setError] = useState<string | undefined>()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    mode: "onChange",
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
     defaultValues: {
       outcome_subcategory_behavior:
         META_ANALYSIS_DEFAULTS.outcome_subcategory_behavior,
@@ -131,7 +139,17 @@ export const Filters = ({ status, setData }: FiltersProps) => {
     },
   })
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onInvalid = () => {
+    form.setError("root", {
+      type: "manual",
+      message: "Please fix the errors above and try again.",
+    })
+  }
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    // Clear errors
+    form.clearErrors("root")
+
     let subset: typeof data
 
     // Filter on outcome subcategory
@@ -191,15 +209,21 @@ export const Filters = ({ status, setData }: FiltersProps) => {
     )
 
     if (subset.length == 0) {
-      setError("No papers match these criteria")
+      form.setError("root", {
+        type: "manual",
+        message: "No papers match these criteria",
+      })
+      return
     } else if (new Set(subset.map((d) => d.paper)).size < 2) {
-      setError(
-        "Only 1 paper matches these criteria; please relax the inclusion criteria to include effects from more papers"
-      )
-    } else {
-      setError(undefined)
-      setData(subset)
+      form.setError("root", {
+        type: "manual",
+        message:
+          "Only 1 paper matches these criteria; please relax the inclusion criteria to include effects from more papers",
+      })
+      return
     }
+
+    setData(subset)
   }
 
   return (
@@ -214,9 +238,9 @@ export const Filters = ({ status, setData }: FiltersProps) => {
           className={cn("transition", open ? "rotate-90" : "rotate-0")}
         />
       </CollapsibleTrigger>
-      <CollapsibleContent className="CollapsibleContent">
+      <CollapsibleContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form onSubmit={form.handleSubmit(onSubmit, onInvalid)}>
             <div className="flex flex-col gap-3">
               {/* Levels */}
               <div className="my-3 space-y-3">
@@ -720,9 +744,9 @@ export const Filters = ({ status, setData }: FiltersProps) => {
             </div>
           </form>
         </Form>
-        {error && (
+        {form.formState.errors.root && (
           <div className="text-destructive ms-1 mt-2 text-sm font-semibold">
-            {error}
+            {form.formState.errors.root.message}
           </div>
         )}
       </CollapsibleContent>

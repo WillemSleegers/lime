@@ -26,7 +26,9 @@ import { Effects } from "@/lib/types"
 
 const formSchemaEffects = z.object({
   effect_size: z.number().array(),
-  sample_size: z.coerce.number().min(1),
+  sample_size: z.coerce
+    .number()
+    .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
 })
 
 type FilterEffectsProps = {

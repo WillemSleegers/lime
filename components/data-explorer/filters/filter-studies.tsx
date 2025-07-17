@@ -33,7 +33,9 @@ import {
 import { Studies } from "@/lib/types"
 
 const formSchemaStudies = z.object({
-  study_n: z.coerce.number().min(1),
+  study_n: z.coerce
+    .number()
+    .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
   study_pregistered: z
     .string()
     .array()
