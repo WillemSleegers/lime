@@ -41,6 +41,11 @@ export type Estimate = {
   value: number
   lower: number
   upper: number
+  piLower: number
+  piUpper: number
+}
+
+export type Egger = {
   egger_b: number
   egger_se: number
   egger_z: number

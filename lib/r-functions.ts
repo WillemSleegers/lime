@@ -19,12 +19,13 @@ export const code = `
     data = data
   )
 
-  # Get cluster-robust confidence intervals
   sav <- metafor::robust(
     x = res, 
     cluster = paper, 
     clubSandwich = TRUE
   )
+
+  pred <- predict(sav)
 
   # Run the Egger's test
   res_egger <- metafor::rma.mv(
@@ -44,12 +45,13 @@ export const code = `
   # Return the values of interest:
   # - The estimate of the meta-analysis
   # - The robust lower and upper bound of the confidence 
-  #   interval of the estimate
+  #   interval
+  # - The lower and upper bound of the prediction interval
   # - The estimate, standard error, z-value, and p-value 
   #   of the second coefficient from the Egger's test model
   c(
-    sav$b, sav$ci.lb, sav$ci.ub, sav_egger$b[2], sav_egger$se[2], 
-    sav_egger$zval[2], sav_egger$pval[2]
+    pred$pred, pred$ci.lb, pred$ci.ub, pred$pi.lb, pred$pi.ub, 
+    sav_egger$b[2], sav_egger$se[2], sav_egger$zval[2], sav_egger$pval[2]
   )
 `
 

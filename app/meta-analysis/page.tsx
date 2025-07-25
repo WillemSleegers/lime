@@ -3,7 +3,7 @@
 import { WebR } from "webr"
 import { useEffect, useRef, useState } from "react"
 
-import { CollapsibleEffect } from "@/components/meta-analysis/effect"
+import { CollapsibleEstimate } from "@/components/meta-analysis/estimate"
 import { Button } from "@/components/ui/button"
 import { ForestPlot } from "@/components/meta-analysis/forest-plot"
 import { RCode } from "@/components/meta-analysis/R-code"
@@ -14,7 +14,7 @@ import { CollapsiblePublicationBias } from "@/components/meta-analysis/publicati
 import { runMetaAnalysis } from "@/lib/r-functions"
 
 import codebook from "@/assets/data/codebook.json"
-import { Data, Datum, Estimate, Status } from "@/lib/types"
+import { Data, Datum, Egger, Estimate, Status } from "@/lib/types"
 import Link from "next/link"
 
 const handleDownload = (fileName: string, data?: Record<string, unknown>[]) => {
@@ -72,6 +72,7 @@ const MetaAnalysisPage = () => {
 
   const [data, setData] = useState<Data>()
   const [estimate, setEstimate] = useState<Estimate | undefined>()
+  const [egger, setEgger] = useState<Egger | undefined>()
 
   // Setup
   useEffect(() => {
@@ -132,10 +133,14 @@ const MetaAnalysisPage = () => {
           value: results[0],
           lower: results[1],
           upper: results[2],
-          egger_b: results[3],
-          egger_se: results[4],
-          egger_z: results[5],
-          egger_p: results[6],
+          piLower: results[3],
+          piUpper: results[4],
+        })
+        setEgger({
+          egger_b: results[5],
+          egger_se: results[6],
+          egger_z: results[7],
+          egger_p: results[8],
         })
         setStatus("Ready")
       }
@@ -161,9 +166,13 @@ const MetaAnalysisPage = () => {
       </div>
 
       <Filters status={status} setData={setData} />
-      <CollapsibleEffect effect={estimate} />
+      <CollapsibleEstimate estimate={estimate} />
       <Highlights data={data} />
-      <CollapsiblePublicationBias data={data} effect={estimate} />
+      <CollapsiblePublicationBias
+        estimate={estimate}
+        egger={egger}
+        data={data}
+      />
       <ForestPlot data={data} />
       <div className="p-3 flex justify-center gap-3">
         <RCode />

@@ -19,7 +19,7 @@ import {
 } from "../ui/collapsible"
 
 import { cn, round } from "@/lib/utils"
-import { Data, Estimate } from "@/lib/types"
+import { Data, Egger, Estimate } from "@/lib/types"
 
 import {
   NameType,
@@ -28,14 +28,15 @@ import {
 } from "recharts/types/component/DefaultTooltipContent"
 
 type CollapsiblePublicationBiasProps = {
-  effect?: Estimate
+  estimate?: Estimate
+  egger?: Egger
   data?: Data
 }
 
 export const CollapsiblePublicationBias = (
   props: CollapsiblePublicationBiasProps
 ) => {
-  const { effect, data } = props
+  const { estimate, egger, data } = props
 
   const [open, setOpen] = useState(false)
 
@@ -72,10 +73,10 @@ export const CollapsiblePublicationBias = (
         <div className="my-3">
           <h3 className="text-center">Small Study Effect Methods</h3>
           <h4 className="text-center">Egger&apos;s Test</h4>
-          {effect && (
+          {egger && (
             <p>
               We found{" "}
-              {effect.egger_p < 0.05 ? (
+              {egger.egger_p < 0.05 ? (
                 <span className="font-semibold text-red-500">evidence</span>
               ) : (
                 <span>no evidence</span>
@@ -84,13 +85,13 @@ export const CollapsiblePublicationBias = (
               <Link href="https://doi.org/10.1080/00220973.2019.1582470">
                 Egger&apos;s regression test
               </Link>{" "}
-              (b = {round(effect.egger_b, 2)}, SE = {round(effect.egger_se, 2)},
-              z = {round(effect.egger_z, 2)}, p = {round(effect.egger_p, 2)}).
+              (b = {round(egger.egger_b, 2)}, SE = {round(egger.egger_se, 2)}, z
+              = {round(egger.egger_z, 2)}, p = {round(egger.egger_p, 2)}).
             </p>
           )}
           <h4 className="text-center">Funnel plot</h4>
           <div className="overflow-auto">
-            {effect && (
+            {estimate && (
               <ResponsiveContainer height={500} width="100%" minWidth={600}>
                 <ScatterChart
                   data={plotData}
@@ -124,16 +125,16 @@ export const CollapsiblePublicationBias = (
                   />
                   <Tooltip content={<CustomTooltip accessibilityLayer />} />
                   <ReferenceLine
-                    x={effect.value}
+                    x={estimate.value}
                     stroke="black"
                     strokeDasharray="3 3"
                     strokeWidth={2}
                   />
                   <ReferenceLine
                     segment={[
-                      { x: effect.value, y: 0 },
+                      { x: estimate.value, y: 0 },
                       {
-                        x: effect.value - 1.96 * Math.ceil(ymax),
+                        x: estimate.value - 1.96 * Math.ceil(ymax),
                         y: Math.ceil(ymax),
                       },
                     ]}
@@ -144,9 +145,9 @@ export const CollapsiblePublicationBias = (
                   />
                   <ReferenceLine
                     segment={[
-                      { x: effect.value, y: 0 },
+                      { x: estimate.value, y: 0 },
                       {
-                        x: effect.value + 1.96 * Math.ceil(ymax),
+                        x: estimate.value + 1.96 * Math.ceil(ymax),
                         y: Math.ceil(ymax),
                       },
                     ]}

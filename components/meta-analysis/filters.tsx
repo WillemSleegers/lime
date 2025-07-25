@@ -736,10 +736,24 @@ export const Filters = ({ status, setData }: FiltersProps) => {
 
               <Button
                 type="submit"
-                disabled={status != "Ready"}
-                className="h-auto w-fit rounded-full "
+                disabled={status !== "Ready"}
+                className="w-[150px] rounded-full "
               >
-                Run meta-analysis
+                {status != "Ready" ? (
+                  <div className="flex space-x-1 justify-center">
+                    {[0, 1, 2].map((i) => (
+                      <div
+                        key={i}
+                        className="w-2 h-2 bg-background rounded-full animate-pulse duration-1000"
+                        style={{
+                          animationDelay: `${i * 0.2}s`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  "Run meta-analysis"
+                )}
               </Button>
             </div>
           </form>
