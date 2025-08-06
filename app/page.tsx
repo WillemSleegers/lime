@@ -121,7 +121,8 @@ export default function Home() {
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
               Calculate meta-analytic effect sizes and see them translated into
-              intuitive measures of effectiveness.
+              several alternatives to help you better understand the
+              effectiveness of interventions.
             </p>
           </div>
           <div className="mx-auto max-w-80">
@@ -129,8 +130,8 @@ export default function Home() {
               Data visualization
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
-              Inspect interactive data visualizations showing effect size
-              distributions and more.
+              Inspect data visualizations of effect sizes and other descriptives
+              about intervention studies included in the database.
             </p>
           </div>
         </div>

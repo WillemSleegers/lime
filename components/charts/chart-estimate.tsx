@@ -8,6 +8,7 @@ import {
   YAxis,
   Scatter,
   ZAxis,
+  Legend,
 } from "recharts"
 import { ChartConfig, ChartContainer } from "@/components/ui/chart"
 import { Estimate } from "@/lib/types"
@@ -35,8 +36,6 @@ const ChartEstimate = ({ estimate }: ChartEstimateProps) => {
   let minX,
     maxX,
     point: DataPoint[] = [],
-    pointsCi: DataPoint[] = [],
-    pointsPi: DataPoint[] = [],
     lineCiLeft: DataPoint[] = [],
     lineCiRight: DataPoint[] = [],
     linePiLeft: DataPoint[] = [],
@@ -47,15 +46,7 @@ const ChartEstimate = ({ estimate }: ChartEstimateProps) => {
     const padding = range * 0.1
     minX = Math.min(0, estimate.piLower - padding)
     maxX = estimate.piUpper + padding
-    point = [{ x: estimate.value, y: 0, z: 3 }]
-    pointsCi = [
-      { x: estimate.lower, y: 0, z: 2 },
-      { x: estimate.upper, y: 0, z: 2 },
-    ]
-    pointsPi = [
-      { x: estimate.piLower, y: 0, z: 2 },
-      { x: estimate.piUpper, y: 0, z: 2 },
-    ]
+    point = [{ x: estimate.value, y: 0, z: 1 }]
     lineCiLeft = [
       { x: estimate.value, y: 0 },
       { x: estimate.lower, y: 0 },
@@ -76,8 +67,6 @@ const ChartEstimate = ({ estimate }: ChartEstimateProps) => {
     minX = -2
     maxX = 2
     point = []
-    pointsCi = []
-    pointsPi = []
     lineCiLeft = []
     lineCiRight = []
     linePiLeft = []
@@ -98,59 +87,45 @@ const ChartEstimate = ({ estimate }: ChartEstimateProps) => {
       >
         <XAxis dataKey="x" type="number" domain={[minX, maxX]} ticks={ticks} />
         <YAxis dataKey="y" type="number" domain={[-1, 1]} hide />
-        <ZAxis dataKey="z" type="number" range={[0, 150]} />
+        <ZAxis dataKey="z" type="number" range={[0, 400]} />
+        <Legend content={renderLegend} />
         <Line
           data={linePiLeft}
           dataKey={"y"}
-          stroke="var(--color-stroke)"
-          strokeWidth={6}
+          stroke="#eee"
+          strokeWidth={20}
           dot={false}
           animationDuration={1000}
+          activeDot={false}
         />
         <Line
           data={lineCiLeft}
           dataKey={"y"}
           stroke="var(--color-stroke)"
-          strokeWidth={6}
+          strokeWidth={4}
           dot={false}
           animationDuration={1000}
+          activeDot={false}
+        />
+        <Line
+          data={linePiRight}
+          dataKey={"y"}
+          stroke="#eee"
+          strokeWidth={20}
+          dot={false}
+          animationDuration={1000}
+          activeDot={false}
         />
         <Line
           data={lineCiRight}
           dataKey={"y"}
           stroke="var(--color-stroke)"
-          strokeWidth={6}
+          strokeWidth={4}
           dot={false}
           animationDuration={1000}
+          activeDot={false}
         />
-        <Line
-          data={linePiRight}
-          dataKey={"y"}
-          stroke="var(--color-stroke)"
-          strokeWidth={6}
-          dot={false}
-          animationDuration={1000}
-        />
-        <Scatter
-          data={pointsPi}
-          fill="var(--color-fill)"
-          stroke="white"
-          strokeWidth={2}
-          animationBegin={1000}
-        />
-        <Scatter
-          data={pointsCi}
-          fill="var(--color-fill)"
-          stroke="white"
-          strokeWidth={2}
-          animationBegin={1000}
-        />
-        <Scatter
-          data={point}
-          fill="var(--color-fill)"
-          stroke="white"
-          strokeWidth={2}
-        />
+        <Scatter data={point} shape="square" fill="var(--color-fill)" />
         <ReferenceLine x={0} stroke="#666" strokeDasharray="5 5" />
       </ComposedChart>
     </ChartContainer>
@@ -158,3 +133,31 @@ const ChartEstimate = ({ estimate }: ChartEstimateProps) => {
 }
 
 export default ChartEstimate
+
+const renderLegend = () => {
+  const legendItems = [
+    { color: "var(--color-fill)", label: "Average Estimate" },
+    { color: "var(--color-stroke)", label: "Confidence Interval" },
+    { color: "#eee", label: "Prediction Interval" },
+  ]
+
+  return (
+    <div className="flex justify-center gap-6 mt-2 text-sm">
+      {legendItems.map((item, index) => (
+        <div key={index} className="flex items-center gap-2">
+          {item.label === "Prediction Interval" ? (
+            <div className="w-4 h-4" style={{ backgroundColor: item.color }} />
+          ) : item.label === "Confidence Interval" ? (
+            <div
+              className="w-4 h-1.5"
+              style={{ backgroundColor: item.color, height: "4px" }}
+            />
+          ) : (
+            <div className="w-4 h-4" style={{ backgroundColor: item.color }} />
+          )}
+          <span className="text-muted-foreground">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  )
+}

@@ -34,13 +34,13 @@ export const PieChartProportion = ({
     },
     {
       proportion: proportion ? 1 - proportion : 1,
-      fill: "var(--color-remainder",
+      fill: "var(--color-remainder)",
     },
   ]
   return (
     <ChartContainer
       config={chartConfig}
-      className="mx-auto aspect-square w-full max-w-[250px]"
+      className="mx-auto aspect-[2/1] w-full max-w-[280px]"
     >
       <PieChart data={chartData}>
         <Pie
@@ -49,6 +49,9 @@ export const PieChartProportion = ({
           startAngle={180}
           endAngle={0}
           innerRadius={50}
+          outerRadius={80}
+          cx="50%"
+          cy="85%"
           strokeWidth={5}
           animationDuration={proportion ? 1000 : 0}
         >
@@ -57,7 +60,8 @@ export const PieChartProportion = ({
             fontSize={22}
             fontWeight={600}
             fill="black"
-            dy={-10}
+            dy={24}
+            position="center"
           />
         </Pie>
       </PieChart>
