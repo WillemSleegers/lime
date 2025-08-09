@@ -37,10 +37,12 @@ type FilterEffectsProps = {
   lock: boolean
   setLock: Dispatch<SetStateAction<boolean>>
   setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
+  filterOpen: boolean
+  setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export const FilterEffects = (props: FilterEffectsProps) => {
-  const { data, setData, lock, setLock, setShouldHandleLocks } = props
+  const { data, setData, lock, setLock, setShouldHandleLocks, filterOpen, setFilterOpen } = props
 
   const effect_size_min = Math.min(...data.map((datum) => datum.effect_size))
   const effect_size_max = Math.max(...data.map((datum) => datum.effect_size))
@@ -77,7 +79,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
   }
 
   return (
-    <FilterCollapsible title="Filter">
+    <FilterCollapsible title="Filter" open={filterOpen} onOpenChange={setFilterOpen}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
           <div className="flex flex-wrap gap-x-12 gap-y-6">

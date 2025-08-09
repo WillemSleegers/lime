@@ -126,7 +126,25 @@ export const getUniqueData = (data: Data, x: DataKeys) => {
 }
 
 /**
- * Performs a semi-join operation between two arrays of objects
+ * Fast lookup map builder for O(1) key lookups
+ */
+function buildKeyMap<T extends Record<string, unknown>, K extends keyof T>(
+  data: T[],
+  keys: K | ReadonlyArray<K>
+): Map<string, boolean> {
+  const map = new Map<string, boolean>()
+  const keysArray = Array.isArray(keys) ? keys : [keys]
+  
+  for (const item of data) {
+    const key = keysArray.map(k => String(item[k])).join('|')
+    map.set(key, true)
+  }
+  
+  return map
+}
+
+/**
+ * Performs an optimized semi-join operation using lookup maps - O(n+m) instead of O(n*m)
  * @param sourceArray - The source array of objects to filter
  * @param lookupArray - The array of objects to match against
  * @param keys - The property key(s) to match on
@@ -137,14 +155,13 @@ export function semiJoin<
   L extends Record<string, unknown>,
   K extends keyof S & keyof L
 >(sourceArray: S[], lookupArray: L[], keys: K | ReadonlyArray<K>): S[] {
-  // Convert keys to array if only a string is provided
+  if (lookupArray.length === 0) return []
+  
   const keysArray = Array.isArray(keys) ? keys : [keys]
-
-  // Filter the source array
-  return sourceArray.filter((sourceObj) => {
-    // Check if there's at least one object in the lookup array that matches all the specified keys
-    return lookupArray.some((lookupObj) => {
-      return keysArray.every((key) => sourceObj[key] === lookupObj[key])
-    })
+  const lookupMap = buildKeyMap(lookupArray, keys)
+  
+  return sourceArray.filter(item => {
+    const key = keysArray.map(k => String(item[k])).join('|')
+    return lookupMap.has(key)
   })
 }

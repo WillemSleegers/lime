@@ -47,148 +47,150 @@ import { FilterEffects } from "@/components/data-explorer/filters/filter-effects
 export default function DataExplorer() {
   const [level, setLevel] = useState("paper")
 
-  const [dataPaper, setDataPaper] = useState(papers)
-  const [dataStudy, setDataStudy] = useState(studies)
-  const [dataIntervention, setDataIntervention] = useState(interventions)
-  const [dataOutcome, setDataOutcome] = useState(outcomes)
-  const [dataEffect, setDataEffect] = useState(effects)
+  // Batched filtered data state (from filter operations)
+  const [filteredData, setFilteredData] = useState({
+    papers,
+    studies,
+    interventions,
+    outcomes,
+    effects
+  })
 
-  // Rename to dataTable
-  const [dataPaperLevel, setDataPaperLevel] = useState(papers)
-  const [dataStudyLevel, setDataStudyLevel] = useState(studies)
-  const [dataInterventionLevel, setDataInterventionLevel] =
-    useState(interventions)
-  const [dataOutcomeLevel, setDataOutcomeLevel] = useState(outcomes)
-  const [dataEffectLevel, setDataEffectLevel] = useState(effects)
+  // Batched display data state (after lock operations)
+  const [displayData, setDisplayData] = useState({
+    papers,
+    studies,
+    interventions,
+    outcomes,
+    effects
+  })
 
-  // Track lock toggles
-  const [lockPapers, setLockPapers] = useState(false)
-  const [lockStudies, setLockStudies] = useState(false)
-  const [lockInterventions, setLockInterventions] = useState(false)
-  const [lockOutcomes, setLockOutcomes] = useState(false)
-  const [lockEffects, setLockEffects] = useState(false)
+  // Batched lock state
+  const [locks, setLocks] = useState({
+    papers: false,
+    studies: false,
+    interventions: false,
+    outcomes: false,
+    effects: false
+  })
 
   const [shouldHandleLocks, setShouldHandleLocks] = useState(false)
+  
+  // Global filter collapsible state - persists across tab changes
+  const [filterOpen, setFilterOpen] = useState(false)
 
-  const handleDownload = (
-    data:
-      | typeof papers
-      | typeof studies
-      | typeof interventions
-      | typeof outcomes
-      | typeof effects
-      | typeof all,
-    fileName: string
-  ) => {
+  // Create properly typed setter functions for each data type
+  const setDataPapers: React.Dispatch<React.SetStateAction<typeof papers>> = (newData) => 
+    setFilteredData(prev => ({ 
+      ...prev, 
+      papers: typeof newData === 'function' ? newData(prev.papers) : newData 
+    }))
+  const setDataStudies: React.Dispatch<React.SetStateAction<typeof studies>> = (newData) => 
+    setFilteredData(prev => ({ 
+      ...prev, 
+      studies: typeof newData === 'function' ? newData(prev.studies) : newData 
+    }))
+  const setDataInterventions: React.Dispatch<React.SetStateAction<typeof interventions>> = (newData) => 
+    setFilteredData(prev => ({ 
+      ...prev, 
+      interventions: typeof newData === 'function' ? newData(prev.interventions) : newData 
+    }))
+  const setDataOutcomes: React.Dispatch<React.SetStateAction<typeof outcomes>> = (newData) => 
+    setFilteredData(prev => ({ 
+      ...prev, 
+      outcomes: typeof newData === 'function' ? newData(prev.outcomes) : newData 
+    }))
+  const setDataEffects: React.Dispatch<React.SetStateAction<typeof effects>> = (newData) => 
+    setFilteredData(prev => ({ 
+      ...prev, 
+      effects: typeof newData === 'function' ? newData(prev.effects) : newData 
+    }))
+
+  // Create properly typed lock setter functions
+  const setLockPapers: React.Dispatch<React.SetStateAction<boolean>> = (newLock) => 
+    setLocks(prev => ({ 
+      ...prev, 
+      papers: typeof newLock === 'function' ? newLock(prev.papers) : newLock 
+    }))
+  const setLockStudies: React.Dispatch<React.SetStateAction<boolean>> = (newLock) => 
+    setLocks(prev => ({ 
+      ...prev, 
+      studies: typeof newLock === 'function' ? newLock(prev.studies) : newLock 
+    }))
+  const setLockInterventions: React.Dispatch<React.SetStateAction<boolean>> = (newLock) => 
+    setLocks(prev => ({ 
+      ...prev, 
+      interventions: typeof newLock === 'function' ? newLock(prev.interventions) : newLock 
+    }))
+  const setLockOutcomes: React.Dispatch<React.SetStateAction<boolean>> = (newLock) => 
+    setLocks(prev => ({ 
+      ...prev, 
+      outcomes: typeof newLock === 'function' ? newLock(prev.outcomes) : newLock 
+    }))
+  const setLockEffects: React.Dispatch<React.SetStateAction<boolean>> = (newLock) => 
+    setLocks(prev => ({ 
+      ...prev, 
+      effects: typeof newLock === 'function' ? newLock(prev.effects) : newLock 
+    }))
+
+  const handleDownload = (data: Record<string, unknown>[], fileName: string) => {
     exportToCSV(data, fileName)
   }
 
+  // Optimized locking logic with batched updates
   useEffect(() => {
     if (shouldHandleLocks) {
-      let lockedDataPapers = dataPaper
-      let lockedDataStudies = dataStudy
-      let lockedDataInterventions = dataIntervention
-      let lockedDataOutcomes = dataOutcome
-      let lockedDataEffects = dataEffect
-
-      if (lockPapers) {
-        lockedDataStudies = semiJoin(lockedDataStudies, dataPaper, "paper")
-        lockedDataInterventions = semiJoin(
-          lockedDataInterventions,
-          dataPaper,
-          "paper"
-        )
-        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataPaper, "paper")
-        lockedDataEffects = semiJoin(lockedDataEffects, dataPaper, "paper")
+      // Start with current filtered data (mutable for efficiency)
+      const result = {
+        papers: [...filteredData.papers],
+        studies: [...filteredData.studies], 
+        interventions: [...filteredData.interventions],
+        outcomes: [...filteredData.outcomes],
+        effects: [...filteredData.effects]
       }
 
-      if (lockStudies) {
-        lockedDataPapers = semiJoin(lockedDataPapers, dataStudy, "paper")
-        lockedDataInterventions = semiJoin(lockedDataInterventions, dataStudy, [
-          "paper",
-          "study",
-        ])
-        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataStudy, [
-          "paper",
-          "study",
-        ])
-        lockedDataEffects = semiJoin(lockedDataEffects, dataStudy, [
-          "paper",
-          "study",
-        ])
+      // Apply locks efficiently
+      if (locks.papers) {
+        result.studies = semiJoin(result.studies, filteredData.papers, "paper")
+        result.interventions = semiJoin(result.interventions, filteredData.papers, "paper")
+        result.outcomes = semiJoin(result.outcomes, filteredData.papers, "paper")
+        result.effects = semiJoin(result.effects, filteredData.papers, "paper")
       }
 
-      if (lockInterventions) {
-        lockedDataPapers = semiJoin(lockedDataPapers, dataIntervention, "paper")
-        lockedDataStudies = semiJoin(lockedDataStudies, dataIntervention, [
-          "paper",
-          "study",
-        ])
-        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataIntervention, [
-          "paper",
-          "study",
-        ])
-        lockedDataEffects = semiJoin(lockedDataEffects, dataIntervention, [
-          "paper",
-          "study",
-        ])
+      if (locks.studies) {
+        result.papers = semiJoin(result.papers, filteredData.studies, "paper")
+        result.interventions = semiJoin(result.interventions, filteredData.studies, ["paper", "study"])
+        result.outcomes = semiJoin(result.outcomes, filteredData.studies, ["paper", "study"])
+        result.effects = semiJoin(result.effects, filteredData.studies, ["paper", "study"])
       }
 
-      if (lockOutcomes) {
-        lockedDataPapers = semiJoin(lockedDataPapers, dataOutcome, "paper")
-        lockedDataStudies = semiJoin(lockedDataStudies, dataOutcome, [
-          "paper",
-          "study",
-        ])
-        lockedDataInterventions = semiJoin(
-          lockedDataInterventions,
-          dataOutcome,
-          ["paper", "study"]
-        )
-        lockedDataEffects = semiJoin(lockedDataEffects, dataOutcome, [
-          "paper",
-          "study",
-        ])
+      if (locks.interventions) {
+        result.papers = semiJoin(result.papers, filteredData.interventions, "paper")
+        result.studies = semiJoin(result.studies, filteredData.interventions, ["paper", "study"])
+        result.outcomes = semiJoin(result.outcomes, filteredData.interventions, ["paper", "study"])
+        result.effects = semiJoin(result.effects, filteredData.interventions, ["paper", "study"])
       }
 
-      if (lockEffects) {
-        lockedDataPapers = semiJoin(lockedDataPapers, dataEffect, "paper")
-        lockedDataStudies = semiJoin(lockedDataStudies, dataEffect, [
-          "paper",
-          "study",
-        ])
-        lockedDataInterventions = semiJoin(
-          lockedDataInterventions,
-          dataEffect,
-          ["paper", "study"]
-        )
-        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataEffect, [
-          "paper",
-          "study",
-        ])
+      if (locks.outcomes) {
+        result.papers = semiJoin(result.papers, filteredData.outcomes, "paper")
+        result.studies = semiJoin(result.studies, filteredData.outcomes, ["paper", "study"])
+        result.interventions = semiJoin(result.interventions, filteredData.outcomes, ["paper", "study"])
+        result.effects = semiJoin(result.effects, filteredData.outcomes, ["paper", "study"])
       }
 
-      setDataPaperLevel(lockedDataPapers)
-      setDataStudyLevel(lockedDataStudies)
-      setDataInterventionLevel(lockedDataInterventions)
-      setDataOutcomeLevel(lockedDataOutcomes)
-      setDataEffectLevel(lockedDataEffects)
+      if (locks.effects) {
+        result.papers = semiJoin(result.papers, filteredData.effects, "paper")
+        result.studies = semiJoin(result.studies, filteredData.effects, ["paper", "study"])
+        result.interventions = semiJoin(result.interventions, filteredData.effects, ["paper", "study"])
+        result.outcomes = semiJoin(result.outcomes, filteredData.effects, ["paper", "study"])
+      }
+
+      // Single batched state update instead of 5 separate ones
+      setDisplayData(result)
     }
 
     setShouldHandleLocks(false)
-  }, [
-    shouldHandleLocks,
-    dataPaper,
-    dataStudy,
-    dataOutcome,
-    dataIntervention,
-    dataEffect,
-    lockPapers,
-    lockStudies,
-    lockInterventions,
-    lockOutcomes,
-    lockEffects,
-  ])
+  }, [shouldHandleLocks, filteredData, locks])
 
   return (
     <main className="mx-3 md:mx-6 lg:mx-12 space-y-8 my-12 md:my-16">
@@ -333,70 +335,80 @@ export default function DataExplorer() {
         <TabsContent value="paper" className="space-y-4">
           <FilterPapers
             data={papers}
-            setData={setDataPaper}
-            lock={lockPapers}
+            setData={setDataPapers}
+            lock={locks.papers}
             setLock={setLockPapers}
             setShouldHandleLocks={setShouldHandleLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <DataTable
             columns={ColumnsPapers}
-            data={dataPaperLevel}
+            data={displayData.papers}
             totalRows={papers.length}
           />
         </TabsContent>
         <TabsContent value="study" className="space-y-4">
           <FilterStudies
             data={studies}
-            setData={setDataStudy}
-            lock={lockStudies}
+            setData={setDataStudies}
+            lock={locks.studies}
             setLock={setLockStudies}
             setShouldHandleLocks={setShouldHandleLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <DataTable
             columns={ColumnsStudies}
-            data={dataStudyLevel}
+            data={displayData.studies}
             totalRows={studies.length}
           />
         </TabsContent>
         <TabsContent value="intervention" className="space-y-4">
           <FilterInterventions
             data={interventions}
-            setData={setDataIntervention}
-            lock={lockInterventions}
+            setData={setDataInterventions}
+            lock={locks.interventions}
             setLock={setLockInterventions}
             setShouldHandleLocks={setShouldHandleLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <DataTable
             columns={ColumnsInterventions}
-            data={dataInterventionLevel}
+            data={displayData.interventions}
             totalRows={interventions.length}
           />
         </TabsContent>
         <TabsContent value="outcome" className="space-y-4">
           <FilterOutcomes
             data={outcomes}
-            setData={setDataOutcome}
-            lock={lockOutcomes}
+            setData={setDataOutcomes}
+            lock={locks.outcomes}
             setLock={setLockOutcomes}
             setShouldHandleLocks={setShouldHandleLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <DataTable
             columns={ColumnsOutcomes}
-            data={dataOutcomeLevel}
+            data={displayData.outcomes}
             totalRows={outcomes.length}
           />
         </TabsContent>
         <TabsContent value="effect" className="space-y-4">
           <FilterEffects
             data={effects}
-            setData={setDataEffect}
-            lock={lockEffects}
+            setData={setDataEffects}
+            lock={locks.effects}
             setLock={setLockEffects}
             setShouldHandleLocks={setShouldHandleLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <DataTable
             columns={ColumnsEffects}
-            data={dataEffectLevel}
+            data={displayData.effects}
             totalRows={effects.length}
           />
         </TabsContent>

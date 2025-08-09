@@ -10,11 +10,17 @@ import { cn } from "@/lib/utils"
 type FilterCollapsibleProps = {
   title: string
   children: ReactNode
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
 }
 
 export const FilterCollapsible = (props: FilterCollapsibleProps) => {
-  const { title, children } = props
-  const [open, setOpen] = useState(false)
+  const { title, children, open: controlledOpen, onOpenChange } = props
+  const [internalOpen, setInternalOpen] = useState(false)
+  
+  // Use controlled state if provided, otherwise use internal state
+  const open = controlledOpen !== undefined ? controlledOpen : internalOpen
+  const setOpen = onOpenChange || setInternalOpen
 
   return (
     <Collapsible

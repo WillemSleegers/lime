@@ -64,10 +64,12 @@ type FilterStudiesProps = {
   lock: boolean
   setLock: Dispatch<SetStateAction<boolean>>
   setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
+  filterOpen: boolean
+  setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export const FilterStudies = (props: FilterStudiesProps) => {
-  const { data, setData, lock, setLock, setShouldHandleLocks } = props
+  const { data, setData, lock, setLock, setShouldHandleLocks, filterOpen, setFilterOpen } = props
 
   const form = useForm<z.infer<typeof formSchemaStudies>>({
     resolver: zodResolver(formSchemaStudies),
@@ -125,7 +127,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
   }
 
   return (
-    <FilterCollapsible title="Filter">
+    <FilterCollapsible title="Filter" open={filterOpen} onOpenChange={setFilterOpen}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
           <div className="flex flex-wrap gap-x-12 gap-y-4">
