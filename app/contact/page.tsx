@@ -12,25 +12,25 @@ const Contact = () => {
       </p>
       <div className="not-prose grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
         <Link href="mailto:contact.project.lime@gmail.com?subject=Study to add to the LIME project">
-          <div className="flex flex-col items-center justify-between rounded-md border-2 border-primary bg-transparent p-4 hover:bg-accent hover:text-accent-foreground">
+          <div className="flex flex-col items-center justify-between rounded-lg border-2 border-primary bg-transparent p-4 hover:bg-accent hover:text-accent-foreground">
             <MailPlus />
             <span>Add study</span>
           </div>
         </Link>
         <Link href="mailto:contact.project.lime@gmail.com?subject=Question about the LIME project">
-          <div className="flex flex-col items-center justify-between rounded-md border-2 border-primary bg-transparent p-4 hover:bg-accent hover:text-accent-foreground">
+          <div className="flex flex-col items-center justify-between rounded-lg border-2 border-primary bg-transparent p-4 hover:bg-accent hover:text-accent-foreground">
             <MailQuestion />
             <span>Question</span>
           </div>
         </Link>
         <Link href="mailto:contact.project.lime@gmail.com?subject=Bug report for the LIME project">
-          <div className="flex flex-col items-center justify-between rounded-md border-2 border-primary bg-transparent p-4 hover:bg-accent hover:text-accent-foreground">
+          <div className="flex flex-col items-center justify-between rounded-lg border-2 border-primary bg-transparent p-4 hover:bg-accent hover:text-accent-foreground">
             <MailWarning />
             <span>Bug</span>
           </div>
         </Link>
         <Link href="mailto:contact.project.lime@gmail.com">
-          <div className="flex flex-col items-center justify-between rounded-md border-2 border-primary bg-transparent p-4 hover:bg-accent hover:text-accent-foreground">
+          <div className="flex flex-col items-center justify-between rounded-lg border-2 border-primary bg-transparent p-4 hover:bg-accent hover:text-accent-foreground">
             <Mail />
             <span>Other</span>
           </div>

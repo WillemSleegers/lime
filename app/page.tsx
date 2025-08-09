@@ -9,9 +9,9 @@ import counts from "@/assets/data/counts.json"
 
 export default function Home() {
   return (
-    <div className="mt-6 mb-12 md:mb-18 space-y-12 md:mt-18 md:space-y-24 lg:mt-24">
+    <div className="mt-6 mb-12 md:mb-18 space-y-12 md:mt-18 md:space-y-12 lg:mt-24">
       {/* Hero */}
-      <section className="mx-auto max-w-xl space-y-8 p-4 text-center sm:max-w-2xl md:space-y-12">
+      <section className="mx-auto max-w-xl space-y-8 p-4 text-center sm:max-w-2xl md:space-y-8">
         <Badge variant="destructive">Currently in beta</Badge>
         <div className="space-y-4">
           <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl md:text-5xl">
@@ -59,7 +59,7 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="mx-auto max-w-4xl p-4 space-y-2 sm:space-y-3 md:space-y-4">
+      <section className="mx-auto max-w-4xl p-4 space-y-4">
         <h2 className="text-3xl font-bold md:text-4xl">
           <span className="text-primary">About </span>
           LIME
@@ -73,14 +73,14 @@ export default function Home() {
           and evaluate which interventions have the strongest evidence behind
           them.
         </p>
-        <Button className="rounded-3xl" asChild variant="secondary">
+        <Button className="rounded-2xl" asChild variant="secondary">
           <Link href="/about/">Learn more</Link>
         </Button>
       </section>
 
       {/* Data explorer */}
-      <section className="text-center max-w-6xl mx-auto space-y-2 sm:space-y-3 md:space-y-4">
-        <div className="px-4 space-y-2 sm:space-y-3 md:space-y-4">
+      <section className="text-center max-w-6xl mx-auto space-y-6">
+        <div className="px-4 space-y-4">
           <h2 className="text-3xl font-bold md:text-4xl">
             <span className="text-primary">Explore</span> Studies
           </h2>
@@ -91,13 +91,13 @@ export default function Home() {
           </p>
         </div>
         <PaperCarousel />
-        <Button className="rounded-3xl" asChild variant="secondary">
+        <Button className="rounded-2xl" asChild variant="secondary">
           <Link href="/data-explorer/">Begin exploring</Link>
         </Button>
       </section>
 
       {/* Meta-analysis */}
-      <section className="p-4 text-center space-y-2 sm:space-y-3 md:space-y-4">
+      <section className="p-4 text-center space-y-6">
         <h2 className="text-3xl font-bold md:text-4xl">
           <span className="text-primary">Analyze</span> Data
         </h2>
@@ -136,7 +136,7 @@ export default function Home() {
           </div>
         </div>
 
-        <Button className="mt-6 rounded-3xl" variant="secondary" asChild>
+        <Button className="mt-6 rounded-2xl" variant="secondary" asChild>
           <Link href="/data-explorer/">Begin analyzing</Link>
         </Button>
       </section>

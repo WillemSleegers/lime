@@ -243,16 +243,16 @@ export const Filters = ({ status, setData }: FiltersProps) => {
           <form onSubmit={form.handleSubmit(onSubmit, onInvalid)}>
             <div className="flex flex-col gap-3">
               {/* Levels */}
-              <div className="my-3 space-y-3">
+              <div className="my-3 space-y-4">
                 {/* Outcome-level */}
                 <h2 className="text-xl font-semibold">Outcomes</h2>
                 <div className="mx-3">
                   {/* Outcome categories */}
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <FormLabel className="text-base">
                       Outcome categories
                     </FormLabel>
-                    <div className="my-3 space-y-3 px-3">
+                    <div className="my-3 space-y-4 px-3">
                       <FormField
                         control={form.control}
                         name="outcome_subcategory_behavior"
@@ -474,7 +474,7 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                 <Separator />
                 {/* Intervention-level */}
                 <h2 className="text-xl font-semibold">Interventions</h2>
-                <div className="mx-3 space-y-3">
+                <div className="mx-3 space-y-4">
                   {/* Intervention content */}
                   <FormField
                     control={form.control}
@@ -623,7 +623,7 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                 <Separator />
                 {/* Samples-level */}
                 <h2 className="text-xl font-semibold">Study</h2>
-                <div className="mx-3 space-y-3">
+                <div className="mx-3 space-y-4">
                   {/* Sample country */}
                   <FormField
                     control={form.control}
@@ -660,7 +660,7 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                 <Separator />
                 {/* Samples-level */}
                 <h2 className="text-xl font-semibold">Samples</h2>
-                <div className="mx-3 space-y-3">
+                <div className="mx-3 space-y-4">
                   {/* Sample country */}
                   <FormField
                     control={form.control}

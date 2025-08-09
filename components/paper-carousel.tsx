@@ -40,7 +40,7 @@ export const PaperCarousel = () => {
       <CarouselContent>
         {shuffledPapers.map((paper, index) => (
           <CarouselItem className="basis-1/2 lg:basis-1/4" key={index}>
-            <div className="flex h-44 flex-col gap-3 rounded-md bg-muted p-6">
+            <div className="flex h-44 flex-col gap-3 rounded-lg bg-muted p-6">
               <span className="line-clamp-3 text-ellipsis text-base font-semibold">
                 {paper.paper_title}
               </span>

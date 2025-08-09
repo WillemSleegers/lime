@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
+import { exportToCSV } from "@/lib/csv-utils"
 
 import { InfoIcon } from "lucide-react"
 
@@ -79,29 +80,7 @@ export default function DataExplorer() {
       | typeof all,
     fileName: string
   ) => {
-    const columnNames = Object.keys(data[0])
-    // Loop over the data and extract values for each column
-    const rowsData: string[] = []
-    data.map((row: { [key: string]: unknown }) => {
-      const rowData: string[] = []
-      columnNames.forEach((columnName: string) => {
-        const value = String(row[columnName])
-        const escapedValue = value.includes(",") ? `"${value}"` : value
-        rowData.push(escapedValue)
-      })
-      rowsData.push(rowData.join(","))
-    })
-    const text = columnNames.join(",") + "\n" + rowsData.join("\n")
-    const element = document.createElement("a")
-    element.setAttribute(
-      "href",
-      "data:text/csv;charset=utf-8," + encodeURIComponent(text)
-    )
-    element.setAttribute("download", fileName)
-    element.style.display = "none"
-    document.body.appendChild(element)
-    element.click()
-    document.body.removeChild(element)
+    exportToCSV(data, fileName)
   }
 
   useEffect(() => {
@@ -212,41 +191,41 @@ export default function DataExplorer() {
   ])
 
   return (
-    <main className="mx-3 md:mx-6 lg:mx-12 space-y-6 my-12 md:my-16">
+    <main className="mx-3 md:mx-6 lg:mx-12 space-y-8 my-12 md:my-16">
       <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
       <Tabs defaultValue={level} className="space-y-6">
         <div className="mx-auto flex flex-wrap items-center justify-center gap-3">
-          <TabsList className="flex h-auto flex-wrap items-center gap-1 rounded-full p-0 align-middle bg-primary-foreground sm:bg-primary">
+          <TabsList className="flex h-auto flex-wrap items-center gap-1 rounded-2xl p-0 align-middle bg-primary-foreground sm:bg-primary">
             <TabsTrigger
-              className="rounded-3xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
+              className="rounded-2xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="paper"
               onClick={() => setLevel("paper")}
             >
               Papers
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-3xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
+              className="rounded-2xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="study"
               onClick={() => setLevel("study")}
             >
               Studies
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-3xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
+              className="rounded-2xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="intervention"
               onClick={() => setLevel("intervention")}
             >
               Interventions
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-3xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
+              className="rounded-2xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="outcome"
               onClick={() => setLevel("outcome")}
             >
               Outcomes
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-3xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
+              className="rounded-2xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="effect"
               onClick={() => setLevel("effect")}
             >
@@ -256,25 +235,25 @@ export default function DataExplorer() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button className="w-32 rounded-3xl" variant="outline">
+              <Button className="w-32 rounded-2xl" variant="outline">
                 Download
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="rounded-3xl p-2">
+            <DropdownMenuContent className="rounded-xl p-2">
               <DropdownMenuItem
-                className="rounded-xl"
+                className="rounded-lg"
                 onClick={() => handleDownload(papers, "lime-papers.csv")}
               >
                 Papers
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-xl"
+                className="rounded-lg"
                 onClick={() => handleDownload(studies, "lime-studies.csv")}
               >
                 Studies
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-xl"
+                className="rounded-lg"
                 onClick={() =>
                   handleDownload(interventions, "lime-interventions.csv")
                 }
@@ -282,19 +261,19 @@ export default function DataExplorer() {
                 Interventions
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-xl"
+                className="rounded-lg"
                 onClick={() => handleDownload(outcomes, "lime-outcomes.csv")}
               >
                 Outcomes
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-xl"
+                className="rounded-lg"
                 onClick={() => handleDownload(effects, "lime-effects.csv")}
               >
                 Effects
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-xl"
+                className="rounded-lg"
                 onClick={() => handleDownload(all, "lime-data.csv")}
               >
                 All
@@ -351,7 +330,7 @@ export default function DataExplorer() {
           </Dialog>
         </div>
 
-        <TabsContent value="paper" className="space-y-3">
+        <TabsContent value="paper" className="space-y-4">
           <FilterPapers
             data={papers}
             setData={setDataPaper}
@@ -365,7 +344,7 @@ export default function DataExplorer() {
             totalRows={papers.length}
           />
         </TabsContent>
-        <TabsContent value="study" className="space-y-3">
+        <TabsContent value="study" className="space-y-4">
           <FilterStudies
             data={studies}
             setData={setDataStudy}
@@ -379,7 +358,7 @@ export default function DataExplorer() {
             totalRows={studies.length}
           />
         </TabsContent>
-        <TabsContent value="intervention" className="space-y-3">
+        <TabsContent value="intervention" className="space-y-4">
           <FilterInterventions
             data={interventions}
             setData={setDataIntervention}
@@ -393,7 +372,7 @@ export default function DataExplorer() {
             totalRows={interventions.length}
           />
         </TabsContent>
-        <TabsContent value="outcome" className="space-y-3">
+        <TabsContent value="outcome" className="space-y-4">
           <FilterOutcomes
             data={outcomes}
             setData={setDataOutcome}
@@ -407,7 +386,7 @@ export default function DataExplorer() {
             totalRows={outcomes.length}
           />
         </TabsContent>
-        <TabsContent value="effect" className="space-y-3">
+        <TabsContent value="effect" className="space-y-4">
           <FilterEffects
             data={effects}
             setData={setDataEffect}

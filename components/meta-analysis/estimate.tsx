@@ -54,8 +54,8 @@ export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <div className="space-y-12 mt-4">
-          <div className="mx-auto w-full space-y-12 text-center">
+        <div className="space-y-8 mt-4">
+          <div className="mx-auto w-full space-y-8 text-center">
             <div className="flex flex-col gap-2 bg-muted rounded-lg px-4 py-2">
               <div className="text-lg font-medium whitespace-nowrap">
                 Cohen&apos;s <span className="italic">d</span> effect size:{" "}
@@ -134,7 +134,7 @@ export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
                   </DialogHeader>
                   <div className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="text-center space-y-3">
+                      <div className="text-center space-y-2">
                         <h4 className="font-medium">
                           Probability of Superiority
                         </h4>
@@ -152,7 +152,7 @@ export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
                         </p>
                       </div>
 
-                      <div className="text-center space-y-3">
+                      <div className="text-center space-y-2">
                         <h4 className="font-medium">Cohen&apos;s U3</h4>
                         <p className="text-sm text-muted-foreground">
                           <span className="font-semibold text-foreground">

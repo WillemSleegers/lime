@@ -15,54 +15,12 @@ import { runMetaAnalysis } from "@/lib/r-functions"
 
 import codebook from "@/assets/data/codebook.json"
 import { Data, Datum, Egger, Estimate, Status } from "@/lib/types"
+import { exportToCSV } from "@/lib/csv-utils"
 import Link from "next/link"
 
 const handleDownload = (fileName: string, data?: Record<string, unknown>[]) => {
   if (!data) return
-
-  if (data.length === 0) {
-    console.warn("No data to download")
-    return
-  }
-
-  // Extract column names
-  const columnNames: string[] = []
-  data.forEach((item) => {
-    Object.keys(item).forEach((key) => {
-      if (!columnNames.includes(key)) {
-        columnNames.push(key)
-      }
-    })
-  })
-
-  // Loop over the data and extract values for each column
-  const rowsData: string[] = []
-
-  data.forEach((row: Record<string, unknown>) => {
-    const rowData: string[] = []
-    columnNames.forEach((columnName: string) => {
-      const value = String(row[columnName] || "")
-      // Escape commas, quotes, and newlines
-      const escapedValue =
-        value.includes(",") || value.includes('"') || value.includes("\n")
-          ? `"${value.replace(/"/g, '""')}"`
-          : value
-      rowData.push(escapedValue)
-    })
-    rowsData.push(rowData.join(","))
-  })
-
-  const text = columnNames.join(",") + "\n" + rowsData.join("\n")
-  const element = document.createElement("a")
-  element.setAttribute(
-    "href",
-    "data:text/csv;charset=utf-8," + encodeURIComponent(text)
-  )
-  element.setAttribute("download", fileName)
-  element.style.display = "none"
-  document.body.appendChild(element)
-  element.click()
-  document.body.removeChild(element)
+  exportToCSV(data, fileName)
 }
 
 const MetaAnalysisPage = () => {
@@ -153,7 +111,7 @@ const MetaAnalysisPage = () => {
   }, [status])
 
   return (
-    <main className="w-full max-w-4xl mx-auto space-y-6 my-12 md:my-16">
+    <main className="w-full max-w-4xl mx-auto space-y-8 my-12 md:my-16">
       <h1 className="text-center text-4xl font-bold">Meta-Analysis</h1>
       <div className="text-muted-foreground">
         Run a meta-analysis on selected effects from various intervention
