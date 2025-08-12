@@ -17,6 +17,7 @@ import codebook from "@/assets/data/codebook.json"
 import { Data, Datum, Egger, Estimate, Status } from "@/lib/types"
 import { exportToCSV } from "@/lib/csv-utils"
 import Link from "next/link"
+import DotPlotExample from "@/components/meta-analysis/dot-plot"
 
 const handleDownload = (fileName: string, data?: Record<string, unknown>[]) => {
   if (!data) return
@@ -131,6 +132,9 @@ const MetaAnalysisPage = () => {
         egger={egger}
         data={data}
       />
+      <div>
+        <DotPlotExample data={data} />
+      </div>
       <ForestPlot data={data} />
       <div className="p-3 flex justify-center gap-3">
         <RCode />
