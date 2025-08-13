@@ -147,7 +147,7 @@ export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
                             %
                           </span>{" "}
                           chance that a person picked at random from the
-                          intervention group will have a better score than a
+                          intervention group will have a higher score than a
                           person picked at random from the control group.
                         </p>
                       </div>
@@ -161,8 +161,8 @@ export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
                               : "-"}
                             %
                           </span>{" "}
-                          of people in the treatment group score better than the
-                          average of the people in the control group.
+                          of people in the intervention group score higher than
+                          the average of the people in the control group.
                         </p>
                       </div>
                     </div>
