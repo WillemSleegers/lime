@@ -87,7 +87,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
           />
         </div>
       </CollapsibleTrigger>
-      <CollapsibleContent className="CollapsibleContent">
+      <CollapsibleContent>
         {plotData ? (
           <div className="py-5" style={{ height: 30 * plotData.length }}>
             <ChartContainer config={chartConfig} className="h-full aspect-auto">
@@ -151,7 +151,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
             </ChartContainer>
           </div>
         ) : (
-          "Test"
+          <></>
         )}
       </CollapsibleContent>
     </Collapsible>

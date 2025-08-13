@@ -69,7 +69,7 @@ export const CollapsiblePublicationBias = (
           />
         </div>
       </CollapsibleTrigger>
-      <CollapsibleContent className="CollapsibleContent prose mx-auto">
+      <CollapsibleContent className="prose mx-auto">
         <div className="my-3">
           <h3 className="text-center">Small Study Effect Methods</h3>
           <h4 className="text-center">Egger&apos;s Test</h4>

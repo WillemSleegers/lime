@@ -6,7 +6,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer,
 } from "recharts"
 import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
@@ -15,9 +14,19 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import { ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { Data } from "@/lib/types"
+import { Data, Datum } from "@/lib/types"
+import { EffectDialogContent } from "./effect-dialog-content"
+import { ChartConfig, ChartContainer } from "../ui/chart"
+
 
 // Constants
 const ADAPTIVE_CONSTANTS = {
@@ -36,6 +45,7 @@ type DotData = {
   originalValue: number
   paperLabel: string
   binRange: string
+  effect: Datum
 }
 
 type DotPlotProps = {
@@ -44,6 +54,13 @@ type DotPlotProps = {
 
 const DotPlotExample = ({ data }: DotPlotProps) => {
   const [open, setOpen] = useState(false)
+
+  const chartConfig = {
+    desktop: {
+      label: "Desktop",
+      color: "var(--chart-1)",
+    },
+  } satisfies ChartConfig
 
   // Extract values for bin calculation
   const rawData = data?.map((d) => d.effect_size) || []
@@ -100,15 +117,37 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
 
 
 
-  const CustomDot = (props: { cx?: number; cy?: number }) => {
-    const { cx, cy } = props
+  const CustomDot = (props: { cx?: number; cy?: number; payload?: DotData }) => {
+    const { cx, cy, payload } = props
+    
+    if (!payload) return null
+    
     return (
-      <circle
-        cx={cx}
-        cy={cy}
-        r={dotSize / 10}
-        className="fill-primary stroke-primary"
-      />
+      <Dialog>
+        <DialogTrigger asChild>
+          <circle
+            cx={cx}
+            cy={cy}
+            r={dotSize / 10}
+            className="fill-primary stroke-primary cursor-pointer hover:fill-primary/80"
+          />
+        </DialogTrigger>
+        <DialogContent
+          className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl overflow-auto p-4"
+          style={{ maxHeight: "95dvh" }}
+          aria-description={
+            "Effect information of " + payload.effect.paper_label + " - " + payload.effect.effect
+          }
+          aria-describedby={payload.effect.paper_label + " - " + payload.effect.effect}
+        >
+          <DialogHeader>
+            <DialogTitle className="text-center">
+              {payload.effect.paper_label + " - " + payload.effect.effect}
+            </DialogTitle>
+          </DialogHeader>
+          <EffectDialogContent effect={payload.effect} />
+        </DialogContent>
+      </Dialog>
     )
   }
 
@@ -155,6 +194,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
         originalValue: value,
         paperLabel: datum.paper_label,
         binRange: `${bin.binStart.toFixed(1)} - ${bin.binEnd.toFixed(1)}`,
+        effect: datum,
       })
     })
 
@@ -221,11 +261,11 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
           />
         </div>
       </CollapsibleTrigger>
-      <CollapsibleContent className="CollapsibleContent">
+      <CollapsibleContent>
         <div className="py-5 space-y-6">
           {/* Chart */}
           <div className="w-full h-96">
-            <ResponsiveContainer width="100%" height="100%">
+            <ChartContainer config={chartConfig} className="h-full aspect-auto">
               <ScatterChart
                 margin={{ top: 20, right: 30, bottom: 20, left: 30 }}
               >
@@ -265,14 +305,14 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
                     style: { fontSize: "14px" },
                   }}
                 />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip content={<CustomTooltip />} isAnimationActive={false} />
                 <Scatter
                   name="Data Points"
                   data={dotData}
                   shape={<CustomDot />}
                 />
               </ScatterChart>
-            </ResponsiveContainer>
+            </ChartContainer>
           </div>
 
           {/* Controls */}
