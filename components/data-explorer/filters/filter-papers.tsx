@@ -15,6 +15,15 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 
+import {
+  MultiSelect,
+  MultiSelectContent,
+  MultiSelectGroup,
+  MultiSelectItem,
+  MultiSelectTrigger,
+  MultiSelectValue,
+} from "@/components/ui/multi-select"
+
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Slider } from "@/components/ui/slider"
 
@@ -29,6 +38,7 @@ import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 import { Dispatch, SetStateAction } from "react"
 import { Papers } from "@/lib/types"
 import { Toggle } from "@/components/ui/toggle"
+import { Checkbox } from "@/components/ui/checkbox"
 
 const formSchemaPapers = z.object({
   paper_year: z.number().array(),
@@ -53,7 +63,15 @@ type FilterPapersProps = {
 }
 
 export const FilterPapers = (props: FilterPapersProps) => {
-  const { data, setData, lock, setLock, setShouldHandleLocks, filterOpen, setFilterOpen } = props
+  const {
+    data,
+    setData,
+    lock,
+    setLock,
+    setShouldHandleLocks,
+    filterOpen,
+    setFilterOpen,
+  } = props
 
   const form = useForm<z.infer<typeof formSchemaPapers>>({
     resolver: zodResolver(formSchemaPapers),
@@ -64,8 +82,10 @@ export const FilterPapers = (props: FilterPapersProps) => {
         Math.min(...data.map((datum) => datum.paper_year)),
         Math.max(...data.map((datum) => datum.paper_year)),
       ],
-      paper_type: PAPER_TYPE_OPTIONS,
-      paper_open_access: PAPER_OPEN_ACCESS_OPTIONS,
+      paper_type: PAPER_TYPE_OPTIONS.map((option) => option.value),
+      paper_open_access: PAPER_OPEN_ACCESS_OPTIONS.map(
+        (option) => option.value
+      ),
     },
   })
 
@@ -95,19 +115,26 @@ export const FilterPapers = (props: FilterPapersProps) => {
   }
 
   return (
-    <FilterCollapsible title="Filter" open={filterOpen} onOpenChange={setFilterOpen}>
+    <FilterCollapsible
+      title="Filter"
+      open={filterOpen}
+      onOpenChange={setFilterOpen}
+    >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="flex flex-wrap gap-x-12 gap-y-6">
+          <div className="flex gap-8 flex-wrap items-baseline">
             <FormField
               control={form.control}
               name="paper_year"
               render={({ field }) => (
-                <FormItem className="w-60 flex flex-col gap-3">
+                <FormItem>
                   <FormLabel>Publication year</FormLabel>
+                  <FormDescription>
+                    From {field.value[0]} to {field.value[1]}
+                  </FormDescription>
                   <FormControl>
                     <Slider
-                      className="my-2"
+                      className="w-[200px]"
                       value={field.value}
                       minStepsBetweenThumbs={1}
                       max={Math.max(...data.map((datum) => datum.paper_year))}
@@ -116,9 +143,6 @@ export const FilterPapers = (props: FilterPapersProps) => {
                       onValueChange={field.onChange}
                     />
                   </FormControl>
-                  <FormDescription>
-                    From {field.value[0]} to {field.value[1]}
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -126,28 +150,47 @@ export const FilterPapers = (props: FilterPapersProps) => {
             <FormField
               control={form.control}
               name="paper_type"
-              render={({ field }) => (
-                <FormItem className="flex flex-col gap-2">
-                  <FormLabel>Paper type</FormLabel>
-                  <FormControl>
-                    <ToggleGroup
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      value={field.value}
-                    >
-                      {PAPER_TYPE_OPTIONS.map((option) => (
-                        <ToggleGroupItem
-                          key={option}
-                          value={option}
-                          variant="pill"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                    </ToggleGroup>
-                  </FormControl>
-
+              render={() => (
+                <FormItem>
+                  <div className="space-y-1">
+                    <FormLabel>Publication type</FormLabel>
+                  </div>
+                  {PAPER_TYPE_OPTIONS.map((option) => (
+                    <FormField
+                      key={option.value}
+                      control={form.control}
+                      name="paper_type"
+                      render={({ field }) => {
+                        return (
+                          <FormItem
+                            key={option.value}
+                            className="flex flex-row items-center gap-2"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(option.value)}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...field.value,
+                                        option.value,
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) => value !== option.value
+                                        )
+                                      )
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="text-sm font-normal">
+                              {option.label}
+                            </FormLabel>
+                          </FormItem>
+                        )
+                      }}
+                    />
+                  ))}
                   <FormMessage />
                 </FormItem>
               )}
@@ -155,27 +198,47 @@ export const FilterPapers = (props: FilterPapersProps) => {
             <FormField
               control={form.control}
               name="paper_open_access"
-              render={({ field }) => (
-                <FormItem className="flex flex-col gap-2">
-                  <FormLabel>Open access</FormLabel>
-                  <FormControl>
-                    <ToggleGroup
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      value={field.value}
-                    >
-                      {PAPER_OPEN_ACCESS_OPTIONS.map((option) => (
-                        <ToggleGroupItem
-                          key={option}
-                          value={option}
-                          variant="pill"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                    </ToggleGroup>
-                  </FormControl>
+              render={() => (
+                <FormItem>
+                  <div className="space-y-1">
+                    <FormLabel>Access type</FormLabel>
+                  </div>
+                  {PAPER_OPEN_ACCESS_OPTIONS.map((option) => (
+                    <FormField
+                      key={option.value}
+                      control={form.control}
+                      name="paper_open_access"
+                      render={({ field }) => {
+                        return (
+                          <FormItem
+                            key={option.value}
+                            className="flex flex-row items-center gap-2"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(option.value)}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...field.value,
+                                        option.value,
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) => value !== option.value
+                                        )
+                                      )
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="text-sm font-normal">
+                              {option.label}
+                            </FormLabel>
+                          </FormItem>
+                        )
+                      }}
+                    />
+                  ))}
                   <FormMessage />
                 </FormItem>
               )}
@@ -191,7 +254,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
           </div>
 
           <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto rounded-full text-white">
+            <Button type="submit" className="h-auto rounded-lg">
               Update table
             </Button>
             <Toggle

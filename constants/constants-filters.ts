@@ -8,11 +8,34 @@ import { customSort } from "@/lib/utils"
 const NA_OPTIONS = ["none", "N/A"]
 
 // Paper-level
-export const PAPER_TYPE_OPTIONS = customSort([
-  ...new Set(papers.map((datum) => datum.paper_type)),
-])
+export const PAPER_TYPE_OPTIONS = [
+  {
+    value: "peer reviewed paper",
+    label: "Peer reviewed paper (journal articles, conference papers)",
+  },
+  {
+    value: "preprint",
+    label: "Preprint (early drafts, not yet peer-reviewed)",
+  },
+  {
+    value: "thesis",
+    label: "Thesis (student research)",
+  },
+  {
+    value: "report",
+    label: "Report (government, institutional publications)",
+  },
+]
+
 export const PAPER_OPEN_ACCESS_OPTIONS = [
-  ...new Set(papers.map((datum) => datum.paper_open_access)),
+  {
+    value: "paywalled",
+    label: "Paywalled (paid access required)",
+  },
+  {
+    value: "open access",
+    label: "Open access (free to read)",
+  },
 ]
 
 // Study-level

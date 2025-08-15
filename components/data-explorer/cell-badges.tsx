@@ -20,8 +20,7 @@ export const CellBadges = ({ value }: CellBadgesProps) => {
       return (
         <Badge
           key={e}
-          variant="secondary"
-          className="text-sm font-normal whitespace-nowrap"
+          className="text-sm font-normal whitespace-nowrap bg-muted text-foreground"
         >
           {e}
         </Badge>
@@ -31,8 +30,7 @@ export const CellBadges = ({ value }: CellBadgesProps) => {
         return (
           <Badge
             key={e}
-            variant="secondary"
-            className="text-sm font-normal whitespace-nowrap"
+            className="text-sm font-normal whitespace-nowrap bg-muted text-foreground"
           >
             {e}
           </Badge>
@@ -47,8 +45,7 @@ export const CellBadges = ({ value }: CellBadgesProps) => {
         {badges.length > 3 && (
           <Button
             onClick={() => setShowMore((prev) => !prev)}
-            variant="secondary"
-            className="rounded-2xl h-[26px] w-auto px-2 bg-white outline outline-muted"
+            className="rounded-2xl h-[26px] w-auto px-2 bg-muted text-foreground outline outline-muted hover:bg-foreground/10"
             size="sm"
           >
             {showMore ? <MinusIcon size={14} /> : <PlusIcon size={14} />}
