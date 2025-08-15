@@ -1,10 +1,13 @@
 "use client"
 
+import { Dispatch, SetStateAction } from "react"
+
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 
-import { Button } from "@/components/ui/button"
+import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
+
 import {
   Form,
   FormControl,
@@ -14,18 +17,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-
-import {
-  MultiSelect,
-  MultiSelectContent,
-  MultiSelectGroup,
-  MultiSelectItem,
-  MultiSelectTrigger,
-  MultiSelectValue,
-} from "@/components/ui/multi-select"
-
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Toggle } from "@/components/ui/toggle"
+import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
+import { Checkbox } from "@/components/ui/checkbox"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
@@ -34,11 +29,7 @@ import {
   PAPER_OPEN_ACCESS_OPTIONS,
 } from "@/constants/constants-filters"
 
-import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
-import { Dispatch, SetStateAction } from "react"
 import { Papers } from "@/lib/types"
-import { Toggle } from "@/components/ui/toggle"
-import { Checkbox } from "@/components/ui/checkbox"
 
 const formSchemaPapers = z.object({
   paper_year: z.number().array(),
