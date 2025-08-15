@@ -126,7 +126,7 @@
     "intervention_condition": 2,
     "intervention_description": "Participants watched the \"Lisa the vegetarian\" Simpson's episode.",
     "intervention_content": "animal welfare",
-    "intervention_mechanism": "infotainment, origin of animal product, celebrity",
+    "intervention_mechanism": "infotainment, origin of animal product, authority/expertise",
     "intervention_medium": "video",
     "control_description": "",
     "sample_country": "United States"
@@ -282,7 +282,7 @@
     "intervention_condition": 2,
     "intervention_description": "A booklet that discussed the cruelty of animal farming and the health benefits of of removing animal products from one's diet and encouraged the reader to go vegan.",
     "intervention_content": "animal welfare, health",
-    "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
+    "intervention_mechanism": "factual, norms, negative emotional, origin of animal product, authority/expertise",
     "intervention_medium": "text",
     "control_description": "",
     "sample_country": "N/A"
@@ -294,7 +294,7 @@
     "intervention_condition": 3,
     "intervention_description": "A booklet that discussed the cruelty of animal farming and the health benefits of of removing animal products from one's diet and encouraged the reader to go vegetarian.",
     "intervention_content": "animal welfare, health",
-    "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
+    "intervention_mechanism": "factual, norms, negative emotional, origin of animal product, authority/expertise",
     "intervention_medium": "text",
     "control_description": "",
     "sample_country": "N/A"
@@ -306,7 +306,7 @@
     "intervention_condition": 4,
     "intervention_description": "A booklet that discussed the cruelty of animal farming and the health benefits of of removing animal products from one's diet and encouraged the reader to eat less meat.",
     "intervention_content": "animal welfare, health",
-    "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
+    "intervention_mechanism": "factual, norms, negative emotional, origin of animal product, authority/expertise",
     "intervention_medium": "text",
     "control_description": "",
     "sample_country": "N/A"
@@ -318,7 +318,7 @@
     "intervention_condition": 5,
     "intervention_description": "A booklet that discussed the cruelty of animal farming and the health benefits of of removing animal products from one's diet and encouraged the reader to cut out or cut back on meat and other animal products.",
     "intervention_content": "animal welfare, health",
-    "intervention_mechanism": "factual, norms, negative emotional, goal pursuit, celebrity",
+    "intervention_mechanism": "factual, norms, negative emotional, origin of animal product, authority/expertise",
     "intervention_medium": "text",
     "control_description": "",
     "sample_country": "N/A"
@@ -748,7 +748,7 @@
     "intervention_condition": 3,
     "intervention_description": "The icon representing the “green” food category was moved from the sixth position in the grid of icons in the digital menu (out of 10) to the first position.",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "",
     "sample_country": "Sweden"
@@ -1030,7 +1030,7 @@
     "intervention_condition": 1,
     "intervention_description": "A vegetarian dish was listed as the first item on the menu and was also made visible to customers at the counter",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "A meat dish was listed as the first item on the menu and was also made visible to customers at the counter., A meat dish was listed as the first item on the menu and was also made visible to customers at the counter",
     "sample_country": "Sweden"
@@ -1042,7 +1042,7 @@
     "intervention_condition": 2,
     "intervention_description": "A vegetarian dish was listed as the first item on the menu.",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "A meat dish was listed as the first item on the menu.",
     "sample_country": "Sweden"
@@ -1077,8 +1077,8 @@
     "study": 1,
     "intervention_condition": 1,
     "intervention_description": "\"Chef’s recommendation\" stickers were placed on the vegetarian sandwich bags. One vegetarian sandwich was displayed on a plate at eye-level with the content clearly visible. This plate was accompanied by a sign that read “Kokken anbefaler” (Chef's recommendation) and a brief description of the café’s sustainability goals. All vegetarian sandwiches were placed in first line-of-sight from the typical customer flow direction. The labels on vegetarian sandwiches were slightly more colourful and the bags were closed more aesthetically than meat sandwiches.",
-    "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_content": "environment",
+    "intervention_mechanism": "ease/salience, authority/expertise",
     "intervention_medium": "text",
     "control_description": "",
     "sample_country": "Denmark"
@@ -1090,7 +1090,7 @@
     "intervention_condition": 1,
     "intervention_description": "A 2-day workshop with the canteen kitchen staff on the relevance of promoting plant-based eating, basic principles of plant-based nutritional literacy, and practical demonstrations of how to improve the visual and sensory appeal of plant-based meals was conducted. Posters advertising the \"Sustainability Week\" initiative were placed in the cafeteria. The menu presented the vegetarian option as the \"suggestion of the day\" with an increased font size above the meat and fish options.",
     "intervention_content": "environment",
-    "intervention_mechanism": "choice architecture, norms",
+    "intervention_mechanism": "ease/salience, norms, authority/expertise",
     "intervention_medium": "text, image",
     "control_description": "",
     "sample_country": "Portugal"
@@ -1102,7 +1102,7 @@
     "intervention_condition": 2,
     "intervention_description": "Students passed by a vegetarian option first the cafeteria.",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria.",
     "sample_country": "England"
@@ -1114,7 +1114,7 @@
     "intervention_condition": 4,
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria.",
     "sample_country": "England"
@@ -1126,7 +1126,7 @@
     "intervention_condition": 6,
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria.",
     "sample_country": "England"
@@ -1138,7 +1138,7 @@
     "intervention_condition": 2,
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria.",
     "sample_country": "England"
@@ -1150,7 +1150,7 @@
     "intervention_condition": 4,
     "intervention_description": "Students passed by a vegetarian option first when entering the cafeteria.",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "Students passed by a meat option first when entering the cafeteria.",
     "sample_country": "England"
@@ -1268,7 +1268,7 @@
     "intervention_condition": 2,
     "intervention_description": "Individuals responded to an RSVP survey for an event in which the vegetarian option was the default meal preference.",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "Individuals responded to an RSVP survey for an event in which the meat option was the default meal preference.",
     "sample_country": "United States"
@@ -1304,7 +1304,7 @@
     "intervention_condition": 1,
     "intervention_description": "The menu listed the daily vegetarian and fish dishes but not the meat dish and a sentence stated that “an option containing meat is available on request.”",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "The menu contained, as before, the daily meat and fish options for the whole week, and had an additional sentence stating that “a vegetarian option is available on request.”",
     "sample_country": "Sweden"
@@ -1316,7 +1316,7 @@
     "intervention_condition": 1,
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the plant-based default condition, the plant-based sausage was selected.",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options, text",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo.",
     "sample_country": "N/A"
@@ -1328,7 +1328,7 @@
     "intervention_condition": 2,
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the sustainable plant-based default condition, the plant-based sausage was selected and a pop-up message said \"We have selected the most sustainable sausage for you”.",
     "intervention_content": "environment",
-    "intervention_mechanism": "choice architecture, factual",
+    "intervention_mechanism": "ease/salience, factual",
     "intervention_medium": "menu/food options, text",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo.",
     "sample_country": "N/A"
@@ -1339,8 +1339,8 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the tasty plant-based default conditions, the plant-based sausage was selected and a pop-up message said \"We have selected the tastiest sausage for you”.",
-    "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_content": "taste/disgust",
+    "intervention_mechanism": "ease/salience, authority/expertise",
     "intervention_medium": "menu/food options, text",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo.",
     "sample_country": "N/A"
@@ -1532,7 +1532,7 @@
     "intervention_condition": 2,
     "intervention_description": "The vegetarian option (veggie burger) was labeled as the dish of the day",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
     "control_description": "",
     "sample_country": "France"
@@ -1544,7 +1544,7 @@
     "intervention_condition": 4,
     "intervention_description": "The vegetarian option (veggie burger) was labeled as the dish of the day",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
     "control_description": "",
     "sample_country": "France"
@@ -1568,7 +1568,7 @@
     "intervention_condition": 2,
     "intervention_description": "33% of the meals offered in the cafeteria contained meat",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "64% of the meals offered in the cafeteria contained meat (close to the number of meat meals offered in orevious years)",
     "sample_country": "Switzerland"
@@ -1580,7 +1580,7 @@
     "intervention_condition": 1,
     "intervention_description": "The vegetarian option was labeled as \"our recommendation\"",
     "intervention_content": "none",
-    "intervention_mechanism": "choice architecture",
+    "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
     "control_description": "original setup in the cafeteria",
     "sample_country": "Switzerland"

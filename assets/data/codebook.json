@@ -13,7 +13,7 @@
     "column": "paper_status",
     "description": "The status of processing the paper: excluded = checked and does not meet inclusion criteria, contact authors = meets inclusion criteria but necesary information are not reported and authors need to be contacted, ready to code = paper (probably) meets inclusion criteria and needs to be coded, analyze raw data = necessary information not reported but can be extracted from the data that is shared, calculate effect size = paper has been coded and relevant effect sizes need to be calculated for the website, add to webiste = effect size has been calculated and paper can be added to the webiste, included = paper has been included in the website",
     "data_type": "factor",
-    "factor_levels": "included, excluded, contact authors, calculate effect sizes, ready to code,  analyze raw data"
+    "factor_levels": "included, excluded, contact authors, calculate effect sizes, ready to code, analyze raw data,  analyze raw data"
   },
   {
     "column": "paper_authors",
@@ -50,7 +50,7 @@
     "column": "paper_open_access",
     "description": "Whether the paper is open access or not.",
     "data_type": "factor",
-    "factor_levels": "no, yes"
+    "factor_levels": "paywalled, open access"
   },
   {
     "column": "paper_notes",
@@ -271,20 +271,20 @@
     "column": "intervention_content",
     "description": "Content categories of different appeals to reduce meat consumption",
     "data_type": "factor",
-    "factor_levels": "personal image, environment, animal welfare, health, none, taste/ disgust",
+    "factor_levels": "personal image, environment, animal welfare, health, none, taste/disgust",
     "notes": "if an intervention refers to the relative costs of a plant-based vs. meat-based diet, price should be added here"
   },
   {
     "column": "intervention_mechanism",
     "description": "The psychological mechanism targeted by the intervention(s)",
     "data_type": "factor",
-    "factor_levels": "factual, negative emotional, perspective taking, goal pursuit, norms, origin of animal product, infotainment, celebrity, choice architecture, positive emotional, taste, logical argument, identity, price, other"
+    "factor_levels": "factual, negative emotional, perspective taking, goal pursuit, norms, origin of animal product, infotainment, authority/expertise, ease/salience, positive emotional, taste, logical argument, identity, price, other"
   },
   {
     "column": "intervention_medium",
     "description": "The medium in which the intervention(s) were adminstered",
     "data_type": "factor",
-    "factor_levels": "text, presentation, video, 3D video, image, menu/ food options, in-person, price"
+    "factor_levels": "text, presentation, video, 3D video, image, menu/food options, in-person, price"
   },
   {
     "column": "condition_notes",
@@ -328,7 +328,7 @@
     "column": "outcome_measurement_type",
     "description": "A categoriziation of how the outcome was measured: food diary, sales data, survey.",
     "data_type": "factor",
-    "factor_levels": "survey, food diary, sales data, other, meal choice"
+    "factor_levels": "survey, food diary, sales data, meal choice"
   },
   {
     "column": "outcome_product_type",
@@ -340,7 +340,7 @@
     "column": "outcome_product_subtype",
     "description": "A more precise type of animal product that the outcome is about.",
     "data_type": "factor",
-    "factor_levels": "red meat, white meat, pork, poultry, fish, beef, processed meat, chicken, turkey, dairy, lamb, seafood, red and processed meat, milk, yoghurt, cheese"
+    "factor_levels": "red meat, white meat, pork, processed meat, poultry, fish, beef, chicken, turkey, dairy, lamb, seafood, red and processed meat, milk, yoghurt, cheese"
   },
   {
     "column": "outcome_scale",
