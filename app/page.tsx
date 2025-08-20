@@ -27,7 +27,7 @@ export default function Home() {
             <span className="w-20 text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1000} target={counts.papers} />
             </span>
-            <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
+            <span className="text-muted-foreground text-lg md:text-xl">
               Papers
             </span>
           </div>
@@ -35,7 +35,7 @@ export default function Home() {
             <span className="w-25 text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1250} target={counts.studies} />
             </span>
-            <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
+            <span className="text-muted-foreground text-lg md:text-xl">
               Studies
             </span>
           </div>
@@ -43,7 +43,7 @@ export default function Home() {
             <span className="w-30 text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1500} target={counts.effects} />
             </span>
-            <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
+            <span className="text-muted-foreground text-lg md:text-xl">
               Effects
             </span>
           </div>
@@ -51,7 +51,7 @@ export default function Home() {
             <span className="w-35 text-2xl font-bold sm:text-3xl md:text-4xl">
               <Counter duration={1750} target={counts.observations} />
             </span>
-            <span className="text-muted-foreground text-base sm:text-lg md:text-xl">
+            <span className="text-muted-foreground text-lg md:text-xl">
               Observations
             </span>
           </div>
@@ -59,85 +59,86 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="mx-auto max-w-4xl p-4 space-y-4">
-        <h2 className="text-3xl font-bold md:text-4xl">
-          <span className="text-primary">About </span>
-          LIME
-        </h2>
-
-        <p className="text-muted-foreground text-base md:text-lg">
-          LIME is a continuously growing collection of experimental studies
-          examining psychological interventions to reduce animal product
-          consumption and improve attitudes towards animals. With LIME, you can
-          explore individual studies, understand the current state of research,
-          and evaluate which interventions have the strongest evidence behind
-          them.
-        </p>
-        <Button className="rounded-2xl" asChild variant="secondary">
+      <section className="mx-auto max-w-4xl p-4 space-y-6">
+        <div className="space-y-4">
+          <h2 className="text-3xl font-bold md:text-4xl">
+            <span className="text-primary">About </span>
+            LIME
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            LIME is a continuously growing collection of experimental studies
+            examining psychological interventions to reduce animal product
+            consumption and improve attitudes towards animals. With LIME, you
+            can explore individual studies, understand the current state of
+            research, and evaluate which interventions have the strongest
+            evidence behind them.
+          </p>
+        </div>
+        <Button className="rounded-lg" asChild>
           <Link href="/about/">Learn more</Link>
         </Button>
       </section>
 
       {/* Data explorer */}
-      <section className="text-center max-w-6xl mx-auto space-y-6">
-        <div className="px-4 space-y-4">
+      <section className="text-center max-w-4xl mx-auto space-y-6">
+        <div className="p-4 space-y-4">
           <h2 className="text-3xl font-bold md:text-4xl">
             <span className="text-primary">Explore</span> Studies
           </h2>
-          <p className="text-muted-foreground mx-auto text-base md:w-3/4 md:text-lg">
+          <p className="text-muted-foreground mx-auto text-lg">
             Browse our database of research papers testing interventions to
             reduce meat consumption. Filter, sort, and explore study details,
             methods, and outcomes.
           </p>
         </div>
         <PaperCarousel />
-        <Button className="rounded-2xl" asChild variant="secondary">
+        <Button className="rounded-lg" asChild>
           <Link href="/data-explorer/">Begin exploring</Link>
         </Button>
       </section>
 
       {/* Meta-analysis */}
-      <section className="p-4 text-center space-y-6">
+      <section className="mx-auto max-w-4xl p-4 text-center space-y-6">
         <h2 className="text-3xl font-bold md:text-4xl">
           <span className="text-primary">Analyze</span> Data
         </h2>
-        <p className="text-muted-foreground mx-auto text-base md:w-3/4 md:text-lg">
+        <p className="text-muted-foreground mx-auto text-lg">
           Use our analysis tools to aggregate study results and find out how
           strong the evidence is.
         </p>
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div className="mx-auto max-w-80">
-            <h3 className="text-xl leading-none font-semibold tracking-tight whitespace-nowrap">
+        <div className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto max-w-80 space-y-2">
+            <h3 className="text-xl leading-none font-semibold tracking-tight">
               Summary statistics
             </h3>
-            <p className="text-muted-foreground text-sm md:text-base">
+            <p className="text-muted-foreground text-base">
               Get statistics on selected papers such as sample sizes and open
               science practices.
             </p>
           </div>
-          <div className="mx-auto max-w-80">
-            <h3 className="text-xl leading-none font-semibold tracking-tight whitespace-nowrap">
+          <div className="mx-auto max-w-80 space-y-2">
+            <h3 className="text-xl leading-none font-semibold tracking-tight">
               Meta-analysis
             </h3>
-            <p className="text-muted-foreground text-sm md:text-base">
+            <p className="text-muted-foreground text-base">
               Calculate meta-analytic effect sizes and see them translated into
               several alternatives to help you better understand the
               effectiveness of interventions.
             </p>
           </div>
-          <div className="mx-auto max-w-80">
-            <h3 className="text-xl leading-none font-semibold tracking-tight whitespace-nowrap">
+          <div className="mx-auto max-w-80 space-y-2">
+            <h3 className="text-xl leading-none font-semibold tracking-tight">
               Data visualization
             </h3>
-            <p className="text-muted-foreground text-sm md:text-base">
+            <p className="text-muted-foreground text-base">
               Inspect data visualizations of effect sizes and other descriptives
               about intervention studies included in the database.
             </p>
           </div>
         </div>
 
-        <Button className="mt-6 rounded-2xl" variant="secondary" asChild>
-          <Link href="/data-explorer/">Begin analyzing</Link>
+        <Button className="rounded-lg" asChild>
+          <Link href="/meta-analysis/">Run a meta-analysis</Link>
         </Button>
       </section>
     </div>
