@@ -37,10 +37,8 @@ export function MainNav() {
   const [open, setOpen] = useState(false)
 
   return (
-    <div
-      className={`mx-auto flex max-w-6xl flex-col items-stretch justify-center gap-6 p-3 md:flex-row md:items-center`}
-    >
-      <div className="flex h-10 items-center justify-between">
+    <div className="mx-auto w-full flex max-w-6xl flex-col items-stretch justify-center gap-6 p-3 md:flex-row md:items-center">
+      <div className=" flex h-10 items-center justify-between">
         <Link
           href="/"
           className="flex flex-row items-center gap-3 text-2xl leading-normal font-semibold"
