@@ -9,15 +9,15 @@ import counts from "@/assets/data/counts.json"
 
 export default function Home() {
   return (
-    <div className="mt-6 mb-12 md:mb-18 space-y-12 md:mt-18 md:space-y-12 lg:mt-24">
+    <div className="mt-8 mb-16 md:mb-24 space-y-16 md:mt-24 md:space-y-20 lg:mt-32">
       {/* Hero */}
-      <section className="mx-auto max-w-xl space-y-8 p-4 text-center sm:max-w-2xl md:space-y-8">
+      <section className="mx-auto max-w-4xl space-y-10 p-4 text-center md:space-y-12">
         <Badge variant="destructive">Currently in beta</Badge>
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl md:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-balance sm:text-5xl md:text-6xl">
             Library of Interventions for Meat Elimination
           </h1>
-          <p className="text-muted-foreground mx-auto text-center text-lg md:text-xl">
+          <p className="text-muted-foreground mx-auto text-center text-lg md:text-xl leading-relaxed">
             A library of intervention studies to reduce the consumption of
             animal products.
           </p>
@@ -65,7 +65,7 @@ export default function Home() {
             <span className="text-primary">About </span>
             LIME
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg leading-relaxed">
             LIME is a continuously growing collection of experimental studies
             examining psychological interventions to reduce animal product
             consumption and improve attitudes towards animals. With LIME, you
