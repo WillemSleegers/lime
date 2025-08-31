@@ -40,7 +40,7 @@
     "react-syntax-highlighter": "^15.6",
     "recharts": "^3.0",
     "tailwind-merge": "^3.3",
-    "webr": "^0.5",
+    "webr": "0.5.4",
     "zod": "^4.0"
   },
   "devDependencies": {
