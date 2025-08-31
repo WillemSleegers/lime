@@ -51,5 +51,8 @@ export const META_ANALYSIS_DEFAULTS = {
     "in-person",
     "price",
   ],
-  study_preregistered: ["yes", "no"],
+  study_preregistered: [
+    "Preregistered (study design registered before data collection)",
+    "Not preregistered",
+  ],
 }

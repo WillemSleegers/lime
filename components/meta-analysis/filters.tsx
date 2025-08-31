@@ -43,6 +43,7 @@ import {
 import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
 
 import { Data } from "@/lib/types"
+import { Checkbox } from "../ui/checkbox"
 
 const formSchema = z
   .object({
@@ -211,7 +212,8 @@ export const Filters = ({ status, setData }: FiltersProps) => {
     if (subset.length == 0) {
       form.setError("root", {
         type: "manual",
-        message: "No papers match these criteria",
+        message:
+          "No papers match these criteria; please relax the inclusion criteria to include effects from more papers",
       })
       return
     } else if (new Set(subset.map((d) => d.paper)).size < 2) {
@@ -624,34 +626,54 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                 {/* Samples-level */}
                 <h2 className="text-xl font-semibold">Study</h2>
                 <div className="mx-3 space-y-4">
-                  {/* Sample country */}
+                  {/* Study preregistration */}
                   <FormField
                     control={form.control}
                     name="study_preregistered"
-                    render={({ field }) => (
+                    render={() => (
                       <FormItem>
-                        <FormLabel className="text-base">
-                          Preregistered
-                        </FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            type="multiple"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {STUDY_PREREGISTERED_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                          </ToggleGroup>
-                        </FormControl>
+                        <div className="space-y-1">
+                          <FormLabel>Study preregistration</FormLabel>
+                        </div>
+                        {STUDY_PREREGISTERED_OPTIONS.map((option) => (
+                          <FormField
+                            key={option.value}
+                            control={form.control}
+                            name="study_preregistered"
+                            render={({ field }) => {
+                              return (
+                                <FormItem
+                                  key={option.value}
+                                  className="flex flex-row items-center gap-2"
+                                >
+                                  <FormControl>
+                                    <Checkbox
+                                      checked={field.value?.includes(
+                                        option.value
+                                      )}
+                                      onCheckedChange={(checked) => {
+                                        return checked
+                                          ? field.onChange([
+                                              ...field.value,
+                                              option.value,
+                                            ])
+                                          : field.onChange(
+                                              field.value?.filter(
+                                                (value) =>
+                                                  value !== option.value
+                                              )
+                                            )
+                                      }}
+                                    />
+                                  </FormControl>
+                                  <FormLabel className="text-sm font-normal">
+                                    {option.label}
+                                  </FormLabel>
+                                </FormItem>
+                              )
+                            }}
+                          />
+                        ))}
                         <FormMessage />
                       </FormItem>
                     )}

@@ -20,7 +20,6 @@ import { Input } from "@/components/ui/input"
 
 import { Toggle } from "@/components/ui/toggle"
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 import {
   STUDY_PREREGISTERED_OPTIONS,
@@ -37,7 +36,7 @@ const formSchemaStudies = z.object({
   study_n: z.coerce
     .number()
     .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
-  study_pregistered: z
+  study_preregistered: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
@@ -86,7 +85,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     reValidateMode: "onSubmit",
     defaultValues: {
       study_n: 1,
-      study_pregistered: STUDY_PREREGISTERED_OPTIONS.map(
+      study_preregistered: STUDY_PREREGISTERED_OPTIONS.map(
         (option) => option.value
       ),
       study_data_available: STUDY_DATA_AVAILABLE_OPTIONS.map(
@@ -110,7 +109,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     })
 
     subset = subset.filter((datum) => {
-      return values.study_pregistered.some((value) =>
+      return values.study_preregistered.some((value) =>
         datum.study_preregistered.includes(value)
       )
     })
@@ -176,7 +175,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
 
             <FormField
               control={form.control}
-              name="study_pregistered"
+              name="study_preregistered"
               render={() => (
                 <FormItem>
                   <div className="space-y-1">
@@ -186,7 +185,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                     <FormField
                       key={option.value}
                       control={form.control}
-                      name="study_pregistered"
+                      name="study_preregistered"
                       render={({ field }) => {
                         return (
                           <FormItem
