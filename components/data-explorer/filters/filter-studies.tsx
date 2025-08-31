@@ -25,12 +25,13 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
   STUDY_PREREGISTERED_OPTIONS,
   STUDY_DATA_AVAILABLE_OPTIONS,
-  STUDY_CONDITION_ASSIGNMENT,
-  STUDY_DESIGN,
-  STUDY_RANDOMIZATION,
+  STUDY_DESIGN_OPTIONS,
+  STUDY_CONDITION_ASSIGNMENT_OPTIONS,
+  STUDY_RANDOMIZATION_OPTIONS,
 } from "@/constants/constants-filters"
 
 import { Studies } from "@/lib/types"
+import { Checkbox } from "@/components/ui/checkbox"
 
 const formSchemaStudies = z.object({
   study_n: z.coerce
@@ -44,11 +45,11 @@ const formSchemaStudies = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
-  study_condition_assignment: z
+  study_design: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
-  study_design: z
+  study_condition_assignment: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
@@ -69,7 +70,15 @@ type FilterStudiesProps = {
 }
 
 export const FilterStudies = (props: FilterStudiesProps) => {
-  const { data, setData, lock, setLock, setShouldHandleLocks, filterOpen, setFilterOpen } = props
+  const {
+    data,
+    setData,
+    lock,
+    setLock,
+    setShouldHandleLocks,
+    filterOpen,
+    setFilterOpen,
+  } = props
 
   const form = useForm<z.infer<typeof formSchemaStudies>>({
     resolver: zodResolver(formSchemaStudies),
@@ -77,11 +86,19 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     reValidateMode: "onSubmit",
     defaultValues: {
       study_n: 1,
-      study_pregistered: STUDY_PREREGISTERED_OPTIONS,
-      study_data_available: STUDY_DATA_AVAILABLE_OPTIONS,
-      study_condition_assignment: STUDY_CONDITION_ASSIGNMENT,
-      study_design: STUDY_DESIGN,
-      study_randomization: STUDY_RANDOMIZATION,
+      study_pregistered: STUDY_PREREGISTERED_OPTIONS.map(
+        (option) => option.value
+      ),
+      study_data_available: STUDY_DATA_AVAILABLE_OPTIONS.map(
+        (option) => option.value
+      ),
+      study_design: STUDY_DESIGN_OPTIONS.map((option) => option.value),
+      study_condition_assignment: STUDY_CONDITION_ASSIGNMENT_OPTIONS.map(
+        (option) => option.value
+      ),
+      study_randomization: STUDY_RANDOMIZATION_OPTIONS.map(
+        (option) => option.value
+      ),
     },
   })
 
@@ -127,10 +144,14 @@ export const FilterStudies = (props: FilterStudiesProps) => {
   }
 
   return (
-    <FilterCollapsible title="Filter" open={filterOpen} onOpenChange={setFilterOpen}>
+    <FilterCollapsible
+      title="Filter"
+      open={filterOpen}
+      onOpenChange={setFilterOpen}
+    >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="flex flex-wrap gap-x-12 gap-y-4">
+          <div className="flex gap-8 flex-wrap items-baseline">
             <FormField
               control={form.control}
               name="study_n"
@@ -139,7 +160,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                   <FormLabel>Minimum sample size</FormLabel>
                   <FormControl>
                     <Input
-                      className="rounded-2xl bg-white"
+                      className="rounded-lg bg-white"
                       type="number"
                       {...field}
                     />
@@ -156,27 +177,47 @@ export const FilterStudies = (props: FilterStudiesProps) => {
             <FormField
               control={form.control}
               name="study_pregistered"
-              render={({ field }) => (
-                <FormItem className="flex flex-col gap-2">
-                  <FormLabel>Preregistered</FormLabel>
-                  <FormControl>
-                    <ToggleGroup
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      value={field.value}
-                    >
-                      {STUDY_PREREGISTERED_OPTIONS.map((option) => (
-                        <ToggleGroupItem
-                          key={option}
-                          value={option}
-                          variant="pill"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                    </ToggleGroup>
-                  </FormControl>
+              render={() => (
+                <FormItem>
+                  <div className="space-y-1">
+                    <FormLabel>Study preregistration</FormLabel>
+                  </div>
+                  {STUDY_PREREGISTERED_OPTIONS.map((option) => (
+                    <FormField
+                      key={option.value}
+                      control={form.control}
+                      name="study_pregistered"
+                      render={({ field }) => {
+                        return (
+                          <FormItem
+                            key={option.value}
+                            className="flex flex-row items-center gap-2"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(option.value)}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...field.value,
+                                        option.value,
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) => value !== option.value
+                                        )
+                                      )
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="text-sm font-normal">
+                              {option.label}
+                            </FormLabel>
+                          </FormItem>
+                        )
+                      }}
+                    />
+                  ))}
                   <FormMessage />
                 </FormItem>
               )}
@@ -185,27 +226,47 @@ export const FilterStudies = (props: FilterStudiesProps) => {
             <FormField
               control={form.control}
               name="study_data_available"
-              render={({ field }) => (
-                <FormItem className="flex flex-col gap-2">
-                  <FormLabel>Data available</FormLabel>
-                  <FormControl>
-                    <ToggleGroup
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      value={field.value}
-                    >
-                      {STUDY_DATA_AVAILABLE_OPTIONS.map((option) => (
-                        <ToggleGroupItem
-                          key={option}
-                          value={option}
-                          variant="pill"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                    </ToggleGroup>
-                  </FormControl>
+              render={() => (
+                <FormItem>
+                  <div className="space-y-1">
+                    <FormLabel>Data availability</FormLabel>
+                  </div>
+                  {STUDY_DATA_AVAILABLE_OPTIONS.map((option) => (
+                    <FormField
+                      key={option.value}
+                      control={form.control}
+                      name="study_data_available"
+                      render={({ field }) => {
+                        return (
+                          <FormItem
+                            key={option.value}
+                            className="flex flex-row items-center gap-2"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(option.value)}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...field.value,
+                                        option.value,
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) => value !== option.value
+                                        )
+                                      )
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="text-sm font-normal">
+                              {option.label}
+                            </FormLabel>
+                          </FormItem>
+                        )
+                      }}
+                    />
+                  ))}
                   <FormMessage />
                 </FormItem>
               )}
@@ -214,27 +275,47 @@ export const FilterStudies = (props: FilterStudiesProps) => {
             <FormField
               control={form.control}
               name="study_design"
-              render={({ field }) => (
-                <FormItem className="flex flex-col gap-2">
-                  <FormLabel>Study design</FormLabel>
-                  <FormControl>
-                    <ToggleGroup
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      value={field.value}
-                    >
-                      {STUDY_DESIGN.map((option) => (
-                        <ToggleGroupItem
-                          key={option}
-                          value={option}
-                          variant="pill"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                    </ToggleGroup>
-                  </FormControl>
+              render={() => (
+                <FormItem>
+                  <div className="space-y-1">
+                    <FormLabel>Study design</FormLabel>
+                  </div>
+                  {STUDY_DESIGN_OPTIONS.map((option) => (
+                    <FormField
+                      key={option.value}
+                      control={form.control}
+                      name="study_design"
+                      render={({ field }) => {
+                        return (
+                          <FormItem
+                            key={option.value}
+                            className="flex flex-row items-center gap-2"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(option.value)}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...field.value,
+                                        option.value,
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) => value !== option.value
+                                        )
+                                      )
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="text-sm font-normal">
+                              {option.label}
+                            </FormLabel>
+                          </FormItem>
+                        )
+                      }}
+                    />
+                  ))}
                   <FormMessage />
                 </FormItem>
               )}
@@ -243,27 +324,47 @@ export const FilterStudies = (props: FilterStudiesProps) => {
             <FormField
               control={form.control}
               name="study_condition_assignment"
-              render={({ field }) => (
-                <FormItem className="flex flex-col gap-2">
-                  <FormLabel>Condition assignment</FormLabel>
-                  <FormControl>
-                    <ToggleGroup
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      value={field.value}
-                    >
-                      {STUDY_CONDITION_ASSIGNMENT.map((option) => (
-                        <ToggleGroupItem
-                          key={option}
-                          value={option}
-                          variant="pill"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                    </ToggleGroup>
-                  </FormControl>
+              render={() => (
+                <FormItem>
+                  <div className="space-y-1">
+                    <FormLabel>Assignment method</FormLabel>
+                  </div>
+                  {STUDY_CONDITION_ASSIGNMENT_OPTIONS.map((option) => (
+                    <FormField
+                      key={option.value}
+                      control={form.control}
+                      name="study_condition_assignment"
+                      render={({ field }) => {
+                        return (
+                          <FormItem
+                            key={option.value}
+                            className="flex flex-row items-center gap-2"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(option.value)}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...field.value,
+                                        option.value,
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) => value !== option.value
+                                        )
+                                      )
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="text-sm font-normal">
+                              {option.label}
+                            </FormLabel>
+                          </FormItem>
+                        )
+                      }}
+                    />
+                  ))}
                   <FormMessage />
                 </FormItem>
               )}
@@ -272,27 +373,47 @@ export const FilterStudies = (props: FilterStudiesProps) => {
             <FormField
               control={form.control}
               name="study_randomization"
-              render={({ field }) => (
-                <FormItem className="flex flex-col gap-2">
-                  <FormLabel>Randomization</FormLabel>
-                  <FormControl>
-                    <ToggleGroup
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      value={field.value}
-                    >
-                      {STUDY_RANDOMIZATION.map((option) => (
-                        <ToggleGroupItem
-                          key={option}
-                          value={option}
-                          variant="pill"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                    </ToggleGroup>
-                  </FormControl>
+              render={() => (
+                <FormItem>
+                  <div className="space-y-1">
+                    <FormLabel>Randomization</FormLabel>
+                  </div>
+                  {STUDY_RANDOMIZATION_OPTIONS.map((option) => (
+                    <FormField
+                      key={option.value}
+                      control={form.control}
+                      name="study_randomization"
+                      render={({ field }) => {
+                        return (
+                          <FormItem
+                            key={option.value}
+                            className="flex flex-row items-center gap-2"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(option.value)}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([
+                                        ...field.value,
+                                        option.value,
+                                      ])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) => value !== option.value
+                                        )
+                                      )
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="text-sm font-normal">
+                              {option.label}
+                            </FormLabel>
+                          </FormItem>
+                        )
+                      }}
+                    />
+                  ))}
                   <FormMessage />
                 </FormItem>
               )}

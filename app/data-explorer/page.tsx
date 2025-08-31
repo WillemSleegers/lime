@@ -53,7 +53,7 @@ export default function DataExplorer() {
     studies,
     interventions,
     outcomes,
-    effects
+    effects,
   })
 
   // Batched display data state (after lock operations)
@@ -62,7 +62,7 @@ export default function DataExplorer() {
     studies,
     interventions,
     outcomes,
-    effects
+    effects,
   })
 
   // Batched lock state
@@ -71,69 +71,96 @@ export default function DataExplorer() {
     studies: false,
     interventions: false,
     outcomes: false,
-    effects: false
+    effects: false,
   })
 
   const [shouldHandleLocks, setShouldHandleLocks] = useState(false)
-  
+
   // Global filter collapsible state - persists across tab changes
   const [filterOpen, setFilterOpen] = useState(false)
 
   // Create properly typed setter functions for each data type
-  const setDataPapers: React.Dispatch<React.SetStateAction<typeof papers>> = (newData) => 
-    setFilteredData(prev => ({ 
-      ...prev, 
-      papers: typeof newData === 'function' ? newData(prev.papers) : newData 
+  const setDataPapers: React.Dispatch<React.SetStateAction<typeof papers>> = (
+    newData
+  ) =>
+    setFilteredData((prev) => ({
+      ...prev,
+      papers: typeof newData === "function" ? newData(prev.papers) : newData,
     }))
-  const setDataStudies: React.Dispatch<React.SetStateAction<typeof studies>> = (newData) => 
-    setFilteredData(prev => ({ 
-      ...prev, 
-      studies: typeof newData === 'function' ? newData(prev.studies) : newData 
+  const setDataStudies: React.Dispatch<React.SetStateAction<typeof studies>> = (
+    newData
+  ) =>
+    setFilteredData((prev) => ({
+      ...prev,
+      studies: typeof newData === "function" ? newData(prev.studies) : newData,
     }))
-  const setDataInterventions: React.Dispatch<React.SetStateAction<typeof interventions>> = (newData) => 
-    setFilteredData(prev => ({ 
-      ...prev, 
-      interventions: typeof newData === 'function' ? newData(prev.interventions) : newData 
+  const setDataInterventions: React.Dispatch<
+    React.SetStateAction<typeof interventions>
+  > = (newData) =>
+    setFilteredData((prev) => ({
+      ...prev,
+      interventions:
+        typeof newData === "function" ? newData(prev.interventions) : newData,
     }))
-  const setDataOutcomes: React.Dispatch<React.SetStateAction<typeof outcomes>> = (newData) => 
-    setFilteredData(prev => ({ 
-      ...prev, 
-      outcomes: typeof newData === 'function' ? newData(prev.outcomes) : newData 
+  const setDataOutcomes: React.Dispatch<
+    React.SetStateAction<typeof outcomes>
+  > = (newData) =>
+    setFilteredData((prev) => ({
+      ...prev,
+      outcomes:
+        typeof newData === "function" ? newData(prev.outcomes) : newData,
     }))
-  const setDataEffects: React.Dispatch<React.SetStateAction<typeof effects>> = (newData) => 
-    setFilteredData(prev => ({ 
-      ...prev, 
-      effects: typeof newData === 'function' ? newData(prev.effects) : newData 
+  const setDataEffects: React.Dispatch<React.SetStateAction<typeof effects>> = (
+    newData
+  ) =>
+    setFilteredData((prev) => ({
+      ...prev,
+      effects: typeof newData === "function" ? newData(prev.effects) : newData,
     }))
 
   // Create properly typed lock setter functions
-  const setLockPapers: React.Dispatch<React.SetStateAction<boolean>> = (newLock) => 
-    setLocks(prev => ({ 
-      ...prev, 
-      papers: typeof newLock === 'function' ? newLock(prev.papers) : newLock 
+  const setLockPapers: React.Dispatch<React.SetStateAction<boolean>> = (
+    newLock
+  ) =>
+    setLocks((prev) => ({
+      ...prev,
+      papers: typeof newLock === "function" ? newLock(prev.papers) : newLock,
     }))
-  const setLockStudies: React.Dispatch<React.SetStateAction<boolean>> = (newLock) => 
-    setLocks(prev => ({ 
-      ...prev, 
-      studies: typeof newLock === 'function' ? newLock(prev.studies) : newLock 
+  const setLockStudies: React.Dispatch<React.SetStateAction<boolean>> = (
+    newLock
+  ) =>
+    setLocks((prev) => ({
+      ...prev,
+      studies: typeof newLock === "function" ? newLock(prev.studies) : newLock,
     }))
-  const setLockInterventions: React.Dispatch<React.SetStateAction<boolean>> = (newLock) => 
-    setLocks(prev => ({ 
-      ...prev, 
-      interventions: typeof newLock === 'function' ? newLock(prev.interventions) : newLock 
+  const setLockInterventions: React.Dispatch<React.SetStateAction<boolean>> = (
+    newLock
+  ) =>
+    setLocks((prev) => ({
+      ...prev,
+      interventions:
+        typeof newLock === "function" ? newLock(prev.interventions) : newLock,
     }))
-  const setLockOutcomes: React.Dispatch<React.SetStateAction<boolean>> = (newLock) => 
-    setLocks(prev => ({ 
-      ...prev, 
-      outcomes: typeof newLock === 'function' ? newLock(prev.outcomes) : newLock 
+  const setLockOutcomes: React.Dispatch<React.SetStateAction<boolean>> = (
+    newLock
+  ) =>
+    setLocks((prev) => ({
+      ...prev,
+      outcomes:
+        typeof newLock === "function" ? newLock(prev.outcomes) : newLock,
     }))
-  const setLockEffects: React.Dispatch<React.SetStateAction<boolean>> = (newLock) => 
-    setLocks(prev => ({ 
-      ...prev, 
-      effects: typeof newLock === 'function' ? newLock(prev.effects) : newLock 
+  const setLockEffects: React.Dispatch<React.SetStateAction<boolean>> = (
+    newLock
+  ) =>
+    setLocks((prev) => ({
+      ...prev,
+      effects: typeof newLock === "function" ? newLock(prev.effects) : newLock,
     }))
 
-  const handleDownload = (data: Record<string, unknown>[], fileName: string) => {
+  const handleDownload = (
+    data: Record<string, unknown>[],
+    fileName: string
+  ) => {
     exportToCSV(data, fileName)
   }
 
@@ -143,46 +170,98 @@ export default function DataExplorer() {
       // Start with current filtered data (mutable for efficiency)
       const result = {
         papers: [...filteredData.papers],
-        studies: [...filteredData.studies], 
+        studies: [...filteredData.studies],
         interventions: [...filteredData.interventions],
         outcomes: [...filteredData.outcomes],
-        effects: [...filteredData.effects]
+        effects: [...filteredData.effects],
       }
 
       // Apply locks efficiently
       if (locks.papers) {
         result.studies = semiJoin(result.studies, filteredData.papers, "paper")
-        result.interventions = semiJoin(result.interventions, filteredData.papers, "paper")
-        result.outcomes = semiJoin(result.outcomes, filteredData.papers, "paper")
+        result.interventions = semiJoin(
+          result.interventions,
+          filteredData.papers,
+          "paper"
+        )
+        result.outcomes = semiJoin(
+          result.outcomes,
+          filteredData.papers,
+          "paper"
+        )
         result.effects = semiJoin(result.effects, filteredData.papers, "paper")
       }
 
       if (locks.studies) {
         result.papers = semiJoin(result.papers, filteredData.studies, "paper")
-        result.interventions = semiJoin(result.interventions, filteredData.studies, ["paper", "study"])
-        result.outcomes = semiJoin(result.outcomes, filteredData.studies, ["paper", "study"])
-        result.effects = semiJoin(result.effects, filteredData.studies, ["paper", "study"])
+        result.interventions = semiJoin(
+          result.interventions,
+          filteredData.studies,
+          ["paper", "study"]
+        )
+        result.outcomes = semiJoin(result.outcomes, filteredData.studies, [
+          "paper",
+          "study",
+        ])
+        result.effects = semiJoin(result.effects, filteredData.studies, [
+          "paper",
+          "study",
+        ])
       }
 
       if (locks.interventions) {
-        result.papers = semiJoin(result.papers, filteredData.interventions, "paper")
-        result.studies = semiJoin(result.studies, filteredData.interventions, ["paper", "study"])
-        result.outcomes = semiJoin(result.outcomes, filteredData.interventions, ["paper", "study"])
-        result.effects = semiJoin(result.effects, filteredData.interventions, ["paper", "study"])
+        result.papers = semiJoin(
+          result.papers,
+          filteredData.interventions,
+          "paper"
+        )
+        result.studies = semiJoin(result.studies, filteredData.interventions, [
+          "paper",
+          "study",
+        ])
+        result.outcomes = semiJoin(
+          result.outcomes,
+          filteredData.interventions,
+          ["paper", "study"]
+        )
+        result.effects = semiJoin(result.effects, filteredData.interventions, [
+          "paper",
+          "study",
+        ])
       }
 
       if (locks.outcomes) {
         result.papers = semiJoin(result.papers, filteredData.outcomes, "paper")
-        result.studies = semiJoin(result.studies, filteredData.outcomes, ["paper", "study"])
-        result.interventions = semiJoin(result.interventions, filteredData.outcomes, ["paper", "study"])
-        result.effects = semiJoin(result.effects, filteredData.outcomes, ["paper", "study"])
+        result.studies = semiJoin(result.studies, filteredData.outcomes, [
+          "paper",
+          "study",
+        ])
+        result.interventions = semiJoin(
+          result.interventions,
+          filteredData.outcomes,
+          ["paper", "study"]
+        )
+        result.effects = semiJoin(result.effects, filteredData.outcomes, [
+          "paper",
+          "study",
+        ])
       }
 
       if (locks.effects) {
         result.papers = semiJoin(result.papers, filteredData.effects, "paper")
-        result.studies = semiJoin(result.studies, filteredData.effects, ["paper", "study"])
-        result.interventions = semiJoin(result.interventions, filteredData.effects, ["paper", "study"])
-        result.outcomes = semiJoin(result.outcomes, filteredData.effects, ["paper", "study"])
+        result.studies = semiJoin(result.studies, filteredData.effects, [
+          "paper",
+          "study",
+        ])
+        result.interventions = semiJoin(
+          result.interventions,
+          filteredData.effects,
+          ["paper", "study"]
+        )
+        result.outcomes = semiJoin(result.outcomes, filteredData.effects, [
+          "paper",
+          "study",
+        ])
       }
 
       // Single batched state update instead of 5 separate ones
@@ -237,7 +316,7 @@ export default function DataExplorer() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button className="w-32 rounded-2xl" variant="outline">
+              <Button className="w-32 rounded-lg" variant="outline">
                 Download
               </Button>
             </DropdownMenuTrigger>

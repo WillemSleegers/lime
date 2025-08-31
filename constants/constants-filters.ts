@@ -40,22 +40,64 @@ export const PAPER_OPEN_ACCESS_OPTIONS = [
 
 // Study-level
 export const STUDY_PREREGISTERED_OPTIONS = [
-  ...new Set(studies.map((datum) => datum.study_preregistered)),
+  {
+    value: "yes",
+    label: "Preregistered (study design registered before data collection)",
+  },
+  { value: "no", label: "Not preregistered" },
 ]
+
 export const STUDY_DATA_AVAILABLE_OPTIONS = [
-  ...new Set(studies.map((datum) => datum.study_data_available)),
+  {
+    value: "yes",
+    label: "Data available (study datasets can be downloaded)",
+  },
+  { value: "no", label: "Data not available" },
 ]
 
-export const STUDY_CONDITION_ASSIGNMENT = [
-  ...new Set(studies.map((datum) => datum.study_condition_assignment)),
+export const STUDY_DESIGN_OPTIONS = [
+  {
+    value: "between",
+    label: "Between-subjects (different participants per condition)",
+  },
+  {
+    value: "within",
+    label: "Within-subjects (same participants across conditions)",
+  },
+  {
+    value: "mixed",
+    label: "Mixed design (combines between and within elements)",
+  },
+  {
+    value: "crossover",
+    label: "Cross-over (participants receive all treatments in sequence)",
+  },
 ]
 
-export const STUDY_DESIGN = [
-  ...new Set(studies.map((datum) => datum.study_design)),
+export const STUDY_CONDITION_ASSIGNMENT_OPTIONS = [
+  {
+    value: "individual",
+    label: "Individual assignment (participants assigned to conditions)",
+  },
+  {
+    value: "cluster",
+    label: "Cluster assignment (groups assigned to conditions)",
+  },
+  {
+    value: "time point",
+    label: "Time-based assignment (conditions assigned to time periods)",
+  },
 ]
 
-export const STUDY_RANDOMIZATION = [
-  ...new Set(studies.map((datum) => datum.study_randomization)),
+export const STUDY_RANDOMIZATION_OPTIONS = [
+  {
+    value: "yes",
+    label: "Randomized assignment (eliminates selection bias)",
+  },
+  {
+    value: "no",
+    label: "Non-randomized assignment (potential for confounding)",
+  },
 ]
 
 // Intervention-level
