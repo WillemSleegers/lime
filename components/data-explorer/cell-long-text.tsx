@@ -9,11 +9,15 @@ type CellLongTextProps = {
 export const CellLongText = ({ value }: CellLongTextProps) => {
   const [showMore, setShowMore] = useState(false)
 
-  if (value.length < maxLength) return value
+  if (value.length < maxLength) return (
+    <div className="w-96 break-words overflow-hidden text-wrap">
+      {value}
+    </div>
+  )
 
   if (showMore)
     return (
-      <div className="max-w-[600px]">
+      <div className="w-96 break-words overflow-hidden text-wrap">
         {value}
         <span
           onClick={() => setShowMore((prev) => !prev)}
@@ -26,7 +30,7 @@ export const CellLongText = ({ value }: CellLongTextProps) => {
     )
 
   return (
-    <div>
+    <div className="w-96 break-words overflow-hidden text-wrap">
       {value.substring(0, maxLength)}{" "}
       <span
         onClick={() => setShowMore((prev) => !prev)}

@@ -20,9 +20,6 @@ export const ColumnsPapers: ColumnDef<Paper>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Paper" />
     ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} />
-    },
   },
   {
     id: "paper_authors",
@@ -39,12 +36,12 @@ export const ColumnsPapers: ColumnDef<Paper>[] = [
     id: "paper_title",
     accessorKey: "paper_title",
     header: ({ column }) => (
-      <DataTableColumnHeader
-        className="min-w-100"
-        column={column}
-        title="Title"
-      />
+      <DataTableColumnHeader column={column} title="Title" />
     ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("paper_title")
+      return <CellLongText value={value} />
+    },
   },
   {
     id: "paper_year",
@@ -83,7 +80,7 @@ export const ColumnsPapers: ColumnDef<Paper>[] = [
       <DataTableColumnHeader column={column} title="Open access" />
     ),
     cell: ({ row }) => {
-      return row.getValue("paper_open_access") == "yes" ? <CheckIcon /> : <X />
+      return row.getValue("paper_open_access") == "open access" ? <CheckIcon className="h-4 w-4" /> : <X className="h-4 w-4" />
     },
   },
   {
@@ -98,11 +95,21 @@ export const ColumnsPapers: ColumnDef<Paper>[] = [
       if (value) {
         return (
           <Link href={value} target="_blank">
-            <LinkIcon width={14} />
+            <LinkIcon className="h-4 w-4" />
           </Link>
         )
       } else return "-"
     },
+  },
+  {
+    id: "paper_details",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Details" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} variant="button" />
+    },
+    enableSorting: false,
   },
 ]
 
@@ -113,9 +120,6 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Paper" />
     ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} />
-    },
   },
   {
     id: "study",
@@ -139,7 +143,7 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
     ),
     cell: ({ row }) => {
       const value = row.getValue<string>("study_preregistered")
-      return value == "yes" ? <CheckIcon strokeWidth={2} /> : <X />
+      return value == "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
     },
   },
   {
@@ -154,7 +158,7 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
       if (value) {
         return (
           <Link href={value} target="_blank">
-            <LinkIcon width={14} />
+            <LinkIcon className="h-4 w-4" />
           </Link>
         )
       } else return "-"
@@ -169,7 +173,7 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
     cell: ({ row }) => {
       const value = row.getValue<string>("study_data_available")
 
-      return value == "yes" ? <CheckIcon strokeWidth={2} /> : <X />
+      return value == "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
     },
   },
   {
@@ -196,8 +200,18 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
     cell: ({ row }) => {
       const value = row.getValue<string>("study_randomization")
 
-      return value == "yes" ? <CheckIcon strokeWidth={2} /> : <X />
+      return value == "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
     },
+  },
+  {
+    id: "paper_details",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Details" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} variant="button" />
+    },
+    enableSorting: false,
   },
 ]
 
@@ -208,9 +222,6 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Paper" />
     ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} />
-    },
   },
   {
     id: "study",
@@ -240,8 +251,7 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
       const content = value.split(", ").map((e) => (
         <Badge
           key={e}
-          variant="secondary"
-          className="text-sm font-normal whitespace-nowrap"
+          className="text-sm font-normal whitespace-nowrap bg-muted text-foreground"
         >
           {e}
         </Badge>
@@ -259,8 +269,7 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
       const content = value.split(", ").map((e) => (
         <Badge
           key={e}
-          variant="secondary"
-          className="text-sm font-normal whitespace-nowrap"
+          className="text-sm font-normal whitespace-nowrap bg-muted text-foreground"
         >
           {e}
         </Badge>
@@ -278,8 +287,7 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
       const content = value.split(", ").map((e) => (
         <Badge
           key={e}
-          variant="secondary"
-          className="text-sm font-normal whitespace-nowrap"
+          className="text-sm font-normal whitespace-nowrap bg-muted text-foreground"
         >
           {e}
         </Badge>
@@ -302,6 +310,16 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
       }
     },
   },
+  {
+    id: "paper_details",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Details" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} variant="button" />
+    },
+    enableSorting: false,
+  },
 ]
 
 export const ColumnsOutcomes: ColumnDef<Outcome>[] = [
@@ -311,9 +329,6 @@ export const ColumnsOutcomes: ColumnDef<Outcome>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Paper" />
     ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} />
-    },
   },
   {
     id: "study",
@@ -361,6 +376,16 @@ export const ColumnsOutcomes: ColumnDef<Outcome>[] = [
       <DataTableColumnHeader column={column} title="Measure" />
     ),
   },
+  {
+    id: "paper_details",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Details" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} variant="button" />
+    },
+    enableSorting: false,
+  },
 ]
 
 export const ColumnsEffects: ColumnDef<Effect>[] = [
@@ -370,9 +395,6 @@ export const ColumnsEffects: ColumnDef<Effect>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Paper" />
     ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} />
-    },
   },
   {
     id: "study",
@@ -430,5 +452,15 @@ export const ColumnsEffects: ColumnDef<Effect>[] = [
     cell: ({ row }) => {
       return round(row.getValue<number>("effect_control_n"), 2)
     },
+  },
+  {
+    id: "paper_details",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Details" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} variant="button" />
+    },
+    enableSorting: false,
   },
 ]

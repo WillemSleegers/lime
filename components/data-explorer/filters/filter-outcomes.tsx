@@ -325,7 +325,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
           </div>
 
           <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto rounded-full text-white">
+            <Button type="submit" className="h-auto rounded-lg text-white">
               Update table
             </Button>
             <Toggle

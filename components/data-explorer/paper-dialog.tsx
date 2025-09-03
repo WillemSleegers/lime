@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { LinkIcon } from "lucide-react"
+import { LinkIcon, SquareArrowOutUpRight } from "lucide-react"
 import { Row } from "@tanstack/react-table"
 
 import {
@@ -16,9 +16,10 @@ import { Effect, Intervention, Outcome, Paper, Study } from "@/lib/types"
 
 type PaperDialogProps = {
   row: Row<Paper | Study | Intervention | Outcome | Effect>
+  variant?: "label" | "button"
 }
 
-export const PaperDialog = ({ row }: PaperDialogProps) => {
+export const PaperDialog = ({ row, variant = "label" }: PaperDialogProps) => {
   const paperData = data.find((datum) => datum.paper === row.original.paper)
 
   if (!paperData) return
@@ -26,9 +27,15 @@ export const PaperDialog = ({ row }: PaperDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild className="cursor-pointer">
-        <span className="whitespace-nowrap underline-offset-2 hover:underline">
-          {paperData.paper_label}
-        </span>
+        {variant === "button" ? (
+          <div className="flex justify-center">
+            <SquareArrowOutUpRight className="h-4 w-4 hover:text-muted-foreground" />
+          </div>
+        ) : (
+          <span className="whitespace-nowrap underline-offset-2 hover:underline">
+            {paperData.paper_label}
+          </span>
+        )}
       </DialogTrigger>
 
       <DialogContent
