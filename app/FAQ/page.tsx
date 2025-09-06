@@ -211,42 +211,7 @@ const FAQ = () => {
             </p>
           </AccordionContent>
         </AccordionItem>
-        <h2>Data explorer</h2>
-        <AccordionItem value="explorer-1">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
-            How does the Data explorer tool work?
-          </AccordionTrigger>
-          <AccordionContent className="prose">
-            <p>
-              We extracted a lot of information from the studies. Most papers
-              report multiple effect sizes, which are tied to specific studies,
-              participant samples, interventions, and outcome measures. The Data
-              Explorer allows you to explore this wealth of information in an
-              accessible way via a customizable table.
-            </p>
-            <ul>
-              <li>
-                You can select relevant columns to only display information that
-                you are interested in
-              </li>
-              <li>
-                You can decide which studies to include by using the
-                column-specific filters (e.g., only studies with sales data,
-                only studies with environmental appeals)
-              </li>
-              <li>
-                You can group or sort the data based on information from a
-                specific column (e.g., sorting by publication year or effect
-                size)
-              </li>
-              <li>
-                You can click on a specific paper label to see more information
-                in a pop-up window, which also includes a link to the paper.
-              </li>
-            </ul>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="explorer-2">
+        <AccordionItem value="database-7">
           <AccordionTrigger className="py-0 text-left text-lg font-medium">
             If I implement the same intervention as one of the studies, will it
             have the same effect for me?
@@ -299,7 +264,7 @@ const FAQ = () => {
             </p>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="explorer-3">
+        <AccordionItem value="database-8">
           <AccordionTrigger className="py-0 text-left text-lg font-medium">
             Are some study results more informative and how can I tell?
           </AccordionTrigger>
@@ -315,7 +280,7 @@ const FAQ = () => {
                 samples will provide more reliable estimates of group
                 differences. For example, to be 90% certain that you will find a
                 statistically significant difference between two groups for a
-                realistic effect size (a Cohen’s d of 0.25), you would already
+                realistic effect size (a Cohen's d of 0.25), you would already
                 need 338 participants in each condition (676 in total). Few
                 studies are this large. Smaller studies will yield noisier
                 effect sizes. Meta-analyses are meant to address this problem.
@@ -328,10 +293,10 @@ const FAQ = () => {
                 reducing meat consumption, then you could only focus on studies
                 that measured consumption more directly. Many studies assessed
                 intentions to reduce meat consumption in the future, but we know
-                that people don’t always implement their intentions (the
+                that people don't always implement their intentions (the
                 intention-behavior gap). Participants may also say that they
-                will eat less meat even if they don’t intend to, just because
-                they think it’s the socially desirable thing to say or it’s what
+                will eat less meat even if they don't intend to, just because
+                they think it's the socially desirable thing to say or it's what
                 the researcher wants to hear.
               </li>
             </ul>
@@ -341,15 +306,115 @@ const FAQ = () => {
             </p>
           </AccordionContent>
         </AccordionItem>
+        <h2>Data explorer</h2>
+        <AccordionItem value="explorer-1">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+            What is the Data Explorer?
+          </AccordionTrigger>
+          <AccordionContent className="prose">
+            <p>
+              The Data Explorer helps you browse through research papers
+              included in the database. We have organized information about a
+              paper into different levels as papers can be quite complicated.
+              They have paper-level information like the authors and publication
+              year, but they also can consist of multiple studies, each possibly
+              consisting of multiple interventions and outcomes, producing
+              multiple statistical results. We've organized all this information
+              into separate tabs so you can focus on the specific details you
+              need without being overwhelmed.
+            </p>
+            <p>
+              We've also added several features to help you explore and work
+              with the data:
+            </p>
+            <ul>
+              <li>
+                You can decide which studies to include by using the
+                column-specific filters (e.g., only studies with sales data,
+                only studies with environmental appeals)
+              </li>
+              <li>
+                You can group or sort the data based on information from a
+                specific column (e.g., sorting by publication year or effect
+                size)
+              </li>
+              <li>
+                You can click on a specific paper label to see more information
+                in a pop-up window, which also includes a link to the paper.
+              </li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="explorer-2">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+            What are the different data levels and how do they relate?
+          </AccordionTrigger>
+          <AccordionContent className="prose">
+            <p>
+              The Data Explorer has five tabs, each showing you different
+              information about the same research. Here's what you'll find in
+              each tab:
+            </p>
+            <ul>
+              <li>
+                <strong>Papers:</strong> Basic publication info like titles,
+                authors, and publication year. You can also see which papers are
+                open access and follow links to the original source.
+              </li>
+              <li>
+                <strong>Studies:</strong> Individual studies within papers.
+                Shows sample sizes, study design details, and whether the study
+                was preregistered.
+              </li>
+              <li>
+                <strong>Interventions:</strong> The specific techniques
+                researchers tested, like showing animal welfare videos or
+                changing menu layouts. Includes details about intervention
+                content and delivery methods.
+              </li>
+              <li>
+                <strong>Outcomes:</strong> How researchers measured the effects
+                of the interventions, such as food choices, surveyed attitudes,
+                or measured behavioral intentions.
+              </li>
+              <li>
+                <strong>Effects:</strong> The statistical results showing how
+                well the intervention worked (effect size) and each effect's
+                sample size.
+              </li>
+            </ul>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="explorer-3">
+          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+            How do I use filters and the lock feature?
+          </AccordionTrigger>
+          <AccordionContent className="prose">
+            <p>
+              Each tab has its own set of filters to help you narrow down what
+              you're looking at. For example, you might filter papers by
+              publication year, or studies by sample size.
+            </p>
+            <p>
+              The lock feature is useful when you want to maintain your focus
+              across different levels. If you filter to show only preregistered
+              studies, you can lock that filter, then switch to the
+              Interventions tab to see only the techniques used in preregistered
+              studies. This helps you explore related data while keeping your
+              focus consistent.
+            </p>
+          </AccordionContent>
+        </AccordionItem>
         <AccordionItem value="explorer-4">
           <AccordionTrigger className="py-0 text-left text-lg font-medium">
             Can I download the data?
           </AccordionTrigger>
           <AccordionContent className="prose">
             <p>
-              Yes. There is a button to select which data you want to download.
-              You can download the entire dataset or only data from a particular
-              level (e.g., all paper-level data).
+              Yes. You can download any of the tables as CSV files to analyze in
+              Excel, R, or other tools. The "All" option gives you a complete
+              dataset with everything joined together - useful if you want to
+              run your own statistical analyses.
             </p>
           </AccordionContent>
         </AccordionItem>

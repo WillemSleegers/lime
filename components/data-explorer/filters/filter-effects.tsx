@@ -42,7 +42,15 @@ type FilterEffectsProps = {
 }
 
 export const FilterEffects = (props: FilterEffectsProps) => {
-  const { data, setData, lock, setLock, setShouldHandleLocks, filterOpen, setFilterOpen } = props
+  const {
+    data,
+    setData,
+    lock,
+    setLock,
+    setShouldHandleLocks,
+    filterOpen,
+    setFilterOpen,
+  } = props
 
   const effect_size_min = Math.min(...data.map((datum) => datum.effect_size))
   const effect_size_max = Math.max(...data.map((datum) => datum.effect_size))
@@ -79,10 +87,14 @@ export const FilterEffects = (props: FilterEffectsProps) => {
   }
 
   return (
-    <FilterCollapsible title="Filter" open={filterOpen} onOpenChange={setFilterOpen}>
+    <FilterCollapsible
+      title="Filter"
+      open={filterOpen}
+      onOpenChange={setFilterOpen}
+    >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="flex flex-wrap gap-x-12 gap-y-6">
+          <div className="flex gap-6 flex-wrap items-baseline">
             <FormField
               control={form.control}
               name="effect_size"
@@ -116,7 +128,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
                   <FormLabel>Minimum sample size</FormLabel>
                   <FormControl>
                     <Input
-                      className="bg-white rounded-2xl"
+                      className="rounded-lg bg-white"
                       type="number"
                       {...field}
                     />
@@ -129,19 +141,10 @@ export const FilterEffects = (props: FilterEffectsProps) => {
                 </FormItem>
               )}
             />
-
-            <FormField
-              name="error"
-              render={() => (
-                <FormItem>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
           </div>
 
           <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto rounded-lg text-white">
+            <Button type="submit" className="h-auto rounded-lg">
               Update table
             </Button>
             <Toggle

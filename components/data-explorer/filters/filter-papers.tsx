@@ -113,7 +113,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="flex gap-8 flex-wrap items-baseline">
+          <div className="flex flex-col lg:flex-row gap-6 items-baseline">
             <FormField
               control={form.control}
               name="paper_year"
@@ -143,9 +143,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
               name="paper_type"
               render={() => (
                 <FormItem>
-                  <div className="space-y-1">
-                    <FormLabel>Publication type</FormLabel>
-                  </div>
+                  <FormLabel>Publication type</FormLabel>
                   {PAPER_TYPE_OPTIONS.map((option) => (
                     <FormField
                       key={option.value}
@@ -153,10 +151,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                       name="paper_type"
                       render={({ field }) => {
                         return (
-                          <FormItem
-                            key={option.value}
-                            className="flex flex-row items-center gap-2"
-                          >
+                          <FormItem className="flex flex-row items-center gap-2">
                             <FormControl>
                               <Checkbox
                                 checked={field.value?.includes(option.value)}
@@ -191,9 +186,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
               name="paper_open_access"
               render={() => (
                 <FormItem>
-                  <div className="space-y-1">
-                    <FormLabel>Access type</FormLabel>
-                  </div>
+                  <FormLabel>Access type</FormLabel>
                   {PAPER_OPEN_ACCESS_OPTIONS.map((option) => (
                     <FormField
                       key={option.value}
@@ -201,10 +194,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
                       name="paper_open_access"
                       render={({ field }) => {
                         return (
-                          <FormItem
-                            key={option.value}
-                            className="flex flex-row items-center gap-2"
-                          >
+                          <FormItem className="flex flex-row items-center gap-2">
                             <FormControl>
                               <Checkbox
                                 checked={field.value?.includes(option.value)}
@@ -230,14 +220,6 @@ export const FilterPapers = (props: FilterPapersProps) => {
                       }}
                     />
                   ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              name="error"
-              render={() => (
-                <FormItem>
                   <FormMessage />
                 </FormItem>
               )}

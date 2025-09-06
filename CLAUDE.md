@@ -139,3 +139,48 @@ This project serves a vital mission: helping researchers and advocates find effe
 - Consider how visual hierarchy and progressive disclosure can make complex data more approachable
 
 **Remember**: Every improvement to this platform's usability potentially amplifies its impact in reducing animal suffering by making evidence-based advocacy more accessible and effective.
+
+## Accuracy Requirements
+
+**NEVER make assumptions about data, features, or functionality.** Always verify before writing documentation or descriptions.
+
+**Before writing about what the application contains or does:**
+1. Use Read, Glob, or Grep tools to examine the actual codebase
+2. For data descriptions: check table columns in `/components/data-explorer/table-columns.tsx`
+3. For features: verify implementations exist in relevant component files
+4. For data structures: review types in `/lib/types.ts`
+5. For functionality: search for actual implementations rather than assuming they exist
+
+**Never write descriptions based on:**
+- What "should" be included
+- What seems reasonable
+- Generic assumptions about research databases
+- What other similar tools typically have
+
+**Always base descriptions on:**
+- Actual code implementations you can verify
+- Real data structures and column definitions in the codebase
+- Features that demonstrably exist
+
+This is critical because inaccurate documentation directly undermines the platform's mission of making animal welfare research accessible and effective.
+
+## Writing Style Guidelines
+
+When writing user-facing content (help text, instructions, descriptions, etc.), use a **down-to-earth, practical style**:
+
+- **Be helpful and informative** rather than promotional or hype-driven
+- **Use plain language** that practitioners and researchers can easily understand
+- **Provide concrete examples** instead of abstract descriptions
+- **Focus on practical guidance** - tell users what they can actually do and how
+- **Avoid marketing speak** like "powerful tools" or "cutting-edge features"
+- **Use conversational tone** as if explaining to a colleague
+
+**Good examples:**
+- "This page helps you browse through the papers in our database"
+- "You might filter papers by publication year, or studies by sample size"
+- "The 'All' option gives you a complete dataset with everything joined together"
+
+**Avoid:**
+- "Unlock powerful insights with our advanced data exploration platform"
+- "Seamlessly navigate through comprehensive research datasets"
+- "Experience next-generation research discovery tools"

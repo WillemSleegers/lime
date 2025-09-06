@@ -158,6 +158,21 @@ export const OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS = customSort([
       .map((datum) => datum.outcome_subcategory)
   ),
 ])
-export const OUTCOME_MEASUREMENT_TYPE_OPTIONS = customSort([
-  ...new Set(outcomes.map((datum) => datum.outcome_measurement_type)),
-])
+export const OUTCOME_MEASUREMENT_TYPE_OPTIONS = [
+  {
+    value: "survey",
+    label: "Survey (self-reported questionnaires and interviews)",
+  },
+  {
+    value: "food diary",
+    label: "Food diary (participants record their food consumption)",
+  },
+  {
+    value: "sales data", 
+    label: "Sales data (actual purchase records from stores/restaurants)",
+  },
+  {
+    value: "meal choice",
+    label: "Meal choice (observed food selection in controlled settings)",
+  },
+]

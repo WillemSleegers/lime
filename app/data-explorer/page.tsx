@@ -1,17 +1,9 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
+import Link from "next/link"
 import { exportToCSV } from "@/lib/csv-utils"
 
-import { InfoIcon } from "lucide-react"
-
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -273,7 +265,20 @@ export default function DataExplorer() {
 
   return (
     <main className="mx-3 md:mx-6 lg:mx-12 space-y-8 my-12 md:my-16">
-      <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
+      <div className="text-center space-y-4">
+        <h1 className="text-4xl font-bold">Data Explorer</h1>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          Browse research papers using the tabs below. Filter data by topics or
+          methods, and download tables for analysis. Need help? See our{" "}
+          <Link
+            href="/faq"
+            className="font-medium text-primary hover:underline"
+          >
+            FAQ
+          </Link>{" "}
+          for detailed instructions.
+        </p>
+      </div>
       <Tabs defaultValue={level} className="space-y-6">
         <div className="mx-auto flex flex-wrap items-center justify-center gap-3">
           <TabsList className="flex h-auto flex-wrap items-center gap-1 rounded-2xl p-0 align-middle bg-primary-foreground sm:bg-primary">
@@ -361,59 +366,6 @@ export default function DataExplorer() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Dialog>
-            <DialogTrigger asChild>
-              <InfoIcon className="h-6 w-6 hover:cursor-pointer hover:text-muted-foreground" />
-            </DialogTrigger>
-            <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
-              <DialogHeader className="space-y-2 pb-4 border-b">
-                <DialogTitle className="text-xl font-semibold">Data Explorer Guide</DialogTitle>
-                <p className="text-muted-foreground">
-                  Explore LIME&apos;s database of intervention studies to find evidence-based strategies for reducing animal product consumption.
-                </p>
-              </DialogHeader>
-              
-              <div className="space-y-6 pt-4">
-                <div className="space-y-3">
-                  <h3 className="text-base font-medium">Navigate Research Levels</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Use the tabs to explore different levels of research data, from high-level publications down to specific effect measurements.
-                  </p>
-                  <ul className="list-disc list-inside space-y-2 text-sm">
-                    <li>
-                      <span className="font-medium">Papers:</span> <span className="text-muted-foreground">Publication details, authors, and open access status</span>
-                    </li>
-                    <li>
-                      <span className="font-medium">Studies:</span> <span className="text-muted-foreground">Sample sizes, methodology, and preregistration details</span>
-                    </li>
-                    <li>
-                      <span className="font-medium">Interventions:</span> <span className="text-muted-foreground">Techniques, content, and delivery methods tested</span>
-                    </li>
-                    <li>
-                      <span className="font-medium">Outcomes:</span> <span className="text-muted-foreground">Measurement approaches and outcome types</span>
-                    </li>
-                    <li>
-                      <span className="font-medium">Effects:</span> <span className="text-muted-foreground">Statistical effect sizes and significance measures</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="space-y-2">
-                  <h3 className="text-base font-medium">Filter & Lock</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Use filters to focus on specific research aspects. Click the lock icon to carry filters across different data levels.
-                  </p>
-                </div>
-
-                <div className="space-y-2">
-                  <h3 className="text-base font-medium">Download Data</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Export any data level or the complete dataset in CSV format for analysis in your preferred tools.
-                  </p>
-                </div>
-              </div>
-            </DialogContent>
-          </Dialog>
         </div>
 
         <TabsContent value="paper" className="space-y-4">

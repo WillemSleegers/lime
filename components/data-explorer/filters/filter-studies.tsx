@@ -150,15 +150,13 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="flex gap-8 flex-wrap items-baseline">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-4xl xl:max-w-full  xl:grid-cols-3 gap-6 items-baseline">
             <FormField
               control={form.control}
               name="study_preregistered"
               render={() => (
                 <FormItem>
-                  <div className="space-y-1">
-                    <FormLabel>Study preregistration</FormLabel>
-                  </div>
+                  <FormLabel>Study preregistration</FormLabel>
                   {STUDY_PREREGISTERED_OPTIONS.map((option) => (
                     <FormField
                       key={option.value}
@@ -205,9 +203,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
               name="study_data_available"
               render={() => (
                 <FormItem>
-                  <div className="space-y-1">
-                    <FormLabel>Data availability</FormLabel>
-                  </div>
+                  <FormLabel>Data availability</FormLabel>
                   {STUDY_DATA_AVAILABLE_OPTIONS.map((option) => (
                     <FormField
                       key={option.value}
@@ -254,9 +250,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
               name="study_design"
               render={() => (
                 <FormItem>
-                  <div className="space-y-1">
-                    <FormLabel>Study design</FormLabel>
-                  </div>
+                  <FormLabel>Study design</FormLabel>
                   {STUDY_DESIGN_OPTIONS.map((option) => (
                     <FormField
                       key={option.value}
@@ -303,9 +297,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
               name="study_condition_assignment"
               render={() => (
                 <FormItem>
-                  <div className="space-y-1">
-                    <FormLabel>Assignment method</FormLabel>
-                  </div>
+                  <FormLabel>Assignment method</FormLabel>
                   {STUDY_CONDITION_ASSIGNMENT_OPTIONS.map((option) => (
                     <FormField
                       key={option.value}
@@ -352,9 +344,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
               name="study_randomization"
               render={() => (
                 <FormItem>
-                  <div className="space-y-1">
-                    <FormLabel>Randomization</FormLabel>
-                  </div>
+                  <FormLabel>Randomization</FormLabel>
                   {STUDY_RANDOMIZATION_OPTIONS.map((option) => (
                     <FormField
                       key={option.value}
@@ -417,19 +407,10 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                 </FormItem>
               )}
             />
-
-            <FormField
-              name="error"
-              render={() => (
-                <FormItem>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
           </div>
 
           <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto rounded-lg text-white">
+            <Button type="submit" className="h-auto rounded-lg">
               Update table
             </Button>
             <Toggle

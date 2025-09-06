@@ -117,7 +117,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="space-y-8">
+          <div className="space-y-6">
             <FormField
               control={form.control}
               name="intervention_content"
@@ -224,19 +224,10 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
                 </FormItem>
               )}
             />
-
-            <FormField
-              name="error"
-              render={() => (
-                <FormItem>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
           </div>
 
           <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto rounded-lg text-white">
+            <Button type="submit" className="h-auto rounded-lg">
               Update table
             </Button>
             <Toggle
