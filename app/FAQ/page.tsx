@@ -280,7 +280,7 @@ const FAQ = () => {
                 samples will provide more reliable estimates of group
                 differences. For example, to be 90% certain that you will find a
                 statistically significant difference between two groups for a
-                realistic effect size (a Cohen's d of 0.25), you would already
+                realistic effect size (a Cohen&apos;s d of 0.25), you would already
                 need 338 participants in each condition (676 in total). Few
                 studies are this large. Smaller studies will yield noisier
                 effect sizes. Meta-analyses are meant to address this problem.
@@ -293,10 +293,10 @@ const FAQ = () => {
                 reducing meat consumption, then you could only focus on studies
                 that measured consumption more directly. Many studies assessed
                 intentions to reduce meat consumption in the future, but we know
-                that people don't always implement their intentions (the
+                that people don&apos;t always implement their intentions (the
                 intention-behavior gap). Participants may also say that they
-                will eat less meat even if they don't intend to, just because
-                they think it's the socially desirable thing to say or it's what
+                will eat less meat even if they don&apos;t intend to, just because
+                they think it&apos;s the socially desirable thing to say or it&apos;s what
                 the researcher wants to hear.
               </li>
             </ul>
@@ -319,12 +319,12 @@ const FAQ = () => {
               They have paper-level information like the authors and publication
               year, but they also can consist of multiple studies, each possibly
               consisting of multiple interventions and outcomes, producing
-              multiple statistical results. We've organized all this information
+              multiple statistical results. We&apos;ve organized all this information
               into separate tabs so you can focus on the specific details you
               need without being overwhelmed.
             </p>
             <p>
-              We've also added several features to help you explore and work
+              We&apos;ve also added several features to help you explore and work
               with the data:
             </p>
             <ul>
@@ -352,7 +352,7 @@ const FAQ = () => {
           <AccordionContent className="prose">
             <p>
               The Data Explorer has five tabs, each showing you different
-              information about the same research. Here's what you'll find in
+              information about the same research. Here&apos;s what you&apos;ll find in
               each tab:
             </p>
             <ul>
@@ -379,7 +379,7 @@ const FAQ = () => {
               </li>
               <li>
                 <strong>Effects:</strong> The statistical results showing how
-                well the intervention worked (effect size) and each effect's
+                well the intervention worked (effect size) and each effect&apos;s
                 sample size.
               </li>
             </ul>
@@ -392,7 +392,7 @@ const FAQ = () => {
           <AccordionContent className="prose">
             <p>
               Each tab has its own set of filters to help you narrow down what
-              you're looking at. For example, you might filter papers by
+              you&apos;re looking at. For example, you might filter papers by
               publication year, or studies by sample size.
             </p>
             <p>
@@ -412,7 +412,7 @@ const FAQ = () => {
           <AccordionContent className="prose">
             <p>
               Yes. You can download any of the tables as CSV files to analyze in
-              Excel, R, or other tools. The "All" option gives you a complete
+              Excel, R, or other tools. The &quot;All&quot; option gives you a complete
               dataset with everything joined together - useful if you want to
               run your own statistical analyses.
             </p>
