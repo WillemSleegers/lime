@@ -365,48 +365,53 @@ export default function DataExplorer() {
             <DialogTrigger asChild>
               <InfoIcon className="h-6 w-6 hover:cursor-pointer hover:text-muted-foreground" />
             </DialogTrigger>
-            <DialogContent className="max-h-full max-w-3xl overflow-auto">
-              <DialogHeader>
-                <DialogTitle>Data Explorer Help</DialogTitle>
+            <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+              <DialogHeader className="space-y-2 pb-4 border-b">
+                <DialogTitle className="text-xl font-semibold">Data Explorer Guide</DialogTitle>
+                <p className="text-muted-foreground">
+                  Explore LIME&apos;s database of intervention studies to find evidence-based strategies for reducing animal product consumption.
+                </p>
               </DialogHeader>
-              <p>
-                The Data Explorer provides access to LIME&apos;s comprehensive
-                database of intervention studies focused on reducing animal
-                product consumption. This tool allows you to explore detailed
-                information across multiple levels of research data, organized
-                into easy-to-navigate tables.
-              </p>
-              <p>
-                Navigate between different levels using the tabs at the top to
-                explore:
-              </p>
-              <ul className="ms-6 list-disc">
-                <li>
-                  Papers: Access publication details, authors, and open access
-                  status
-                </li>
-                <li>Studies: Examine sample sizes and preregistrations</li>
-                <li>
-                  Interventions: Discover the various techniques and approaches
-                  tested
-                </li>
-                <li>
-                  Outcomes: Review different measurement methods and approaches
-                </li>
-                <li>Effects: Explore the effect sizes of interventions.</li>
-              </ul>
-              <p>
-                Each table includes filtering options to help you focus on
-                specific aspects of interest. You can lock the filters by
-                clicking on the lock icon so the filter options are carried over
-                between levels.
-              </p>
-              <p>
-                Want to work with the data directly? You can download
-                information from any individual level or export the complete
-                dataset all at once. The data is provided in CSV format, making
-                it easy to use in your preferred analysis tools.
-              </p>
+              
+              <div className="space-y-6 pt-4">
+                <div className="space-y-3">
+                  <h3 className="text-base font-medium">Navigate Research Levels</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Use the tabs to explore different levels of research data, from high-level publications down to specific effect measurements.
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-sm">
+                    <li>
+                      <span className="font-medium">Papers:</span> <span className="text-muted-foreground">Publication details, authors, and open access status</span>
+                    </li>
+                    <li>
+                      <span className="font-medium">Studies:</span> <span className="text-muted-foreground">Sample sizes, methodology, and preregistration details</span>
+                    </li>
+                    <li>
+                      <span className="font-medium">Interventions:</span> <span className="text-muted-foreground">Techniques, content, and delivery methods tested</span>
+                    </li>
+                    <li>
+                      <span className="font-medium">Outcomes:</span> <span className="text-muted-foreground">Measurement approaches and outcome types</span>
+                    </li>
+                    <li>
+                      <span className="font-medium">Effects:</span> <span className="text-muted-foreground">Statistical effect sizes and significance measures</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-base font-medium">Filter & Lock</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Use filters to focus on specific research aspects. Click the lock icon to carry filters across different data levels.
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-base font-medium">Download Data</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Export any data level or the complete dataset in CSV format for analysis in your preferred tools.
+                  </p>
+                </div>
+              </div>
             </DialogContent>
           </Dialog>
         </div>

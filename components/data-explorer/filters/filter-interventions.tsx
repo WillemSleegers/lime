@@ -28,6 +28,14 @@ import {
 } from "@/constants/constants-filters"
 
 import { Interventions } from "@/lib/types"
+import {
+  MultiSelect,
+  MultiSelectContent,
+  MultiSelectGroup,
+  MultiSelectItem,
+  MultiSelectTrigger,
+  MultiSelectValue,
+} from "@/components/ui/multi-select"
 
 const formSchemaInterventions = z.object({
   intervention_content: z
@@ -55,7 +63,15 @@ type FilterInterventionsProps = {
 }
 
 export const FilterInterventions = (props: FilterInterventionsProps) => {
-  const { data, setData, lock, setLock, setShouldHandleLocks, filterOpen, setFilterOpen } = props
+  const {
+    data,
+    setData,
+    lock,
+    setLock,
+    setShouldHandleLocks,
+    filterOpen,
+    setFilterOpen,
+  } = props
 
   const form = useForm<z.infer<typeof formSchemaInterventions>>({
     resolver: zodResolver(formSchemaInterventions),
@@ -94,160 +110,121 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
   }
 
   return (
-    <FilterCollapsible title="Filter" open={filterOpen} onOpenChange={setFilterOpen}>
+    <FilterCollapsible
+      title="Filter"
+      open={filterOpen}
+      onOpenChange={setFilterOpen}
+    >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="flex flex-wrap gap-x-12 gap-y-4">
+          <div className="space-y-8">
             <FormField
               control={form.control}
               name="intervention_content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Content</FormLabel>
+                  <FormLabel>Intervention content</FormLabel>
                   <FormDescription>
-                    Content categories of the appeals used in the interventions
+                    Topics or arguments used to persuade people (e.g., animal
+                    welfare, health, environment)
                   </FormDescription>
-                  <FormControl className="justify-start">
-                    <ToggleGroup
-                      className="flex flex-wrap gap-x-2"
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      value={field.value}
-                    >
-                      {INTERVENTION_CONTENT_OPTIONS.map((option) => (
-                        <ToggleGroupItem
-                          key={option}
-                          value={option}
-                          variant="pill"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                      <Button
-                        type="button"
-                        variant="link"
-                        className="text-foreground h-auto px-2"
-                        onClick={() =>
-                          field.onChange(INTERVENTION_CONTENT_OPTIONS)
-                        }
-                      >
-                        Select all
-                      </Button>
-                      <Button
-                        type="button"
-                        variant="link"
-                        className="text-foreground h-auto px-2"
-                        onClick={() => field.onChange([])}
-                      >
-                        Deselect all
-                      </Button>
-                    </ToggleGroup>
-                  </FormControl>
+                  <MultiSelect
+                    onValuesChange={field.onChange}
+                    values={field.value}
+                  >
+                    <FormControl>
+                      <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                        <MultiSelectValue placeholder="Select intervention content..." />
+                      </MultiSelectTrigger>
+                    </FormControl>
+                    <MultiSelectContent>
+                      <MultiSelectGroup>
+                        {INTERVENTION_CONTENT_OPTIONS.map((option) => {
+                          return (
+                            <MultiSelectItem key={option} value={option}>
+                              {option}
+                            </MultiSelectItem>
+                          )
+                        })}
+                      </MultiSelectGroup>
+                    </MultiSelectContent>
+                  </MultiSelect>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="intervention_mechanism"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Mechanism</FormLabel>
+                  <FormLabel>Intervention mechanism</FormLabel>
                   <FormDescription>
-                    The psychological mechanisms targeted by the interventions
+                    Persuasion strategies used by researchers (facts, emotions,
+                    social pressure, etc.)
                   </FormDescription>
-                  <FormControl className="justify-start">
-                    <ToggleGroup
-                      className="flex flex-wrap gap-x-2"
-                      type="multiple"
-                      onValueChange={field.onChange}
-                      value={field.value}
-                    >
-                      {INTERVENTION_MECHANISM_OPTIONS.map((option) => (
-                        <ToggleGroupItem
-                          key={option}
-                          value={option}
-                          variant="pill"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                      <Button
-                        type="button"
-                        variant="link"
-                        className="text-foreground h-auto px-2"
-                        onClick={() =>
-                          field.onChange(INTERVENTION_MECHANISM_OPTIONS)
-                        }
-                      >
-                        Select all
-                      </Button>
-                      <Button
-                        type="button"
-                        variant="link"
-                        className="text-foreground h-auto px-2"
-                        onClick={() => field.onChange([])}
-                      >
-                        Deselect all
-                      </Button>
-                    </ToggleGroup>
-                  </FormControl>
+                  <MultiSelect
+                    onValuesChange={field.onChange}
+                    values={field.value}
+                  >
+                    <FormControl>
+                      <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                        <MultiSelectValue placeholder="Select intervention mechanism..." />
+                      </MultiSelectTrigger>
+                    </FormControl>
+                    <MultiSelectContent>
+                      <MultiSelectGroup>
+                        {INTERVENTION_MECHANISM_OPTIONS.map((option) => {
+                          return (
+                            <MultiSelectItem key={option} value={option}>
+                              {option}
+                            </MultiSelectItem>
+                          )
+                        })}
+                      </MultiSelectGroup>
+                    </MultiSelectContent>
+                  </MultiSelect>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <FormField
               control={form.control}
               name="intervention_medium"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Medium</FormLabel>
+                  <FormLabel>Intervention medium</FormLabel>
                   <FormDescription>
-                    The medium in which the interventions are adminstered
+                    How the intervention was delivered to participants
                   </FormDescription>
-                  <FormControl className="justify-start">
-                    <ToggleGroup
-                      type="multiple"
-                      className="flex flex-wrap gap-x-2"
-                      onValueChange={field.onChange}
-                      value={field.value}
-                    >
-                      {INTERVENTION_MEDIUM_OPTIONS.map((option) => (
-                        <ToggleGroupItem
-                          key={option}
-                          value={option}
-                          variant="pill"
-                          size="sm"
-                        >
-                          {option}
-                        </ToggleGroupItem>
-                      ))}
-                      <Button
-                        type="button"
-                        variant="link"
-                        className="text-foreground h-auto px-2"
-                        onClick={() =>
-                          field.onChange(INTERVENTION_MEDIUM_OPTIONS)
-                        }
-                      >
-                        Select all
-                      </Button>
-                      <Button
-                        type="button"
-                        variant="link"
-                        className="text-foreground h-auto px-2"
-                        onClick={() => field.onChange([])}
-                      >
-                        Deselect all
-                      </Button>
-                    </ToggleGroup>
-                  </FormControl>
+                  <MultiSelect
+                    onValuesChange={field.onChange}
+                    values={field.value}
+                  >
+                    <FormControl>
+                      <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                        <MultiSelectValue placeholder="Select intervention medium..." />
+                      </MultiSelectTrigger>
+                    </FormControl>
+                    <MultiSelectContent>
+                      <MultiSelectGroup>
+                        {INTERVENTION_MEDIUM_OPTIONS.map((option) => {
+                          return (
+                            <MultiSelectItem key={option} value={option}>
+                              {option}
+                            </MultiSelectItem>
+                          )
+                        })}
+                      </MultiSelectGroup>
+                    </MultiSelectContent>
+                  </MultiSelect>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <FormField
               name="error"
               render={() => (

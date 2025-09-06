@@ -120,3 +120,22 @@ All data structures are strongly typed, derived from the JSON data files:
 - Data relationships are maintained through composite keys (paper, study, intervention, outcome)
 - The type system is generated from actual data files, ensuring runtime/compile-time consistency
 - All statistical analysis runs client-side using WebAssembly (WebR)
+
+## Design Philosophy & Critical Evaluation
+
+This project serves a vital mission: helping researchers and advocates find effective interventions to reduce animal product consumption and, ultimately, reduce animal suffering. Given this important purpose, the website's usability and visual design directly impact its effectiveness in advancing animal welfare.
+
+**When working on this codebase, actively evaluate and improve:**
+
+- **User Experience**: Every friction point in the interface potentially prevents a researcher from finding crucial evidence that could inform more effective animal advocacy
+- **Visual Design**: Academic tools don't need to be boring - polished, engaging interfaces build credibility and encourage deeper exploration of the data
+- **Content Clarity**: Technical jargon and dense text create barriers for practitioners who could use this research to design better interventions
+- **Information Architecture**: Poor organization wastes users' time and may cause them to miss important findings
+
+**Be constructively critical of existing implementations:**
+- Question whether UI components truly serve users or just meet basic functional requirements
+- Identify opportunities to make academic content more accessible to practitioners and advocates
+- Look for ways to highlight the most actionable insights for intervention designers
+- Consider how visual hierarchy and progressive disclosure can make complex data more approachable
+
+**Remember**: Every improvement to this platform's usability potentially amplifies its impact in reducing animal suffering by making evidence-based advocacy more accessible and effective.

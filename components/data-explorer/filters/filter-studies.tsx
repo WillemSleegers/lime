@@ -153,28 +153,6 @@ export const FilterStudies = (props: FilterStudiesProps) => {
           <div className="flex gap-8 flex-wrap items-baseline">
             <FormField
               control={form.control}
-              name="study_n"
-              render={({ field }) => (
-                <FormItem className="w-60">
-                  <FormLabel>Minimum sample size</FormLabel>
-                  <FormControl>
-                    <Input
-                      className="rounded-lg bg-white"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    This is the total sample size across all conditions in a
-                    study
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
               name="study_preregistered"
               render={() => (
                 <FormItem>
@@ -413,6 +391,28 @@ export const FilterStudies = (props: FilterStudiesProps) => {
                       }}
                     />
                   ))}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="study_n"
+              render={({ field }) => (
+                <FormItem className="w-60">
+                  <FormLabel>Minimum sample size</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="rounded-lg bg-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    This is the total sample size across all conditions in a
+                    study
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
