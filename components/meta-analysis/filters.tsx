@@ -440,12 +440,12 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                           >
                             {OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => (
                               <ToggleGroupItem
-                                key={option}
-                                value={option}
+                                key={option.value}
+                                value={option.value}
                                 variant="pill"
                                 size="sm"
                               >
-                                {option}
+                                {option.label}
                               </ToggleGroupItem>
                             ))}
                             <Button
