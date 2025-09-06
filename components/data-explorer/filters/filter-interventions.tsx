@@ -19,7 +19,6 @@ import {
 
 import { Toggle } from "@/components/ui/toggle"
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 import {
   INTERVENTION_CONTENT_OPTIONS,
