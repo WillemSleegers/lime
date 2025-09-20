@@ -13,7 +13,7 @@
     "column": "paper_status",
     "description": "The status of processing the paper: excluded = checked and does not meet inclusion criteria, contact authors = meets inclusion criteria but necesary information are not reported and authors need to be contacted, ready to code = paper (probably) meets inclusion criteria and needs to be coded, analyze raw data = necessary information not reported but can be extracted from the data that is shared, calculate effect size = paper has been coded and relevant effect sizes need to be calculated for the website, add to webiste = effect size has been calculated and paper can be added to the webiste, included = paper has been included in the website",
     "data_type": "factor",
-    "factor_levels": "included, excluded, contact authors, calculate effect sizes, ready to code, analyze raw data,  analyze raw data"
+    "factor_levels": "included, excluded, contact authors, calculate effect sizes, ready to code, analyze raw data, https://research.cbs.dk/en/studentProjects/nudging-to-reduce-meat-consumption-can-indulgent-or-healthy-descr, unscreened"
   },
   {
     "column": "paper_authors",
@@ -50,7 +50,7 @@
     "column": "paper_open_access",
     "description": "Whether the paper is open access or not.",
     "data_type": "factor",
-    "factor_levels": "paywalled, open access"
+    "factor_levels": "paywalled, open access, inaccessible"
   },
   {
     "column": "paper_notes",
@@ -310,7 +310,7 @@
     "column": "outcome_expectation",
     "description": "Whether the intervention is expected to increase or decrease the outcome.",
     "data_type": "factor",
-    "factor_levels": "increase, decrease"
+    "factor_levels": "increase, decrease, neither"
   },
   {
     "column": "outcome_category",
@@ -322,7 +322,7 @@
     "column": "outcome_subcategory",
     "description": "A more fine-grained categorization of the outcome",
     "data_type": "factor",
-    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, diet, ethical consumption, other, vegetarian consumption, vegan consumption, meat commitment, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics"
+    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, diet, ethical consumption, other, vegetarian consumption, vegan consumption, meat commitment, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics, vegan consumption intentions"
   },
   {
     "column": "outcome_measurement_type",
@@ -340,7 +340,7 @@
     "column": "outcome_product_subtype",
     "description": "A more precise type of animal product that the outcome is about.",
     "data_type": "factor",
-    "factor_levels": "red meat, white meat, pork, processed meat, poultry, fish, beef, chicken, turkey, dairy, lamb, seafood, red and processed meat, milk, yoghurt, cheese"
+    "factor_levels": "red meat, white meat, pork, processed meat, poultry, fish, beef, chicken, turkey, dairy, lamb, seafood, red and processed meat, yoghurt, milk, cheese"
   },
   {
     "column": "outcome_scale",

@@ -525,7 +525,7 @@
   {
     "paper": 84,
     "paper_label": "Bianchi et al. (2022)",
-    "paper_title": "Replacing meat with alternative plant-based products (RE-MAP): a randomized controlled trial of a multicomponent behavioral intervention to reduce meat consumption",
+    "paper_title": "Replacing meat with alternative plant-based products (RE-MAP): A randomized controlled trial of a multicomponent behavioral intervention to reduce meat consumption",
     "paper_authors": "Bianchi, F.; Stewart, C.; Astbury, N. M.; Cook, B.; Aveyard, P.; Jebb, S. A.",
     "paper_year": 2022,
     "paper_type": "peer reviewed paper",
@@ -553,6 +553,17 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2021.105824",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 88,
+    "paper_label": "Zinn et al. (2023)",
+    "paper_title": "Increasing meat-free meal selections: The role of social identity salience and identity-related meal names",
+    "paper_authors": "Zinn, A. K.; Zhu, O. Y.; Dolnicar, S.",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2023.107067",
     "paper_open_access": "open access"
   },
   {
@@ -631,6 +642,27 @@
     "paper_open_access": "open access"
   },
   {
+    "paper": 125,
+    "paper_label": "Weikertova & Urban (2023)",
+    "paper_title": "Dynamic Norms Do Not Promote Vegetarian Food Preferences: Two Experiments and a Meta-Analysis",
+    "paper_authors": "Weikertova, S.; Urban, J.",
+    "paper_year": 2023,
+    "paper_type": "preprint",
+    "paper_source": "PsyArXiv",
+    "paper_link": "https://osf.io/preprints/psyarxiv/qfn6y_v1",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 143,
+    "paper_label": "Rieforth & Theis (2019)",
+    "paper_title": "Nudging to Reduce Meat Consumption: Can Indulgent or Healthy Descriptors Promote Vegetarian Food Choices?",
+    "paper_authors": "Rieforth, A.; Theis, H.",
+    "paper_year": 2019,
+    "paper_type": "thesis",
+    "paper_link": "https://research.cbs.dk/en/studentProjects/nudging-to-reduce-meat-consumption-can-indulgent-or-healthy-descr",
+    "paper_open_access": "open access"
+  },
+  {
     "paper": 144,
     "paper_label": "Anderson (2020)",
     "paper_title": "“Reduce” Or “Go Veg”? Effects On Meal Choice",
@@ -639,6 +671,214 @@
     "paper_type": "report",
     "paper_source": "Faunalytics",
     "paper_link": "https://osf.io/cwpfk",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 159,
+    "paper_label": "Dissen & Crowell (2020)",
+    "paper_title": "We Are What We Eat: Assessing the Use of a Documentary Film as an Educational Tool to Change Students’ Nutritional Attitudes and Behaviors",
+    "paper_authors": "Dissen, A.; Crowell, T.",
+    "paper_year": 2020,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "American Journal of Lifestyle Medicine",
+    "paper_link": "https://doi.org/10.1177/1559827620903701",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 171,
+    "paper_label": "Attwood et al. (2020)",
+    "paper_title": "Menu engineering to encourage sustainable food choices when dining out: An online trial of priced-based decoys",
+    "paper_authors": "Attwood, S.; Chesworth, S. J.; Parkin, B. L.",
+    "paper_year": 2020,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2020.104601",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 173,
+    "paper_label": "Taufik et al. (2022)",
+    "paper_title": "A reversal of defaults: Implementing a menu-based default nudge to promote out-of-home consumer adoption of plant-based meat alternatives",
+    "paper_authors": "Taufik, D.; Bouwman, E. P.; Reinders, M. J.; Dagevos, H.",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2022.106049",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 174,
+    "paper_label": "Aberman & Plaks (2022)",
+    "paper_title": "When Less is better: Messages that Present Dietary Carbon Emissions Data at the individual (vs. Aggregate) Level Increase Commitment to Sustainable Beef Consumption",
+    "paper_authors": "Aberman, Y.; Plaks, J.",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2022.105980",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 182,
+    "paper_label": "McDonough (2012)",
+    "paper_title": "Modifying Students’ Intentions to Eat Sustainably",
+    "paper_authors": "McDonough, T.",
+    "paper_year": 2012,
+    "paper_type": "thesis",
+    "paper_link": "https://escholarship.mcgill.ca/concern/papers/vt150k71s",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 194,
+    "paper_label": "Hughes et al. (2023)",
+    "paper_title": "Impact of pictorial warning labels on meat meal selection: A randomised experimental study with UK meat consumers",
+    "paper_authors": "Hughes, J. P.; Weick, M.; Vasiljevic, M.",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2023.107026",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 198,
+    "paper_label": "Segovia et al. (2022)",
+    "paper_title": "The effect of information nudges on online purchases of meat alternatives",
+    "paper_authors": "Segovia, M. S.; Yu, N. Y.; Van Loo, E. J.",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Applied Economic Perspectives and Policy",
+    "paper_link": "https://doi.org/10.1002/aepp.13305",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 205,
+    "paper_label": "De-loyde et al. (2023)",
+    "paper_title": "Promoting sustainable diets using eco-labelling and social nudges: A randomised online experiment",
+    "paper_authors": "De-loyde, K.; Pilling, M. A.; Thornton, A.; Spencer, G.; Maynard, O. M.",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Behavioural Public Policy",
+    "paper_link": "https://doi.org/10.1017/bpp.2022.27",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 264,
+    "paper_label": "Zhou et al. (2019)",
+    "paper_title": "Promotion of novel plant-based dishes among older consumers using the ‘dish of the day’ as a nudging strategy in 4 EU countries",
+    "paper_authors": "Zhou, Xiao; Perez-Cueto, Federico J.A.; dos Santos, Quenia; Bredie, Wender L.P.; Mollá-Bauza, Margarita M. Brugarolas; Rodrigues, Vanessa Mello; Buch-Andersen, Tine; Appleton, Katherine M.; Hemingway, Ann; Giboreau, Agnès; Saulais, Laure; Monteleone, Erminio; Dinnella, Caterina; Hartwell, Heather",
+    "paper_year": 2019,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Food Quality and Preference",
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2018.12.003",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 270,
+    "paper_label": "Weingarten et al. (2022)",
+    "paper_title": "Can information influence meat consumption behaviour? An experimental field study in the university canteen",
+    "paper_authors": "Weingarten, Nina; Meraner, Manuela; Bach, Leonie; Hartmann, Monika",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Food Quality and Preference",
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2021.104498",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "paper_title": "Application of optimal defaults to increase selection of sustainable menu choices",
+    "paper_authors": "Radnitz, Cynthia; Beezhold, Bonnie; Pilato, Ilana; Drury, Catherine R.; Fruchter, Sara; Murphy, Bianca D.G.; Loeb, Katharine L.",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Food Quality and Preference",
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2023.104954",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 274,
+    "paper_label": "Hielkema et al. (2022)",
+    "paper_title": "Veg on the menu? Differences in menu design interventions to increase vegetarian food choice between meat-reducers and non-reducers",
+    "paper_authors": "Hielkema, Marijke H.; Onwezen, Marleen C.; Reinders, Machiel J.",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Food Quality and Preference",
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2022.104675",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 278,
+    "paper_label": "Lange et al. (2023)",
+    "paper_title": "Using prosocial incentives to promote vegetarian food choices: A field experiment",
+    "paper_authors": "Lange, Florian; Cnudde, Marjolein; Maesen, Hannah",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Food Quality and Preference",
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2023.104812",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 280,
+    "paper_label": "Kranzbühler & Schifferstein (2023)",
+    "paper_title": "The effect of meat-shaming on meat eaters' emotions and intentions to adapt behavior",
+    "paper_authors": "Kranzbühler, Anne-Madeleine; Schifferstein, Hendrik N.J.",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Food Quality and Preference",
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2023.104831",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 294,
+    "paper_label": "Pauer et al. (2022)",
+    "paper_title": "Meating Conflict: Toward a Model of Ambivalence-Motivated Reduction of Meat Consumption",
+    "paper_authors": "Pauer, Shiva; Rutjens, Bastiaan T.; Ruby, Matthew B.; Perino, Grischa; van Harreveld, Frenk",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Foods",
+    "paper_link": "https://doi.org/10.3390/foods11070921",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 348,
+    "paper_label": "Hielkema & Lund (2022)",
+    "paper_title": "A “vegetarian curry stew” or just a “curry stew”? - The effect of neutral labeling of vegetarian dishes on food choice among meat-reducers and non-reducers",
+    "paper_authors": "Hielkema, Marijke Hiltje; Lund, Thomas Bøker",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Journal of Environmental Psychology",
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2022.101877",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 381,
+    "paper_label": "Brachem et al. (2019)",
+    "paper_title": "The Limits of Nudging: Can Descriptive Social Norms be Used to Reduce Meat Consumption? It's Probably Not That Easy",
+    "paper_authors": "Brachem, J.; Krüdewagen, H.; Hagmayer, Y.",
+    "paper_year": 2019,
+    "paper_type": "preprint",
+    "paper_source": "PsyArXiv",
+    "paper_link": "https://doi.org/10.31234/osf.io/xk58q",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 442,
+    "paper_label": "Pabian et al. (2020)",
+    "paper_title": "Ninety Minutes to Reduce One's Intention to Eat Meat: A Preliminary Experimental Investigation on the Effect of Watching the Cowspiracy Documentary on Intention to Reduce Meat Consumption",
+    "paper_authors": "Pabian, S.; Hudders, L.; Poels, K.; Stoffelen, F.; De Backer, C. J. S.",
+    "paper_year": 2020,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Frontiers in Communication",
+    "paper_link": "https://doi.org/10.3389/fcomm.2020.00069",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 454,
+    "paper_label": "Hallez et al. (2021)",
+    "paper_title": "The ABC’s of Ecological and Nutrition Labels. The Impact of Label Theme and Complexity on the Environmental Footprint of Online Grocery Choices",
+    "paper_authors": "Hallez, Lotte; Qutteina, Yara; Boen, Filip; Smits, Tim",
+    "paper_year": 2021,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Sustainability",
+    "paper_link": "https://doi.org/10.3390/su13052474",
     "paper_open_access": "open access"
   },
   {
@@ -662,5 +902,38 @@
     "paper_source": "Journal of Human Nutrition and Dietetics",
     "paper_link": "https://doi.org/10.1111/j.1365-277X.2004.00537.x",
     "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 493,
+    "paper_label": "Weijers et al. (2024)",
+    "paper_title": "Nudging towards sustainable dining: Exploring menu nudges to promote vegetarian meal choices in restaurants",
+    "paper_authors": "Weijers, R. J.; Claessens, I. W. H.; Gillebaart, M.; De Ridder, D. T. D.",
+    "paper_year": 2024,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2024.107376",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 499,
+    "paper_label": "Capasso et al. (2025)",
+    "paper_title": "Enhancing intentions to reduce meat consumption: An experiment comparing the role of self- and social pro-environmental identities",
+    "paper_authors": "Capasso, M.; Guidetti, M.; Bianchi, M.; Cavazza, N.; Caso, D.",
+    "paper_year": 2025,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Journal of Environmental Psychology",
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2024.102494",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 512,
+    "paper_label": "Hope et al. (2025)",
+    "paper_title": "Taking a bite out of meat, or just giving fresh veggies the boot? Plant-based meats did not reduce meat purchasing in a randomized controlled menu intervention",
+    "paper_authors": "Hope, J. E.; Green, S. A.; Peacock, J. R.; Mathur, M.",
+    "paper_year": 2025,
+    "paper_type": "preprint",
+    "paper_source": "OSF",
+    "paper_link": "https://doi.org/10.31219/osf.io/z6rn2_v1",
+    "paper_open_access": "open access"
   }
 ]
