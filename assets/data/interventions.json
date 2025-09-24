@@ -643,7 +643,7 @@
     "intervention_mechanism": "factual, origin of animal product, negative emotional",
     "intervention_medium": "text, image",
     "control_description": "Participants were offered and took a control flyer on puppy mills called \"The Cruelty Behind Cuteness\"",
-    "sample_country": "United States, Canada"
+    "sample_country": "N/A"
   },
   {
     "paper": 40,
@@ -679,7 +679,7 @@
     "intervention_mechanism": "negative emotional",
     "intervention_medium": "video",
     "control_description": "Participants saw a pro-vegetarian Facebook and that, after clicking on it, directed them to a Mercy for Animals landing page with a video on fighting tropical diseases.",
-    "sample_country": "United States, United Kingdom, Ireland, Canada, Australia"
+    "sample_country": "N/A"
   },
   {
     "paper": 50,
@@ -1415,7 +1415,7 @@
     "intervention_mechanism": "identity",
     "intervention_medium": "text",
     "control_description": "Participants completed an identity manipulation: Please think of yourself as an individual (personal identity). Please write at least 4–5 sentences (25 words) about the following topic: What are things that you personally do ... often? ... rarely? ... well? ... badly?. Meal name manipulation: the vegetarian burgers were labeled as a sustainable halloumi burger and a sustainable falafel burger.",
-    "sample_country": "United Kingdom, Australia"
+    "sample_country": "N/A"
   },
   {
     "paper": 88,
@@ -1427,7 +1427,7 @@
     "intervention_mechanism": "identity",
     "intervention_medium": "text",
     "control_description": "Participants completed an identity manipulation: Please think of yourself as an individual (personal identity). Please write at least 4–5 sentences (25 words) about the following topic: What are things that you personally do ... often? ... rarely? ... well? ... badly?. Meal name manipulation: the vegetarian burgers were labeled as a sustainable halloumi burger and a sustainable falafel burger.",
-    "sample_country": "United Kingdom, Australia"
+    "sample_country": "N/A"
   },
   {
     "paper": 89,
@@ -1619,7 +1619,7 @@
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
     "control_description": "Participants received unrelated trend information.",
-    "sample_country": "Czech Republic"
+    "sample_country": "Czechia"
   },
   {
     "paper": 143,
@@ -1631,7 +1631,7 @@
     "intervention_mechanism": "taste",
     "intervention_medium": "menu/food options",
     "control_description": "Participants were presented with vegetarian food box options, this condition included basic descriptions, and served as a baseline. Meat food box options had basic descriptions in all conditions.",
-    "sample_country": "International Sample (88.5% lived in Europe,  while the remainders lived in Americas (8.8%), Asia (2.0%), Africa (0.3%) and Oceania (0.3%)."
+    "sample_country": "N/A"
   },
   {
     "paper": 143,
@@ -1643,7 +1643,7 @@
     "intervention_mechanism": "other",
     "intervention_medium": "menu/food options",
     "control_description": "Participants were presented with vegetarian food box options, this condition included basic descriptions, and served as a baseline. Meat food box options had basic descriptions in all conditions.",
-    "sample_country": "International Sample (88.5% lived in Europe,  while the remainders lived in Americas (8.8%), Asia (2.0%), Africa (0.3%) and Oceania (0.3%)."
+    "sample_country": "N/A"
   },
   {
     "paper": 144,
@@ -1679,7 +1679,7 @@
     "intervention_mechanism": "infotainment",
     "intervention_medium": "video",
     "control_description": "",
-    "sample_country": "United States East Coast"
+    "sample_country": "United States"
   },
   {
     "paper": 171,
@@ -1967,7 +1967,7 @@
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "Participants were presented with a menu in which four omnivore entrees were featured prominently as the default items on the menu and four vegan entrees as the opt-out items",
-    "sample_country": "United States and Canda"
+    "sample_country": "N/A"
   },
   {
     "paper": 273,
@@ -1979,7 +1979,7 @@
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "Participants were presented with a menu in which four omnivore entrees were featured prominently as the default items on the menu and four vegan entrees as the opt-out items",
-    "sample_country": "United States and Canda"
+    "sample_country": "N/A"
   },
   {
     "paper": 273,
@@ -2095,11 +2095,11 @@
     "study": 2,
     "intervention_condition": 1,
     "intervention_description": "To make participants to reflect on their inconsistent evaluations about meat, they were asked to describe two personally held reactions in favor of and two reactions opposed to meat consumption or vaccination in the control group.",
-    "intervention_content": "-, personal image",
+    "intervention_content": "personal image",
     "intervention_mechanism": "other, logical argument",
     "intervention_medium": "text",
     "control_description": "Participants assigned to a task about an unrelated control topic (going to the cinema)",
-    "sample_country": "Mainly North America"
+    "sample_country": "N/A"
   },
   {
     "paper": 294,
@@ -2107,8 +2107,8 @@
     "study": 3,
     "intervention_condition": 1,
     "intervention_description": "To make participants to reflect on their inconsistent evaluations about meat, they were asked to describe two personally held reactions in favor of and two reactions opposed to meat consumption or vaccination in the control group.",
-    "intervention_content": "-, personal image",
-    "intervention_mechanism": "",
+    "intervention_content": "personal image",
+    "intervention_mechanism": "other, logical argument",
     "intervention_medium": "text",
     "control_description": "Participants assigned to a task about an unrelated control topic (going to the cinema)",
     "sample_country": "England"
@@ -2217,7 +2217,7 @@
     "intervention_description": "Participants had to choose from products that were presented with an eco-score label, which evaluated the overall environmental impact of the products with a letter from A to E and a color from green to red, to make a meal",
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
-    "intervention_medium": "",
+    "intervention_medium": "text",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "Belgium"
   },
@@ -2229,7 +2229,7 @@
     "intervention_description": "Participants had to choose from products that were presented with a nutri-score label, which evaluated the overall nutritional score of the products with a letter from A to E and a color from green to red, to make a meal",
     "intervention_content": "health",
     "intervention_mechanism": "factual",
-    "intervention_medium": "",
+    "intervention_medium": "text",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "Belgium"
   },
@@ -2241,7 +2241,7 @@
     "intervention_description": "Participants had to choose from products that were presented with an eco-score label, which evaluated the overall environmental impact of the products with a letter from A to E and a color from green to red, to make a meal",
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
-    "intervention_medium": "",
+    "intervention_medium": "text",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "N/A"
   },
@@ -2253,7 +2253,7 @@
     "intervention_description": "Participants had to choose from products that were presented with a nutri-score label, which evaluated the overall nutritional score of the products with a letter from A to E and a color from green to red, to make a meal",
     "intervention_content": "health",
     "intervention_mechanism": "factual",
-    "intervention_medium": "",
+    "intervention_medium": "text",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "N/A"
   },
@@ -2265,7 +2265,7 @@
     "intervention_description": "The reductive eco label displayed four sustainability values, i.e., the water use (in liters), the carbon footprint (in grams), the land use (in m2/year), and the nitrogen (in grams) per 100 grams of a food product.",
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
-    "intervention_medium": "",
+    "intervention_medium": "text",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "N/A"
   },
@@ -2277,7 +2277,7 @@
     "intervention_description": "The reductive version of the nutrition label similarly presented four nutritional values, i.e., the energy (in calories) and the amount of saturated fats (in grams), sugar (in grams), and salt (in grams) per 100 g of that product.",
     "intervention_content": "health",
     "intervention_mechanism": "factual",
-    "intervention_medium": "",
+    "intervention_medium": "text",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "N/A"
   },
@@ -2335,47 +2335,11 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "Participants were presented with a menu in which a stand-out box was placed around the vegetarian option",
-    "intervention_content": "",
+    "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
     "control_description": "Participants were presented with a standard menu",
     "sample_country": "Netherlands"
-  },
-  {
-    "paper": 499,
-    "paper_label": "Capasso et al. (2025)",
-    "study": 1,
-    "intervention_condition": 1,
-    "intervention_description": "Participants rated how often they engaged in six common sustainable behaviors (1 = never, 5 = always). They then received feedback reinforcing their environmental self-identity, emphasizing that their responses showed genuine concern for the environment and positive influence on others.",
-    "intervention_content": "environment, personal image",
-    "intervention_mechanism": "identity",
-    "intervention_medium": "text",
-    "control_description": "Participants indicated the frequency of their engagement in six behaviors unrelated to the sustainability (1=never, 5=always)",
-    "sample_country": "Italy"
-  },
-  {
-    "paper": 499,
-    "paper_label": "Capasso et al. (2025)",
-    "study": 1,
-    "intervention_condition": 2,
-    "intervention_description": "Participants completed the same past behavior task, but they received feedback aimed at enhancing the salience of their social identity",
-    "intervention_content": "environment, personal image",
-    "intervention_mechanism": "identity",
-    "intervention_medium": "text",
-    "control_description": "Participants indicated the frequency of their engagement in six behaviors unrelated to the sustainability (1=never, 5=always)",
-    "sample_country": "Italy"
-  },
-  {
-    "paper": 499,
-    "paper_label": "Capasso et al. (2025)",
-    "study": 1,
-    "intervention_condition": 3,
-    "intervention_description": "Participants completed the past behavior task concerning sustainable behaviors without receiving any feedback.",
-    "intervention_content": "environment, personal image",
-    "intervention_mechanism": "identity",
-    "intervention_medium": "",
-    "control_description": "Participants indicated the frequency of their engagement in six behaviors unrelated to the sustainability (1=never, 5=always)",
-    "sample_country": "Italy"
   },
   {
     "paper": 512,

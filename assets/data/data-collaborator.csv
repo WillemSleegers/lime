@@ -231,10 +231,8 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 78,Boronowsky et al. (2022),1,1,2,1,vegetarian meal selection,1,OR2DL,1.17239763552819,0.0240068998963358
 79,Banach & Stel (2024),1,2,1,1,speciesism,1,SMD,0.144571351228593,0.017757839621294
 79,Banach & Stel (2024),1,2,1,2,intended reduction in harmful behaviors,2,SMD,0.322629696281999,0.0179418861817519
-79,Banach & Stel (2024),1,2,1,3,petition,3,OR2DL,0.0758707945934933,0.0313828705712712
 79,Banach & Stel (2024),2,2,1,1,speciesism,4,SMD,-0.170081784400696,0.0101125751463184
 79,Banach & Stel (2024),2,2,1,2,intended reduction in harmful behaviors,5,SMD,0.264082839977437,0.0101639755656958
-79,Banach & Stel (2024),2,2,1,3,petition,6,OR2DL,-0.0037946665794333,0.0123965188567019
 80,Gravert & Kurz (2019),1,2,1,1,vegetarian sales,1,OR2DL,0.882053711653721,0.0165571459337042
 81,Erhard et al. (2023),1,4,1,1,plant-based choice,1,OR2DL,0.0409683199799495,0.0182790532405243
 81,Erhard et al. (2023),1,4,2,1,plant-based choice,2,OR2DL,0.303529983848123,0.0193499531214645
@@ -322,9 +320,7 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 280,Kranzbühler & Schifferstein (2023),3,2,1,2,restore motivations,5,SMD,-0.664249369362952,0.0149622470378843
 280,Kranzbühler & Schifferstein (2023),3,2,1,3,inertia,6,SMD,0.995985694875757,0.0280999609512411
 294,Pauer et al. (2022),2,2,1,1,Intention to reduce meat consumption,1,SMD,0.369570999960654,0.0215259436195176
-294,Pauer et al. (2022),2,2,1,2,Charitable donations,2,SMD,0.0635116258973977,0.0211752848962695
 294,Pauer et al. (2022),3,2,1,1,Intention to reduce meat consumption,3,SMD,2.54117127128618,0.0161356600781364
-294,Pauer et al. (2022),3,2,1,2,Charitable donations,4,SMD,0.215842510950696,0.00898056695260435
 348,Hielkema & Lund (2022),1,1,2,2,meat meal selection,1,OR2DL,-0.5169551330661,0.0273274864292335
 348,Hielkema & Lund (2022),1,1,3,2,meat meal selection,2,OR2DL,-0.528465548955109,0.028748969216748
 348,Hielkema & Lund (2022),1,1,4,2,meat meal selection,3,OR2DL,-0.381794089034708,0.0273349072284542
@@ -354,7 +350,4 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 493,Weijers et al. (2024),1,1,2,1,choice of vegetarian options,1,SMD,0.384713414004112,0.0159150248475954
 493,Weijers et al. (2024),1,1,3,1,choice of vegetarian options,2,SMD,0.269114742954135,0.0159595820678273
 493,Weijers et al. (2024),1,1,4,1,choice of vegetarian options,3,SMD,0.159539784002203,0.0153193092950679
-499,Capasso et al. (2025),1,4,1,1,Intention to reduce meat consumption,1,SMD,0.0907101884112474,0.011812470360911
-499,Capasso et al. (2025),1,4,2,1,Intention to reduce meat consumption,2,SMD,-0.00936021638819205,0.0119048922822185
-499,Capasso et al. (2025),1,4,3,1,Intention to reduce meat consumption,3,SMD,0.092373552541738,0.0118129195274708
 512,Hope et al. (2025),1,2,3,2,Taco filling choice - meat,1,OR2DL,0.0663156615977284,0.00400136970546296

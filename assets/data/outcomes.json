@@ -1278,17 +1278,6 @@
   {
     "paper": 79,
     "paper_label": "Banach & Stel (2024)",
-    "study": 1,
-    "outcome": 3,
-    "outcome_label": "petition",
-    "outcome_description": "Willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans",
-    "outcome_category": "behavior",
-    "outcome_subcategory": "signing a petition",
-    "outcome_measurement_type": "survey"
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
     "study": 2,
     "outcome": 1,
     "outcome_label": "speciesism",
@@ -1306,17 +1295,6 @@
     "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)",
     "outcome_category": "intentions",
     "outcome_subcategory": "animal product intentions",
-    "outcome_measurement_type": "survey"
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 2,
-    "outcome": 3,
-    "outcome_label": "petition",
-    "outcome_description": "Willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans",
-    "outcome_category": "behavior",
-    "outcome_subcategory": "signing a petition",
     "outcome_measurement_type": "survey"
   },
   {
@@ -1949,34 +1927,12 @@
   {
     "paper": 294,
     "paper_label": "Pauer et al. (2022)",
-    "study": 2,
-    "outcome": 2,
-    "outcome_label": "Charitable donations",
-    "outcome_description": "Participants entered how much of a $10 bonus they would donate to an animal advocacy charity for farm animals advocacy instead of keeping the full amount",
-    "outcome_category": "behavior",
-    "outcome_subcategory": "animal attitude",
-    "outcome_measurement_type": "survey"
-  },
-  {
-    "paper": 294,
-    "paper_label": "Pauer et al. (2022)",
     "study": 3,
     "outcome": 1,
     "outcome_label": "Intention to reduce meat consumption",
     "outcome_description": "Participants' intention to reduce meat consumption, in this case, it was measured with a 2 item scale - the future consumption was mentioned to be next week",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
-    "outcome_measurement_type": "survey"
-  },
-  {
-    "paper": 294,
-    "paper_label": "Pauer et al. (2022)",
-    "study": 3,
-    "outcome": 2,
-    "outcome_label": "Charitable donations",
-    "outcome_description": "Participants entered how much of a $10 bonus they would donate to an animal advocacy charity for farm animals advocacy instead of keeping the full amount",
-    "outcome_category": "behavior",
-    "outcome_subcategory": "animal attitude",
     "outcome_measurement_type": "survey"
   },
   {
@@ -2187,17 +2143,6 @@
     "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
-  },
-  {
-    "paper": 499,
-    "paper_label": "Capasso et al. (2025)",
-    "study": 1,
-    "outcome": 1,
-    "outcome_label": "Intention to reduce meat consumption",
-    "outcome_description": "Intentions to reduce meat consumption in the next two weeks",
-    "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey"
   },
   {
     "paper": 512,

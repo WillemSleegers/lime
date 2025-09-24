@@ -223,7 +223,7 @@
   },
   {
     "column": "sample_country",
-    "description": "The name of the country in which the study was conducted.",
+    "description": "The name of the country in which the study was conducted. Only recorded when the sample is from a single country, otherwise this information is missing, though the information is included in the sample notes.",
     "data_type": "string"
   },
   {
@@ -322,7 +322,7 @@
     "column": "outcome_subcategory",
     "description": "A more fine-grained categorization of the outcome",
     "data_type": "factor",
-    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, diet, ethical consumption, other, vegetarian consumption, vegan consumption, meat commitment, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics, vegan consumption intentions"
+    "factor_levels": "meat consumption, moral judgment, meat belief, meat consumption intentions, animal attitude, animal product consumption, diet intentions, vegetarian consumption intentions, meat attitude, egg consumption, meat hedonics, dairy consumption, diet, ethical consumption, other, vegetarian consumption, vegan consumption, meat commitment, animal product intentions, signing a petition, vegetarian identity, vegetarian hedonics, vegan hedonics, vegan consumption intentions, donation"
   },
   {
     "column": "outcome_measurement_type",

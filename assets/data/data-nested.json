@@ -1797,10 +1797,6 @@
           {
             "outcome": 2,
             "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)"
-          },
-          {
-            "outcome": 3,
-            "outcome_description": "Willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans"
           }
         ]
       },
@@ -1821,10 +1817,6 @@
           {
             "outcome": 2,
             "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)"
-          },
-          {
-            "outcome": 3,
-            "outcome_description": "Willingness to sign a fictitious animal rights petition that promoted giving animals the same rights as humans"
           }
         ]
       }
@@ -2919,10 +2911,6 @@
           {
             "outcome": 1,
             "outcome_description": "Participants' intention to reduce meat consumption, in this case, it was measured with a 2 item scale - the future consumption was mentioned to be next week"
-          },
-          {
-            "outcome": 2,
-            "outcome_description": "Participants entered how much of a $10 bonus they would donate to an animal advocacy charity for farm animals advocacy instead of keeping the full amount"
           }
         ]
       },
@@ -2939,10 +2927,6 @@
           {
             "outcome": 1,
             "outcome_description": "Participants' intention to reduce meat consumption, in this case, it was measured with a 2 item scale - the future consumption was mentioned to be next week"
-          },
-          {
-            "outcome": 2,
-            "outcome_description": "Participants entered how much of a $10 bonus they would donate to an animal advocacy charity for farm animals advocacy instead of keeping the full amount"
           }
         ]
       }
@@ -3237,40 +3221,6 @@
           {
             "outcome": 1,
             "outcome_description": "Participants' choice of vegetarian options in an imaginary restaurant condition"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "paper": 499,
-    "paper_label": "Capasso et al. (2025)",
-    "paper_authors": "Capasso, M.; Guidetti, M.; Bianchi, M.; Cavazza, N.; Caso, D.",
-    "paper_title": "Enhancing intentions to reduce meat consumption: An experiment comparing the role of self- and social pro-environmental identities",
-    "paper_year": 2025,
-    "paper_link": "https://doi.org/10.1016/j.jenvp.2024.102494",
-    "studies": [
-      {
-        "study": 1,
-        "study_n": 678,
-        "interventions": [
-          {
-            "intervention_condition": 1,
-            "intervention_description": "Participants rated how often they engaged in six common sustainable behaviors (1 = never, 5 = always). They then received feedback reinforcing their environmental self-identity, emphasizing that their responses showed genuine concern for the environment and positive influence on others."
-          },
-          {
-            "intervention_condition": 2,
-            "intervention_description": "Participants completed the same past behavior task, but they received feedback aimed at enhancing the salience of their social identity"
-          },
-          {
-            "intervention_condition": 3,
-            "intervention_description": "Participants completed the past behavior task concerning sustainable behaviors without receiving any feedback."
-          }
-        ],
-        "outcomes": [
-          {
-            "outcome": 1,
-            "outcome_description": "Intentions to reduce meat consumption in the next two weeks"
           }
         ]
       }

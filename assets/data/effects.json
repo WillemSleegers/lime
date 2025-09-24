@@ -3018,19 +3018,6 @@
   {
     "paper": 79,
     "paper_label": "Banach & Stel (2024)",
-    "study": 1,
-    "effect": 3,
-    "effect_size_name": "OR2DL",
-    "effect_size": 0.0759,
-    "effect_size_lower": -0.2713,
-    "effect_size_upper": 0.4231,
-    "effect_size_var": 0.0314,
-    "effect_intervention_n": 110,
-    "effect_control_n": 116
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
     "study": 2,
     "effect": 4,
     "effect_size_name": "SMD",
@@ -3051,19 +3038,6 @@
     "effect_size_lower": 0.0665,
     "effect_size_upper": 0.4617,
     "effect_size_var": 0.0102,
-    "effect_intervention_n": 197,
-    "effect_control_n": 200
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 2,
-    "effect": 6,
-    "effect_size_name": "OR2DL",
-    "effect_size": -0.0038,
-    "effect_size_lower": -0.222,
-    "effect_size_upper": 0.2144,
-    "effect_size_var": 0.0124,
     "effect_intervention_n": 197,
     "effect_control_n": 200
   },
@@ -4201,19 +4175,6 @@
   {
     "paper": 294,
     "paper_label": "Pauer et al. (2022)",
-    "study": 2,
-    "effect": 2,
-    "effect_size_name": "SMD",
-    "effect_size": 0.0635,
-    "effect_size_lower": -0.2217,
-    "effect_size_upper": 0.3487,
-    "effect_size_var": 0.0212,
-    "effect_intervention_n": 95,
-    "effect_control_n": 94
-  },
-  {
-    "paper": 294,
-    "paper_label": "Pauer et al. (2022)",
     "study": 3,
     "effect": 3,
     "effect_size_name": "SMD",
@@ -4221,19 +4182,6 @@
     "effect_size_lower": 2.2922,
     "effect_size_upper": 2.7901,
     "effect_size_var": 0.0161,
-    "effect_intervention_n": 224,
-    "effect_control_n": 224
-  },
-  {
-    "paper": 294,
-    "paper_label": "Pauer et al. (2022)",
-    "study": 3,
-    "effect": 4,
-    "effect_size_name": "SMD",
-    "effect_size": 0.2158,
-    "effect_size_lower": 0.0301,
-    "effect_size_upper": 0.4016,
-    "effect_size_var": 0.009,
     "effect_intervention_n": 224,
     "effect_control_n": 224
   },
@@ -4613,45 +4561,6 @@
     "effect_size_var": 0.0153,
     "effect_intervention_n": 133,
     "effect_control_n": 129
-  },
-  {
-    "paper": 499,
-    "paper_label": "Capasso et al. (2025)",
-    "study": 1,
-    "effect": 1,
-    "effect_size_name": "SMD",
-    "effect_size": 0.0907,
-    "effect_size_lower": -0.1223,
-    "effect_size_upper": 0.3037,
-    "effect_size_var": 0.0118,
-    "effect_intervention_n": 171,
-    "effect_control_n": 168
-  },
-  {
-    "paper": 499,
-    "paper_label": "Capasso et al. (2025)",
-    "study": 1,
-    "effect": 2,
-    "effect_size_name": "SMD",
-    "effect_size": -0.0094,
-    "effect_size_lower": -0.2232,
-    "effect_size_upper": 0.2045,
-    "effect_size_var": 0.0119,
-    "effect_intervention_n": 168,
-    "effect_control_n": 168
-  },
-  {
-    "paper": 499,
-    "paper_label": "Capasso et al. (2025)",
-    "study": 1,
-    "effect": 3,
-    "effect_size_name": "SMD",
-    "effect_size": 0.0924,
-    "effect_size_lower": -0.1206,
-    "effect_size_upper": 0.3054,
-    "effect_size_var": 0.0118,
-    "effect_intervention_n": 171,
-    "effect_control_n": 168
   },
   {
     "paper": 512,
