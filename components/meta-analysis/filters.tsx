@@ -2,7 +2,6 @@
 
 import * as z from "zod"
 import { useForm } from "react-hook-form"
-import { ChevronRight } from "lucide-react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Dispatch, SetStateAction, useState } from "react"
 
@@ -16,16 +15,20 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Spinner } from "@/components/ui/spinner"
+import {
+  MultiSelect,
+  MultiSelectContent,
+  MultiSelectGroup,
+  MultiSelectItem,
+  MultiSelectTrigger,
+  MultiSelectValue,
+} from "@/components/ui/multi-select"
 
-import { cn } from "@/lib/utils"
+import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
 import data from "@/assets/data/data.json"
 
@@ -43,7 +46,6 @@ import {
 import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
 
 import { Data } from "@/lib/types"
-import { Checkbox } from "../ui/checkbox"
 
 const formSchema = z
   .object({
@@ -229,21 +231,14 @@ export const Filters = ({ status, setData }: FiltersProps) => {
   }
 
   return (
-    <Collapsible
-      className="bg-muted p-4 rounded-2xl"
+    <FilterCollapsible
+      title="Inclusion criteria"
       open={open}
       onOpenChange={setOpen}
     >
-      <CollapsibleTrigger className="flex flex-row items-center gap-1">
-        <h1 className="text-xl font-bold tracking-tight">Inclusion criteria</h1>
-        <ChevronRight
-          className={cn("transition", open ? "rotate-90" : "rotate-0")}
-        />
-      </CollapsibleTrigger>
-      <CollapsibleContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit, onInvalid)}>
-            <div className="flex flex-col gap-3">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit, onInvalid)} className="p-3">
+          <div className="flex flex-col gap-3">
               {/* Levels */}
               <div className="my-3 space-y-4">
                 {/* Outcome-level */}
@@ -254,7 +249,7 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                     <FormLabel className="text-base">
                       Outcome categories
                     </FormLabel>
-                    <div className="my-3 space-y-4 px-3">
+                    <div className="space-y-4">
                       <FormField
                         control={form.control}
                         name="outcome_subcategory_behavior"
@@ -263,47 +258,27 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                             <FormLabel className="text-base">
                               Behaviors
                             </FormLabel>
-                            <FormControl className="justify-start">
-                              <ToggleGroup
-                                className="flex flex-wrap gap-x-2 gap-y-1"
-                                type="multiple"
-                                onValueChange={field.onChange}
-                                value={field.value}
-                              >
-                                {OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS.map(
-                                  (option) => (
-                                    <ToggleGroupItem
-                                      key={option}
-                                      value={option}
-                                      variant="pill"
-                                      size="sm"
-                                    >
-                                      {option}
-                                    </ToggleGroupItem>
-                                  )
-                                )}
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() =>
-                                    field.onChange(
-                                      OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS
+                            <MultiSelect
+                              onValuesChange={field.onChange}
+                              values={field.value}
+                            >
+                              <FormControl>
+                                <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                                  <MultiSelectValue placeholder="Select behaviors..." />
+                                </MultiSelectTrigger>
+                              </FormControl>
+                              <MultiSelectContent>
+                                <MultiSelectGroup>
+                                  {OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS.map(
+                                    (option) => (
+                                      <MultiSelectItem key={option} value={option}>
+                                        {option}
+                                      </MultiSelectItem>
                                     )
-                                  }
-                                >
-                                  Select all
-                                </Button>
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() => field.onChange([])}
-                                >
-                                  Deselect all
-                                </Button>
-                              </ToggleGroup>
-                            </FormControl>
+                                  )}
+                                </MultiSelectGroup>
+                              </MultiSelectContent>
+                            </MultiSelect>
                           </FormItem>
                         )}
                       />
@@ -315,47 +290,27 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                             <FormLabel className="text-base">
                               Intentions
                             </FormLabel>
-                            <FormControl className="justify-start">
-                              <ToggleGroup
-                                className="flex flex-wrap gap-x-2 gap-y-1"
-                                type="multiple"
-                                onValueChange={field.onChange}
-                                value={field.value}
-                              >
-                                {OUTCOME_SUBCATEGORY_INTENTION_OPTIONS.map(
-                                  (option) => (
-                                    <ToggleGroupItem
-                                      key={option}
-                                      value={option}
-                                      variant="pill"
-                                      size="sm"
-                                    >
-                                      {option}
-                                    </ToggleGroupItem>
-                                  )
-                                )}
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() =>
-                                    field.onChange(
-                                      OUTCOME_SUBCATEGORY_INTENTION_OPTIONS
+                            <MultiSelect
+                              onValuesChange={field.onChange}
+                              values={field.value}
+                            >
+                              <FormControl>
+                                <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                                  <MultiSelectValue placeholder="Select intentions..." />
+                                </MultiSelectTrigger>
+                              </FormControl>
+                              <MultiSelectContent>
+                                <MultiSelectGroup>
+                                  {OUTCOME_SUBCATEGORY_INTENTION_OPTIONS.map(
+                                    (option) => (
+                                      <MultiSelectItem key={option} value={option}>
+                                        {option}
+                                      </MultiSelectItem>
                                     )
-                                  }
-                                >
-                                  Select all
-                                </Button>
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() => field.onChange([])}
-                                >
-                                  Deselect all
-                                </Button>
-                              </ToggleGroup>
-                            </FormControl>
+                                  )}
+                                </MultiSelectGroup>
+                              </MultiSelectContent>
+                            </MultiSelect>
                           </FormItem>
                         )}
                       />
@@ -367,47 +322,27 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                             <FormLabel className="text-base">
                               Attitudes/beliefs
                             </FormLabel>
-                            <FormControl className="justify-start">
-                              <ToggleGroup
-                                className="flex flex-wrap gap-x-2 gap-y-1"
-                                type="multiple"
-                                onValueChange={field.onChange}
-                                value={field.value}
-                              >
-                                {OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS.map(
-                                  (option) => (
-                                    <ToggleGroupItem
-                                      key={option}
-                                      value={option}
-                                      variant="pill"
-                                      size="sm"
-                                    >
-                                      {option}
-                                    </ToggleGroupItem>
-                                  )
-                                )}
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() =>
-                                    field.onChange(
-                                      OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS
+                            <MultiSelect
+                              onValuesChange={field.onChange}
+                              values={field.value}
+                            >
+                              <FormControl>
+                                <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                                  <MultiSelectValue placeholder="Select attitudes/beliefs..." />
+                                </MultiSelectTrigger>
+                              </FormControl>
+                              <MultiSelectContent>
+                                <MultiSelectGroup>
+                                  {OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS.map(
+                                    (option) => (
+                                      <MultiSelectItem key={option} value={option}>
+                                        {option}
+                                      </MultiSelectItem>
                                     )
-                                  }
-                                >
-                                  Select all
-                                </Button>
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() => field.onChange([])}
-                                >
-                                  Deselect all
-                                </Button>
-                              </ToggleGroup>
-                            </FormControl>
+                                  )}
+                                </MultiSelectGroup>
+                              </MultiSelectContent>
+                            </MultiSelect>
                           </FormItem>
                         )}
                       />
@@ -426,48 +361,52 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                   <FormField
                     control={form.control}
                     name="outcome_measurement_type"
-                    render={({ field }) => (
+                    render={() => (
                       <FormItem>
-                        <FormLabel className="text-base">
-                          Measurement type
-                        </FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            type="multiple"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option.value}
-                                value={option.value}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option.label}
-                              </ToggleGroupItem>
-                            ))}
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() =>
-                                field.onChange(OUTCOME_MEASUREMENT_TYPE_OPTIONS)
-                              }
-                            >
-                              Select all
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange([])}
-                            >
-                              Deselect all
-                            </Button>
-                          </ToggleGroup>
-                        </FormControl>
+                        <div className="space-y-1">
+                          <FormLabel className="text-base">
+                            Measurement type
+                          </FormLabel>
+                        </div>
+                        {OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => (
+                          <FormField
+                            key={option.value}
+                            control={form.control}
+                            name="outcome_measurement_type"
+                            render={({ field }) => {
+                              return (
+                                <FormItem
+                                  key={option.value}
+                                  className="flex flex-row items-center gap-2"
+                                >
+                                  <FormControl>
+                                    <Checkbox
+                                      checked={field.value?.includes(
+                                        option.value
+                                      )}
+                                      onCheckedChange={(checked) => {
+                                        return checked
+                                          ? field.onChange([
+                                              ...field.value,
+                                              option.value,
+                                            ])
+                                          : field.onChange(
+                                              field.value?.filter(
+                                                (value) =>
+                                                  value !== option.value
+                                              )
+                                            )
+                                      }}
+                                    />
+                                  </FormControl>
+                                  <FormLabel className="text-sm font-normal">
+                                    {option.label}
+                                  </FormLabel>
+                                </FormItem>
+                              )
+                            }}
+                          />
+                        ))}
                         <FormMessage />
                       </FormItem>
                     )}
@@ -484,43 +423,28 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-base">Content</FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            type="multiple"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {INTERVENTION_CONTENT_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() =>
-                                field.onChange(INTERVENTION_CONTENT_OPTIONS)
-                              }
-                            >
-                              Select all
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange([])}
-                            >
-                              Deselect all
-                            </Button>
-                          </ToggleGroup>
-                        </FormControl>
+                        <FormDescription>
+                          Topics or arguments used to persuade people
+                        </FormDescription>
+                        <MultiSelect
+                          onValuesChange={field.onChange}
+                          values={field.value}
+                        >
+                          <FormControl>
+                            <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                              <MultiSelectValue placeholder="Select intervention content..." />
+                            </MultiSelectTrigger>
+                          </FormControl>
+                          <MultiSelectContent>
+                            <MultiSelectGroup>
+                              {INTERVENTION_CONTENT_OPTIONS.map((option) => (
+                                <MultiSelectItem key={option} value={option}>
+                                  {option}
+                                </MultiSelectItem>
+                              ))}
+                            </MultiSelectGroup>
+                          </MultiSelectContent>
+                        </MultiSelect>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -532,43 +456,28 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-base">Mechanism</FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            type="multiple"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {INTERVENTION_MECHANISM_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() =>
-                                field.onChange(INTERVENTION_MECHANISM_OPTIONS)
-                              }
-                            >
-                              Select all
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange([])}
-                            >
-                              Deselect all
-                            </Button>
-                          </ToggleGroup>
-                        </FormControl>
+                        <FormDescription>
+                          Persuasion strategies used by researchers
+                        </FormDescription>
+                        <MultiSelect
+                          onValuesChange={field.onChange}
+                          values={field.value}
+                        >
+                          <FormControl>
+                            <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                              <MultiSelectValue placeholder="Select intervention mechanism..." />
+                            </MultiSelectTrigger>
+                          </FormControl>
+                          <MultiSelectContent>
+                            <MultiSelectGroup>
+                              {INTERVENTION_MECHANISM_OPTIONS.map((option) => (
+                                <MultiSelectItem key={option} value={option}>
+                                  {option}
+                                </MultiSelectItem>
+                              ))}
+                            </MultiSelectGroup>
+                          </MultiSelectContent>
+                        </MultiSelect>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -580,43 +489,28 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-base">Medium</FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            type="multiple"
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {INTERVENTION_MEDIUM_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() =>
-                                field.onChange(INTERVENTION_MEDIUM_OPTIONS)
-                              }
-                            >
-                              Select all
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange([])}
-                            >
-                              Deselect all
-                            </Button>
-                          </ToggleGroup>
-                        </FormControl>
+                        <FormDescription>
+                          How the intervention was delivered to participants
+                        </FormDescription>
+                        <MultiSelect
+                          onValuesChange={field.onChange}
+                          values={field.value}
+                        >
+                          <FormControl>
+                            <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                              <MultiSelectValue placeholder="Select intervention medium..." />
+                            </MultiSelectTrigger>
+                          </FormControl>
+                          <MultiSelectContent>
+                            <MultiSelectGroup>
+                              {INTERVENTION_MEDIUM_OPTIONS.map((option) => (
+                                <MultiSelectItem key={option} value={option}>
+                                  {option}
+                                </MultiSelectItem>
+                              ))}
+                            </MultiSelectGroup>
+                          </MultiSelectContent>
+                        </MultiSelect>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -690,41 +584,28 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-base">Country</FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            type="multiple"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {COUNTRY_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange(COUNTRY_OPTIONS)}
-                            >
-                              Select all
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange([])}
-                            >
-                              Deselect all
-                            </Button>
-                          </ToggleGroup>
-                        </FormControl>
+                        <FormDescription>
+                          Countries where studies were conducted
+                        </FormDescription>
+                        <MultiSelect
+                          onValuesChange={field.onChange}
+                          values={field.value}
+                        >
+                          <FormControl>
+                            <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                              <MultiSelectValue placeholder="Select countries..." />
+                            </MultiSelectTrigger>
+                          </FormControl>
+                          <MultiSelectContent search={{ placeholder: "Search countries...", emptyMessage: "No country found." }}>
+                            <MultiSelectGroup>
+                              {COUNTRY_OPTIONS.map((option) => (
+                                <MultiSelectItem key={option} value={option}>
+                                  {option}
+                                </MultiSelectItem>
+                              ))}
+                            </MultiSelectGroup>
+                          </MultiSelectContent>
+                        </MultiSelect>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -756,36 +637,25 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                 </div>
               </div>
 
-              <Button
-                type="submit"
-                disabled={status !== "Ready"}
-                className="w-[150px] rounded-full "
-              >
-                {status != "Ready" ? (
-                  <div className="flex space-x-1 justify-center">
-                    {[0, 1, 2].map((i) => (
-                      <div
-                        key={i}
-                        className="w-2 h-2 bg-background rounded-full animate-pulse duration-1000"
-                        style={{
-                          animationDelay: `${i * 0.2}s`,
-                        }}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  "Run meta-analysis"
-                )}
-              </Button>
-            </div>
-          </form>
-        </Form>
-        {form.formState.errors.root && (
-          <div className="text-destructive ms-1 mt-2 text-sm font-semibold">
-            {form.formState.errors.root.message}
+            <Button
+              type="submit"
+              disabled={status !== "Ready"}
+              className="h-auto rounded-lg"
+            >
+              {status !== "Ready" ? (
+                <Spinner className="size-4" />
+              ) : (
+                "Run meta-analysis"
+              )}
+            </Button>
           </div>
-        )}
-      </CollapsibleContent>
-    </Collapsible>
+          {form.formState.errors.root && (
+            <div className="text-destructive ms-1 mt-2 text-sm font-semibold">
+              {form.formState.errors.root.message}
+            </div>
+          )}
+        </form>
+      </Form>
+    </FilterCollapsible>
   )
 }
