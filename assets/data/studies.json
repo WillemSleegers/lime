@@ -1029,7 +1029,7 @@
     "study_data_available": "no",
     "study_condition_assignment": "time point",
     "study_design": "between",
-    "study_randomization": "yes"
+    "study_randomization": "no"
   },
   {
     "paper": 274,
@@ -1216,18 +1216,6 @@
     "study_preregistered": "no",
     "study_data_available": "yes",
     "study_data_link": "https://osf.io/pmz63/?view_only=f9fa20a9e88f4b3bbf3490718aea474d.",
-    "study_condition_assignment": "individual",
-    "study_design": "between",
-    "study_randomization": "yes"
-  },
-  {
-    "paper": 499,
-    "paper_label": "Capasso et al. (2025)",
-    "study": 1,
-    "study_n": 678,
-    "study_preregistered": "no",
-    "study_data_available": "yes",
-    "study_data_link": "https://osf.io/qbhg9/?view_only=20e10a1c4fed42f4902737aa87a296d8.",
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"

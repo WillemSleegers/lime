@@ -2,22 +2,28 @@
 
 import { WebR } from "webr"
 import { useEffect, useRef, useState } from "react"
+import Link from "next/link"
 
 import { CollapsibleEstimate } from "@/components/meta-analysis/estimate"
 import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { ForestPlot } from "@/components/meta-analysis/forest-plot"
 import { RCode } from "@/components/meta-analysis/R-code"
 import { Filters } from "@/components/meta-analysis/filters"
 import { Highlights } from "@/components/meta-analysis/highlights"
 import { CollapsiblePublicationBias } from "@/components/meta-analysis/publication-bias"
+import DotPlotExample from "@/components/meta-analysis/dot-plot"
 
 import { runMetaAnalysis } from "@/lib/r-functions"
+import { exportToCSV } from "@/lib/csv-utils"
 
 import codebook from "@/assets/data/codebook.json"
 import { Data, Datum, Egger, Estimate, Status } from "@/lib/types"
-import { exportToCSV } from "@/lib/csv-utils"
-import Link from "next/link"
-import DotPlotExample from "@/components/meta-analysis/dot-plot"
 
 const handleDownload = (fileName: string, data?: Record<string, unknown>[]) => {
   if (!data) return
@@ -113,15 +119,20 @@ const MetaAnalysisPage = () => {
 
   return (
     <main className="w-full max-w-4xl mx-auto space-y-8 my-12 md:my-16">
-      <h1 className="text-center text-4xl font-bold">Meta-Analysis</h1>
-      <div className="text-muted-foreground">
-        Run a meta-analysis on selected effects from various intervention
-        studies. For more information on what to take into account when running
-        a meta-analysis, see the meta-analysis section in our{" "}
-        <Link className="font-medium underline text-foreground" href="/FAQ">
-          FAQ
-        </Link>
-        .
+      <div className="text-center space-y-4">
+        <h1 className="text-4xl font-bold">Meta-Analysis</h1>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          Run a meta-analysis on selected effects from various intervention
+          studies. For more information on what to take into account when running
+          a meta-analysis, see the meta-analysis section in our{" "}
+          <Link
+            href="/faq"
+            className="font-medium text-primary hover:underline"
+          >
+            FAQ
+          </Link>
+          .
+        </p>
       </div>
 
       <Filters status={status} setData={setData} />
@@ -136,23 +147,30 @@ const MetaAnalysisPage = () => {
         <DotPlotExample data={data} />
       </div>
       <ForestPlot data={data} />
-      <div className="p-3 flex justify-center gap-3">
+      <div className="flex justify-center gap-3">
         <RCode />
-        <Button
-          variant="secondary"
-          className="rounded-2xl"
-          disabled={data == undefined}
-          onClick={() => handleDownload("lime-data.csv", data)}
-        >
-          Download data
-        </Button>
-        <Button
-          variant="secondary"
-          className="rounded-2xl"
-          onClick={() => handleDownload("codebook.csv", codebook)}
-        >
-          Download codebook
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button className="w-32 rounded-lg" variant="outline">
+              Download
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="rounded-xl p-2">
+            <DropdownMenuItem
+              className="rounded-lg"
+              disabled={data == undefined}
+              onClick={() => handleDownload("lime-data.csv", data)}
+            >
+              Data
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="rounded-lg"
+              onClick={() => handleDownload("codebook.csv", codebook)}
+            >
+              Codebook
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </main>
   )

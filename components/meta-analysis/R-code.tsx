@@ -31,8 +31,8 @@ export const RCode = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary" className="rounded-2xl">
-          Show R Code
+        <Button variant="outline" className="w-32 rounded-lg">
+          R Code
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-4xl sm:max-w-4xl max-h-[80vh] overflow-y-auto">
@@ -57,7 +57,7 @@ export const RCode = () => {
             onClick={handleCopy}
             variant="outline"
             size="sm"
-            className="flex gap-2 w-25 rounded-2xl"
+            className="flex gap-2 w-25 rounded-lg"
           >
             {copied ? (
               <>
