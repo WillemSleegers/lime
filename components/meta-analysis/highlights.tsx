@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/collapsible"
 import { HighlightLineChart } from "@/components/charts/highlights/highlight-line-chart"
 import { HighlightRadialBarChart } from "@/components/charts/highlights/highlight-radial-bar-chart"
+import { HighlightBarChart } from "@/components/charts/highlights/highlight-bar-chart"
 
 import { cn, round } from "@/lib/utils"
 import {
@@ -44,6 +45,9 @@ export const Highlights = (props: HighLightsProps) => {
   let preregistrationPercentage
   let yearCounts
   let chartData
+  let interventionContentData
+  let interventionMechanismData
+  let interventionMediumData
 
   if (data) {
     participantsCount = [
@@ -85,6 +89,54 @@ export const Highlights = (props: HighLightsProps) => {
     )
     yearCounts = countUniqueValuesByGroup(data, "paper", "paper_year")
     chartData = mapToXYArray(yearCounts)
+
+    // Calculate intervention content counts (split comma-separated values)
+    const interventionContentCounts: Record<string, number> = {}
+    data.forEach((datum) => {
+      const contents = datum.intervention_content.split(", ")
+      contents.forEach((content) => {
+        interventionContentCounts[content] = (interventionContentCounts[content] || 0) + 1
+      })
+    })
+
+    interventionContentData = Object.entries(interventionContentCounts)
+      .map(([name, value]) => ({
+        name,
+        value,
+      }))
+      .sort((a, b) => b.value - a.value)
+
+    // Calculate intervention mechanism counts (split comma-separated values)
+    const interventionMechanismCounts: Record<string, number> = {}
+    data.forEach((datum) => {
+      const mechanisms = datum.intervention_mechanism.split(", ")
+      mechanisms.forEach((mechanism) => {
+        interventionMechanismCounts[mechanism] = (interventionMechanismCounts[mechanism] || 0) + 1
+      })
+    })
+
+    interventionMechanismData = Object.entries(interventionMechanismCounts)
+      .map(([name, value]) => ({
+        name,
+        value,
+      }))
+      .sort((a, b) => b.value - a.value)
+
+    // Calculate intervention medium counts (split comma-separated values)
+    const interventionMediumCounts: Record<string, number> = {}
+    data.forEach((datum) => {
+      const mediums = datum.intervention_medium.split(", ")
+      mediums.forEach((medium) => {
+        interventionMediumCounts[medium] = (interventionMediumCounts[medium] || 0) + 1
+      })
+    })
+
+    interventionMediumData = Object.entries(interventionMediumCounts)
+      .map(([name, value]) => ({
+        name,
+        value,
+      }))
+      .sort((a, b) => b.value - a.value)
   } else {
     openAccessPercentage = 0
     preregistrationPercentage = 0
@@ -101,7 +153,7 @@ export const Highlights = (props: HighLightsProps) => {
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <div className="my-3 gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+        <div className="my-3 gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {/* Number of papers */}
           <Card className="grow col-span-2">
             <CardHeader>
@@ -147,6 +199,20 @@ export const Highlights = (props: HighLightsProps) => {
               </CardDescription>
             </CardHeader>
           </Card>
+          {/* Intervention content counts */}
+          <Card className="grow col-span-2 sm:col-span-3 md:col-span-3 lg:col-span-3">
+            <CardHeader>
+              <CardTitle className="text-lg">Intervention content</CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Number of effects by intervention content category
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {interventionContentData && interventionContentData.length > 0 && (
+                <HighlightBarChart data={interventionContentData} />
+              )}
+            </CardContent>
+          </Card>
           {/* Percentage of open access papers */}
           <Card className="grow">
             <CardHeader>
@@ -161,7 +227,7 @@ export const Highlights = (props: HighLightsProps) => {
               <HighlightRadialBarChart percentage={openAccessPercentage} />
             </CardContent>
           </Card>
-          {/* Percentage of open access papers */}
+          {/* Percentage of preregistered studies */}
           <Card className="grow">
             <CardHeader>
               <CardTitle className="text-2xl">
@@ -173,6 +239,34 @@ export const Highlights = (props: HighLightsProps) => {
             </CardHeader>
             <CardContent>
               <HighlightRadialBarChart percentage={preregistrationPercentage} />
+            </CardContent>
+          </Card>
+          {/* Intervention mechanism counts */}
+          <Card className="grow col-span-2 sm:col-span-3 md:col-span-3 lg:col-span-3">
+            <CardHeader>
+              <CardTitle className="text-lg">Intervention mechanism</CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Number of effects by intervention mechanism
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {interventionMechanismData && interventionMechanismData.length > 0 && (
+                <HighlightBarChart data={interventionMechanismData} />
+              )}
+            </CardContent>
+          </Card>
+          {/* Intervention medium counts */}
+          <Card className="grow col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-2">
+            <CardHeader>
+              <CardTitle className="text-lg">Intervention medium</CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Number of effects by intervention medium
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {interventionMediumData && interventionMediumData.length > 0 && (
+                <HighlightBarChart data={interventionMediumData} />
+              )}
             </CardContent>
           </Card>
         </div>
