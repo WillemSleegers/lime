@@ -7,16 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-
+import { Form } from "@/components/ui/form"
 import { Toggle } from "@/components/ui/toggle"
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
@@ -28,28 +19,9 @@ import {
 
 import { Interventions } from "@/lib/types"
 import {
-  MultiSelect,
-  MultiSelectContent,
-  MultiSelectGroup,
-  MultiSelectItem,
-  MultiSelectTrigger,
-  MultiSelectValue,
-} from "@/components/ui/multi-select"
-
-const formSchemaInterventions = z.object({
-  intervention_content: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-  intervention_mechanism: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-  intervention_medium: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-})
+  InterventionFilters,
+  interventionFiltersSchema,
+} from "@/components/filters/intervention-filters"
 
 type FilterInterventionsProps = {
   data: Interventions
@@ -72,8 +44,8 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
     setFilterOpen,
   } = props
 
-  const form = useForm<z.infer<typeof formSchemaInterventions>>({
-    resolver: zodResolver(formSchemaInterventions),
+  const form = useForm<z.infer<typeof interventionFiltersSchema>>({
+    resolver: zodResolver(interventionFiltersSchema),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     defaultValues: {
@@ -83,7 +55,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
     },
   })
 
-  async function onSubmit(values: z.infer<typeof formSchemaInterventions>) {
+  async function onSubmit(values: z.infer<typeof interventionFiltersSchema>) {
     let subset = data
 
     subset = subset.filter((datum) => {
@@ -117,112 +89,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
           <div className="space-y-6">
-            <FormField
-              control={form.control}
-              name="intervention_content"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Intervention content</FormLabel>
-                  <FormDescription>
-                    Topics or arguments used to persuade people (e.g., animal
-                    welfare, health, environment)
-                  </FormDescription>
-                  <MultiSelect
-                    onValuesChange={field.onChange}
-                    values={field.value}
-                  >
-                    <FormControl>
-                      <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                        <MultiSelectValue placeholder="Select intervention content..." />
-                      </MultiSelectTrigger>
-                    </FormControl>
-                    <MultiSelectContent>
-                      <MultiSelectGroup>
-                        {INTERVENTION_CONTENT_OPTIONS.map((option) => {
-                          return (
-                            <MultiSelectItem key={option} value={option}>
-                              {option}
-                            </MultiSelectItem>
-                          )
-                        })}
-                      </MultiSelectGroup>
-                    </MultiSelectContent>
-                  </MultiSelect>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="intervention_mechanism"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Intervention mechanism</FormLabel>
-                  <FormDescription>
-                    Persuasion strategies used by researchers (facts, emotions,
-                    social pressure, etc.)
-                  </FormDescription>
-                  <MultiSelect
-                    onValuesChange={field.onChange}
-                    values={field.value}
-                  >
-                    <FormControl>
-                      <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                        <MultiSelectValue placeholder="Select intervention mechanism..." />
-                      </MultiSelectTrigger>
-                    </FormControl>
-                    <MultiSelectContent>
-                      <MultiSelectGroup>
-                        {INTERVENTION_MECHANISM_OPTIONS.map((option) => {
-                          return (
-                            <MultiSelectItem key={option} value={option}>
-                              {option}
-                            </MultiSelectItem>
-                          )
-                        })}
-                      </MultiSelectGroup>
-                    </MultiSelectContent>
-                  </MultiSelect>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="intervention_medium"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Intervention medium</FormLabel>
-                  <FormDescription>
-                    How the intervention was delivered to participants
-                  </FormDescription>
-                  <MultiSelect
-                    onValuesChange={field.onChange}
-                    values={field.value}
-                  >
-                    <FormControl>
-                      <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                        <MultiSelectValue placeholder="Select intervention medium..." />
-                      </MultiSelectTrigger>
-                    </FormControl>
-                    <MultiSelectContent>
-                      <MultiSelectGroup>
-                        {INTERVENTION_MEDIUM_OPTIONS.map((option) => {
-                          return (
-                            <MultiSelectItem key={option} value={option}>
-                              {option}
-                            </MultiSelectItem>
-                          )
-                        })}
-                      </MultiSelectGroup>
-                    </MultiSelectContent>
-                  </MultiSelect>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <InterventionFilters control={form.control} />
           </div>
 
           <div className="flex gap-2 justify-between">

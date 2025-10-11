@@ -17,8 +17,12 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Spinner } from "@/components/ui/spinner"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
 import {
   MultiSelect,
   MultiSelectContent,
@@ -27,46 +31,39 @@ import {
   MultiSelectTrigger,
   MultiSelectValue,
 } from "@/components/ui/multi-select"
+import {
+  InterventionFilters,
+  interventionFiltersFields,
+} from "@/components/filters/intervention-filters"
+import {
+  OutcomeCategories,
+  OutcomeMeasurementType,
+  outcomeCategoriesFields,
+  addOutcomeCategoriesRefinement,
+} from "@/components/filters/outcome-filters"
+import {
+  StudyPreregistration,
+  studyPreregistrationField,
+} from "@/components/filters/study-filters"
+import { ChevronRight } from "lucide-react"
 
-import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
+import { cn } from "@/lib/utils"
 
 import data from "@/assets/data/data.json"
 
-import {
-  INTERVENTION_CONTENT_OPTIONS,
-  INTERVENTION_MECHANISM_OPTIONS,
-  INTERVENTION_MEDIUM_OPTIONS,
-  COUNTRY_OPTIONS,
-  OUTCOME_MEASUREMENT_TYPE_OPTIONS,
-  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
-  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-  STUDY_PREREGISTERED_OPTIONS,
-} from "@/constants/constants-filters"
+import { COUNTRY_OPTIONS } from "@/constants/constants-filters"
 import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
 
 import { Data } from "@/lib/types"
 
-const formSchema = z
-  .object({
-    outcome_subcategory_behavior: z.string().array(),
-    outcome_subcategory_intention: z.string().array(),
-    outcome_subcategory_attitude: z.string().array(),
+const formSchema = addOutcomeCategoriesRefinement(
+  z.object({
+    ...interventionFiltersFields,
+    ...outcomeCategoriesFields,
     outcome_measurement_type: z
       .string()
       .array()
       .nonempty({ error: "Must select at least one outcome measurement." }),
-    intervention_content: z
-      .string()
-      .array()
-      .nonempty({ error: "Must select at least one intervention content." }),
-    intervention_mechanism: z.string().array().nonempty({
-      error: "Must select at least one intervention mechanism.",
-    }),
-    intervention_medium: z
-      .string()
-      .array()
-      .nonempty({ error: "Must select at least one intervention medium." }),
     sample_country: z
       .string()
       .array()
@@ -74,44 +71,9 @@ const formSchema = z
     sample_size: z.coerce
       .number()
       .min(1, { error: "Must be a positive number." }) as z.ZodNumber,
-    study_preregistered: z
-      .string()
-      .array()
-      .nonempty({ error: "Must select at least one option." }),
+    ...studyPreregistrationField,
   })
-  .check((ctx) => {
-    if (
-      ctx.value.outcome_subcategory_behavior.length +
-        ctx.value.outcome_subcategory_intention.length +
-        ctx.value.outcome_subcategory_attitude.length ==
-      0
-    ) {
-      ctx.issues.push({
-        input: ctx.value,
-        code: "custom",
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory_behavior"],
-      })
-      ctx.issues.push({
-        input: ctx.value,
-        code: "custom",
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory_intention"],
-      })
-      ctx.issues.push({
-        input: ctx.value,
-        code: "custom",
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory_attitude"],
-      })
-      ctx.issues.push({
-        input: ctx.value,
-        code: "custom",
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory"],
-      })
-    }
-  })
+)
 
 type FiltersProps = {
   status: string
@@ -234,13 +196,20 @@ export const Filters = ({ status, setData }: FiltersProps) => {
   }
 
   return (
-    <FilterCollapsible
-      title="Inclusion criteria"
+    <Collapsible
+      className="rounded-2xl border bg-muted px-[2px] py-[5px]"
       open={open}
       onOpenChange={setOpen}
     >
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit, onInvalid)} className="p-3">
+      <CollapsibleTrigger className="ms-0.5 flex flex-row items-center gap-1 px-3 py-2 focus:rounded-2xl focus:outline-2 focus:outline-primary">
+        <h2 className="text-2xl font-bold tracking-tight">Inclusion criteria</h2>
+        <ChevronRight
+          className={cn("transition", open ? "rotate-90" : "rotate-0")}
+        />
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit, onInvalid)} className="p-3">
           <div className="flex flex-col gap-3">
               {/* Levels */}
               <div className="my-3 space-y-4">
@@ -249,337 +218,24 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                 <div className="mx-3">
                   {/* Outcome categories */}
                   <div className="space-y-4">
-                    <div className="space-y-1">
-                      <FormLabel className="text-base">
-                        Outcome categories
-                      </FormLabel>
-                      <FormDescription>
-                        Select at least one outcome from any of the three categories below
-                      </FormDescription>
-                    </div>
-                    <div className="space-y-4">
-                      <FormField
-                        control={form.control}
-                        name="outcome_subcategory_behavior"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-base">
-                              Behaviors
-                            </FormLabel>
-                            <MultiSelect
-                              onValuesChange={field.onChange}
-                              values={field.value}
-                            >
-                              <FormControl>
-                                <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                                  <MultiSelectValue placeholder="Select behaviors..." />
-                                </MultiSelectTrigger>
-                              </FormControl>
-                              <MultiSelectContent>
-                                <MultiSelectGroup>
-                                  {OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS.map(
-                                    (option) => (
-                                      <MultiSelectItem key={option} value={option}>
-                                        {option}
-                                      </MultiSelectItem>
-                                    )
-                                  )}
-                                </MultiSelectGroup>
-                              </MultiSelectContent>
-                            </MultiSelect>
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="outcome_subcategory_intention"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-base">
-                              Intentions
-                            </FormLabel>
-                            <MultiSelect
-                              onValuesChange={field.onChange}
-                              values={field.value}
-                            >
-                              <FormControl>
-                                <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                                  <MultiSelectValue placeholder="Select intentions..." />
-                                </MultiSelectTrigger>
-                              </FormControl>
-                              <MultiSelectContent>
-                                <MultiSelectGroup>
-                                  {OUTCOME_SUBCATEGORY_INTENTION_OPTIONS.map(
-                                    (option) => (
-                                      <MultiSelectItem key={option} value={option}>
-                                        {option}
-                                      </MultiSelectItem>
-                                    )
-                                  )}
-                                </MultiSelectGroup>
-                              </MultiSelectContent>
-                            </MultiSelect>
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="outcome_subcategory_attitude"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-base">
-                              Attitudes/beliefs
-                            </FormLabel>
-                            <MultiSelect
-                              onValuesChange={field.onChange}
-                              values={field.value}
-                            >
-                              <FormControl>
-                                <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                                  <MultiSelectValue placeholder="Select attitudes/beliefs..." />
-                                </MultiSelectTrigger>
-                              </FormControl>
-                              <MultiSelectContent>
-                                <MultiSelectGroup>
-                                  {OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS.map(
-                                    (option) => (
-                                      <MultiSelectItem key={option} value={option}>
-                                        {option}
-                                      </MultiSelectItem>
-                                    )
-                                  )}
-                                </MultiSelectGroup>
-                              </MultiSelectContent>
-                            </MultiSelect>
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <FormField
-                      name="outcome_subcategory"
-                      render={() => (
-                        <FormItem>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <OutcomeCategories control={form.control} />
                   </div>
 
                   {/* Outcome measurement type */}
-                  <FormField
-                    control={form.control}
-                    name="outcome_measurement_type"
-                    render={() => (
-                      <FormItem>
-                        <div className="space-y-1">
-                          <FormLabel className="text-base">
-                            Measurement type
-                          </FormLabel>
-                        </div>
-                        {OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => (
-                          <FormField
-                            key={option.value}
-                            control={form.control}
-                            name="outcome_measurement_type"
-                            render={({ field }) => {
-                              return (
-                                <FormItem
-                                  key={option.value}
-                                  className="flex flex-row items-center gap-2"
-                                >
-                                  <FormControl>
-                                    <Checkbox
-                                      checked={field.value?.includes(
-                                        option.value
-                                      )}
-                                      onCheckedChange={(checked) => {
-                                        return checked
-                                          ? field.onChange([
-                                              ...field.value,
-                                              option.value,
-                                            ])
-                                          : field.onChange(
-                                              field.value?.filter(
-                                                (value) =>
-                                                  value !== option.value
-                                              )
-                                            )
-                                      }}
-                                    />
-                                  </FormControl>
-                                  <FormLabel className="text-sm font-normal">
-                                    {option.label}
-                                  </FormLabel>
-                                </FormItem>
-                              )
-                            }}
-                          />
-                        ))}
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <OutcomeMeasurementType control={form.control} />
                 </div>
                 <Separator />
                 {/* Intervention-level */}
                 <h2 className="text-xl font-semibold">Interventions</h2>
                 <div className="mx-3 space-y-4">
-                  {/* Intervention content */}
-                  <FormField
-                    control={form.control}
-                    name="intervention_content"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">Content</FormLabel>
-                        <FormDescription>
-                          Topics or arguments used to persuade people
-                        </FormDescription>
-                        <MultiSelect
-                          onValuesChange={field.onChange}
-                          values={field.value}
-                        >
-                          <FormControl>
-                            <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                              <MultiSelectValue placeholder="Select intervention content..." />
-                            </MultiSelectTrigger>
-                          </FormControl>
-                          <MultiSelectContent>
-                            <MultiSelectGroup>
-                              {INTERVENTION_CONTENT_OPTIONS.map((option) => (
-                                <MultiSelectItem key={option} value={option}>
-                                  {option}
-                                </MultiSelectItem>
-                              ))}
-                            </MultiSelectGroup>
-                          </MultiSelectContent>
-                        </MultiSelect>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  {/* Intervention mechanism */}
-                  <FormField
-                    control={form.control}
-                    name="intervention_mechanism"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">Mechanism</FormLabel>
-                        <FormDescription>
-                          Persuasion strategies used by researchers
-                        </FormDescription>
-                        <MultiSelect
-                          onValuesChange={field.onChange}
-                          values={field.value}
-                        >
-                          <FormControl>
-                            <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                              <MultiSelectValue placeholder="Select intervention mechanism..." />
-                            </MultiSelectTrigger>
-                          </FormControl>
-                          <MultiSelectContent>
-                            <MultiSelectGroup>
-                              {INTERVENTION_MECHANISM_OPTIONS.map((option) => (
-                                <MultiSelectItem key={option} value={option}>
-                                  {option}
-                                </MultiSelectItem>
-                              ))}
-                            </MultiSelectGroup>
-                          </MultiSelectContent>
-                        </MultiSelect>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  {/* Intervention medium */}
-                  <FormField
-                    control={form.control}
-                    name="intervention_medium"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">Medium</FormLabel>
-                        <FormDescription>
-                          How the intervention was delivered to participants
-                        </FormDescription>
-                        <MultiSelect
-                          onValuesChange={field.onChange}
-                          values={field.value}
-                        >
-                          <FormControl>
-                            <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                              <MultiSelectValue placeholder="Select intervention medium..." />
-                            </MultiSelectTrigger>
-                          </FormControl>
-                          <MultiSelectContent>
-                            <MultiSelectGroup>
-                              {INTERVENTION_MEDIUM_OPTIONS.map((option) => (
-                                <MultiSelectItem key={option} value={option}>
-                                  {option}
-                                </MultiSelectItem>
-                              ))}
-                            </MultiSelectGroup>
-                          </MultiSelectContent>
-                        </MultiSelect>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <InterventionFilters control={form.control} />
                 </div>
                 <Separator />
                 {/* Samples-level */}
                 <h2 className="text-xl font-semibold">Study</h2>
                 <div className="mx-3 space-y-4">
                   {/* Study preregistration */}
-                  <FormField
-                    control={form.control}
-                    name="study_preregistered"
-                    render={() => (
-                      <FormItem>
-                        <div className="space-y-1">
-                          <FormLabel>Study preregistration</FormLabel>
-                        </div>
-                        {STUDY_PREREGISTERED_OPTIONS.map((option) => (
-                          <FormField
-                            key={option.value}
-                            control={form.control}
-                            name="study_preregistered"
-                            render={({ field }) => {
-                              return (
-                                <FormItem
-                                  key={option.value}
-                                  className="flex flex-row items-center gap-2"
-                                >
-                                  <FormControl>
-                                    <Checkbox
-                                      checked={field.value?.includes(
-                                        option.value
-                                      )}
-                                      onCheckedChange={(checked) => {
-                                        return checked
-                                          ? field.onChange([
-                                              ...field.value,
-                                              option.value,
-                                            ])
-                                          : field.onChange(
-                                              field.value?.filter(
-                                                (value) =>
-                                                  value !== option.value
-                                              )
-                                            )
-                                      }}
-                                    />
-                                  </FormControl>
-                                  <FormLabel className="text-sm font-normal">
-                                    {option.label}
-                                  </FormLabel>
-                                </FormItem>
-                              )
-                            }}
-                          />
-                        ))}
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <StudyPreregistration control={form.control} />
                 </div>
                 <Separator />
                 {/* Samples-level */}
@@ -666,6 +322,7 @@ export const Filters = ({ status, setData }: FiltersProps) => {
           </div>
         </form>
       </Form>
-    </FilterCollapsible>
+      </CollapsibleContent>
+    </Collapsible>
   )
 }

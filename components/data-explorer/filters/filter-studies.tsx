@@ -31,15 +31,16 @@ import {
 
 import { Studies } from "@/lib/types"
 import { Checkbox } from "@/components/ui/checkbox"
+import {
+  StudyPreregistration,
+  studyPreregistrationField,
+} from "@/components/filters/study-filters"
 
 const formSchemaStudies = z.object({
   study_n: z.coerce
     .number()
     .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
-  study_preregistered: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
+  ...studyPreregistrationField,
   study_data_available: z
     .string()
     .array()
@@ -151,52 +152,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-4xl xl:max-w-full  xl:grid-cols-3 gap-6 items-baseline">
-            <FormField
-              control={form.control}
-              name="study_preregistered"
-              render={() => (
-                <FormItem>
-                  <FormLabel>Study preregistration</FormLabel>
-                  {STUDY_PREREGISTERED_OPTIONS.map((option) => (
-                    <FormField
-                      key={option.value}
-                      control={form.control}
-                      name="study_preregistered"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={option.value}
-                            className="flex flex-row items-center gap-2"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(option.value)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([
-                                        ...field.value,
-                                        option.value,
-                                      ])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== option.value
-                                        )
-                                      )
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">
-                              {option.label}
-                            </FormLabel>
-                          </FormItem>
-                        )
-                      }}
-                    />
-                  ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <StudyPreregistration control={form.control} />
 
             <FormField
               control={form.control}

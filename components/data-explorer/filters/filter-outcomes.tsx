@@ -7,17 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
+import { Form } from "@/components/ui/form"
 import { Toggle } from "@/components/ui/toggle"
-import { Checkbox } from "@/components/ui/checkbox"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
@@ -30,53 +21,17 @@ import {
 
 import { Outcomes } from "@/lib/types"
 import {
-  MultiSelect,
-  MultiSelectContent,
-  MultiSelectGroup,
-  MultiSelectItem,
-  MultiSelectTrigger,
-  MultiSelectValue,
-} from "@/components/ui/multi-select"
+  OutcomeCategories,
+  OutcomeMeasurementType,
+  createOutcomeCategoriesSchema,
+} from "@/components/filters/outcome-filters"
 
-const formSchemaOutcomes = z
-  .object({
-    outcome_subcategory_behavior: z.string().array(),
-    outcome_subcategory_intention: z.string().array(),
-    outcome_subcategory_attitude: z.string().array(),
-    outcome_measurement_type: z
-      .string()
-      .array()
-      .nonempty({ message: "Must select at least one option." }),
-  })
-  .superRefine((values, ctx) => {
-    if (
-      values.outcome_subcategory_behavior.length +
-        values.outcome_subcategory_intention.length +
-        values.outcome_subcategory_attitude.length ==
-      0
-    ) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory_behavior"],
-      })
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory_intention"],
-      })
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory_attitude"],
-      })
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory"],
-      })
-    }
-  })
+const formSchemaOutcomes = createOutcomeCategoriesSchema({
+  outcome_measurement_type: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+})
 
 type FilterOutcomesProps = {
   data: Outcomes
@@ -147,169 +102,8 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
           <div className="space-y-2">
-            <div className="space-y-2">
-              <FormLabel>Outcome categories</FormLabel>
-              <FormDescription>
-                Choose between behaviors (actual consumption and food choices),
-                intentions (plans to change diet), or attitudes/beliefs (moral
-                views and feelings about meat).
-              </FormDescription>
-            </div>
-            <div className="space-y-4">
-              <FormField
-                control={form.control}
-                name="outcome_subcategory_behavior"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Behaviors</FormLabel>
-                    <MultiSelect
-                      onValuesChange={field.onChange}
-                      values={field.value}
-                    >
-                      <FormControl>
-                        <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                          <MultiSelectValue placeholder="Select behaviors..." />
-                        </MultiSelectTrigger>
-                      </FormControl>
-                      <MultiSelectContent className="w-fit">
-                        <MultiSelectGroup>
-                          {OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS.map(
-                            (option) => {
-                              return (
-                                <MultiSelectItem key={option} value={option}>
-                                  {option}
-                                </MultiSelectItem>
-                              )
-                            }
-                          )}
-                        </MultiSelectGroup>
-                      </MultiSelectContent>
-                    </MultiSelect>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="outcome_subcategory_intention"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Intentions</FormLabel>
-                    <MultiSelect
-                      onValuesChange={field.onChange}
-                      values={field.value}
-                    >
-                      <FormControl>
-                        <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                          <MultiSelectValue placeholder="Select intentions... " />
-                        </MultiSelectTrigger>
-                      </FormControl>
-                      <MultiSelectContent>
-                        <MultiSelectGroup>
-                          {OUTCOME_SUBCATEGORY_INTENTION_OPTIONS.map(
-                            (option) => {
-                              return (
-                                <MultiSelectItem key={option} value={option}>
-                                  {option}
-                                </MultiSelectItem>
-                              )
-                            }
-                          )}
-                        </MultiSelectGroup>
-                      </MultiSelectContent>
-                    </MultiSelect>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="outcome_subcategory_attitude"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Attitudes/beliefs</FormLabel>
-                    <MultiSelect
-                      onValuesChange={field.onChange}
-                      values={field.value}
-                    >
-                      <FormControl>
-                        <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                          <MultiSelectValue placeholder="Select attitudes/beliefs... " />
-                        </MultiSelectTrigger>
-                      </FormControl>
-                      <MultiSelectContent>
-                        <MultiSelectGroup>
-                          {OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS.map(
-                            (option) => {
-                              return (
-                                <MultiSelectItem key={option} value={option}>
-                                  {option}
-                                </MultiSelectItem>
-                              )
-                            }
-                          )}
-                        </MultiSelectGroup>
-                      </MultiSelectContent>
-                    </MultiSelect>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                name="outcome_subcategory"
-                render={() => (
-                  <FormItem>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <FormField
-              control={form.control}
-              name="outcome_measurement_type"
-              render={() => (
-                <FormItem>
-                  <FormLabel>Measurement type</FormLabel>
-                  {OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => (
-                    <FormField
-                      key={option.value}
-                      control={form.control}
-                      name="outcome_measurement_type"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={option.value}
-                            className="flex flex-row items-center gap-2"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(option.value)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([
-                                        ...field.value,
-                                        option.value,
-                                      ])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== option.value
-                                        )
-                                      )
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">
-                              {option.label}
-                            </FormLabel>
-                          </FormItem>
-                        )
-                      }}
-                    />
-                  ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <OutcomeCategories control={form.control} />
+            <OutcomeMeasurementType control={form.control} />
           </div>
           <div className="flex gap-2 justify-between">
             <Button type="submit" className="h-auto rounded-lg">
