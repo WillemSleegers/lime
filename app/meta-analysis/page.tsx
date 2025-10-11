@@ -136,8 +136,8 @@ const MetaAnalysisPage = () => {
       </div>
 
       <Filters status={status} setData={setData} />
-      <CollapsibleEstimate estimate={estimate} />
       <Highlights data={data} />
+      <CollapsibleEstimate estimate={estimate} />
       <CollapsiblePublicationBias
         estimate={estimate}
         egger={egger}

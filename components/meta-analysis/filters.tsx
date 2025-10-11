@@ -147,6 +147,7 @@ export const Filters = ({ status, setData }: FiltersProps) => {
       type: "manual",
       message: "Please fix the errors above and try again.",
     })
+    setOpen(true) // Open the collapsible to show validation errors
   }
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -217,6 +218,7 @@ export const Filters = ({ status, setData }: FiltersProps) => {
         message:
           "No papers match these criteria; please relax the inclusion criteria to include effects from more papers",
       })
+      setOpen(true) // Open the collapsible to show the error
       return
     } else if (new Set(subset.map((d) => d.paper)).size < 2) {
       form.setError("root", {
@@ -224,6 +226,7 @@ export const Filters = ({ status, setData }: FiltersProps) => {
         message:
           "Only 1 paper matches these criteria; please relax the inclusion criteria to include effects from more papers",
       })
+      setOpen(true) // Open the collapsible to show the error
       return
     }
 
@@ -246,9 +249,14 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                 <div className="mx-3">
                   {/* Outcome categories */}
                   <div className="space-y-4">
-                    <FormLabel className="text-base">
-                      Outcome categories
-                    </FormLabel>
+                    <div className="space-y-1">
+                      <FormLabel className="text-base">
+                        Outcome categories
+                      </FormLabel>
+                      <FormDescription>
+                        Select at least one outcome from any of the three categories below
+                      </FormDescription>
+                    </div>
                     <div className="space-y-4">
                       <FormField
                         control={form.control}
@@ -637,23 +645,25 @@ export const Filters = ({ status, setData }: FiltersProps) => {
                 </div>
               </div>
 
-            <Button
-              type="submit"
-              disabled={status !== "Ready"}
-              className="h-auto rounded-lg"
-            >
-              {status !== "Ready" ? (
-                <Spinner className="size-4" />
-              ) : (
-                "Run meta-analysis"
+            <div className="flex flex-col gap-2">
+              <Button
+                type="submit"
+                disabled={status !== "Ready"}
+                className="h-auto rounded-lg w-fit"
+              >
+                {status !== "Ready" ? (
+                  <Spinner className="size-4" />
+                ) : (
+                  "Run meta-analysis"
+                )}
+              </Button>
+              {form.formState.errors.root && (
+                <div className="text-destructive text-sm font-semibold">
+                  {form.formState.errors.root.message}
+                </div>
               )}
-            </Button>
-          </div>
-          {form.formState.errors.root && (
-            <div className="text-destructive ms-1 mt-2 text-sm font-semibold">
-              {form.formState.errors.root.message}
             </div>
-          )}
+          </div>
         </form>
       </Form>
     </FilterCollapsible>
