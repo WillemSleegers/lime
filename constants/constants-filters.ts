@@ -70,7 +70,7 @@ export const STUDY_DESIGN_OPTIONS = [
   },
   {
     value: "crossover",
-    label: "Cross-over (participants receive all treatments in sequence)",
+    label: "Crossover (participants rotate through conditions in different orders)",
   },
 ]
 
@@ -168,8 +168,8 @@ export const OUTCOME_MEASUREMENT_TYPE_OPTIONS = [
     label: "Food diary (participants record their food consumption)",
   },
   {
-    value: "sales data", 
-    label: "Sales data (actual purchase records from stores/restaurants)",
+    value: "sales data",
+    label: "Sales data (purchase records from restaurants)",
   },
   {
     value: "meal choice",

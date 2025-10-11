@@ -1,5 +1,3 @@
-import SyntaxHighlighter from "react-syntax-highlighter"
-import { xcode } from "react-syntax-highlighter/dist/esm/styles/hljs"
 import { CheckIcon, CopyIcon } from "lucide-react"
 
 import {
@@ -37,7 +35,7 @@ export const RCode = () => {
           Show R Code
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl max-h-screen overflow-y-scroll overflow-x-hidden">
+      <DialogContent className="max-w-4xl sm:max-w-4xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>R Code</DialogTitle>
           <DialogDescription className="prose">
@@ -50,18 +48,9 @@ export const RCode = () => {
           </DialogDescription>
         </DialogHeader>
         <div className="text-sm overflow-x-auto">
-          <SyntaxHighlighter
-            language="r"
-            style={xcode}
-            customStyle={{
-              width: "100%",
-              backgroundColor: "#f4f4f5",
-              borderRadius: "0.5rem",
-              overflowX: "scroll",
-            }}
-          >
-            {code}
-          </SyntaxHighlighter>
+          <pre className="bg-muted p-4 rounded-lg overflow-x-auto">
+            <code className="text-sm font-mono">{code}</code>
+          </pre>
         </div>
         <DialogFooter className="sm:justify-start">
           <Button
