@@ -1,9 +1,9 @@
 import Link from "next/link"
 
 import { Badge } from "@/components/ui/badge"
-import { Counter } from "@/components/counter"
+import { Counter } from "@/components/landing-page/counter"
 import { Button } from "@/components/ui/button"
-import { PaperCarousel } from "@/components/paper-carousel"
+import { PaperCarousel } from "@/components/landing-page/paper-carousel"
 
 import counts from "@/assets/data/counts.json"
 

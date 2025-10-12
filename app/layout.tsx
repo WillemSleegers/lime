@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next"
 
 import { MainNav } from "@/components/navigation/main-nav"
-import { Footer } from "@/components/footer"
 
 import { cn } from "@/lib/utils"
 
@@ -27,7 +26,6 @@ export default function RootLayout({
       <body className={cn(inter.className, "flex flex-col min-h-svh")}>
         <MainNav />
         {children}
-        <Footer />
         <Analytics />
       </body>
     </html>

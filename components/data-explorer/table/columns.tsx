@@ -6,9 +6,9 @@ import { CheckIcon, X, LinkIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { PaperDialog } from "@/components/data-explorer/paper-dialog"
-import { CellBadges } from "@/components/data-explorer/cell-badges"
-import { CellLongText } from "@/components/data-explorer/cell-long-text"
-import { DataTableColumnHeader } from "@/components/data-explorer/table-header"
+import { CellBadges } from "@/components/data-explorer/table/cell-badges"
+import { CellLongText } from "@/components/data-explorer/table/cell-long-text"
+import { DataTableColumnHeader } from "@/components/data-explorer/table/column-header"
 
 import { round } from "@/lib/utils"
 import { Effect, Intervention, Outcome, Paper, Study } from "@/lib/types"

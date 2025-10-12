@@ -18,7 +18,7 @@ import {
   PaperYear,
   PaperType,
   PaperOpenAccess,
-} from "@/components/filters/paper-filters"
+} from "@/components/filter-fields/paper-fields"
 
 import {
   PAPER_TYPE_OPTIONS,

@@ -9,33 +9,23 @@ import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { Toggle } from "@/components/ui/toggle"
-
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
 import {
-  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
-  OUTCOME_MEASUREMENT_TYPE_OPTIONS,
+  INTERVENTION_CONTENT_OPTIONS,
+  INTERVENTION_MECHANISM_OPTIONS,
+  INTERVENTION_MEDIUM_OPTIONS,
 } from "@/constants/constants-filters"
 
-import { Outcomes } from "@/lib/types"
+import { Interventions } from "@/lib/types"
 import {
-  OutcomeCategories,
-  OutcomeMeasurementType,
-  createOutcomeCategoriesSchema,
-} from "@/components/filters/outcome-filters"
+  InterventionFilters,
+  interventionFiltersSchema,
+} from "@/components/filter-fields/intervention-fields"
 
-const formSchemaOutcomes = createOutcomeCategoriesSchema({
-  outcome_measurement_type: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-})
-
-type FilterOutcomesProps = {
-  data: Outcomes
-  setData: Dispatch<SetStateAction<Outcomes>>
+type FilterInterventionsProps = {
+  data: Interventions
+  setData: Dispatch<SetStateAction<Interventions>>
   lock: boolean
   setLock: Dispatch<SetStateAction<boolean>>
   setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
@@ -43,7 +33,7 @@ type FilterOutcomesProps = {
   setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export const FilterOutcomes = (props: FilterOutcomesProps) => {
+export const FilterInterventions = (props: FilterInterventionsProps) => {
   const {
     data,
     setData,
@@ -54,38 +44,35 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
     setFilterOpen,
   } = props
 
-  const form = useForm<z.infer<typeof formSchemaOutcomes>>({
-    resolver: zodResolver(formSchemaOutcomes),
+  const form = useForm<z.infer<typeof interventionFiltersSchema>>({
+    resolver: zodResolver(interventionFiltersSchema),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     defaultValues: {
-      outcome_subcategory_behavior: OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-      outcome_subcategory_intention: OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-      outcome_subcategory_attitude: OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
-      outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map(
-        (option) => option.value
-      ),
+      intervention_content: INTERVENTION_CONTENT_OPTIONS,
+      intervention_mechanism: INTERVENTION_MECHANISM_OPTIONS,
+      intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
     },
   })
 
-  async function onSubmit(values: z.infer<typeof formSchemaOutcomes>) {
+  async function onSubmit(values: z.infer<typeof interventionFiltersSchema>) {
     let subset = data
 
-    const outcome_subcategory = [
-      ...values.outcome_subcategory_behavior,
-      ...values.outcome_subcategory_intention,
-      ...values.outcome_subcategory_attitude,
-    ]
-
     subset = subset.filter((datum) => {
-      return outcome_subcategory.some(
-        (value) => datum.outcome_subcategory === value
+      return values.intervention_content.some((value) =>
+        datum.intervention_content.includes(value)
       )
     })
 
     subset = subset.filter((datum) => {
-      return values.outcome_measurement_type.some(
-        (value) => datum.outcome_measurement_type === value
+      return values.intervention_mechanism.some((value) =>
+        datum.intervention_mechanism.includes(value)
+      )
+    })
+
+    subset = subset.filter((datum) => {
+      return values.intervention_medium.some((value) =>
+        datum.intervention_medium.includes(value)
       )
     })
 
@@ -101,10 +88,10 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="space-y-2">
-            <OutcomeCategories control={form.control} />
-            <OutcomeMeasurementType control={form.control} />
+          <div className="space-y-6">
+            <InterventionFilters control={form.control} />
           </div>
+
           <div className="flex gap-2 justify-between">
             <Button type="submit" className="h-auto rounded-lg">
               Update table

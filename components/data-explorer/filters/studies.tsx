@@ -37,7 +37,7 @@ import {
   StudyConditionAssignment,
   StudyRandomization,
   studyFiltersFields,
-} from "@/components/filters/study-filters"
+} from "@/components/filter-fields/study-fields"
 
 const formSchemaStudies = z.object({
   study_n: z.coerce

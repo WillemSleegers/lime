@@ -19,8 +19,8 @@ import {
   ColumnsStudies,
   ColumnsOutcomes,
   ColumnsEffects,
-} from "@/components/data-explorer/table-columns"
-import { DataTable } from "@/components/data-explorer/table"
+} from "@/components/data-explorer/table/columns"
+import { DataTable } from "@/components/data-explorer/table/data-table"
 
 import papers from "@/assets/data/papers.json"
 import studies from "@/assets/data/studies.json"
@@ -30,11 +30,11 @@ import effects from "@/assets/data/effects.json"
 import all from "@/assets/data/data.json"
 
 import { semiJoin } from "@/lib/json-functions"
-import { FilterPapers } from "@/components/data-explorer/filters/filter-papers"
-import { FilterStudies } from "@/components/data-explorer/filters/filter-studies"
-import { FilterInterventions } from "@/components/data-explorer/filters/filter-interventions"
-import { FilterOutcomes } from "@/components/data-explorer/filters/filter-outcomes"
-import { FilterEffects } from "@/components/data-explorer/filters/filter-effects"
+import { FilterPapers } from "@/components/data-explorer/filters/papers"
+import { FilterStudies } from "@/components/data-explorer/filters/studies"
+import { FilterInterventions } from "@/components/data-explorer/filters/interventions"
+import { FilterOutcomes } from "@/components/data-explorer/filters/outcomes"
+import { FilterEffects } from "@/components/data-explorer/filters/effects"
 
 export default function DataExplorer() {
   const [level, setLevel] = useState("paper")

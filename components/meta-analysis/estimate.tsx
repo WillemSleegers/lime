@@ -14,10 +14,10 @@ import {
 import { useState } from "react"
 import { cn, pSup, u3, round } from "@/lib/utils"
 import { Button } from "../ui/button"
-import { PieChartProportion } from "../charts/pie-chart-proportion"
+import { PieChartProportion } from "./charts/pie-chart"
 
 import { Estimate } from "@/lib/types"
-import ChartEstimate from "../charts/chart-estimate"
+import ChartEstimate from "./charts/estimate-chart"
 
 type CollapsibleEstimateProps = {
   estimate?: Estimate

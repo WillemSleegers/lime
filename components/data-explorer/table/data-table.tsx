@@ -21,7 +21,7 @@ import {
 
 import { useState } from "react"
 
-import { Button } from "../ui/button"
+import { Button } from "@/components/ui/button"
 import {
   ChevronLeft,
   ChevronRight,
@@ -34,7 +34,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select"
+} from "@/components/ui/select"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]

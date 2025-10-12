@@ -5,9 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { HighlightLineChart } from "@/components/charts/highlights/highlight-line-chart"
-import { HighlightRadialBarChart } from "@/components/charts/highlights/highlight-radial-bar-chart"
-import { HighlightBarChart } from "@/components/charts/highlights/highlight-bar-chart"
+import { HighlightLineChart } from "./charts/highlight-line-chart"
+import { HighlightRadialBarChart } from "./charts/highlight-radial-bar-chart"
+import { HighlightBarChart } from "./charts/highlight-bar-chart"
 
 import { round } from "@/lib/utils"
 import {

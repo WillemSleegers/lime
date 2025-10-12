@@ -28,13 +28,13 @@ import {
 import {
   InterventionFilters,
   interventionFiltersFields,
-} from "@/components/filters/intervention-filters"
+} from "@/components/filter-fields/intervention-fields"
 import {
   OutcomeCategories,
   OutcomeMeasurementType,
   outcomeCategoriesFields,
   addOutcomeCategoriesRefinement,
-} from "@/components/filters/outcome-filters"
+} from "@/components/filter-fields/outcome-fields"
 import {
   StudyPreregistration,
   StudyDataAvailable,
@@ -42,13 +42,13 @@ import {
   StudyConditionAssignment,
   StudyRandomization,
   studyFiltersFields,
-} from "@/components/filters/study-filters"
+} from "@/components/filter-fields/study-fields"
 import {
   PaperYear,
   PaperType,
   PaperOpenAccess,
   paperFiltersFields,
-} from "@/components/filters/paper-filters"
+} from "@/components/filter-fields/paper-fields"
 import data from "@/assets/data/data.json"
 
 import { COUNTRY_OPTIONS } from "@/constants/constants-filters"
