@@ -26,15 +26,16 @@ import {
 } from "@/constants/constants-filters"
 
 import { Papers } from "@/lib/types"
+import { FilteredData, Locks } from "@/lib/data-explorer-utils"
 
 const formSchemaPapers = z.object(paperFiltersFields)
 
 type FilterPapersProps = {
   data: Papers
-  setData: Dispatch<SetStateAction<Papers>>
-  lock: boolean
-  setLock: Dispatch<SetStateAction<boolean>>
-  setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
+  filteredData: FilteredData
+  setFilteredData: Dispatch<SetStateAction<FilteredData>>
+  locks: Locks
+  setLocks: Dispatch<SetStateAction<Locks>>
   filterOpen: boolean
   setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -42,10 +43,9 @@ type FilterPapersProps = {
 export const FilterPapers = (props: FilterPapersProps) => {
   const {
     data,
-    setData,
-    lock,
-    setLock,
-    setShouldHandleLocks,
+    setFilteredData,
+    locks,
+    setLocks,
     filterOpen,
     setFilterOpen,
   } = props
@@ -87,8 +87,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
       )
     })
 
-    setData(subset)
-    setShouldHandleLocks(true)
+    setFilteredData((prev) => ({ ...prev, papers: subset }))
   }
 
   return (
@@ -115,11 +114,10 @@ export const FilterPapers = (props: FilterPapersProps) => {
             </Button>
             <Toggle
               onClick={() => {
-                setLock((prev: boolean) => !prev)
-                setShouldHandleLocks(true)
+                setLocks((prev) => ({ ...prev, papers: !prev.papers }))
               }}
             >
-              {lock ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
+              {locks.papers ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
             </Toggle>
           </div>
         </form>

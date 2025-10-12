@@ -18,6 +18,7 @@ import {
 } from "@/constants/constants-filters"
 
 import { Interventions } from "@/lib/types"
+import { FilteredData, Locks } from "@/lib/data-explorer-utils"
 import {
   InterventionFilters,
   interventionFiltersSchema,
@@ -25,10 +26,10 @@ import {
 
 type FilterInterventionsProps = {
   data: Interventions
-  setData: Dispatch<SetStateAction<Interventions>>
-  lock: boolean
-  setLock: Dispatch<SetStateAction<boolean>>
-  setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
+  filteredData: FilteredData
+  setFilteredData: Dispatch<SetStateAction<FilteredData>>
+  locks: Locks
+  setLocks: Dispatch<SetStateAction<Locks>>
   filterOpen: boolean
   setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -36,10 +37,9 @@ type FilterInterventionsProps = {
 export const FilterInterventions = (props: FilterInterventionsProps) => {
   const {
     data,
-    setData,
-    lock,
-    setLock,
-    setShouldHandleLocks,
+    setFilteredData,
+    locks,
+    setLocks,
     filterOpen,
     setFilterOpen,
   } = props
@@ -76,8 +76,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
       )
     })
 
-    setData(subset)
-    setShouldHandleLocks(true)
+    setFilteredData((prev) => ({ ...prev, interventions: subset }))
   }
 
   return (
@@ -98,11 +97,10 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
             </Button>
             <Toggle
               onClick={() => {
-                setLock((prev: boolean) => !prev)
-                setShouldHandleLocks(true)
+                setLocks((prev) => ({ ...prev, interventions: !prev.interventions }))
               }}
             >
-              {lock ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
+              {locks.interventions ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
             </Toggle>
           </div>
         </form>

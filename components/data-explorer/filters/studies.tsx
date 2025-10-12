@@ -30,6 +30,7 @@ import {
 } from "@/constants/constants-filters"
 
 import { Studies } from "@/lib/types"
+import { FilteredData, Locks } from "@/lib/data-explorer-utils"
 import {
   StudyPreregistration,
   StudyDataAvailable,
@@ -48,10 +49,10 @@ const formSchemaStudies = z.object({
 
 type FilterStudiesProps = {
   data: Studies
-  setData: Dispatch<SetStateAction<Studies>>
-  lock: boolean
-  setLock: Dispatch<SetStateAction<boolean>>
-  setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
+  filteredData: FilteredData
+  setFilteredData: Dispatch<SetStateAction<FilteredData>>
+  locks: Locks
+  setLocks: Dispatch<SetStateAction<Locks>>
   filterOpen: boolean
   setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -59,10 +60,9 @@ type FilterStudiesProps = {
 export const FilterStudies = (props: FilterStudiesProps) => {
   const {
     data,
-    setData,
-    lock,
-    setLock,
-    setShouldHandleLocks,
+    setFilteredData,
+    locks,
+    setLocks,
     filterOpen,
     setFilterOpen,
   } = props
@@ -126,8 +126,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
       )
     })
 
-    setData(subset)
-    setShouldHandleLocks(true)
+    setFilteredData((prev) => ({ ...prev, studies: subset }))
   }
 
   return (
@@ -174,11 +173,10 @@ export const FilterStudies = (props: FilterStudiesProps) => {
             </Button>
             <Toggle
               onClick={() => {
-                setLock((prev: boolean) => !prev)
-                setShouldHandleLocks(true)
+                setLocks((prev) => ({ ...prev, studies: !prev.studies }))
               }}
             >
-              {lock ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
+              {locks.studies ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
             </Toggle>
           </div>
         </form>

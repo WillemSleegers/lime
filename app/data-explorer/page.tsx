@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Link from "next/link"
 import { exportToCSV } from "@/lib/csv-utils"
 
@@ -29,125 +29,29 @@ import outcomes from "@/assets/data/outcomes.json"
 import effects from "@/assets/data/effects.json"
 import all from "@/assets/data/data.json"
 
-import { semiJoin } from "@/lib/json-functions"
 import { FilterPapers } from "@/components/data-explorer/filters/papers"
 import { FilterStudies } from "@/components/data-explorer/filters/studies"
 import { FilterInterventions } from "@/components/data-explorer/filters/interventions"
 import { FilterOutcomes } from "@/components/data-explorer/filters/outcomes"
 import { FilterEffects } from "@/components/data-explorer/filters/effects"
 
+import { useDataExplorerState } from "@/hooks/use-data-explorer-state"
+
 export default function DataExplorer() {
   const [level, setLevel] = useState("paper")
-
-  // Batched filtered data state (from filter operations)
-  const [filteredData, setFilteredData] = useState({
-    papers,
-    studies,
-    interventions,
-    outcomes,
-    effects,
-  })
-
-  // Batched display data state (after lock operations)
-  const [displayData, setDisplayData] = useState({
-    papers,
-    studies,
-    interventions,
-    outcomes,
-    effects,
-  })
-
-  // Batched lock state
-  const [locks, setLocks] = useState({
-    papers: false,
-    studies: false,
-    interventions: false,
-    outcomes: false,
-    effects: false,
-  })
-
-  const [shouldHandleLocks, setShouldHandleLocks] = useState(false)
-
-  // Global filter collapsible state - persists across tab changes
   const [filterOpen, setFilterOpen] = useState(false)
 
-  // Create properly typed setter functions for each data type
-  const setDataPapers: React.Dispatch<React.SetStateAction<typeof papers>> = (
-    newData
-  ) =>
-    setFilteredData((prev) => ({
-      ...prev,
-      papers: typeof newData === "function" ? newData(prev.papers) : newData,
-    }))
-  const setDataStudies: React.Dispatch<React.SetStateAction<typeof studies>> = (
-    newData
-  ) =>
-    setFilteredData((prev) => ({
-      ...prev,
-      studies: typeof newData === "function" ? newData(prev.studies) : newData,
-    }))
-  const setDataInterventions: React.Dispatch<
-    React.SetStateAction<typeof interventions>
-  > = (newData) =>
-    setFilteredData((prev) => ({
-      ...prev,
-      interventions:
-        typeof newData === "function" ? newData(prev.interventions) : newData,
-    }))
-  const setDataOutcomes: React.Dispatch<
-    React.SetStateAction<typeof outcomes>
-  > = (newData) =>
-    setFilteredData((prev) => ({
-      ...prev,
-      outcomes:
-        typeof newData === "function" ? newData(prev.outcomes) : newData,
-    }))
-  const setDataEffects: React.Dispatch<React.SetStateAction<typeof effects>> = (
-    newData
-  ) =>
-    setFilteredData((prev) => ({
-      ...prev,
-      effects: typeof newData === "function" ? newData(prev.effects) : newData,
-    }))
-
-  // Create properly typed lock setter functions
-  const setLockPapers: React.Dispatch<React.SetStateAction<boolean>> = (
-    newLock
-  ) =>
-    setLocks((prev) => ({
-      ...prev,
-      papers: typeof newLock === "function" ? newLock(prev.papers) : newLock,
-    }))
-  const setLockStudies: React.Dispatch<React.SetStateAction<boolean>> = (
-    newLock
-  ) =>
-    setLocks((prev) => ({
-      ...prev,
-      studies: typeof newLock === "function" ? newLock(prev.studies) : newLock,
-    }))
-  const setLockInterventions: React.Dispatch<React.SetStateAction<boolean>> = (
-    newLock
-  ) =>
-    setLocks((prev) => ({
-      ...prev,
-      interventions:
-        typeof newLock === "function" ? newLock(prev.interventions) : newLock,
-    }))
-  const setLockOutcomes: React.Dispatch<React.SetStateAction<boolean>> = (
-    newLock
-  ) =>
-    setLocks((prev) => ({
-      ...prev,
-      outcomes:
-        typeof newLock === "function" ? newLock(prev.outcomes) : newLock,
-    }))
-  const setLockEffects: React.Dispatch<React.SetStateAction<boolean>> = (
-    newLock
-  ) =>
-    setLocks((prev) => ({
-      ...prev,
-      effects: typeof newLock === "function" ? newLock(prev.effects) : newLock,
-    }))
+  const { displayData, filteredData, setFilteredData, locks, setLocks } =
+    useDataExplorerState(
+      {
+        papers,
+        studies,
+        interventions,
+        outcomes,
+        effects,
+      },
+      all
+    )
 
   const handleDownload = (
     data: Record<string, unknown>[],
@@ -155,113 +59,6 @@ export default function DataExplorer() {
   ) => {
     exportToCSV(data, fileName)
   }
-
-  // Optimized locking logic with batched updates
-  useEffect(() => {
-    if (shouldHandleLocks) {
-      // Start with current filtered data (mutable for efficiency)
-      const result = {
-        papers: [...filteredData.papers],
-        studies: [...filteredData.studies],
-        interventions: [...filteredData.interventions],
-        outcomes: [...filteredData.outcomes],
-        effects: [...filteredData.effects],
-      }
-
-      // Apply locks efficiently
-      if (locks.papers) {
-        result.studies = semiJoin(result.studies, filteredData.papers, "paper")
-        result.interventions = semiJoin(
-          result.interventions,
-          filteredData.papers,
-          "paper"
-        )
-        result.outcomes = semiJoin(
-          result.outcomes,
-          filteredData.papers,
-          "paper"
-        )
-        result.effects = semiJoin(result.effects, filteredData.papers, "paper")
-      }
-
-      if (locks.studies) {
-        result.papers = semiJoin(result.papers, filteredData.studies, "paper")
-        result.interventions = semiJoin(
-          result.interventions,
-          filteredData.studies,
-          ["paper", "study"]
-        )
-        result.outcomes = semiJoin(result.outcomes, filteredData.studies, [
-          "paper",
-          "study",
-        ])
-        result.effects = semiJoin(result.effects, filteredData.studies, [
-          "paper",
-          "study",
-        ])
-      }
-
-      if (locks.interventions) {
-        result.papers = semiJoin(
-          result.papers,
-          filteredData.interventions,
-          "paper"
-        )
-        result.studies = semiJoin(result.studies, filteredData.interventions, [
-          "paper",
-          "study",
-        ])
-        result.outcomes = semiJoin(
-          result.outcomes,
-          filteredData.interventions,
-          ["paper", "study"]
-        )
-        result.effects = semiJoin(result.effects, filteredData.interventions, [
-          "paper",
-          "study",
-        ])
-      }
-
-      if (locks.outcomes) {
-        result.papers = semiJoin(result.papers, filteredData.outcomes, "paper")
-        result.studies = semiJoin(result.studies, filteredData.outcomes, [
-          "paper",
-          "study",
-        ])
-        result.interventions = semiJoin(
-          result.interventions,
-          filteredData.outcomes,
-          ["paper", "study"]
-        )
-        result.effects = semiJoin(result.effects, filteredData.outcomes, [
-          "paper",
-          "study",
-        ])
-      }
-
-      if (locks.effects) {
-        result.papers = semiJoin(result.papers, filteredData.effects, "paper")
-        result.studies = semiJoin(result.studies, filteredData.effects, [
-          "paper",
-          "study",
-        ])
-        result.interventions = semiJoin(
-          result.interventions,
-          filteredData.effects,
-          ["paper", "study"]
-        )
-        result.outcomes = semiJoin(result.outcomes, filteredData.effects, [
-          "paper",
-          "study",
-        ])
-      }
-
-      // Single batched state update instead of 5 separate ones
-      setDisplayData(result)
-    }
-
-    setShouldHandleLocks(false)
-  }, [shouldHandleLocks, filteredData, locks])
 
   return (
     <main className="mx-3 md:mx-6 lg:mx-12 space-y-8 my-12 md:my-16">
@@ -371,10 +168,10 @@ export default function DataExplorer() {
         <TabsContent value="paper" className="space-y-4">
           <FilterPapers
             data={papers}
-            setData={setDataPapers}
-            lock={locks.papers}
-            setLock={setLockPapers}
-            setShouldHandleLocks={setShouldHandleLocks}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
             filterOpen={filterOpen}
             setFilterOpen={setFilterOpen}
           />
@@ -387,10 +184,10 @@ export default function DataExplorer() {
         <TabsContent value="study" className="space-y-4">
           <FilterStudies
             data={studies}
-            setData={setDataStudies}
-            lock={locks.studies}
-            setLock={setLockStudies}
-            setShouldHandleLocks={setShouldHandleLocks}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
             filterOpen={filterOpen}
             setFilterOpen={setFilterOpen}
           />
@@ -403,10 +200,10 @@ export default function DataExplorer() {
         <TabsContent value="intervention" className="space-y-4">
           <FilterInterventions
             data={interventions}
-            setData={setDataInterventions}
-            lock={locks.interventions}
-            setLock={setLockInterventions}
-            setShouldHandleLocks={setShouldHandleLocks}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
             filterOpen={filterOpen}
             setFilterOpen={setFilterOpen}
           />
@@ -419,10 +216,10 @@ export default function DataExplorer() {
         <TabsContent value="outcome" className="space-y-4">
           <FilterOutcomes
             data={outcomes}
-            setData={setDataOutcomes}
-            lock={locks.outcomes}
-            setLock={setLockOutcomes}
-            setShouldHandleLocks={setShouldHandleLocks}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
             filterOpen={filterOpen}
             setFilterOpen={setFilterOpen}
           />
@@ -435,10 +232,10 @@ export default function DataExplorer() {
         <TabsContent value="effect" className="space-y-4">
           <FilterEffects
             data={effects}
-            setData={setDataEffects}
-            lock={locks.effects}
-            setLock={setLockEffects}
-            setShouldHandleLocks={setShouldHandleLocks}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
             filterOpen={filterOpen}
             setFilterOpen={setFilterOpen}
           />

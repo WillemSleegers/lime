@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Toggle } from "@/components/ui/toggle"
+import { FilteredData, Locks } from "@/lib/data-explorer-utils"
 import { Slider } from "@/components/ui/slider"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
@@ -33,10 +34,10 @@ const formSchemaEffects = z.object({
 
 type FilterEffectsProps = {
   data: Effects
-  setData: Dispatch<SetStateAction<Effects>>
-  lock: boolean
-  setLock: Dispatch<SetStateAction<boolean>>
-  setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
+  filteredData: FilteredData
+  setFilteredData: Dispatch<SetStateAction<FilteredData>>
+  locks: Locks
+  setLocks: Dispatch<SetStateAction<Locks>>
   filterOpen: boolean
   setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -44,10 +45,9 @@ type FilterEffectsProps = {
 export const FilterEffects = (props: FilterEffectsProps) => {
   const {
     data,
-    setData,
-    lock,
-    setLock,
-    setShouldHandleLocks,
+    setFilteredData,
+    locks,
+    setLocks,
     filterOpen,
     setFilterOpen,
   } = props
@@ -82,8 +82,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
         datum.effect_control_n >= sample_size
     )
 
-    setData(subset)
-    setShouldHandleLocks(true)
+    setFilteredData((prev) => ({ ...prev, effects: subset }))
   }
 
   return (
@@ -149,11 +148,10 @@ export const FilterEffects = (props: FilterEffectsProps) => {
             </Button>
             <Toggle
               onClick={() => {
-                setLock((prev: boolean) => !prev)
-                setShouldHandleLocks(true)
+                setLocks((prev) => ({ ...prev, effects: !prev.effects }))
               }}
             >
-              {lock ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
+              {locks.effects ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
             </Toggle>
           </div>
         </form>

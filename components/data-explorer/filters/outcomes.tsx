@@ -18,6 +18,7 @@ import {
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
 } from "@/constants/constants-filters"
+import { FilteredData, Locks } from "@/lib/data-explorer-utils"
 
 import { Outcomes } from "@/lib/types"
 import {
@@ -35,10 +36,10 @@ const formSchemaOutcomes = createOutcomeCategoriesSchema({
 
 type FilterOutcomesProps = {
   data: Outcomes
-  setData: Dispatch<SetStateAction<Outcomes>>
-  lock: boolean
-  setLock: Dispatch<SetStateAction<boolean>>
-  setShouldHandleLocks: Dispatch<SetStateAction<boolean>>
+  filteredData: FilteredData
+  setFilteredData: Dispatch<SetStateAction<FilteredData>>
+  locks: Locks
+  setLocks: Dispatch<SetStateAction<Locks>>
   filterOpen: boolean
   setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -46,10 +47,9 @@ type FilterOutcomesProps = {
 export const FilterOutcomes = (props: FilterOutcomesProps) => {
   const {
     data,
-    setData,
-    lock,
-    setLock,
-    setShouldHandleLocks,
+    setFilteredData,
+    locks,
+    setLocks,
     filterOpen,
     setFilterOpen,
   } = props
@@ -89,8 +89,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
       )
     })
 
-    setData(subset)
-    setShouldHandleLocks(true)
+    setFilteredData((prev) => ({ ...prev, outcomes: subset }))
   }
 
   return (
@@ -111,11 +110,10 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
             </Button>
             <Toggle
               onClick={() => {
-                setLock((prev: boolean) => !prev)
-                setShouldHandleLocks(true)
+                setLocks((prev) => ({ ...prev, outcomes: !prev.outcomes }))
               }}
             >
-              {lock ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
+              {locks.outcomes ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
             </Toggle>
           </div>
         </form>
