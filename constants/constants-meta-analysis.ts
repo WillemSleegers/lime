@@ -1,3 +1,13 @@
+import data from "@/assets/data/data.json"
+import {
+  PAPER_TYPE_OPTIONS,
+  PAPER_OPEN_ACCESS_OPTIONS,
+  STUDY_DATA_AVAILABLE_OPTIONS,
+  STUDY_DESIGN_OPTIONS,
+  STUDY_CONDITION_ASSIGNMENT_OPTIONS,
+  STUDY_RANDOMIZATION_OPTIONS,
+} from "@/constants/constants-filters"
+
 export const META_ANALYSIS_DEFAULTS = {
   outcome_subcategory_behavior: [
     "meat consumption",
@@ -52,4 +62,20 @@ export const META_ANALYSIS_DEFAULTS = {
     "price",
   ],
   study_preregistered: ["yes", "no"],
+  study_data_available: STUDY_DATA_AVAILABLE_OPTIONS.map(
+    (option) => option.value
+  ),
+  study_design: STUDY_DESIGN_OPTIONS.map((option) => option.value),
+  study_condition_assignment: STUDY_CONDITION_ASSIGNMENT_OPTIONS.map(
+    (option) => option.value
+  ),
+  study_randomization: STUDY_RANDOMIZATION_OPTIONS.map(
+    (option) => option.value
+  ),
+  paper_year: [
+    Math.min(...data.map((datum) => datum.paper_year)),
+    Math.max(...data.map((datum) => datum.paper_year)),
+  ],
+  paper_type: PAPER_TYPE_OPTIONS.map((option) => option.value),
+  paper_open_access: PAPER_OPEN_ACCESS_OPTIONS.map((option) => option.value),
 }

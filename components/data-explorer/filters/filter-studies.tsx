@@ -30,33 +30,20 @@ import {
 } from "@/constants/constants-filters"
 
 import { Studies } from "@/lib/types"
-import { Checkbox } from "@/components/ui/checkbox"
 import {
   StudyPreregistration,
-  studyPreregistrationField,
+  StudyDataAvailable,
+  StudyDesign,
+  StudyConditionAssignment,
+  StudyRandomization,
+  studyFiltersFields,
 } from "@/components/filters/study-filters"
 
 const formSchemaStudies = z.object({
   study_n: z.coerce
     .number()
     .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
-  ...studyPreregistrationField,
-  study_data_available: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-  study_design: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-  study_condition_assignment: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-  study_randomization: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
+  ...studyFiltersFields,
 })
 
 type FilterStudiesProps = {
@@ -153,194 +140,10 @@ export const FilterStudies = (props: FilterStudiesProps) => {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-4xl xl:max-w-full  xl:grid-cols-3 gap-6 items-baseline">
             <StudyPreregistration control={form.control} />
-
-            <FormField
-              control={form.control}
-              name="study_data_available"
-              render={() => (
-                <FormItem>
-                  <FormLabel>Data availability</FormLabel>
-                  {STUDY_DATA_AVAILABLE_OPTIONS.map((option) => (
-                    <FormField
-                      key={option.value}
-                      control={form.control}
-                      name="study_data_available"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={option.value}
-                            className="flex flex-row items-center gap-2"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(option.value)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([
-                                        ...field.value,
-                                        option.value,
-                                      ])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== option.value
-                                        )
-                                      )
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">
-                              {option.label}
-                            </FormLabel>
-                          </FormItem>
-                        )
-                      }}
-                    />
-                  ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="study_design"
-              render={() => (
-                <FormItem>
-                  <FormLabel>Study design</FormLabel>
-                  {STUDY_DESIGN_OPTIONS.map((option) => (
-                    <FormField
-                      key={option.value}
-                      control={form.control}
-                      name="study_design"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={option.value}
-                            className="flex flex-row items-center gap-2"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(option.value)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([
-                                        ...field.value,
-                                        option.value,
-                                      ])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== option.value
-                                        )
-                                      )
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">
-                              {option.label}
-                            </FormLabel>
-                          </FormItem>
-                        )
-                      }}
-                    />
-                  ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="study_condition_assignment"
-              render={() => (
-                <FormItem>
-                  <FormLabel>Assignment method</FormLabel>
-                  {STUDY_CONDITION_ASSIGNMENT_OPTIONS.map((option) => (
-                    <FormField
-                      key={option.value}
-                      control={form.control}
-                      name="study_condition_assignment"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={option.value}
-                            className="flex flex-row items-center gap-2"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(option.value)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([
-                                        ...field.value,
-                                        option.value,
-                                      ])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== option.value
-                                        )
-                                      )
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">
-                              {option.label}
-                            </FormLabel>
-                          </FormItem>
-                        )
-                      }}
-                    />
-                  ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="study_randomization"
-              render={() => (
-                <FormItem>
-                  <FormLabel>Randomization</FormLabel>
-                  {STUDY_RANDOMIZATION_OPTIONS.map((option) => (
-                    <FormField
-                      key={option.value}
-                      control={form.control}
-                      name="study_randomization"
-                      render={({ field }) => {
-                        return (
-                          <FormItem
-                            key={option.value}
-                            className="flex flex-row items-center gap-2"
-                          >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(option.value)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([
-                                        ...field.value,
-                                        option.value,
-                                      ])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== option.value
-                                        )
-                                      )
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">
-                              {option.label}
-                            </FormLabel>
-                          </FormItem>
-                        )
-                      }}
-                    />
-                  ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <StudyDataAvailable control={form.control} />
+            <StudyDesign control={form.control} />
+            <StudyConditionAssignment control={form.control} />
+            <StudyRandomization control={form.control} />
 
             <FormField
               control={form.control}

@@ -8,21 +8,17 @@ import { useForm } from "react-hook-form"
 
 import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
+import { Form } from "@/components/ui/form"
 import { Toggle } from "@/components/ui/toggle"
 import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
-import { Checkbox } from "@/components/ui/checkbox"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
+import {
+  paperFiltersFields,
+  PaperYear,
+  PaperType,
+  PaperOpenAccess,
+} from "@/components/filters/paper-filters"
 
 import {
   PAPER_TYPE_OPTIONS,
@@ -31,17 +27,7 @@ import {
 
 import { Papers } from "@/lib/types"
 
-const formSchemaPapers = z.object({
-  paper_year: z.number().array(),
-  paper_type: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-  paper_open_access: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
-})
+const formSchemaPapers = z.object(paperFiltersFields)
 
 type FilterPapersProps = {
   data: Papers
@@ -114,116 +100,13 @@ export const FilterPapers = (props: FilterPapersProps) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
           <div className="flex flex-col lg:flex-row gap-6 items-baseline">
-            <FormField
+            <PaperYear
               control={form.control}
-              name="paper_year"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Publication year</FormLabel>
-                  <FormDescription>
-                    From {field.value[0]} to {field.value[1]}
-                  </FormDescription>
-                  <FormControl>
-                    <Slider
-                      className="w-[200px]"
-                      value={field.value}
-                      minStepsBetweenThumbs={1}
-                      max={Math.max(...data.map((datum) => datum.paper_year))}
-                      min={Math.min(...data.map((datum) => datum.paper_year))}
-                      step={1}
-                      onValueChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              minYear={Math.min(...data.map((datum) => datum.paper_year))}
+              maxYear={Math.max(...data.map((datum) => datum.paper_year))}
             />
-            <FormField
-              control={form.control}
-              name="paper_type"
-              render={() => (
-                <FormItem>
-                  <FormLabel>Publication type</FormLabel>
-                  {PAPER_TYPE_OPTIONS.map((option) => (
-                    <FormField
-                      key={option.value}
-                      control={form.control}
-                      name="paper_type"
-                      render={({ field }) => {
-                        return (
-                          <FormItem className="flex flex-row items-center gap-2">
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(option.value)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([
-                                        ...field.value,
-                                        option.value,
-                                      ])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== option.value
-                                        )
-                                      )
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">
-                              {option.label}
-                            </FormLabel>
-                          </FormItem>
-                        )
-                      }}
-                    />
-                  ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="paper_open_access"
-              render={() => (
-                <FormItem>
-                  <FormLabel>Access type</FormLabel>
-                  {PAPER_OPEN_ACCESS_OPTIONS.map((option) => (
-                    <FormField
-                      key={option.value}
-                      control={form.control}
-                      name="paper_open_access"
-                      render={({ field }) => {
-                        return (
-                          <FormItem className="flex flex-row items-center gap-2">
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(option.value)}
-                                onCheckedChange={(checked) => {
-                                  return checked
-                                    ? field.onChange([
-                                        ...field.value,
-                                        option.value,
-                                      ])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== option.value
-                                        )
-                                      )
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-sm font-normal">
-                              {option.label}
-                            </FormLabel>
-                          </FormItem>
-                        )
-                      }}
-                    />
-                  ))}
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <PaperType control={form.control} />
+            <PaperOpenAccess control={form.control} />
           </div>
 
           <div className="flex gap-2 justify-between">

@@ -1,6 +1,3 @@
-import { useState } from "react"
-import { ChevronRight } from "lucide-react"
-
 import {
   Card,
   CardContent,
@@ -8,16 +5,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 import { HighlightLineChart } from "@/components/charts/highlights/highlight-line-chart"
 import { HighlightRadialBarChart } from "@/components/charts/highlights/highlight-radial-bar-chart"
 import { HighlightBarChart } from "@/components/charts/highlights/highlight-bar-chart"
 
-import { cn, round } from "@/lib/utils"
+import { round } from "@/lib/utils"
 import {
   countUniqueFilteredValues,
   countUniqueValues,
@@ -32,8 +24,6 @@ type HighLightsProps = {
 
 export const Highlights = (props: HighLightsProps) => {
   const { data } = props
-
-  const [open, setOpen] = useState(true)
 
   let participantsCount
   let effectsCount
@@ -143,17 +133,7 @@ export const Highlights = (props: HighLightsProps) => {
   }
 
   return (
-    <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
-      <CollapsibleTrigger>
-        <div className="flex flex-row items-center gap-1">
-          <h2 className="text-2xl font-bold tracking-tight">Highlights</h2>
-          <ChevronRight
-            className={cn("transition", open ? "rotate-90" : "rotate-0")}
-          />
-        </div>
-      </CollapsibleTrigger>
-      <CollapsibleContent>
-        <div className="my-3 gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+    <div className="gap-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {/* Number of papers */}
           <Card className="grow col-span-2">
             <CardHeader>
@@ -269,8 +249,6 @@ export const Highlights = (props: HighLightsProps) => {
               )}
             </CardContent>
           </Card>
-        </div>
-      </CollapsibleContent>
-    </Collapsible>
+    </div>
   )
 }

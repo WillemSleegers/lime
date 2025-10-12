@@ -4,36 +4,19 @@ import { WebR } from "webr"
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 
-import { CollapsibleEstimate } from "@/components/meta-analysis/estimate"
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { ForestPlot } from "@/components/meta-analysis/forest-plot"
-import { RCode } from "@/components/meta-analysis/R-code"
-import { Filters } from "@/components/meta-analysis/filters"
-import { Highlights } from "@/components/meta-analysis/highlights"
-import { CollapsiblePublicationBias } from "@/components/meta-analysis/publication-bias"
-import DotPlotExample from "@/components/meta-analysis/dot-plot"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { InclusionCriteriaTab } from "@/components/meta-analysis/tabs/inclusion-criteria-tab"
+import { HighlightsTab } from "@/components/meta-analysis/tabs/highlights-tab"
+import { MetaAnalysisTab } from "@/components/meta-analysis/tabs/meta-analysis-tab"
 
 import { runMetaAnalysis } from "@/lib/r-functions"
-import { exportToCSV } from "@/lib/csv-utils"
-
-import codebook from "@/assets/data/codebook.json"
 import { Data, Datum, Egger, Estimate, Status } from "@/lib/types"
-
-const handleDownload = (fileName: string, data?: Record<string, unknown>[]) => {
-  if (!data) return
-  exportToCSV(data, fileName)
-}
 
 const MetaAnalysisPage = () => {
   const webR = useRef<WebR>(null)
 
   const [status, setStatus] = useState<Status>("Loading webR...")
+  const [activeTab, setActiveTab] = useState("criteria")
 
   const [data, setData] = useState<Data>()
   const [estimate, setEstimate] = useState<Estimate | undefined>()
@@ -55,63 +38,59 @@ const MetaAnalysisPage = () => {
     initializeR()
   }, [])
 
-  // Run meta-analysis when data changes
-  useEffect(() => {
-    console.log("runing analysis")
-    const analyze = async (data: Data) => {
-      if (webR.current && data) {
-        // Update status
-        setStatus("Running meta-analysis...")
+  // Run meta-analysis function (called manually via button)
+  const runAnalysis = async () => {
+    if (!webR.current || !data) return
 
-        // Reset the effect
-        setEstimate(undefined)
+    // Update status
+    setStatus("Running meta-analysis...")
 
-        const subset = data.map((datum: Datum) =>
-          (({
-            effect_size,
-            effect_size_var,
-            effect_size_se,
-            paper_study,
-            paper,
-            study,
-            outcome,
-            intervention_condition,
-            control_condition,
-          }) => ({
-            effect_size,
-            effect_size_var,
-            effect_size_se,
-            paper_study,
-            paper,
-            study,
-            outcome,
-            intervention_condition,
-            control_condition,
-          }))(datum)
-        )
+    // Reset the effect
+    setEstimate(undefined)
 
-        const df = await new webR.current.RObject(subset)
-        await webR.current.objs.globalEnv.bind("data", df)
-        const results = await runMetaAnalysis(webR.current)
+    const subset = data.map((datum: Datum) =>
+      (({
+        effect_size,
+        effect_size_var,
+        effect_size_se,
+        paper_study,
+        paper,
+        study,
+        outcome,
+        intervention_condition,
+        control_condition,
+      }) => ({
+        effect_size,
+        effect_size_var,
+        effect_size_se,
+        paper_study,
+        paper,
+        study,
+        outcome,
+        intervention_condition,
+        control_condition,
+      }))(datum)
+    )
 
-        setEstimate({
-          value: results[0],
-          lower: results[1],
-          upper: results[2],
-          piLower: results[3],
-          piUpper: results[4],
-        })
-        setEgger({
-          egger_b: results[5],
-          egger_se: results[6],
-          egger_z: results[7],
-          egger_p: results[8],
-        })
-        setStatus("Ready")
-      }
-    }
-    if (data) analyze(data)
-  }, [data])
+    const df = await new webR.current.RObject(subset)
+    await webR.current.objs.globalEnv.bind("data", df)
+    const results = await runMetaAnalysis(webR.current)
+
+    setEstimate({
+      value: results[0],
+      lower: results[1],
+      upper: results[2],
+      piLower: results[3],
+      piUpper: results[4],
+    })
+    setEgger({
+      egger_b: results[5],
+      egger_se: results[6],
+      egger_z: results[7],
+      egger_p: results[8],
+    })
+    setStatus("Ready")
+  }
 
   useEffect(() => {
     console.log(status)
@@ -135,43 +114,46 @@ const MetaAnalysisPage = () => {
         </p>
       </div>
 
-      <Filters status={status} setData={setData} />
-      <Highlights data={data} />
-      <CollapsibleEstimate estimate={estimate} />
-      <CollapsiblePublicationBias
-        estimate={estimate}
-        egger={egger}
-        data={data}
-      />
-      <div>
-        <DotPlotExample data={data} />
-      </div>
-      <ForestPlot data={data} />
-      <div className="flex justify-center gap-3">
-        <RCode />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button className="w-32 rounded-lg" variant="outline">
-              Download
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="rounded-xl p-2">
-            <DropdownMenuItem
-              className="rounded-lg"
-              disabled={data == undefined}
-              onClick={() => handleDownload("lime-data.csv", data)}
-            >
-              Data
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              className="rounded-lg"
-              onClick={() => handleDownload("codebook.csv", codebook)}
-            >
-              Codebook
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <TabsList className="w-full justify-start">
+          <TabsTrigger
+            value="criteria"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+          >
+            Step 1: Filter studies
+          </TabsTrigger>
+          <TabsTrigger
+            value="highlights"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+          >
+            Step 2: Review selection
+          </TabsTrigger>
+          <TabsTrigger
+            value="analysis"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+          >
+            Step 3: Run meta-analysis
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="criteria" className="mt-0">
+          <InclusionCriteriaTab status={status} setData={setData} />
+        </TabsContent>
+
+        <TabsContent value="highlights" className="mt-0">
+          <HighlightsTab data={data} />
+        </TabsContent>
+
+        <TabsContent value="analysis" className="mt-0">
+          <MetaAnalysisTab
+            data={data}
+            estimate={estimate}
+            egger={egger}
+            status={status}
+            runAnalysis={runAnalysis}
+          />
+        </TabsContent>
+      </Tabs>
     </main>
   )
 }

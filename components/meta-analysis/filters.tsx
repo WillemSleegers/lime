@@ -3,7 +3,7 @@
 import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Dispatch, SetStateAction, useState } from "react"
+import { Dispatch, SetStateAction } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -17,12 +17,6 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { Spinner } from "@/components/ui/spinner"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 import {
   MultiSelect,
   MultiSelectContent,
@@ -43,12 +37,18 @@ import {
 } from "@/components/filters/outcome-filters"
 import {
   StudyPreregistration,
-  studyPreregistrationField,
+  StudyDataAvailable,
+  StudyDesign,
+  StudyConditionAssignment,
+  StudyRandomization,
+  studyFiltersFields,
 } from "@/components/filters/study-filters"
-import { ChevronRight } from "lucide-react"
-
-import { cn } from "@/lib/utils"
-
+import {
+  PaperYear,
+  PaperType,
+  PaperOpenAccess,
+  paperFiltersFields,
+} from "@/components/filters/paper-filters"
 import data from "@/assets/data/data.json"
 
 import { COUNTRY_OPTIONS } from "@/constants/constants-filters"
@@ -71,7 +71,8 @@ const formSchema = addOutcomeCategoriesRefinement(
     sample_size: z.coerce
       .number()
       .min(1, { error: "Must be a positive number." }) as z.ZodNumber,
-    ...studyPreregistrationField,
+    ...studyFiltersFields,
+    ...paperFiltersFields,
   })
 )
 
@@ -81,8 +82,6 @@ type FiltersProps = {
 }
 
 export const Filters = ({ status, setData }: FiltersProps) => {
-  const [open, setOpen] = useState(true)
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     mode: "onSubmit",
@@ -101,6 +100,13 @@ export const Filters = ({ status, setData }: FiltersProps) => {
       sample_country: COUNTRY_OPTIONS,
       sample_size: 1,
       study_preregistered: META_ANALYSIS_DEFAULTS.study_preregistered,
+      study_data_available: META_ANALYSIS_DEFAULTS.study_data_available,
+      study_design: META_ANALYSIS_DEFAULTS.study_design,
+      study_condition_assignment: META_ANALYSIS_DEFAULTS.study_condition_assignment,
+      study_randomization: META_ANALYSIS_DEFAULTS.study_randomization,
+      paper_year: META_ANALYSIS_DEFAULTS.paper_year,
+      paper_type: META_ANALYSIS_DEFAULTS.paper_type,
+      paper_open_access: META_ANALYSIS_DEFAULTS.paper_open_access,
     },
   })
 
@@ -109,7 +115,6 @@ export const Filters = ({ status, setData }: FiltersProps) => {
       type: "manual",
       message: "Please fix the errors above and try again.",
     })
-    setOpen(true) // Open the collapsible to show validation errors
   }
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -174,13 +179,61 @@ export const Filters = ({ status, setData }: FiltersProps) => {
       values.study_preregistered.includes(e.study_preregistered)
     )
 
+    // Filter on data availability
+    subset = subset.filter((datum) => {
+      return values.study_data_available.some((value) =>
+        datum.study_data_available.includes(value)
+      )
+    })
+
+    // Filter on study design
+    subset = subset.filter((datum) => {
+      return values.study_design.some((value) =>
+        datum.study_design.includes(value)
+      )
+    })
+
+    // Filter on condition assignment
+    subset = subset.filter((datum) => {
+      return values.study_condition_assignment.some((value) =>
+        datum.study_condition_assignment.includes(value)
+      )
+    })
+
+    // Filter on randomization
+    subset = subset.filter((datum) => {
+      return values.study_randomization.some((value) =>
+        datum.study_randomization.includes(value)
+      )
+    })
+
+    // Filter on paper year
+    subset = subset.filter(
+      (datum) =>
+        datum.paper_year >= values.paper_year[0] &&
+        datum.paper_year <= values.paper_year[1]
+    )
+
+    // Filter on paper type
+    subset = subset.filter((datum) => {
+      return values.paper_type.some((paper_type) =>
+        datum.paper_type.includes(paper_type)
+      )
+    })
+
+    // Filter on paper open access
+    subset = subset.filter((datum) => {
+      return values.paper_open_access.some((open_access) =>
+        datum.paper_open_access.includes(open_access)
+      )
+    })
+
     if (subset.length == 0) {
       form.setError("root", {
         type: "manual",
         message:
           "No papers match these criteria; please relax the inclusion criteria to include effects from more papers",
       })
-      setOpen(true) // Open the collapsible to show the error
       return
     } else if (new Set(subset.map((d) => d.paper)).size < 2) {
       form.setError("root", {
@@ -188,7 +241,6 @@ export const Filters = ({ status, setData }: FiltersProps) => {
         message:
           "Only 1 paper matches these criteria; please relax the inclusion criteria to include effects from more papers",
       })
-      setOpen(true) // Open the collapsible to show the error
       return
     }
 
@@ -196,133 +248,155 @@ export const Filters = ({ status, setData }: FiltersProps) => {
   }
 
   return (
-    <Collapsible
-      className="rounded-2xl border bg-muted px-[2px] py-[5px]"
-      open={open}
-      onOpenChange={setOpen}
-    >
-      <CollapsibleTrigger className="ms-0.5 flex flex-row items-center gap-1 px-3 py-2 focus:rounded-2xl focus:outline-2 focus:outline-primary">
-        <h2 className="text-2xl font-bold tracking-tight">Inclusion criteria</h2>
-        <ChevronRight
-          className={cn("transition", open ? "rotate-90" : "rotate-0")}
-        />
-      </CollapsibleTrigger>
-      <CollapsibleContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit, onInvalid)} className="p-3">
-          <div className="flex flex-col gap-3">
-              {/* Levels */}
-              <div className="my-3 space-y-4">
-                {/* Outcome-level */}
-                <h2 className="text-xl font-semibold">Outcomes</h2>
-                <div className="mx-3">
-                  {/* Outcome categories */}
-                  <div className="space-y-4">
-                    <OutcomeCategories control={form.control} />
-                  </div>
-
-                  {/* Outcome measurement type */}
-                  <OutcomeMeasurementType control={form.control} />
-                </div>
-                <Separator />
-                {/* Intervention-level */}
-                <h2 className="text-xl font-semibold">Interventions</h2>
-                <div className="mx-3 space-y-4">
-                  <InterventionFilters control={form.control} />
-                </div>
-                <Separator />
-                {/* Samples-level */}
-                <h2 className="text-xl font-semibold">Study</h2>
-                <div className="mx-3 space-y-4">
-                  {/* Study preregistration */}
-                  <StudyPreregistration control={form.control} />
-                </div>
-                <Separator />
-                {/* Samples-level */}
-                <h2 className="text-xl font-semibold">Samples</h2>
-                <div className="mx-3 space-y-4">
-                  {/* Sample country */}
-                  <FormField
-                    control={form.control}
-                    name="sample_country"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">Country</FormLabel>
-                        <FormDescription>
-                          Countries where studies were conducted
-                        </FormDescription>
-                        <MultiSelect
-                          onValuesChange={field.onChange}
-                          values={field.value}
-                        >
-                          <FormControl>
-                            <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                              <MultiSelectValue placeholder="Select countries..." />
-                            </MultiSelectTrigger>
-                          </FormControl>
-                          <MultiSelectContent search={{ placeholder: "Search countries...", emptyMessage: "No country found." }}>
-                            <MultiSelectGroup>
-                              {COUNTRY_OPTIONS.map((option) => (
-                                <MultiSelectItem key={option} value={option}>
-                                  {option}
-                                </MultiSelectItem>
-                              ))}
-                            </MultiSelectGroup>
-                          </MultiSelectContent>
-                        </MultiSelect>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  {/* Sample size */}
-                  <FormField
-                    control={form.control}
-                    name="sample_size"
-                    render={({ field }) => (
-                      <FormItem className="w-60">
-                        <FormLabel className="text-base">
-                          Minimum sample size
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            className="my-2 rounded-xl bg-primary-foreground"
-                            type="number"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormDescription className="leading-5">
-                          This is the minimum sample size in either the control
-                          or intervention condition.
-                        </FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-              </div>
-
-            <div className="flex flex-col gap-2">
-              <Button
-                type="submit"
-                disabled={status !== "Ready"}
-                className="h-auto rounded-lg w-fit"
-              >
-                {status !== "Ready" ? (
-                  <Spinner className="size-4" />
-                ) : (
-                  "Run meta-analysis"
-                )}
-              </Button>
-              {form.formState.errors.root && (
-                <div className="text-destructive text-sm font-semibold">
-                  {form.formState.errors.root.message}
-                </div>
-              )}
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit, onInvalid)} className="space-y-10">
+        {/* Levels */}
+        <div className="space-y-8">
+          {/* Paper-level */}
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-xl font-semibold mb-1">Papers</h2>
+              <p className="text-sm text-muted-foreground">
+                Filter by publication characteristics
+              </p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-6 items-start">
+              <PaperYear
+                control={form.control}
+                minYear={Math.min(...data.map((datum) => datum.paper_year))}
+                maxYear={Math.max(...data.map((datum) => datum.paper_year))}
+              />
+              <PaperType control={form.control} />
+              <PaperOpenAccess control={form.control} />
             </div>
           </div>
-        </form>
-      </Form>
-      </CollapsibleContent>
-    </Collapsible>
+          <Separator />
+          {/* Study-level */}
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-xl font-semibold mb-1">Studies</h2>
+              <p className="text-sm text-muted-foreground">
+                Filter by study design and methodology
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-6 items-start">
+              <StudyPreregistration control={form.control} />
+              <StudyDataAvailable control={form.control} />
+              <StudyDesign control={form.control} />
+              <StudyConditionAssignment control={form.control} />
+              <StudyRandomization control={form.control} />
+            </div>
+          </div>
+          <Separator />
+          {/* Outcome-level */}
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-xl font-semibold mb-1">Outcomes</h2>
+              <p className="text-sm text-muted-foreground">
+                Select types of outcomes to include
+              </p>
+            </div>
+            <div className="space-y-6">
+              <OutcomeCategories control={form.control} />
+              <OutcomeMeasurementType control={form.control} />
+            </div>
+          </div>
+          <Separator />
+          {/* Intervention-level */}
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-xl font-semibold mb-1">Interventions</h2>
+              <p className="text-sm text-muted-foreground">
+                Filter by intervention characteristics
+              </p>
+            </div>
+            <div className="space-y-6">
+              <InterventionFilters control={form.control} />
+            </div>
+          </div>
+          <Separator />
+          {/* Samples-level */}
+          <div className="space-y-4">
+            <div>
+              <h2 className="text-xl font-semibold mb-1">Samples</h2>
+              <p className="text-sm text-muted-foreground">
+                Filter by sample characteristics
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 items-start">
+              <FormField
+                control={form.control}
+                name="sample_country"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-base">Country</FormLabel>
+                    <FormDescription>
+                      Countries where studies were conducted
+                    </FormDescription>
+                    <MultiSelect
+                      onValuesChange={field.onChange}
+                      values={field.value}
+                    >
+                      <FormControl>
+                        <MultiSelectTrigger className="w-full bg-white hover:bg-white">
+                          <MultiSelectValue placeholder="Select countries..." />
+                        </MultiSelectTrigger>
+                      </FormControl>
+                      <MultiSelectContent search={{ placeholder: "Search countries...", emptyMessage: "No country found." }}>
+                        <MultiSelectGroup>
+                          {COUNTRY_OPTIONS.map((option) => (
+                            <MultiSelectItem key={option} value={option}>
+                              {option}
+                            </MultiSelectItem>
+                          ))}
+                        </MultiSelectGroup>
+                      </MultiSelectContent>
+                    </MultiSelect>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="sample_size"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-base">
+                      Minimum sample size
+                    </FormLabel>
+                    <FormDescription>
+                      Minimum per control or intervention condition
+                    </FormDescription>
+                    <FormControl>
+                      <Input
+                        className="rounded-lg bg-white"
+                        type="number"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Button
+            type="submit"
+            disabled={status !== "Ready"}
+            className="h-auto rounded-lg w-fit"
+          >
+            Apply filters
+          </Button>
+          {form.formState.errors.root && (
+            <div className="text-destructive text-sm font-semibold">
+              {form.formState.errors.root.message}
+            </div>
+          )}
+        </div>
+      </form>
+    </Form>
   )
 }
