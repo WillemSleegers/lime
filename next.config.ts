@@ -12,9 +12,7 @@ const nextConfig = {
     ]
   },
   reactStrictMode: true,
-  experimental: {
-    reactCompiler: true,
-  }
+  reactCompiler: true,
 }
 
 module.exports = nextConfig
