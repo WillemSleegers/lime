@@ -7,74 +7,64 @@ import { Dispatch, SetStateAction } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Form } from "@/components/ui/form"
+import { CheckboxGroup } from "@/components/form/checkbox-group"
+import { SliderField } from "@/components/form/slider-field"
+import { InputField } from "@/components/form/input-field"
+import { MultiSelectField } from "@/components/form/multi-select-field"
 import {
-  MultiSelect,
-  MultiSelectContent,
-  MultiSelectGroup,
-  MultiSelectItem,
-  MultiSelectTrigger,
-  MultiSelectValue,
-} from "@/components/ui/multi-select"
-import {
-  InterventionFilters,
   interventionFiltersFields,
-} from "@/components/filter-fields/intervention-fields"
-import {
-  OutcomeCategories,
-  OutcomeMeasurementType,
-  outcomeCategoriesFields,
-  addOutcomeCategoriesRefinement,
-} from "@/components/filter-fields/outcome-fields"
-import {
-  StudyPreregistration,
-  StudyDataAvailable,
-  StudyDesign,
-  StudyConditionAssignment,
-  StudyRandomization,
+  outcomeCategoriesFieldsNew,
   studyFiltersFields,
-} from "@/components/filter-fields/study-fields"
-import {
-  PaperYear,
-  PaperType,
-  PaperOpenAccess,
   paperFiltersFields,
-} from "@/components/filter-fields/paper-fields"
+} from "@/lib/filter-schemas"
 import data from "@/assets/data/data.json"
 
-import { COUNTRY_OPTIONS } from "@/constants/constants-filters"
+import {
+  COUNTRY_OPTIONS,
+  PAPER_TYPE_OPTIONS_NEW,
+  PAPER_OPEN_ACCESS_OPTIONS_NEW,
+  STUDY_PREREGISTERED_OPTIONS_NEW,
+  STUDY_DATA_AVAILABLE_OPTIONS_NEW,
+  STUDY_DESIGN_OPTIONS_NEW,
+  STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW,
+  STUDY_RANDOMIZATION_OPTIONS_NEW,
+  OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW,
+  OUTCOME_CATEGORIES_GROUPED,
+  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+  INTERVENTION_CONTENT_OPTIONS,
+  INTERVENTION_MECHANISM_OPTIONS,
+  INTERVENTION_MEDIUM_OPTIONS,
+} from "@/constants/constants-filters"
 import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
 
 import { Data } from "@/lib/types"
 
-const formSchema = addOutcomeCategoriesRefinement(
-  z.object({
-    ...interventionFiltersFields,
-    ...outcomeCategoriesFields,
-    outcome_measurement_type: z
-      .string()
-      .array()
-      .nonempty({ error: "Must select at least one outcome measurement." }),
-    sample_country: z
-      .string()
-      .array()
-      .nonempty({ error: "Must select at least one country." }),
-    sample_size: z.coerce
-      .number()
-      .min(1, { error: "Must be a positive number." }) as z.ZodNumber,
-    ...studyFiltersFields,
-    ...paperFiltersFields,
-  })
-)
+const formSchema = z.object({
+  ...interventionFiltersFields,
+  ...outcomeCategoriesFieldsNew,
+  outcome_measurement_type: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one outcome measurement." }),
+  sample_country: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one country." }),
+  sample_size: z.coerce
+    .number()
+    .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
+  ...studyFiltersFields,
+  ...paperFiltersFields,
+})
 
 type FiltersProps = {
   status: string
@@ -87,12 +77,11 @@ export const Filters = ({ status, setData }: FiltersProps) => {
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     defaultValues: {
-      outcome_subcategory_behavior:
-        META_ANALYSIS_DEFAULTS.outcome_subcategory_behavior,
-      outcome_subcategory_intention:
-        META_ANALYSIS_DEFAULTS.outcome_subcategory_intention,
-      outcome_subcategory_attitude:
-        META_ANALYSIS_DEFAULTS.outcome_subcategory_attitude,
+      outcome_subcategory: [
+        ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+        ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+        ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+      ],
       outcome_measurement_type: META_ANALYSIS_DEFAULTS.outcome_measurement_type,
       intervention_content: META_ANALYSIS_DEFAULTS.intervention_content,
       intervention_mechanism: META_ANALYSIS_DEFAULTS.intervention_mechanism,
@@ -124,14 +113,8 @@ export const Filters = ({ status, setData }: FiltersProps) => {
     let subset: typeof data
 
     // Filter on outcome subcategory
-    const outcome_subcategory = [
-      ...values.outcome_subcategory_behavior,
-      ...values.outcome_subcategory_intention,
-      ...values.outcome_subcategory_attitude,
-    ]
-
     subset = data.filter((datum) => {
-      return outcome_subcategory.some(
+      return values.outcome_subcategory.some(
         (value) => datum.outcome_subcategory === value
       )
     })
@@ -249,138 +232,190 @@ export const Filters = ({ status, setData }: FiltersProps) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit, onInvalid)} className="space-y-10">
-        {/* Levels */}
-        <div className="space-y-8">
-          {/* Paper-level */}
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-xl font-semibold mb-1">Papers</h2>
-              <p className="text-sm text-muted-foreground">
-                Filter by publication characteristics
-              </p>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-6 items-start">
-              <PaperYear
+      <form onSubmit={form.handleSubmit(onSubmit, onInvalid)} className="space-y-6">
+        {/* Paper-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Papers</CardTitle>
+            <CardDescription>
+              Filter by publication characteristics
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 items-start">
+              <SliderField
                 control={form.control}
-                minYear={Math.min(...data.map((datum) => datum.paper_year))}
-                maxYear={Math.max(...data.map((datum) => datum.paper_year))}
+                name="paper_year"
+                label="Publication year"
+                min={Math.min(...data.map((datum) => datum.paper_year))}
+                max={Math.max(...data.map((datum) => datum.paper_year))}
+                minStepsBetweenThumbs={1}
+                className="w-[200px]"
               />
-              <PaperType control={form.control} />
-              <PaperOpenAccess control={form.control} />
+              <div></div>
+              <CheckboxGroup
+                control={form.control}
+                name="paper_type"
+                label="Publication type"
+                options={PAPER_TYPE_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="paper_open_access"
+                label="Access type"
+                options={PAPER_OPEN_ACCESS_OPTIONS_NEW}
+              />
             </div>
-          </div>
-          <Separator />
-          {/* Study-level */}
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-xl font-semibold mb-1">Studies</h2>
-              <p className="text-sm text-muted-foreground">
-                Filter by study design and methodology
-              </p>
-            </div>
+          </CardContent>
+        </Card>
+
+        {/* Study-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Studies</CardTitle>
+            <CardDescription>
+              Filter by study design and methodology
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-6 items-start">
-              <StudyPreregistration control={form.control} />
-              <StudyDataAvailable control={form.control} />
-              <StudyDesign control={form.control} />
-              <StudyConditionAssignment control={form.control} />
-              <StudyRandomization control={form.control} />
+              <CheckboxGroup
+                control={form.control}
+                name="study_preregistered"
+                label="Preregistration"
+                options={STUDY_PREREGISTERED_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="study_data_available"
+                label="Data availability"
+                options={STUDY_DATA_AVAILABLE_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="study_design"
+                label="Study design"
+                options={STUDY_DESIGN_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="study_condition_assignment"
+                label="Condition assignment"
+                options={STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="study_randomization"
+                label="Randomization"
+                options={STUDY_RANDOMIZATION_OPTIONS_NEW}
+              />
             </div>
-          </div>
-          <Separator />
-          {/* Outcome-level */}
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-xl font-semibold mb-1">Outcomes</h2>
-              <p className="text-sm text-muted-foreground">
-                Select types of outcomes to include
-              </p>
-            </div>
+          </CardContent>
+        </Card>
+
+        {/* Outcome-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Outcomes</CardTitle>
+            <CardDescription>
+              Select types of outcomes to include
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
             <div className="space-y-6">
-              <OutcomeCategories control={form.control} />
-              <OutcomeMeasurementType control={form.control} />
+              <MultiSelectField
+                control={form.control}
+                name="outcome_subcategory"
+                label="Outcome categories"
+                description="Choose between behaviors (actual consumption and food choices), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
+                placeholder="Select outcome categories..."
+                searchPlaceholder="Search categories..."
+                searchEmptyMessage="No category found."
+                options={OUTCOME_CATEGORIES_GROUPED}
+                className="w-full bg-white hover:bg-white"
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="outcome_measurement_type"
+                label="Measurement type"
+                options={OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW}
+              />
             </div>
-          </div>
-          <Separator />
-          {/* Intervention-level */}
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-xl font-semibold mb-1">Interventions</h2>
-              <p className="text-sm text-muted-foreground">
-                Filter by intervention characteristics
-              </p>
-            </div>
+          </CardContent>
+        </Card>
+
+        {/* Intervention-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Interventions</CardTitle>
+            <CardDescription>
+              Filter by intervention characteristics
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
             <div className="space-y-6">
-              <InterventionFilters control={form.control} />
+              <MultiSelectField
+                control={form.control}
+                name="intervention_content"
+                label="Intervention content"
+                description="Topics or arguments used to persuade people (e.g., animal welfare, health, environment)"
+                placeholder="Select intervention content..."
+                options={INTERVENTION_CONTENT_OPTIONS}
+                className="w-full bg-white hover:bg-white"
+              />
+              <MultiSelectField
+                control={form.control}
+                name="intervention_mechanism"
+                label="Intervention mechanism"
+                description="Persuasion strategies used by researchers (facts, emotions, social pressure, etc.)"
+                placeholder="Select intervention mechanism..."
+                options={INTERVENTION_MECHANISM_OPTIONS}
+                className="w-full bg-white hover:bg-white"
+              />
+              <MultiSelectField
+                control={form.control}
+                name="intervention_medium"
+                label="Intervention medium"
+                placeholder="Select intervention medium..."
+                options={INTERVENTION_MEDIUM_OPTIONS}
+                className="w-full bg-white hover:bg-white"
+              />
             </div>
-          </div>
-          <Separator />
-          {/* Samples-level */}
-          <div className="space-y-4">
-            <div>
-              <h2 className="text-xl font-semibold mb-1">Samples</h2>
-              <p className="text-sm text-muted-foreground">
-                Filter by sample characteristics
-              </p>
-            </div>
+          </CardContent>
+        </Card>
+
+        {/* Samples-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Samples</CardTitle>
+            <CardDescription>
+              Filter by sample characteristics
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 items-start">
-              <FormField
+              <MultiSelectField
                 control={form.control}
                 name="sample_country"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base">Country</FormLabel>
-                    <FormDescription>
-                      Countries where studies were conducted
-                    </FormDescription>
-                    <MultiSelect
-                      onValuesChange={field.onChange}
-                      values={field.value}
-                    >
-                      <FormControl>
-                        <MultiSelectTrigger className="w-full bg-white hover:bg-white">
-                          <MultiSelectValue placeholder="Select countries..." />
-                        </MultiSelectTrigger>
-                      </FormControl>
-                      <MultiSelectContent search={{ placeholder: "Search countries...", emptyMessage: "No country found." }}>
-                        <MultiSelectGroup>
-                          {COUNTRY_OPTIONS.map((option) => (
-                            <MultiSelectItem key={option} value={option}>
-                              {option}
-                            </MultiSelectItem>
-                          ))}
-                        </MultiSelectGroup>
-                      </MultiSelectContent>
-                    </MultiSelect>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                label="Country"
+                description="Countries where studies were conducted"
+                placeholder="Select countries..."
+                searchPlaceholder="Search countries..."
+                searchEmptyMessage="No country found."
+                options={COUNTRY_OPTIONS}
+                className="w-full bg-white hover:bg-white"
               />
-              <FormField
+              <InputField
                 control={form.control}
                 name="sample_size"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base">
-                      Minimum sample size
-                    </FormLabel>
-                    <FormDescription>
-                      Minimum per control or intervention condition
-                    </FormDescription>
-                    <FormControl>
-                      <Input
-                        className="rounded-lg bg-white"
-                        type="number"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                label="Minimum sample size"
+                description="Minimum per control or intervention condition"
+                type="number"
+                className="rounded-lg bg-white"
               />
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
 
         <div className="flex flex-col gap-2">
           <Button

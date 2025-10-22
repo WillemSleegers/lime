@@ -77,40 +77,40 @@ export default function DataExplorer() {
         </p>
       </div>
       <Tabs defaultValue={level} className="space-y-6">
-        <div className="mx-auto flex flex-wrap items-center justify-center gap-3">
-          <TabsList className="flex h-auto flex-wrap items-center gap-1 rounded-2xl p-0 align-middle bg-primary-foreground sm:bg-primary">
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <TabsList className="flex-wrap h-auto">
             <TabsTrigger
-              className="rounded-2xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="paper"
               onClick={() => setLevel("paper")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
             >
               Papers
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-2xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="study"
               onClick={() => setLevel("study")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
             >
               Studies
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-2xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="intervention"
               onClick={() => setLevel("intervention")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
             >
               Interventions
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-2xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="outcome"
               onClick={() => setLevel("outcome")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
             >
               Outcomes
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-2xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="effect"
               onClick={() => setLevel("effect")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
             >
               Effects
             </TabsTrigger>
@@ -118,7 +118,7 @@ export default function DataExplorer() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button className="w-32 rounded-lg" variant="outline">
+              <Button className="rounded-lg" variant="outline">
                 Download
               </Button>
             </DropdownMenuTrigger>

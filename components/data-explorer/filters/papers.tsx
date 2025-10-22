@@ -13,16 +13,15 @@ import { Toggle } from "@/components/ui/toggle"
 import { Button } from "@/components/ui/button"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
-import {
-  paperFiltersFields,
-  PaperYear,
-  PaperType,
-  PaperOpenAccess,
-} from "@/components/filter-fields/paper-fields"
+import { CheckboxGroup } from "@/components/form/checkbox-group"
+import { SliderField } from "@/components/form/slider-field"
+import { paperFiltersFields } from "@/lib/filter-schemas"
 
 import {
   PAPER_TYPE_OPTIONS,
   PAPER_OPEN_ACCESS_OPTIONS,
+  PAPER_TYPE_OPTIONS_NEW,
+  PAPER_OPEN_ACCESS_OPTIONS_NEW,
 } from "@/constants/constants-filters"
 
 import { Papers } from "@/lib/types"
@@ -98,14 +97,29 @@ export const FilterPapers = (props: FilterPapersProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="flex flex-col lg:flex-row gap-6 items-baseline">
-            <PaperYear
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 items-start">
+            <SliderField
               control={form.control}
-              minYear={Math.min(...data.map((datum) => datum.paper_year))}
-              maxYear={Math.max(...data.map((datum) => datum.paper_year))}
+              name="paper_year"
+              label="Publication year"
+              min={Math.min(...data.map((datum) => datum.paper_year))}
+              max={Math.max(...data.map((datum) => datum.paper_year))}
+              minStepsBetweenThumbs={1}
+              className="w-[200px]"
             />
-            <PaperType control={form.control} />
-            <PaperOpenAccess control={form.control} />
+            <div></div>
+            <CheckboxGroup
+              control={form.control}
+              name="paper_type"
+              label="Publication type"
+              options={PAPER_TYPE_OPTIONS_NEW}
+            />
+            <CheckboxGroup
+              control={form.control}
+              name="paper_open_access"
+              label="Access type"
+              options={PAPER_OPEN_ACCESS_OPTIONS_NEW}
+            />
           </div>
 
           <div className="flex gap-2 justify-between">

@@ -11,23 +11,24 @@ import { Form } from "@/components/ui/form"
 import { Toggle } from "@/components/ui/toggle"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
+import { CheckboxGroup } from "@/components/form/checkbox-group"
+import { MultiSelectField } from "@/components/form/multi-select-field"
 
 import {
   OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
   OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
+  OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW,
+  OUTCOME_CATEGORIES_GROUPED,
 } from "@/constants/constants-filters"
 import { FilteredData, Locks } from "@/lib/data-explorer-utils"
 
 import { Outcomes } from "@/lib/types"
-import {
-  OutcomeCategories,
-  OutcomeMeasurementType,
-  createOutcomeCategoriesSchema,
-} from "@/components/filter-fields/outcome-fields"
+import { outcomeCategoriesFieldsNew } from "@/lib/filter-schemas"
 
-const formSchemaOutcomes = createOutcomeCategoriesSchema({
+const formSchemaOutcomes = z.object({
+  ...outcomeCategoriesFieldsNew,
   outcome_measurement_type: z
     .string()
     .array()
@@ -59,10 +60,12 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     defaultValues: {
-      outcome_subcategory_behavior: OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-      outcome_subcategory_intention: OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-      outcome_subcategory_attitude: OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
-      outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map(
+      outcome_subcategory: [
+        ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+        ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+        ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+      ],
+      outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW.map(
         (option) => option.value
       ),
     },
@@ -71,14 +74,8 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
   async function onSubmit(values: z.infer<typeof formSchemaOutcomes>) {
     let subset = data
 
-    const outcome_subcategory = [
-      ...values.outcome_subcategory_behavior,
-      ...values.outcome_subcategory_intention,
-      ...values.outcome_subcategory_attitude,
-    ]
-
     subset = subset.filter((datum) => {
-      return outcome_subcategory.some(
+      return values.outcome_subcategory.some(
         (value) => datum.outcome_subcategory === value
       )
     })
@@ -100,9 +97,24 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="space-y-2">
-            <OutcomeCategories control={form.control} />
-            <OutcomeMeasurementType control={form.control} />
+          <div className="space-y-6">
+            <MultiSelectField
+              control={form.control}
+              name="outcome_subcategory"
+              label="Outcome categories"
+              description="Choose between behaviors (actual consumption and food choices), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
+              placeholder="Select outcome categories..."
+              searchPlaceholder="Search categories..."
+              searchEmptyMessage="No category found."
+              options={OUTCOME_CATEGORIES_GROUPED}
+              className="w-full bg-white hover:bg-white"
+            />
+            <CheckboxGroup
+              control={form.control}
+              name="outcome_measurement_type"
+              label="Measurement type"
+              options={OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW}
+            />
           </div>
           <div className="flex gap-2 justify-between">
             <Button type="submit" className="h-auto rounded-lg">

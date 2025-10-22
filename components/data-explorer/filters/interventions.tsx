@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { Toggle } from "@/components/ui/toggle"
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
+import { MultiSelectField } from "@/components/form/multi-select-field"
 
 import {
   INTERVENTION_CONTENT_OPTIONS,
@@ -19,10 +20,7 @@ import {
 
 import { Interventions } from "@/lib/types"
 import { FilteredData, Locks } from "@/lib/data-explorer-utils"
-import {
-  InterventionFilters,
-  interventionFiltersSchema,
-} from "@/components/filter-fields/intervention-fields"
+import { interventionFiltersSchema } from "@/lib/filter-schemas"
 
 type FilterInterventionsProps = {
   data: Interventions
@@ -88,7 +86,32 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
           <div className="space-y-6">
-            <InterventionFilters control={form.control} />
+            <MultiSelectField
+              control={form.control}
+              name="intervention_content"
+              label="Intervention content"
+              description="Topics or arguments used to persuade people (e.g., animal welfare, health, environment)"
+              placeholder="Select intervention content..."
+              options={INTERVENTION_CONTENT_OPTIONS}
+              className="w-full bg-white hover:bg-white"
+            />
+            <MultiSelectField
+              control={form.control}
+              name="intervention_mechanism"
+              label="Intervention mechanism"
+              description="Persuasion strategies used by researchers (facts, emotions, social pressure, etc.)"
+              placeholder="Select intervention mechanism..."
+              options={INTERVENTION_MECHANISM_OPTIONS}
+              className="w-full bg-white hover:bg-white"
+            />
+            <MultiSelectField
+              control={form.control}
+              name="intervention_medium"
+              label="Intervention medium"
+              placeholder="Select intervention medium..."
+              options={INTERVENTION_MEDIUM_OPTIONS}
+              className="w-full bg-white hover:bg-white"
+            />
           </div>
 
           <div className="flex gap-2 justify-between">

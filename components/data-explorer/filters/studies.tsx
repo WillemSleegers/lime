@@ -7,19 +7,11 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-
+import { Form } from "@/components/ui/form"
 import { Toggle } from "@/components/ui/toggle"
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
+import { CheckboxGroup } from "@/components/form/checkbox-group"
+import { InputField } from "@/components/form/input-field"
 
 import {
   STUDY_PREREGISTERED_OPTIONS,
@@ -27,18 +19,16 @@ import {
   STUDY_DESIGN_OPTIONS,
   STUDY_CONDITION_ASSIGNMENT_OPTIONS,
   STUDY_RANDOMIZATION_OPTIONS,
+  STUDY_PREREGISTERED_OPTIONS_NEW,
+  STUDY_DATA_AVAILABLE_OPTIONS_NEW,
+  STUDY_DESIGN_OPTIONS_NEW,
+  STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW,
+  STUDY_RANDOMIZATION_OPTIONS_NEW,
 } from "@/constants/constants-filters"
 
 import { Studies } from "@/lib/types"
 import { FilteredData, Locks } from "@/lib/data-explorer-utils"
-import {
-  StudyPreregistration,
-  StudyDataAvailable,
-  StudyDesign,
-  StudyConditionAssignment,
-  StudyRandomization,
-  studyFiltersFields,
-} from "@/components/filter-fields/study-fields"
+import { studyFiltersFields } from "@/lib/filter-schemas"
 
 const formSchemaStudies = z.object({
   study_n: z.coerce
@@ -137,33 +127,44 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-4xl xl:max-w-full  xl:grid-cols-3 gap-6 items-baseline">
-            <StudyPreregistration control={form.control} />
-            <StudyDataAvailable control={form.control} />
-            <StudyDesign control={form.control} />
-            <StudyConditionAssignment control={form.control} />
-            <StudyRandomization control={form.control} />
-
-            <FormField
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-4xl xl:max-w-full xl:grid-cols-3 gap-6 items-baseline">
+            <CheckboxGroup
+              control={form.control}
+              name="study_preregistered"
+              label="Preregistration"
+              options={STUDY_PREREGISTERED_OPTIONS_NEW}
+            />
+            <CheckboxGroup
+              control={form.control}
+              name="study_data_available"
+              label="Data availability"
+              options={STUDY_DATA_AVAILABLE_OPTIONS_NEW}
+            />
+            <CheckboxGroup
+              control={form.control}
+              name="study_design"
+              label="Study design"
+              options={STUDY_DESIGN_OPTIONS_NEW}
+            />
+            <CheckboxGroup
+              control={form.control}
+              name="study_condition_assignment"
+              label="Condition assignment"
+              options={STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW}
+            />
+            <CheckboxGroup
+              control={form.control}
+              name="study_randomization"
+              label="Randomization"
+              options={STUDY_RANDOMIZATION_OPTIONS_NEW}
+            />
+            <InputField
               control={form.control}
               name="study_n"
-              render={({ field }) => (
-                <FormItem className="w-60">
-                  <FormLabel>Minimum sample size</FormLabel>
-                  <FormControl>
-                    <Input
-                      className="rounded-lg bg-white"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    This is the total sample size across all conditions in a
-                    study
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
+              label="Minimum sample size"
+              description="This is the total sample size across all conditions in a study"
+              type="number"
+              className="rounded-lg bg-white w-60"
             />
           </div>
 
