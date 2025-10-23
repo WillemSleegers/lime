@@ -18,6 +18,13 @@ const MetaAnalysisPage = () => {
   const [status, setStatus] = useState<Status>("Loading webR...")
   const [activeTab, setActiveTab] = useState("criteria")
 
+  // Track which steps are unlocked
+  const [unlockedTabs, setUnlockedTabs] = useState({
+    criteria: true,
+    highlights: false,
+    analysis: false,
+  })
+
   const [data, setData] = useState<Data>()
   const [estimate, setEstimate] = useState<Estimate | undefined>()
   const [egger, setEgger] = useState<Egger | undefined>()
@@ -37,6 +44,28 @@ const MetaAnalysisPage = () => {
     }
     initializeR()
   }, [])
+
+  // Handle filter application and unlock next tab
+  const handleFiltersApplied = () => {
+    setUnlockedTabs((prev) => ({ ...prev, highlights: true }))
+    setActiveTab("highlights")
+    // Scroll to top after tab content renders
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }, 100)
+    // Run analysis in background while user reviews highlights
+    runAnalysis()
+  }
+
+  // Handle highlights reviewed and unlock next tab
+  const handleHighlightsReviewed = () => {
+    setUnlockedTabs((prev) => ({ ...prev, analysis: true }))
+    setActiveTab("analysis")
+    // Scroll to top after tab content renders
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }, 100)
+  }
 
   // Run meta-analysis function (called manually via button)
   const runAnalysis = async () => {
@@ -124,12 +153,14 @@ const MetaAnalysisPage = () => {
           </TabsTrigger>
           <TabsTrigger
             value="highlights"
+            disabled={!unlockedTabs.highlights}
             className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
           >
             Step 2: Review selection
           </TabsTrigger>
           <TabsTrigger
             value="analysis"
+            disabled={!unlockedTabs.analysis}
             className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
           >
             Step 3: Run meta-analysis
@@ -137,11 +168,18 @@ const MetaAnalysisPage = () => {
         </TabsList>
 
         <TabsContent value="criteria" className="mt-0">
-          <InclusionCriteriaTab status={status} setData={setData} />
+          <InclusionCriteriaTab
+            status={status}
+            setData={setData}
+            onFiltersApplied={handleFiltersApplied}
+          />
         </TabsContent>
 
         <TabsContent value="highlights" className="mt-0">
-          <HighlightsTab data={data} />
+          <HighlightsTab
+            data={data}
+            onContinue={handleHighlightsReviewed}
+          />
         </TabsContent>
 
         <TabsContent value="analysis" className="mt-0">

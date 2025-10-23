@@ -69,9 +69,10 @@ const formSchema = z.object({
 type FiltersProps = {
   status: string
   setData: Dispatch<SetStateAction<Data | undefined>>
+  onFiltersApplied: () => void
 }
 
-export const Filters = ({ status, setData }: FiltersProps) => {
+export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     mode: "onSubmit",
@@ -228,6 +229,7 @@ export const Filters = ({ status, setData }: FiltersProps) => {
     }
 
     setData(subset)
+    onFiltersApplied()
   }
 
   return (
@@ -423,7 +425,7 @@ export const Filters = ({ status, setData }: FiltersProps) => {
             disabled={status !== "Ready"}
             className="h-auto rounded-lg w-fit"
           >
-            Apply filters
+            Apply filters & continue
           </Button>
           {form.formState.errors.root && (
             <div className="text-destructive text-sm font-semibold">

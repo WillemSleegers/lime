@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next"
 
 import { MainNav } from "@/components/navigation/main-nav"
+import { ThemeProvider } from "@/components/theme-provider"
 
 import { cn } from "@/lib/utils"
 
@@ -22,11 +23,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={cn(inter.className, "flex flex-col min-h-svh")}>
-        <MainNav />
-        {children}
-        <Analytics />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <MainNav />
+          {children}
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -6,6 +6,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { CollapsibleEstimate } from "@/components/meta-analysis/estimate"
+import { Card, CardContent } from "@/components/ui/card"
+import { Spinner } from "@/components/ui/spinner"
 import { CollapsiblePublicationBias } from "@/components/meta-analysis/publication-bias"
 import { ForestPlot } from "@/components/meta-analysis/forest-plot"
 import { RCode } from "@/components/meta-analysis/R-code"
@@ -37,23 +39,14 @@ export const MetaAnalysisTab = ({
 }: MetaAnalysisTabProps) => {
   return (
     <div className="space-y-8">
-      <div className="space-y-6">
-        <p className="text-description">
-          Run the meta-analysis to calculate pooled effect sizes and confidence
-          intervals. Results include forest plots, publication bias tests, and
-          downloadable data. The analysis uses robust variance estimation to
-          account for dependencies between effects from the same study.
-        </p>
-        <div className="flex justify-center">
-          <Button
-            onClick={runAnalysis}
-            disabled={!data || status !== "Ready"}
-            className="h-auto rounded-lg w-fit px-6 py-3"
-          >
-            {status !== "Ready" ? "Running..." : "Run meta-analysis"}
-          </Button>
-        </div>
-      </div>
+      {status !== "Ready" && !estimate && (
+        <Card>
+          <CardContent className="flex items-center gap-3 py-8">
+            <Spinner className="size-5" />
+            <span>Running meta-analysis...</span>
+          </CardContent>
+        </Card>
+      )}
       <CollapsibleEstimate estimate={estimate} />
       <CollapsiblePublicationBias estimate={estimate} egger={egger} data={data} />
       <div>
