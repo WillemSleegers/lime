@@ -97,10 +97,10 @@ const MetaAnalysisPage = () => {
   }, [status])
 
   return (
-    <main className="w-full max-w-4xl mx-auto space-y-8 my-12 md:my-16">
+    <main className="page-width page-container space-y-8">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold">Meta-Analysis</h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
+        <h1 className="text-page-title">Meta-Analysis</h1>
+        <p className="max-w-2xl mx-auto text-description">
           Run a meta-analysis on selected effects from various intervention
           studies. For more information on what to take into account when running
           a meta-analysis, see the meta-analysis section in our{" "}

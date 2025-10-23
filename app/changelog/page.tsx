@@ -1,7 +1,7 @@
 const Changelog = () => {
   return (
-    <main className="p-3">
-      <h1 className="text-2xl">Changelog</h1>
+    <main className="page-container">
+      <h1 className="text-page-title">Changelog</h1>
     </main>
   )
 }

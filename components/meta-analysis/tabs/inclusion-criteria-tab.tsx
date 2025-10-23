@@ -14,7 +14,7 @@ export const InclusionCriteriaTab = ({
 }: InclusionCriteriaTabProps) => {
   return (
     <div className="space-y-8">
-      <p className="text-muted-foreground leading-relaxed">
+      <p className="text-description">
         Select which studies to include in your meta-analysis by filtering on
         publication, study design, outcome, intervention, and sample
         characteristics. Start with the default settings or adjust filters to

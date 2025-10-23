@@ -114,6 +114,38 @@ All data structures are strongly typed, derived from the JSON data files:
 3. WebR integration for server-side R statistical analysis
 4. Real-time updates to visualizations and tables
 
+#### CSS and Styling Approach
+
+**Prefer simple solutions over complex ones:**
+
+- **Start with `@apply`**: When creating custom utility classes, use `@apply` with standard Tailwind classes instead of CSS variables or complex media queries
+- **Use Tailwind's spacing scale**: Don't create custom spacing systems with CSS variables unless absolutely necessary - Tailwind's built-in scale (px-3, py-12, md:px-6, etc.) is sufficient
+- **Keep globals.css minimal**: Custom utilities should be concise - if you need more than 10-15 lines for a utility, reconsider the approach
+- **Avoid over-engineering**: Don't create multiple variants (X-only, Y-only) or edge-case utilities upfront - add them only when actually needed
+
+**Example of good vs. bad approaches:**
+
+✅ **Good - Simple and clear:**
+```css
+.page-container {
+  @apply px-3 py-12 md:px-6 md:py-16 lg:px-12 lg:py-20;
+}
+```
+
+❌ **Bad - Over-engineered:**
+```css
+@utility page-container {
+  padding-left: var(--spacing-page-x);
+  padding-right: var(--spacing-page-x);
+  /* ...50+ lines of media queries and CSS variables... */
+}
+```
+
+**When to add complexity:**
+- Only after the simple solution proves insufficient
+- When there's a clear, demonstrated need
+- After discussing the tradeoffs with the user
+
 ## Important Notes
 
 - The project uses WebR for statistical computation, which requires specific package installation

@@ -47,7 +47,7 @@ export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger>
         <div className="flex flex-row items-center gap-1">
-          <h2 className="text-2xl font-bold tracking-tight">Effect</h2>
+          <h2 className="text-subsection-title">Effect</h2>
           <ChevronRight
             className={cn("transition", open ? "rotate-90" : "rotate-0")}
           />

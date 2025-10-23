@@ -11,8 +11,8 @@ import Link from "next/link"
 
 const Contributors = () => {
   return (
-    <main className="max-w-2xl mx-auto prose my-12 md:my-16 text-center">
-      <h1>Contributors</h1>
+    <main className="page-width page-container text-center space-y-6">
+      <h1 className="text-page-title">Contributors</h1>
       <div className="grid justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div className="max-w-60 space-y-2">
           <Image

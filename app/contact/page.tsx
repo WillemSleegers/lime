@@ -3,14 +3,14 @@ import Link from "next/link"
 
 const Contact = () => {
   return (
-    <main className="prose max-2-xl mx-auto my-12 md:my-16">
-      <h1 className="text-center">Contact</h1>
-      <p>
+    <main className="page-width page-container space-y-6">
+      <h1 className="text-page-title text-center">Contact</h1>
+      <p className="text-description">
         The best way to contact us is via e-mail. Click on one of the options
         below to let us know about a study we should add to our database, a
         question you have, a bug you found, or something else.
       </p>
-      <div className="not-prose grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
         <Link href="mailto:contact.project.lime@gmail.com?subject=Study to add to the LIME project">
           <div className="flex flex-col items-center justify-between rounded-lg border-2 border-primary bg-transparent p-4 hover:bg-accent hover:text-accent-foreground">
             <MailPlus />

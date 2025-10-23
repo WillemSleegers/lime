@@ -61,10 +61,10 @@ export default function DataExplorer() {
   }
 
   return (
-    <main className="mx-3 md:mx-6 lg:mx-12 space-y-8 my-12 md:my-16">
+    <main className="page-container space-y-8">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold">Data Explorer</h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
+        <h1 className="text-page-title">Data Explorer</h1>
+        <p className="max-w-2xl mx-auto text-description">
           Browse research papers using the tabs below. Filter data by topics or
           methods, and download tables for analysis. Need help? See our{" "}
           <Link
@@ -118,25 +118,22 @@ export default function DataExplorer() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button className="rounded-lg" variant="outline">
+              <Button variant="outline">
                 Download
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="rounded-xl p-2">
+            <DropdownMenuContent>
               <DropdownMenuItem
-                className="rounded-lg"
                 onClick={() => handleDownload(papers, "lime-papers.csv")}
               >
                 Papers
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-lg"
                 onClick={() => handleDownload(studies, "lime-studies.csv")}
               >
                 Studies
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-lg"
                 onClick={() =>
                   handleDownload(interventions, "lime-interventions.csv")
                 }
@@ -144,19 +141,16 @@ export default function DataExplorer() {
                 Interventions
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-lg"
                 onClick={() => handleDownload(outcomes, "lime-outcomes.csv")}
               >
                 Outcomes
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-lg"
                 onClick={() => handleDownload(effects, "lime-effects.csv")}
               >
                 Effects
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-lg"
                 onClick={() => handleDownload(all, "lime-data.csv")}
               >
                 All

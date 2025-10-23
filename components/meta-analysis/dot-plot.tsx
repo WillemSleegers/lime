@@ -255,7 +255,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
     <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
       <CollapsibleTrigger>
         <div className="flex flex-row items-center gap-1">
-          <h2 className="text-2xl font-bold tracking-tight">Dot plot</h2>
+          <h2 className="text-subsection-title">Dot plot</h2>
           <ChevronRight
             className={cn("transition", open ? "rotate-90" : "rotate-0")}
           />

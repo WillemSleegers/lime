@@ -143,7 +143,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
           </div>
 
           <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto rounded-lg">
+            <Button type="submit" className="h-auto">
               Update table
             </Button>
             <Toggle

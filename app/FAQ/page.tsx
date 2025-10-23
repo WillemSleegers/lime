@@ -8,34 +8,36 @@ import Link from "next/link"
 
 const FAQ = () => {
   return (
-    <main className="prose max-w-2xl mx-auto my-12 md:my-16">
-      <h1 className="text-center">FAQ</h1>
-      <Accordion type="single" collapsible>
-        <h2>General</h2>
+    <main className="page-width page-container space-y-8">
+      <h1 className="text-page-title text-center">FAQ</h1>
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-section-title">General</h2>
+          <Accordion type="single" collapsible>
         <AccordionItem value="general-1">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             What is LIME?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               In short, it is a library of psychological intervention studies
               aimed at reducing animal product consumption and for improving
               attitudes towards animals. We are collecting information on all
               studies on this topic to make it available via this website. You
               can explore the studies with the{" "}
-              <Link href="/data-explorer/">Data Explorer tool</Link> or conduct
+              <Link className="font-medium text-primary hover:underline" href="/data-explorer/">Data Explorer tool</Link> or conduct
               custom analyses with the{" "}
-              <Link href="/meta-analysis/">Meta-analysis tool</Link>. You can
+              <Link className="font-medium text-primary hover:underline" href="/meta-analysis/">Meta-analysis tool</Link>. You can
               find out more about this project on the{" "}
-              <Link href="/about/">About</Link> page.
+              <Link className="font-medium text-primary hover:underline" href="/about/">About</Link> page.
             </p>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="general-2">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             Who is the target audience?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               LIME was primarily built for researchers and activists or policy
               makers who are somewhat familiar with scientific research. In many
@@ -49,25 +51,25 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="general-3">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             Who built LIME?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               LIME was mainly created by dr. Willem Sleegers and dr. Bastian
               Jaeger. You can find out more about who collaborated on LIME on
-              the <Link href="/contributors/">Contributors</Link> page.
+              the <Link className="font-medium text-primary hover:underline" href="/contributors/">Contributors</Link> page.
             </p>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="general-4">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             Who has funded LIME?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               We are happy to report that we have received a grant from the{" "}
-              <Link href="https://www.fsrfund.org">
+              <Link className="font-medium text-primary hover:underline" href="https://www.fsrfund.org">
                 Food System Research Fund
               </Link>
               . This grant provides us with the opportunity to spend more time
@@ -77,19 +79,23 @@ const FAQ = () => {
             </p>
           </AccordionContent>
         </AccordionItem>
-        <h2>The database</h2>
+          </Accordion>
+        </div>
+        <div className="space-y-4">
+          <h2 className="text-section-title">The database</h2>
+          <Accordion type="single" collapsible>
         <AccordionItem value="database-1">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             What types of interventions are included?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               We include studies that tested whether an intervention, such as
               letting participants read a text on factory farm conditions,
               influences an outcome related to meat consumption or attitudes
               towards animals. These interventions differed on various aspects.
             </p>
-            <ul>
+            <ul className="list-disc pl-6 space-y-1">
               <li>
                 Medium: flyers, 2D and 3D videos, in-person lectures, classroom
                 discussions, etc.
@@ -103,16 +109,16 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-2">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             What types of outcomes are included?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               We include studies that measured (intended) meat consumption,
               attitudes towards animals, or closely related outcomes. We
               distinguish between three general types of measures.
             </p>
-            <ul>
+            <ul className="list-disc pl-6 space-y-1">
               <li>Behavior: sales data from restaurants, food diaries, etc.</li>
               <li>
                 Intentions: intended future meat consumption, intentions to
@@ -134,10 +140,10 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-3">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             What types of studies are included?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               The database includes data from different types of publications,
               including peer-reviewed articles published in scientific journals,
@@ -153,15 +159,15 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-4">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             How were the studies coded?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               Every relevant study was coded on various relevant dimensions
               related to:
             </p>
-            <ul>
+            <ul className="list-disc pl-6 space-y-1">
               <li>
                 The paper: title, authors, publication year, accessibility of
                 data, etc.
@@ -184,10 +190,10 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-5">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             Are all relevant studies included in the database?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               No. LIME currently contains a relatively small selection of
               studies from the relevant literature. Our current focus is on
@@ -198,25 +204,25 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-6">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             Can I suggest a paper for the database?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               Eventually, we want to include all studies that experimentally
               tested the effect of an intervention on meat consumption or
               attitudes towards animals in the database. If you know a study
               that has not been included yet, you can let us know{" "}
-              <Link href="/contact">here</Link>.
+              <Link className="font-medium text-primary hover:underline" href="/contact">here</Link>.
             </p>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-7">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             If I implement the same intervention as one of the studies, will it
             have the same effect for me?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               There are many reasons why you should not be too confident that an
               intervention will be equally effective, or even effective at all,
@@ -265,16 +271,16 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="database-8">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             Are some study results more informative and how can I tell?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               It is difficult to judge how reliable and generalizable the
               results of a specific study are. But, all else being equal, there
               are three indicators that you could pay attention to.
             </p>
-            <ul>
+            <ul className="list-disc pl-6 space-y-1">
               <li>
                 <strong>Sample size</strong>: Studies with larger participant
                 samples will provide more reliable estimates of group
@@ -306,12 +312,16 @@ const FAQ = () => {
             </p>
           </AccordionContent>
         </AccordionItem>
-        <h2>Data explorer</h2>
+          </Accordion>
+        </div>
+        <div className="space-y-4">
+          <h2 className="text-section-title">Data explorer</h2>
+          <Accordion type="single" collapsible>
         <AccordionItem value="explorer-1">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             What is the Data Explorer?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               The Data Explorer helps you browse through research papers
               included in the database. We have organized information about a
@@ -327,7 +337,7 @@ const FAQ = () => {
               We&apos;ve also added several features to help you explore and work
               with the data:
             </p>
-            <ul>
+            <ul className="list-disc pl-6 space-y-1">
               <li>
                 You can decide which studies to include by using the
                 column-specific filters (e.g., only studies with sales data,
@@ -346,16 +356,16 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="explorer-2">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             What are the different data levels and how do they relate?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               The Data Explorer has five tabs, each showing you different
               information about the same research. Here&apos;s what you&apos;ll find in
               each tab:
             </p>
-            <ul>
+            <ul className="list-disc pl-6 space-y-1">
               <li>
                 <strong>Papers:</strong> Basic publication info like titles,
                 authors, and publication year. You can also see which papers are
@@ -386,10 +396,10 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="explorer-3">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             How do I use filters and the lock feature?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               Each tab has its own set of filters to help you narrow down what
               you&apos;re looking at. For example, you might filter papers by
@@ -406,10 +416,10 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="explorer-4">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             Can I download the data?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               Yes. You can download any of the tables as CSV files to analyze in
               Excel, R, or other tools. The &quot;All&quot; option gives you a complete
@@ -418,12 +428,16 @@ const FAQ = () => {
             </p>
           </AccordionContent>
         </AccordionItem>
-        <h2>Meta-analysis</h2>
+          </Accordion>
+        </div>
+        <div className="space-y-4">
+          <h2 className="text-section-title">Meta-analysis</h2>
+          <Accordion type="single" collapsible>
         <AccordionItem value="meta-1">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             What is a meta-analysis?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               Generally speaking, the goal of a meta-analysis is to combine the
               results of many studies on a specific question in a quantitative
@@ -441,10 +455,10 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="meta-2">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             How does the Meta-analysis tool work?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               The meta-analysis tool allows you to conduct customizable
               meta-analyses on specific sets of studies. First, you can select
@@ -456,7 +470,7 @@ const FAQ = () => {
               other indicators. The website then displays various results for
               the selected set of studies:
             </p>
-            <ul>
+            <ul className="list-disc pl-6 space-y-1">
               <li>
                 The meta-analytic effect size (Cohen’s d) across all studies,
                 including the 95% confidence interval and other effect size
@@ -474,10 +488,10 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="meta-3">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             How narrow or wide should my inclusion criteria be?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               Meta-analyses provide the average effect across many studies. This
               average is more meaningful if we compare studies that are more
@@ -494,10 +508,10 @@ const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="q-4">
-          <AccordionTrigger className="py-0 text-left text-lg font-medium">
+          <AccordionTrigger className="text-base">
             How should I interpret the effect size estimates?
           </AccordionTrigger>
-          <AccordionContent className="prose">
+          <AccordionContent className="flex flex-col gap-4 text-base">
             <p>
               Effect size measures such as Cohen&apos;s d can be used to
               quantify differences between groups on some variable of interest.
@@ -513,7 +527,9 @@ const FAQ = () => {
             </p>
           </AccordionContent>
         </AccordionItem>
-      </Accordion>
+          </Accordion>
+        </div>
+      </div>
     </main>
   )
 }

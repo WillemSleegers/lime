@@ -38,7 +38,7 @@ export const MetaAnalysisTab = ({
   return (
     <div className="space-y-8">
       <div className="space-y-6">
-        <p className="text-muted-foreground leading-relaxed">
+        <p className="text-description">
           Run the meta-analysis to calculate pooled effect sizes and confidence
           intervals. Results include forest plots, publication bias tests, and
           downloadable data. The analysis uses robust variance estimation to
@@ -64,20 +64,18 @@ export const MetaAnalysisTab = ({
         <RCode />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="w-32 rounded-lg" variant="outline">
+            <Button className="w-32" variant="outline">
               Download
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="rounded-xl p-2">
+          <DropdownMenuContent>
             <DropdownMenuItem
-              className="rounded-lg"
               disabled={data == undefined}
               onClick={() => handleDownload("lime-data.csv", data)}
             >
               Data
             </DropdownMenuItem>
             <DropdownMenuItem
-              className="rounded-lg"
               onClick={() => handleDownload("codebook.csv", codebook)}
             >
               Codebook

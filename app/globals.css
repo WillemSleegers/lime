@@ -5,6 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -38,10 +39,13 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
+  /* Border Radius */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
 }
 
 :root {
@@ -119,5 +123,68 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Semantic Layout Utilities */
+@layer utilities {
+  .page-container {
+    @apply px-3 py-12 md:px-6 md:py-16 lg:px-12 lg:py-20 xl:px-16 xl:py-24;
+  }
+
+  .page-width {
+    @apply w-full max-w-4xl mx-auto;
+  }
+
+  .space-y-landing > * + * {
+    @apply mt-16 md:mt-20 lg:mt-24 xl:mt-32;
+  }
+
+  /* Break out of page-container to go edge-to-edge */
+  .breakout {
+    @apply -mx-3 md:-mx-6 lg:-mx-12 xl:-mx-16;
+  }
+}
+
+/* Typography Utilities */
+@layer utilities {
+  /* Page titles (h1) */
+  .text-page-title {
+    @apply text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl;
+  }
+
+  /* Section headings (h2) */
+  .text-section-title {
+    @apply text-2xl font-bold tracking-tight sm:text-3xl;
+  }
+
+  /* Subsection headings (h2 in cards/components) */
+  .text-subsection-title {
+    @apply text-xl font-bold tracking-tight sm:text-2xl;
+  }
+
+  /* Feature/card headings (h3) */
+  .text-feature-title {
+    @apply text-lg font-semibold tracking-tight sm:text-xl;
+  }
+
+  /* Body text for descriptions/paragraphs */
+  .text-description {
+    @apply text-base leading-relaxed;
+  }
+
+  /* Large body text for hero/intro taglines (gray for visual hierarchy) */
+  .text-description-lg {
+    @apply text-base leading-relaxed sm:text-lg text-muted-foreground;
+  }
+
+  /* Counter/stat labels */
+  .text-stat-label {
+    @apply text-sm text-muted-foreground sm:text-base;
+  }
+
+  /* Counter/stat numbers */
+  .text-stat-number {
+    @apply text-2xl font-bold sm:text-3xl;
   }
 }

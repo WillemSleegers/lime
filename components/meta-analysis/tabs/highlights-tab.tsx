@@ -8,7 +8,7 @@ type HighlightsTabProps = {
 export const HighlightsTab = ({ data }: HighlightsTabProps) => {
   return (
     <div className="space-y-8">
-      <p className="text-muted-foreground leading-relaxed">
+      <p className="text-description">
         Review summary statistics and breakdowns of your filtered selection.
         Check that your filters have produced a reasonable set of studies before
         running the meta-analysis.

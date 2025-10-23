@@ -3,8 +3,8 @@ import Link from "next/link"
 
 const About = () => {
   return (
-    <main className="prose max-w-2xl mx-auto py-12">
-      <h1 className="text-center">About</h1>
+    <main className="page-width page-container space-y-6">
+      <h1 className="text-page-title text-center">About</h1>
       <Alert variant="destructive" className="bg-destructive/10">
         <AlertDescription>
           LIME is currently in beta and you are viewing a prototype of the
@@ -13,7 +13,7 @@ const About = () => {
           reach us.
         </AlertDescription>
       </Alert>
-      <p>
+      <p className="text-description">
         <strong>LIME</strong> stands for Library of Interventions for Meat
         Elimination. In short, LIME is a continuously growing collection of all
         experimental studies that tested the effectiveness of a psychological
@@ -22,7 +22,7 @@ const About = () => {
         to make this literature more accessible to researchers, advocates, and
         policy makers.
       </p>
-      <p>
+      <p className="text-description">
         At the core of LIME is a machine-readable, continuously growing database
         of intervention studies. For each study, we extracted information on the
         intervention mechanism (e.g., presenting facts, menu design) and content
@@ -30,12 +30,12 @@ const About = () => {
         sales data, food diary), the participant sample (e.g., sample size,
         country), and much more.
       </p>
-      <p>
+      <p className="text-description">
         This database can be accessed with the{" "}
-        <Link href={"/data-explorer/"}>Data Explorer tool</Link>. You can
+        <Link href={"/data-explorer/"} className="font-medium text-primary hover:underline">Data Explorer tool</Link>. You can
         explore the data with a customizable table that allows you to
       </p>
-      <ul>
+      <ul className="text-description space-y-2 list-disc pl-6">
         <li>Select which of the many variables you want to inspect</li>
         <li>
           Include or exclude specific studies based on different criteria (e.g.,
@@ -43,11 +43,11 @@ const About = () => {
         </li>
         <li>Download your customized database</li>
       </ul>
-      <p>
-        The <Link href={"/meta-analysis/"}>Meta-analysis tool</Link> allows you
+      <p className="text-description">
+        The <Link href={"/meta-analysis/"} className="font-medium text-primary hover:underline">Meta-analysis tool</Link> allows you
         to synthesize the evidence across many studies. It allows you to:
       </p>
-      <ul>
+      <ul className="text-description space-y-2 list-disc pl-6">
         <li>
           Specify which types of studies should be included in the analysis with
           the help of various filters
