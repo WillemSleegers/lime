@@ -102,14 +102,14 @@ export const CollapsiblePublicationBias = (
                     top: 5,
                   }}
                 >
-                  <CartesianGrid fill="whitesmoke" />
+                  <CartesianGrid className="fill-muted" />
                   <XAxis
                     dataKey="x"
                     type="number"
                     label={{
                       value: "Effect size",
                       dy: 20,
-                      fill: "black",
+                      className: "fill-foreground",
                     }}
                   />
                   <YAxis
@@ -119,14 +119,14 @@ export const CollapsiblePublicationBias = (
                       value: "Standard error",
                       angle: -90,
                       dx: -30,
-                      fill: "black",
+                      className: "fill-foreground",
                     }}
                     reversed
                   />
                   <Tooltip content={<CustomTooltip accessibilityLayer />} />
                   <ReferenceLine
                     x={estimate.value}
-                    stroke="black"
+                    className="stroke-muted-foreground"
                     strokeDasharray="3 3"
                     strokeWidth={2}
                   />
@@ -138,7 +138,7 @@ export const CollapsiblePublicationBias = (
                         y: Math.ceil(ymax),
                       },
                     ]}
-                    stroke="black"
+                    className="stroke-muted-foreground"
                     strokeDasharray="3 3"
                     strokeWidth={2}
                     ifOverflow="hidden"
@@ -151,14 +151,13 @@ export const CollapsiblePublicationBias = (
                         y: Math.ceil(ymax),
                       },
                     ]}
-                    stroke="black"
+                    className="stroke-muted-foreground"
                     strokeDasharray="3 3"
                     strokeWidth={2}
                     ifOverflow="hidden"
                   />
                   <Scatter
-                    fill="lightgray"
-                    stroke="black"
+                    className="fill-muted stroke-border"
                     animationBegin={300}
                   />
                 </ScatterChart>

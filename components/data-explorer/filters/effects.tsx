@@ -127,7 +127,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
                   <FormLabel>Minimum sample size</FormLabel>
                   <FormControl>
                     <Input
-                      className="rounded-lg bg-white"
+                      className="rounded-lg"
                       type="number"
                       {...field}
                     />

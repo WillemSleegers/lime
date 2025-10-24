@@ -93,7 +93,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               description="Topics or arguments used to persuade people (e.g., animal welfare, health, environment)"
               placeholder="Select intervention content..."
               options={INTERVENTION_CONTENT_OPTIONS}
-              className="w-full bg-white hover:bg-white"
+              className="w-full"
             />
             <MultiSelectField
               control={form.control}
@@ -102,7 +102,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               description="Persuasion strategies used by researchers (facts, emotions, social pressure, etc.)"
               placeholder="Select intervention mechanism..."
               options={INTERVENTION_MECHANISM_OPTIONS}
-              className="w-full bg-white hover:bg-white"
+              className="w-full"
             />
             <MultiSelectField
               control={form.control}
@@ -110,7 +110,7 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               label="Intervention medium"
               placeholder="Select intervention medium..."
               options={INTERVENTION_MEDIUM_OPTIONS}
-              className="w-full bg-white hover:bg-white"
+              className="w-full"
             />
           </div>
 

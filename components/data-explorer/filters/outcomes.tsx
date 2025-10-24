@@ -107,7 +107,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
               searchPlaceholder="Search categories..."
               searchEmptyMessage="No category found."
               options={OUTCOME_CATEGORIES_GROUPED}
-              className="w-full bg-white hover:bg-white"
+              className="w-full"
             />
             <CheckboxGroup
               control={form.control}

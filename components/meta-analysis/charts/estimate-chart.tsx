@@ -92,7 +92,7 @@ const ChartEstimate = ({ estimate }: ChartEstimateProps) => {
         <Line
           data={linePiLeft}
           dataKey={"y"}
-          stroke="#eee"
+          className="stroke-muted"
           strokeWidth={20}
           dot={false}
           animationDuration={1000}
@@ -110,7 +110,7 @@ const ChartEstimate = ({ estimate }: ChartEstimateProps) => {
         <Line
           data={linePiRight}
           dataKey={"y"}
-          stroke="#eee"
+          className="stroke-muted"
           strokeWidth={20}
           dot={false}
           animationDuration={1000}
@@ -126,7 +126,7 @@ const ChartEstimate = ({ estimate }: ChartEstimateProps) => {
           activeDot={false}
         />
         <Scatter data={point} shape="square" fill="var(--color-fill)" />
-        <ReferenceLine x={0} stroke="#666" strokeDasharray="5 5" />
+        <ReferenceLine x={0} className="stroke-muted-foreground" strokeDasharray="5 5" />
       </ComposedChart>
     </ChartContainer>
   )
@@ -138,7 +138,7 @@ const renderLegend = () => {
   const legendItems = [
     { color: "var(--color-fill)", label: "Average Estimate" },
     { color: "var(--color-stroke)", label: "Confidence Interval" },
-    { color: "#eee", label: "Prediction Interval" },
+    { color: "hsl(var(--muted))", label: "Prediction Interval" },
   ]
 
   return (

@@ -63,7 +63,7 @@ export const HighlightRadialBarChart = ({
             position="center"
             fontWeight={600}
             fontSize={20}
-            fill="black"
+            className="fill-foreground"
           />
         </PolarRadiusAxis>
       </RadialBarChart>

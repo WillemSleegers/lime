@@ -102,7 +102,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
               >
                 <CartesianGrid
                   horizontal={false}
-                  fill="#F5F5F5"
+                  className="fill-muted"
                   verticalValues={[-1, 1]}
                 />
                 <XAxis
@@ -111,7 +111,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
                   label={{
                     value: "Effect size",
                     dy: 20,
-                    fill: "black",
+                    className: "fill-foreground",
                   }}
                   domain={[-2, 2]}
                   ticks={[-2, -1, 0, 1, 2]}
@@ -137,14 +137,14 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
                     direction="x"
                     strokeWidth={1}
                     width={5}
-                    stroke="black"
+                    className="stroke-foreground"
                   />
                 </Scatter>
                 <ReferenceLine
                   yAxisId="left"
                   x={0}
                   strokeWidth={2}
-                  stroke="gray"
+                  className="stroke-muted-foreground"
                   strokeDasharray="3 3"
                 />
               </ScatterChart>
@@ -205,7 +205,7 @@ const CustomizedAxisTick = (props: CustomAxisTickProps) => {
           y={0}
           dy={5}
           textAnchor="end"
-          fill="#666"
+          className="fill-muted-foreground"
         >
           {payload.value}
         </text>

@@ -59,7 +59,7 @@ export const PieChartProportion = ({
             value={proportion ? round(proportion * 100, 0) + "%" : "-"}
             fontSize={22}
             fontWeight={600}
-            fill="black"
+            className="fill-foreground"
             dy={24}
             position="center"
           />

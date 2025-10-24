@@ -164,7 +164,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
               label="Minimum sample size"
               description="This is the total sample size across all conditions in a study"
               type="number"
-              className="rounded-lg bg-white w-60"
+              className="rounded-lg w-60"
             />
           </div>
 

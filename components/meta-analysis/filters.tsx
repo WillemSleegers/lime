@@ -334,7 +334,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 searchPlaceholder="Search categories..."
                 searchEmptyMessage="No category found."
                 options={OUTCOME_CATEGORIES_GROUPED}
-                className="w-full bg-white hover:bg-white"
+                className="w-full"
               />
               <CheckboxGroup
                 control={form.control}
@@ -363,7 +363,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 description="Topics or arguments used to persuade people (e.g., animal welfare, health, environment)"
                 placeholder="Select intervention content..."
                 options={INTERVENTION_CONTENT_OPTIONS}
-                className="w-full bg-white hover:bg-white"
+                className="w-full"
               />
               <MultiSelectField
                 control={form.control}
@@ -372,7 +372,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 description="Persuasion strategies used by researchers (facts, emotions, social pressure, etc.)"
                 placeholder="Select intervention mechanism..."
                 options={INTERVENTION_MECHANISM_OPTIONS}
-                className="w-full bg-white hover:bg-white"
+                className="w-full"
               />
               <MultiSelectField
                 control={form.control}
@@ -380,7 +380,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 label="Intervention medium"
                 placeholder="Select intervention medium..."
                 options={INTERVENTION_MEDIUM_OPTIONS}
-                className="w-full bg-white hover:bg-white"
+                className="w-full"
               />
             </div>
           </CardContent>
@@ -405,7 +405,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 searchPlaceholder="Search countries..."
                 searchEmptyMessage="No country found."
                 options={COUNTRY_OPTIONS}
-                className="w-full bg-white hover:bg-white"
+                className="w-full"
               />
               <InputField
                 control={form.control}
@@ -413,7 +413,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 label="Minimum sample size"
                 description="Minimum per control or intervention condition"
                 type="number"
-                className="rounded-lg bg-white"
+                className="rounded-lg"
               />
             </div>
           </CardContent>
