@@ -164,7 +164,7 @@ export default function DataExplorer() {
           </DropdownMenu>
         </div>
 
-        <TabsContent value="paper" className="space-y-4">
+        <TabsContent value="paper" className="space-y-4" forceMount hidden={level !== "paper"}>
           <FilterPapers
             data={papers}
             filteredData={filteredData}
@@ -180,7 +180,7 @@ export default function DataExplorer() {
             totalRows={papers.length}
           />
         </TabsContent>
-        <TabsContent value="study" className="space-y-4">
+        <TabsContent value="study" className="space-y-4" forceMount hidden={level !== "study"}>
           <FilterStudies
             data={studies}
             filteredData={filteredData}
@@ -196,7 +196,7 @@ export default function DataExplorer() {
             totalRows={studies.length}
           />
         </TabsContent>
-        <TabsContent value="intervention" className="space-y-4">
+        <TabsContent value="intervention" className="space-y-4" forceMount hidden={level !== "intervention"}>
           <FilterInterventions
             data={interventions}
             filteredData={filteredData}
@@ -212,7 +212,7 @@ export default function DataExplorer() {
             totalRows={interventions.length}
           />
         </TabsContent>
-        <TabsContent value="outcome" className="space-y-4">
+        <TabsContent value="outcome" className="space-y-4" forceMount hidden={level !== "outcome"}>
           <FilterOutcomes
             data={outcomes}
             filteredData={filteredData}
@@ -228,7 +228,7 @@ export default function DataExplorer() {
             totalRows={outcomes.length}
           />
         </TabsContent>
-        <TabsContent value="effect" className="space-y-4">
+        <TabsContent value="effect" className="space-y-4" forceMount hidden={level !== "effect"}>
           <FilterEffects
             data={effects}
             filteredData={filteredData}

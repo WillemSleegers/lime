@@ -40,8 +40,8 @@ function uniqueBy<T extends Record<string, unknown>>(
 /**
  * Applies lock-based filtering to display data based on active locks.
  * When no locks are active, returns the filtered data as-is.
- * When locks are active, filters the full dataset in a single pass
- * and extracts unique records at each level.
+ * When locks are active, filters the full dataset based on locked levels
+ * and applies filters from unlocked levels.
  */
 export function applyLocksToData(
   fullData: Data,
@@ -54,7 +54,7 @@ export function applyLocksToData(
     return filteredData
   }
 
-  // Build constraint sets for O(1) lookup
+  // Build constraint sets for O(1) lookup - only for LOCKED levels
   const paperIds = locks.papers
     ? new Set(filteredData.papers.map((p) => p.paper))
     : null
@@ -87,7 +87,7 @@ export function applyLocksToData(
       )
     : null
 
-  // Filter fullData in one pass
+  // Filter fullData based on locked constraints
   const constrained = fullData.filter((row) => {
     if (paperIds && !paperIds.has(row.paper)) return false
     if (studyIds && !studyIds.has(`${row.paper}|${row.study}`)) return false
@@ -107,7 +107,7 @@ export function applyLocksToData(
   })
 
   // Extract unique records at each level
-  return {
+  const uniqueConstrained = {
     papers: uniqueBy(constrained, ["paper"]) as Papers,
     studies: uniqueBy(constrained, ["paper", "study"]) as Studies,
     interventions: uniqueBy(constrained, [
@@ -126,4 +126,40 @@ export function applyLocksToData(
       "effect",
     ]) as Effects,
   }
+
+  // Apply filters from unlocked levels by intersecting with filteredData
+  return {
+    papers: locks.papers
+      ? uniqueConstrained.papers
+      : intersectByKeys(uniqueConstrained.papers, filteredData.papers, ["paper"]),
+    studies: locks.studies
+      ? uniqueConstrained.studies
+      : intersectByKeys(uniqueConstrained.studies, filteredData.studies, ["paper", "study"]),
+    interventions: locks.interventions
+      ? uniqueConstrained.interventions
+      : intersectByKeys(uniqueConstrained.interventions, filteredData.interventions, ["paper", "study", "intervention_condition"]),
+    outcomes: locks.outcomes
+      ? uniqueConstrained.outcomes
+      : intersectByKeys(uniqueConstrained.outcomes, filteredData.outcomes, ["paper", "study", "outcome"]),
+    effects: locks.effects
+      ? uniqueConstrained.effects
+      : intersectByKeys(uniqueConstrained.effects, filteredData.effects, ["paper", "study", "effect"]),
+  }
+}
+
+/**
+ * Intersects two arrays based on matching composite keys
+ */
+function intersectByKeys<T extends Record<string, unknown>>(
+  constrained: T[],
+  filtered: T[],
+  keys: (keyof T)[]
+): T[] {
+  const filteredKeys = new Set(
+    filtered.map((item) => keys.map((k) => String(item[k])).join("|"))
+  )
+  return constrained.filter((item) => {
+    const key = keys.map((k) => String(item[k])).join("|")
+    return filteredKeys.has(key)
+  })
 }
