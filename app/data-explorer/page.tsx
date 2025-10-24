@@ -8,6 +8,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
@@ -123,6 +125,7 @@ export default function DataExplorer() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
+              <DropdownMenuLabel>Individual Tables</DropdownMenuLabel>
               <DropdownMenuItem
                 onClick={() => handleDownload(papers, "lime-papers.csv")}
               >
@@ -150,10 +153,12 @@ export default function DataExplorer() {
               >
                 Effects
               </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuLabel>Complete Dataset</DropdownMenuLabel>
               <DropdownMenuItem
                 onClick={() => handleDownload(all, "lime-data.csv")}
               >
-                All
+                All (joined)
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

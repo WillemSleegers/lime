@@ -65,6 +65,10 @@ const MetaAnalysisPage = () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" })
     }, 100)
+    // Ensure analysis runs if it hasn't completed yet
+    if (!estimate) {
+      runAnalysis()
+    }
   }
 
   // Run meta-analysis function (called manually via button)

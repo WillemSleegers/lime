@@ -295,6 +295,12 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
               />
               <CheckboxGroup
                 control={form.control}
+                name="study_randomization"
+                label="Randomization"
+                options={STUDY_RANDOMIZATION_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
                 name="study_design"
                 label="Study design"
                 options={STUDY_DESIGN_OPTIONS_NEW}
@@ -304,12 +310,6 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 name="study_condition_assignment"
                 label="Condition assignment"
                 options={STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW}
-              />
-              <CheckboxGroup
-                control={form.control}
-                name="study_randomization"
-                label="Randomization"
-                options={STUDY_RANDOMIZATION_OPTIONS_NEW}
               />
             </div>
           </CardContent>
@@ -423,7 +423,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
           <Button
             type="submit"
             disabled={status !== "Ready"}
-            className="h-auto rounded-lg w-fit"
+            className="h-auto rounded-lg w-fit px-6 py-3"
           >
             Apply filters & continue
           </Button>

@@ -1,5 +1,3 @@
-import { useState } from "react"
-import { ChevronRight } from "lucide-react"
 import Link from "next/link"
 import {
   ResponsiveContainer,
@@ -12,14 +10,9 @@ import {
   ReferenceLine,
 } from "recharts"
 
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "../ui/collapsible"
-
-import { cn, round } from "@/lib/utils"
+import { round } from "@/lib/utils"
 import { Data, Egger, Estimate } from "@/lib/types"
+import { Card, CardContent } from "@/components/ui/card"
 
 import {
   NameType,
@@ -37,8 +30,6 @@ export const CollapsiblePublicationBias = (
   props: CollapsiblePublicationBiasProps
 ) => {
   const { estimate, egger, data } = props
-
-  const [open, setOpen] = useState(false)
 
   let plotData
   let ymax
@@ -58,115 +49,113 @@ export const CollapsiblePublicationBias = (
   }
 
   return (
-    <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
-      <CollapsibleTrigger>
-        <div className="flex flex-row items-center gap-1">
-          <h2 className="text-subsection-title">
-            Publication bias
-          </h2>
-          <ChevronRight
-            className={cn("transition", open ? "rotate-90" : "rotate-0")}
-          />
-        </div>
-      </CollapsibleTrigger>
-      <CollapsibleContent className="prose mx-auto">
-        <div className="my-3">
-          <h3 className="text-center">Small Study Effect Methods</h3>
-          <h4 className="text-center">Egger&apos;s Test</h4>
-          {egger && (
-            <p>
-              We found{" "}
-              {egger.egger_p < 0.05 ? (
-                <span className="font-semibold text-red-500">evidence</span>
-              ) : (
-                <span>no evidence</span>
-              )}{" "}
-              of publication bias using the{" "}
-              <Link href="https://doi.org/10.1080/00220973.2019.1582470">
-                Egger&apos;s regression test
-              </Link>{" "}
-              (b = {round(egger.egger_b, 2)}, SE = {round(egger.egger_se, 2)}, z
-              = {round(egger.egger_z, 2)}, p = {round(egger.egger_p, 2)}).
-            </p>
-          )}
-          <h4 className="text-center">Funnel plot</h4>
-          <div className="overflow-auto">
-            {estimate && (
-              <ResponsiveContainer height={500} width="100%" minWidth={600}>
-                <ScatterChart
-                  data={plotData}
-                  margin={{
-                    bottom: 20,
-                    left: 20,
-                    right: 20,
-                    top: 5,
-                  }}
-                >
-                  <CartesianGrid className="fill-muted" />
-                  <XAxis
-                    dataKey="x"
-                    type="number"
-                    label={{
-                      value: "Effect size",
-                      dy: 20,
-                      className: "fill-foreground",
-                    }}
-                  />
-                  <YAxis
-                    dataKey="y"
-                    type="number"
-                    label={{
-                      value: "Standard error",
-                      angle: -90,
-                      dx: -30,
-                      className: "fill-foreground",
-                    }}
-                    reversed
-                  />
-                  <Tooltip content={<CustomTooltip accessibilityLayer />} />
-                  <ReferenceLine
-                    x={estimate.value}
-                    className="stroke-muted-foreground"
-                    strokeDasharray="3 3"
-                    strokeWidth={2}
-                  />
-                  <ReferenceLine
-                    segment={[
-                      { x: estimate.value, y: 0 },
-                      {
-                        x: estimate.value - 1.96 * Math.ceil(ymax),
-                        y: Math.ceil(ymax),
-                      },
-                    ]}
-                    className="stroke-muted-foreground"
-                    strokeDasharray="3 3"
-                    strokeWidth={2}
-                    ifOverflow="hidden"
-                  />
-                  <ReferenceLine
-                    segment={[
-                      { x: estimate.value, y: 0 },
-                      {
-                        x: estimate.value + 1.96 * Math.ceil(ymax),
-                        y: Math.ceil(ymax),
-                      },
-                    ]}
-                    className="stroke-muted-foreground"
-                    strokeDasharray="3 3"
-                    strokeWidth={2}
-                    ifOverflow="hidden"
-                  />
-                  <Scatter
-                    className="fill-muted stroke-border"
-                    animationBegin={300}
-                  />
-                </ScatterChart>
-              </ResponsiveContainer>
+    <div className="space-y-6">
+      <h2 className="text-subsection-title">Publication Bias</h2>
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Small Study Effect Methods</h3>
+          <div className="space-y-3">
+            <h4 className="text-base font-medium">Egger&apos;s Test</h4>
+            {egger && (
+              <p className="text-sm leading-relaxed">
+                We found{" "}
+                {egger.egger_p < 0.05 ? (
+                  <span className="font-semibold text-red-500">evidence</span>
+                ) : (
+                  <span>no evidence</span>
+                )}{" "}
+                of publication bias using the{" "}
+                <Link href="https://doi.org/10.1080/00220973.2019.1582470" className="text-primary hover:underline">
+                  Egger&apos;s regression test
+                </Link>{" "}
+                (b = {round(egger.egger_b, 2)}, SE = {round(egger.egger_se, 2)}, z
+                = {round(egger.egger_z, 2)}, p = {round(egger.egger_p, 2)}).
+              </p>
             )}
           </div>
         </div>
-      </CollapsibleContent>
-    </Collapsible>
+
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">Funnel Plot</h3>
+          <Card>
+            <CardContent className="overflow-auto py-5">
+              {estimate && (
+                <ResponsiveContainer height={500} width="100%" minWidth={600}>
+                  <ScatterChart
+                    data={plotData}
+                    margin={{
+                      bottom: 20,
+                      left: 20,
+                      right: 20,
+                      top: 5,
+                    }}
+                  >
+                    <CartesianGrid className="fill-muted" />
+                    <XAxis
+                      dataKey="x"
+                      type="number"
+                      label={{
+                        value: "Effect size",
+                        dy: 20,
+                        className: "fill-foreground",
+                      }}
+                    />
+                    <YAxis
+                      dataKey="y"
+                      type="number"
+                      label={{
+                        value: "Standard error",
+                        angle: -90,
+                        dx: -30,
+                        className: "fill-foreground",
+                      }}
+                      reversed
+                    />
+                    <Tooltip content={<CustomTooltip accessibilityLayer />} />
+                    <ReferenceLine
+                      x={estimate.value}
+                      className="stroke-muted-foreground"
+                      strokeDasharray="3 3"
+                      strokeWidth={2}
+                    />
+                    <ReferenceLine
+                      segment={[
+                        { x: estimate.value, y: 0 },
+                        {
+                          x: estimate.value - 1.96 * Math.ceil(ymax),
+                          y: Math.ceil(ymax),
+                        },
+                      ]}
+                      className="stroke-muted-foreground"
+                      strokeDasharray="3 3"
+                      strokeWidth={2}
+                      ifOverflow="hidden"
+                    />
+                    <ReferenceLine
+                      segment={[
+                        { x: estimate.value, y: 0 },
+                        {
+                          x: estimate.value + 1.96 * Math.ceil(ymax),
+                          y: Math.ceil(ymax),
+                        },
+                      ]}
+                      className="stroke-muted-foreground"
+                      strokeDasharray="3 3"
+                      strokeWidth={2}
+                      ifOverflow="hidden"
+                    />
+                    <Scatter
+                      className="fill-primary/70 stroke-primary stroke-[1.5]"
+                      animationBegin={300}
+                    />
+                  </ScatterChart>
+                </ResponsiveContainer>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -174,12 +163,16 @@ const CustomTooltip = ({ payload }: Props<ValueType, NameType>) => {
   if (payload && payload.length) {
     const dataPoint = payload[0].payload
     return (
-      <div className="custom-tooltip rounded border border-gray-500 bg-white p-3">
-        <span className="font-semibold">{`${dataPoint.name}`}</span>
-        <br />
-        <span>{`x: ${dataPoint.x}`}</span>
-        <br />
-        <span>{`y: ${dataPoint.y}`}</span>
+      <div className="bg-card border border-border rounded-xl p-3 shadow-sm text-xs">
+        <p className="font-medium mb-2">{dataPoint.name}</p>
+        <p className="font-medium">
+          <span className="text-muted-foreground">Effect size:</span>{" "}
+          {dataPoint.x}
+        </p>
+        <p className="font-medium">
+          <span className="text-muted-foreground">Standard error:</span>{" "}
+          {dataPoint.y}
+        </p>
       </div>
     )
   }

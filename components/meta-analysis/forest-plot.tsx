@@ -10,11 +10,6 @@ import {
   ReferenceLine,
   ZAxis,
 } from "recharts"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "../ui/collapsible"
 import { ChevronRight } from "lucide-react"
 import { cn, round } from "@/lib/utils"
 import { Data } from "@/lib/types"
@@ -30,6 +25,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { Card, CardContent } from "@/components/ui/card"
 
 import effects from "../../assets/data/data.json"
 
@@ -41,7 +37,7 @@ type ForestPlotProps = {
 }
 
 export const ForestPlot = ({ data }: ForestPlotProps) => {
-  const [open, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   let plotData
   let longestLabel
@@ -78,18 +74,22 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
   } satisfies ChartConfig
 
   return (
-    <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
-      <CollapsibleTrigger>
-        <div className="flex flex-row items-center gap-1">
-          <h2 className="text-subsection-title">Forest plot</h2>
-          <ChevronRight
-            className={cn("transition", open ? "rotate-90" : "rotate-0")}
-          />
-        </div>
-      </CollapsibleTrigger>
-      <CollapsibleContent>
-        {plotData ? (
-          <div className="py-5" style={{ height: 30 * plotData.length }}>
+    <div className="space-y-6">
+      <div
+        className="flex items-center gap-2 cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <h2 className="text-subsection-title">Forest Plot</h2>
+        <ChevronRight
+          className={cn(
+            "h-5 w-5 transition-transform duration-200",
+            isOpen && "rotate-90"
+          )}
+        />
+      </div>
+      {isOpen && plotData && (
+        <Card>
+          <CardContent className="py-5" style={{ height: 30 * plotData.length }}>
             <ChartContainer config={chartConfig} className="h-full aspect-auto">
               <ScatterChart
                 data={plotData}
@@ -131,13 +131,13 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
                   content={<CustomTooltip accessibilityLayer />}
                   isAnimationActive={false}
                 />
-                <Scatter yAxisId="left">
+                <Scatter yAxisId="left" className="fill-primary stroke-primary stroke-[1.5]">
                   <ErrorBar
                     dataKey="error"
                     direction="x"
-                    strokeWidth={1}
+                    strokeWidth={2}
                     width={5}
-                    className="stroke-foreground"
+                    className="stroke-primary"
                   />
                 </Scatter>
                 <ReferenceLine
@@ -149,12 +149,10 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
                 />
               </ScatterChart>
             </ChartContainer>
-          </div>
-        ) : (
-          <></>
-        )}
-      </CollapsibleContent>
-    </Collapsible>
+          </CardContent>
+        </Card>
+      )}
+    </div>
   )
 }
 
@@ -162,10 +160,9 @@ const CustomTooltip = (props: Props<ValueType, NameType>) => {
   if (props.payload && props.payload.length) {
     const dataPoint = props.payload[0].payload
     return (
-      <div className="custom-tooltip rounded border border-gray-500 bg-white p-3">
-        <span className="font-semibold">{`${dataPoint.name}`}</span>
-        <br />
-        <span>{dataPoint.summary}</span>
+      <div className="bg-card border border-border rounded-xl p-3 shadow-sm text-xs">
+        <p className="font-medium mb-2">{dataPoint.name}</p>
+        <p className="text-muted-foreground text-xs">{dataPoint.summary}</p>
       </div>
     )
   }

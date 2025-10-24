@@ -10,19 +10,13 @@ import {
 import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
-import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { ChevronRight } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { Card, CardContent } from "@/components/ui/card"
 import { Data, Datum } from "@/lib/types"
 import { EffectDialogContent } from "./effect-dialog-content"
 import { ChartConfig, ChartContainer } from "../ui/chart"
@@ -53,8 +47,6 @@ type DotPlotProps = {
 }
 
 const DotPlotExample = ({ data }: DotPlotProps) => {
-  const [open, setOpen] = useState(false)
-
   const chartConfig = {
     desktop: {
       label: "Desktop",
@@ -129,7 +121,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
             cx={cx}
             cy={cy}
             r={dotSize / 10}
-            className="fill-primary stroke-primary cursor-pointer hover:fill-primary/80"
+            className="fill-primary/70 stroke-primary stroke-[1.5] cursor-pointer hover:fill-primary/90"
           />
         </DialogTrigger>
         <DialogContent
@@ -252,17 +244,10 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
   }
 
   return (
-    <Collapsible className="p-3" open={open} onOpenChange={setOpen}>
-      <CollapsibleTrigger>
-        <div className="flex flex-row items-center gap-1">
-          <h2 className="text-subsection-title">Dot plot</h2>
-          <ChevronRight
-            className={cn("transition", open ? "rotate-90" : "rotate-0")}
-          />
-        </div>
-      </CollapsibleTrigger>
-      <CollapsibleContent>
-        <div className="py-5 space-y-6">
+    <div className="space-y-6">
+      <h2 className="text-subsection-title">Dot Plot</h2>
+      <Card>
+        <CardContent className="py-5 space-y-6">
           {/* Chart */}
           <div className="w-full h-96">
             <ChartContainer config={chartConfig} className="h-full aspect-auto">
@@ -353,9 +338,9 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
               </span>
             </div>
           </div>
-        </div>
-      </CollapsibleContent>
-    </Collapsible>
+        </CardContent>
+      </Card>
+    </div>
   )
 }
 

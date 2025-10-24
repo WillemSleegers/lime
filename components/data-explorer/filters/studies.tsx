@@ -142,6 +142,12 @@ export const FilterStudies = (props: FilterStudiesProps) => {
             />
             <CheckboxGroup
               control={form.control}
+              name="study_randomization"
+              label="Randomization"
+              options={STUDY_RANDOMIZATION_OPTIONS_NEW}
+            />
+            <CheckboxGroup
+              control={form.control}
               name="study_design"
               label="Study design"
               options={STUDY_DESIGN_OPTIONS_NEW}
@@ -151,12 +157,6 @@ export const FilterStudies = (props: FilterStudiesProps) => {
               name="study_condition_assignment"
               label="Condition assignment"
               options={STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW}
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="study_randomization"
-              label="Randomization"
-              options={STUDY_RANDOMIZATION_OPTIONS_NEW}
             />
             <InputField
               control={form.control}

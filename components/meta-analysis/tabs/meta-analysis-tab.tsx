@@ -5,8 +5,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { CollapsibleEstimate } from "@/components/meta-analysis/estimate"
 import { Card, CardContent } from "@/components/ui/card"
+import { CollapsibleEstimate } from "@/components/meta-analysis/estimate"
 import { Spinner } from "@/components/ui/spinner"
 import { CollapsiblePublicationBias } from "@/components/meta-analysis/publication-bias"
 import { ForestPlot } from "@/components/meta-analysis/forest-plot"
@@ -41,7 +41,7 @@ export const MetaAnalysisTab = ({
     <div className="space-y-8">
       {status !== "Ready" && !estimate && (
         <Card>
-          <CardContent className="flex items-center gap-3 py-8">
+          <CardContent className="flex items-center gap-3 py-4">
             <Spinner className="size-5" />
             <span>Running meta-analysis...</span>
           </CardContent>
@@ -49,9 +49,7 @@ export const MetaAnalysisTab = ({
       )}
       <CollapsibleEstimate estimate={estimate} />
       <CollapsiblePublicationBias estimate={estimate} egger={egger} data={data} />
-      <div>
-        <DotPlotExample data={data} />
-      </div>
+      <DotPlotExample data={data} />
       <ForestPlot data={data} />
       <div className="flex justify-center gap-3">
         <RCode />
