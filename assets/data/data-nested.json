@@ -3791,11 +3791,12 @@
         "study_n": 428,
         "interventions": [
           {
-            "intervention_condition": 1
-          },
-          {
             "intervention_condition": 2,
             "intervention_description": "Every day at 9:30 and for 14 days (between T1 and T2), participants received one message per day, focused on the lower environmental impact of cultivating legumes than producing meat (e.g., “Compared to livestock feeding production, legume cultivation requires a limited use of fertilizers. Thus, it has a lower pollution impact. If you eat legumes rather than meat, you protect the planet from pollution”)"
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Every day at 9:30 and for 14 days (between T1 and T2), participants received replacement messages combined with a reference to the dynamic norm (e.g., “Nowadays, more and more people eat legumes instead of meat. Compared to livestock feeding production, legume cultivation requires limited use of fertilizers. Thus, it has a low pollution impact. If you also eat legumes instead of meat, you protect the planet from pollution”)."
           }
         ],
         "outcomes": [

@@ -399,8 +399,8 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 323,Wolfson et al. (2022),1,1,2,2,probability of selecting salad,3,OR2DL,0.199318612377238,0.00326356062318721
 323,Wolfson et al. (2022),1,1,3,1,probability of selecting plant-based burger,2,OR2DL,0.0373472616703673,0.0060997902260278
 323,Wolfson et al. (2022),1,1,3,2,probability of selecting salad,4,OR2DL,0.228712073476186,0.00317359668411312
-399,Carfora & Catellani (2022),1,1,1,1,meat consumption,5,SMD,0.474230305813937,0.052722083469286
-399,Carfora & Catellani (2022),1,1,2,1,meat consumption,6,SMD,0.726658747696917,0.0546406819037928
+399,Carfora & Catellani (2022),1,1,2,1,meat consumption,5,SMD,0.474230305813937,0.052722083469286
+399,Carfora & Catellani (2022),1,1,3,1,meat consumption,6,SMD,0.726658747696917,0.0546406819037928
 369,Grummon (2022),1,1,2,1,selecting red meat at full service restaurant,1,OR2DL,0.0973621420369258,0.00367755544525452
 369,Grummon (2022),1,1,2,2,selecting red meat at quick service restaurant,4,OR2DL,0.0946780519106983,0.00374529902241089
 369,Grummon (2022),1,1,3,1,selecting red meat at full service restaurant,2,OR2DL,0.142634087037906,0.00369339288468607
