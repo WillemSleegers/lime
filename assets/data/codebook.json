@@ -287,6 +287,11 @@
     "factor_levels": "text, presentation, video, 3D video, image, menu/food options, in-person, price, taste"
   },
   {
+    "column": "intervention_multicomponent",
+    "data_type": "factor",
+    "factor_levels": "yes; no"
+  },
+  {
     "column": "condition_notes",
     "description": "Additional notes about the condition.",
     "data_type": "string"

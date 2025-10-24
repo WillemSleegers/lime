@@ -2147,7 +2147,7 @@
   {
     "paper": 96,
     "paper_label": "Saulais et al. (2019)",
-    "paper_authors": "Saulais, L.;Massey, C; Perez-Cueto, F. J. A.; Appleton, K. M.; Dinnella, C.; Monteleone, E.; Depezay, L.; Hartwell, H.; Giboreau, A.",
+    "paper_authors": "Saulais, L.; Massey, C; Perez-Cueto, F. J. A.; Appleton, K. M.; Dinnella, C.; Monteleone, E.; Depezay, L.; Hartwell, H.; Giboreau, A.",
     "paper_title": "When are “Dish of the Day” nudges most effective to increase vegetable selection?",
     "paper_year": 2019,
     "paper_link": "https://doi.org/10.1016/j.foodpol.2019.04.003",
@@ -2359,6 +2359,32 @@
     ]
   },
   {
+    "paper": 149,
+    "paper_label": "Bryant & Dillard (2020)",
+    "paper_authors": "Bryant, C.; Dillard, C.",
+    "paper_title": "An Impact Evaluation of a Classroom Intervention to Reduce Animal Product Consumption",
+    "paper_year": 2020,
+    "paper_link": "https://doi.org/10.31219/osf.io/hecyk",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 6920,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Students were exposed to a classroom education intervention aiming to reduce animal product consumption. Students saw one of five different presentations with differing focuses, and they answered a survey."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 3,
+            "outcome_description": "Participants' intention to not change their animal product consumption"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 159,
     "paper_label": "Dissen & Crowell (2020)",
     "paper_authors": "Dissen, A.; Crowell, T.",
@@ -2379,6 +2405,40 @@
           {
             "outcome": 2,
             "outcome_description": "Intention to decrease animal-based food intake"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 163,
+    "paper_label": "Bacon & Krpan (2018)",
+    "paper_authors": "Bacon, Linda; Krpan, Dario",
+    "paper_title": "(Not) Eating for the environment: The impact of restaurant menu design on vegetarian food choice",
+    "paper_year": 2018,
+    "paper_link": "https://doi.org/10.1016/j.appet.2018.02.006",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 750,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "The vegetarian dish at the top of the menu was highlighted with a box and captioned “Chef's Recommendation”"
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "The name of the vegetarian dish at the top of the menu was changed from “Risotto primavera” to “Fresh seasonal risotto primavera”"
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "The two vegetarian options were placed together at the bottom of the menu under a line and the heading “Vegetarian Dishes”"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants selecting a vegetarian versus non-vegetarian dish from the menu"
           }
         ]
       }
@@ -2507,6 +2567,36 @@
     ]
   },
   {
+    "paper": 175,
+    "paper_label": "Berke & Larson (2023)",
+    "paper_authors": "Berke, A.; Larson, K.",
+    "paper_title": "The negative impact of vegetarian and vegan labels: Results from randomized controlled experiments with US consumers",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1016/j.appet.2023.106767",
+    "studies": [
+      {
+        "study": 3,
+        "study_n": 698,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants saw menu options without any labels; the choice questions differ in the types of options compared (i.e. vegetarian vs vegan vs has meat)"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of option 1 chosen which is a vegetarian option (as compared to option 2, which was meat)"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Percentage of option 1 chosen which was a vegan option (as compared to option 1, which was meat)"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 182,
     "paper_label": "McDonough (2012)",
     "paper_authors": "McDonough, T.",
@@ -2629,6 +2719,32 @@
           {
             "outcome": 3,
             "outcome_description": "Percentage of participants choosing the vegetarian burrito option"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 252,
+    "paper_label": "Van Loo et al. (2020)",
+    "paper_authors": "Van Loo, Ellen J.; Caputo, Vincenzina; Lusk, Jayson L.",
+    "paper_title": "Consumer Preferences for Farm-Raised Meat, Lab-Grown Meat, and Plant-Based Meat Alternatives: Does Information or Brand Matter?",
+    "paper_year": 2020,
+    "paper_link": "https://doi.org/10.1016/j.foodpol.2020.101931",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 914,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants were shown environmental information that originated from the companies selling these products (i.e. reduction in water use, land use, energy use and greenhouse gas emissions associated to each of the three beef alternatives compared to conventional beef)"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of beef item chosen"
           }
         ]
       }
@@ -2923,6 +3039,114 @@
           {
             "outcome": 1,
             "outcome_description": "Participants' intention to reduce meat consumption, in this case, it was measured with a 2 item scale - the future consumption was mentioned to be next week"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 346,
+    "paper_label": "Krpan & Houtsma (2020)",
+    "paper_authors": "Krpan, Dario; Houtsma, Nanne",
+    "paper_title": "To veg or not to veg? The impact of framing on vegetarian food choice",
+    "paper_year": 2020,
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2020.101391",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 1536,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants are shown a restaurant menu in which two vegetarian dishes are listed with a title highlighting environmental benefits of vegetarian food: \"Environmentally Friendly courses for a happy planet\". For some participants this section was on the top of menu, whereas it was on the down for others."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants are shown a restaurant menu in which two vegetarian dishes are listed with a title “Refreshing Main Courses for Relaxing Conversations”. For some participants this section was on the top of menu, whereas it was on the down for others."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants who selected a vegetarian main course"
+          }
+        ]
+      },
+      {
+        "study": 2,
+        "study_n": 4301,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants are shown a restaurant menu in which two vegetarian dishes are listed with a title highlighting environmental benefits of vegetarian food: \"Environmentally Friendly courses for a happy planet\". For some participants this section was on the top of menu, whereas it was on the down for others."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants are shown a restaurant menu in which two vegetarian dishes are listed with a title  “Refreshing Main Courses for Relaxing Conversations”. For some participants this section was on the top of menu, whereas it was on the down for others."
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Participants are shown a restaurant menu in which vegetarian and non-vegetarian foods are presented in the same section referred to as “Main Courses”"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants who selected a vegetarian main course"
+          }
+        ]
+      },
+      {
+        "study": 3,
+        "study_n": 5229,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants are shown a restaurant menu in which two vegetarian dishes are listed with a title highlighting environmental benefits of vegetarian food: \"Environmentally Friendly courses for a happy planet\". For some participants this section was on the top of menu, whereas it was on the down for others."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants are shown a restaurant menu in which vegetarian and non-vegetarian foods are presented in the same section referred to as “Main Courses”"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants who selected a vegetarian main course"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 347,
+    "paper_label": "Parkin & Attwood (2022)",
+    "paper_authors": "Parkin, B.L.; Attwood, S.",
+    "paper_title": "Menu design approaches to promote sustainable vegetarian food choices when dining out",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2021.101721",
+    "studies": [
+      {
+        "study": 2,
+        "study_n": 424,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants viewed a total of eight mock menus with the vegetarian symbol (V) presented on the left side of the dish name"
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants viewed a total of eight mock menus with the vegetarian symbol (V) presented on the right side of the dish name"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Number of participants choosing the vegetarian option from the menu"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Number of participants choosing the meat option from the menu"
           }
         ]
       }
@@ -3243,6 +3467,531 @@
           {
             "outcome": 2,
             "outcome_description": "Primary dependent variable was taco filling selection: chicken, steak, beef barbacoa, carnitas, vegetables and guacamole, sofritas, chick’nitas, no protein, or no taco at all."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 297,
+    "paper_label": "Lim et al. (2021)",
+    "paper_authors": "Lim, Tze Joo; Okine, Richard Nii; Kershaw, Jonathan C",
+    "paper_title": "Health- or Environment-Focused Text Messages as a Potential Strategy to Increase Plant-Based Eating among Young Adults: An Exploratory Study.",
+    "paper_year": 2021,
+    "paper_link": "https://doi.org/10.3390/foods10123147",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 159,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants received 2–3 health-focused SMS per week for eight consecutive weeks via Textedly"
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants received 2–3 environment-focused SMS per week for eight consecutive weeks via Textedly"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 2,
+            "outcome_description": "Meat servings consumed during the previous day"
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Poultry servings consumed during the previous day"
+          },
+          {
+            "outcome": 4,
+            "outcome_description": "Fish servings consumed during the previous day"
+          },
+          {
+            "outcome": 5,
+            "outcome_description": "Eggs servings consumed during the previous day"
+          },
+          {
+            "outcome": 6,
+            "outcome_description": "Likelihood to regularly eat animal-based protein sources over the next month"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 243,
+    "paper_label": "dos Santos et al. (2020)",
+    "paper_authors": "dos Santos, Q.; Perez-Cueto, F.J.A.; Rodrigues, V.M.; Appleton, K.; Giboreau, A.; Saulais, L.; Monteleone, E.",
+    "paper_title": "Impact of a nudging intervention and factors associated with vegetable dish choice among european adolescents",
+    "paper_year": 2020,
+    "paper_link": "https://doi.org/10.1007/s00394-019-01903-y",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 362,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants were asked to choose between three meals, based, respectively, on Meat balls, Veggie balls and Fish cakes. All three dishes were labelled with their names, but the Veggie balls were presented as the “dish of the day”. The vegetable-based dish was both labelled as “dish of the day”, and orally informed by foodservice employees as being the “dish of the day” in all countries with the following phrase: “Welcome! Today we have Veggie balls as dish of the day” (verbal prompt)."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants were asked to choose between three meals, based, respectively, on Meat balls, Veggie balls and Fish cakes. All three dishes were labelled with their names, but the Veggie balls were presented as the “dish of the day”. The vegetable-based dish was both labelled as “dish of the day”, and orally informed by foodservice employees as being the “dish of the day” in all countries with the following phrase: “Welcome! Today we have Veggie balls as dish of the day” (verbal prompt)."
+          },
+          {
+            "intervention_condition": 5,
+            "intervention_description": "Participants were asked to choose between three meals, based, respectively, on Meat balls, Veggie balls and Fish cakes. All three dishes were labelled with their names, but the Veggie balls were presented as the “dish of the day”. The vegetable-based dish was both labelled as “dish of the day”, and orally informed by foodservice employees as being the “dish of the day” in all countries with the following phrase: “Welcome! Today we have Veggie balls as dish of the day” (verbal prompt)."
+          },
+          {
+            "intervention_condition": 7,
+            "intervention_description": "Participants were asked to choose between three meals, based, respectively, on Meat balls, Veggie balls and Fish cakes. All three dishes were labelled with their names, but the Veggie balls were presented as the “dish of the day”. The vegetable-based dish was both labelled as “dish of the day”, and orally informed by foodservice employees as being the “dish of the day” in all countries with the following phrase: “Welcome! Today we have Veggie balls as dish of the day” (verbal prompt)."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 2,
+            "outcome_description": "Proportion of veggie balls dish chosen"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 298,
+    "paper_label": "Lane et al. (2024)",
+    "paper_authors": "Lane, H.; Pokutnia, O.; Walker, M. D.; Farias, A. R.",
+    "paper_title": "Carbon labeling on meals in a ferry canteen",
+    "paper_year": 2024,
+    "paper_link": "https://doi.org/10.1002/nvsm.1870",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 5358,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Carbon labeling is added next to the meals (low/medium/high CO2 emissions), with a screen explaining the labeling next to the checkout tiles"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of vegetarian portions shared"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Percentage of fish portions shared"
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Percentage of meat portions shared"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 196,
+    "paper_label": "Katare et al. (2022)",
+    "paper_authors": "Katare, B.; Yim, H.; Byrne, A.; Wang, H. H.; Wetzstein, N.",
+    "paper_title": "Consumer willingness to pay for environmentally sustainable meat and a plant-based meat substitute",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.1002/aepp.13285",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 261,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Control group were not provided any information prior to their bidding."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "The amount of money (premium) a participant is willing to pay to replace their endowed 6-oz. sliced deli beef with 6 oz. of sustainably produced beef."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 318,
+    "paper_label": "dos Santos et al. (2018)",
+    "paper_authors": "dos Santos, Quenia; Nogueira, Bárbara Melo; Rodrigues, Vanessa Mello; Hartwell, Heather; Giboreau, Agnes; Monteleone, Erminio; Dinnella, Caterina; Perez-Cueto, Federico Ja",
+    "paper_title": "Nudging using the ‘dish of the day’ strategy does not work for plant-based meals in a Danish sample of adolescent and older people",
+    "paper_year": 2018,
+    "paper_link": "https://doi.org/10.1111/ijcs.12421",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 191,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants choose between three similar meals, including one vegetarian (VeggieEat) meal and two non-vegetarian meals. In this condition VeggiEat dish was termed the ‘dish of the day’;"
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Participants choose between three similar meals, including one vegetarian (VeggieEat) meal and two non-vegetarian meals. In this condition VeggiEat dish was termed the ‘dish of the day’;"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Number of participants choosing the meat-based dish (meatballs)"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Number of participants choosing the vegetarian dish (veggieballs)"
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Number of participants choosing the fish based dish (fishballs)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 389,
+    "paper_label": "Scharmer (2021)",
+    "paper_authors": "Scharmer, A.",
+    "paper_title": "For the Planet, the Animals, or Oneself? Measuring Individuals’ Motivations to Restrict Meat Consumption and Encouraging Dietary Change",
+    "paper_year": 2021,
+    "paper_link": "https://conservancy.umn.edu/items/57225a96-959b-4969-bb6e-29679adeb098",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 293,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants are presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of animal welfare. (e.g. positive outcomes for animal welfare)"
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants are presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of environment. (e.g. positive outcomes for the environment)"
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Participants are presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of health. (positive outcomes for the health)"
+          },
+          {
+            "intervention_condition": 5,
+            "intervention_description": "Participants are presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of social. (e.g. positive outcomes about social life, conformity, peers, belonging)"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Participants answered a single item about their intentions to reduce their meat consumption"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 140,
+    "paper_label": "Schwantes (2018)",
+    "paper_authors": "Schwantes, C.",
+    "paper_title": "The Meat of the Matter: Using Social Marketing to Influence Red Meat Purchase Behaviour",
+    "paper_year": 2018,
+    "paper_link": "https://www.viurrspace.ca/server/api/core/bitstreams/b54ec8c1-f12b-4d76-86e6-195286c93e57/content",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 7232,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Customers entering the intervention store were asked the following question: “To consider a healthy and sustainable lifestyle, would you be interested in reducing your red meat purchases by one meal per week?” If customers agreed, they were asked to demonstrate their commitment by having their name listed on the public-facing project website, www.meatofthematerstudy.squarespace.com. They were also given a small business card with the project website to see their name and learn more about the study."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Amount of red meat purchased at the grocery store on average"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 256,
+    "paper_label": "Marette et al. (2008)",
+    "paper_authors": "Marette, Stéphan; Roosen, Jutta; Blanchemanche, Sandrine",
+    "paper_title": "Health information and substitution between fish: Lessons from laboratory and field experiments",
+    "paper_year": 2008,
+    "paper_link": "https://doi.org/10.1016/j.foodpol.2007.10.003",
+    "studies": [
+      {
+        "study": 2,
+        "study_n": 201,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants received a message based on advisories provided by health agencies, revealing health information about the risks and benefits of fish consumption; this was read out loud to them and they received a brochure with the same information"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Average values of the weekly serving frequency of all fish and sea foods for all women participating"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 323,
+    "paper_label": "Wolfson et al. (2022)",
+    "paper_authors": "Wolfson, Julia A; Musicus, Aviva A; Leung, Cindy W; Gearhardt, Ashley N; Falbe, Jennifer",
+    "paper_title": "Effect of Climate Change Impact Menu Labels on Fast Food Ordering Choices Among US Adults: A Randomized Clinical Trial.",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.1001/jamanetworkopen.2022.48320",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 5049,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants were shown a fast food restaurant menu with green low–climate impact labels on chicken, fish, or vegetarian items (positive framing); The top of each menu featured a disclosure statement explaining the label’s meaning: “This item is environmentally sustainable. It has low greenhouse gas emissions and a low contribution to climate change.”"
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants were shown a fast food restaurant menu with red high–climate impact labels on beef items (negative framing); “This item is not environmentally sustainable. It has high greenhouse gas emissions and a high contribution to climate change”"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Predicted probability of selecting the Impossible burger (which is the plant-based burger)"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Predicted probability of selecting the salad option"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 399,
+    "paper_label": "Carfora & Catellani (2022)",
+    "paper_authors": "Carfora, Valentina; Catellani, Patrizia",
+    "paper_title": "Legumes or Meat? The Effectiveness of Recommendation Messages towards a Plant-Based Diet Depends on People’s Identification with Flexitarians",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.3390/nu15010015",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 428,
+        "interventions": [
+          {
+            "intervention_condition": 1
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Every day at 9:30 and for 14 days (between T1 and T2), participants received one message per day, focused on the lower environmental impact of cultivating legumes than producing meat (e.g., “Compared to livestock feeding production, legume cultivation requires a limited use of fertilizers. Thus, it has a lower pollution impact. If you eat legumes rather than meat, you protect the planet from pollution”)"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Consumption of red, processed, and white meat over the previous week"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 369,
+    "paper_label": "Grummon (2022)",
+    "paper_authors": "Grummon, Anna H.; Musicus, Aviva A.; Salvia, Meg G.; Thorndike, Anne N.; Rimm, Eric B.",
+    "paper_title": "Impact of Health, Environmental, and Animal Welfare Messages Discouraging Red Meat Consumption: An Online Randomized Experiment",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.1016/j.jand.2022.10.007",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 2773,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants viewed red-meat–reduction messages linking red meat consumption with animal welfare"
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants viewed red-meat–reduction messages linking red meat consumption with health"
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Participants viewed red-meat–reduction messages linking red meat consumption with environmental consequences"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Proportion of participants selecting the red meat option in the full service restaurant scenario"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Proportion of participants selecting the red meat option in the quick service restaurant scenario"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 237,
+    "paper_label": "Carfora et al. (2022)",
+    "paper_authors": "Carfora, Valentina; Zeiske, Nadja; van der Werff, Ellen; Steg, Linda; Catellani, Patrizia",
+    "paper_title": "Adding Dynamic Norm to Environmental Information in Messages Promoting the Reduction of Meat Consumption",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.1080/17524032.2022.2062019",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 197,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants received messages from a private chatbot every other day, focused on the environmental consequences of producing and eating meat (e.g. “If the livestock industry is reduced, the widespread deforestation, caused by the need for pastures, will be avoided”)"
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants received messages from a private chatbot every other day, focused on the environmental consequences of producing and eating meat, with the addition of information on the dynamic norm (e.g. “If the livestock industry is reduced, the widespread deforestation, caused by the need for pastures, will be avoided. To avoid deforestation, moreandmorepeoplearereducing their consumption of meat”)"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Attitude towards reduced meat consumption"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Amount of red, processed adn white meat consumption over the previous week"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 124,
+    "paper_label": "Dannenberg & Weingärtner (2023)",
+    "paper_authors": "Dannenberg, A.; Weingärtner, E.",
+    "paper_title": "The Effects of Observability and an Information Nudge on Food Choice",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1016/j.jeem.2023.102829",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 537,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants read the following information on meat consumption reduction: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\" before privately announced their choice of voucher"
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "No information on meat consumption were given, participants read the following text just before they made their decision on which sandwich they wanted (meat, vegetarian or vegan): \"The winners will be publicly announced directly in the breakout room and asked for their choice of voucher so that we can pass on the selection to the restaurant. Please indicate which type of voucher you would like to receive if you win.\""
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Participants read the following information on meat consumption reduction: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\" before their choice of voucher was publicly announced"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 4,
+            "outcome_description": "Percentage of participants choosing the voucher for a meat sandwich"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 358,
+    "paper_label": "Flynn et al. (2013)",
+    "paper_authors": "Flynn, Mary M.; Reinert, Steven E.; Schiff, Andrew R.",
+    "paper_title": "A Six-Week Cooking Program of Plant-Based Recipes Improves Food Security, Body Weight, and Food Purchases for Food Pantry Clients",
+    "paper_year": 2013,
+    "paper_link": "https://doi.org/10.1080/19320248.2012.758066",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 63,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants participated in a 6-week cooking class in which they observed the preparation of a plant-based, olive oil diet meal and got to taste test; While the recipe was being prepared, the staff discussed consistent themes each week, including the health benefits of extra virgin olive oil and encouraging the participants to use olive oil to cook their vegetables; meat/poultry/seafood is not needed daily; vegetables and all starch products (including beans) contain protein. No other nutrition- or food-related information was provided. All of the recipes were made with extra virgin olive oil (1 to 2 tablespoons), contained on average 2 servings of vegetables, and did not contain meat/poultry or seafood"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Number of reported meals per week that were plant based recipes using olive oil for cooking and did not contain meat/poultry/seafood"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 362,
+    "paper_label": "Hansen et al. (2019)",
+    "paper_authors": "Hansen, Pelle G; Schilling, Mathilde; Malthesen, Mia S",
+    "paper_title": "Nudging healthy and sustainable food choices: three randomized controlled field experiments using a vegetarian lunch-default as a normative signal",
+    "paper_year": 2019,
+    "paper_link": "https://doi.org/10.1093/pubmed/fdz154",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 108,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants received a registration presenting a vegetarian buffet as the default, allowing the active choice of a non-vegetarian option"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants choosing the vegetarian option for lunch"
+          }
+        ]
+      },
+      {
+        "study": 2,
+        "study_n": 112,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants received a registration presenting a vegetarian buffet as the default, allowing the active choice of a non-vegetarian option"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants choosing the vegetarian option for lunch"
+          }
+        ]
+      },
+      {
+        "study": 3,
+        "study_n": 110,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants received a registration presenting a vegetarian buffet as the default, allowing the active choice of a non-vegetarian option"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants choosing the vegetarian option for lunch"
           }
         ]
       }
