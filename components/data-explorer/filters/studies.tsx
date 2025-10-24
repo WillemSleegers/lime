@@ -127,7 +127,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:max-w-4xl xl:max-w-full xl:grid-cols-3 gap-6 items-baseline">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] lg:max-w-4xl xl:max-w-full xl:grid-cols-[1fr_1fr_1fr] gap-6">
             <CheckboxGroup
               control={form.control}
               name="study_preregistered"

@@ -171,7 +171,7 @@ const MetaAnalysisPage = () => {
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="criteria" className="mt-0">
+        <TabsContent value="criteria" className="mt-0" forceMount hidden={activeTab !== "criteria"}>
           <InclusionCriteriaTab
             status={status}
             setData={setData}
@@ -179,14 +179,14 @@ const MetaAnalysisPage = () => {
           />
         </TabsContent>
 
-        <TabsContent value="highlights" className="mt-0">
+        <TabsContent value="highlights" className="mt-0" forceMount hidden={activeTab !== "highlights"}>
           <HighlightsTab
             data={data}
             onContinue={handleHighlightsReviewed}
           />
         </TabsContent>
 
-        <TabsContent value="analysis" className="mt-0">
+        <TabsContent value="analysis" className="mt-0" forceMount hidden={activeTab !== "analysis"}>
           <MetaAnalysisTab
             data={data}
             estimate={estimate}
