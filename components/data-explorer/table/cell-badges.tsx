@@ -45,7 +45,7 @@ export const CellBadges = ({ value }: CellBadgesProps) => {
         {badges.length > 3 && (
           <Button
             onClick={() => setShowMore((prev) => !prev)}
-            className="rounded-2xl h-[26px] w-auto px-2 bg-muted text-foreground outline outline-muted hover:bg-foreground/10"
+            className="rounded-lg h-[26px] w-auto px-2 bg-muted text-foreground border border-border hover:bg-muted/80"
             size="sm"
           >
             {showMore ? <MinusIcon size={14} /> : <PlusIcon size={14} />}

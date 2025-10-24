@@ -72,7 +72,7 @@ export function DataTable<TData, TValue>({
           <div className="flex items-center space-x-2 justify-center">
             <Button
               variant="outline"
-              className="hidden h-8 w-8 p-0 lg:flex border-0 rounded-xl shadow-none"
+              className="hidden h-8 w-8 p-0 lg:flex rounded-lg"
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
             >
@@ -81,7 +81,7 @@ export function DataTable<TData, TValue>({
             </Button>
             <Button
               variant="outline"
-              className="h-8 w-8 p-0 border-0 rounded-xl shadow-none"
+              className="h-8 w-8 p-0 rounded-lg"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
@@ -94,7 +94,7 @@ export function DataTable<TData, TValue>({
             </div>
             <Button
               variant="outline"
-              className="h-8 w-8 p-0 border-0 rounded-xl shadow-none"
+              className="h-8 w-8 p-0 rounded-lg"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
@@ -103,7 +103,7 @@ export function DataTable<TData, TValue>({
             </Button>
             <Button
               variant="outline"
-              className="hidden h-8 w-8 p-0 lg:flex border-0 rounded-xl shadow-none"
+              className="hidden h-8 w-8 p-0 lg:flex rounded-lg"
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               disabled={!table.getCanNextPage()}
             >
@@ -120,15 +120,15 @@ export function DataTable<TData, TValue>({
               table.setPageSize(Number(value))
             }}
           >
-            <SelectTrigger className="h-8 w-[70px] rounded-2xl">
+            <SelectTrigger className="h-8 w-[70px] rounded-lg">
               <SelectValue placeholder={table.getState().pagination.pageSize} />
             </SelectTrigger>
-            <SelectContent side="top" className="rounded-2xl">
+            <SelectContent side="top" className="rounded-lg">
               {[10, 20, 30, 40, 50].map((pageSize) => (
                 <SelectItem
                   key={pageSize}
                   value={`${pageSize}`}
-                  className="rounded-2xl"
+                  className="rounded-lg"
                 >
                   {pageSize}
                 </SelectItem>
