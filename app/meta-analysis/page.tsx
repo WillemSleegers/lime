@@ -147,21 +147,21 @@ const MetaAnalysisPage = () => {
         <TabsList className="w-full justify-start">
           <TabsTrigger
             value="criteria"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
           >
             Step 1: Filter studies
           </TabsTrigger>
           <TabsTrigger
             value="highlights"
             disabled={!unlockedTabs.highlights}
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
           >
             Step 2: Review selection
           </TabsTrigger>
           <TabsTrigger
             value="analysis"
             disabled={!unlockedTabs.analysis}
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
           >
             Step 3: Run meta-analysis
           </TabsTrigger>

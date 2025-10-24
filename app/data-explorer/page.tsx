@@ -82,35 +82,35 @@ export default function DataExplorer() {
             <TabsTrigger
               value="paper"
               onClick={() => setLevel("paper")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
             >
               Papers
             </TabsTrigger>
             <TabsTrigger
               value="study"
               onClick={() => setLevel("study")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
             >
               Studies
             </TabsTrigger>
             <TabsTrigger
               value="intervention"
               onClick={() => setLevel("intervention")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
             >
               Interventions
             </TabsTrigger>
             <TabsTrigger
               value="outcome"
               onClick={() => setLevel("outcome")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
             >
               Outcomes
             </TabsTrigger>
             <TabsTrigger
               value="effect"
               onClick={() => setLevel("effect")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
             >
               Effects
             </TabsTrigger>
