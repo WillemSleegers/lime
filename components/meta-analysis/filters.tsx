@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Dispatch, SetStateAction } from "react"
 
 import { Button } from "@/components/ui/button"
+import { Spinner } from "@/components/ui/spinner"
 import {
   Card,
   CardContent,
@@ -420,13 +421,21 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
         </Card>
 
         <div className="flex flex-col gap-2">
-          <Button
-            type="submit"
-            disabled={status !== "Ready"}
-            className="h-auto rounded-lg w-fit px-6 py-3"
-          >
-            Apply filters & continue
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button
+              type="submit"
+              disabled={status !== "Ready"}
+              className="h-auto rounded-lg w-fit px-6 py-3"
+            >
+              Apply filters & continue
+            </Button>
+            {status !== "Ready" && (
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Spinner className="size-4" />
+                <span>{status}</span>
+              </div>
+            )}
+          </div>
           {form.formState.errors.root && (
             <div className="text-destructive text-sm font-semibold">
               {form.formState.errors.root.message}
