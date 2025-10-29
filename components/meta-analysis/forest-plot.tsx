@@ -33,20 +33,17 @@ import { EffectDialogContent } from "./effect-dialog-content"
 import { ChartConfig, ChartContainer } from "../ui/chart"
 
 type ForestPlotProps = {
-  data?: Data
+  data: Data
 }
 
 export const ForestPlot = ({ data }: ForestPlotProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  let plotData
-  let longestLabel
   let xMin = -2
   let xMax = 2
   let xTicks = [-2, -1, 0, 1, 2]
 
-  if (data) {
-    plotData = data
+  const plotData = data
       .map((e) => {
         return {
           name: e.paper_label + " - " + e.effect,
@@ -62,52 +59,49 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
       })
       .sort((a, b) => a.value - b.value)
 
-    longestLabel = data
-      .map((e) => e.paper_label + " - " + e.effect)
-      .reduce((a, b) => (a.length > b.length ? a : b))
+  const longestLabel = data
+    .map((e) => e.paper_label + " - " + e.effect)
+    .reduce((a, b) => (a.length > b.length ? a : b))
 
-    // Calculate dynamic x-axis range based on confidence intervals
-    const allLowerBounds = data.map((e) => e.effect_size_lower)
-    const allUpperBounds = data.map((e) => e.effect_size_upper)
-    const dataMin = Math.min(...allLowerBounds)
-    const dataMax = Math.max(...allUpperBounds)
+  // Calculate dynamic x-axis range based on confidence intervals
+  const allLowerBounds = data.map((e) => e.effect_size_lower)
+  const allUpperBounds = data.map((e) => e.effect_size_upper)
+  const dataMin = Math.min(...allLowerBounds)
+  const dataMax = Math.max(...allUpperBounds)
 
-    // Add 10% padding on each side
-    const range = dataMax - dataMin
-    const padding = range * 0.1
-    xMin = dataMin - padding
-    xMax = dataMax + padding
+  // Add 10% padding on each side
+  const range = dataMax - dataMin
+  const padding = range * 0.1
+  xMin = dataMin - padding
+  xMax = dataMax + padding
 
-    // Generate nice round tick marks - use 0.5 intervals for cleaner ticks
-    const rawInterval = range / 5
-    let tickInterval: number
+  // Generate nice round tick marks - use 0.5 intervals for cleaner ticks
+  const rawInterval = range / 5
+  let tickInterval: number
 
-    if (rawInterval <= 0.5) {
-      tickInterval = 0.5
-    } else if (rawInterval <= 1) {
-      tickInterval = 1
-    } else if (rawInterval <= 2) {
-      tickInterval = 2
-    } else {
-      tickInterval = Math.ceil(rawInterval)
-    }
-
-    // Generate ticks within the padded range
-    const firstTick = Math.ceil(xMin / tickInterval) * tickInterval
-    const lastTick = Math.floor(xMax / tickInterval) * tickInterval
-
-    xTicks = []
-    for (let tick = firstTick; tick <= lastTick; tick += tickInterval) {
-      xTicks.push(Number(tick.toFixed(1)))
-    }
-
-    // Always include 0 if it's in range
-    if (xMin < 0 && xMax > 0 && !xTicks.includes(0)) {
-      xTicks.push(0)
-      xTicks.sort((a, b) => a - b)
-    }
+  if (rawInterval <= 0.5) {
+    tickInterval = 0.5
+  } else if (rawInterval <= 1) {
+    tickInterval = 1
+  } else if (rawInterval <= 2) {
+    tickInterval = 2
   } else {
-    longestLabel = []
+    tickInterval = Math.ceil(rawInterval)
+  }
+
+  // Generate ticks within the padded range
+  const firstTick = Math.ceil(xMin / tickInterval) * tickInterval
+  const lastTick = Math.floor(xMax / tickInterval) * tickInterval
+
+  xTicks = []
+  for (let tick = firstTick; tick <= lastTick; tick += tickInterval) {
+    xTicks.push(Number(tick.toFixed(1)))
+  }
+
+  // Always include 0 if it's in range
+  if (xMin < 0 && xMax > 0 && !xTicks.includes(0)) {
+    xTicks.push(0)
+    xTicks.sort((a, b) => a - b)
   }
 
   const chartConfig = {
@@ -136,7 +130,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
           This forest plot displays the effect size and confidence interval for each individual study. The horizontal lines show the uncertainty around each estimate. Longer lines indicate more uncertainty, while points further from zero indicate stronger effects.
         </p>
       </div>
-      {isOpen && plotData && (
+      {isOpen && (
         <Card>
           <CardContent className="py-5" style={{ height: 30 * plotData.length }}>
             <ChartContainer config={chartConfig} className="h-full aspect-auto">

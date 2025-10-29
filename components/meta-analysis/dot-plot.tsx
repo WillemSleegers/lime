@@ -43,7 +43,7 @@ type DotData = {
 }
 
 type DotPlotProps = {
-  data?: Data
+  data: Data
 }
 
 const DotPlotExample = ({ data }: DotPlotProps) => {
@@ -55,7 +55,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
   } satisfies ChartConfig
 
   // Extract values for bin calculation
-  const rawData = data?.map((d) => d.effect_size) || []
+  const rawData = data.map((d) => d.effect_size)
 
   // Calculate adaptive defaults based on data size
   const getAdaptiveDefaults = (dataSize: number) => {
@@ -165,7 +165,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
     const binPositions = Array(debouncedBinCount).fill(0)
 
     // Process each data point
-    data!.forEach((datum) => {
+    data.forEach((datum) => {
       const value = datum.effect_size
       const binIndex = Math.min(
         Math.floor((value - min) / binWidth),

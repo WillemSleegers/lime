@@ -21,9 +21,9 @@ import {
 } from "recharts/types/component/DefaultTooltipContent"
 
 type CollapsiblePublicationBiasProps = {
-  estimate?: Estimate
-  egger?: Egger
-  data?: Data
+  estimate: Estimate
+  egger: Egger
+  data: Data
 }
 
 export const CollapsiblePublicationBias = (
@@ -31,22 +31,15 @@ export const CollapsiblePublicationBias = (
 ) => {
   const { estimate, egger, data } = props
 
-  let plotData
-  let ymax
+  const plotData = data.map((e) => {
+    return {
+      x: e.effect_size,
+      y: e.effect_size_se,
+      name: e.paper_label + " - " + e.effect,
+    }
+  })
 
-  if (data) {
-    plotData = data.map((e) => {
-      return {
-        x: e.effect_size,
-        y: e.effect_size_se,
-        name: e.paper_label + " - " + e.effect,
-      }
-    })
-
-    ymax = Math.max(...plotData.map((e) => e.y))
-  } else {
-    ymax = 0
-  }
+  const ymax = Math.max(...plotData.map((e) => e.y))
 
   return (
     <div className="space-y-6">
@@ -61,22 +54,20 @@ export const CollapsiblePublicationBias = (
           <h3 className="text-lg font-semibold mb-4">Small Study Effect Methods</h3>
           <div className="space-y-3">
             <h4 className="text-base font-medium">Egger&apos;s Test</h4>
-            {egger && (
-              <p className="text-sm leading-relaxed">
-                We found{" "}
-                {egger.egger_p < 0.05 ? (
-                  <span className="font-semibold text-red-500">evidence</span>
-                ) : (
-                  <span>no evidence</span>
-                )}{" "}
-                of publication bias using the{" "}
-                <Link href="https://doi.org/10.1080/00220973.2019.1582470" className="text-primary hover:underline">
-                  Egger&apos;s regression test
-                </Link>{" "}
-                (b = {round(egger.egger_b, 2)}, SE = {round(egger.egger_se, 2)}, z
-                = {round(egger.egger_z, 2)}, p = {round(egger.egger_p, 2)}).
-              </p>
-            )}
+            <p className="text-sm leading-relaxed">
+              We found{" "}
+              {egger.egger_p < 0.05 ? (
+                <span className="font-semibold text-red-500">evidence</span>
+              ) : (
+                <span>no evidence</span>
+              )}{" "}
+              of publication bias using the{" "}
+              <Link href="https://doi.org/10.1080/00220973.2019.1582470" className="text-primary hover:underline">
+                Egger&apos;s regression test
+              </Link>{" "}
+              (b = {round(egger.egger_b, 2)}, SE = {round(egger.egger_se, 2)}, z
+              = {round(egger.egger_z, 2)}, p = {round(egger.egger_p, 2)}).
+            </p>
           </div>
         </div>
 
@@ -84,8 +75,7 @@ export const CollapsiblePublicationBias = (
           <h3 className="text-lg font-semibold">Funnel Plot</h3>
           <Card>
             <CardContent className="overflow-auto py-5">
-              {estimate && (
-                <ResponsiveContainer height={500} width="100%" minWidth={600}>
+              <ResponsiveContainer height={500} width="100%" minWidth={600}>
                   <ScatterChart
                     data={plotData}
                     margin={{
@@ -155,7 +145,6 @@ export const CollapsiblePublicationBias = (
                     />
                   </ScatterChart>
                 </ResponsiveContainer>
-              )}
             </CardContent>
           </Card>
         </div>

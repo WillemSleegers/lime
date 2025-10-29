@@ -19,14 +19,11 @@ import { Estimate } from "@/lib/types"
 import ChartEstimate from "./charts/estimate-chart"
 
 type CollapsibleEstimateProps = {
-  estimate?: Estimate
+  estimate: Estimate
 }
 
 export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
   const { estimate } = props
-
-  // Estimate is guaranteed to exist when this component renders
-  if (!estimate) return null
 
   const lower = round(estimate.lower, 2)
   const value = round(estimate.value, 2)
@@ -93,7 +90,7 @@ export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
                 Probability of Superiority
               </h3>
               <PieChartProportion
-                proportion={estimate ? pSup(estimate.value) : undefined}
+                proportion={pSup(estimate.value)}
                 start={0.5}
               />
             </div>
@@ -101,7 +98,7 @@ export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
             <div className="text-center">
               <h3 className="text-lg font-semibold">Cohen&apos;s U3</h3>
               <PieChartProportion
-                proportion={estimate ? u3(estimate.value) : undefined}
+                proportion={u3(estimate.value)}
                 start={0.5}
               />
             </div>

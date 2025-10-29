@@ -191,8 +191,6 @@ const MetaAnalysisPage = () => {
             data={data}
             estimate={estimate}
             egger={egger}
-            status={status}
-            runAnalysis={runAnalysis}
           />
         </TabsContent>
       </Tabs>

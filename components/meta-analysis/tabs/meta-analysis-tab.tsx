@@ -15,7 +15,7 @@ import DotPlotExample from "@/components/meta-analysis/dot-plot"
 
 import { exportToCSV } from "@/lib/csv-utils"
 import codebook from "@/assets/data/codebook.json"
-import { Data, Egger, Estimate, Status } from "@/lib/types"
+import { Data, Egger, Estimate } from "@/lib/types"
 
 const handleDownload = (fileName: string, data?: Record<string, unknown>[]) => {
   if (!data) return
@@ -26,16 +26,12 @@ type MetaAnalysisTabProps = {
   data?: Data
   estimate?: Estimate
   egger?: Egger
-  status: Status
-  runAnalysis: () => Promise<void>
 }
 
 export const MetaAnalysisTab = ({
   data,
   estimate,
   egger,
-  status,
-  runAnalysis,
 }: MetaAnalysisTabProps) => {
   // Show loading state until results are ready
   if (!estimate) {
