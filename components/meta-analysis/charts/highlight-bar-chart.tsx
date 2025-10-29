@@ -48,7 +48,7 @@ export const HighlightBarChart = ({ data }: HighlightBarChartProps) => {
           tickLine={false}
           axisLine={false}
           tickMargin={6}
-          width={120}
+          width={200}
           fontSize={11}
         />
         <ChartTooltip

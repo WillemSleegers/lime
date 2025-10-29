@@ -23,9 +23,12 @@ npm run lint        # Run ESLint
 
 ### Core Structure
 
-- **Next.js App Router**: Uses the `app/` directory structure with route-based pages
-- **TypeScript**: Fully typed codebase with strict type definitions
-- **Tailwind CSS + shadcn/ui**: Component library with custom styling
+- **Next.js 16 App Router**: Uses the `app/` directory structure with route-based pages, Turbopack for dev, React Compiler enabled
+- **React 19**: Latest version with concurrent features
+- **TypeScript 5**: Fully typed codebase with strict type definitions
+- **Tailwind CSS 4 + shadcn/ui**: Component library with custom styling using new `@theme` syntax
+- **TanStack React Table v8**: Headless table library powering the data explorer
+- **React Hook Form + Zod**: Form state management and validation
 - **Static Data**: Research data stored as JSON files in `assets/data/`
 
 ### Key Directories
@@ -44,14 +47,23 @@ npm run lint        # Run ESLint
 - `meta-analysis/` - Statistical visualization components (forest plots, dot plots)
 - `charts/` - Custom chart components using Recharts
 - `navigation/` - Site navigation components
+- `icons/` - Custom icon components
+- `form/` - Custom form components
+- `landing-page/` - Homepage-specific components
 
 #### `/lib` - Utility Functions
 
 - `types.ts` - TypeScript type definitions for all data structures
 - `r-functions.ts` - WebR integration for statistical analysis
 - `json-functions.ts` - Data manipulation utilities (joins, filtering)
+- `data-explorer-utils.ts` - Filter and lock logic for data explorer
+- `filter-schemas.ts` - Zod validation schemas for filters
 - `csv-utils.ts` - CSV export functionality
 - `utils.ts` - General utility functions and cn() helper
+
+#### `/hooks` - Custom React Hooks
+
+- `use-data-explorer-state.ts` - State management for data explorer lock system and filter coordination
 
 #### `/assets/data` - Research Data
 
@@ -63,27 +75,39 @@ Static JSON files containing:
 - `outcomes.json` - Outcome measures and methods
 - `effects.json` - Effect sizes and statistical data
 - `data.json` - Combined dataset for analysis
+- `data-nested.json` - Hierarchical data structure
+- `counts.json` - Dataset statistics and counts
 - `codebook.json` - Data dictionary and variable descriptions
 
 #### `/constants` - Application Constants
 
-- Filter options and meta-analysis configurations
+- `constants-filters.ts` - Filter options and definitions for data explorer
+- `constants-meta-analysis.ts` - Meta-analysis configuration options
 
 ### Key Technical Features
 
 #### Data Explorer System
 
-- Multi-level tabbed interface (Papers → Studies → Interventions → Outcomes → Effects)
+- Multi-level tabbed interface (Papers → Studies → Interventions → Outcomes → Effects + All)
+- The "All" tab provides a complete joined dataset with all levels combined for comprehensive analysis
 - Cross-table filtering with "lock" functionality to maintain filters across levels
+- When a level is locked, filtering at that level constrains all other levels
 - Uses `semiJoin` operations from `json-functions.ts` to maintain relational integrity
+- Filter validation using Zod schemas ensures type-safe filter operations
 - CSV export functionality for all data levels
+- State management handled by `use-data-explorer-state.ts` hook
 
 #### Meta-Analysis Integration
 
-- WebR integration for running R statistical packages in the browser
+- WebR integration for running R statistical packages in the browser (using WebAssembly)
 - Uses `metafor` and `clubSandwich` R packages for meta-analysis
+- Three-step progressive disclosure workflow:
+  1. **Inclusion Criteria** - Define study selection filters
+  2. **Highlights** - Review selected studies visually (unlocks after step 1)
+  3. **Meta-Analysis** - View statistical results (unlocks after step 2)
 - Real-time statistical computation with forest plots and publication bias testing
 - Custom R code generation and execution through WebR interface
+- Status indicators for computation progress
 
 #### Type System
 
@@ -98,8 +122,10 @@ All data structures are strongly typed, derived from the JSON data files:
 #### State Management
 
 - Uses React useState with complex state objects for data management
+- React Compiler enabled for automatic memoization (no manual useMemo/useCallback needed)
 - Batched state updates to minimize re-renders
-- Lock system for maintaining filter relationships across data levels
+- Custom `use-data-explorer-state.ts` hook manages lock system and filter coordination
+- Lock system maintains filter relationships across data levels using efficient Set-based lookups
 
 #### Component Architecture
 
@@ -152,6 +178,19 @@ All data structures are strongly typed, derived from the JSON data files:
 - Data relationships are maintained through composite keys (paper, study, intervention, outcome)
 - The type system is generated from actual data files, ensuring runtime/compile-time consistency
 - All statistical analysis runs client-side using WebAssembly (WebR)
+- All page components use client-side rendering (`"use client"`) - no server components for data pages
+
+## Testing
+
+**No test suite currently configured.** The project does not have test commands in `package.json` or test files in the codebase.
+
+Complex logic that would benefit from testing in future development:
+- Filter operations and lock system logic (`use-data-explorer-state.ts`, `data-explorer-utils.ts`)
+- JSON manipulation utilities (`json-functions.ts`)
+- WebR integration and R code generation (`r-functions.ts`)
+- Form validation schemas (`filter-schemas.ts`)
+
+Consider adding unit tests for critical business logic to ensure reliability as the application grows.
 
 ## Design Philosophy & Critical Evaluation
 
