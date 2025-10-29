@@ -25,20 +25,14 @@ type CollapsibleEstimateProps = {
 export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
   const { estimate } = props
 
-  let lower, value, upper, piLower, piUpper
-  if (estimate) {
-    lower = round(estimate.lower, 2)
-    value = round(estimate.value, 2)
-    upper = round(estimate.upper, 2)
-    piLower = round(estimate.piLower, 2)
-    piUpper = round(estimate.piUpper, 2)
-  } else {
-    lower = "-"
-    value = "-"
-    upper = "-"
-    piLower = "-"
-    piUpper = "-"
-  }
+  // Estimate is guaranteed to exist when this component renders
+  if (!estimate) return null
+
+  const lower = round(estimate.lower, 2)
+  const value = round(estimate.value, 2)
+  const upper = round(estimate.upper, 2)
+  const piLower = round(estimate.piLower, 2)
+  const piUpper = round(estimate.piUpper, 2)
 
   return (
     <div className="space-y-6">
@@ -135,10 +129,7 @@ export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
                       <p className="text-sm text-muted-foreground">
                         There is a{" "}
                         <span className="font-semibold text-foreground">
-                          {estimate
-                            ? round(pSup(estimate.value) * 100, 1)
-                            : "-"}
-                          %
+                          {round(pSup(estimate.value) * 100, 1)}%
                         </span>{" "}
                         chance that a person picked at random from the
                         intervention group will have a higher score than a
@@ -150,10 +141,7 @@ export const CollapsibleEstimate = (props: CollapsibleEstimateProps) => {
                       <h4 className="font-medium">Cohen&apos;s U3</h4>
                       <p className="text-sm text-muted-foreground">
                         <span className="font-semibold text-foreground">
-                          {estimate
-                            ? round(u3(estimate.value) * 100, 1)
-                            : "-"}
-                          %
+                          {round(u3(estimate.value) * 100, 1)}%
                         </span>{" "}
                         of people in the intervention group score higher than
                         the average of the people in the control group.

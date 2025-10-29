@@ -37,16 +37,28 @@ export const MetaAnalysisTab = ({
   status,
   runAnalysis,
 }: MetaAnalysisTabProps) => {
-  return (
-    <div className="space-y-8">
-      {status !== "Ready" && !estimate && (
+  // Show loading state until results are ready
+  if (!estimate) {
+    return (
+      <div className="space-y-8">
         <Card>
-          <CardContent className="flex items-center gap-3 py-4">
-            <Spinner className="size-5" />
-            <span>Running meta-analysis...</span>
+          <CardContent className="flex flex-col items-center gap-4 py-12">
+            <Spinner className="size-8" />
+            <div className="text-center space-y-2">
+              <p className="font-medium">Running meta-analysis...</p>
+              <p className="text-sm text-muted-foreground">
+                This may take a few moments while we analyze your selected studies.
+              </p>
+            </div>
           </CardContent>
         </Card>
-      )}
+      </div>
+    )
+  }
+
+  // Show results once ready
+  return (
+    <div className="space-y-8">
       <CollapsibleEstimate estimate={estimate} />
       <CollapsiblePublicationBias estimate={estimate} egger={egger} data={data} />
       <DotPlotExample data={data} />

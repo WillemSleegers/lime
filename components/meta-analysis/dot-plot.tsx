@@ -245,7 +245,12 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-subsection-title">Dot Plot</h2>
+      <div className="space-y-2">
+        <h2 className="text-subsection-title">Dot Plot</h2>
+        <p className="text-sm text-muted-foreground">
+          This dot plot shows the distribution of effect sizes across all included studies. Each dot represents a single effect size measurement. You can use this to see whether the effects cluster around a particular value or are more spread out.
+        </p>
+      </div>
       <Card>
         <CardContent className="py-5 space-y-6">
           {/* Chart */}

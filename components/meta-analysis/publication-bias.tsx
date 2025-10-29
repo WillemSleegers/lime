@@ -50,7 +50,12 @@ export const CollapsiblePublicationBias = (
 
   return (
     <div className="space-y-6">
-      <h2 className="text-subsection-title">Publication Bias</h2>
+      <div className="space-y-2">
+        <h2 className="text-subsection-title">Publication Bias</h2>
+        <p className="text-sm text-muted-foreground">
+          Publication bias occurs when studies with positive results are more likely to be published than studies with null or negative results, which can make interventions appear more effective than they actually are. The tests below help detect whether this bias might be present in the data.
+        </p>
+      </div>
       <div className="space-y-6">
         <div>
           <h3 className="text-lg font-semibold mb-4">Small Study Effect Methods</h3>

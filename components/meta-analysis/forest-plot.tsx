@@ -41,6 +41,9 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
 
   let plotData
   let longestLabel
+  let xMin = -2
+  let xMax = 2
+  let xTicks = [-2, -1, 0, 1, 2]
 
   if (data) {
     plotData = data
@@ -62,6 +65,47 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
     longestLabel = data
       .map((e) => e.paper_label + " - " + e.effect)
       .reduce((a, b) => (a.length > b.length ? a : b))
+
+    // Calculate dynamic x-axis range based on confidence intervals
+    const allLowerBounds = data.map((e) => e.effect_size_lower)
+    const allUpperBounds = data.map((e) => e.effect_size_upper)
+    const dataMin = Math.min(...allLowerBounds)
+    const dataMax = Math.max(...allUpperBounds)
+
+    // Add 10% padding on each side
+    const range = dataMax - dataMin
+    const padding = range * 0.1
+    xMin = dataMin - padding
+    xMax = dataMax + padding
+
+    // Generate nice round tick marks - use 0.5 intervals for cleaner ticks
+    const rawInterval = range / 5
+    let tickInterval: number
+
+    if (rawInterval <= 0.5) {
+      tickInterval = 0.5
+    } else if (rawInterval <= 1) {
+      tickInterval = 1
+    } else if (rawInterval <= 2) {
+      tickInterval = 2
+    } else {
+      tickInterval = Math.ceil(rawInterval)
+    }
+
+    // Generate ticks within the padded range
+    const firstTick = Math.ceil(xMin / tickInterval) * tickInterval
+    const lastTick = Math.floor(xMax / tickInterval) * tickInterval
+
+    xTicks = []
+    for (let tick = firstTick; tick <= lastTick; tick += tickInterval) {
+      xTicks.push(Number(tick.toFixed(1)))
+    }
+
+    // Always include 0 if it's in range
+    if (xMin < 0 && xMax > 0 && !xTicks.includes(0)) {
+      xTicks.push(0)
+      xTicks.sort((a, b) => a - b)
+    }
   } else {
     longestLabel = []
   }
@@ -75,17 +119,22 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
 
   return (
     <div className="space-y-6">
-      <div
-        className="flex items-center gap-2 cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <h2 className="text-subsection-title">Forest Plot</h2>
-        <ChevronRight
-          className={cn(
-            "h-5 w-5 transition-transform duration-200",
-            isOpen && "rotate-90"
-          )}
-        />
+      <div className="space-y-2">
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <h2 className="text-subsection-title">Forest Plot</h2>
+          <ChevronRight
+            className={cn(
+              "h-5 w-5 transition-transform duration-200",
+              isOpen && "rotate-90"
+            )}
+          />
+        </div>
+        <p className="text-sm text-muted-foreground">
+          This forest plot displays the effect size and confidence interval for each individual study. The horizontal lines show the uncertainty around each estimate. Longer lines indicate more uncertainty, while points further from zero indicate stronger effects.
+        </p>
       </div>
       {isOpen && plotData && (
         <Card>
@@ -95,7 +144,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
                 data={plotData}
                 margin={{
                   bottom: 20,
-                  left: 20,
+                  left: 0,
                   right: 20,
                   top: 5,
                 }}
@@ -103,7 +152,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
                 <CartesianGrid
                   horizontal={false}
                   className="fill-muted"
-                  verticalValues={[-1, 1]}
+                  verticalValues={xTicks}
                 />
                 <XAxis
                   dataKey="value"
@@ -113,9 +162,8 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
                     dy: 20,
                     className: "fill-foreground",
                   }}
-                  domain={[-2, 2]}
-                  ticks={[-2, -1, 0, 1, 2]}
-                  allowDataOverflow
+                  domain={[xMin, xMax]}
+                  ticks={xTicks}
                 />
                 <YAxis
                   yAxisId="left"
