@@ -1,151 +1,136 @@
 "use client"
 
 import * as z from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Dispatch, SetStateAction } from "react"
+
 import { Button } from "@/components/ui/button"
+import { Spinner } from "@/components/ui/spinner"
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Form } from "@/components/ui/form"
+import { CheckboxGroup } from "@/components/form/checkbox-group"
+import { SliderField } from "@/components/form/slider-field"
+import { InputField } from "@/components/form/input-field"
+import { MultiSelectField } from "@/components/form/multi-select-field"
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
-import { useEffect, useState } from "react"
-import { ChevronRight } from "lucide-react"
-import { cn } from "@/lib/utils"
-
-import data from "../../assets/data/data.json"
-
-import { Separator } from "../ui/separator"
-import { Input } from "@/components/ui/input"
-import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group"
+  interventionFiltersFields,
+  outcomeCategoriesFieldsNew,
+  studyFiltersFields,
+  paperFiltersFields,
+} from "@/lib/filter-schemas"
+import data from "@/assets/data/data.json"
 
 import {
+  COUNTRY_OPTIONS,
+  PAPER_TYPE_OPTIONS_NEW,
+  PAPER_OPEN_ACCESS_OPTIONS_NEW,
+  STUDY_PREREGISTERED_OPTIONS_NEW,
+  STUDY_DATA_AVAILABLE_OPTIONS_NEW,
+  STUDY_DESIGN_OPTIONS_NEW,
+  STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW,
+  STUDY_RANDOMIZATION_OPTIONS_NEW,
+  OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW,
+  OUTCOME_CATEGORIES_GROUPED,
+  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   INTERVENTION_CONTENT_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
-  COUNTRY_OPTIONS,
-  OUTCOME_MEASUREMENT_TYPE_OPTIONS,
-  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
-  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-  STUDY_PREREGISTERED_OPTIONS,
+  SAMPLE_TYPE_OPTIONS,
+  SAMPLE_REPRESENTATIVE_OPTIONS,
 } from "@/constants/constants-filters"
 import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
 
-const formSchema = z
-  .object({
-    outcome_subcategory_behavior: z.string().array(),
-    outcome_subcategory_intention: z.string().array(),
-    outcome_subcategory_attitude: z.string().array(),
-    outcome_measurement_type: z
-      .string()
-      .array()
-      .nonempty({ message: "Must select at least one outcome measurement." }),
-    intervention_content: z
-      .string()
-      .array()
-      .nonempty({ message: "Must select at least one intervention content." }),
-    intervention_mechanism: z.string().array().nonempty({
-      message: "Must select at least one intervention mechanism.",
-    }),
-    intervention_medium: z
-      .string()
-      .array()
-      .nonempty({ message: "Must select at least one intervention medium." }),
-    sample_country: z
-      .string()
-      .array()
-      .nonempty({ message: "Must select at least one country." }),
-    sample_size: z.coerce.number().min(1),
-    study_preregistered: z
-      .string()
-      .array()
-      .nonempty({ message: "Must select at least one option." }),
-  })
-  .superRefine((values, ctx) => {
-    if (
-      values.outcome_subcategory_behavior.length +
-        values.outcome_subcategory_intention.length +
-        values.outcome_subcategory_attitude.length ==
-      0
-    ) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory_behavior"],
-      })
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory_intention"],
-      })
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory_attitude"],
-      })
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Must select at least one outcome category.",
-        path: ["outcome_subcategory"],
-      })
-    }
-  })
+import { Data } from "@/lib/types"
+
+const formSchema = z.object({
+  ...interventionFiltersFields,
+  ...outcomeCategoriesFieldsNew,
+  outcome_measurement_type: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one outcome measurement." }),
+  sample_country: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one country." }),
+  sample_type: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one sample type." }),
+  sample_representative: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one representativeness option." }),
+  sample_size: z.coerce
+    .number()
+    .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
+  ...studyFiltersFields,
+  ...paperFiltersFields,
+})
 
 type FiltersProps = {
-  setData: Function
-  disabled: boolean
+  status: string
+  setData: Dispatch<SetStateAction<Data | undefined>>
+  onFiltersApplied: () => void
 }
 
-export const Filters = (props: FiltersProps) => {
-  const { setData, disabled } = props
-
-  const [open, setOpen] = useState(false)
-  const [ranOnce, setRanOnce] = useState(false)
-
-  const [error, setError] = useState<string | undefined>()
-
+export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    mode: "onChange",
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
     defaultValues: {
-      outcome_subcategory_behavior:
-        META_ANALYSIS_DEFAULTS.outcome_subcategory_behavior,
-      outcome_subcategory_intention:
-        META_ANALYSIS_DEFAULTS.outcome_subcategory_intention,
-      outcome_subcategory_attitude:
-        META_ANALYSIS_DEFAULTS.outcome_subcategory_attitude,
+      outcome_subcategory: [
+        ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+        ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+        ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+      ],
       outcome_measurement_type: META_ANALYSIS_DEFAULTS.outcome_measurement_type,
       intervention_content: META_ANALYSIS_DEFAULTS.intervention_content,
       intervention_mechanism: META_ANALYSIS_DEFAULTS.intervention_mechanism,
       intervention_medium: META_ANALYSIS_DEFAULTS.intervention_medium,
       sample_country: COUNTRY_OPTIONS,
+      sample_type: SAMPLE_TYPE_OPTIONS.map((option) => option.value),
+      sample_representative: SAMPLE_REPRESENTATIVE_OPTIONS.map(
+        (option) => option.value
+      ),
       sample_size: 1,
       study_preregistered: META_ANALYSIS_DEFAULTS.study_preregistered,
+      study_data_available: META_ANALYSIS_DEFAULTS.study_data_available,
+      study_design: META_ANALYSIS_DEFAULTS.study_design,
+      study_condition_assignment: META_ANALYSIS_DEFAULTS.study_condition_assignment,
+      study_randomization: META_ANALYSIS_DEFAULTS.study_randomization,
+      paper_year: META_ANALYSIS_DEFAULTS.paper_year,
+      paper_type: META_ANALYSIS_DEFAULTS.paper_type,
+      paper_open_access: META_ANALYSIS_DEFAULTS.paper_open_access,
     },
   })
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onInvalid = () => {
+    form.setError("root", {
+      type: "manual",
+      message: "Please fix the errors above and try again.",
+    })
+  }
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    // Clear errors
+    form.clearErrors("root")
+
     let subset: typeof data
 
     // Filter on outcome subcategory
-    const outcome_subcategory = [
-      ...values.outcome_subcategory_behavior,
-      ...values.outcome_subcategory_intention,
-      ...values.outcome_subcategory_attitude,
-    ]
-
     subset = data.filter((datum) => {
-      return outcome_subcategory.some(
+      return values.outcome_subcategory.some(
         (value) => datum.outcome_subcategory === value
       )
     })
@@ -167,19 +152,19 @@ export const Filters = (props: FiltersProps) => {
     // Filter on intervention aspect
     subset = subset.filter((datum) => {
       return values.intervention_content.some((value) =>
-        datum.intervention_content.includes(value)
+        datum.intervention_content?.includes(value)
       )
     })
 
     subset = subset.filter((datum) => {
       return values.intervention_mechanism.some((value) =>
-        datum.intervention_mechanism.includes(value)
+        datum.intervention_mechanism?.includes(value)
       )
     })
 
     subset = subset.filter((datum) => {
       return values.intervention_medium.some((value) =>
-        datum.intervention_medium.includes(value)
+        datum.intervention_medium?.includes(value)
       )
     })
 
@@ -188,558 +173,318 @@ export const Filters = (props: FiltersProps) => {
       values.sample_country.includes(e.sample_country)
     )
 
+    // Filter on sample type
+    subset = subset.filter((datum) => {
+      return values.sample_type.some((value) =>
+        datum.sample_type.includes(value)
+      )
+    })
+
+    // Filter on sample representativeness
+    subset = subset.filter((datum) => {
+      return values.sample_representative.some((value) =>
+        datum.sample_representative.includes(value)
+      )
+    })
+
     // Filter on preregistration
     subset = subset.filter((e) =>
       values.study_preregistered.includes(e.study_preregistered)
     )
 
-    if (subset.length == 0) {
-      setError("No papers match these criteria")
-    } else if (new Set(subset.map((d) => d.paper)).size < 2) {
-      setError(
-        "Only 1 paper matches these criteria; please relax the inclusion criteria to include effects from more papers"
+    // Filter on data availability
+    subset = subset.filter((datum) => {
+      return values.study_data_available.some((value) =>
+        datum.study_data_available.includes(value)
       )
-    } else {
-      setError(undefined)
-      setData(subset)
+    })
+
+    // Filter on study design
+    subset = subset.filter((datum) => {
+      return values.study_design.some((value) =>
+        datum.study_design.includes(value)
+      )
+    })
+
+    // Filter on condition assignment
+    subset = subset.filter((datum) => {
+      return values.study_condition_assignment.some((value) =>
+        datum.study_condition_assignment.includes(value)
+      )
+    })
+
+    // Filter on randomization
+    subset = subset.filter((datum) => {
+      return values.study_randomization.some((value) =>
+        datum.study_randomization.includes(value)
+      )
+    })
+
+    // Filter on paper year
+    subset = subset.filter(
+      (datum) =>
+        datum.paper_year >= values.paper_year[0] &&
+        datum.paper_year <= values.paper_year[1]
+    )
+
+    // Filter on paper type
+    subset = subset.filter((datum) => {
+      return values.paper_type.some((paper_type) =>
+        datum.paper_type.includes(paper_type)
+      )
+    })
+
+    // Filter on paper open access
+    subset = subset.filter((datum) => {
+      return values.paper_open_access.some((open_access) =>
+        datum.paper_open_access.includes(open_access)
+      )
+    })
+
+    if (subset.length == 0) {
+      form.setError("root", {
+        type: "manual",
+        message:
+          "No papers match these criteria; please relax the inclusion criteria to include effects from more papers",
+      })
+      return
+    } else if (new Set(subset.map((d) => d.paper)).size < 2) {
+      form.setError("root", {
+        type: "manual",
+        message:
+          "Only 1 paper matches these criteria; please relax the inclusion criteria to include effects from more papers",
+      })
+      return
     }
+
+    setData(subset)
+    onFiltersApplied()
   }
 
-  useEffect(() => {
-    if (!disabled) {
-      if (!ranOnce) {
-        form.handleSubmit(onSubmit)()
-      }
-      setRanOnce(true)
-    }
-  }, [form, disabled])
-
   return (
-    <Collapsible
-      className="bg-muted rounded-lg border p-3"
-      open={open}
-      onOpenChange={setOpen}
-    >
-      <CollapsibleTrigger className="flex flex-row items-center gap-1">
-        <h1 className="text-2xl font-bold tracking-tight">
-          Inclusion criteria
-        </h1>
-        <ChevronRight
-          className={cn("transition", open ? "rotate-90" : "rotate-0")}
-        />
-      </CollapsibleTrigger>
-      <CollapsibleContent className="CollapsibleContent">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="flex flex-col gap-3">
-              {/* Levels */}
-              <div className="my-3 space-y-3">
-                {/* Outcome-level */}
-                <h2 className="text-xl font-semibold">Outcomes</h2>
-                <div className="mx-3">
-                  {/* Outcome categories */}
-                  <div className="space-y-3">
-                    <FormLabel className="text-base">
-                      Outcome categories
-                    </FormLabel>
-                    <div className="my-3 space-y-3 px-3">
-                      <FormField
-                        control={form.control}
-                        name="outcome_subcategory_behavior"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-base">
-                              Behaviors
-                            </FormLabel>
-                            <FormControl className="justify-start">
-                              <ToggleGroup
-                                className="flex flex-wrap gap-x-2 gap-y-1"
-                                type="multiple"
-                                onValueChange={field.onChange}
-                                value={field.value}
-                              >
-                                {OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS.map(
-                                  (option) => (
-                                    <ToggleGroupItem
-                                      key={option}
-                                      value={option}
-                                      variant="pill"
-                                      size="sm"
-                                    >
-                                      {option}
-                                    </ToggleGroupItem>
-                                  )
-                                )}
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() =>
-                                    field.onChange(
-                                      OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS
-                                    )
-                                  }
-                                >
-                                  Select all
-                                </Button>
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() => field.onChange([])}
-                                >
-                                  Deselect all
-                                </Button>
-                              </ToggleGroup>
-                            </FormControl>
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="outcome_subcategory_intention"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-base">
-                              Intentions
-                            </FormLabel>
-                            <FormControl className="justify-start">
-                              <ToggleGroup
-                                className="flex flex-wrap gap-x-2 gap-y-1"
-                                type="multiple"
-                                onValueChange={field.onChange}
-                                value={field.value}
-                              >
-                                {OUTCOME_SUBCATEGORY_INTENTION_OPTIONS.map(
-                                  (option) => (
-                                    <ToggleGroupItem
-                                      key={option}
-                                      value={option}
-                                      variant="pill"
-                                      size="sm"
-                                    >
-                                      {option}
-                                    </ToggleGroupItem>
-                                  )
-                                )}
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() =>
-                                    field.onChange(
-                                      OUTCOME_SUBCATEGORY_INTENTION_OPTIONS
-                                    )
-                                  }
-                                >
-                                  Select all
-                                </Button>
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() => field.onChange([])}
-                                >
-                                  Deselect all
-                                </Button>
-                              </ToggleGroup>
-                            </FormControl>
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="outcome_subcategory_attitude"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-base">
-                              Attitudes/beliefs
-                            </FormLabel>
-                            <FormControl className="justify-start">
-                              <ToggleGroup
-                                className="flex flex-wrap gap-x-2 gap-y-1"
-                                type="multiple"
-                                onValueChange={field.onChange}
-                                value={field.value}
-                              >
-                                {OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS.map(
-                                  (option) => (
-                                    <ToggleGroupItem
-                                      key={option}
-                                      value={option}
-                                      variant="pill"
-                                      size="sm"
-                                    >
-                                      {option}
-                                    </ToggleGroupItem>
-                                  )
-                                )}
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() =>
-                                    field.onChange(
-                                      OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS
-                                    )
-                                  }
-                                >
-                                  Select all
-                                </Button>
-                                <Button
-                                  type="button"
-                                  variant="link"
-                                  className="text-foreground h-auto px-2"
-                                  onClick={() => field.onChange([])}
-                                >
-                                  Deselect all
-                                </Button>
-                              </ToggleGroup>
-                            </FormControl>
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <FormField
-                      name="outcome_subcategory"
-                      render={() => (
-                        <FormItem>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  {/* Outcome measurement type */}
-                  <FormField
-                    control={form.control}
-                    name="outcome_measurement_type"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">
-                          Measurement type
-                        </FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            type="multiple"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() =>
-                                field.onChange(OUTCOME_MEASUREMENT_TYPE_OPTIONS)
-                              }
-                            >
-                              Select all
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange([])}
-                            >
-                              Deselect all
-                            </Button>
-                          </ToggleGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                <Separator />
-                {/* Intervention-level */}
-                <h2 className="text-xl font-semibold">Interventions</h2>
-                <div className="mx-3 space-y-3">
-                  {/* Intervention content */}
-                  <FormField
-                    control={form.control}
-                    name="intervention_content"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">Content</FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            type="multiple"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {INTERVENTION_CONTENT_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() =>
-                                field.onChange(INTERVENTION_CONTENT_OPTIONS)
-                              }
-                            >
-                              Select all
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange([])}
-                            >
-                              Deselect all
-                            </Button>
-                          </ToggleGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  {/* Intervention mechanism */}
-                  <FormField
-                    control={form.control}
-                    name="intervention_mechanism"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">Mechanism</FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            type="multiple"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {INTERVENTION_MECHANISM_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() =>
-                                field.onChange(INTERVENTION_MECHANISM_OPTIONS)
-                              }
-                            >
-                              Select all
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange([])}
-                            >
-                              Deselect all
-                            </Button>
-                          </ToggleGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  {/* Intervention medium */}
-                  <FormField
-                    control={form.control}
-                    name="intervention_medium"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">Medium</FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            type="multiple"
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {INTERVENTION_MEDIUM_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() =>
-                                field.onChange(INTERVENTION_MEDIUM_OPTIONS)
-                              }
-                            >
-                              Select all
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange([])}
-                            >
-                              Deselect all
-                            </Button>
-                          </ToggleGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                <Separator />
-                {/* Samples-level */}
-                <h2 className="text-xl font-semibold">Study</h2>
-                <div className="mx-3 space-y-3">
-                  {/* Sample country */}
-                  <FormField
-                    control={form.control}
-                    name="study_preregistered"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">
-                          Preregistered
-                        </FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            type="multiple"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {STUDY_PREREGISTERED_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                          </ToggleGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                <Separator />
-                {/* Samples-level */}
-                <h2 className="text-xl font-semibold">Samples</h2>
-                <div className="mx-3 space-y-3">
-                  {/* Sample country */}
-                  <FormField
-                    control={form.control}
-                    name="sample_country"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">Country</FormLabel>
-                        <FormControl className="justify-start">
-                          <ToggleGroup
-                            className="flex flex-wrap gap-x-2 gap-y-1"
-                            type="multiple"
-                            onValueChange={field.onChange}
-                            value={field.value}
-                          >
-                            {COUNTRY_OPTIONS.map((option) => (
-                              <ToggleGroupItem
-                                key={option}
-                                value={option}
-                                variant="pill"
-                                size="sm"
-                              >
-                                {option}
-                              </ToggleGroupItem>
-                            ))}
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange(COUNTRY_OPTIONS)}
-                            >
-                              Select all
-                            </Button>
-                            <Button
-                              type="button"
-                              variant="link"
-                              className="text-foreground h-auto px-2"
-                              onClick={() => field.onChange([])}
-                            >
-                              Deselect all
-                            </Button>
-                          </ToggleGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  {/* Sample size */}
-                  <FormField
-                    control={form.control}
-                    name="sample_size"
-                    render={({ field }) => (
-                      <FormItem className="w-60">
-                        <FormLabel className="text-base">
-                          Minimum sample size
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            className="my-2 rounded-xl bg-primary-foreground"
-                            type="number"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormDescription className="leading-5">
-                          This is the minimum sample size in either the control
-                          or intervention condition.
-                        </FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-              </div>
-
-              <Button
-                type="submit"
-                disabled={disabled}
-                className="h-auto w-30 rounded-full text-white"
-              >
-                Update
-              </Button>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit, onInvalid)} className="space-y-6">
+        {/* Paper-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Papers</CardTitle>
+            <CardDescription>
+              Filter by publication characteristics
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 items-start">
+              <SliderField
+                control={form.control}
+                name="paper_year"
+                label="Publication year"
+                min={Math.min(...data.map((datum) => datum.paper_year))}
+                max={Math.max(...data.map((datum) => datum.paper_year))}
+                minStepsBetweenThumbs={1}
+                className="w-[200px]"
+              />
+              <div></div>
+              <CheckboxGroup
+                control={form.control}
+                name="paper_type"
+                label="Publication type"
+                options={PAPER_TYPE_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="paper_open_access"
+                label="Access type"
+                options={PAPER_OPEN_ACCESS_OPTIONS_NEW}
+              />
             </div>
-          </form>
-        </Form>
-        {error && (
-          <div className="text-destructive ms-1 mt-2 text-sm font-semibold">
-            {error}
+          </CardContent>
+        </Card>
+
+        {/* Study-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Studies</CardTitle>
+            <CardDescription>
+              Filter by study design and methodology
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-6 items-start">
+              <CheckboxGroup
+                control={form.control}
+                name="study_preregistered"
+                label="Preregistration"
+                options={STUDY_PREREGISTERED_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="study_data_available"
+                label="Data availability"
+                options={STUDY_DATA_AVAILABLE_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="study_randomization"
+                label="Randomization"
+                options={STUDY_RANDOMIZATION_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="study_design"
+                label="Study design"
+                options={STUDY_DESIGN_OPTIONS_NEW}
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="study_condition_assignment"
+                label="Condition assignment"
+                options={STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW}
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Samples-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Samples</CardTitle>
+            <CardDescription>
+              Filter by sample characteristics
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <MultiSelectField
+                control={form.control}
+                name="sample_country"
+                label="Country"
+                description="Countries where studies were conducted"
+                placeholder="Select countries..."
+                searchPlaceholder="Search countries..."
+                searchEmptyMessage="No country found."
+                options={COUNTRY_OPTIONS}
+                className="w-full"
+              />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 items-start">
+                <CheckboxGroup
+                  control={form.control}
+                  name="sample_representative"
+                  label="Representativeness"
+                  options={SAMPLE_REPRESENTATIVE_OPTIONS}
+                />
+                <CheckboxGroup
+                  control={form.control}
+                  name="sample_type"
+                  label="Sample type"
+                  options={SAMPLE_TYPE_OPTIONS}
+                />
+              </div>
+              <InputField
+                control={form.control}
+                name="sample_size"
+                label="Minimum sample size"
+                description="Minimum per control or intervention condition"
+                type="number"
+                className="rounded-lg"
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Intervention-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Interventions</CardTitle>
+            <CardDescription>
+              Filter by intervention characteristics
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <MultiSelectField
+                control={form.control}
+                name="intervention_content"
+                label="Intervention content"
+                description="Topics or arguments used to persuade people (e.g., animal welfare, health, environment)"
+                placeholder="Select intervention content..."
+                options={INTERVENTION_CONTENT_OPTIONS}
+                className="w-full"
+              />
+              <MultiSelectField
+                control={form.control}
+                name="intervention_mechanism"
+                label="Intervention mechanism"
+                description="Persuasion strategies used by researchers (facts, emotions, social pressure, etc.)"
+                placeholder="Select intervention mechanism..."
+                options={INTERVENTION_MECHANISM_OPTIONS}
+                className="w-full"
+              />
+              <MultiSelectField
+                control={form.control}
+                name="intervention_medium"
+                label="Intervention medium"
+                placeholder="Select intervention medium..."
+                options={INTERVENTION_MEDIUM_OPTIONS}
+                className="w-full"
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Outcome-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Outcomes</CardTitle>
+            <CardDescription>
+              Select types of outcomes to include
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <MultiSelectField
+                control={form.control}
+                name="outcome_subcategory"
+                label="Outcome categories"
+                description="Choose between behaviors (actual consumption and food choices), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
+                placeholder="Select outcome categories..."
+                searchPlaceholder="Search categories..."
+                searchEmptyMessage="No category found."
+                options={OUTCOME_CATEGORIES_GROUPED}
+                className="w-full"
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="outcome_measurement_type"
+                label="Measurement type"
+                options={OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW}
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-3">
+            <Button
+              type="submit"
+              disabled={status !== "Ready"}
+              className="h-auto rounded-lg w-fit px-6 py-3"
+            >
+              Apply filters & continue
+            </Button>
+            {status !== "Ready" && (
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Spinner className="size-4" />
+                <span>{status}</span>
+              </div>
+            )}
           </div>
-        )}
-      </CollapsibleContent>
-    </Collapsible>
+          {form.formState.errors.root && (
+            <div className="text-destructive text-sm font-semibold">
+              {form.formState.errors.root.message}
+            </div>
+          )}
+        </div>
+      </form>
+    </Form>
   )
 }

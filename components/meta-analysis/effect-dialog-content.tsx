@@ -1,10 +1,11 @@
+import { Datum } from "@/lib/types"
 import { round } from "@/lib/utils"
 import { LinkIcon } from "lucide-react"
 import Link from "next/link"
 import { ReactNode } from "react"
 
 type EffectDialogProps = {
-  effect: any
+  effect: Datum
 }
 
 export const EffectDialogContent = ({ effect }: EffectDialogProps) => {
@@ -18,7 +19,7 @@ export const EffectDialogContent = ({ effect }: EffectDialogProps) => {
       >
         <LabelValue label="Title" value={effect.paper_title} />
         <LabelValue label="Authors" value={effect.paper_authors} />
-        <LabelValue label="Study" value={effect.study} />
+        <LabelValue label="Study" value={effect.study.toString()} />
       </Section>
 
       {/* Intervention Section */}

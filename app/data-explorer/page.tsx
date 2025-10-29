@@ -1,20 +1,15 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
+import Link from "next/link"
+import { exportToCSV } from "@/lib/csv-utils"
 
-import { InfoIcon } from "lucide-react"
-
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
@@ -22,223 +17,113 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import {
   ColumnsPapers,
-  ColumnsInterventions,
   ColumnsStudies,
+  ColumnsSamples,
+  ColumnsInterventions,
   ColumnsOutcomes,
   ColumnsEffects,
-} from "@/components/data-explorer/table-columns"
-import { DataTable } from "@/components/data-explorer/table"
-import {
-  FilterOutcomes,
-  FilterInterventions,
-  FilterPapers,
-  FilterStudies,
-  FilterEffects,
-} from "@/components/data-explorer/filters"
+} from "@/components/data-explorer/table/columns"
+import { DataTable } from "@/components/data-explorer/table/data-table"
 
 import papers from "@/assets/data/papers.json"
 import studies from "@/assets/data/studies.json"
+import samples from "@/assets/data/samples.json"
 import interventions from "@/assets/data/interventions.json"
 import outcomes from "@/assets/data/outcomes.json"
 import effects from "@/assets/data/effects.json"
 import all from "@/assets/data/data.json"
 
-import { semiJoin } from "@/lib/json-functions"
+import { FilterPapers } from "@/components/data-explorer/filters/papers"
+import { FilterStudies } from "@/components/data-explorer/filters/studies"
+import { FilterSamples } from "@/components/data-explorer/filters/samples"
+import { FilterInterventions } from "@/components/data-explorer/filters/interventions"
+import { FilterOutcomes } from "@/components/data-explorer/filters/outcomes"
+import { FilterEffects } from "@/components/data-explorer/filters/effects"
+
+import { useDataExplorerState } from "@/hooks/use-data-explorer-state"
 
 export default function DataExplorer() {
   const [level, setLevel] = useState("paper")
+  const [filterOpen, setFilterOpen] = useState(false)
 
-  const [dataPaper, setDataPaper] = useState(papers)
-  const [dataStudy, setDataStudy] = useState(studies)
-  const [dataIntervention, setDataIntervention] = useState(interventions)
-  const [dataOutcome, setDataOutcome] = useState(outcomes)
-  const [dataEffect, setDataEffect] = useState(effects)
-
-  // Rename to dataTable
-  const [dataPaperLevel, setDataPaperLevel] = useState(papers)
-  const [dataStudyLevel, setDataStudyLevel] = useState(studies)
-  const [dataInterventionLevel, setDataInterventionLevel] =
-    useState(interventions)
-  const [dataOutcomeLevel, setDataOutcomeLevel] = useState(outcomes)
-  const [dataEffectLevel, setDataEffectLevel] = useState(effects)
-
-  // Track lock toggles
-  const [lockPapers, setLockPapers] = useState(false)
-  const [lockStudies, setLockStudies] = useState(false)
-  const [lockInterventions, setLockInterventions] = useState(false)
-  const [lockOutcomes, setLockOutcomes] = useState(false)
-  const [lockEffects, setLockEffects] = useState(false)
-
-  const [shouldHandleLocks, setShouldHandleLocks] = useState(false)
+  const { displayData, filteredData, setFilteredData, locks, setLocks } =
+    useDataExplorerState(
+      {
+        papers,
+        studies,
+        samples,
+        interventions,
+        outcomes,
+        effects,
+      },
+      all
+    )
 
   const handleDownload = (
-    data:
-      | typeof papers
-      | typeof studies
-      | typeof interventions
-      | typeof outcomes
-      | typeof effects
-      | typeof all,
+    data: Record<string, unknown>[],
     fileName: string
   ) => {
-    const columnNames = Object.keys(data[0])
-    // Loop over the data and extract values for each column
-    const rowsData: string[] = []
-    data.map((row: { [key: string]: unknown }) => {
-      const rowData: string[] = []
-      columnNames.forEach((columnName: string) => {
-        const value = String(row[columnName])
-        const escapedValue = value.includes(",") ? `"${value}"` : value
-        rowData.push(escapedValue)
-      })
-      rowsData.push(rowData.join(","))
-    })
-    const text = columnNames.join(",") + "\n" + rowsData.join("\n")
-    const element = document.createElement("a")
-    element.setAttribute(
-      "href",
-      "data:text/csv;charset=utf-8," + encodeURIComponent(text)
-    )
-    element.setAttribute("download", fileName)
-    element.style.display = "none"
-    document.body.appendChild(element)
-    element.click()
-    document.body.removeChild(element)
+    exportToCSV(data, fileName)
   }
 
-  useEffect(() => {
-    if (shouldHandleLocks) {
-      let lockedDataPapers = dataPaper
-      let lockedDataStudies = dataStudy
-      let lockedDataInterventions = dataIntervention
-      let lockedDataOutcomes = dataOutcome
-      let lockedDataEffects = dataEffect
-
-      if (lockPapers) {
-        lockedDataStudies = semiJoin(lockedDataStudies, dataPaper, "paper")
-        lockedDataInterventions = semiJoin(
-          lockedDataInterventions,
-          dataPaper,
-          "paper"
-        )
-        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataPaper, "paper")
-        lockedDataEffects = semiJoin(lockedDataEffects, dataPaper, "paper")
-      }
-
-      if (lockStudies) {
-        lockedDataPapers = semiJoin(lockedDataPapers, dataStudy, "paper")
-        lockedDataInterventions = semiJoin(lockedDataInterventions, dataStudy, [
-          "paper",
-          "study",
-        ])
-        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataStudy, [
-          "paper",
-          "study",
-        ])
-        lockedDataEffects = semiJoin(lockedDataEffects, dataStudy, [
-          "paper",
-          "study",
-        ])
-      }
-
-      if (lockInterventions) {
-        lockedDataPapers = semiJoin(lockedDataPapers, dataIntervention, "paper")
-        lockedDataStudies = semiJoin(lockedDataStudies, dataIntervention, [
-          "paper",
-          "study",
-        ])
-        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataIntervention, [
-          "paper",
-          "study",
-        ])
-        lockedDataEffects = semiJoin(lockedDataEffects, dataIntervention, [
-          "paper",
-          "study",
-        ])
-      }
-
-      if (lockOutcomes) {
-        lockedDataPapers = semiJoin(lockedDataPapers, dataOutcome, "paper")
-        lockedDataStudies = semiJoin(lockedDataStudies, dataOutcome, [
-          "paper",
-          "study",
-        ])
-        lockedDataInterventions = semiJoin(
-          lockedDataInterventions,
-          dataOutcome,
-          ["paper", "study"]
-        )
-        lockedDataEffects = semiJoin(lockedDataEffects, dataOutcome, [
-          "paper",
-          "study",
-        ])
-      }
-
-      if (lockEffects) {
-        lockedDataPapers = semiJoin(lockedDataPapers, dataEffect, "paper")
-        lockedDataStudies = semiJoin(lockedDataStudies, dataEffect, [
-          "paper",
-          "study",
-        ])
-        lockedDataInterventions = semiJoin(
-          lockedDataInterventions,
-          dataEffect,
-          ["paper", "study"]
-        )
-        lockedDataOutcomes = semiJoin(lockedDataOutcomes, dataEffect, [
-          "paper",
-          "study",
-        ])
-      }
-
-      setDataPaperLevel(lockedDataPapers)
-      setDataStudyLevel(lockedDataStudies)
-      setDataInterventionLevel(lockedDataInterventions)
-      setDataOutcomeLevel(lockedDataOutcomes)
-      setDataEffectLevel(lockedDataEffects)
-    }
-
-    setShouldHandleLocks(false)
-  }, [shouldHandleLocks])
-
   return (
-    <main className="mx-3 md:mx-6 lg:mx-12 space-y-6 my-12 md:my-16">
-      <h1 className="text-center text-4xl font-bold">Data Explorer</h1>
+    <main className="page-container space-y-8">
+      <div className="text-center space-y-4">
+        <h1 className="text-page-title">Data Explorer</h1>
+        <p className="max-w-2xl mx-auto text-description">
+          Browse research papers using the tabs below. Filter data by topics or
+          methods, and download tables for analysis. Need help? See our{" "}
+          <Link
+            href="/faq"
+            className="font-medium text-primary hover:underline"
+          >
+            FAQ
+          </Link>{" "}
+          for detailed instructions.
+        </p>
+      </div>
       <Tabs defaultValue={level} className="space-y-6">
-        <div className="mx-auto flex flex-wrap items-center justify-center gap-3">
-          <TabsList className="flex h-auto flex-wrap items-center gap-1 rounded-full p-0 align-middle bg-primary-foreground sm:bg-primary">
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <TabsList className="flex-wrap h-auto">
             <TabsTrigger
-              className="rounded-3xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="paper"
               onClick={() => setLevel("paper")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
             >
               Papers
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-3xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="study"
               onClick={() => setLevel("study")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
             >
               Studies
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-3xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
+              value="sample"
+              onClick={() => setLevel("sample")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+            >
+              Samples
+            </TabsTrigger>
+            <TabsTrigger
               value="intervention"
               onClick={() => setLevel("intervention")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
             >
               Interventions
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-3xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="outcome"
               onClick={() => setLevel("outcome")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
             >
               Outcomes
             </TabsTrigger>
             <TabsTrigger
-              className="rounded-3xl border-4 border-primary bg-primary text-primary-foreground data-[state=active]:text-foreground grow-0"
               value="effect"
               onClick={() => setLevel("effect")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
             >
               Effects
             </TabsTrigger>
@@ -246,25 +131,28 @@ export default function DataExplorer() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button className="w-32 rounded-3xl" variant="outline">
+              <Button variant="outline">
                 Download
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="rounded-3xl p-2">
+            <DropdownMenuContent>
+              <DropdownMenuLabel>Individual Tables</DropdownMenuLabel>
               <DropdownMenuItem
-                className="rounded-xl"
                 onClick={() => handleDownload(papers, "lime-papers.csv")}
               >
                 Papers
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-xl"
                 onClick={() => handleDownload(studies, "lime-studies.csv")}
               >
                 Studies
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-xl"
+                onClick={() => handleDownload(samples, "lime-samples.csv")}
+              >
+                Samples
+              </DropdownMenuItem>
+              <DropdownMenuItem
                 onClick={() =>
                   handleDownload(interventions, "lime-interventions.csv")
                 }
@@ -272,142 +160,119 @@ export default function DataExplorer() {
                 Interventions
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-xl"
                 onClick={() => handleDownload(outcomes, "lime-outcomes.csv")}
               >
                 Outcomes
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="rounded-xl"
                 onClick={() => handleDownload(effects, "lime-effects.csv")}
               >
                 Effects
               </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuLabel>Complete Dataset</DropdownMenuLabel>
               <DropdownMenuItem
-                className="rounded-xl"
                 onClick={() => handleDownload(all, "lime-data.csv")}
               >
-                All
+                All (joined)
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Dialog>
-            <DialogTrigger asChild>
-              <InfoIcon className="h-6 w-6 hover:cursor-pointer hover:text-muted-foreground" />
-            </DialogTrigger>
-            <DialogContent className="max-h-full max-w-3xl overflow-auto">
-              <DialogHeader>
-                <DialogTitle>Data Explorer Help</DialogTitle>
-              </DialogHeader>
-              <p>
-                The Data Explorer provides access to LIME&apos;s comprehensive
-                database of intervention studies focused on reducing animal
-                product consumption. This tool allows you to explore detailed
-                information across multiple levels of research data, organized
-                into easy-to-navigate tables.
-              </p>
-              <p>
-                Navigate between different levels using the tabs at the top to
-                explore:
-              </p>
-              <ul className="ms-6 list-disc">
-                <li>
-                  Papers: Access publication details, authors, and open access
-                  status
-                </li>
-                <li>Studies: Examine sample sizes and preregistrations</li>
-                <li>
-                  Interventions: Discover the various techniques and approaches
-                  tested
-                </li>
-                <li>
-                  Outcomes: Review different measurement methods and approaches
-                </li>
-                <li>Effects: Explore the effect sizes of interventions.</li>
-              </ul>
-              <p>
-                Each table includes filtering options to help you focus on
-                specific aspects of interest. You can lock the filters by
-                clicking on the lock icon so the filter options are carried over
-                between levels.
-              </p>
-              <p>
-                Want to work with the data directly? You can download
-                information from any individual level or export the complete
-                dataset all at once. The data is provided in CSV format, making
-                it easy to use in your preferred analysis tools.
-              </p>
-            </DialogContent>
-          </Dialog>
         </div>
 
-        <TabsContent value="paper" className="space-y-3">
+        <TabsContent value="paper" className="space-y-4" forceMount hidden={level !== "paper"}>
           <FilterPapers
             data={papers}
-            setData={setDataPaper}
-            lock={lockPapers}
-            setLock={setLockPapers}
-            setShouldHandleLocks={setShouldHandleLocks}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <DataTable
             columns={ColumnsPapers}
-            data={dataPaperLevel}
+            data={displayData.papers}
             totalRows={papers.length}
           />
         </TabsContent>
-        <TabsContent value="study" className="space-y-3">
+        <TabsContent value="study" className="space-y-4" forceMount hidden={level !== "study"}>
           <FilterStudies
             data={studies}
-            setData={setDataStudy}
-            lock={lockStudies}
-            setLock={setLockStudies}
-            setShouldHandleLocks={setShouldHandleLocks}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <DataTable
             columns={ColumnsStudies}
-            data={dataStudyLevel}
+            data={displayData.studies}
             totalRows={studies.length}
           />
         </TabsContent>
-        <TabsContent value="intervention" className="space-y-3">
+        <TabsContent value="sample" className="space-y-4" forceMount hidden={level !== "sample"}>
+          <FilterSamples
+            data={samples}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
+          />
+          <DataTable
+            columns={ColumnsSamples}
+            data={displayData.samples}
+            totalRows={samples.length}
+          />
+        </TabsContent>
+        <TabsContent value="intervention" className="space-y-4" forceMount hidden={level !== "intervention"}>
           <FilterInterventions
             data={interventions}
-            setData={setDataIntervention}
-            lock={lockInterventions}
-            setLock={setLockInterventions}
-            setShouldHandleLocks={setShouldHandleLocks}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <DataTable
             columns={ColumnsInterventions}
-            data={dataInterventionLevel}
+            data={displayData.interventions}
             totalRows={interventions.length}
           />
         </TabsContent>
-        <TabsContent value="outcome" className="space-y-3">
+        <TabsContent value="outcome" className="space-y-4" forceMount hidden={level !== "outcome"}>
           <FilterOutcomes
             data={outcomes}
-            setData={setDataOutcome}
-            lock={lockOutcomes}
-            setLock={setLockOutcomes}
-            setShouldHandleLocks={setShouldHandleLocks}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <DataTable
             columns={ColumnsOutcomes}
-            data={dataOutcomeLevel}
+            data={displayData.outcomes}
             totalRows={outcomes.length}
           />
         </TabsContent>
-        <TabsContent value="effect" className="space-y-3">
+        <TabsContent value="effect" className="space-y-4" forceMount hidden={level !== "effect"}>
           <FilterEffects
             data={effects}
-            setData={setDataEffect}
-            lock={lockEffects}
-            setLock={setLockEffects}
-            setShouldHandleLocks={setShouldHandleLocks}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
           />
           <DataTable
             columns={ColumnsEffects}
-            data={dataEffectLevel}
+            data={displayData.effects}
             totalRows={effects.length}
           />
         </TabsContent>

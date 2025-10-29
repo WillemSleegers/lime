@@ -50,7 +50,7 @@ export function shuffle<T>(array: T[]): T[] {
   return array
 }
 
-export function generateTicks(min: number, max: number, targetCount = 5) {
+export function generateTicks(min: number, max: number, targetCount = 10) {
   // Handle edge cases
   if (min === max) {
     return [min]
