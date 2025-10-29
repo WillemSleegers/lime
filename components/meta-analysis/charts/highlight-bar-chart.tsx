@@ -21,6 +21,11 @@ export const HighlightBarChart = ({ data }: HighlightBarChartProps) => {
   // Calculate dynamic height: 25px per bar (more compact) + padding
   const height = Math.max(150, data.length * 25 + 40)
 
+  // Calculate dynamic width for Y-axis based on longest label
+  // Approximate 7px per character + 20px padding
+  const longestLabel = Math.max(...data.map(d => d.name.length))
+  const yAxisWidth = Math.min(Math.max(longestLabel * 7 + 20, 80), 250)
+
   return (
     <ChartContainer config={chartConfig} className="w-full" style={{ height: `${height}px` }}>
       <BarChart
@@ -48,7 +53,7 @@ export const HighlightBarChart = ({ data }: HighlightBarChartProps) => {
           tickLine={false}
           axisLine={false}
           tickMargin={6}
-          width={200}
+          width={yAxisWidth}
           fontSize={11}
         />
         <ChartTooltip
