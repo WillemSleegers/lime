@@ -75,7 +75,7 @@ export const Highlights = (props: HighLightsProps) => {
       data,
       "paper",
       "paper_open_access",
-      "yes"
+      "open access"
     )
     openAccessPercentage = round((openAccessCount / papersCount) * 100, 0)
     preregistrationsCount = countUniqueFilteredValues(
