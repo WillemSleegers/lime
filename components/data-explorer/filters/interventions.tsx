@@ -58,19 +58,19 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
 
     subset = subset.filter((datum) => {
       return values.intervention_content.some((value) =>
-        datum.intervention_content.includes(value)
+        datum.intervention_content?.includes(value)
       )
     })
 
     subset = subset.filter((datum) => {
       return values.intervention_mechanism.some((value) =>
-        datum.intervention_mechanism.includes(value)
+        datum.intervention_mechanism?.includes(value)
       )
     })
 
     subset = subset.filter((datum) => {
       return values.intervention_medium.some((value) =>
-        datum.intervention_medium.includes(value)
+        datum.intervention_medium?.includes(value)
       )
     })
 

@@ -215,6 +215,7 @@ export const INTERVENTION_CONTENT_OPTIONS = customSort(
     ...new Set(
       interventions
         .map((datum) => datum.intervention_content)
+        .filter((str): str is string => str !== undefined)
         .flatMap((str) => str.split(", ").map((s) => s))
     ),
   ],
@@ -224,6 +225,7 @@ export const INTERVENTION_MECHANISM_OPTIONS = customSort([
   ...new Set(
     interventions
       .map((datum) => datum.intervention_mechanism)
+      .filter((str): str is string => str !== undefined)
       .flatMap((str) => str.split(",").map((s) => s.trim()))
   ),
 ])
@@ -231,6 +233,7 @@ export const INTERVENTION_MEDIUM_OPTIONS = customSort([
   ...new Set(
     interventions
       .map((datum) => datum.intervention_medium)
+      .filter((str): str is string => str !== undefined)
       .flatMap((str) => str.split(",").map((s) => s.trim()))
   ),
 ])
@@ -239,6 +242,7 @@ export const COUNTRY_OPTIONS = customSort(
     ...new Set(
       interventions
         .map((datum) => datum.sample_country)
+        .filter((str): str is string => str !== undefined)
         .flatMap((str) => str.split(", ").map((s) => s.trim()))
     ),
   ],

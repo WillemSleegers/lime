@@ -34,7 +34,7 @@ export const MetaAnalysisTab = ({
   egger,
 }: MetaAnalysisTabProps) => {
   // Show loading state until results are ready
-  if (!estimate) {
+  if (!estimate || !egger || !data) {
     return (
       <div className="space-y-8">
         <Card>

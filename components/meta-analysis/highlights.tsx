@@ -94,7 +94,7 @@ export const Highlights = (props: HighLightsProps) => {
     // Calculate intervention content counts (split comma-separated values)
     const interventionContentCounts: Record<string, number> = {}
     data.forEach((datum) => {
-      const contents = datum.intervention_content.split(", ")
+      const contents = datum.intervention_content?.split(", ") || []
       contents.forEach((content) => {
         interventionContentCounts[content] = (interventionContentCounts[content] || 0) + 1
       })
@@ -110,7 +110,7 @@ export const Highlights = (props: HighLightsProps) => {
     // Calculate intervention mechanism counts (split comma-separated values)
     const interventionMechanismCounts: Record<string, number> = {}
     data.forEach((datum) => {
-      const mechanisms = datum.intervention_mechanism.split(", ")
+      const mechanisms = datum.intervention_mechanism?.split(", ") || []
       mechanisms.forEach((mechanism) => {
         interventionMechanismCounts[mechanism] = (interventionMechanismCounts[mechanism] || 0) + 1
       })
@@ -126,7 +126,7 @@ export const Highlights = (props: HighLightsProps) => {
     // Calculate intervention medium counts (split comma-separated values)
     const interventionMediumCounts: Record<string, number> = {}
     data.forEach((datum) => {
-      const mediums = datum.intervention_medium.split(", ")
+      const mediums = datum.intervention_medium?.split(", ") || []
       mediums.forEach((medium) => {
         interventionMediumCounts[medium] = (interventionMediumCounts[medium] || 0) + 1
       })
