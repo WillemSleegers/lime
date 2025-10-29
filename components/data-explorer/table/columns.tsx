@@ -11,7 +11,7 @@ import { CellLongText } from "@/components/data-explorer/table/cell-long-text"
 import { DataTableColumnHeader } from "@/components/data-explorer/table/column-header"
 
 import { round } from "@/lib/utils"
-import { Effect, Intervention, Outcome, Paper, Study } from "@/lib/types"
+import { Effect, Intervention, Outcome, Paper, Sample, Study } from "@/lib/types"
 
 export const ColumnsPapers: ColumnDef<Paper>[] = [
   {
@@ -201,6 +201,102 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
       const value = row.getValue<string>("study_randomization")
 
       return value == "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
+    },
+  },
+  {
+    id: "paper_details",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Details" />
+    ),
+    cell: ({ row }) => {
+      return <PaperDialog row={row} variant="button" />
+    },
+    enableSorting: false,
+  },
+]
+
+export const ColumnsSamples: ColumnDef<Sample>[] = [
+  {
+    id: "paper_label",
+    accessorKey: "paper_label",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Paper" />
+    ),
+  },
+  {
+    id: "study",
+    accessorKey: "study",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Study" />
+    ),
+  },
+  {
+    id: "sample_intervention",
+    accessorKey: "sample_intervention",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Sample" />
+    ),
+  },
+  {
+    id: "sample_intervention_n",
+    accessorKey: "sample_intervention_n",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Sample size (intervention)" />
+    ),
+  },
+  {
+    id: "sample_control_n",
+    accessorKey: "sample_control_n",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Sample size (control)" />
+    ),
+  },
+  {
+    id: "sample_country",
+    accessorKey: "sample_country",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Country" />
+    ),
+  },
+  {
+    id: "sample_type",
+    accessorKey: "sample_type",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Type" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("sample_type")
+      const content = value.split(", ").map((e) => (
+        <Badge
+          key={e}
+          className="text-sm font-normal whitespace-nowrap bg-muted text-foreground"
+        >
+          {e}
+        </Badge>
+      ))
+      return <div className="flex gap-1 flex-wrap">{content}</div>
+    },
+  },
+  {
+    id: "sample_representative",
+    accessorKey: "sample_representative",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Representative" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("sample_representative")
+      return value == "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
+    },
+  },
+  {
+    id: "sample_description",
+    accessorKey: "sample_description",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Description" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("sample_description")
+      return <CellLongText value={value} />
     },
   },
   {

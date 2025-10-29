@@ -1,8 +1,9 @@
-import type { Data, Papers, Studies, Interventions, Outcomes, Effects } from "./types"
+import type { Data, Papers, Studies, Samples, Interventions, Outcomes, Effects } from "./types"
 
 export type FilteredData = {
   papers: Papers
   studies: Studies
+  samples: Samples
   interventions: Interventions
   outcomes: Outcomes
   effects: Effects
@@ -11,6 +12,7 @@ export type FilteredData = {
 export type Locks = {
   papers: boolean
   studies: boolean
+  samples: boolean
   interventions: boolean
   outcomes: boolean
   effects: boolean
@@ -65,6 +67,14 @@ export function applyLocksToData(
       )
     : null
 
+  const sampleIds = locks.samples
+    ? new Set(
+        filteredData.samples.map(
+          (s) => `${s.paper}|${s.study}|${s.sample_intervention}`
+        )
+      )
+    : null
+
   const interventionIds = locks.interventions
     ? new Set(
         filteredData.interventions.map(
@@ -91,6 +101,8 @@ export function applyLocksToData(
   const constrained = fullData.filter((row) => {
     if (paperIds && !paperIds.has(row.paper)) return false
     if (studyIds && !studyIds.has(`${row.paper}|${row.study}`)) return false
+    if (sampleIds && !sampleIds.has(`${row.paper}|${row.study}|${row.sample_intervention}`))
+      return false
     if (interventionIds && !interventionIds.has(`${row.paper}|${row.study}|${row.intervention_condition}`))
       return false
     if (
@@ -110,6 +122,11 @@ export function applyLocksToData(
   const uniqueConstrained = {
     papers: uniqueBy(constrained, ["paper"]) as Papers,
     studies: uniqueBy(constrained, ["paper", "study"]) as Studies,
+    samples: uniqueBy(constrained, [
+      "paper",
+      "study",
+      "sample_intervention",
+    ]) as Samples,
     interventions: uniqueBy(constrained, [
       "paper",
       "study",
@@ -135,6 +152,9 @@ export function applyLocksToData(
     studies: locks.studies
       ? uniqueConstrained.studies
       : intersectByKeys(uniqueConstrained.studies, filteredData.studies, ["paper", "study"]),
+    samples: locks.samples
+      ? uniqueConstrained.samples
+      : intersectByKeys(uniqueConstrained.samples, filteredData.samples, ["paper", "study", "sample_intervention"]),
     interventions: locks.interventions
       ? uniqueConstrained.interventions
       : intersectByKeys(uniqueConstrained.interventions, filteredData.interventions, ["paper", "study", "intervention_condition"]),

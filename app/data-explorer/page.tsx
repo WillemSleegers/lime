@@ -17,8 +17,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import {
   ColumnsPapers,
-  ColumnsInterventions,
   ColumnsStudies,
+  ColumnsSamples,
+  ColumnsInterventions,
   ColumnsOutcomes,
   ColumnsEffects,
 } from "@/components/data-explorer/table/columns"
@@ -26,6 +27,7 @@ import { DataTable } from "@/components/data-explorer/table/data-table"
 
 import papers from "@/assets/data/papers.json"
 import studies from "@/assets/data/studies.json"
+import samples from "@/assets/data/samples.json"
 import interventions from "@/assets/data/interventions.json"
 import outcomes from "@/assets/data/outcomes.json"
 import effects from "@/assets/data/effects.json"
@@ -33,6 +35,7 @@ import all from "@/assets/data/data.json"
 
 import { FilterPapers } from "@/components/data-explorer/filters/papers"
 import { FilterStudies } from "@/components/data-explorer/filters/studies"
+import { FilterSamples } from "@/components/data-explorer/filters/samples"
 import { FilterInterventions } from "@/components/data-explorer/filters/interventions"
 import { FilterOutcomes } from "@/components/data-explorer/filters/outcomes"
 import { FilterEffects } from "@/components/data-explorer/filters/effects"
@@ -48,6 +51,7 @@ export default function DataExplorer() {
       {
         papers,
         studies,
+        samples,
         interventions,
         outcomes,
         effects,
@@ -96,6 +100,13 @@ export default function DataExplorer() {
               Studies
             </TabsTrigger>
             <TabsTrigger
+              value="sample"
+              onClick={() => setLevel("sample")}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+            >
+              Samples
+            </TabsTrigger>
+            <TabsTrigger
               value="intervention"
               onClick={() => setLevel("intervention")}
               className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
@@ -135,6 +146,11 @@ export default function DataExplorer() {
                 onClick={() => handleDownload(studies, "lime-studies.csv")}
               >
                 Studies
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => handleDownload(samples, "lime-samples.csv")}
+              >
+                Samples
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() =>
@@ -194,6 +210,22 @@ export default function DataExplorer() {
             columns={ColumnsStudies}
             data={displayData.studies}
             totalRows={studies.length}
+          />
+        </TabsContent>
+        <TabsContent value="sample" className="space-y-4" forceMount hidden={level !== "sample"}>
+          <FilterSamples
+            data={samples}
+            filteredData={filteredData}
+            setFilteredData={setFilteredData}
+            locks={locks}
+            setLocks={setLocks}
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
+          />
+          <DataTable
+            columns={ColumnsSamples}
+            data={displayData.samples}
+            totalRows={samples.length}
           />
         </TabsContent>
         <TabsContent value="intervention" className="space-y-4" forceMount hidden={level !== "intervention"}>

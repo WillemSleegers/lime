@@ -14,6 +14,7 @@ export function useDataExplorerState(
   const [locks, setLocks] = useState<Locks>({
     papers: false,
     studies: false,
+    samples: false,
     interventions: false,
     outcomes: false,
     effects: false,

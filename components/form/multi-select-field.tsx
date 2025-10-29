@@ -72,7 +72,7 @@ export function MultiSelectField<T extends FieldValues>({
           <MultiSelect onValuesChange={field.onChange} values={field.value}>
             <MultiSelectTrigger
               id={name}
-              className={className}
+              className={`bg-card ${className || ""}`}
               aria-invalid={fieldState.invalid}
             >
               <MultiSelectValue placeholder={placeholder} />

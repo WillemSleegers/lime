@@ -44,6 +44,8 @@ import {
   INTERVENTION_CONTENT_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
+  SAMPLE_TYPE_OPTIONS,
+  SAMPLE_REPRESENTATIVE_OPTIONS,
 } from "@/constants/constants-filters"
 import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
 
@@ -60,6 +62,14 @@ const formSchema = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one country." }),
+  sample_type: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one sample type." }),
+  sample_representative: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one representativeness option." }),
   sample_size: z.coerce
     .number()
     .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
@@ -89,6 +99,10 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
       intervention_mechanism: META_ANALYSIS_DEFAULTS.intervention_mechanism,
       intervention_medium: META_ANALYSIS_DEFAULTS.intervention_medium,
       sample_country: COUNTRY_OPTIONS,
+      sample_type: SAMPLE_TYPE_OPTIONS.map((option) => option.value),
+      sample_representative: SAMPLE_REPRESENTATIVE_OPTIONS.map(
+        (option) => option.value
+      ),
       sample_size: 1,
       study_preregistered: META_ANALYSIS_DEFAULTS.study_preregistered,
       study_data_available: META_ANALYSIS_DEFAULTS.study_data_available,
@@ -158,6 +172,20 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
     subset = subset.filter((e) =>
       values.sample_country.includes(e.sample_country)
     )
+
+    // Filter on sample type
+    subset = subset.filter((datum) => {
+      return values.sample_type.some((value) =>
+        datum.sample_type.includes(value)
+      )
+    })
+
+    // Filter on sample representativeness
+    subset = subset.filter((datum) => {
+      return values.sample_representative.some((value) =>
+        datum.sample_representative.includes(value)
+      )
+    })
 
     // Filter on preregistration
     subset = subset.filter((e) =>
@@ -316,32 +344,48 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
           </CardContent>
         </Card>
 
-        {/* Outcome-level */}
+        {/* Samples-level */}
         <Card>
           <CardHeader>
-            <CardTitle>Outcomes</CardTitle>
+            <CardTitle>Samples</CardTitle>
             <CardDescription>
-              Select types of outcomes to include
+              Filter by sample characteristics
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
               <MultiSelectField
                 control={form.control}
-                name="outcome_subcategory"
-                label="Outcome categories"
-                description="Choose between behaviors (actual consumption and food choices), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
-                placeholder="Select outcome categories..."
-                searchPlaceholder="Search categories..."
-                searchEmptyMessage="No category found."
-                options={OUTCOME_CATEGORIES_GROUPED}
+                name="sample_country"
+                label="Country"
+                description="Countries where studies were conducted"
+                placeholder="Select countries..."
+                searchPlaceholder="Search countries..."
+                searchEmptyMessage="No country found."
+                options={COUNTRY_OPTIONS}
                 className="w-full"
               />
-              <CheckboxGroup
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 items-start">
+                <CheckboxGroup
+                  control={form.control}
+                  name="sample_representative"
+                  label="Representativeness"
+                  options={SAMPLE_REPRESENTATIVE_OPTIONS}
+                />
+                <CheckboxGroup
+                  control={form.control}
+                  name="sample_type"
+                  label="Sample type"
+                  options={SAMPLE_TYPE_OPTIONS}
+                />
+              </div>
+              <InputField
                 control={form.control}
-                name="outcome_measurement_type"
-                label="Measurement type"
-                options={OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW}
+                name="sample_size"
+                label="Minimum sample size"
+                description="Minimum per control or intervention condition"
+                type="number"
+                className="rounded-lg"
               />
             </div>
           </CardContent>
@@ -387,34 +431,32 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
           </CardContent>
         </Card>
 
-        {/* Samples-level */}
+        {/* Outcome-level */}
         <Card>
           <CardHeader>
-            <CardTitle>Samples</CardTitle>
+            <CardTitle>Outcomes</CardTitle>
             <CardDescription>
-              Filter by sample characteristics
+              Select types of outcomes to include
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 items-start">
+            <div className="space-y-6">
               <MultiSelectField
                 control={form.control}
-                name="sample_country"
-                label="Country"
-                description="Countries where studies were conducted"
-                placeholder="Select countries..."
-                searchPlaceholder="Search countries..."
-                searchEmptyMessage="No country found."
-                options={COUNTRY_OPTIONS}
+                name="outcome_subcategory"
+                label="Outcome categories"
+                description="Choose between behaviors (actual consumption and food choices), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
+                placeholder="Select outcome categories..."
+                searchPlaceholder="Search categories..."
+                searchEmptyMessage="No category found."
+                options={OUTCOME_CATEGORIES_GROUPED}
                 className="w-full"
               />
-              <InputField
+              <CheckboxGroup
                 control={form.control}
-                name="sample_size"
-                label="Minimum sample size"
-                description="Minimum per control or intervention condition"
-                type="number"
-                className="rounded-lg"
+                name="outcome_measurement_type"
+                label="Measurement type"
+                options={OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW}
               />
             </div>
           </CardContent>

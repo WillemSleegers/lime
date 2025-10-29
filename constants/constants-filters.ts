@@ -1,5 +1,6 @@
 import papers from "@/assets/data/papers.json"
 import studies from "@/assets/data/studies.json"
+import samples from "@/assets/data/samples.json"
 import interventions from "@/assets/data/interventions.json"
 import outcomes from "@/assets/data/outcomes.json"
 
@@ -206,6 +207,38 @@ export const STUDY_RANDOMIZATION_OPTIONS_NEW = [
     value: "no",
     label: "Non-randomized assignment",
     description: "Potential for confounding",
+  },
+]
+
+// Sample-level
+export const SAMPLE_COUNTRY_OPTIONS = customSort(
+  [
+    ...new Set(
+      samples
+        .map((datum) => datum.sample_country)
+        .filter((str): str is string => str !== undefined)
+    ),
+  ],
+  NA_OPTIONS
+)
+
+export const SAMPLE_TYPE_OPTIONS = [
+  { value: "children", label: "Children", description: "Samples consisting of children or minors" },
+  { value: "public", label: "Public", description: "General public samples recruited through various channels" },
+  { value: "panel", label: "Panel", description: "Pre-recruited panels of participants (e.g., online panels, community panels)" },
+  { value: "university", label: "University", description: "University students or staff recruited from academic institutions" },
+]
+
+export const SAMPLE_REPRESENTATIVE_OPTIONS = [
+  {
+    value: "yes",
+    label: "Representative",
+    description: "Efforts were made to recruit a representative sample of the population",
+  },
+  {
+    value: "no",
+    label: "Not representative",
+    description: "",
   },
 ]
 

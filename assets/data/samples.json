@@ -2320,7 +2320,7 @@
     "sample_intervention": 3,
     "sample_intervention_n": 2563,
     "sample_control_n": 2795,
-    "sample_country": "Sweden, Denmark",
+    "sample_country": "N/A",
     "sample_description": "datapoint represents purchases made in the canteen of a ferry going between Helsingborg in Sweden and Helsingør in Denmark",
     "sample_representative": "no",
     "sample_type": "public"

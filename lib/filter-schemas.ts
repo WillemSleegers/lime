@@ -48,6 +48,28 @@ export const studyFiltersFields = {
 }
 
 // ============================================================================
+// Sample Filters
+// ============================================================================
+
+export const sampleFiltersFields = {
+  sample_country: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  sample_type: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  sample_representative: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  sample_size: z.coerce
+    .number()
+    .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
+}
+
+// ============================================================================
 // Intervention Filters
 // ============================================================================
 

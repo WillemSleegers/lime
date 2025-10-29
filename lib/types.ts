@@ -4,6 +4,7 @@ import studies from "@/assets/data/studies.json"
 import outcomes from "@/assets/data/outcomes.json"
 import interventions from "@/assets/data/interventions.json"
 import effects from "@/assets/data/effects.json"
+import samples from "@/assets/data/samples.json"
 
 export type Data = typeof data
 export type Datum = (typeof data)[0]
@@ -16,6 +17,10 @@ export type PapersKeys = keyof Papers[0]
 export type Studies = typeof studies
 export type Study = (typeof studies)[0]
 export type StudiesKeys = keyof Studies[0]
+
+export type Samples = typeof samples
+export type Sample = (typeof samples)[0]
+export type SamplesKeys = keyof Samples[0]
 
 export type Outcomes = typeof outcomes
 export type Outcome = (typeof outcomes)[0]
@@ -32,6 +37,7 @@ export type EffectsKeys = keyof Effects[0]
 export type Locks = {
   paper: boolean
   study: boolean
+  sample: boolean
   intervention: boolean
   outcome: boolean
   effect: boolean

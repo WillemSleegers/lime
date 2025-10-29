@@ -12,10 +12,10 @@ import {
 } from "@/components/ui/dialog"
 
 import data from "@/assets/data/data-nested.json"
-import { Effect, Intervention, Outcome, Paper, Study } from "@/lib/types"
+import { Effect, Intervention, Outcome, Paper, Sample, Study } from "@/lib/types"
 
 type PaperDialogProps = {
-  row: Row<Paper | Study | Intervention | Outcome | Effect>
+  row: Row<Paper | Study | Sample | Intervention | Outcome | Effect>
   variant?: "label" | "button"
 }
 
@@ -97,7 +97,9 @@ export const PaperDialog = ({ row, variant = "label" }: PaperDialogProps) => {
                           className="text-sm text-muted-foreground"
                           key={paperData.paper + "-intervention-" + i}
                         >
-                          {interventionData.intervention_description}
+                          {"intervention_description" in interventionData
+                            ? interventionData.intervention_description
+                            : "-"}
                         </li>
                       ))}
                     </ul>

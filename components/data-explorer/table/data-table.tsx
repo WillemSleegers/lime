@@ -138,15 +138,17 @@ export function DataTable<TData, TValue>({
         </div>
       </div>
 
-      <div className="rounded-2xl border bg-muted w-full">
+      <div className="rounded-2xl border bg-card w-full">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
+              <TableRow key={headerGroup.id} className="bg-muted">
+                {headerGroup.headers.map((header, index) => {
+                  const isFirst = index === 0
+                  const isLast = index === headerGroup.headers.length - 1
                   return (
                     <TableHead
-                      className="whitespace-nowrap text-foreground"
+                      className={`whitespace-nowrap text-foreground ${isFirst ? "rounded-tl-2xl" : ""} ${isLast ? "rounded-tr-2xl" : ""}`}
                       key={header.id}
                     >
                       {header.isPlaceholder

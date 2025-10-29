@@ -2802,11 +2802,11 @@
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "Participants received information about negative impacts of meat consumption on the environment (e.g. greenhouse gas emissions and deforestation)."
+            "intervention_description": "Participants received information about negative impacts of meat consumption on health (e.g. increased risk of non-communicable diseases)"
           },
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants received information about negative impacts of meat consumption on health (e.g. increased risk of non-communicable diseases)"
+            "intervention_description": "Participants received information about negative impacts of meat consumption on the environment (e.g. greenhouse gas emissions and deforestation)."
           }
         ],
         "outcomes": [
@@ -3131,12 +3131,10 @@
         "study_n": 424,
         "interventions": [
           {
-            "intervention_condition": 1,
-            "intervention_description": "Participants viewed a total of eight mock menus with the vegetarian symbol (V) presented on the left side of the dish name"
+            "intervention_condition": 1
           },
           {
-            "intervention_condition": 2,
-            "intervention_description": "Participants viewed a total of eight mock menus with the vegetarian symbol (V) presented on the right side of the dish name"
+            "intervention_condition": 2
           }
         ],
         "outcomes": [

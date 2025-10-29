@@ -16,7 +16,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
 import { Toggle } from "@/components/ui/toggle"
 import { FilteredData, Locks } from "@/lib/data-explorer-utils"
 import { Slider } from "@/components/ui/slider"
@@ -27,9 +26,6 @@ import { Effects } from "@/lib/types"
 
 const formSchemaEffects = z.object({
   effect_size: z.number().array(),
-  sample_size: z.coerce
-    .number()
-    .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
 })
 
 type FilterEffectsProps = {
@@ -61,7 +57,6 @@ export const FilterEffects = (props: FilterEffectsProps) => {
     reValidateMode: "onSubmit",
     defaultValues: {
       effect_size: [effect_size_min, effect_size_max],
-      sample_size: 1,
     },
   })
 
@@ -72,14 +67,6 @@ export const FilterEffects = (props: FilterEffectsProps) => {
       (datum) =>
         datum.effect_size >= values.effect_size[0] &&
         datum.effect_size <= values.effect_size[1]
-    )
-
-    const sample_size = Number(values.sample_size)
-
-    subset = subset.filter(
-      (datum) =>
-        datum.effect_intervention_n >= sample_size &&
-        datum.effect_control_n >= sample_size
     )
 
     setFilteredData((prev) => ({ ...prev, effects: subset }))
@@ -93,54 +80,31 @@ export const FilterEffects = (props: FilterEffectsProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="flex gap-6 flex-wrap items-baseline">
-            <FormField
-              control={form.control}
-              name="effect_size"
-              render={({ field }) => (
-                <FormItem className="w-60 flex flex-col gap-3">
-                  <FormLabel>Effect size</FormLabel>
-                  <FormControl>
-                    <Slider
-                      className="my-2"
-                      value={field.value}
-                      minStepsBetweenThumbs={0.1}
-                      min={effect_size_min}
-                      max={effect_size_max}
-                      step={0.1}
-                      onValueChange={field.onChange}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    From {field.value[0].toFixed(2)} to{" "}
-                    {field.value[1].toFixed(2)}
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="sample_size"
-              render={({ field }) => (
-                <FormItem className="w-60">
-                  <FormLabel>Minimum sample size</FormLabel>
-                  <FormControl>
-                    <Input
-                      className="rounded-lg"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription className="leading-5">
-                    This is the minimum sample size in either the control or
-                    intervention condition.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+          <FormField
+            control={form.control}
+            name="effect_size"
+            render={({ field }) => (
+              <FormItem className="w-60 flex flex-col gap-3">
+                <FormLabel>Effect size</FormLabel>
+                <FormControl>
+                  <Slider
+                    className="my-2"
+                    value={field.value}
+                    minStepsBetweenThumbs={0.1}
+                    min={effect_size_min}
+                    max={effect_size_max}
+                    step={0.1}
+                    onValueChange={field.onChange}
+                  />
+                </FormControl>
+                <FormDescription>
+                  From {field.value[0].toFixed(2)} to{" "}
+                  {field.value[1].toFixed(2)}
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           <div className="flex gap-2 justify-between">
             <Button type="submit" className="h-auto">

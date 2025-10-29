@@ -39,7 +39,7 @@ export function InputField<T extends FieldValues>({
             type={type}
             placeholder={placeholder}
             aria-invalid={fieldState.invalid}
-            className={className}
+            className={`bg-card ${className || ""}`}
           />
           {description && <FieldDescription>{description}</FieldDescription>}
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}

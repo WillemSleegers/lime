@@ -2360,7 +2360,7 @@
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
     "control_description": "Only the price and name of the meal were visible to the patrons in the canteen",
-    "sample_country": "Sweden, Denmark"
+    "sample_country": "N/A"
   },
   {
     "paper": 318,
@@ -2516,7 +2516,7 @@
     "intervention_description": "The target dish had an explicit vegan label \"Vegan curry stew with coconut and sweet potatoes\"",
     "intervention_content": "none",
     "intervention_mechanism": "other",
-    "intervention_medium": "menu/food options",
+    "intervention_medium": "",
     "control_description": "The target dish had a neutral label \"Curry stew with coconut and sweet potatoes*\", with a footnote mentioning that it's also suitable for vegetarians",
     "sample_country": "N/A"
   },
@@ -2526,8 +2526,8 @@
     "study": 1,
     "intervention_condition": 3,
     "intervention_description": "The target dish had an explicit vegetarian label \"Vegetarian curry stew with coconut and sweet potatoes\"",
-    "intervention_content": "none",
-    "intervention_mechanism": "other",
+    "intervention_content": "",
+    "intervention_mechanism": "",
     "intervention_medium": "menu/food options",
     "control_description": "The target dish had a neutral label \"Curry stew with coconut and sweet potatoes*\", with a footnote mentioning that it's also suitable for vegetarians",
     "sample_country": "N/A"
@@ -2538,8 +2538,8 @@
     "study": 1,
     "intervention_condition": 4,
     "intervention_description": "The target dish had an explicit plant-based label \"Plant-based curry stew with coconut and sweet potatoes\"",
-    "intervention_content": "none",
-    "intervention_mechanism": "other",
+    "intervention_content": "",
+    "intervention_mechanism": "",
     "intervention_medium": "menu/food options",
     "control_description": "The target dish had a neutral label \"Curry stew with coconut and sweet potatoes*\", with a footnote mentioning that it's also suitable for vegetarians",
     "sample_country": "N/A"
@@ -2550,8 +2550,8 @@
     "study": 1,
     "intervention_condition": 5,
     "intervention_description": "The target dish had an explicit meat-free label \"Meat-free curry stew with coconut and sweet potatoes\"",
-    "intervention_content": "none",
-    "intervention_mechanism": "other",
+    "intervention_content": "",
+    "intervention_mechanism": "",
     "intervention_medium": "menu/food options",
     "control_description": "The target dish had a neutral label \"Curry stew with coconut and sweet potatoes*\", with a footnote mentioning that it's also suitable for vegetarians",
     "sample_country": "N/A"
