@@ -7,18 +7,11 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
+import { Form } from "@/components/ui/form"
 import { Toggle } from "@/components/ui/toggle"
 import { FilteredData, Locks } from "@/lib/data-explorer-utils"
-import { Slider } from "@/components/ui/slider"
+import { InputField } from "@/components/form/input-field"
+import { SliderField } from "@/components/form/slider-field"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
@@ -26,6 +19,9 @@ import { Effects } from "@/lib/types"
 
 const formSchemaEffects = z.object({
   effect_size: z.number().array(),
+  sample_size: z.coerce
+    .number()
+    .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
 })
 
 type FilterEffectsProps = {
@@ -57,6 +53,7 @@ export const FilterEffects = (props: FilterEffectsProps) => {
     reValidateMode: "onSubmit",
     defaultValues: {
       effect_size: [effect_size_min, effect_size_max],
+      sample_size: 1,
     },
   })
 
@@ -67,6 +64,14 @@ export const FilterEffects = (props: FilterEffectsProps) => {
       (datum) =>
         datum.effect_size >= values.effect_size[0] &&
         datum.effect_size <= values.effect_size[1]
+    )
+
+    const sample_size = Number(values.sample_size)
+
+    subset = subset.filter(
+      (datum) =>
+        (datum.effect_intervention_n ?? 0) >= sample_size &&
+        (datum.effect_control_n ?? 0) >= sample_size
     )
 
     setFilteredData((prev) => ({ ...prev, effects: subset }))
@@ -80,31 +85,25 @@ export const FilterEffects = (props: FilterEffectsProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <FormField
-            control={form.control}
-            name="effect_size"
-            render={({ field }) => (
-              <FormItem className="w-60 flex flex-col gap-3">
-                <FormLabel>Effect size</FormLabel>
-                <FormControl>
-                  <Slider
-                    className="my-2"
-                    value={field.value}
-                    minStepsBetweenThumbs={0.1}
-                    min={effect_size_min}
-                    max={effect_size_max}
-                    step={0.1}
-                    onValueChange={field.onChange}
-                  />
-                </FormControl>
-                <FormDescription>
-                  From {field.value[0].toFixed(2)} to{" "}
-                  {field.value[1].toFixed(2)}
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <SliderField
+              control={form.control}
+              name="effect_size"
+              label="Effect size"
+              min={effect_size_min}
+              max={effect_size_max}
+              step={0.1}
+              minStepsBetweenThumbs={0.1}
+            />
+            <InputField
+              control={form.control}
+              name="sample_size"
+              label="Minimum sample size"
+              description="Minimum per control or intervention condition"
+              type="number"
+              className="rounded-lg"
+            />
+          </div>
 
           <div className="flex gap-2 justify-between">
             <Button type="submit" className="h-auto">

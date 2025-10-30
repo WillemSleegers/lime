@@ -28,6 +28,7 @@ const MetaAnalysisPage = () => {
   const [data, setData] = useState<Data>()
   const [estimate, setEstimate] = useState<Estimate | undefined>()
   const [egger, setEgger] = useState<Egger | undefined>()
+  const [error, setError] = useState<string | undefined>()
 
   // Setup
   useEffect(() => {
@@ -75,54 +76,61 @@ const MetaAnalysisPage = () => {
   const runAnalysis = async () => {
     if (!webR.current || !data) return
 
-    // Update status
-    setStatus("Running meta-analysis...")
+    try {
+      // Update status
+      setStatus("Running meta-analysis...")
 
-    // Reset the effect
-    setEstimate(undefined)
+      // Reset the effect and error
+      setEstimate(undefined)
+      setError(undefined)
 
-    const subset = data.map((datum: Datum) =>
-      (({
-        effect_size,
-        effect_size_var,
-        effect_size_se,
-        paper_study,
-        paper,
-        study,
-        outcome,
-        intervention_condition,
-        control_condition,
-      }) => ({
-        effect_size,
-        effect_size_var,
-        effect_size_se,
-        paper_study,
-        paper,
-        study,
-        outcome,
-        intervention_condition,
-        control_condition,
-      }))(datum)
-    )
+      const subset = data.map((datum: Datum) =>
+        (({
+          effect_size,
+          effect_size_var,
+          effect_size_se,
+          paper_study,
+          paper,
+          study,
+          outcome,
+          intervention_condition,
+          control_condition,
+        }) => ({
+          effect_size,
+          effect_size_var,
+          effect_size_se,
+          paper_study,
+          paper,
+          study,
+          outcome,
+          intervention_condition,
+          control_condition,
+        }))(datum)
+      )
 
-    const df = await new webR.current.RObject(subset)
-    await webR.current.objs.globalEnv.bind("data", df)
-    const results = await runMetaAnalysis(webR.current)
+      const df = await new webR.current.RObject(subset)
+      await webR.current.objs.globalEnv.bind("data", df)
+      const results = await runMetaAnalysis(webR.current)
 
-    setEstimate({
-      value: results[0],
-      lower: results[1],
-      upper: results[2],
-      piLower: results[3],
-      piUpper: results[4],
-    })
-    setEgger({
-      egger_b: results[5],
-      egger_se: results[6],
-      egger_z: results[7],
-      egger_p: results[8],
-    })
-    setStatus("Ready")
+      setEstimate({
+        value: results[0],
+        lower: results[1],
+        upper: results[2],
+        piLower: results[3],
+        piUpper: results[4],
+      })
+      setEgger({
+        egger_b: results[5],
+        egger_se: results[6],
+        egger_z: results[7],
+        egger_p: results[8],
+      })
+      setStatus("Ready")
+    } catch (err) {
+      console.error("Meta-analysis error:", err)
+      setError(err instanceof Error ? err.message : "An unknown error occurred while running the meta-analysis")
+      setStatus("Ready")
+    }
   }
 
   useEffect(() => {
@@ -191,6 +199,7 @@ const MetaAnalysisPage = () => {
             data={data}
             estimate={estimate}
             egger={egger}
+            error={error}
           />
         </TabsContent>
       </Tabs>

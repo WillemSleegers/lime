@@ -12,7 +12,6 @@ import { Toggle } from "@/components/ui/toggle"
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 import { CheckboxGroup } from "@/components/form/checkbox-group"
 import { MultiSelectField } from "@/components/form/multi-select-field"
-import { InputField } from "@/components/form/input-field"
 
 import {
   SAMPLE_COUNTRY_OPTIONS,
@@ -58,7 +57,6 @@ export const FilterSamples = (props: FilterSamplesProps) => {
       sample_representative: SAMPLE_REPRESENTATIVE_OPTIONS.map(
         (option) => option.value
       ),
-      sample_size: 1,
     },
   })
 
@@ -82,14 +80,6 @@ export const FilterSamples = (props: FilterSamplesProps) => {
         datum.sample_representative.includes(value)
       )
     })
-
-    const sample_size = Number(values.sample_size)
-
-    subset = subset.filter(
-      (datum) =>
-        (datum.sample_intervention_n ?? 0) >= sample_size &&
-        (datum.sample_control_n ?? 0) >= sample_size
-    )
 
     setFilteredData((prev) => ({ ...prev, samples: subset }))
   }
@@ -125,14 +115,6 @@ export const FilterSamples = (props: FilterSamplesProps) => {
                 options={SAMPLE_REPRESENTATIVE_OPTIONS}
               />
             </div>
-            <InputField
-              control={form.control}
-              name="sample_size"
-              label="Minimum sample size"
-              description="Minimum per control or intervention condition"
-              type="number"
-              className="rounded-lg"
-            />
           </div>
 
           <div className="flex gap-2 justify-between">

@@ -34,8 +34,13 @@ export function SliderField<T extends FieldValues>({
       name={name}
       render={({ field, fieldState }) => {
         // For range sliders (array value), show "from X to Y"
+        // Format numbers to 2 decimal places if they're floats
+        const formatNumber = (num: number) => {
+          return Number.isInteger(num) ? num : num.toFixed(2)
+        }
+
         const displayValue = Array.isArray(field.value)
-          ? `From ${field.value[0]} to ${field.value[1]}`
+          ? `From ${formatNumber(field.value[0])} to ${formatNumber(field.value[1])}`
           : String(field.value)
 
         return (
@@ -49,7 +54,7 @@ export function SliderField<T extends FieldValues>({
               max={max}
               step={step}
               minStepsBetweenThumbs={minStepsBetweenThumbs}
-              className={className}
+              className={`my-2 ${className || ""}`}
               aria-invalid={fieldState.invalid}
             />
             <FieldDescription>{displayValue}</FieldDescription>
