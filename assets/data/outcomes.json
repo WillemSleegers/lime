@@ -2233,28 +2233,6 @@
     "outcome_measurement_type": "meal choice"
   },
   {
-    "paper": 347,
-    "paper_label": "Parkin & Attwood (2022)",
-    "study": 2,
-    "outcome": 1,
-    "outcome_label": "vegetarian meal selection",
-    "outcome_description": "Number of participants choosing the vegetarian option from the menu",
-    "outcome_category": "intentions",
-    "outcome_subcategory": "vegetarian consumption intentions",
-    "outcome_measurement_type": "meal choice"
-  },
-  {
-    "paper": 347,
-    "paper_label": "Parkin & Attwood (2022)",
-    "study": 2,
-    "outcome": 2,
-    "outcome_label": "meat meal selection",
-    "outcome_description": "Number of participants choosing the meat option from the menu",
-    "outcome_category": "intentions",
-    "outcome_subcategory": "meat consumption intentions",
-    "outcome_measurement_type": "meal choice"
-  },
-  {
     "paper": 348,
     "paper_label": "Hielkema & Lund (2022)",
     "study": 1,

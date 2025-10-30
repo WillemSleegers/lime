@@ -4797,58 +4797,6 @@
     "effect_control_n": 1752
   },
   {
-    "paper": 347,
-    "paper_label": "Parkin & Attwood (2022)",
-    "study": 2,
-    "effect": 1,
-    "effect_size_name": "OR2DL",
-    "effect_size": -0.0472,
-    "effect_size_lower": -0.3169,
-    "effect_size_upper": 0.2225,
-    "effect_size_var": 0.0189,
-    "effect_intervention_n": 171,
-    "effect_control_n": 164
-  },
-  {
-    "paper": 347,
-    "paper_label": "Parkin & Attwood (2022)",
-    "study": 2,
-    "effect": 2,
-    "effect_size_name": "OR2DL",
-    "effect_size": 0.1082,
-    "effect_size_lower": -0.1556,
-    "effect_size_upper": 0.3721,
-    "effect_size_var": 0.0181,
-    "effect_intervention_n": 171,
-    "effect_control_n": 164
-  },
-  {
-    "paper": 347,
-    "paper_label": "Parkin & Attwood (2022)",
-    "study": 2,
-    "effect": 3,
-    "effect_size_name": "OR2DL",
-    "effect_size": -0.0472,
-    "effect_size_lower": -0.3169,
-    "effect_size_upper": 0.2225,
-    "effect_size_var": 0.0189,
-    "effect_intervention_n": 171,
-    "effect_control_n": 164
-  },
-  {
-    "paper": 347,
-    "paper_label": "Parkin & Attwood (2022)",
-    "study": 2,
-    "effect": 4,
-    "effect_size_name": "OR2DL",
-    "effect_size": 0.1082,
-    "effect_size_lower": -0.1556,
-    "effect_size_upper": 0.3721,
-    "effect_size_var": 0.0181,
-    "effect_intervention_n": 171,
-    "effect_control_n": 164
-  },
-  {
     "paper": 348,
     "paper_label": "Hielkema & Lund (2022)",
     "study": 1,
