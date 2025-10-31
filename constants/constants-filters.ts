@@ -32,7 +32,7 @@ export const PAPER_TYPE_OPTIONS_NEW = [
   {
     value: "peer reviewed paper",
     label: "Peer reviewed paper",
-    description: "Journal articles and conference papers)",
+    description: "Journal articles and conference papers",
   },
   {
     value: "preprint",
