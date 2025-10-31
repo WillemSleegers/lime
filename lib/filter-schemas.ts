@@ -64,9 +64,6 @@ export const sampleFiltersFields = {
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
-  sample_size: z.coerce
-    .number()
-    .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
 }
 
 // ============================================================================

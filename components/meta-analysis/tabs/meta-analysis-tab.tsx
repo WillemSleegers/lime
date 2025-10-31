@@ -26,13 +26,36 @@ type MetaAnalysisTabProps = {
   data?: Data
   estimate?: Estimate
   egger?: Egger
+  error?: string
 }
 
 export const MetaAnalysisTab = ({
   data,
   estimate,
   egger,
+  error,
 }: MetaAnalysisTabProps) => {
+  // Show error state if there was an error
+  if (error) {
+    return (
+      <div className="space-y-8">
+        <Card>
+          <CardContent className="flex flex-col items-center gap-4 py-12">
+            <div className="text-center space-y-2">
+              <p className="font-medium text-destructive">Meta-analysis failed</p>
+              <p className="text-sm text-muted-foreground max-w-lg">
+                {error}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Please try adjusting your filters or contact support if the problem persists.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+
   // Show loading state until results are ready
   if (!estimate || !egger || !data) {
     return (

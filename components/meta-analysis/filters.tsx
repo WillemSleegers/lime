@@ -70,7 +70,7 @@ const formSchema = z.object({
     .string()
     .array()
     .nonempty({ message: "Must select at least one representativeness option." }),
-  sample_size: z.coerce
+  effect_sample_size: z.coerce
     .number()
     .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
   ...studyFiltersFields,
@@ -103,7 +103,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
       sample_representative: SAMPLE_REPRESENTATIVE_OPTIONS.map(
         (option) => option.value
       ),
-      sample_size: 1,
+      effect_sample_size: 1,
       study_preregistered: META_ANALYSIS_DEFAULTS.study_preregistered,
       study_data_available: META_ANALYSIS_DEFAULTS.study_data_available,
       study_design: META_ANALYSIS_DEFAULTS.study_design,
@@ -145,8 +145,8 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
     // Filter on cell size
     subset = subset.filter(
       (datum) =>
-        datum.effect_control_n > values.sample_size &&
-        datum.effect_intervention_n > values.sample_size
+        datum.effect_control_n >= values.effect_sample_size &&
+        datum.effect_intervention_n >= values.effect_sample_size
     )
 
     // Filter on intervention aspect
@@ -379,14 +379,6 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                   options={SAMPLE_TYPE_OPTIONS}
                 />
               </div>
-              <InputField
-                control={form.control}
-                name="sample_size"
-                label="Minimum sample size"
-                description="Minimum per control or intervention condition"
-                type="number"
-                className="rounded-lg"
-              />
             </div>
           </CardContent>
         </Card>
@@ -459,6 +451,26 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 options={OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW}
               />
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Effect-level */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Effects</CardTitle>
+            <CardDescription>
+              Filter by effect size characteristics
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <InputField
+              control={form.control}
+              name="effect_sample_size"
+              label="Minimum sample size"
+              description="Minimum per control or intervention condition"
+              type="number"
+              className="rounded-lg"
+            />
           </CardContent>
         </Card>
 

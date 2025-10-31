@@ -2458,30 +2458,6 @@
     "sample_type": "panel"
   },
   {
-    "paper": 347,
-    "paper_label": "Parkin & Attwood (2022)",
-    "study": 2,
-    "sample_intervention": 2,
-    "sample_intervention_n": 171,
-    "sample_control_n": 164,
-    "sample_country": "United Kingdom",
-    "sample_description": "UK Prolific workers with sampling quotas set for age and gender",
-    "sample_representative": "yes",
-    "sample_type": "panel"
-  },
-  {
-    "paper": 347,
-    "paper_label": "Parkin & Attwood (2022)",
-    "study": 2,
-    "sample_intervention": 3,
-    "sample_intervention_n": 171,
-    "sample_control_n": 164,
-    "sample_country": "United Kingdom",
-    "sample_description": "UK Prolific workers with sampling quotas set for age and gender",
-    "sample_representative": "yes",
-    "sample_type": "panel"
-  },
-  {
     "paper": 348,
     "paper_label": "Hielkema & Lund (2022)",
     "study": 1,

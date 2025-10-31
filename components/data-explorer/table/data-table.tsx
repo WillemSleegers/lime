@@ -120,7 +120,7 @@ export function DataTable<TData, TValue>({
               table.setPageSize(Number(value))
             }}
           >
-            <SelectTrigger className="h-8 w-[70px] rounded-lg">
+            <SelectTrigger className="h-8 w-20 rounded-lg">
               <SelectValue placeholder={table.getState().pagination.pageSize} />
             </SelectTrigger>
             <SelectContent side="top" className="rounded-lg">
@@ -148,7 +148,9 @@ export function DataTable<TData, TValue>({
                   const isLast = index === headerGroup.headers.length - 1
                   return (
                     <TableHead
-                      className={`whitespace-nowrap text-foreground ${isFirst ? "rounded-tl-2xl" : ""} ${isLast ? "rounded-tr-2xl" : ""}`}
+                      className={`whitespace-nowrap text-foreground ${
+                        isFirst ? "rounded-tl-2xl" : ""
+                      } ${isLast ? "rounded-tr-2xl" : ""}`}
                       key={header.id}
                     >
                       {header.isPlaceholder

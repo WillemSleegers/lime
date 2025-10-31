@@ -1312,17 +1312,6 @@
     "study_randomization": "yes"
   },
   {
-    "paper": 347,
-    "paper_label": "Parkin & Attwood (2022)",
-    "study": 2,
-    "study_n": 424,
-    "study_preregistered": "no",
-    "study_data_available": "no",
-    "study_condition_assignment": "individual",
-    "study_design": "between",
-    "study_randomization": "yes"
-  },
-  {
     "paper": 348,
     "paper_label": "Hielkema & Lund (2022)",
     "study": 1,

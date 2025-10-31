@@ -40,6 +40,11 @@ export function InputField<T extends FieldValues>({
             placeholder={placeholder}
             aria-invalid={fieldState.invalid}
             className={`bg-card ${className || ""}`}
+            value={field.value ?? ""}
+            onChange={(e) => {
+              const value = type === "number" ? e.target.valueAsNumber : e.target.value
+              field.onChange(value)
+            }}
           />
           {description && <FieldDescription>{description}</FieldDescription>}
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
