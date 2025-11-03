@@ -69,7 +69,6 @@ export const HighlightBarChart = ({ data }: HighlightBarChartProps) => {
           bottom: 20,
         }}
         barSize={16}
-        overflow="visible"
       >
         <XAxis
           type="number"
