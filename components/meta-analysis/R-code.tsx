@@ -31,7 +31,7 @@ export const RCode = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="w-32">
+        <Button variant="outline" className="h-auto rounded-lg w-fit px-6 py-3">
           R Code
         </Button>
       </DialogTrigger>

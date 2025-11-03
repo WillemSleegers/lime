@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import { Bar, BarChart, XAxis, YAxis } from "recharts"
 import { ChartConfig, ChartContainer, ChartTooltip } from "@/components/ui/chart"
 
@@ -18,33 +19,63 @@ type HighlightBarChartProps = {
 }
 
 export const HighlightBarChart = ({ data }: HighlightBarChartProps) => {
+  const [yAxisWidth, setYAxisWidth] = useState(100)
+  const containerRef = useRef<HTMLDivElement>(null)
+
   // Calculate dynamic height: 25px per bar (more compact) + padding
   const height = Math.max(150, data.length * 25 + 40)
 
-  // Calculate dynamic width for Y-axis based on longest label
-  // Approximate 7px per character + 20px padding
-  const longestLabel = Math.max(...data.map(d => d.name.length))
-  const yAxisWidth = Math.min(Math.max(longestLabel * 7 + 20, 80), 250)
+  // Calculate Y-axis width based on container width and text content
+  useEffect(() => {
+    const calculateWidth = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth
+
+        // Measure actual text width
+        const canvas = document.createElement('canvas')
+        const context = canvas.getContext('2d')
+        if (context) {
+          context.font = '11px sans-serif'
+          const widths = data.map(d => context.measureText(d.name).width)
+          const maxTextWidth = Math.max(...widths)
+
+          // Use a percentage of container width, but ensure it fits the text
+          // Allocate 20-30% of container width for labels, bounded by text needs
+          const percentageWidth = containerWidth * 0.25
+          const minNeeded = maxTextWidth + 10
+
+          setYAxisWidth(Math.max(minNeeded, Math.min(percentageWidth, 300)))
+        }
+      }
+    }
+
+    calculateWidth()
+
+    // Recalculate on window resize
+    window.addEventListener('resize', calculateWidth)
+    return () => window.removeEventListener('resize', calculateWidth)
+  }, [data])
 
   return (
-    <ChartContainer config={chartConfig} className="w-full" style={{ height: `${height}px` }}>
+    <ChartContainer ref={containerRef} config={chartConfig} className="w-full overflow-visible" style={{ height: `${height}px` }}>
       <BarChart
         accessibilityLayer
         data={data}
         layout="vertical"
         margin={{
-          left: 0,
-          right: 12,
+          left: 4,
+          right: 20,
           top: 8,
-          bottom: 8,
+          bottom: 20,
         }}
         barSize={16}
+        overflow="visible"
       >
         <XAxis
           type="number"
           tickLine={false}
           axisLine={false}
-          tickMargin={6}
+          tickMargin={8}
           fontSize={11}
         />
         <YAxis
@@ -52,7 +83,7 @@ export const HighlightBarChart = ({ data }: HighlightBarChartProps) => {
           type="category"
           tickLine={false}
           axisLine={false}
-          tickMargin={6}
+          tickMargin={10}
           width={yAxisWidth}
           fontSize={11}
         />

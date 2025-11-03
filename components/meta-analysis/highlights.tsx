@@ -286,7 +286,7 @@ export const Highlights = (props: HighLightsProps) => {
                 Number of effects by publication type
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="overflow-visible">
               {paperTypeData && paperTypeData.length > 0 && (
                 <HighlightBarChart data={paperTypeData} />
               )}
@@ -358,7 +358,7 @@ export const Highlights = (props: HighLightsProps) => {
                 Number of studies by study design
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="overflow-visible">
               {studyDesignData && studyDesignData.length > 0 && (
                 <HighlightBarChart data={studyDesignData} />
               )}
@@ -371,102 +371,9 @@ export const Highlights = (props: HighLightsProps) => {
                 Number of studies by condition assignment method
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="overflow-visible">
               {studyConditionAssignmentData && studyConditionAssignmentData.length > 0 && (
                 <HighlightBarChart data={studyConditionAssignmentData} />
-              )}
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      {/* Outcomes Section */}
-      <div className="space-y-3">
-        <h2 className="text-xl font-semibold">Outcomes</h2>
-        <div className="gap-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-          {/* Row 1: Number of effects - wide card for single number */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-2xl">{effectsCount}</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          {/* Row 2: Outcome measurement type distribution - 4 items */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Measurement type</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by measurement type
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {outcomeMeasurementTypeData && outcomeMeasurementTypeData.length > 0 && (
-                <HighlightBarChart data={outcomeMeasurementTypeData} />
-              )}
-            </CardContent>
-          </Card>
-          {/* Row 3: Outcome subcategory distribution - potentially many items, full width */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Outcome categories</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by outcome category
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {outcomeSubcategoryData && outcomeSubcategoryData.length > 0 && (
-                <HighlightBarChart data={outcomeSubcategoryData} />
-              )}
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      {/* Interventions Section */}
-      <div className="space-y-3">
-        <h2 className="text-xl font-semibold">Interventions</h2>
-        <div className="gap-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-          {/* Row 1: Intervention content - full width for potentially many items */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Intervention content</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by intervention content category
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {interventionContentData && interventionContentData.length > 0 && (
-                <HighlightBarChart data={interventionContentData} />
-              )}
-            </CardContent>
-          </Card>
-          {/* Row 2: Intervention mechanism - full width for potentially many items */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Intervention mechanism</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by intervention mechanism
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {interventionMechanismData && interventionMechanismData.length > 0 && (
-                <HighlightBarChart data={interventionMechanismData} />
-              )}
-            </CardContent>
-          </Card>
-          {/* Row 3: Intervention medium - full width */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Intervention medium</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by intervention medium
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {interventionMediumData && interventionMediumData.length > 0 && (
-                <HighlightBarChart data={interventionMediumData} />
               )}
             </CardContent>
           </Card>
@@ -527,11 +434,111 @@ export const Highlights = (props: HighLightsProps) => {
                 Number of studies by country
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="overflow-visible">
               {countryData && countryData.length > 0 && (
                 <HighlightBarChart data={countryData} />
               )}
             </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Interventions Section */}
+      <div className="space-y-3">
+        <h2 className="text-xl font-semibold">Interventions</h2>
+        <div className="gap-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+          {/* Row 1: Intervention content - full width for potentially many items */}
+          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
+            <CardHeader>
+              <CardTitle className="text-lg">Intervention content</CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Number of effects by intervention content category
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="overflow-visible">
+              {interventionContentData && interventionContentData.length > 0 && (
+                <HighlightBarChart data={interventionContentData} />
+              )}
+            </CardContent>
+          </Card>
+          {/* Row 2: Intervention mechanism - full width for potentially many items */}
+          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
+            <CardHeader>
+              <CardTitle className="text-lg">Intervention mechanism</CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Number of effects by intervention mechanism
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="overflow-visible">
+              {interventionMechanismData && interventionMechanismData.length > 0 && (
+                <HighlightBarChart data={interventionMechanismData} />
+              )}
+            </CardContent>
+          </Card>
+          {/* Row 3: Intervention medium - full width */}
+          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
+            <CardHeader>
+              <CardTitle className="text-lg">Intervention medium</CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Number of effects by intervention medium
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="overflow-visible">
+              {interventionMediumData && interventionMediumData.length > 0 && (
+                <HighlightBarChart data={interventionMediumData} />
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Outcomes Section */}
+      <div className="space-y-3">
+        <h2 className="text-xl font-semibold">Outcomes</h2>
+        <div className="gap-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+          {/* Row 1: Outcome measurement type distribution - 4 items */}
+          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
+            <CardHeader>
+              <CardTitle className="text-lg">Measurement type</CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Number of effects by measurement type
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="overflow-visible">
+              {outcomeMeasurementTypeData && outcomeMeasurementTypeData.length > 0 && (
+                <HighlightBarChart data={outcomeMeasurementTypeData} />
+              )}
+            </CardContent>
+          </Card>
+          {/* Row 2: Outcome subcategory distribution - potentially many items, full width */}
+          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
+            <CardHeader>
+              <CardTitle className="text-lg">Outcome categories</CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Number of effects by outcome category
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="overflow-visible">
+              {outcomeSubcategoryData && outcomeSubcategoryData.length > 0 && (
+                <HighlightBarChart data={outcomeSubcategoryData} />
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Effects Section */}
+      <div className="space-y-3">
+        <h2 className="text-xl font-semibold">Effects</h2>
+        <div className="gap-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+          {/* Row 1: Number of effects - wide card for single number */}
+          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
+            <CardHeader>
+              <CardTitle className="text-2xl">{effectsCount}</CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Number of effects
+              </CardDescription>
+            </CardHeader>
           </Card>
         </div>
       </div>

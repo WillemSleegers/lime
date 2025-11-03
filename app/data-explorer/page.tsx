@@ -84,50 +84,52 @@ export default function DataExplorer() {
       </div>
       <Tabs defaultValue={level} className="space-y-6">
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <TabsList className="flex-wrap h-auto">
-            <TabsTrigger
-              value="paper"
-              onClick={() => setLevel("paper")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-            >
-              Papers
-            </TabsTrigger>
-            <TabsTrigger
-              value="study"
-              onClick={() => setLevel("study")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-            >
-              Studies
-            </TabsTrigger>
-            <TabsTrigger
-              value="sample"
-              onClick={() => setLevel("sample")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-            >
-              Samples
-            </TabsTrigger>
-            <TabsTrigger
-              value="intervention"
-              onClick={() => setLevel("intervention")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-            >
-              Interventions
-            </TabsTrigger>
-            <TabsTrigger
-              value="outcome"
-              onClick={() => setLevel("outcome")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-            >
-              Outcomes
-            </TabsTrigger>
-            <TabsTrigger
-              value="effect"
-              onClick={() => setLevel("effect")}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-            >
-              Effects
-            </TabsTrigger>
-          </TabsList>
+          <div className="w-full overflow-x-auto">
+            <TabsList className="w-full md:w-full justify-start min-w-fit">
+              <TabsTrigger
+                value="paper"
+                onClick={() => setLevel("paper")}
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+              >
+                Papers
+              </TabsTrigger>
+              <TabsTrigger
+                value="study"
+                onClick={() => setLevel("study")}
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+              >
+                Studies
+              </TabsTrigger>
+              <TabsTrigger
+                value="sample"
+                onClick={() => setLevel("sample")}
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+              >
+                Samples
+              </TabsTrigger>
+              <TabsTrigger
+                value="intervention"
+                onClick={() => setLevel("intervention")}
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+              >
+                Interventions
+              </TabsTrigger>
+              <TabsTrigger
+                value="outcome"
+                onClick={() => setLevel("outcome")}
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+              >
+                Outcomes
+              </TabsTrigger>
+              <TabsTrigger
+                value="effect"
+                onClick={() => setLevel("effect")}
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+              >
+                Effects
+              </TabsTrigger>
+            </TabsList>
+          </div>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

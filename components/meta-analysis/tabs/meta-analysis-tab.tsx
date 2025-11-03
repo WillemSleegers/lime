@@ -27,6 +27,7 @@ type MetaAnalysisTabProps = {
   estimate?: Estimate
   egger?: Egger
   error?: string
+  onBack: () => void
 }
 
 export const MetaAnalysisTab = ({
@@ -34,6 +35,7 @@ export const MetaAnalysisTab = ({
   estimate,
   egger,
   error,
+  onBack,
 }: MetaAnalysisTabProps) => {
   // Show error state if there was an error
   if (error) {
@@ -82,28 +84,37 @@ export const MetaAnalysisTab = ({
       <CollapsiblePublicationBias estimate={estimate} egger={egger} data={data} />
       <DotPlotExample data={data} />
       <ForestPlot data={data} />
-      <div className="flex justify-center gap-3">
-        <RCode />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button className="w-32" variant="outline">
-              Download
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem
-              disabled={data == undefined}
-              onClick={() => handleDownload("lime-data.csv", data)}
-            >
-              Data
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => handleDownload("codebook.csv", codebook)}
-            >
-              Codebook
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <div className="flex justify-between items-center">
+        <Button
+          onClick={onBack}
+          variant="outline"
+          className="h-auto rounded-lg w-fit px-6 py-3"
+        >
+          Back
+        </Button>
+        <div className="flex gap-3">
+          <RCode />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="h-auto rounded-lg w-fit px-6 py-3">
+                Download
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem
+                disabled={data == undefined}
+                onClick={() => handleDownload("lime-data.csv", data)}
+              >
+                Data
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => handleDownload("codebook.csv", codebook)}
+              >
+                Codebook
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </div>
   )

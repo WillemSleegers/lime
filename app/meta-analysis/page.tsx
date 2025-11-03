@@ -58,6 +58,15 @@ const MetaAnalysisPage = () => {
     runAnalysis()
   }
 
+  // Handle going back from highlights to criteria
+  const handleBackToCriteria = () => {
+    setActiveTab("criteria")
+    // Scroll to top after tab content renders
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }, 100)
+  }
+
   // Handle highlights reviewed and unlock next tab
   const handleHighlightsReviewed = () => {
     setUnlockedTabs((prev) => ({ ...prev, analysis: true }))
@@ -70,6 +79,15 @@ const MetaAnalysisPage = () => {
     if (!estimate) {
       runAnalysis()
     }
+  }
+
+  // Handle going back from analysis to highlights
+  const handleBackToHighlights = () => {
+    setActiveTab("highlights")
+    // Scroll to top after tab content renders
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }, 100)
   }
 
   // Run meta-analysis function (called manually via button)
@@ -156,28 +174,30 @@ const MetaAnalysisPage = () => {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="w-full justify-start">
-          <TabsTrigger
-            value="criteria"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-          >
-            Step 1: Filter studies
-          </TabsTrigger>
-          <TabsTrigger
-            value="highlights"
-            disabled={!unlockedTabs.highlights}
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-          >
-            Step 2: Review selection
-          </TabsTrigger>
-          <TabsTrigger
-            value="analysis"
-            disabled={!unlockedTabs.analysis}
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-          >
-            Step 3: Run meta-analysis
-          </TabsTrigger>
-        </TabsList>
+        <div className="w-full overflow-x-auto">
+          <TabsList className="w-full md:w-full justify-start min-w-fit">
+            <TabsTrigger
+              value="criteria"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+            >
+              Step 1: Filter studies
+            </TabsTrigger>
+            <TabsTrigger
+              value="highlights"
+              disabled={!unlockedTabs.highlights}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+            >
+              Step 2: Review selection
+            </TabsTrigger>
+            <TabsTrigger
+              value="analysis"
+              disabled={!unlockedTabs.analysis}
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+            >
+              Step 3: Run meta-analysis
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="criteria" className="mt-0" forceMount hidden={activeTab !== "criteria"}>
           <InclusionCriteriaTab
@@ -191,6 +211,7 @@ const MetaAnalysisPage = () => {
           <HighlightsTab
             data={data}
             onContinue={handleHighlightsReviewed}
+            onBack={handleBackToCriteria}
           />
         </TabsContent>
 
@@ -200,6 +221,7 @@ const MetaAnalysisPage = () => {
             estimate={estimate}
             egger={egger}
             error={error}
+            onBack={handleBackToHighlights}
           />
         </TabsContent>
       </Tabs>

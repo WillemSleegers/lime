@@ -481,7 +481,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
               disabled={status !== "Ready"}
               className="h-auto rounded-lg w-fit px-6 py-3"
             >
-              Apply filters & continue
+              Apply filters and continue
             </Button>
             {status !== "Ready" && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
