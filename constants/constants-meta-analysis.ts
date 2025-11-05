@@ -5,10 +5,15 @@ import {
   STUDY_DATA_AVAILABLE_OPTIONS,
   STUDY_DESIGN_OPTIONS,
   STUDY_CONDITION_ASSIGNMENT_OPTIONS,
-  STUDY_RANDOMIZATION_OPTIONS,
+  INTERVENTION_MEDIUM_OPTIONS,
+  OUTCOME_MEASUREMENT_TYPE_OPTIONS,
+  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+  SAMPLE_REPRESENTATIVE_OPTIONS,
 } from "@/constants/constants-filters"
 
 export const META_ANALYSIS_DEFAULTS = {
+  // Individual outcome category defaults (for reference/documentation)
   outcome_subcategory_behavior: [
     "meat consumption",
     "vegetarian consumption",
@@ -19,49 +24,18 @@ export const META_ANALYSIS_DEFAULTS = {
     "vegetarian consumption intentions",
   ],
   outcome_subcategory_attitude: [],
-  outcome_measurement_type: [
-    "survey",
-    "meal choice",
-    "sales data",
-    "food diary",
+  // Combined outcome subcategory default (actually used in forms)
+  outcome_subcategory: [
+    ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+    ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
   ],
-  intervention_multicomponent: ["yes", "no"],
-  intervention_content: [
-    "animal welfare",
-    "health",
-    "environment",
-    "personal image",
-    "taste/disgust",
-    "none",
-  ],
-  intervention_mechanism: [
-    "factual",
-    "choice architecture",
-    "identity",
-    "logical argument",
-    "price",
-    "other",
-    "negative emotional",
-    "perspective taking",
-    "goal pursuit",
-    "norms",
-    "origin of animal product",
-    "infotainment",
-    "celebrity",
-    "symbolic meaning",
-    "positive emotional",
-    "taste",
-  ],
-  intervention_medium: [
-    "text",
-    "presentation",
-    "video",
-    "3D video",
-    "image",
-    "menu/food options",
-    "in-person",
-    "price",
-  ],
+  outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map(
+    (option) => option.value
+  ),
+  intervention_multicomponent: ["no"],
+  intervention_content: ["animal welfare", "environment", "health"],
+  intervention_mechanism: ["factual", "logical argument", "infotainment"],
+  intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
   study_preregistered: ["yes", "no"],
   study_data_available: STUDY_DATA_AVAILABLE_OPTIONS.map(
     (option) => option.value
@@ -70,7 +44,9 @@ export const META_ANALYSIS_DEFAULTS = {
   study_condition_assignment: STUDY_CONDITION_ASSIGNMENT_OPTIONS.map(
     (option) => option.value
   ),
-  study_randomization: STUDY_RANDOMIZATION_OPTIONS.map(
+  study_randomization: ["yes"],
+  sample_type: ["public", "panel", "university"],
+  sample_representative: SAMPLE_REPRESENTATIVE_OPTIONS.map(
     (option) => option.value
   ),
   paper_year: [
