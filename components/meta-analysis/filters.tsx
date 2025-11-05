@@ -29,18 +29,19 @@ import data from "@/assets/data/data.json"
 
 import {
   COUNTRY_OPTIONS,
-  PAPER_TYPE_OPTIONS_NEW,
-  PAPER_OPEN_ACCESS_OPTIONS_NEW,
-  STUDY_PREREGISTERED_OPTIONS_NEW,
-  STUDY_DATA_AVAILABLE_OPTIONS_NEW,
-  STUDY_DESIGN_OPTIONS_NEW,
-  STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW,
-  STUDY_RANDOMIZATION_OPTIONS_NEW,
-  OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW,
+  PAPER_TYPE_OPTIONS,
+  PAPER_OPEN_ACCESS_OPTIONS,
+  STUDY_PREREGISTERED_OPTIONS,
+  STUDY_DATA_AVAILABLE_OPTIONS,
+  STUDY_DESIGN_OPTIONS,
+  STUDY_CONDITION_ASSIGNMENT_OPTIONS,
+  STUDY_RANDOMIZATION_OPTIONS,
+  OUTCOME_MEASUREMENT_TYPE_OPTIONS,
   OUTCOME_CATEGORIES_GROUPED,
   OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
   OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+  INTERVENTION_MULTICOMPONENT_OPTIONS,
   INTERVENTION_CONTENT_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
@@ -95,6 +96,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
         ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
       ],
       outcome_measurement_type: META_ANALYSIS_DEFAULTS.outcome_measurement_type,
+      intervention_multicomponent: META_ANALYSIS_DEFAULTS.intervention_multicomponent,
       intervention_content: META_ANALYSIS_DEFAULTS.intervention_content,
       intervention_mechanism: META_ANALYSIS_DEFAULTS.intervention_mechanism,
       intervention_medium: META_ANALYSIS_DEFAULTS.intervention_medium,
@@ -150,6 +152,12 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
     )
 
     // Filter on intervention aspect
+    subset = subset.filter((datum) => {
+      return values.intervention_multicomponent.some(
+        (value) => datum.intervention_multicomponent === value
+      )
+    })
+
     subset = subset.filter((datum) => {
       return values.intervention_content.some((value) =>
         datum.intervention_content?.includes(value)
@@ -288,13 +296,13 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 control={form.control}
                 name="paper_type"
                 label="Publication type"
-                options={PAPER_TYPE_OPTIONS_NEW}
+                options={PAPER_TYPE_OPTIONS}
               />
               <CheckboxGroup
                 control={form.control}
                 name="paper_open_access"
                 label="Access type"
-                options={PAPER_OPEN_ACCESS_OPTIONS_NEW}
+                options={PAPER_OPEN_ACCESS_OPTIONS}
               />
             </div>
           </CardContent>
@@ -314,31 +322,31 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 control={form.control}
                 name="study_preregistered"
                 label="Preregistration"
-                options={STUDY_PREREGISTERED_OPTIONS_NEW}
+                options={STUDY_PREREGISTERED_OPTIONS}
               />
               <CheckboxGroup
                 control={form.control}
                 name="study_data_available"
                 label="Data availability"
-                options={STUDY_DATA_AVAILABLE_OPTIONS_NEW}
+                options={STUDY_DATA_AVAILABLE_OPTIONS}
               />
               <CheckboxGroup
                 control={form.control}
                 name="study_randomization"
                 label="Randomization"
-                options={STUDY_RANDOMIZATION_OPTIONS_NEW}
+                options={STUDY_RANDOMIZATION_OPTIONS}
               />
               <CheckboxGroup
                 control={form.control}
                 name="study_design"
                 label="Study design"
-                options={STUDY_DESIGN_OPTIONS_NEW}
+                options={STUDY_DESIGN_OPTIONS}
               />
               <CheckboxGroup
                 control={form.control}
                 name="study_condition_assignment"
                 label="Condition assignment"
-                options={STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW}
+                options={STUDY_CONDITION_ASSIGNMENT_OPTIONS}
               />
             </div>
           </CardContent>
@@ -419,6 +427,12 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 options={INTERVENTION_MEDIUM_OPTIONS}
                 className="w-full"
               />
+              <CheckboxGroup
+                control={form.control}
+                name="intervention_multicomponent"
+                label="Intervention components"
+                options={INTERVENTION_MULTICOMPONENT_OPTIONS}
+              />
             </div>
           </CardContent>
         </Card>
@@ -448,7 +462,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 control={form.control}
                 name="outcome_measurement_type"
                 label="Measurement type"
-                options={OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW}
+                options={OUTCOME_MEASUREMENT_TYPE_OPTIONS}
               />
             </div>
           </CardContent>

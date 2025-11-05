@@ -19,11 +19,6 @@ import {
   STUDY_DESIGN_OPTIONS,
   STUDY_CONDITION_ASSIGNMENT_OPTIONS,
   STUDY_RANDOMIZATION_OPTIONS,
-  STUDY_PREREGISTERED_OPTIONS_NEW,
-  STUDY_DATA_AVAILABLE_OPTIONS_NEW,
-  STUDY_DESIGN_OPTIONS_NEW,
-  STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW,
-  STUDY_RANDOMIZATION_OPTIONS_NEW,
 } from "@/constants/constants-filters"
 
 import { Studies } from "@/lib/types"
@@ -132,31 +127,31 @@ export const FilterStudies = (props: FilterStudiesProps) => {
               control={form.control}
               name="study_preregistered"
               label="Preregistration"
-              options={STUDY_PREREGISTERED_OPTIONS_NEW}
+              options={STUDY_PREREGISTERED_OPTIONS}
             />
             <CheckboxGroup
               control={form.control}
               name="study_data_available"
               label="Data availability"
-              options={STUDY_DATA_AVAILABLE_OPTIONS_NEW}
+              options={STUDY_DATA_AVAILABLE_OPTIONS}
             />
             <CheckboxGroup
               control={form.control}
               name="study_randomization"
               label="Randomization"
-              options={STUDY_RANDOMIZATION_OPTIONS_NEW}
+              options={STUDY_RANDOMIZATION_OPTIONS}
             />
             <CheckboxGroup
               control={form.control}
               name="study_design"
               label="Study design"
-              options={STUDY_DESIGN_OPTIONS_NEW}
+              options={STUDY_DESIGN_OPTIONS}
             />
             <CheckboxGroup
               control={form.control}
               name="study_condition_assignment"
               label="Condition assignment"
-              options={STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW}
+              options={STUDY_CONDITION_ASSIGNMENT_OPTIONS}
             />
             <InputField
               control={form.control}

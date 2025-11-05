@@ -20,8 +20,6 @@ import { paperFiltersFields } from "@/lib/filter-schemas"
 import {
   PAPER_TYPE_OPTIONS,
   PAPER_OPEN_ACCESS_OPTIONS,
-  PAPER_TYPE_OPTIONS_NEW,
-  PAPER_OPEN_ACCESS_OPTIONS_NEW,
 } from "@/constants/constants-filters"
 
 import { Papers } from "@/lib/types"
@@ -112,13 +110,13 @@ export const FilterPapers = (props: FilterPapersProps) => {
               control={form.control}
               name="paper_type"
               label="Publication type"
-              options={PAPER_TYPE_OPTIONS_NEW}
+              options={PAPER_TYPE_OPTIONS}
             />
             <CheckboxGroup
               control={form.control}
               name="paper_open_access"
               label="Access type"
-              options={PAPER_OPEN_ACCESS_OPTIONS_NEW}
+              options={PAPER_OPEN_ACCESS_OPTIONS}
             />
           </div>
 

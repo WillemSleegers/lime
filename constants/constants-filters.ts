@@ -1,5 +1,3 @@
-import papers from "@/assets/data/papers.json"
-import studies from "@/assets/data/studies.json"
 import samples from "@/assets/data/samples.json"
 import interventions from "@/assets/data/interventions.json"
 import outcomes from "@/assets/data/outcomes.json"
@@ -10,25 +8,6 @@ const NA_OPTIONS = ["none", "N/A"]
 
 // Paper-level
 export const PAPER_TYPE_OPTIONS = [
-  {
-    value: "peer reviewed paper",
-    label: "Peer reviewed paper (journal articles, conference papers)",
-  },
-  {
-    value: "preprint",
-    label: "Preprint (early drafts, not yet peer-reviewed)",
-  },
-  {
-    value: "thesis",
-    label: "Thesis (student research)",
-  },
-  {
-    value: "report",
-    label: "Report (government, institutional publications)",
-  },
-]
-
-export const PAPER_TYPE_OPTIONS_NEW = [
   {
     value: "peer reviewed paper",
     label: "Peer reviewed paper",
@@ -54,17 +33,6 @@ export const PAPER_TYPE_OPTIONS_NEW = [
 export const PAPER_OPEN_ACCESS_OPTIONS = [
   {
     value: "paywalled",
-    label: "Paywalled (paid access required)",
-  },
-  {
-    value: "open access",
-    label: "Open access (free to read)",
-  },
-]
-
-export const PAPER_OPEN_ACCESS_OPTIONS_NEW = [
-  {
-    value: "paywalled",
     label: "Paywalled",
     description: "Paid access required",
   },
@@ -79,75 +47,13 @@ export const PAPER_OPEN_ACCESS_OPTIONS_NEW = [
 export const STUDY_PREREGISTERED_OPTIONS = [
   {
     value: "yes",
-    label: "Preregistered (study design registered before data collection)",
-  },
-  { value: "no", label: "Not preregistered" },
-]
-
-export const STUDY_DATA_AVAILABLE_OPTIONS = [
-  {
-    value: "yes",
-    label: "Data available (study datasets can be downloaded)",
-  },
-  { value: "no", label: "Data not available" },
-]
-
-export const STUDY_DESIGN_OPTIONS = [
-  {
-    value: "between",
-    label: "Between-subjects (different participants per condition)",
-  },
-  {
-    value: "within",
-    label: "Within-subjects (same participants across conditions)",
-  },
-  {
-    value: "mixed",
-    label: "Mixed design (combines between and within elements)",
-  },
-  {
-    value: "crossover",
-    label:
-      "Crossover (participants rotate through conditions in different orders)",
-  },
-]
-
-export const STUDY_CONDITION_ASSIGNMENT_OPTIONS = [
-  {
-    value: "individual",
-    label: "Individual assignment (participants assigned to conditions)",
-  },
-  {
-    value: "cluster",
-    label: "Cluster assignment (groups assigned to conditions)",
-  },
-  {
-    value: "time point",
-    label: "Time-based assignment (conditions assigned to time periods)",
-  },
-]
-
-export const STUDY_RANDOMIZATION_OPTIONS = [
-  {
-    value: "yes",
-    label: "Randomized assignment (eliminates selection bias)",
-  },
-  {
-    value: "no",
-    label: "Non-randomized assignment (potential for confounding)",
-  },
-]
-
-export const STUDY_PREREGISTERED_OPTIONS_NEW = [
-  {
-    value: "yes",
     label: "Preregistered",
     description: "Study design registered before data collection",
   },
   { value: "no", label: "Not preregistered" },
 ]
 
-export const STUDY_DATA_AVAILABLE_OPTIONS_NEW = [
+export const STUDY_DATA_AVAILABLE_OPTIONS = [
   {
     value: "yes",
     label: "Data available",
@@ -156,7 +62,7 @@ export const STUDY_DATA_AVAILABLE_OPTIONS_NEW = [
   { value: "no", label: "Data not available" },
 ]
 
-export const STUDY_DESIGN_OPTIONS_NEW = [
+export const STUDY_DESIGN_OPTIONS = [
   {
     value: "between",
     label: "Between-subjects",
@@ -179,7 +85,7 @@ export const STUDY_DESIGN_OPTIONS_NEW = [
   },
 ]
 
-export const STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW = [
+export const STUDY_CONDITION_ASSIGNMENT_OPTIONS = [
   {
     value: "individual",
     label: "Individual assignment",
@@ -197,7 +103,7 @@ export const STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW = [
   },
 ]
 
-export const STUDY_RANDOMIZATION_OPTIONS_NEW = [
+export const STUDY_RANDOMIZATION_OPTIONS = [
   {
     value: "yes",
     label: "Randomized assignment",
@@ -243,6 +149,19 @@ export const SAMPLE_REPRESENTATIVE_OPTIONS = [
 ]
 
 // Intervention-level
+export const INTERVENTION_MULTICOMPONENT_OPTIONS = [
+  {
+    value: "no",
+    label: "Single-component",
+    description: "Intervention uses one strategy or content focus",
+  },
+  {
+    value: "yes",
+    label: "Multicomponent",
+    description: "Intervention combines multiple strategies or content areas",
+  },
+]
+
 export const INTERVENTION_CONTENT_OPTIONS = customSort(
   [
     ...new Set(
@@ -305,25 +224,6 @@ export const OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS = customSort([
   ),
 ])
 export const OUTCOME_MEASUREMENT_TYPE_OPTIONS = [
-  {
-    value: "survey",
-    label: "Survey (self-reported questionnaires and interviews)",
-  },
-  {
-    value: "food diary",
-    label: "Food diary (participants record their food consumption)",
-  },
-  {
-    value: "sales data",
-    label: "Sales data (purchase records from restaurants)",
-  },
-  {
-    value: "meal choice",
-    label: "Meal choice (observed food selection in controlled settings)",
-  },
-]
-
-export const OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW = [
   {
     value: "survey",
     label: "Survey",
