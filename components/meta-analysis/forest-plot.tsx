@@ -113,27 +113,26 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
 
   return (
     <div className="space-y-6">
-      <div className="space-y-2">
-        <div
-          className="flex items-center gap-2 cursor-pointer"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <h2 className="text-subsection-title">Forest Plot</h2>
-          <ChevronRight
-            className={cn(
-              "h-5 w-5 transition-transform duration-200",
-              isOpen && "rotate-90"
-            )}
-          />
-        </div>
-        <p className="text-sm text-muted-foreground">
-          This forest plot displays the effect size and confidence interval for each individual study. The horizontal lines show the uncertainty around each estimate. Longer lines indicate more uncertainty, while points further from zero indicate stronger effects.
-        </p>
+      <div
+        className="flex items-center gap-2 cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <h2 className="text-subsection-title">Forest Plot</h2>
+        <ChevronRight
+          className={cn(
+            "h-5 w-5 transition-transform duration-200",
+            isOpen && "rotate-90"
+          )}
+        />
       </div>
       {isOpen && (
-        <Card>
-          <CardContent className="py-5" style={{ height: 30 * plotData.length }}>
-            <ChartContainer config={chartConfig} className="h-full aspect-auto">
+        <div className="space-y-4">
+          <p className="text-sm text-muted-foreground">
+            This forest plot displays the effect size and confidence interval for each individual study. The horizontal lines show the uncertainty around each estimate. Longer lines indicate more uncertainty, while points further from zero indicate stronger effects.
+          </p>
+          <Card>
+            <CardContent className="py-5" style={{ height: 30 * plotData.length }}>
+              <ChartContainer config={chartConfig} className="h-full aspect-auto">
               <ScatterChart
                 data={plotData}
                 margin={{
@@ -193,6 +192,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
             </ChartContainer>
           </CardContent>
         </Card>
+        </div>
       )}
     </div>
   )
