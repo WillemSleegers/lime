@@ -1243,50 +1243,6 @@
     "outcome_measurement_type": "meal choice"
   },
   {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 1,
-    "outcome": 1,
-    "outcome_label": "speciesism",
-    "outcome_description": "Score on the Speciesism Scale (e.g., morally, animals always count for less than humans)",
-    "outcome_category": "attitudes/beliefs",
-    "outcome_subcategory": "animal attitude",
-    "outcome_measurement_type": "survey"
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 1,
-    "outcome": 2,
-    "outcome_label": "intended reduction in harmful behaviors",
-    "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)",
-    "outcome_category": "intentions",
-    "outcome_subcategory": "animal product intentions",
-    "outcome_measurement_type": "survey"
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 2,
-    "outcome": 1,
-    "outcome_label": "speciesism",
-    "outcome_description": "Score on the Speciesism Scale (e.g., morally, animals always count for less than humans)",
-    "outcome_category": "attitudes/beliefs",
-    "outcome_subcategory": "animal attitude",
-    "outcome_measurement_type": "survey"
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 2,
-    "outcome": 2,
-    "outcome_label": "intended reduction in harmful behaviors",
-    "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)",
-    "outcome_category": "intentions",
-    "outcome_subcategory": "animal product intentions",
-    "outcome_measurement_type": "survey"
-  },
-  {
     "paper": 80,
     "paper_label": "Gravert & Kurz (2019)",
     "study": 1,
@@ -2207,7 +2163,7 @@
     "outcome_label": "Vegetarian food choice",
     "outcome_description": "Percentage of participants who selected a vegetarian main course",
     "outcome_category": "intentions",
-    "outcome_subcategory": "vegetarian consumption",
+    "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
   },
   {
@@ -2218,7 +2174,7 @@
     "outcome_label": "Vegetarian food choice",
     "outcome_description": "Percentage of participants who selected a vegetarian main course",
     "outcome_category": "intentions",
-    "outcome_subcategory": "vegetarian consumption",
+    "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
   },
   {
@@ -2229,7 +2185,7 @@
     "outcome_label": "Vegetarian food choice",
     "outcome_description": "Percentage of participants who selected a vegetarian main course",
     "outcome_category": "intentions",
-    "outcome_subcategory": "vegetarian consumption",
+    "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
   },
   {

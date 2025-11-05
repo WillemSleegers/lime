@@ -1248,26 +1248,6 @@
     "sample_type": "university"
   },
   {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 1,
-    "sample_intervention": 2,
-    "sample_country": "Netherlands",
-    "sample_description": "students from the University of Twente",
-    "sample_representative": "no",
-    "sample_type": "university"
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 2,
-    "sample_intervention": 2,
-    "sample_country": "N/A",
-    "sample_description": "Prolific workers",
-    "sample_representative": "no",
-    "sample_type": "panel"
-  },
-  {
     "paper": 80,
     "paper_label": "Gravert & Kurz (2019)",
     "study": 1,

@@ -654,30 +654,6 @@
     "study_randomization": "yes"
   },
   {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 1,
-    "study_n": 231,
-    "study_preregistered": "no",
-    "study_data_available": "yes",
-    "study_data_link": "https://osf.io/q6dvm/",
-    "study_condition_assignment": "individual",
-    "study_design": "between",
-    "study_randomization": "yes"
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 2,
-    "study_n": 399,
-    "study_preregistered": "no",
-    "study_data_available": "yes",
-    "study_data_link": "https://osf.io/q6dvm/",
-    "study_condition_assignment": "individual",
-    "study_design": "between",
-    "study_randomization": "yes"
-  },
-  {
     "paper": 80,
     "paper_label": "Gravert & Kurz (2019)",
     "study": 1,

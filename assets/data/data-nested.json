@@ -2550,60 +2550,6 @@
     ]
   },
   {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "paper_authors": "Banach, N.; Stel, M",
-    "paper_title": "Reducing Speciesism: An Intervention to Change People’s Attitudes and Behavioral Intentions",
-    "paper_year": 2024,
-    "paper_link": "https://doi.org/10.1080/08927936.2024.2345472",
-    "intervention_content": "animal welfare",
-    "intervention_mechanism": "negative emotional",
-    "intervention_medium": "video",
-    "intervention_multicomponent": "no",
-    "studies": [
-      {
-        "study": 1,
-        "study_n": 231,
-        "interventions": [
-          {
-            "intervention_condition": 1,
-            "intervention_description": "A video (2:48 minutes long) was presented which showed a parallel world wherein the roles of humans and animals were reversed. The video presented illustrations of situations in which animals are harmed, but where the humans took the role of the animals and vice versa."
-          }
-        ],
-        "outcomes": [
-          {
-            "outcome": 1,
-            "outcome_description": "Score on the Speciesism Scale (e.g., morally, animals always count for less than humans)"
-          },
-          {
-            "outcome": 2,
-            "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)"
-          }
-        ]
-      },
-      {
-        "study": 2,
-        "study_n": 399,
-        "interventions": [
-          {
-            "intervention_condition": 1,
-            "intervention_description": "A video (2:48 minutes long) was presented which showed a parallel world wherein the roles of humans and animals were reversed. The video presented illustrations of situations in which animals are harmed, but where the humans took the role of the animals and vice versa."
-          }
-        ],
-        "outcomes": [
-          {
-            "outcome": 1,
-            "outcome_description": "Score on the Speciesism Scale (e.g., morally, animals always count for less than humans)"
-          },
-          {
-            "outcome": 2,
-            "outcome_description": "Intention to change behaviors that (in)directly harm animals across five categories (e.g., entertainment, experiments, farming)"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "paper": 80,
     "paper_label": "Gravert & Kurz (2019)",
     "paper_authors": "Gravert, C.; Kurz, V.",

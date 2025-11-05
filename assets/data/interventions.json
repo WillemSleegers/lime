@@ -1381,32 +1381,6 @@
     "sample_country": "United States"
   },
   {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 1,
-    "intervention_condition": 1,
-    "intervention_description": "A video (2:48 minutes long) was presented which showed a parallel world wherein the roles of humans and animals were reversed. The video presented illustrations of situations in which animals are harmed, but where the humans took the role of the animals and vice versa.",
-    "intervention_content": "animal welfare",
-    "intervention_mechanism": "negative emotional",
-    "intervention_medium": "video",
-    "intervention_multicomponent": "no",
-    "control_description": "",
-    "sample_country": "Netherlands"
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 2,
-    "intervention_condition": 1,
-    "intervention_description": "A video (2:48 minutes long) was presented which showed a parallel world wherein the roles of humans and animals were reversed. The video presented illustrations of situations in which animals are harmed, but where the humans took the role of the animals and vice versa.",
-    "intervention_content": "animal welfare",
-    "intervention_mechanism": "negative emotional",
-    "intervention_medium": "video",
-    "intervention_multicomponent": "no",
-    "control_description": "",
-    "sample_country": "N/A"
-  },
-  {
     "paper": 80,
     "paper_label": "Gravert & Kurz (2019)",
     "study": 1,

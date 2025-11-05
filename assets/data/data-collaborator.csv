@@ -225,10 +225,6 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 77,Slapø & Karevold (2019),1,4,2,1,vegetarian dish sales,2,SMD,0.118740504640361,0.0434931696749628
 77,Slapø & Karevold (2019),1,4,3,1,vegetarian dish sales,3,SMD,0.0648796460834717,0.0434399979600901
 78,Boronowsky et al. (2022),1,1,2,1,vegetarian meal selection,1,OR2DL,1.17239763552819,0.0240068998963358
-79,Banach & Stel (2024),1,2,1,1,speciesism,1,SMD,0.144571351228593,0.017757839621294
-79,Banach & Stel (2024),1,2,1,2,intended reduction in harmful behaviors,2,SMD,0.322629696281999,0.0179418861817519
-79,Banach & Stel (2024),2,2,1,1,speciesism,4,SMD,-0.170081784400696,0.0101125751463184
-79,Banach & Stel (2024),2,2,1,2,intended reduction in harmful behaviors,5,SMD,0.264082839977437,0.0101639755656958
 80,Gravert & Kurz (2019),1,2,1,1,vegetarian sales,1,OR2DL,0.882053711653721,0.0165571459337042
 81,Erhard et al. (2023),1,4,1,1,plant-based choice,1,OR2DL,0.0409683199799495,0.0182790532405243
 81,Erhard et al. (2023),1,4,2,1,plant-based choice,2,OR2DL,0.303529983848123,0.0193499531214645
