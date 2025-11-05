@@ -166,6 +166,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
                   axisLine={false}
                   tickLine={false}
                   tick={<CustomizedAxisTick />}
+                  interval={0}
                 />
                 <ZAxis range={[40, 41]} />
                 <Tooltip
