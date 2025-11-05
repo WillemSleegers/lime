@@ -284,7 +284,7 @@
     "column": "intervention_medium",
     "description": "The medium in which the intervention(s) were adminstered",
     "data_type": "factor",
-    "factor_levels": "text, presentation, video, 3D video, image, menu/food options, in-person, price, taste"
+    "factor_levels": "text, presentation, video, 3D video, image, menu/food options, in-person, price"
   },
   {
     "column": "intervention_multicomponent",

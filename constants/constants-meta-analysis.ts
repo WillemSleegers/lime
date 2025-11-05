@@ -25,6 +25,7 @@ export const META_ANALYSIS_DEFAULTS = {
     "sales data",
     "food diary",
   ],
+  intervention_multicomponent: ["yes", "no"],
   intervention_content: [
     "animal welfare",
     "health",

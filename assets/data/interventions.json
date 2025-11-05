@@ -8,6 +8,7 @@
     "intervention_content": "personal image",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Australia"
   },
@@ -20,6 +21,7 @@
     "intervention_content": "environment, animal welfare, health",
     "intervention_mechanism": "factual, negative emotional, perspective taking, goal pursuit, norms",
     "intervention_medium": "presentation, text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "Canada"
   },
@@ -32,6 +34,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, negative emotional",
     "intervention_medium": "video",
+    "intervention_multicomponent": "yes",
     "control_description": "Control participants were not exposed to a video, but it was not a truly neutral control condition, in that the canopy used for the study was covered in graphic images of farm animals",
     "sample_country": "United States"
   },
@@ -44,6 +47,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, negative emotional, perspective taking",
     "intervention_medium": "3D video",
+    "intervention_multicomponent": "yes",
     "control_description": "Control participants were not exposed to a video, but it was not a truly neutral control condition, in that the canopy used for the study was covered in graphic images of farm animals",
     "sample_country": "United States"
   },
@@ -56,6 +60,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -68,6 +73,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -80,6 +86,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit",
     "intervention_medium": "text, image, video",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "N/A"
   },
@@ -92,6 +99,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit",
     "intervention_medium": "text, image, video",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "N/A"
   },
@@ -104,6 +112,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit, perspective taking",
     "intervention_medium": "text, image, video",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "N/A"
   },
@@ -116,6 +125,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, goal pursuit, perspective taking",
     "intervention_medium": "text, image, video",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "N/A"
   },
@@ -128,6 +138,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "infotainment, origin of animal product, authority/expertise",
     "intervention_medium": "video",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -140,6 +151,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "goal pursuit, factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "Italy"
   },
@@ -152,6 +164,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "goal pursuit, factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "Italy"
   },
@@ -164,6 +177,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -176,6 +190,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -188,6 +203,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -200,6 +216,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -212,6 +229,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -224,6 +242,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -236,6 +255,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -248,6 +268,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -260,6 +281,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "origin of animal product, positive emotional",
     "intervention_medium": "presentation",
+    "intervention_multicomponent": "no",
     "control_description": "A white frame together with three different pork-meals.",
     "sample_country": "Portugal"
   },
@@ -272,6 +294,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "presentation",
+    "intervention_multicomponent": "no",
     "control_description": "A white frame together with three different pork-meals.",
     "sample_country": "Portugal"
   },
@@ -284,6 +307,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, origin of animal product, authority/expertise",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "N/A"
   },
@@ -296,6 +320,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, origin of animal product, authority/expertise",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "N/A"
   },
@@ -308,6 +333,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, origin of animal product, authority/expertise",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "N/A"
   },
@@ -320,6 +346,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, norms, negative emotional, origin of animal product, authority/expertise",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "N/A"
   },
@@ -332,6 +359,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "video",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -344,6 +372,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "video",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -356,6 +385,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "positive emotional, negative emotional, origin of animal product, norms, factual, goal pursuit",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "Netherlands"
   },
@@ -368,6 +398,7 @@
     "intervention_content": "environment, animal welfare, health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "sample_country": "Germany"
   },
   {
@@ -379,6 +410,7 @@
     "intervention_content": "environment, animal welfare, health",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "sample_country": "Germany"
   },
   {
@@ -390,6 +422,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "positive emotional, negative emotional, factual",
     "intervention_medium": "video",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants for the control group were recruited via the Facebook events of the movie screenings with a message that encouraged anybody who couldn’t attend the screenings but still wanted to join the experiment to fill in the survey.",
     "sample_country": "Czechia"
   },
@@ -402,6 +435,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "positive emotional, negative emotional, factual",
     "intervention_medium": "video",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants for the control group were recruited via the Facebook events of the movie screenings with a message that encouraged anybody who couldn’t attend the screenings but still wanted to join the experiment to fill in the survey.",
     "sample_country": "Czechia"
   },
@@ -414,6 +448,7 @@
     "intervention_content": "taste/disgust",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
     "sample_country": "United States"
   },
@@ -426,6 +461,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
     "sample_country": "United States"
   },
@@ -438,6 +474,7 @@
     "intervention_content": "environment, animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
     "sample_country": "United States"
   },
@@ -450,6 +487,7 @@
     "intervention_content": "taste/disgust",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
     "sample_country": "United States"
   },
@@ -462,6 +500,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
     "sample_country": "United States"
   },
@@ -474,6 +513,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
     "sample_country": "United States"
   },
@@ -486,6 +526,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read a neutral essay about the 1980 Winter Olympics.",
     "sample_country": "United States"
   },
@@ -498,6 +539,7 @@
     "intervention_content": "taste/disgust",
     "intervention_mechanism": "factual",
     "intervention_medium": "presentation",
+    "intervention_multicomponent": "no",
     "control_description": "Participants watched a slideshow on the 1980 Winter Olympics.",
     "sample_country": "United States"
   },
@@ -510,6 +552,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "presentation",
+    "intervention_multicomponent": "no",
     "control_description": "Participants watched a slideshow on the 1980 Winter Olympics.",
     "sample_country": "United States"
   },
@@ -522,6 +565,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -534,6 +578,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -546,6 +591,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -558,6 +604,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -570,6 +617,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "France"
   },
@@ -582,6 +630,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "China"
   },
@@ -594,6 +643,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "France"
   },
@@ -606,6 +656,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "origin of animal product",
     "intervention_medium": "image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "China"
   },
@@ -618,6 +669,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "positive emotional, origin of animal product",
     "intervention_medium": "image",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw an advertisement for lamb chops.",
     "sample_country": "United States"
   },
@@ -630,6 +682,7 @@
     "intervention_content": "animal welfare, environment, health",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "presentation",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants from a different class that did not attend the presentation.",
     "sample_country": "United States"
   },
@@ -642,6 +695,7 @@
     "intervention_content": "animal welfare, health",
     "intervention_mechanism": "factual, origin of animal product, negative emotional",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants were offered and took a control flyer on puppy mills called \"The Cruelty Behind Cuteness\"",
     "sample_country": "N/A"
   },
@@ -654,6 +708,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, norms, negative emotional",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read a policy article that discusses the policy commitments of major companies to transition from plastic bags to paper bags.",
     "sample_country": "United States"
   },
@@ -666,6 +721,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, norms, negative emotional",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read a legislation article that discusses the legislation implemented by many U.S. states banning the use of plastic bags.",
     "sample_country": "United States"
   },
@@ -678,6 +734,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional",
     "intervention_medium": "video",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw a pro-vegetarian Facebook and that, after clicking on it, directed them to a Mercy for Animals landing page with a video on fighting tropical diseases.",
     "sample_country": "N/A"
   },
@@ -690,6 +747,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "text, video, in-person",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants read Peter Singer's article “The Singer Solution to World Poverty” and were encouraged to view, on their own outside of class, an optional nineteen-minute video advocating donation to hunger-relief initiatives: “Ending Hunger Now”.",
     "sample_country": "United States"
   },
@@ -702,6 +760,7 @@
     "intervention_content": "animal welfare, health, taste/disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms, origin of animal product, goal pursuit",
     "intervention_medium": "video",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable.",
     "sample_country": "United States"
   },
@@ -714,6 +773,7 @@
     "intervention_content": "animal welfare, health, taste/disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms",
     "intervention_medium": "video",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable.",
     "sample_country": "United States"
   },
@@ -726,6 +786,7 @@
     "intervention_content": "animal welfare, health, taste/disgust, environment",
     "intervention_mechanism": "factual, negative emotional, norms, origin of animal product, goal pursuit",
     "intervention_medium": "video, text",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants watched a 20-min TED talk by Brené Brown entitled “Listening to shame”, a generic motivational speech that encouraged listeners to embrace the experience of feeling vulnerable.",
     "sample_country": "United States"
   },
@@ -738,6 +799,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Sweden"
   },
@@ -750,6 +812,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Sweden"
   },
@@ -762,6 +825,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "positive emotional",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Sweden"
   },
@@ -774,6 +838,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "positive emotional",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Sweden"
   },
@@ -786,6 +851,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Italy"
   },
@@ -798,6 +864,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Italy"
   },
@@ -810,6 +877,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "logical argument",
     "intervention_medium": "text, in-person",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -822,6 +890,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "logical argument",
     "intervention_medium": "text, in-person",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -834,6 +903,7 @@
     "intervention_content": "health, environment",
     "intervention_mechanism": "factual, negative emotional",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants received daily persuasive messages describing the health and environmental consequences of eating sugar.",
     "sample_country": "Italy"
   },
@@ -846,6 +916,7 @@
     "intervention_content": "health, environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants received daily persuasive messages describing the health and environmental consequences of eating sugar.",
     "sample_country": "Italy"
   },
@@ -858,6 +929,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw a menu of 34 items divided into four categories (appetizers, entrees, “design your own bowl”, and salads).",
     "sample_country": "United States"
   },
@@ -870,6 +942,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -882,6 +955,7 @@
     "intervention_content": "taste/disgust",
     "intervention_mechanism": "norms",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -894,6 +968,7 @@
     "intervention_content": "environment, taste/disgust",
     "intervention_mechanism": "factual, norms",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -906,6 +981,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "sample_country": "Australia"
   },
   {
@@ -917,6 +993,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "sample_country": "Australia"
   },
   {
@@ -928,6 +1005,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "sample_country": "Australia"
   },
   {
@@ -939,6 +1017,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "sample_country": "Australia"
   },
   {
@@ -950,6 +1029,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "in-person",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -962,6 +1042,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "in-person",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Germany"
   },
@@ -974,6 +1055,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "in-person",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Australia"
   },
@@ -986,6 +1068,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, factual, origin of animal product",
     "intervention_medium": "text, video, in-person",
+    "intervention_multicomponent": "yes",
     "sample_country": "United States"
   },
   {
@@ -997,6 +1080,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, factual, origin of animal product",
     "intervention_medium": "text, in-person",
+    "intervention_multicomponent": "yes",
     "sample_country": "United States"
   },
   {
@@ -1008,6 +1092,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual, origin of animal product",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read a brief paragraphon geocaching.",
     "sample_country": "Canada"
   },
@@ -1020,6 +1105,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, origin of animal product",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read a brief paragraphon geocaching.",
     "sample_country": "Canada"
   },
@@ -1032,6 +1118,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "A meat dish was listed as the first item on the menu and was also made visible to customers at the counter., A meat dish was listed as the first item on the menu and was also made visible to customers at the counter",
     "sample_country": "Sweden"
   },
@@ -1044,6 +1131,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "A meat dish was listed as the first item on the menu.",
     "sample_country": "Sweden"
   },
@@ -1056,6 +1144,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants were asked to create a ranked list of their favorite colors and explained how this color is personally appealing, e.g., to describe an object or context in which it was appealing. Participants then read a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats.",
     "sample_country": "Serbia"
   },
@@ -1068,6 +1157,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants were asked to create a ranked list of their favorite colors and explained how this color is personally appealing, e.g., to describe an object or context in which it was appealing. Participants then read a vignette briefly introducing health-related risks of meat consumption (e.g., higher incidence of disease), benefits of decreased consumption, as well as alternative sources of protein, including lab-grown meats.",
     "sample_country": "Serbia"
   },
@@ -1080,6 +1170,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "ease/salience, authority/expertise",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "Denmark"
   },
@@ -1092,6 +1183,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "ease/salience, norms, authority/expertise",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "Portugal"
   },
@@ -1104,6 +1196,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Students passed by a meat option first when entering the cafeteria.",
     "sample_country": "England"
   },
@@ -1116,6 +1209,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Students passed by a meat option first when entering the cafeteria.",
     "sample_country": "England"
   },
@@ -1128,6 +1222,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Students passed by a meat option first when entering the cafeteria.",
     "sample_country": "England"
   },
@@ -1140,6 +1235,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Students passed by a meat option first when entering the cafeteria.",
     "sample_country": "England"
   },
@@ -1152,6 +1248,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Students passed by a meat option first when entering the cafeteria.",
     "sample_country": "England"
   },
@@ -1164,6 +1261,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "positive emotional",
     "intervention_medium": "in-person",
+    "intervention_multicomponent": "no",
     "sample_country": "Germany"
   },
   {
@@ -1175,6 +1273,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "in-person",
+    "intervention_multicomponent": "no",
     "sample_country": "Germany"
   },
   {
@@ -1186,6 +1285,7 @@
     "intervention_content": "personal image",
     "intervention_mechanism": "identity",
     "intervention_medium": "image",
+    "intervention_multicomponent": "no",
     "control_description": "With a visible timer counting down from 3 min, participants were asked to recall 10 behaviors where they acted “particularly masculine/manly” or “particularly feminine/womanly” (depending on their gender). Participants read that men and women can easily recall 12 behaviors. The task is intentionally difficult with the purpose of leading participants to infer that their performance is below purportedly acceptable standards for their respective gender, thus threatening gender identity. Then, participants were asked to evaluate photographic art prints that a restaurant is considering exhibiting in its dining areas: participants viewed a slideshow consisting of geometric shapes.",
     "sample_country": "United States"
   },
@@ -1198,6 +1298,7 @@
     "intervention_content": "personal image",
     "intervention_mechanism": "identity",
     "intervention_medium": "image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -1210,6 +1311,7 @@
     "intervention_content": "personal image",
     "intervention_mechanism": "identity",
     "intervention_medium": "image",
+    "intervention_multicomponent": "no",
     "control_description": "All participants completed an essay task that threatened gender identity and subsequently watched a slideshow. Participants were presented with a slideshow of geometric shapes. Participants then reviewed ingredients and nutritional information for the BLT, chicken, and falafel wrap presented in standard FDA tables.",
     "sample_country": "United States"
   },
@@ -1222,6 +1324,7 @@
     "intervention_content": "environment, health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -1234,6 +1337,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Norway"
   },
@@ -1246,6 +1350,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Norway"
   },
@@ -1258,6 +1363,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Norway"
   },
@@ -1270,6 +1376,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Individuals responded to an RSVP survey for an event in which the meat option was the default meal preference.",
     "sample_country": "United States"
   },
@@ -1282,6 +1389,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional",
     "intervention_medium": "video",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Netherlands"
   },
@@ -1294,6 +1402,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional",
     "intervention_medium": "video",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "N/A"
   },
@@ -1306,6 +1415,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The menu contained, as before, the daily meat and fish options for the whole week, and had an additional sentence stating that “a vegetarian option is available on request.”",
     "sample_country": "Sweden"
   },
@@ -1318,6 +1428,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options, text",
+    "intervention_multicomponent": "no",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo.",
     "sample_country": "N/A"
   },
@@ -1330,6 +1441,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "ease/salience, factual",
     "intervention_medium": "menu/food options, text",
+    "intervention_multicomponent": "yes",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo.",
     "sample_country": "N/A"
   },
@@ -1342,6 +1454,7 @@
     "intervention_content": "taste/disgust",
     "intervention_mechanism": "ease/salience, authority/expertise",
     "intervention_medium": "menu/food options, text",
+    "intervention_multicomponent": "yes",
     "control_description": "Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo.",
     "sample_country": "N/A"
   },
@@ -1354,6 +1467,7 @@
     "intervention_content": "environment, health",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1366,6 +1480,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read an excerpt from a real newspaper article on sugary drinks at school kiosks and did not contain any reference to meat. Each quote was followed by an explicit statement with a dietary recommendation taken from the website of the German Nutrition Society.",
     "sample_country": "Germany"
   },
@@ -1378,6 +1493,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read an excerpt from a real newspaper article on sugary drinks at school kiosks and did not contain any reference to meat. Each quote was followed by an explicit statement with a dietary recommendation taken from the website of the German Nutrition Society.",
     "sample_country": "Germany"
   },
@@ -1390,6 +1506,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants read an excerpt from a real newspaper article on sugary drinks at school kiosks and did not contain any reference to meat. Each quote was followed by an explicit statement with a dietary recommendation taken from the website of the German Nutrition Society.",
     "sample_country": "Germany"
   },
@@ -1402,6 +1519,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1414,6 +1532,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "identity",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants completed an identity manipulation: Please think of yourself as an individual (personal identity). Please write at least 4–5 sentences (25 words) about the following topic: What are things that you personally do ... often? ... rarely? ... well? ... badly?. Meal name manipulation: the vegetarian burgers were labeled as a sustainable halloumi burger and a sustainable falafel burger.",
     "sample_country": "N/A"
   },
@@ -1426,6 +1545,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "identity",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants completed an identity manipulation: Please think of yourself as an individual (personal identity). Please write at least 4–5 sentences (25 words) about the following topic: What are things that you personally do ... often? ... rarely? ... well? ... badly?. Meal name manipulation: the vegetarian burgers were labeled as a sustainable halloumi burger and a sustainable falafel burger.",
     "sample_country": "N/A"
   },
@@ -1438,6 +1558,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Italy"
   },
@@ -1450,6 +1571,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Italy"
   },
@@ -1462,6 +1584,7 @@
     "intervention_content": "health, environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "Italy"
   },
@@ -1474,6 +1597,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "price",
     "intervention_medium": "price",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1486,6 +1610,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1498,6 +1623,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1510,6 +1636,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1522,6 +1649,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1534,6 +1662,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1546,6 +1675,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text, image",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1558,6 +1688,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "France"
   },
@@ -1570,6 +1701,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "France"
   },
@@ -1582,6 +1714,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "other",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "Netherlands"
   },
@@ -1594,6 +1727,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "64% of the meals offered in the cafeteria contained meat (close to the number of meat meals offered in orevious years)",
     "sample_country": "Switzerland"
   },
@@ -1606,6 +1740,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise, ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "original setup in the cafeteria",
     "sample_country": "Switzerland"
   },
@@ -1618,6 +1753,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "No information on meat consumption were given, participants read the following text just before they made their decision on which sandwich they wanted (meat, vegetarian or vegan): \"The winners will be publicly announced directly in the breakout room. Their choice of voucher will not be revealed to other participants. Please indicate which type of voucher you would like to receive if you win.\"",
     "sample_country": "Germany"
   },
@@ -1630,6 +1766,7 @@
     "intervention_content": "personal image",
     "intervention_mechanism": "identity",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "No information on meat consumption were given, participants read the following text just before they made their decision on which sandwich they wanted (meat, vegetarian or vegan): \"The winners will be publicly announced directly in the breakout room. Their choice of voucher will not be revealed to other participants. Please indicate which type of voucher you would like to receive if you win.\"",
     "sample_country": "Germany"
   },
@@ -1642,6 +1779,7 @@
     "intervention_content": "environment, personal image",
     "intervention_mechanism": "factual, identity",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "No information on meat consumption were given, participants read the following text just before they made their decision on which sandwich they wanted (meat, vegetarian or vegan): \"The winners will be publicly announced directly in the breakout room. Their choice of voucher will not be revealed to other participants. Please indicate which type of voucher you would like to receive if you win.\"",
     "sample_country": "Germany"
   },
@@ -1654,6 +1792,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "norms",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants received unrelated trend information.",
     "sample_country": "Czechia"
   },
@@ -1666,6 +1805,7 @@
     "intervention_content": "personal image",
     "intervention_mechanism": "goal pursuit",
     "intervention_medium": "in-person, text",
+    "intervention_multicomponent": "no",
     "sample_country": "Canada"
   },
   {
@@ -1677,6 +1817,7 @@
     "intervention_content": "taste/disgust",
     "intervention_mechanism": "taste",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with vegetarian food box options, this condition included basic descriptions, and served as a baseline. Meat food box options had basic descriptions in all conditions.",
     "sample_country": "N/A"
   },
@@ -1689,6 +1830,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "other",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with vegetarian food box options, this condition included basic descriptions, and served as a baseline. Meat food box options had basic descriptions in all conditions.",
     "sample_country": "N/A"
   },
@@ -1701,6 +1843,7 @@
     "intervention_content": "animal welfare, environment, health",
     "intervention_mechanism": "factual, negative emotional, norms",
     "intervention_medium": "video",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants watched a video with white text on a dark background describing how to complete the study. Participants were also asked if they would be willing to take a dietary pledge to reduce their meat consumption.",
     "sample_country": "Canada"
   },
@@ -1713,6 +1856,7 @@
     "intervention_content": "animal welfare, environment, health",
     "intervention_mechanism": "factual, negative emotional, norms",
     "intervention_medium": "video",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants watched a video with white text on a dark background describing how to complete the study. Participants were also asked if they would be willing to take a dietary pledge to adopt a vegetarian diet.",
     "sample_country": "Canada"
   },
@@ -1725,6 +1869,7 @@
     "intervention_content": "animal welfare, environment, health",
     "intervention_mechanism": "factual",
     "intervention_medium": "presentation",
+    "intervention_multicomponent": "yes",
     "control_description": "Students answered an online survey before being exposed to the classroom presentation. This set of students would act as a control group, against which the responses of the treatment group could be compared.",
     "sample_country": "N/A"
   },
@@ -1737,6 +1882,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "infotainment",
     "intervention_medium": "video",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United States"
   },
@@ -1749,6 +1895,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience, authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The original menu with the vegetarian dishes appearing in the first and last place in the list",
     "sample_country": "United Kingdom"
   },
@@ -1761,6 +1908,7 @@
     "intervention_content": "taste/disgust",
     "intervention_mechanism": "taste",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The original menu with the vegetarian dishes appearing in the first and last place in the list",
     "sample_country": "United Kingdom"
   },
@@ -1773,6 +1921,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The original menu with the vegetarian dishes appearing in the first and last place in the list",
     "sample_country": "United Kingdom"
   },
@@ -1785,6 +1934,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "price",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw four menus that included a meat option, a vegetarian option, and another vegetarian option, all of the same price",
     "sample_country": "United Kingdom"
   },
@@ -1797,6 +1947,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "price",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw seven menus that included a meat option, a vegetarian option, and another vegetarian option, all of the same price",
     "sample_country": "United Kingdom"
   },
@@ -1809,6 +1960,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw a restaurant menu with the beef burger as the default option, but in a separate box next to it: “Rather have a beans burger? This is also possible on request.”",
     "sample_country": "Netherlands"
   },
@@ -1821,6 +1973,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw a restaurant menu with the beef burger as the default option, but in a separate box next to it: “Rather have a seaweed burger? This is also possible on request.”",
     "sample_country": "Netherlands"
   },
@@ -1833,6 +1986,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw a restaurant menu with the beef burger as the default option, but in a separate box next to it: “Rather have a beans burger? This is also possible on request.”",
     "sample_country": "Netherlands"
   },
@@ -1845,6 +1999,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw a restaurant menu with the beef burger as the default option, but in a separate box next to it: “Rather have a seaweed burger? This is also possible on request.”",
     "sample_country": "Netherlands"
   },
@@ -1857,6 +2012,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants did not receive any information about food and the environment and instead performed a filler task",
     "sample_country": "N/A"
   },
@@ -1869,6 +2025,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants did not receive any information about food and the environment and instead performed a filler task",
     "sample_country": "N/A"
   },
@@ -1881,6 +2038,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw menu options with a \"(vegan)\" or \"(vegetarian)\" label shown in the title of option 1; the choice questions differ in the types of options compared (i.e. vegetarian vs vegan vs has meat)",
     "sample_country": "United States"
   },
@@ -1889,11 +2047,12 @@
     "paper_label": "McDonough (2012)",
     "study": 1,
     "intervention_condition": 1,
-    "intervention_description": "A survey of pre-validated measures was administered following exposure to the campaign to assess change in: fruit and vegetable intake, intentions, attitudes, perceived behavioral control, and subjective norms",
-    "intervention_content": "environment, health",
-    "intervention_mechanism": "factual, logical argument",
+    "intervention_description": "A sustainable eating campaign was applied as an intervention, and it included multi components such as five cooking workshops total each consisting of a 20 minute discussion led by a Dietetics stagiaire, followed by preparation of a vegetarian meal, animated kiosks, and an informative website curated for the campaign.",
+    "intervention_content": "environment, health, taste/disgust",
+    "intervention_mechanism": "goal pursuit",
     "intervention_medium": "in-person",
-    "control_description": "A survey of pre-validated measures was administered prior to, and following exposure to the campaign to assess change in: fruit and vegetable intake, intentions, attitudes, perceived behavioral control, and subjective norms",
+    "intervention_multicomponent": "yes",
+    "control_description": "A survey was applied prior to intervention, to assess the change in participants' fruit and vegetable intake, intentions, attitudes, perceived behavioral control, and subjective norms",
     "sample_country": "Canada"
   },
   {
@@ -1905,6 +2064,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "menu/food options, image, text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1917,6 +2077,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "menu/food options, image, text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1929,6 +2090,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "menu/food options, image, text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "United Kingdom"
   },
@@ -1941,6 +2103,7 @@
     "intervention_content": "health, environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Treatment group was presented with information regarding the health and environmental benefits of consuming a plant-based meat substitute versus beef prior to bidding",
     "sample_country": "United States"
   },
@@ -1953,6 +2116,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with a shopping list consisting of meat and plant-based meat alternatives during an online grocery shopping task",
     "sample_country": "United States"
   },
@@ -1965,6 +2129,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with a shopping list consisting of meat and plant-based meat alternatives during an online grocery shopping task",
     "sample_country": "United States"
   },
@@ -1977,6 +2142,7 @@
     "intervention_content": "health, environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants were presented with a shopping list consisting of meat and plant-based meat alternatives during an online grocery shopping task",
     "sample_country": "United States"
   },
@@ -1989,6 +2155,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were shown a menu with a beef burrito, a chicken burrito and a vegetarian burrito",
     "sample_country": "United Kingdom"
   },
@@ -2001,6 +2168,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were shown a menu with a beef burrito, a chicken burrito and a vegetarian burrito",
     "sample_country": "United Kingdom"
   },
@@ -2013,6 +2181,7 @@
     "intervention_content": "environment, none",
     "intervention_mechanism": "factual, origin of animal product",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Italy"
   },
@@ -2025,6 +2194,7 @@
     "intervention_content": "environment, none",
     "intervention_mechanism": "factual, origin of animal product, norms",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Italy"
   },
@@ -2037,6 +2207,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The three identical dishes to the intervention condition were just labelled with their names and no “dish of the day” was offered",
     "sample_country": "Denmark"
   },
@@ -2049,6 +2220,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The three identical dishes to the intervention condition were just labelled with their names and no “dish of the day” was offered",
     "sample_country": "France"
   },
@@ -2061,6 +2233,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The three identical dishes to the intervention condition were just labelled with their names and no “dish of the day” was offered",
     "sample_country": "Italy"
   },
@@ -2073,6 +2246,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The three identical dishes to the intervention condition were just labelled with their names and no “dish of the day” was offered",
     "sample_country": "United Kingdom"
   },
@@ -2085,6 +2259,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were asked to choose between lab-grown beef, plant-based meat animal-like heme protein, plant-based meat using pea protein, and farm-raised beef, with no additional information given about the products",
     "sample_country": "United States"
   },
@@ -2097,6 +2272,7 @@
     "intervention_content": "health, none",
     "intervention_mechanism": "authority/expertise, factual",
     "intervention_medium": "in-person, text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "France"
   },
@@ -2109,6 +2285,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were shown a menu with meat balls, fish cakes, and a veggie balls dish",
     "sample_country": "Denmark"
   },
@@ -2121,6 +2298,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were shown a menu with meat balls, fish cakes, and a veggie balls dish",
     "sample_country": "France"
   },
@@ -2133,6 +2311,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were shown a menu with meat balls, fish cakes, and a veggie balls dish",
     "sample_country": "Italy"
   },
@@ -2145,6 +2324,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "authority/expertise",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were shown a menu with meat balls, fish cakes, and a veggie balls dish",
     "sample_country": "United Kingdom"
   },
@@ -2157,6 +2337,7 @@
     "intervention_content": "health, none",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants received information described the company that is responsible for the university canteen and included a recommendation to visit their website to get information about ongoing activities.",
     "sample_country": "Germany"
   },
@@ -2169,6 +2350,7 @@
     "intervention_content": "environment, none",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants received information described the company that is responsible for the university canteen and included a recommendation to visit their website to get information about ongoing activities.",
     "sample_country": "Germany"
   },
@@ -2181,6 +2363,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with a menu in which four omnivore entrees were featured prominently as the default items on the menu and four vegan entrees as the opt-out items",
     "sample_country": "N/A"
   },
@@ -2193,6 +2376,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with a menu in which four omnivore entrees were featured prominently as the default items on the menu and four vegan entrees as the opt-out items",
     "sample_country": "N/A"
   },
@@ -2205,6 +2389,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with a menu in which four omnivore entrees were featured prominently as the default items on the menu and four vegan entrees as the opt-out items",
     "sample_country": "N/A"
   },
@@ -2217,6 +2402,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with a menu in which four omnivore entrees were featured prominently as the default items on the menu and four vegan entrees as the opt-out items",
     "sample_country": "N/A"
   },
@@ -2229,6 +2415,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with a menu with a meat default burger, with a separate box stating “Would you rather have a Black Bean Burger? – Ask the waiter”",
     "sample_country": "N/A"
   },
@@ -2241,6 +2428,7 @@
     "intervention_content": "taste/disgust",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were shown both burgers on the menu, but the vegetarian burger was explicitly labeled “Vegetarian Black Bean Burger”",
     "sample_country": "N/A"
   },
@@ -2253,6 +2441,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "other",
     "intervention_medium": "image, text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Belgium"
   },
@@ -2265,6 +2454,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "other",
     "intervention_medium": "image, text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Belgium"
   },
@@ -2277,6 +2467,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "other",
     "intervention_medium": "image, text",
+    "intervention_multicomponent": "no",
     "control_description": "",
     "sample_country": "Belgium"
   },
@@ -2289,6 +2480,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "image, text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw a supermarket package for chicken breast meat with no sticker",
     "sample_country": "United States"
   },
@@ -2301,6 +2493,7 @@
     "intervention_content": "environment, animal welfare",
     "intervention_mechanism": "negative emotional, factual",
     "intervention_medium": "image, text",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants saw a supermarket package for chicken breast meat with no sticker",
     "sample_country": "United States"
   },
@@ -2309,11 +2502,12 @@
     "paper_label": "Pauer et al. (2022)",
     "study": 2,
     "intervention_condition": 1,
-    "intervention_description": "To make participants to reflect on their inconsistent evaluations about meat, they were asked to describe two personally held reactions in favor of and two reactions opposed to meat consumption or vaccination in the control group.",
+    "intervention_description": "To make participants to reflect on their inconsistent evaluations about meat, they were asked to describe two personally held reactions in favor of and two reactions opposed to meat consumption.",
     "intervention_content": "personal image",
     "intervention_mechanism": "other, logical argument",
     "intervention_medium": "text",
-    "control_description": "Participants assigned to a task about an unrelated control topic (going to the cinema)",
+    "intervention_multicomponent": "no",
+    "control_description": "To make participants to reflect on their inconsistent evaluations about vaccination, they were asked to describe two personally held reactions in favor of and two reactions opposed to vaccination.",
     "sample_country": "N/A"
   },
   {
@@ -2321,11 +2515,12 @@
     "paper_label": "Pauer et al. (2022)",
     "study": 3,
     "intervention_condition": 1,
-    "intervention_description": "To make participants to reflect on their inconsistent evaluations about meat, they were asked to describe two personally held reactions in favor of and two reactions opposed to meat consumption or vaccination in the control group.",
+    "intervention_description": "To make participants to reflect on their inconsistent evaluations about meat, they were asked to describe two personally held reactions in favor of and two reactions opposed to meat consumption.",
     "intervention_content": "personal image",
     "intervention_mechanism": "other, logical argument",
     "intervention_medium": "text",
-    "control_description": "Participants assigned to a task about an unrelated control topic (going to the cinema)",
+    "intervention_multicomponent": "no",
+    "control_description": "To make participants to reflect on their inconsistent evaluations about going to the cinema, they were asked to describe two personally held reactions in favor of and two reactions opposed to going to the cinema.",
     "sample_country": "England"
   },
   {
@@ -2337,6 +2532,7 @@
     "intervention_content": "health, none",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "sample_country": "United States"
   },
   {
@@ -2348,6 +2544,7 @@
     "intervention_content": "environment, none",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "sample_country": "United States"
   },
   {
@@ -2359,6 +2556,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Only the price and name of the meal were visible to the patrons in the canteen",
     "sample_country": "N/A"
   },
@@ -2371,6 +2569,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants choose between three similar meals, including one vegetarian (VeggieEat) meal and two non-vegetarian meals.",
     "sample_country": "Denmark"
   },
@@ -2383,6 +2582,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants choose between three similar meals, including one vegetarian (VeggieEat) meal and two non-vegetarian meals.",
     "sample_country": "Denmark"
   },
@@ -2395,6 +2595,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options, text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were shown a fast food restaurant menu with QR code labels on all items",
     "sample_country": "United States"
   },
@@ -2405,8 +2606,9 @@
     "intervention_condition": 3,
     "intervention_description": "Participants were shown a fast food restaurant menu with red high–climate impact labels on beef items (negative framing); “This item is not environmentally sustainable. It has high greenhouse gas emissions and a high contribution to climate change”",
     "intervention_content": "environment",
-    "intervention_mechanism": "factual, negative emotional",
+    "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options, text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were shown a fast food restaurant menu with QR code labels on all items",
     "sample_country": "United States"
   },
@@ -2419,6 +2621,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants are shown a restaurant menu in which two vegetarian dishes are listed under the title of vegetarian, this section was either at the top or down of the menu.",
     "sample_country": "United States"
   },
@@ -2431,6 +2634,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants are shown a restaurant menu in which two vegetarian dishes are listed under the title of vegetarian, this section was either at the top or down of the menu.",
     "sample_country": "United States"
   },
@@ -2443,6 +2647,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants are shown a restaurant menu in which two vegetaran dishes are listed under the title of \"Vegetarian Main Dishes\" section. This part of menu was either on the top or down.",
     "sample_country": "United States"
   },
@@ -2455,6 +2660,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants are shown a restaurant menu in which two vegetaran dishes are listed under the title of \"Vegetarian Main Dishes\" section. This part of menu was either on the top or down.",
     "sample_country": "United States"
   },
@@ -2467,6 +2673,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants are shown a restaurant menu in which two vegetaran dishes are listed under the title of \"Vegetarian Main Dishes\" section. This part of menu was either on the top or down.",
     "sample_country": "United States"
   },
@@ -2479,6 +2686,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants are shown a restaurant menu in which two vegetarian dishes are listed under the title of vegetarian, this section was either at the top or down of the menu.",
     "sample_country": "United States"
   },
@@ -2491,6 +2699,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants are shown a restaurant menu in which two vegetarian dishes are listed under the title of vegetarian, this section was either at the top or down of the menu.",
     "sample_country": "United States"
   },
@@ -2503,6 +2712,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "other",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The target dish had a neutral label \"Curry stew with coconut and sweet potatoes*\", with a footnote mentioning that it's also suitable for vegetarians",
     "sample_country": "N/A"
   },
@@ -2515,6 +2725,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "other",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The target dish had a neutral label \"Curry stew with coconut and sweet potatoes*\", with a footnote mentioning that it's also suitable for vegetarians",
     "sample_country": "N/A"
   },
@@ -2527,6 +2738,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "other",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The target dish had a neutral label \"Curry stew with coconut and sweet potatoes*\", with a footnote mentioning that it's also suitable for vegetarians",
     "sample_country": "N/A"
   },
@@ -2539,6 +2751,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "other",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The target dish had a neutral label \"Curry stew with coconut and sweet potatoes*\", with a footnote mentioning that it's also suitable for vegetarians",
     "sample_country": "N/A"
   },
@@ -2550,7 +2763,8 @@
     "intervention_description": "Participants participated in a 6-week cooking class in which they observed the preparation of a plant-based, olive oil diet meal and got to taste test; While the recipe was being prepared, the staff discussed consistent themes each week, including the health benefits of extra virgin olive oil and encouraging the participants to use olive oil to cook their vegetables; meat/poultry/seafood is not needed daily; vegetables and all starch products (including beans) contain protein. No other nutrition- or food-related information was provided. All of the recipes were made with extra virgin olive oil (1 to 2 tablespoons), contained on average 2 servings of vegetables, and did not contain meat/poultry or seafood",
     "intervention_content": "taste/disgust, health, none",
     "intervention_mechanism": "authority/expertise, taste, goal pursuit",
-    "intervention_medium": "in-person, taste",
+    "intervention_medium": "in-person",
+    "intervention_multicomponent": "yes",
     "sample_country": "United States"
   },
   {
@@ -2562,6 +2776,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants received a standard lunch registration presenting a non-vegetarian buffet as the default, but allowing the active choice of a vegetarian option",
     "sample_country": "Denmark"
   },
@@ -2574,6 +2789,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants received a standard lunch registration presenting a non-vegetarian buffet as the default, but allowing the active choice of a vegetarian option",
     "sample_country": "Denmark"
   },
@@ -2586,6 +2802,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants received a standard lunch registration presenting a non-vegetarian buffet as the default, but allowing the active choice of a vegetarian option",
     "sample_country": "Denmark"
   },
@@ -2598,6 +2815,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants viewed a control message encouraging reading (a neutral topic unrelated to red meat)",
     "sample_country": "United States"
   },
@@ -2610,6 +2828,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants viewed a control message encouraging reading (a neutral topic unrelated to red meat)",
     "sample_country": "United States"
   },
@@ -2622,6 +2841,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants viewed a control message encouraging reading (a neutral topic unrelated to red meat)",
     "sample_country": "United States"
   },
@@ -2634,6 +2854,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw attentional control messages e.g. “All side dishes in our canteens are either vegetarian or vegan.\" in between a series of menu choices",
     "sample_country": "Germany"
   },
@@ -2646,6 +2867,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "factual",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw neutral control messages e.g. \"There are about 400 people employed at Studentenwerk Göttingen.\" in between trials of meal selections from menus",
     "sample_country": "Germany"
   },
@@ -2658,6 +2880,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "factual, goal pursuit",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants saw neutral control messages e.g. \"There are about 400 people employed at Studentenwerk Göttingen.\" in between trials of meal selections from menus",
     "sample_country": "Germany"
   },
@@ -2670,6 +2893,7 @@
     "intervention_content": "animal welfare",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "No message - control condition.",
     "sample_country": "United States"
   },
@@ -2682,6 +2906,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "No message - control condition.",
     "sample_country": "United States"
   },
@@ -2694,6 +2919,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "No message - control condition.",
     "sample_country": "United States"
   },
@@ -2706,6 +2932,7 @@
     "intervention_content": "personal image",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "No message - control condition.",
     "sample_country": "United States"
   },
@@ -2718,6 +2945,7 @@
     "intervention_content": "none, environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants did not receive any messages",
     "sample_country": "Italy"
   },
@@ -2730,6 +2958,7 @@
     "intervention_content": "none, environment",
     "intervention_mechanism": "factual, norms",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "Participants did not receive any messages",
     "sample_country": "Italy"
   },
@@ -2742,6 +2971,7 @@
     "intervention_content": "none, environment",
     "intervention_mechanism": "infotainment",
     "intervention_medium": "video",
+    "intervention_multicomponent": "no",
     "control_description": "Participants watched the nature documentary, “Planet Earth” (2006) about environmental change, where no reference to meat consumption was made, and filled in a questionnaire pre and post-documentary",
     "sample_country": "N/A"
   },
@@ -2754,6 +2984,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "Belgium"
   },
@@ -2766,6 +2997,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "Belgium"
   },
@@ -2778,6 +3010,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "N/A"
   },
@@ -2790,6 +3023,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "N/A"
   },
@@ -2802,6 +3036,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "N/A"
   },
@@ -2814,6 +3049,7 @@
     "intervention_content": "health",
     "intervention_mechanism": "factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "no",
     "control_description": "Participants had to choose from products that were presented without any labels to make a meal",
     "sample_country": "N/A"
   },
@@ -2826,6 +3062,7 @@
     "intervention_content": "environment",
     "intervention_mechanism": "goal pursuit, factual",
     "intervention_medium": "text",
+    "intervention_multicomponent": "yes",
     "control_description": "",
     "sample_country": "Netherlands"
   },
@@ -2834,10 +3071,11 @@
     "paper_label": "Acharya et al. (2004)",
     "study": 1,
     "intervention_condition": 1,
-    "intervention_description": "Regular supplies of soya foods were given free-of-charge to the intervention group. Based on individual preferences, the study dietitian made speciﬁc suggestions on how to incorporate soya foods into the daily menu, such as replacing meat with tofu in stew or fried dishes, cow milk with soyamilk, and cookies with a soya protein bar. To avoid weight gain, replacing other foods was emphasized over adding soya foods. To maintain compliance, all participants received individual dietary counselling by a registered dietitian and follow-up phone calls. They had at least six contacts with the dietitian during the ﬁrst year and were counselled on how to maintain a healthy diet according to the food guide pyramid.",
+    "intervention_description": "Regular supplies of soy foods were given free-of-charge to the intervention group. Based on individual preferences, the study dietitian made speciﬁc suggestions on how to incorporate soy foods into the daily menu, such as replacing meat with tofu in stew or fried dishes, cow milk with soyamilk, and cookies with a soya protein bar. To avoid weight gain, replacing other foods was emphasized over adding soya foods. To maintain compliance, all participants received individual dietary counselling by a registered dietitian and follow-up phone calls. They had at least six contacts with the dietitian during the ﬁrst year and were counselled on how to maintain a healthy diet according to the food guide pyramid.",
     "intervention_content": "none",
     "intervention_mechanism": "goal pursuit, other",
     "intervention_medium": "in-person",
+    "intervention_multicomponent": "yes",
     "control_description": "Women in the control group had, like in the experimental group, at least six contacts with the dietitian during the ﬁrst year and were counselled on how to maintain a healthy diet according to the food guide pyramid.",
     "sample_country": "United States"
   },
@@ -2850,6 +3088,7 @@
     "intervention_content": "taste/disgust",
     "intervention_mechanism": "taste",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with a standard menu",
     "sample_country": "Netherlands"
   },
@@ -2862,6 +3101,7 @@
     "intervention_content": "taste/disgust",
     "intervention_mechanism": "taste",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with a standard menu",
     "sample_country": "Netherlands"
   },
@@ -2874,6 +3114,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "ease/salience",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "Participants were presented with a standard menu",
     "sample_country": "Netherlands"
   },
@@ -2886,6 +3127,7 @@
     "intervention_content": "none",
     "intervention_mechanism": "other",
     "intervention_medium": "menu/food options",
+    "intervention_multicomponent": "no",
     "control_description": "The online Chipotle menu (August 2024) was duplicated, and participants had the same two non-meat options avaliable to real Chipotle diners.",
     "sample_country": "United States"
   }

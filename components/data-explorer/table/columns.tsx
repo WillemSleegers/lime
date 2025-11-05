@@ -392,6 +392,21 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
     },
   },
   {
+    accessorKey: "intervention_multicomponent",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Components" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("intervention_multicomponent")
+      const label = value === "yes" ? "multicomponent" : "single-component"
+      return (
+        <Badge className="text-sm font-normal whitespace-nowrap bg-muted text-foreground">
+          {label}
+        </Badge>
+      )
+    },
+  },
+  {
     id: "control_description",
     accessorKey: "control_description",
     header: ({ column }) => (
