@@ -49,6 +49,8 @@ export const Highlights = (props: HighLightsProps) => {
   let outcomeMeasurementTypeData
   let countryData
   let sampleSizeStats
+  let singleComponentCount
+  let singleComponentPercentage
 
   if (data) {
     participantsCount = [
@@ -237,11 +239,18 @@ export const Highlights = (props: HighLightsProps) => {
       median: allSizes[Math.floor(allSizes.length / 2)],
       max: Math.max(...allSizes),
     }
+
+    // Calculate single-component percentage
+    singleComponentCount = data.filter(
+      (datum) => datum.intervention_multicomponent === "no"
+    ).length
+    singleComponentPercentage = round((singleComponentCount / effectsCount) * 100, 0)
   } else {
     openAccessPercentage = 0
     preregistrationPercentage = 0
     studyRandomizationPercentage = 0
     studyDataAvailablePercentage = 0
+    singleComponentPercentage = 0
   }
 
   return (
@@ -487,6 +496,20 @@ export const Highlights = (props: HighLightsProps) => {
               {interventionMediumData && interventionMediumData.length > 0 && (
                 <HighlightBarChart data={interventionMediumData} />
               )}
+            </CardContent>
+          </Card>
+          {/* Row 4: Single-component percentage */}
+          <Card className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-2">
+            <CardHeader>
+              <CardTitle className="text-2xl">
+                {singleComponentCount ? singleComponentCount.toString() : "-"}
+              </CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Single-component effects
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <HighlightRadialBarChart percentage={singleComponentPercentage} />
             </CardContent>
           </Card>
         </div>
