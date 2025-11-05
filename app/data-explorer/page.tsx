@@ -84,8 +84,8 @@ export default function DataExplorer() {
       </div>
       <Tabs defaultValue={level} className="space-y-6">
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <div className="w-full overflow-x-auto">
-            <TabsList className="w-full md:w-full justify-start min-w-fit">
+          <div className="overflow-x-auto">
+            <TabsList className="w-auto justify-start">
               <TabsTrigger
                 value="paper"
                 onClick={() => setLevel("paper")}
