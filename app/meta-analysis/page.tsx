@@ -54,8 +54,6 @@ const MetaAnalysisPage = () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" })
     }, 100)
-    // Run analysis in background while user reviews highlights
-    runAnalysis()
   }
 
   // Handle going back from highlights to criteria
@@ -75,10 +73,8 @@ const MetaAnalysisPage = () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" })
     }, 100)
-    // Ensure analysis runs if it hasn't completed yet
-    if (!estimate) {
-      runAnalysis()
-    }
+    // Run analysis when moving to step 3
+    runAnalysis()
   }
 
   // Handle going back from analysis to highlights
