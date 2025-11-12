@@ -4,11 +4,9 @@ import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { Dispatch, SetStateAction } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
-import { Toggle } from "@/components/ui/toggle"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 import { CheckboxGroup } from "@/components/form/checkbox-group"
@@ -22,7 +20,7 @@ import {
   OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW,
   OUTCOME_CATEGORIES_GROUPED,
 } from "@/constants/constants-filters"
-import { FilteredData, Locks } from "@/lib/data-explorer-utils"
+import { FilteredData } from "@/lib/data-explorer-utils"
 
 import { Outcomes } from "@/lib/types"
 import { outcomeCategoriesFieldsNew } from "@/lib/filter-schemas"
@@ -39,8 +37,6 @@ type FilterOutcomesProps = {
   data: Outcomes
   filteredData: FilteredData
   setFilteredData: Dispatch<SetStateAction<FilteredData>>
-  locks: Locks
-  setLocks: Dispatch<SetStateAction<Locks>>
   filterOpen: boolean
   setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -49,8 +45,6 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
   const {
     data,
     setFilteredData,
-    locks,
-    setLocks,
     filterOpen,
     setFilterOpen,
   } = props
@@ -120,13 +114,6 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
             <Button type="submit" className="h-auto">
               Update table
             </Button>
-            <Toggle
-              onClick={() => {
-                setLocks((prev) => ({ ...prev, outcomes: !prev.outcomes }))
-              }}
-            >
-              {locks.outcomes ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
-            </Toggle>
           </div>
         </form>
       </Form>

@@ -4,12 +4,10 @@ import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { Dispatch, SetStateAction } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
-import { Toggle } from "@/components/ui/toggle"
-import { FilteredData, Locks } from "@/lib/data-explorer-utils"
+import { FilteredData } from "@/lib/data-explorer-utils"
 import { InputField } from "@/components/form/input-field"
 import { SliderField } from "@/components/form/slider-field"
 
@@ -28,8 +26,6 @@ type FilterEffectsProps = {
   data: Effects
   filteredData: FilteredData
   setFilteredData: Dispatch<SetStateAction<FilteredData>>
-  locks: Locks
-  setLocks: Dispatch<SetStateAction<Locks>>
   filterOpen: boolean
   setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -38,8 +34,6 @@ export const FilterEffects = (props: FilterEffectsProps) => {
   const {
     data,
     setFilteredData,
-    locks,
-    setLocks,
     filterOpen,
     setFilterOpen,
   } = props
@@ -109,13 +103,6 @@ export const FilterEffects = (props: FilterEffectsProps) => {
             <Button type="submit" className="h-auto">
               Update table
             </Button>
-            <Toggle
-              onClick={() => {
-                setLocks((prev) => ({ ...prev, effects: !prev.effects }))
-              }}
-            >
-              {locks.effects ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
-            </Toggle>
           </div>
         </form>
       </Form>

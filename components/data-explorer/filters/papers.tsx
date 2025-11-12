@@ -6,10 +6,7 @@ import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 
-import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
-
 import { Form } from "@/components/ui/form"
-import { Toggle } from "@/components/ui/toggle"
 import { Button } from "@/components/ui/button"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
@@ -25,7 +22,7 @@ import {
 } from "@/constants/constants-filters"
 
 import { Papers } from "@/lib/types"
-import { FilteredData, Locks } from "@/lib/data-explorer-utils"
+import { FilteredData } from "@/lib/data-explorer-utils"
 
 const formSchemaPapers = z.object(paperFiltersFields)
 
@@ -33,8 +30,6 @@ type FilterPapersProps = {
   data: Papers
   filteredData: FilteredData
   setFilteredData: Dispatch<SetStateAction<FilteredData>>
-  locks: Locks
-  setLocks: Dispatch<SetStateAction<Locks>>
   filterOpen: boolean
   setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -43,8 +38,6 @@ export const FilterPapers = (props: FilterPapersProps) => {
   const {
     data,
     setFilteredData,
-    locks,
-    setLocks,
     filterOpen,
     setFilterOpen,
   } = props
@@ -125,13 +118,6 @@ export const FilterPapers = (props: FilterPapersProps) => {
             <Button type="submit" className="h-auto">
               Update table
             </Button>
-            <Toggle
-              onClick={() => {
-                setLocks((prev) => ({ ...prev, papers: !prev.papers }))
-              }}
-            >
-              {locks.papers ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
-            </Toggle>
           </div>
         </form>
       </Form>

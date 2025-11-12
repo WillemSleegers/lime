@@ -1,9 +1,8 @@
 import { useState } from "react"
 import type { Data } from "@/lib/types"
 import {
-  applyLocksToData,
+  applyFiltersToData,
   type FilteredData,
-  type Locks,
 } from "@/lib/data-explorer-utils"
 
 export function useDataExplorerState(
@@ -11,17 +10,9 @@ export function useDataExplorerState(
   fullData: Data
 ) {
   const [filteredData, setFilteredData] = useState<FilteredData>(initialData)
-  const [locks, setLocks] = useState<Locks>({
-    papers: false,
-    studies: false,
-    samples: false,
-    interventions: false,
-    outcomes: false,
-    effects: false,
-  })
 
   // React Compiler will automatically memoize this computation
-  const displayData = applyLocksToData(fullData, filteredData, locks)
+  const displayData = applyFiltersToData(fullData, filteredData)
 
-  return { displayData, filteredData, setFilteredData, locks, setLocks }
+  return { displayData, filteredData, setFilteredData }
 }
