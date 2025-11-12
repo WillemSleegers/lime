@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { exportToCSV } from "@/lib/csv-utils"
 
@@ -45,6 +45,7 @@ import { useDataExplorerState } from "@/hooks/use-data-explorer-state"
 export default function DataExplorer() {
   const [level, setLevel] = useState("paper")
   const [filterOpen, setFilterOpen] = useState(false)
+  const [resetKey, setResetKey] = useState(0)
 
   const { displayData, filteredData, setFilteredData, locks, setLocks } =
     useDataExplorerState(
@@ -64,6 +65,26 @@ export default function DataExplorer() {
     fileName: string
   ) => {
     exportToCSV(data, fileName)
+  }
+
+  const handleResetFilters = () => {
+    setFilteredData({
+      papers,
+      studies,
+      samples,
+      interventions,
+      outcomes,
+      effects,
+    })
+    setLocks({
+      papers: false,
+      studies: false,
+      samples: false,
+      interventions: false,
+      outcomes: false,
+      effects: false,
+    })
+    setResetKey((prev) => prev + 1)
   }
 
   return (
@@ -129,6 +150,10 @@ export default function DataExplorer() {
             </TabsTrigger>
           </TabsList>
 
+          <Button variant="outline" onClick={handleResetFilters}>
+            Reset filters
+          </Button>
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline">
@@ -182,6 +207,7 @@ export default function DataExplorer() {
 
         <TabsContent value="paper" className="space-y-4" forceMount hidden={level !== "paper"}>
           <FilterPapers
+            key={`papers-${resetKey}`}
             data={papers}
             filteredData={filteredData}
             setFilteredData={setFilteredData}
@@ -198,6 +224,7 @@ export default function DataExplorer() {
         </TabsContent>
         <TabsContent value="study" className="space-y-4" forceMount hidden={level !== "study"}>
           <FilterStudies
+            key={`studies-${resetKey}`}
             data={studies}
             filteredData={filteredData}
             setFilteredData={setFilteredData}
@@ -214,6 +241,7 @@ export default function DataExplorer() {
         </TabsContent>
         <TabsContent value="sample" className="space-y-4" forceMount hidden={level !== "sample"}>
           <FilterSamples
+            key={`samples-${resetKey}`}
             data={samples}
             filteredData={filteredData}
             setFilteredData={setFilteredData}
@@ -230,6 +258,7 @@ export default function DataExplorer() {
         </TabsContent>
         <TabsContent value="intervention" className="space-y-4" forceMount hidden={level !== "intervention"}>
           <FilterInterventions
+            key={`interventions-${resetKey}`}
             data={interventions}
             filteredData={filteredData}
             setFilteredData={setFilteredData}
@@ -246,6 +275,7 @@ export default function DataExplorer() {
         </TabsContent>
         <TabsContent value="outcome" className="space-y-4" forceMount hidden={level !== "outcome"}>
           <FilterOutcomes
+            key={`outcomes-${resetKey}`}
             data={outcomes}
             filteredData={filteredData}
             setFilteredData={setFilteredData}
@@ -262,6 +292,7 @@ export default function DataExplorer() {
         </TabsContent>
         <TabsContent value="effect" className="space-y-4" forceMount hidden={level !== "effect"}>
           <FilterEffects
+            key={`effects-${resetKey}`}
             data={effects}
             filteredData={filteredData}
             setFilteredData={setFilteredData}

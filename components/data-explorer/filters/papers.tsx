@@ -97,7 +97,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-x-8 gap-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-6">
             <SliderField
               control={form.control}
               name="paper_year"
@@ -107,7 +107,6 @@ export const FilterPapers = (props: FilterPapersProps) => {
               minStepsBetweenThumbs={1}
               className="w-[100px]"
             />
-            <div></div>
             <CheckboxGroup
               control={form.control}
               name="paper_type"
