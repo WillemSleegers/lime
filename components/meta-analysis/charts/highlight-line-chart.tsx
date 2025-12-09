@@ -18,7 +18,7 @@ type HighlightLineChartProps = {
 
 export const HighlightLineChart = ({ data }: HighlightLineChartProps) => {
   return (
-    <ChartContainer config={chartConfig} className="h-[80px] w-full">
+    <ChartContainer config={chartConfig} className="h-20 w-full">
       <LineChart
         accessibilityLayer
         data={data}
