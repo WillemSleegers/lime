@@ -4,11 +4,9 @@ import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { Dispatch, SetStateAction } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { LockKeyholeIcon, LockKeyholeOpenIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
-import { Toggle } from "@/components/ui/toggle"
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 import { CheckboxGroup } from "@/components/form/checkbox-group"
 import { MultiSelectField } from "@/components/form/multi-select-field"
@@ -20,7 +18,7 @@ import {
 } from "@/constants/constants-filters"
 
 import { Samples } from "@/lib/types"
-import { FilteredData, Locks } from "@/lib/data-explorer-utils"
+import { FilteredData } from "@/lib/data-explorer-utils"
 import { sampleFiltersFields } from "@/lib/filter-schemas"
 
 const formSchemaSamples = z.object({
@@ -31,8 +29,6 @@ type FilterSamplesProps = {
   data: Samples
   filteredData: FilteredData
   setFilteredData: Dispatch<SetStateAction<FilteredData>>
-  locks: Locks
-  setLocks: Dispatch<SetStateAction<Locks>>
   filterOpen: boolean
   setFilterOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -41,8 +37,6 @@ export const FilterSamples = (props: FilterSamplesProps) => {
   const {
     data,
     setFilteredData,
-    locks,
-    setLocks,
     filterOpen,
     setFilterOpen,
   } = props
@@ -121,13 +115,6 @@ export const FilterSamples = (props: FilterSamplesProps) => {
             <Button type="submit" className="h-auto">
               Update table
             </Button>
-            <Toggle
-              onClick={() => {
-                setLocks((prev) => ({ ...prev, samples: !prev.samples }))
-              }}
-            >
-              {locks.samples ? <LockKeyholeIcon /> : <LockKeyholeOpenIcon />}
-            </Toggle>
           </div>
         </form>
       </Form>
