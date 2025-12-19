@@ -18,9 +18,9 @@ const Contributors = () => {
           <Image
             className="mb-5 rounded-lg"
             src={willem}
-            alt={"dr. Willem Sleegers"}
+            alt={"Dr. Willem Sleegers"}
           />
-          <span className="block font-semibold">dr. Willem Sleegers</span>
+          <span className="block font-semibold">Dr. Willem Sleegers</span>
           <span className="block">
             Senior Behavioral Scientist at Rethink Priorities{" "}
           </span>
@@ -39,9 +39,9 @@ const Contributors = () => {
           <Image
             className="mb-5 rounded-lg"
             src={bastian}
-            alt={"dr. Bastian Jaeger"}
+            alt={"Dr. Bastian Jaeger"}
           />
-          <span className="block font-semibold">dr. Bastian Jaeger</span>
+          <span className="block font-semibold">Dr. Bastian Jaeger</span>
           <span className="block">
             Assistant Professor at Tilburg University
           </span>
@@ -60,9 +60,9 @@ const Contributors = () => {
           <Image
             className="mb-5 rounded-lg"
             src={robbie}
-            alt={"dr. Robbie van Aert"}
+            alt={"Dr. Robbie van Aert"}
           />
-          <span className="block font-semibold">dr. Robbie van Aert</span>
+          <span className="block font-semibold">Dr. Robbie van Aert</span>
           <span className="block">
             Assistant Professor at Tilburg University{" "}
           </span>
