@@ -24,7 +24,7 @@ const FAQ = () => {
                   studies aimed at reducing animal product consumption. We are
                   collecting information on all studies on this topic to make it
                   available via this website. You can explore the studies with
-                  the
+                  the{" "}
                   <Link
                     className="font-medium text-primary hover:underline"
                     href="/data-explorer/"
@@ -73,7 +73,7 @@ const FAQ = () => {
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-base">
                 <p>
-                  LIME was mainly created by dr. Willem Sleegers and dr. Bastian
+                  LIME was mainly created by Dr. Willem Sleegers and Dr. Bastian
                   Jaeger. You can find out more about who collaborated on LIME
                   on the{" "}
                   <Link
