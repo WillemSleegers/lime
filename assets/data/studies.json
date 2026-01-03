@@ -654,30 +654,6 @@
     "study_randomization": "yes"
   },
   {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 1,
-    "study_n": 231,
-    "study_preregistered": "no",
-    "study_data_available": "yes",
-    "study_data_link": "https://osf.io/q6dvm/",
-    "study_condition_assignment": "individual",
-    "study_design": "between",
-    "study_randomization": "yes"
-  },
-  {
-    "paper": 79,
-    "paper_label": "Banach & Stel (2024)",
-    "study": 2,
-    "study_n": 399,
-    "study_preregistered": "no",
-    "study_data_available": "yes",
-    "study_data_link": "https://osf.io/q6dvm/",
-    "study_condition_assignment": "individual",
-    "study_design": "between",
-    "study_randomization": "yes"
-  },
-  {
     "paper": 80,
     "paper_label": "Gravert & Kurz (2019)",
     "study": 1,
@@ -734,19 +710,6 @@
     "study_condition_assignment": "cluster",
     "study_design": "crossover",
     "study_randomization": "no"
-  },
-  {
-    "paper": 88,
-    "paper_label": "Zinn et al. (2023)",
-    "study": 1,
-    "study_n": 899,
-    "study_preregistered": "yes",
-    "study_preregistration_link": "https://osf.io/6cjb8",
-    "study_data_available": "yes",
-    "study_data_link": "https://osf.io/uhxmb/",
-    "study_condition_assignment": "individual",
-    "study_design": "between",
-    "study_randomization": "yes"
   },
   {
     "paper": 89,
@@ -809,15 +772,14 @@
     "study_randomization": "no"
   },
   {
-    "paper": 117,
-    "paper_label": "Egeler & Baur (2020)",
+    "paper": 116,
+    "paper_label": "Altema-Johnson et al. (2020)",
     "study": 1,
-    "study_n": 26340,
+    "study_n": 1386,
     "study_preregistered": "no",
-    "study_data_available": "yes",
-    "study_data_link": "https://zenodo.org/records/3890931",
+    "study_data_available": "no",
     "study_condition_assignment": "time point",
-    "study_design": "between",
+    "study_design": "within",
     "study_randomization": "no"
   },
   {
@@ -891,6 +853,17 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 147,
+    "paper_label": "Mattson (2020)",
+    "study": 1,
+    "study_n": 111,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 149,
     "paper_label": "Bryant & Dillard (2020)",
     "study": 1,
@@ -901,6 +874,17 @@
     "study_data_link": "https://osf.io/8qvp9/",
     "study_condition_assignment": "individual",
     "study_design": "between",
+    "study_randomization": "no"
+  },
+  {
+    "paper": 152,
+    "paper_label": "Narang (2018)",
+    "study": 1,
+    "study_n": 3319,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "cluster",
+    "study_design": "mixed",
     "study_randomization": "no"
   },
   {
@@ -998,6 +982,19 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 179,
+    "paper_label": "Lohmann et al. (2024)",
+    "study": 1,
+    "study_n": 4008,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/h47yj",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/kxh2v/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 182,
     "paper_label": "McDonough (2012)",
     "study": 1,
@@ -1052,6 +1049,30 @@
     "study_preregistration_link": "https://osf.io/muea3/",
     "study_data_available": "yes",
     "study_data_link": "http://data.bris.ac.uk/data/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 229,
+    "paper_label": "Choueiki et al. (2021)",
+    "study": 1,
+    "study_n": 275,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "osf.io/evzjn",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 229,
+    "paper_label": "Choueiki et al. (2021)",
+    "study": 2,
+    "study_n": 275,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "osf.io/evzjn",
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"
@@ -1252,6 +1273,41 @@
     "study_randomization": "no"
   },
   {
+    "paper": 308,
+    "paper_label": "Hankins et al. (2025)",
+    "study": 1,
+    "study_n": 39,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/vgpd5",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 308,
+    "paper_label": "Hankins et al. (2025)",
+    "study": 2,
+    "study_n": 102,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/vgpd5",
+    "study_condition_assignment": "cluster",
+    "study_design": "between",
+    "study_randomization": "no"
+  },
+  {
+    "paper": 316,
+    "paper_label": "Reinders et al. (2017)",
+    "study": 1,
+    "study_n": 1006,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "cluster",
+    "study_design": "crossover",
+    "study_randomization": "no"
+  },
+  {
     "paper": 318,
     "paper_label": "dos Santos et al. (2018)",
     "study": 1,
@@ -1271,6 +1327,17 @@
     "study_preregistration_link": "https://clinicaltrials.gov/study/NCT05482204",
     "study_data_available": "yes",
     "study_data_link": "https://www.tessexperiments.org/paststudies",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 340,
+    "paper_label": "Feldman et al. (2013)",
+    "study": 1,
+    "study_n": 266,
+    "study_preregistered": "no",
+    "study_data_available": "no",
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"
@@ -1312,6 +1379,17 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 347,
+    "paper_label": "Parkin & Attwood (2022)",
+    "study": 2,
+    "study_n": 424,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 348,
     "paper_label": "Hielkema & Lund (2022)",
     "study": 1,
@@ -1321,6 +1399,41 @@
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"
+  },
+  {
+    "paper": 349,
+    "paper_label": "Shreedhar & Galizzi (2021)",
+    "study": 1,
+    "study_n": 1242,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/sxm6u/",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/n52t8/?view_only=b23060745b014b058920b04b47af257d",
+    "study_condition_assignment": "individual",
+    "study_design": "mixed",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 352,
+    "paper_label": "Bouwman et al. (2022)",
+    "study": 1,
+    "study_n": 735,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 352,
+    "paper_label": "Bouwman et al. (2022)",
+    "study": 2,
+    "study_n": 1883,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 358,
@@ -1381,8 +1494,8 @@
   {
     "paper": 381,
     "paper_label": "Brachem et al. (2019)",
-    "study": 1,
-    "study_n": 450,
+    "study": 2,
+    "study_n": 899,
     "study_preregistered": "yes",
     "study_preregistration_link": "https://osf.io/ruyfs/",
     "study_data_available": "yes",
@@ -1392,14 +1505,12 @@
     "study_randomization": "yes"
   },
   {
-    "paper": 381,
-    "paper_label": "Brachem et al. (2019)",
-    "study": 2,
-    "study_n": 899,
-    "study_preregistered": "yes",
-    "study_preregistration_link": "https://osf.io/ruyfs/",
-    "study_data_available": "yes",
-    "study_data_link": "https://osf.io/gpt28/",
+    "paper": 383,
+    "paper_label": "Vennard et al. (2019)",
+    "study": 1,
+    "study_n": 727,
+    "study_preregistered": "no",
+    "study_data_available": "no",
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"
@@ -1416,6 +1527,17 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 391,
+    "paper_label": "Hohle (2014)",
+    "study": 1,
+    "study_n": 315,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
+  },
+  {
     "paper": 399,
     "paper_label": "Carfora & Catellani (2022)",
     "study": 1,
@@ -1424,6 +1546,41 @@
     "study_data_available": "no",
     "study_condition_assignment": "individual",
     "study_design": "mixed",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 403,
+    "paper_label": "Nykänen et al. (2022)",
+    "study": 1,
+    "study_n": 163,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 416,
+    "paper_label": "Piernas et al. (2021)",
+    "study": 1,
+    "study_n": 108,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/qmz3a/",
+    "study_data_available": "no",
+    "study_condition_assignment": "cluster",
+    "study_design": "between",
+    "study_randomization": "no"
+  },
+  {
+    "paper": 417,
+    "paper_label": "Kanchanachitra et al. (2020)",
+    "study": 1,
+    "study_n": 17075,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://doi.org/10.1371/journal.pone.0238642.s006",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
     "study_randomization": "yes"
   },
   {
@@ -1436,6 +1593,18 @@
     "study_condition_assignment": "individual",
     "study_design": "mixed",
     "study_randomization": "yes"
+  },
+  {
+    "paper": 453,
+    "paper_label": "Egeler & Baur (2022)",
+    "study": 1,
+    "study_n": 1496,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://doi.org/10.5281/zenodo.3890949",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
   },
   {
     "paper": 454,
@@ -1462,6 +1631,67 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 457,
+    "paper_label": "Ostermann et al. (2024)",
+    "study": 2,
+    "study_n": 278,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://aspredicted.org/dz6pc.pdf",
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 461,
+    "paper_label": "Arrazat et al. (2023)",
+    "study": 1,
+    "study_n": 132,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://clinicaltrials.gov/study/NCT04909372",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/du58k/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 463,
+    "paper_label": "Carfora et al. (2025)",
+    "study": 1,
+    "study_n": 391,
+    "study_preregistered": "yes",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/qf765/?view_only=b5a8db202b8f4bbf98d5cce90c9f0d33",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 470,
+    "paper_label": "Blondin et al. (2022)",
+    "study": 2,
+    "study_n": 2902,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 473,
+    "paper_label": "Marty et al. (2025)",
+    "study": 1,
+    "study_n": 366,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://clinicaltrials.gov/study/NCT05752786?id=NCT05752786&rank=1#study-plan",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/3gts8/",
+    "study_condition_assignment": "individual",
+    "study_design": "mixed",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 474,
     "paper_label": "Abrahamse et al. (2007)",
     "study": 1,
@@ -1484,6 +1714,19 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 482,
+    "paper_label": "Aldoh et al. (2021)",
+    "study": 1,
+    "study_n": 846,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/6bdfz/",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/6bdfz/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 493,
     "paper_label": "Weijers et al. (2024)",
     "study": 1,
@@ -1496,6 +1739,30 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 500,
+    "paper_label": "Dannenberg et al. (2024)",
+    "study": 1,
+    "study_n": 956,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 505,
+    "paper_label": "Lemken et al. (2024)",
+    "study": 1,
+    "study_n": 5966,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/gk7se",
+    "study_data_available": "yes",
+    "study_data_link": "https://doi.org/10.25625/DQJTZO",
+    "study_condition_assignment": "time point",
+    "study_design": "between",
+    "study_randomization": "no"
+  },
+  {
     "paper": 512,
     "paper_label": "Hope et al. (2025)",
     "study": 1,
@@ -1504,6 +1771,19 @@
     "study_preregistration_link": "https://osf.io/preprints/osf/z6rn2_v1",
     "study_data_available": "yes",
     "study_data_link": "https://github.com/hsflabstanford/TACOS-RCT",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 516,
+    "paper_label": "Schiller et al. (2025)",
+    "study": 1,
+    "study_n": 1652,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://doi.org/10.23668/psycharchives.14653",
+    "study_data_available": "yes",
+    "study_data_link": "https://doi.org/10.23668/psycharchives.17368",
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"

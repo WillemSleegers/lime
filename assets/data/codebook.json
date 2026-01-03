@@ -13,7 +13,7 @@
     "column": "paper_status",
     "description": "The status of processing the paper: excluded = checked and does not meet inclusion criteria, contact authors = meets inclusion criteria but necesary information are not reported and authors need to be contacted, ready to code = paper (probably) meets inclusion criteria and needs to be coded, analyze raw data = necessary information not reported but can be extracted from the data that is shared, calculate effect size = paper has been coded and relevant effect sizes need to be calculated for the website, add to webiste = effect size has been calculated and paper can be added to the webiste, included = paper has been included in the website",
     "data_type": "factor",
-    "factor_levels": "included, excluded, contact authors, calculate effect sizes, ready to code, analyze raw data"
+    "factor_levels": "included, excluded, contact authors, calculate effect sizes, ready to code, unscreened"
   },
   {
     "column": "paper_authors",
@@ -284,7 +284,7 @@
     "column": "intervention_medium",
     "description": "The medium in which the intervention(s) were adminstered",
     "data_type": "factor",
-    "factor_levels": "text, presentation, video, 3D video, image, menu/food options, in-person, price, taste"
+    "factor_levels": "text, presentation, video, 3D video, image, choice architecture, in-person, label, price, other"
   },
   {
     "column": "intervention_multicomponent",
@@ -339,13 +339,13 @@
     "column": "outcome_product_type",
     "description": "The type of animal product that the outcome is about.",
     "data_type": "factor",
-    "factor_levels": "meat, eggs, dairy"
+    "factor_levels": "meat, eggs, dairy, \ndairy"
   },
   {
     "column": "outcome_product_subtype",
     "description": "A more precise type of animal product that the outcome is about.",
     "data_type": "factor",
-    "factor_levels": "red meat, white meat, pork, processed meat, poultry, fish, beef, chicken, turkey, dairy, lamb, seafood, red and processed meat, yoghurt, milk, cheese"
+    "factor_levels": "red meat, white meat, pork, processed meat, poultry, fish, beef, chicken, turkey, dairy, lamb, seafood, red and processed meat, shrimp, cheese, yoghurt, milk"
   },
   {
     "column": "outcome_scale",
@@ -423,7 +423,7 @@
     "column": "statistic_name",
     "description": "The kind of statistic (e.g., mean, standard deviation).",
     "data_type": "factor",
-    "factor_levels": "successes, failures, n, percentage, M, SD, SE, beta"
+    "factor_levels": "successes, failures, n, percentage, M, SD, SE, beta, statistic_name"
   },
   {
     "column": "statistic_value",
@@ -521,7 +521,7 @@
     "column": "effect_analysis",
     "description": "The type of analysis that was conducted to test the effect.",
     "data_type": "factor",
-    "factor_levels": "Pearson's Chi-squared test, Fisher's exact test, Welch's two sample t-test, One-sample t-test, MANCOVA, ANOVA, ANCOVA , Planned contrast, Paired-sample t-test, Meta-analytic estimate, Mixed regression model"
+    "factor_levels": "Pearson's Chi-squared test, Fisher's exact test, Welch's two sample t-test, One-sample t-test, MANCOVA, ANOVA, ANCOVA , Planned contrast, Paired-sample t-test, Meta-analytic estimate, Mixed regression model, Welch's two-sample t-test"
   },
   {
     "column": "effect_statistic_name",

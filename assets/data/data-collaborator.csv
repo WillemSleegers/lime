@@ -225,10 +225,6 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 77,Slapø & Karevold (2019),1,4,2,1,vegetarian dish sales,2,SMD,0.118740504640361,0.0434931696749628
 77,Slapø & Karevold (2019),1,4,3,1,vegetarian dish sales,3,SMD,0.0648796460834717,0.0434399979600901
 78,Boronowsky et al. (2022),1,1,2,1,vegetarian meal selection,1,OR2DL,1.17239763552819,0.0240068998963358
-79,Banach & Stel (2024),1,2,1,1,speciesism,1,SMD,0.144571351228593,0.017757839621294
-79,Banach & Stel (2024),1,2,1,2,intended reduction in harmful behaviors,2,SMD,0.322629696281999,0.0179418861817519
-79,Banach & Stel (2024),2,2,1,1,speciesism,4,SMD,-0.170081784400696,0.0101125751463184
-79,Banach & Stel (2024),2,2,1,2,intended reduction in harmful behaviors,5,SMD,0.264082839977437,0.0101639755656958
 80,Gravert & Kurz (2019),1,2,1,1,vegetarian sales,1,OR2DL,0.882053711653721,0.0165571459337042
 81,Erhard et al. (2023),1,4,1,1,plant-based choice,1,OR2DL,0.0409683199799495,0.0182790532405243
 81,Erhard et al. (2023),1,4,2,1,plant-based choice,2,OR2DL,0.303529983848123,0.0193499531214645
@@ -242,8 +238,6 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 85,Perino & Schwirplies (2022),1,4,2,1,intentions to reduce meat consumption,2,OR2DL,0.452041689242958,0.0219422434344094
 85,Perino & Schwirplies (2022),1,4,3,1,intentions to reduce meat consumption,3,OR2DL,0.250128501512456,0.0231228057194007
 86,Çoker et a. (2022),1,2,1,1,plant-based meal sales,2,OR2DL,-0.00175781333182833,0.587354218814953
-88,Zinn et al. (2023),1,8,2,1,vegetarian burger selection,1,OR2DL,0.44333772763312,0.0389772963822356
-88,Zinn et al. (2023),1,8,7,1,vegetarian burger selection,2,OR2DL,-0.248897551874812,0.0576519543937135
 89,Carfora et al. (2019b),1,4,1,1,red and processed meat consumption,7,SMD,0.43966393045462,0.0333424783219502
 89,Carfora et al. (2019b),1,4,2,1,red and processed meat consumption,8,SMD,0.49111458314908,0.0317625820486276
 89,Carfora et al. (2019b),1,4,3,1,red and processed meat consumption,9,SMD,0.195789808740101,0.0320993793188673
@@ -261,10 +255,8 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 96,Saulais et al. (2019),1,1,2,1,vegetarian meal choices,1,OR2DL,0.570748532329867,0.0442294545802975
 96,Saulais et al. (2019),1,3,4,1,vegetarian meal choices,2,OR2DL,0.729471784800727,0.0486742875610998
 105,Karakaş & Jaeger (2024),1,1,1,1,meat commitment,1,SMD,0.103415767317987,0.0198284525270544
-117,Egeler & Baur (2020),1,1,2,2,meat meals,2,OR2DL,0.310941760835282,1.88421579461735e-4
-117,Egeler & Baur (2020),1,1,2,3,fish meals,3,OR2DL,0.394768122985977,0.00178235775340619
-117,Egeler & Baur (2020),1,1,2,4,vegetarian meals,4,OR2DL,0.0948443341833396,2.65612318778935e-4
-117,Egeler & Baur (2020),1,1,2,5,vegan meals,5,OR2DL,0.823784833973681,6.34585171153515e-4
+116,Altema-Johnson et al. (2020),1,1,1,1,percentage of purchasing a meatless entrée/meal,2,OR2DL,-0.200645560136947,0.00496511589526893
+116,Altema-Johnson et al. (2020),1,1,1,2,cutting back the amount of consumed meat,4,OR2DL,0.0869862821166556,0.00479320958124487
 120,Tschümperlin (2020),1,1,1,1,vegetarian meals sold,2,OR2DL,0.0902738569708526,0.00153031451378502
 124,Dannenberg & Weingärtner (2023),1,1,2,4,meat choice,1,OR2DL,-0.766455443775574,0.0472532480460995
 124,Dannenberg & Weingärtner (2023),1,1,3,4,meat choice,2,OR2DL,-1.1113432732256,0.0441849231193384
@@ -277,7 +269,9 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 144,Anderson (2020),1,3,1,2,meat reduction pledge,3,OR2DL,0.0655805918199737,0.0122123835828903
 144,Anderson (2020),1,4,2,1,meatless meal order,2,OR2DL,-0.119809745928793,0.0250750530784547
 144,Anderson (2020),1,4,2,3,vegetarian diet pledge,4,OR2DL,-0.0185858800080378,0.0243792947238895
+147,Mattson (2020),1,1,2,1,weekly meat consumption,1,OR2DL,-0.150022061226547,0.00218892908750755
 149,Bryant & Dillard (2020),1,1,2,3,change nothing APC,1,OR2DL,0.871433298252199,0.00135070439876521
+152,Narang (2018),1,1,2,1,selection of CSF,1,OR2DL,-0.0460338660463909,0.00898709906583895
 159,Dissen & Crowell (2020),1,2,1,2,Stage of participants' change readiness for decreasing intake of animal-based foods,2,SMD,-0.637117968080856,0.0325948876817475
 163,Bacon & Krpan (2018),1,1,2,1,vegetarian food choice,1,OR2DL,0.0965248394214577,0.0267705977379153
 163,Bacon & Krpan (2018),1,1,3,1,vegetarian food choice,2,OR2DL,-0.0571120279026163,0.0296600151636345
@@ -292,6 +286,9 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 174,Aberman & Plaks (2022),2,3,2,1,beef consumption,2,SMD,-0.0380976965158652,0.0277828174808327
 175,Berke & Larson (2023),3,1,2,1,percentage vegetarian option (vs meat),1,OR2DL,0.189717800576368,0.00839626215193983
 175,Berke & Larson (2023),3,1,2,2,percentage vegan option (vs meat),2,OR2DL,-0.0209641070563713,0.00828099204733498
+179,Lohmann et al. (2024),1,1,2,2,proportion meat and fish mains,4,OR2DL,0.00529981081041748,0.00359431416334257
+179,Lohmann et al. (2024),1,1,3,2,proportion meat and fish mains,5,OR2DL,0.00376135584735601,0.00363457627119394
+179,Lohmann et al. (2024),1,1,4,2,proportion meat and fish mains,6,OR2DL,0.0657271377240043,0.00350077078411712
 182,McDonough (2012),1,1,1,2,intention to eat meatless meals,1,SMD,0.243309633732904,0.030527271128285
 194,Hughes et al. (2023),1,4,1,1,meat meal selection,1,SMD,0.334270185062643,0.00809583175484477
 194,Hughes et al. (2023),1,4,1,2,intentions to reduce meat consumption,4,SMD,0.0874557843611927,0.00799195147300487
@@ -305,6 +302,22 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 198,Segovia et al. (2022),1,1,4,1,plant-based meat alternative selection,3,OR2DL,0.396110508533323,0.183303660599095
 205,De-loyde et al. (2023),1,3,1,3,vegetarian meal selection,1,OR2DL,-0.522774653878431,0.00775298994491167
 205,De-loyde et al. (2023),1,3,2,3,vegetarian meal selection,2,OR2DL,-0.124693655037328,0.00607073134860612
+229,Choueiki et al. (2021),1,5,1,1,purchase intention,1,SMD,0.29629237571088,0.0371030393237514
+229,Choueiki et al. (2021),1,5,1,2,intention to reduce meat consumption,5,SMD,0.62864469257648,0.038513153899899
+229,Choueiki et al. (2021),1,5,2,1,purchase intention,2,SMD,0.527314035036834,0.0379758417074322
+229,Choueiki et al. (2021),1,5,2,2,intention to reduce meat consumption,6,SMD,0.719236536793875,0.0390732779657461
+229,Choueiki et al. (2021),1,5,3,1,purchase intention,3,SMD,0.912982019400251,0.0412814718680735
+229,Choueiki et al. (2021),1,5,3,2,intention to reduce meat consumption,7,SMD,1.11874282784581,0.0432349734900748
+229,Choueiki et al. (2021),1,5,4,1,purchase intention,4,SMD,0.324821794776098,0.0362309210358346
+229,Choueiki et al. (2021),1,5,4,2,intention to reduce meat consumption,8,SMD,0.34418168242891,0.0362887417151115
+229,Choueiki et al. (2021),2,5,1,1,purchase intention,9,SMD,0.498352725346845,0.0375045497341188
+229,Choueiki et al. (2021),2,5,1,2,intention to reduce meat consumption,13,SMD,0.818318786096805,0.039419505174202
+229,Choueiki et al. (2021),2,5,2,1,purchase intention,10,SMD,0.516827194707656,0.0372655779387647
+229,Choueiki et al. (2021),2,5,2,2,intention to reduce meat consumption,14,SMD,1.10036938957623,0.0415164898501475
+229,Choueiki et al. (2021),2,5,3,1,purchase intention,11,SMD,0.601538984742302,0.0390773269260952
+229,Choueiki et al. (2021),2,5,3,2,intention to reduce meat consumption,15,SMD,1.0775404360629,0.0428121130998607
+229,Choueiki et al. (2021),2,5,4,1,purchase intention,12,SMD,0.355645562687093,0.0372805374629928
+229,Choueiki et al. (2021),2,5,4,2,intention to reduce meat consumption,16,SMD,0.502777160503219,0.0378599003385187
 237,Carfora et al. (2022),1,1,1,1,attitude towards reduced meat consumption,5,SMD,0.251711818212075,0.0226612381306293
 237,Carfora et al. (2022),1,1,1,2,meat consumption,7,SMD,0.84800536730731,0.0245032444889282
 237,Carfora et al. (2022),1,2,2,1,attitude towards reduced meat consumption,6,SMD,0.309640735579559,0.0235126892145653
@@ -351,6 +364,10 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 298,Lane et al. (2024),1,1,2,1,shares of vegetarian meals,1,OR2DL,-0.0274500995916853,0.00565901859879857
 298,Lane et al. (2024),1,1,2,2,shares of fish meals,2,OR2DL,-0.0993041961450006,0.00315248173716843
 298,Lane et al. (2024),1,1,2,3,shares of meat meals,3,OR2DL,0.0627010471510643,0.00215364874116678
+308,Hankins et al. (2025),1,2,1,1,veg*n food choice,1,OR2DL,1.02343072060197,0.155781319850094
+308,Hankins et al. (2025),2,3,1,1,plant-based meal selection,2,OR2DL,1.37579419013633,0.660265855302486
+308,Hankins et al. (2025),2,3,2,1,plant-based meal selection,3,OR2DL,1.1773003893823,0.679167851900055
+316,Reinders et al. (2017),1,2,1,3,meat/fish consumption,1,SMD,0.522012361793153,0.0041553734526473
 318,dos Santos et al. (2018),1,1,2,1,choice of the dish (meatballs),1,OR2DL,0.0169653045830378,0.0586050937203976
 318,dos Santos et al. (2018),1,1,2,2,choice of the vegetarian dish (veggieballs),3,OR2DL,0.128190198928632,0.0747634468192618
 318,dos Santos et al. (2018),1,1,2,3,choice of the dish (fishballs),5,OR2DL,0.197285910545011,0.141134144486484
@@ -361,6 +378,10 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 323,Wolfson et al. (2022),1,1,2,2,probability of selecting salad,3,OR2DL,0.199318612377238,0.00326356062318721
 323,Wolfson et al. (2022),1,1,3,1,probability of selecting plant-based burger,2,OR2DL,0.0373472616703673,0.0060997902260278
 323,Wolfson et al. (2022),1,1,3,2,probability of selecting salad,4,OR2DL,0.228712073476186,0.00317359668411312
+340,Feldman et al. (2013),1,1,2,1,chef's special selection,1,OR2DL,0.428292316022656,0.362646427354454
+340,Feldman et al. (2013),1,1,2,2,veggie burger selection,3,OR2DL,-0.122514972299444,0.165511337564427
+340,Feldman et al. (2013),1,1,3,1,chef's special selection,2,OR2DL,0.633892052792682,0.340675517392563
+340,Feldman et al. (2013),1,1,3,2,veggie burger selection,4,OR2DL,-0.122874169971541,0.177032742657345
 346,Krpan & Houtsma (2020),1,1,2,1,Vegetarian food choice,1,OR2DL,0.362638103489934,0.00869026254695768
 346,Krpan & Houtsma (2020),1,1,3,1,Vegetarian food choice,2,OR2DL,0.245911486680781,0.00914042673007394
 346,Krpan & Houtsma (2020),2,1,2,1,Vegetarian food choice,3,OR2DL,0.327051797722861,0.00356323403833439
@@ -368,10 +389,20 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 346,Krpan & Houtsma (2020),2,1,4,1,Vegetarian food choice,5,OR2DL,0.196968305119659,0.00375776420394427
 346,Krpan & Houtsma (2020),3,1,2,1,Vegetarian food choice,6,OR2DL,0.217054360697539,0.00211967546953423
 346,Krpan & Houtsma (2020),3,1,3,1,Vegetarian food choice,7,OR2DL,0.21056042348217,0.00212810981115845
+347,Parkin & Attwood (2022),2,1,3,2,meat meal selection,1,OR2DL,0.0472081888294946,0.0189389991147613
+347,Parkin & Attwood (2022),2,2,3,2,meat meal selection,2,OR2DL,-0.108246455281583,0.0181242557578706
 348,Hielkema & Lund (2022),1,1,2,2,meat meal selection,1,OR2DL,-0.5169551330661,0.0273274864292335
 348,Hielkema & Lund (2022),1,1,3,2,meat meal selection,2,OR2DL,-0.528465548955109,0.028748969216748
 348,Hielkema & Lund (2022),1,1,4,2,meat meal selection,3,OR2DL,-0.381794089034708,0.0273349072284542
 348,Hielkema & Lund (2022),1,1,5,2,meat meal selection,4,OR2DL,-0.706407675495544,0.0342783799201933
+349,Shreedhar & Galizzi (2021),1,1,2,3,vegetarian only consumption past week,7,SMD,0.111234018294819,0.00647943476486882
+349,Shreedhar & Galizzi (2021),1,1,3,3,vegetarian only consumption past week,8,SMD,0.0183570256775197,0.006470738213977
+349,Shreedhar & Galizzi (2021),1,1,4,3,vegetarian only consumption past week,9,SMD,0.0990503647067943,0.00694788656645417
+352,Bouwman et al. (2022),1,3,1,1,intention to eat a vegetarian lunch,1,SMD,0.249439513186783,0.00834885994422376
+352,Bouwman et al. (2022),1,3,2,1,intention to eat a vegetarian lunch,2,SMD,0.147092269659522,0.00805501764656568
+352,Bouwman et al. (2022),2,4,1,1,vegetarian burger sold,3,OR2DL,0.441603791806472,0.0216553201742059
+352,Bouwman et al. (2022),2,4,2,1,vegetarian burger sold,4,OR2DL,0.390330776514757,0.0222218080702068
+352,Bouwman et al. (2022),2,4,3,1,vegetarian burger sold,5,OR2DL,0.189275643889111,0.025040299588163
 358,Flynn et al. (2013),1,1,1,1,plant-based recipe,1,SMD,1.80904409172831,0.0447327004992742
 362,Hansen et al. (2019),1,1,2,1,vegetarian choice,1,OR2DL,3.19372648018838,0.328618655763094
 362,Hansen et al. (2019),2,1,2,1,vegetarian choice,2,OR2DL,2.5178227370304,0.137069162190478
@@ -382,23 +413,71 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 369,Grummon (2022),1,1,3,2,selecting red meat at quick service restaurant,5,OR2DL,0.0705987273922992,0.00376306197226704
 369,Grummon (2022),1,1,4,1,selecting red meat at full service restaurant,3,OR2DL,0.209625235266204,0.00362007171772464
 369,Grummon (2022),1,1,4,2,selecting red meat at quick service restaurant,6,OR2DL,0.0468103569655235,0.00368827972739486
-381,Brachem et al. (2019),1,1,2,1,meat-free meal selection,1,SMD,-0.10038788933502,0.00890008636480571
-381,Brachem et al. (2019),2,1,2,1,meat-free meal selection,2,SMD,0.119144390639415,0.00668966417559672
 381,Brachem et al. (2019),2,1,3,1,meat-free meal selection,3,SMD,0.0891929313255942,0.00667329614916538
+383,Vennard et al. (2019),1,1,2,1,participants choosing vegetarian dish,1,OR2DL,0.169684515345076,0.00325210473891651
+383,Vennard et al. (2019),1,1,3,1,participants choosing vegetarian dish,2,OR2DL,0.18300569520201,0.00323308981145782
+383,Vennard et al. (2019),1,1,4,1,participants choosing vegetarian dish,3,OR2DL,0.0469696671655524,0.00345504144080137
+383,Vennard et al. (2019),1,5,6,1,participants choosing vegetarian dish,4,OR2DL,0.207766255867895,0.00647805077852133
+383,Vennard et al. (2019),1,5,7,1,participants choosing vegetarian dish,5,OR2DL,-0.0347972073331,0.00767794118800762
+383,Vennard et al. (2019),1,5,8,1,participants choosing vegetarian dish,6,OR2DL,-0.0347972073331,0.00767794118800762
+383,Vennard et al. (2019),1,9,10,1,participants choosing vegetarian dish,7,OR2DL,-0.0248476672361895,0.00456743458131772
+383,Vennard et al. (2019),1,9,11,1,participants choosing vegetarian dish,8,OR2DL,0.144455018223145,0.00411330735995424
+383,Vennard et al. (2019),1,9,12,1,participants choosing vegetarian dish,9,OR2DL,0.113383416283722,0.00418593280599733
+383,Vennard et al. (2019),1,13,14,1,participants choosing vegetarian dish,10,OR2DL,0.1096286868467,0.00505974867236822
+383,Vennard et al. (2019),1,13,15,1,participants choosing vegetarian dish,11,OR2DL,0.182303195164727,0.00484519810068844
+383,Vennard et al. (2019),1,13,16,1,participants choosing vegetarian dish,12,OR2DL,0.142795577960244,0.00495814492470283
+383,Vennard et al. (2019),1,17,18,1,participants choosing vegetarian dish,13,OR2DL,0.0747618316667955,0.00635594920915426
+383,Vennard et al. (2019),1,17,19,1,participants choosing vegetarian dish,14,OR2DL,-0.119833097148456,0.00738643167814855
+383,Vennard et al. (2019),1,17,20,1,participants choosing vegetarian dish,15,OR2DL,0.0120584310887749,0.00664856715783049
+383,Vennard et al. (2019),1,21,22,1,participants choosing vegetarian dish,16,OR2DL,0.449657168578096,0.00595630413071528
+383,Vennard et al. (2019),1,21,23,1,participants choosing vegetarian dish,17,OR2DL,0.29753847773718,0.00641694932931059
+383,Vennard et al. (2019),1,21,24,1,participants choosing vegetarian dish,18,OR2DL,0.246884234300134,0.00633751462949144
+383,Vennard et al. (2019),1,21,25,1,participants choosing vegetarian dish,19,OR2DL,2.43660171714651,0.0061646141696756
+383,Vennard et al. (2019),1,26,27,1,participants choosing vegetarian dish,20,OR2DL,0.338477833696309,0.00662888199005379
+383,Vennard et al. (2019),1,26,28,1,participants choosing vegetarian dish,21,OR2DL,0.338477833696309,0.00662888199005379
+383,Vennard et al. (2019),1,26,29,1,participants choosing vegetarian dish,22,OR2DL,0.296461613186155,0.00677995786186475
+383,Vennard et al. (2019),1,26,30,1,participants choosing vegetarian dish,23,OR2DL,0.399355657340286,0.00643013860407244
+383,Vennard et al. (2019),1,31,32,1,participants choosing vegetarian dish,24,OR2DL,0.511057128757762,0.00756608964409885
+383,Vennard et al. (2019),1,31,33,1,participants choosing vegetarian dish,25,OR2DL,0.536626117048109,0.00748451538774369
+383,Vennard et al. (2019),1,31,34,1,participants choosing vegetarian dish,26,OR2DL,0.480050335266667,0.00767043934233797
 389,Scharmer (2021),1,1,2,1,intention to reduce meat consumption,1,SMD,-0.366774049381145,0.0344683186580485
 389,Scharmer (2021),1,1,3,1,intention to reduce meat consumption,2,SMD,-0.732770624333772,0.036173528762231
 389,Scharmer (2021),1,1,4,1,intention to reduce meat consumption,3,SMD,-0.252994833208053,0.034464063415239
 389,Scharmer (2021),1,1,5,1,intention to reduce meat consumption,4,SMD,-0.381775836524644,0.0348134070208976
+391,Hohle (2014),1,1,2,1,vegetarian wrap choice,1,OR2DL,-0.0435823611427493,0.0679150521267433
+391,Hohle (2014),1,1,3,1,vegetarian wrap choice,2,OR2DL,-0.322194300239289,0.0696496746846266
+391,Hohle (2014),1,1,4,1,vegetarian wrap choice,3,OR2DL,0.316169704900508,0.0560448515273077
 399,Carfora & Catellani (2022),1,1,2,1,meat consumption,5,SMD,0.474230305813937,0.052722083469286
 399,Carfora & Catellani (2022),1,1,3,1,meat consumption,6,SMD,0.726658747696917,0.0546406819037928
+403,Nykänen et al. (2022),1,1,2,1,mean share of MMC (meat dish),1,SMD,0.381602542012408,0.0490769996400974
+403,Nykänen et al. (2022),1,1,3,1,mean share of MMC (meat dish),2,SMD,0.0720389371153472,0.0494222785225669
+403,Nykänen et al. (2022),1,1,4,1,mean share of MMC (meat dish),3,SMD,0.321337890917851,0.0500276392119423
+416,Piernas et al. (2021),1,4,2,1,total meat product sales,1,SMD,-0.0894091165744781,0.0614006455771856
+417,Kanchanachitra et al. (2020),1,1,2,1,fish sauce used per bowl sold per day,1,SMD,0.434984785026127,5.96991266367947e-4
+417,Kanchanachitra et al. (2020),1,1,3,1,fish sauce used per bowl sold per day,2,SMD,1.01933555436235,6.68508683558222e-4
+417,Kanchanachitra et al. (2020),1,1,4,1,fish sauce used per bowl sold per day,3,SMD,0.129902795434022,5.86632830000285e-4
+417,Kanchanachitra et al. (2020),1,1,5,1,fish sauce used per bowl sold per day,4,SMD,0.342280792538419,5.92850552714194e-4
 442,Pabian et al. (2020),1,2,1,1,attitude towards meat reduction,1,SMD,0.37099742253189,0.0875448316925574
 442,Pabian et al. (2020),1,2,1,2,intention to reduce meat consumption,2,SMD,0.242477875731421,0.0867060703382374
+453,Egeler & Baur (2022),1,1,2,1,shares of vegetarian dishes sold,1,OR2DL,0.102799740266174,0.00485320055308838
+453,Egeler & Baur (2022),1,1,2,2,shares of meat dishes sold,2,OR2DL,0.326679879370034,0.00332315038190866
 454,Hallez et al. (2021),1,3,1,1,meat quantity,1,SMD,-0.154308044019671,0.0426798455981339
 454,Hallez et al. (2021),1,3,2,1,meat quantity,2,SMD,-0.181888697860773,0.0422840527538536
 454,Hallez et al. (2021),2,5,1,1,meat quantity,3,SMD,0.337029330327487,0.0401530809855578
 454,Hallez et al. (2021),2,5,2,1,meat quantity,4,SMD,0.11295968766961,0.0367835989957127
 454,Hallez et al. (2021),2,5,3,1,meat quantity,5,SMD,0.398234407397192,0.0378221280288148
 454,Hallez et al. (2021),2,5,4,1,meat quantity,6,SMD,-0.0421892945853239,0.041121946389306
+457,Ostermann et al. (2024),2,1,2,1,meat consumption intention,1,SMD,0.390683552325041,0.0149369681891417
+461,Arrazat et al. (2023),1,2,1,1,selection vegetarian meals in composed meals,1,OR2DL,0.617956367050546,0.0661009577191805
+461,Arrazat et al. (2023),1,2,1,2,selection vegetarian meals in ready-to-eat meals,2,OR2DL,0.250600707283884,0.0471076284252399
+463,Carfora et al. (2025),1,3,1,1,plant-based choice,1,SMD,0.153848173600061,0.016766556711159
+463,Carfora et al. (2025),1,3,2,1,plant-based choice,2,SMD,0.169882125338807,0.0152489035749787
+470,Blondin et al. (2022),2,1,2,1,vegetarian dish selection,1,OR2DL,0.483897618145153,0.00910222682925852
+470,Blondin et al. (2022),2,1,3,1,vegetarian dish selection,2,OR2DL,0.396031618682203,0.00938960337154198
+470,Blondin et al. (2022),2,1,4,1,vegetarian dish selection,3,OR2DL,0.337402310878112,0.00961407706165768
+470,Blondin et al. (2022),2,1,5,1,vegetarian dish selection,4,OR2DL,0.24561562956121,0.0100250290814108
+470,Blondin et al. (2022),2,1,6,1,vegetarian dish selection,5,OR2DL,0.1997759248041,0.0102604888735084
+473,Marty et al. (2025),1,2,1,1,meat consumption,2,SMD,0.00864295017261498,0.0164635683390593
 474,Abrahamse et al. (2007),1,2,1,1,eating meat,1,SMD,0.181039369124267,0.0320416872929651
 475,Acharya et al. (2004),1,2,1,1,total dairy servings,1,SMD,0.489054145685311,0.0200144815782577
 475,Acharya et al. (2004),1,2,1,2,milk servings,2,SMD,0.561296240070988,0.0201986551503593
@@ -410,7 +489,25 @@ paper,paper_label,study,control_condition,intervention_condition,outcome,outcome
 475,Acharya et al. (2004),1,2,1,8,poultry servings,8,SMD,0.104569350334605,0.0194605029171349
 475,Acharya et al. (2004),1,2,1,9,fish servings,9,SMD,0.16301804856177,0.0194984644101628
 475,Acharya et al. (2004),1,2,1,10,eggs servings,10,SMD,0.388596412385945,0.0198004845256054
+482,Aldoh et al. (2021),1,3,1,1,interest in reducing meat consumption,1,SMD,0.127626817476592,0.00713418354334971
+482,Aldoh et al. (2021),1,3,1,2,expectation to reduce meat consumption,3,SMD,-0.122077825412392,0.00713295079505631
+482,Aldoh et al. (2021),1,3,1,3,attitude towards meat reduction,5,SMD,-0.594604165677221,0.00743424182564642
+482,Aldoh et al. (2021),1,3,1,4,intention to reduce meat consumption,7,SMD,-0.635150027800954,0.00747860254092653
+482,Aldoh et al. (2021),1,3,2,1,interest in reducing meat consumption,2,SMD,0.149368989845899,0.0070372013931437
+482,Aldoh et al. (2021),1,3,2,2,expectation to reduce meat consumption,4,SMD,-0.0995793265639324,0.00702632853976769
+482,Aldoh et al. (2021),1,3,2,3,attitude towards meat reduction,6,SMD,-0.565449130907568,0.00729809755500032
+482,Aldoh et al. (2021),1,3,2,4,intention to reduce meat consumption,8,SMD,-0.606815814640327,0.00734063502276653
 493,Weijers et al. (2024),1,1,2,1,choice of vegetarian options,1,SMD,0.384713414004112,0.0159150248475954
 493,Weijers et al. (2024),1,1,3,1,choice of vegetarian options,2,SMD,0.269114742954135,0.0159595820678273
 493,Weijers et al. (2024),1,1,4,1,choice of vegetarian options,3,SMD,0.159539784002203,0.0153193092950679
+500,Dannenberg et al. (2024),1,1,2,4,meat choice,1,OR2DL,0.174589105922821,0.0162731186753293
+500,Dannenberg et al. (2024),1,1,3,4,meat choice,2,OR2DL,0.0714618694102974,0.0160070441384534
+500,Dannenberg et al. (2024),1,1,4,4,meat choice,3,OR2DL,0.0813959921462405,0.0161057336030401
+500,Dannenberg et al. (2024),1,1,5,4,meat choice,4,OR2DL,0.113091364930616,0.0157903143338708
+500,Dannenberg et al. (2024),1,1,6,4,meat choice,5,OR2DL,0.00854790603728711,0.0163672681268392
+505,Lemken et al. (2024),1,1,2,1,reduced portion chosen,1,OR2DL,0.965518414675571,0.00233179435354873
+505,Lemken et al. (2024),1,1,3,1,reduced portion chosen,2,OR2DL,2.4729338617098,0.00369047437907907
 512,Hope et al. (2025),1,2,3,2,Taco filling choice - meat,1,OR2DL,0.0663156615977284,0.00400136970546296
+516,Schiller et al. (2025),1,1,2,1,meat product selection,1,SMD,0.366813943625265,0.0057476491474368
+516,Schiller et al. (2025),1,1,3,1,meat product selection,2,SMD,0.204900534132667,0.00508289355994352
+516,Schiller et al. (2025),1,1,4,1,meat product selection,3,SMD,0.142710914332122,0.00555249708941687
