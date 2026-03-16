@@ -1,4 +1,5 @@
 import data from "@/assets/data/data.json"
+import type { DataKeys } from "@/lib/types"
 import {
   PAPER_TYPE_OPTIONS,
   PAPER_OPEN_ACCESS_OPTIONS,
@@ -79,3 +80,23 @@ export const META_ANALYSIS_DEFAULTS = {
   paper_type: PAPER_TYPE_OPTIONS.map((option) => option.value),
   paper_open_access: PAPER_OPEN_ACCESS_OPTIONS.map((option) => option.value),
 }
+
+export type ModeratorVariable = {
+  value: DataKeys
+  label: string
+  isMultiValue: boolean
+}
+
+export const MODERATOR_VARIABLES: ModeratorVariable[] = [
+  { value: "outcome_category", label: "Outcome category", isMultiValue: false },
+  { value: "outcome_subcategory", label: "Outcome subcategory", isMultiValue: false },
+  { value: "outcome_measurement_type", label: "Measurement type", isMultiValue: true },
+  { value: "study_preregistered", label: "Preregistered", isMultiValue: false },
+  { value: "study_randomization", label: "Randomization", isMultiValue: false },
+  { value: "study_design", label: "Study design", isMultiValue: true },
+  { value: "intervention_content", label: "Intervention content", isMultiValue: true },
+  { value: "intervention_mechanism", label: "Intervention mechanism", isMultiValue: true },
+  { value: "intervention_medium", label: "Intervention medium", isMultiValue: true },
+  { value: "sample_country", label: "Country", isMultiValue: false },
+  { value: "sample_type", label: "Sample type", isMultiValue: true },
+]

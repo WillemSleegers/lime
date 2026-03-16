@@ -27,6 +27,7 @@ type MetaAnalysisTabProps = {
   estimate?: Estimate
   egger?: Egger
   error?: string
+  onContinue: () => void
 }
 
 export const MetaAnalysisTab = ({
@@ -34,6 +35,7 @@ export const MetaAnalysisTab = ({
   estimate,
   egger,
   error,
+  onContinue,
 }: MetaAnalysisTabProps) => {
   // Show error state if there was an error
   if (error) {
@@ -105,6 +107,12 @@ export const MetaAnalysisTab = ({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+      <Button
+        onClick={onContinue}
+        className="h-auto rounded-lg w-fit px-6 py-3"
+      >
+        Continue to moderator analysis
+      </Button>
     </div>
   )
 }

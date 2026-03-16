@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { InclusionCriteriaTab } from "@/components/meta-analysis/tabs/inclusion-criteria-tab"
 import { HighlightsTab } from "@/components/meta-analysis/tabs/highlights-tab"
 import { MetaAnalysisTab } from "@/components/meta-analysis/tabs/meta-analysis-tab"
+import { ModeratorAnalysisTab } from "@/components/meta-analysis/tabs/moderator-analysis-tab"
 
 import { runMetaAnalysis } from "@/lib/r-functions"
 import { Data, Datum, Egger, Estimate, Status } from "@/lib/types"
@@ -23,6 +24,7 @@ const MetaAnalysisPage = () => {
     criteria: true,
     highlights: false,
     analysis: false,
+    moderator: false,
   })
 
   const [data, setData] = useState<Data>()
@@ -56,6 +58,15 @@ const MetaAnalysisPage = () => {
     }, 100)
     // Run analysis in background while user reviews highlights
     runAnalysis()
+  }
+
+  // Handle meta-analysis reviewed and unlock moderator tab
+  const handleAnalysisReviewed = () => {
+    setUnlockedTabs((prev) => ({ ...prev, moderator: true }))
+    setActiveTab("moderator")
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }, 100)
   }
 
   // Handle highlights reviewed and unlock next tab
@@ -177,6 +188,13 @@ const MetaAnalysisPage = () => {
           >
             Step 3: Run meta-analysis
           </TabsTrigger>
+          <TabsTrigger
+            value="moderator"
+            disabled={!unlockedTabs.moderator}
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+          >
+            Step 4: Moderator analysis
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="criteria" className="mt-0" forceMount hidden={activeTab !== "criteria"}>
@@ -200,6 +218,15 @@ const MetaAnalysisPage = () => {
             estimate={estimate}
             egger={egger}
             error={error}
+            onContinue={handleAnalysisReviewed}
+          />
+        </TabsContent>
+
+        <TabsContent value="moderator" className="mt-0" forceMount hidden={activeTab !== "moderator"}>
+          <ModeratorAnalysisTab
+            data={data}
+            webR={webR}
+            status={status}
           />
         </TabsContent>
       </Tabs>

@@ -1,5 +1,7 @@
 import { WebR } from "webr"
 
+// ─── Main meta-analysis ───────────────────────────────────────────────────────
+
 export const code = `# Create the variance-covariance matrix of dependent effect sizes
 V <- metafor::vcalc(
   vi = effect_size_var,
@@ -56,4 +58,83 @@ c(
 export async function runMetaAnalysis(webR: WebR) {
   const result = await webR.evalRRaw(code, "number[]")
   return result
+}
+
+// ─── Moderator analysis ───────────────────────────────────────────────────────
+
+function moderatorSetupCode(moderatorVar: string, singleValueOnly: boolean, minK: number): string {
+  return `
+# Filter for single-value entries if required
+if (${singleValueOnly ? "TRUE" : "FALSE"}) {
+  data_mod <- data[!grepl(",", data$${moderatorVar}), ]
+} else {
+  data_mod <- data
+}
+
+# Remove blank entries
+data_mod <- data_mod[nchar(trimws(data_mod$${moderatorVar})) > 0, ]
+
+# Identify levels with at least ${minK} effects
+level_counts <- table(data_mod$${moderatorVar})
+valid_levels <- sort(names(level_counts[level_counts >= ${minK}]))
+k_per_level <- as.integer(level_counts[valid_levels])
+data_mod <- data_mod[data_mod$${moderatorVar} %in% valid_levels, ]
+
+# Recalculate variance-covariance matrix for the filtered data
+V_mod <- metafor::vcalc(
+  vi = effect_size_var,
+  cluster = paper_study,
+  subgroup = outcome,
+  data = data_mod,
+  grp1 = intervention_condition,
+  grp2 = control_condition
+)
+
+# Run moderated meta-analysis with cell-means parametrization
+res_mod <- metafor::rma.mv(
+  yi = effect_size,
+  V = V_mod,
+  random = ~ 1 | paper / study / outcome,
+  mods = ~ factor(${moderatorVar}) - 1,
+  data = data_mod
+)
+
+# Get cluster-robust confidence intervals
+sav_mod <- metafor::robust(res_mod, cluster = paper, clubSandwich = TRUE)
+`
+}
+
+export function generateModeratorCode(moderatorVar: string, singleValueOnly: boolean, minK: number): string {
+  return moderatorSetupCode(moderatorVar, singleValueOnly, minK)
+}
+
+export async function runModeratorAnalysis(
+  webR: WebR,
+  moderatorVar: string,
+  singleValueOnly: boolean,
+  minK: number,
+): Promise<{ levels: string[]; numbers: number[] }> {
+  const setup = moderatorSetupCode(moderatorVar, singleValueOnly, minK)
+
+  const levels = await webR.evalRRaw(
+    setup + `\nas.character(valid_levels)`,
+    "string[]",
+  )
+
+  const numbers = await webR.evalRRaw(
+    setup +
+      `\nc(
+  as.numeric(sav_mod$b),
+  sav_mod$ci.lb,
+  sav_mod$ci.ub,
+  sav_mod$pval,
+  as.integer(k_per_level),
+  res_mod$QM,
+  res_mod$QMdf[1],
+  res_mod$QMp
+)`,
+    "number[]",
+  )
+
+  return { levels, numbers }
 }
