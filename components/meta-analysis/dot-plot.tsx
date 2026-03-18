@@ -21,7 +21,6 @@ import { Data, Datum } from "@/lib/types"
 import { EffectDialogContent } from "./effect-dialog-content"
 import { ChartConfig, ChartContainer } from "../ui/chart"
 
-
 // Constants
 const ADAPTIVE_CONSTANTS = {
   DATA_TO_BINS_RATIO: 5,
@@ -59,23 +58,22 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
 
   // Calculate adaptive defaults based on data size
   const getAdaptiveDefaults = (dataSize: number) => {
-    if (dataSize === 0)
-      return { bins: ADAPTIVE_CONSTANTS.MIN_BINS, size: 50 }
+    if (dataSize === 0) return { bins: ADAPTIVE_CONSTANTS.MIN_BINS, size: 50 }
 
     const adaptiveBins = Math.min(
       Math.max(
         Math.ceil(dataSize / ADAPTIVE_CONSTANTS.DATA_TO_BINS_RATIO),
-        ADAPTIVE_CONSTANTS.MIN_BINS
+        ADAPTIVE_CONSTANTS.MIN_BINS,
       ),
-      ADAPTIVE_CONSTANTS.MAX_BINS
+      ADAPTIVE_CONSTANTS.MAX_BINS,
     )
 
     const adaptiveSize = Math.max(
       ADAPTIVE_CONSTANTS.MIN_DOT_SIZE,
       Math.min(
         ADAPTIVE_CONSTANTS.MAX_DOT_SIZE,
-        ADAPTIVE_CONSTANTS.DOT_SIZE_FACTOR / Math.sqrt(dataSize)
-      )
+        ADAPTIVE_CONSTANTS.DOT_SIZE_FACTOR / Math.sqrt(dataSize),
+      ),
     )
 
     return {
@@ -107,13 +105,15 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
     return () => clearTimeout(timer)
   }, [binCount])
 
-
-
-  const CustomDot = (props: { cx?: number; cy?: number; payload?: DotData }) => {
+  const CustomDot = (props: {
+    cx?: number
+    cy?: number
+    payload?: DotData
+  }) => {
     const { cx, cy, payload } = props
-    
+
     if (!payload) return null
-    
+
     return (
       <Dialog>
         <DialogTrigger asChild>
@@ -128,9 +128,14 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
           className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl overflow-auto p-4"
           style={{ maxHeight: "95dvh" }}
           aria-description={
-            "Effect information of " + payload.effect.paper_label + " - " + payload.effect.effect
+            "Effect information of " +
+            payload.effect.paper_label +
+            " - " +
+            payload.effect.effect
           }
-          aria-describedby={payload.effect.paper_label + " - " + payload.effect.effect}
+          aria-describedby={
+            payload.effect.paper_label + " - " + payload.effect.effect
+          }
         >
           <DialogHeader>
             <DialogTitle className="text-center">
@@ -169,7 +174,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
       const value = datum.effect_size
       const binIndex = Math.min(
         Math.floor((value - min) / binWidth),
-        debouncedBinCount - 1
+        debouncedBinCount - 1,
       )
       const bin = bins[binIndex]
 
@@ -197,7 +202,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
     ]
     const skipInterval = Math.max(
       1,
-      Math.floor(debouncedBinCount / ADAPTIVE_CONSTANTS.MAX_DISPLAY_TICKS)
+      Math.floor(debouncedBinCount / ADAPTIVE_CONSTANTS.MAX_DISPLAY_TICKS),
     )
     binBoundaries = allBoundaries.filter((_, i) => i % skipInterval === 0)
   }
@@ -248,7 +253,10 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
       <div className="space-y-2">
         <h2 className="text-subsection-title">Dot Plot</h2>
         <p className="text-sm text-muted-foreground">
-          This dot plot shows the distribution of effect sizes across all included studies. Each dot represents a single effect size measurement. You can use this to see whether the effects cluster around a particular value or are more spread out.
+          This dot plot shows the distribution of effect sizes across all
+          included studies. Each dot represents a single effect size
+          measurement. You can use this to see whether the effects cluster
+          around a particular value or are more spread out.
         </p>
       </div>
       <Card>
@@ -295,7 +303,10 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
                     style: { fontSize: "14px" },
                   }}
                 />
-                <Tooltip content={<CustomTooltip />} isAnimationActive={false} />
+                <Tooltip
+                  content={<CustomTooltip />}
+                  isAnimationActive={false}
+                />
                 <Scatter
                   name="Data Points"
                   data={dotData}
@@ -320,7 +331,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
                 step={1}
                 className="w-32"
               />
-              <span className="text-sm font-medium min-w-[2rem] text-center">
+              <span className="text-sm font-medium min-w-8 text-center">
                 {binCount}
               </span>
             </div>
@@ -338,7 +349,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
                 step={1}
                 className="w-32"
               />
-              <span className="text-sm font-medium min-w-[2rem] text-center">
+              <span className="text-sm font-medium min-w-8 text-center">
                 {dotSize}
               </span>
             </div>
