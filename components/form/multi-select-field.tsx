@@ -14,6 +14,7 @@ import {
   MultiSelectTrigger,
   MultiSelectValue,
 } from "@/components/ui/multi-select"
+import { Count } from "@/components/ui/count"
 
 type OptionItem = string | { value: string; label: string }
 
@@ -32,6 +33,7 @@ type MultiSelectFieldProps<T extends FieldValues> = {
   searchPlaceholder?: string
   searchEmptyMessage?: string
   className?: string
+  counts?: Record<string, number>
 }
 
 // Type guard to check if options are grouped
@@ -57,6 +59,7 @@ export function MultiSelectField<T extends FieldValues>({
   searchPlaceholder,
   searchEmptyMessage = "No results found.",
   className,
+  counts,
 }: MultiSelectFieldProps<T>) {
   // Normalize a single option to always have value/label structure
   const normalizeOption = (option: OptionItem) =>
@@ -99,8 +102,9 @@ export function MultiSelectField<T extends FieldValues>({
                             <MultiSelectItem
                               key={normalized.value}
                               value={normalized.value}
+                              badgeLabel={normalized.label}
                             >
-                              {normalized.label}
+                              <span>{normalized.label}{counts && <> <Count n={counts[normalized.value] ?? 0} /></>}</span>
                             </MultiSelectItem>
                           )
                         })}
@@ -120,8 +124,9 @@ export function MultiSelectField<T extends FieldValues>({
                       <MultiSelectItem
                         key={normalized.value}
                         value={normalized.value}
+                        badgeLabel={normalized.label}
                       >
-                        {normalized.label}
+                        <span>{normalized.label}{counts && <> <Count n={counts[normalized.value] ?? 0} /></>}</span>
                       </MultiSelectItem>
                     )
                   })}

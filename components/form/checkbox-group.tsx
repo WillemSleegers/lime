@@ -10,6 +10,7 @@ import {
   FieldSet,
 } from "@/components/ui/field"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Count } from "@/components/ui/count"
 
 type CheckboxOption = {
   value: string
@@ -23,6 +24,7 @@ type CheckboxGroupProps<T extends FieldValues> = {
   label: string
   options: CheckboxOption[]
   description?: string
+  counts?: Record<string, number>
 }
 
 export function CheckboxGroup<T extends FieldValues>({
@@ -31,6 +33,7 @@ export function CheckboxGroup<T extends FieldValues>({
   label,
   options,
   description,
+  counts,
 }: CheckboxGroupProps<T>) {
   return (
     <Controller
@@ -66,7 +69,7 @@ export function CheckboxGroup<T extends FieldValues>({
                     htmlFor={`${name}-${option.value}`}
                     className="font-normal"
                   >
-                    {option.label}
+                    <span>{option.label}{counts && <> <Count n={counts[option.value] ?? 0} /></>}</span>
                   </FieldLabel>
                   {option.description && (
                     <FieldDescription>{option.description}</FieldDescription>
