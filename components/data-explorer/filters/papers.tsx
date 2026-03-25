@@ -23,7 +23,9 @@ import {
 
 import { Papers } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
+import { loadFormValues, usePersistedForm } from "@/hooks/use-persisted-form"
 
+const STORAGE_KEY = "lime-data-explorer-papers"
 const formSchemaPapers = z.object(paperFiltersFields)
 
 type FilterPapersProps = {
@@ -42,21 +44,23 @@ export const FilterPapers = (props: FilterPapersProps) => {
     setFilterOpen,
   } = props
 
+  const defaults = {
+    paper_year: [
+      Math.min(...data.map((datum) => datum.paper_year)),
+      Math.max(...data.map((datum) => datum.paper_year)),
+    ],
+    paper_type: PAPER_TYPE_OPTIONS.map((option) => option.value),
+    paper_open_access: PAPER_OPEN_ACCESS_OPTIONS.map((option) => option.value),
+  }
+
   const form = useForm<z.infer<typeof formSchemaPapers>>({
     resolver: zodResolver(formSchemaPapers),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      paper_year: [
-        Math.min(...data.map((datum) => datum.paper_year)),
-        Math.max(...data.map((datum) => datum.paper_year)),
-      ],
-      paper_type: PAPER_TYPE_OPTIONS.map((option) => option.value),
-      paper_open_access: PAPER_OPEN_ACCESS_OPTIONS.map(
-        (option) => option.value
-      ),
-    },
+    defaultValues: loadFormValues(STORAGE_KEY, defaults),
   })
+
+  usePersistedForm(form, STORAGE_KEY)
 
   async function onSubmit(values: z.infer<typeof formSchemaPapers>) {
     let subset = data
@@ -98,7 +102,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
               min={Math.min(...data.map((datum) => datum.paper_year))}
               max={Math.max(...data.map((datum) => datum.paper_year))}
               minStepsBetweenThumbs={1}
-              className="w-[100px]"
+              className="w-25"
             />
             <CheckboxGroup
               control={form.control}

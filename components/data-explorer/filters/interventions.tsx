@@ -19,6 +19,9 @@ import {
 import { Interventions } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { interventionFiltersSchema } from "@/lib/filter-schemas"
+import { loadFormValues, usePersistedForm } from "@/hooks/use-persisted-form"
+
+const STORAGE_KEY = "lime-data-explorer-interventions"
 
 type FilterInterventionsProps = {
   data: Interventions
@@ -36,16 +39,20 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
     setFilterOpen,
   } = props
 
+  const defaults = {
+    intervention_content: INTERVENTION_CONTENT_OPTIONS,
+    intervention_mechanism: INTERVENTION_MECHANISM_OPTIONS,
+    intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
+  }
+
   const form = useForm<z.infer<typeof interventionFiltersSchema>>({
     resolver: zodResolver(interventionFiltersSchema),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      intervention_content: INTERVENTION_CONTENT_OPTIONS,
-      intervention_mechanism: INTERVENTION_MECHANISM_OPTIONS,
-      intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
-    },
+    defaultValues: loadFormValues(STORAGE_KEY, defaults),
   })
+
+  usePersistedForm(form, STORAGE_KEY)
 
   async function onSubmit(values: z.infer<typeof interventionFiltersSchema>) {
     let subset = data

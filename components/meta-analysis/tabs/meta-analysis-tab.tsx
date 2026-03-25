@@ -84,11 +84,17 @@ export const MetaAnalysisTab = ({
       <CollapsiblePublicationBias estimate={estimate} egger={egger} data={data} />
       <DotPlotExample data={data} />
       <ForestPlot data={data} />
-      <div className="flex justify-center gap-3">
+      <div className="flex items-center gap-3">
+        <Button
+          onClick={onContinue}
+          className="h-auto"
+        >
+          Next
+        </Button>
         <RCode />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="w-32" variant="outline">
+            <Button variant="outline">
               Download
             </Button>
           </DropdownMenuTrigger>
@@ -107,12 +113,6 @@ export const MetaAnalysisTab = ({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <Button
-        onClick={onContinue}
-        className="h-auto rounded-lg w-fit px-6 py-3"
-      >
-        Continue to moderator analysis
-      </Button>
     </div>
   )
 }

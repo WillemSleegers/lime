@@ -31,8 +31,8 @@ export const RCode = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="w-32">
-          R Code
+        <Button variant="outline">
+          View R Code
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-4xl sm:max-w-4xl max-h-[80vh] overflow-y-auto">

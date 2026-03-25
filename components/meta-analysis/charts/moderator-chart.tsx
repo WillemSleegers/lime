@@ -69,7 +69,7 @@ export const ModeratorChart = ({ levels }: ModeratorChartProps) => {
 
   return (
     <Card>
-      <CardContent className="py-5" style={{ height }}>
+      <CardContent style={{ height }}>
         <ChartContainer config={chartConfig} className="h-full aspect-auto">
           <ScatterChart
             data={plotData}

@@ -14,9 +14,9 @@ export const HighlightsTab = ({ data, onContinue }: HighlightsTabProps) => {
       <Button
         onClick={onContinue}
         disabled={!data}
-        className="h-auto rounded-lg w-fit px-6 py-3"
+        className="h-auto"
       >
-        Continue to analysis
+        Next
       </Button>
     </div>
   )

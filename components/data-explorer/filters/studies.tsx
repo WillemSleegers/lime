@@ -27,6 +27,9 @@ import {
 import { Studies } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { studyFiltersFields } from "@/lib/filter-schemas"
+import { loadFormValues, usePersistedForm } from "@/hooks/use-persisted-form"
+
+const STORAGE_KEY = "lime-data-explorer-studies"
 
 const formSchemaStudies = z.object({
   study_n: z.coerce
@@ -51,27 +54,23 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     setFilterOpen,
   } = props
 
+  const defaults = {
+    study_n: 1,
+    study_preregistered: STUDY_PREREGISTERED_OPTIONS.map((option) => option.value),
+    study_data_available: STUDY_DATA_AVAILABLE_OPTIONS.map((option) => option.value),
+    study_design: STUDY_DESIGN_OPTIONS.map((option) => option.value),
+    study_condition_assignment: STUDY_CONDITION_ASSIGNMENT_OPTIONS.map((option) => option.value),
+    study_randomization: STUDY_RANDOMIZATION_OPTIONS.map((option) => option.value),
+  }
+
   const form = useForm<z.infer<typeof formSchemaStudies>>({
     resolver: zodResolver(formSchemaStudies),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      study_n: 1,
-      study_preregistered: STUDY_PREREGISTERED_OPTIONS.map(
-        (option) => option.value
-      ),
-      study_data_available: STUDY_DATA_AVAILABLE_OPTIONS.map(
-        (option) => option.value
-      ),
-      study_design: STUDY_DESIGN_OPTIONS.map((option) => option.value),
-      study_condition_assignment: STUDY_CONDITION_ASSIGNMENT_OPTIONS.map(
-        (option) => option.value
-      ),
-      study_randomization: STUDY_RANDOMIZATION_OPTIONS.map(
-        (option) => option.value
-      ),
-    },
+    defaultValues: loadFormValues(STORAGE_KEY, defaults),
   })
+
+  usePersistedForm(form, STORAGE_KEY)
 
   async function onSubmit(values: z.infer<typeof formSchemaStudies>) {
     let subset = data

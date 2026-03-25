@@ -17,14 +17,14 @@ type FilterCollapsibleProps = {
 export const FilterCollapsible = (props: FilterCollapsibleProps) => {
   const { title, children, open: controlledOpen, onOpenChange } = props
   const [internalOpen, setInternalOpen] = useState(false)
-  
+
   // Use controlled state if provided, otherwise use internal state
   const open = controlledOpen !== undefined ? controlledOpen : internalOpen
   const setOpen = onOpenChange || setInternalOpen
 
   return (
     <Collapsible
-      className="rounded-2xl border bg-muted px-[2px] py-[5px]"
+      className="rounded-2xl border bg-muted px-0.5 py-1.25"
       open={open}
       onOpenChange={setOpen}
     >

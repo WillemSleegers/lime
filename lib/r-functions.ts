@@ -62,7 +62,8 @@ export async function runMetaAnalysis(webR: WebR) {
 
 // ─── Moderator analysis ───────────────────────────────────────────────────────
 
-function moderatorSetupCode(moderatorVar: string, singleValueOnly: boolean, minK: number): string {
+function moderatorSetupCode(moderatorVar: string, singleValueOnly: boolean, selectedLevels: string[]): string {
+  const rLevels = selectedLevels.map((l) => `"${l.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`).join(", ")
   return `
 # Filter for single-value entries if required
 if (${singleValueOnly ? "TRUE" : "FALSE"}) {
@@ -74,11 +75,10 @@ if (${singleValueOnly ? "TRUE" : "FALSE"}) {
 # Remove blank entries
 data_mod <- data_mod[nchar(trimws(data_mod$${moderatorVar})) > 0, ]
 
-# Identify levels with at least ${minK} effects
-level_counts <- table(data_mod$${moderatorVar})
-valid_levels <- sort(names(level_counts[level_counts >= ${minK}]))
-k_per_level <- as.integer(level_counts[valid_levels])
+# Filter to selected levels
+valid_levels <- c(${rLevels})
 data_mod <- data_mod[data_mod$${moderatorVar} %in% valid_levels, ]
+k_per_level <- as.integer(table(data_mod$${moderatorVar})[valid_levels])
 
 # Recalculate variance-covariance matrix for the filtered data
 V_mod <- metafor::vcalc(
@@ -104,17 +104,17 @@ sav_mod <- metafor::robust(res_mod, cluster = paper, clubSandwich = TRUE)
 `
 }
 
-export function generateModeratorCode(moderatorVar: string, singleValueOnly: boolean, minK: number): string {
-  return moderatorSetupCode(moderatorVar, singleValueOnly, minK)
+export function generateModeratorCode(moderatorVar: string, singleValueOnly: boolean, selectedLevels: string[]): string {
+  return moderatorSetupCode(moderatorVar, singleValueOnly, selectedLevels)
 }
 
 export async function runModeratorAnalysis(
   webR: WebR,
   moderatorVar: string,
   singleValueOnly: boolean,
-  minK: number,
+  selectedLevels: string[],
 ): Promise<{ levels: string[]; numbers: number[] }> {
-  const setup = moderatorSetupCode(moderatorVar, singleValueOnly, minK)
+  const setup = moderatorSetupCode(moderatorVar, singleValueOnly, selectedLevels)
 
   const levels = await webR.evalRRaw(
     setup + `\nas.character(valid_levels)`,

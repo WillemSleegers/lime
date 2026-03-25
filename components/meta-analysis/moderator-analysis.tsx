@@ -1,12 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { WebR } from "webr"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 import { Spinner } from "@/components/ui/spinner"
 import {
@@ -16,6 +15,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import {
+  MultiSelect,
+  MultiSelectContent,
+  MultiSelectGroup,
+  MultiSelectItem,
+  MultiSelectTrigger,
+  MultiSelectValue,
+} from "@/components/ui/multi-select"
 
 import { ModeratorChart } from "@/components/meta-analysis/charts/moderator-chart"
 import { runModeratorAnalysis } from "@/lib/r-functions"
@@ -32,14 +39,47 @@ type ModeratorAnalysisProps = {
 export const ModeratorAnalysis = ({ data, webR, status }: ModeratorAnalysisProps) => {
   const [selectedVar, setSelectedVar] = useState<string>("")
   const [singleValueOnly, setSingleValueOnly] = useState(true)
-  const [minK, setMinK] = useState(3)
+  const [selectedLevels, setSelectedLevels] = useState<string[]>([])
   const [result, setResult] = useState<ModeratorResult | undefined>()
   const [isRunning, setIsRunning] = useState(false)
   const [error, setError] = useState<string | undefined>()
 
   const selectedModerator = MODERATOR_VARIABLES.find((v) => v.value === selectedVar)
   const isMultiValue = selectedModerator?.isMultiValue ?? false
-  const canRun = selectedVar !== "" && status === "Ready" && !isRunning
+  const canRun = selectedVar !== "" && selectedLevels.length >= 2 && status === "Ready" && !isRunning
+
+  // Compute available levels with counts from data
+  const levelOptions = (() => {
+    if (!selectedVar) return []
+    const counts = new Map<string, number>()
+    data.forEach((datum) => {
+      const val = String((datum as Record<string, unknown>)[selectedVar] ?? "").trim()
+      if (!val) return
+      if (singleValueOnly && isMultiValue && val.includes(",")) return
+      counts.set(val, (counts.get(val) ?? 0) + 1)
+    })
+    return Array.from(counts.entries())
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([value, k]) => ({ value, label: `${value} (${k})` }))
+  })()
+
+  // Reset selected levels when variable or singleValueOnly changes
+  useEffect(() => {
+    if (!selectedVar) {
+      setSelectedLevels([])
+      return
+    }
+    const counts = new Map<string, number>()
+    data.forEach((datum) => {
+      const val = String((datum as Record<string, unknown>)[selectedVar] ?? "").trim()
+      if (!val) return
+      if (singleValueOnly && isMultiValue && val.includes(",")) return
+      counts.set(val, (counts.get(val) ?? 0) + 1)
+    })
+    setSelectedLevels(Array.from(counts.keys()).sort((a, b) => a.localeCompare(b)))
+    setResult(undefined)
+    setError(undefined)
+  }, [selectedVar, singleValueOnly, isMultiValue, data])
 
   const handleRun = async () => {
     if (!webR.current || !selectedVar) return
@@ -70,13 +110,13 @@ export const ModeratorAnalysis = ({ data, webR, status }: ModeratorAnalysisProps
         webR.current,
         selectedVar,
         singleValueOnly,
-        minK,
+        selectedLevels,
       )
 
       if (levels.length < 2) {
         setError(
           levels.length === 0
-            ? `No levels remain after filtering. Try lowering the minimum effects per level or disabling single-value only.`
+            ? `No levels remain after filtering. Try selecting more levels or disabling single-value only.`
             : `Only one level remains after filtering. At least two levels are needed for a moderation test.`,
         )
         return
@@ -117,7 +157,7 @@ export const ModeratorAnalysis = ({ data, webR, status }: ModeratorAnalysisProps
       </div>
 
       <Card>
-        <CardContent className="space-y-5 py-5">
+        <CardContent className="space-y-5">
           {/* Variable selector */}
           <div className="space-y-1.5">
             <Label>Moderator</Label>
@@ -135,65 +175,75 @@ export const ModeratorAnalysis = ({ data, webR, status }: ModeratorAnalysisProps
             </Select>
           </div>
 
-          {/* Options (only shown when a variable is selected) */}
-          {selectedVar && (
-            <div className="flex flex-col gap-5">
-              {/* Single-value only toggle */}
-              <div className="space-y-1.5">
-                <Label htmlFor="single-value-only" className={!isMultiValue ? "text-muted-foreground" : ""}>
-                  Only effects with a single coded value
-                </Label>
-                <p className="text-sm text-muted-foreground">
-                  {!isMultiValue
-                    ? "Not applicable — this variable always has a single value per effect."
-                    : singleValueOnly
-                      ? `Only includes effects tagged with a single ${selectedModerator?.label.toLowerCase()} value. Effects tagged with multiple ${selectedModerator?.label.toLowerCase()} values are excluded.`
-                      : `Includes all effects. Those coded under multiple categories (e.g. "animal welfare, health") are treated as a separate combined level, distinct from either single category.`}
-                </p>
-                <Switch
-                  id="single-value-only"
-                  checked={singleValueOnly}
-                  onCheckedChange={setSingleValueOnly}
-                  disabled={!isMultiValue}
-                />
-              </div>
+          {/* Levels multi-select */}
+          <div className="space-y-1.5">
+            <Label className={!selectedVar ? "text-muted-foreground" : ""}>
+              Levels to include
+            </Label>
+            <p className="text-sm text-muted-foreground">
+              {!selectedVar
+                ? "Select a moderator variable to see available levels."
+                : "Deselect levels to exclude them from the analysis. Counts show the number of effects per level."}
+            </p>
+            <MultiSelect
+              values={selectedLevels}
+              onValuesChange={setSelectedLevels}
+            >
+              <MultiSelectTrigger className="w-full bg-card" disabled={!selectedVar}>
+                <MultiSelectValue placeholder="Select levels…" />
+              </MultiSelectTrigger>
+              <MultiSelectContent>
+                <MultiSelectGroup>
+                  {levelOptions.map((o) => (
+                    <MultiSelectItem key={o.value} value={o.value}>
+                      {o.label}
+                    </MultiSelectItem>
+                  ))}
+                </MultiSelectGroup>
+              </MultiSelectContent>
+            </MultiSelect>
+          </div>
 
-              {/* Minimum k */}
-              <div className="space-y-1.5">
-                <Label htmlFor="min-k">Minimum effects per level</Label>
-                <p className="text-sm text-muted-foreground">
-                  Levels with fewer effects than this threshold are excluded from the analysis
-                </p>
-                <Input
-                  id="min-k"
-                  type="number"
-                  min={2}
-                  value={minK}
-                  onChange={(e) => setMinK(Math.max(2, parseInt(e.target.value) || 2))}
-                  className="w-20"
-                />
-              </div>
+          {/* Single-value only toggle */}
+          <div className="space-y-1.5">
+            <Label htmlFor="single-value-only" className={(!selectedVar || !isMultiValue) ? "text-muted-foreground" : ""}>
+              Only effects with a single coded value
+            </Label>
+            <p className="text-sm text-muted-foreground">
+              {!selectedVar
+                ? "Select a moderator variable to see options."
+                : !isMultiValue
+                  ? "Not applicable — this variable always has a single value per effect."
+                  : singleValueOnly
+                    ? `Only includes effects tagged with a single ${selectedModerator?.label.toLowerCase()} value. Effects tagged with multiple ${selectedModerator?.label.toLowerCase()} values are excluded.`
+                    : `Includes all effects. Those coded under multiple categories (e.g. "animal welfare, health") are treated as a separate combined level, distinct from either single category.`}
+            </p>
+            <Switch
+              id="single-value-only"
+              checked={singleValueOnly}
+              onCheckedChange={setSingleValueOnly}
+              disabled={!selectedVar || !isMultiValue}
+            />
+          </div>
 
-              {/* Run button */}
-              <Button onClick={handleRun} disabled={!canRun} className="w-fit">
-                {isRunning ? (
-                  <>
-                    <Spinner className="size-4 mr-2" />
-                    Running…
-                  </>
-                ) : (
-                  "Run analysis"
-                )}
-              </Button>
-            </div>
-          )}
+          {/* Run button */}
+          <Button onClick={handleRun} disabled={!canRun} className="w-fit h-auto">
+            {isRunning ? (
+              <>
+                <Spinner className="size-4 mr-2" />
+                Running…
+              </>
+            ) : (
+              "Run analysis"
+            )}
+          </Button>
         </CardContent>
       </Card>
 
       {/* Error state */}
       {error && (
         <Card>
-          <CardContent className="py-5">
+          <CardContent>
             <p className="text-sm text-destructive">{error}</p>
           </CardContent>
         </Card>
