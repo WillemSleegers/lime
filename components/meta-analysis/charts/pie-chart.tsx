@@ -40,7 +40,7 @@ export const PieChartProportion = ({
   return (
     <ChartContainer
       config={chartConfig}
-      className="mx-auto aspect-2/1 w-full max-w-[280px]"
+      className="mx-auto aspect-2/1 w-full max-w-70"
     >
       <PieChart data={chartData}>
         <Pie
