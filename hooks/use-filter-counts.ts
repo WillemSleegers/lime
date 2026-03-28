@@ -2,14 +2,14 @@ import { countOption } from "@/lib/filter-counts"
 import data from "@/assets/data/data.json"
 import {
   COUNTRY_OPTIONS,
-  PAPER_TYPE_OPTIONS_NEW,
-  PAPER_OPEN_ACCESS_OPTIONS_NEW,
-  STUDY_PREREGISTERED_OPTIONS_NEW,
-  STUDY_DATA_AVAILABLE_OPTIONS_NEW,
-  STUDY_DESIGN_OPTIONS_NEW,
-  STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW,
-  STUDY_RANDOMIZATION_OPTIONS_NEW,
-  OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW,
+  PAPER_TYPE_OPTIONS,
+  PAPER_OPEN_ACCESS_OPTIONS,
+  STUDY_PREREGISTERED_OPTIONS,
+  STUDY_DATA_AVAILABLE_OPTIONS,
+  STUDY_DESIGN_OPTIONS,
+  STUDY_CONDITION_ASSIGNMENT_OPTIONS,
+  STUDY_RANDOMIZATION_OPTIONS,
+  OUTCOME_MEASUREMENT_TYPE_OPTIONS,
   OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
   OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
@@ -52,9 +52,7 @@ function applyFilters(
 
   if (exclude !== "outcome_measurement_type")
     s = s.filter((d) =>
-      f.outcome_measurement_type.some((v) =>
-        d.outcome_measurement_type.includes(v.toLowerCase()),
-      ),
+      f.outcome_measurement_type.some((v) => d.outcome_measurement_type.includes(v)),
     )
 
   s = s.filter(
@@ -132,11 +130,12 @@ function makeCounts(
   subset: typeof data,
   field: string,
   options: { value: string }[],
+  match: "exact" | "substring" = "substring",
 ): Record<string, number> {
   return Object.fromEntries(
     options.map((o) => [
       o.value,
-      countOption(subset as Record<string, unknown>[], field, o.value),
+      countOption(subset as Record<string, unknown>[], field, o.value, match),
     ]),
   )
 }
@@ -145,25 +144,27 @@ function makeCountsFromStrings(
   subset: typeof data,
   field: string,
   options: string[],
+  match: "exact" | "substring" = "substring",
 ): Record<string, number> {
   return Object.fromEntries(
     options.map((v) => [
       v,
-      countOption(subset as Record<string, unknown>[], field, v),
+      countOption(subset as Record<string, unknown>[], field, v, match),
     ]),
   )
 }
 
 export function useFilterCounts(values: FilterValues) {
   return {
-    paperType: makeCounts(applyFilters(data, values, "paper_type"), "paper_type", PAPER_TYPE_OPTIONS_NEW),
-    paperOpenAccess: makeCounts(applyFilters(data, values, "paper_open_access"), "paper_open_access", PAPER_OPEN_ACCESS_OPTIONS_NEW),
-    studyPreregistered: makeCounts(applyFilters(data, values, "study_preregistered"), "study_preregistered", STUDY_PREREGISTERED_OPTIONS_NEW),
-    studyDataAvailable: makeCounts(applyFilters(data, values, "study_data_available"), "study_data_available", STUDY_DATA_AVAILABLE_OPTIONS_NEW),
-    studyRandomization: makeCounts(applyFilters(data, values, "study_randomization"), "study_randomization", STUDY_RANDOMIZATION_OPTIONS_NEW),
-    studyDesign: makeCounts(applyFilters(data, values, "study_design"), "study_design", STUDY_DESIGN_OPTIONS_NEW),
-    studyConditionAssignment: makeCounts(applyFilters(data, values, "study_condition_assignment"), "study_condition_assignment", STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW),
-    sampleCountry: makeCountsFromStrings(applyFilters(data, values, "sample_country"), "sample_country", COUNTRY_OPTIONS),
+    total: applyFilters(data, values).length,
+    paperType: makeCounts(applyFilters(data, values, "paper_type"), "paper_type", PAPER_TYPE_OPTIONS),
+    paperOpenAccess: makeCounts(applyFilters(data, values, "paper_open_access"), "paper_open_access", PAPER_OPEN_ACCESS_OPTIONS),
+    studyPreregistered: makeCounts(applyFilters(data, values, "study_preregistered"), "study_preregistered", STUDY_PREREGISTERED_OPTIONS, "exact"),
+    studyDataAvailable: makeCounts(applyFilters(data, values, "study_data_available"), "study_data_available", STUDY_DATA_AVAILABLE_OPTIONS),
+    studyRandomization: makeCounts(applyFilters(data, values, "study_randomization"), "study_randomization", STUDY_RANDOMIZATION_OPTIONS),
+    studyDesign: makeCounts(applyFilters(data, values, "study_design"), "study_design", STUDY_DESIGN_OPTIONS),
+    studyConditionAssignment: makeCounts(applyFilters(data, values, "study_condition_assignment"), "study_condition_assignment", STUDY_CONDITION_ASSIGNMENT_OPTIONS),
+    sampleCountry: makeCountsFromStrings(applyFilters(data, values, "sample_country"), "sample_country", COUNTRY_OPTIONS, "exact"),
     sampleRepresentative: makeCounts(applyFilters(data, values, "sample_representative"), "sample_representative", SAMPLE_REPRESENTATIVE_OPTIONS),
     sampleType: makeCounts(applyFilters(data, values, "sample_type"), "sample_type", SAMPLE_TYPE_OPTIONS),
     interventionContent: makeCountsFromStrings(applyFilters(data, values, "intervention_content"), "intervention_content", INTERVENTION_CONTENT_OPTIONS),
@@ -173,8 +174,9 @@ export function useFilterCounts(values: FilterValues) {
       applyFilters(data, values, "outcome_subcategory"),
       "outcome_subcategory",
       [...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS, ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS, ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS],
+      "exact",
     ),
-    outcomeMeasurementType: makeCounts(applyFilters(data, values, "outcome_measurement_type"), "outcome_measurement_type", OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW),
+    outcomeMeasurementType: makeCounts(applyFilters(data, values, "outcome_measurement_type"), "outcome_measurement_type", OUTCOME_MEASUREMENT_TYPE_OPTIONS),
   }
 }
 

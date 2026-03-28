@@ -17,7 +17,6 @@ import {
   OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
-  OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW,
   OUTCOME_CATEGORIES_GROUPED,
 } from "@/constants/constants-filters"
 import { FilteredData } from "@/lib/data-explorer-utils"
@@ -58,7 +57,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
       ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
       ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
     ],
-    outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW.map((option) => option.value),
+    outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => option.value),
   }
 
   const form = useForm<z.infer<typeof formSchemaOutcomes>>({
@@ -112,7 +111,7 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
               control={form.control}
               name="outcome_measurement_type"
               label="Measurement type"
-              options={OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW}
+              options={OUTCOME_MEASUREMENT_TYPE_OPTIONS}
             />
           </div>
           <div className="flex gap-2 justify-between">

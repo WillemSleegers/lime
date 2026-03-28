@@ -30,14 +30,14 @@ import data from "@/assets/data/data.json"
 
 import {
   COUNTRY_OPTIONS,
-  PAPER_TYPE_OPTIONS_NEW,
-  PAPER_OPEN_ACCESS_OPTIONS_NEW,
-  STUDY_PREREGISTERED_OPTIONS_NEW,
-  STUDY_DATA_AVAILABLE_OPTIONS_NEW,
-  STUDY_DESIGN_OPTIONS_NEW,
-  STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW,
-  STUDY_RANDOMIZATION_OPTIONS_NEW,
-  OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW,
+  PAPER_TYPE_OPTIONS,
+  PAPER_OPEN_ACCESS_OPTIONS,
+  STUDY_PREREGISTERED_OPTIONS,
+  STUDY_DATA_AVAILABLE_OPTIONS,
+  STUDY_DESIGN_OPTIONS,
+  STUDY_CONDITION_ASSIGNMENT_OPTIONS,
+  STUDY_RANDOMIZATION_OPTIONS,
+  OUTCOME_MEASUREMENT_TYPE_OPTIONS,
   OUTCOME_CATEGORIES_GROUPED,
   OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
   OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
@@ -112,7 +112,7 @@ const defaults = {
   study_randomization: META_ANALYSIS_DEFAULTS.study_randomization,
   paper_year: META_ANALYSIS_DEFAULTS.paper_year,
   paper_type: META_ANALYSIS_DEFAULTS.paper_type,
-  paper_open_access: META_ANALYSIS_DEFAULTS.paper_open_access,
+  paper_open_access: PAPER_OPEN_ACCESS_OPTIONS.map((o) => o.value),
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -195,6 +195,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 min={Math.min(...data.map((datum) => datum.paper_year))}
                 max={Math.max(...data.map((datum) => datum.paper_year))}
                 minStepsBetweenThumbs={1}
+                count={counts.total}
                 className="w-50"
               />
               <div />
@@ -202,14 +203,14 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 control={form.control}
                 name="paper_type"
                 label="Publication type"
-                options={PAPER_TYPE_OPTIONS_NEW}
+                options={PAPER_TYPE_OPTIONS}
                 counts={counts.paperType}
               />
               <CheckboxGroup
                 control={form.control}
                 name="paper_open_access"
                 label="Access type"
-                options={PAPER_OPEN_ACCESS_OPTIONS_NEW}
+                options={PAPER_OPEN_ACCESS_OPTIONS}
                 counts={counts.paperOpenAccess}
               />
             </div>
@@ -228,35 +229,35 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 control={form.control}
                 name="study_preregistered"
                 label="Preregistration"
-                options={STUDY_PREREGISTERED_OPTIONS_NEW}
+                options={STUDY_PREREGISTERED_OPTIONS}
                 counts={counts.studyPreregistered}
               />
               <CheckboxGroup
                 control={form.control}
                 name="study_data_available"
                 label="Data availability"
-                options={STUDY_DATA_AVAILABLE_OPTIONS_NEW}
+                options={STUDY_DATA_AVAILABLE_OPTIONS}
                 counts={counts.studyDataAvailable}
               />
               <CheckboxGroup
                 control={form.control}
                 name="study_randomization"
                 label="Randomization"
-                options={STUDY_RANDOMIZATION_OPTIONS_NEW}
+                options={STUDY_RANDOMIZATION_OPTIONS}
                 counts={counts.studyRandomization}
               />
               <CheckboxGroup
                 control={form.control}
                 name="study_design"
                 label="Study design"
-                options={STUDY_DESIGN_OPTIONS_NEW}
+                options={STUDY_DESIGN_OPTIONS}
                 counts={counts.studyDesign}
               />
               <CheckboxGroup
                 control={form.control}
                 name="study_condition_assignment"
                 label="Condition assignment"
-                options={STUDY_CONDITION_ASSIGNMENT_OPTIONS_NEW}
+                options={STUDY_CONDITION_ASSIGNMENT_OPTIONS}
                 counts={counts.studyConditionAssignment}
               />
             </div>
@@ -368,7 +369,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 control={form.control}
                 name="outcome_measurement_type"
                 label="Measurement type"
-                options={OUTCOME_MEASUREMENT_TYPE_OPTIONS_NEW}
+                options={OUTCOME_MEASUREMENT_TYPE_OPTIONS}
                 counts={counts.outcomeMeasurementType}
               />
             </div>
@@ -387,6 +388,7 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
               name="effect_sample_size"
               label="Minimum sample size"
               description="Minimum per control or intervention condition"
+              count={counts.total}
               type="number"
               className="rounded-lg"
             />
