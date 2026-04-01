@@ -1,6 +1,7 @@
+"use client"
+
 import Link from "next/link"
 import {
-  ResponsiveContainer,
   ScatterChart,
   CartesianGrid,
   XAxis,
@@ -13,12 +14,15 @@ import {
 import { round } from "@/lib/utils"
 import { Data, Egger, Estimate } from "@/lib/types"
 import { Card, CardContent } from "@/components/ui/card"
+import { ChartConfig, ChartContainer } from "@/components/ui/chart"
 
 import {
   NameType,
   Props,
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent"
+
+const chartConfig = {} satisfies ChartConfig
 
 type CollapsiblePublicationBiasProps = {
   estimate: Estimate
@@ -84,7 +88,11 @@ export const CollapsiblePublicationBias = (
           <h3 className="text-lg font-semibold">Funnel Plot</h3>
           <Card>
             <CardContent className="overflow-auto py-5">
-              <ResponsiveContainer height={500} width="100%" minWidth={600}>
+              <ChartContainer
+                config={chartConfig}
+                className="w-full"
+                style={{ height: "500px", minWidth: "600px" }}
+              >
                 <ScatterChart
                   data={plotData}
                   margin={{
@@ -153,7 +161,7 @@ export const CollapsiblePublicationBias = (
                     animationBegin={300}
                   />
                 </ScatterChart>
-              </ResponsiveContainer>
+              </ChartContainer>
             </CardContent>
           </Card>
         </div>

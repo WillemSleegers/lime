@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm outdated:*)",
+      "Bash(npm update:*)",
+      "Bash(npm show:*)",
+      "Bash(npx npm-check-updates:*)"
+    ]
+  }
+}

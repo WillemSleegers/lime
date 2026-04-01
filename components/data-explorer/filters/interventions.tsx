@@ -8,11 +8,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
-import { CheckboxGroup } from "@/components/form/checkbox-group"
 import { MultiSelectField } from "@/components/form/multi-select-field"
 
 import {
-  INTERVENTION_MULTICOMPONENT_OPTIONS,
   INTERVENTION_CONTENT_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
@@ -21,6 +19,9 @@ import {
 import { Interventions } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { interventionFiltersSchema } from "@/lib/filter-schemas"
+import { loadFormValues, usePersistedForm } from "@/hooks/use-persisted-form"
+
+const STORAGE_KEY = "lime-data-explorer-interventions"
 
 type FilterInterventionsProps = {
   data: Interventions
@@ -38,28 +39,23 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
     setFilterOpen,
   } = props
 
+  const defaults = {
+    intervention_content: INTERVENTION_CONTENT_OPTIONS,
+    intervention_mechanism: INTERVENTION_MECHANISM_OPTIONS,
+    intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
+  }
+
   const form = useForm<z.infer<typeof interventionFiltersSchema>>({
     resolver: zodResolver(interventionFiltersSchema),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      intervention_multicomponent: INTERVENTION_MULTICOMPONENT_OPTIONS.map(
-        (option) => option.value
-      ),
-      intervention_content: INTERVENTION_CONTENT_OPTIONS,
-      intervention_mechanism: INTERVENTION_MECHANISM_OPTIONS,
-      intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
-    },
+    defaultValues: loadFormValues(STORAGE_KEY, defaults),
   })
+
+  usePersistedForm(form, STORAGE_KEY)
 
   async function onSubmit(values: z.infer<typeof interventionFiltersSchema>) {
     let subset = data
-
-    subset = subset.filter((datum) => {
-      return values.intervention_multicomponent.some(
-        (value) => datum.intervention_multicomponent === value
-      )
-    })
 
     subset = subset.filter((datum) => {
       return values.intervention_content.some((value) =>
@@ -116,12 +112,6 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               placeholder="Select intervention medium..."
               options={INTERVENTION_MEDIUM_OPTIONS}
               className="w-full"
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="intervention_multicomponent"
-              label="Intervention components"
-              options={INTERVENTION_MULTICOMPONENT_OPTIONS}
             />
           </div>
 

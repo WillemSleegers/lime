@@ -53,7 +53,7 @@ export function MultiSelect({
 }) {
   const [open, setOpen] = useState(false)
   const [selectedValues, setSelectedValues] = useState(
-    new Set<string>(values ?? defaultValues)
+    new Set<string>(values ?? defaultValues),
   )
   const [items, setItems] = useState<Map<string, ReactNode>>(new Map())
 
@@ -114,8 +114,8 @@ export function MultiSelectTrigger({
         role={props.role ?? "combobox"}
         aria-expanded={props["aria-expanded"] ?? open}
         className={cn(
-          "flex h-auto min-h-9 w-fit items-center justify-between gap-2 overflow-hidden rounded-md border border-input bg-transparent px-3 py-1.5 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-[placeholder]:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
-          className
+          "flex h-auto min-h-9 w-fit items-center justify-between gap-2 overflow-hidden rounded-md border border-input bg-transparent px-3 py-1.5 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",
+          className,
         )}
       >
         {children}
@@ -151,7 +151,7 @@ export function MultiSelectValue({
     const containerElement = valueRef.current
     const overflowElement = overflowRef.current
     const items = containerElement.querySelectorAll<HTMLElement>(
-      "[data-selected-item]"
+      "[data-selected-item]",
     )
 
     if (overflowElement != null) overflowElement.style.display = "none"
@@ -185,7 +185,7 @@ export function MultiSelectValue({
         valueRef.current = null
       }
     },
-    [checkOverflow]
+    [checkOverflow],
   )
 
   if (selectedValues.size === 0 && placeholder) {
@@ -203,7 +203,7 @@ export function MultiSelectValue({
       className={cn(
         "flex w-full gap-1.5 overflow-hidden",
         shouldWrap && "h-full flex-wrap",
-        className
+        className,
       )}
     >
       {[...selectedValues]
@@ -257,7 +257,7 @@ export function MultiSelectContent({
           <CommandList>{children}</CommandList>
         </Command>
       </div>
-      <PopoverContent className="min-w-[var(--radix-popover-trigger-width)] p-0">
+      <PopoverContent className="min-w-(--radix-popover-trigger-width) p-0">
         <Command {...props}>
           {canSearch ? (
             <CommandInput
@@ -317,13 +317,13 @@ export function MultiSelectItem({
 }
 
 export function MultiSelectGroup(
-  props: ComponentPropsWithoutRef<typeof CommandGroup>
+  props: ComponentPropsWithoutRef<typeof CommandGroup>,
 ) {
   return <CommandGroup {...props} />
 }
 
 export function MultiSelectSeparator(
-  props: ComponentPropsWithoutRef<typeof CommandSeparator>
+  props: ComponentPropsWithoutRef<typeof CommandSeparator>,
 ) {
   return <CommandSeparator {...props} />
 }
@@ -332,7 +332,7 @@ function useMultiSelectContext() {
   const context = useContext(MultiSelectContext)
   if (context == null) {
     throw new Error(
-      "useMultiSelectContext must be used within a MultiSelectContext"
+      "useMultiSelectContext must be used within a MultiSelectContext",
     )
   }
   return context

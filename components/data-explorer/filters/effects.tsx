@@ -14,6 +14,9 @@ import { SliderField } from "@/components/form/slider-field"
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
 import { Effects } from "@/lib/types"
+import { loadFormValues, usePersistedForm } from "@/hooks/use-persisted-form"
+
+const STORAGE_KEY = "lime-data-explorer-effects"
 
 const formSchemaEffects = z.object({
   effect_size: z.number().array(),
@@ -41,15 +44,19 @@ export const FilterEffects = (props: FilterEffectsProps) => {
   const effect_size_min = Math.min(...data.map((datum) => datum.effect_size))
   const effect_size_max = Math.max(...data.map((datum) => datum.effect_size))
 
+  const defaults = {
+    effect_size: [effect_size_min, effect_size_max],
+    sample_size: 1,
+  }
+
   const form = useForm<z.infer<typeof formSchemaEffects>>({
     resolver: zodResolver(formSchemaEffects),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      effect_size: [effect_size_min, effect_size_max],
-      sample_size: 1,
-    },
+    defaultValues: loadFormValues(STORAGE_KEY, defaults),
   })
+
+  usePersistedForm(form, STORAGE_KEY)
 
   async function onSubmit(values: z.infer<typeof formSchemaEffects>) {
     let subset = data

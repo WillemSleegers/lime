@@ -6,12 +6,14 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { Count } from "@/components/ui/count"
 
 type InputFieldProps<T extends FieldValues> = {
   control: Control<T>
   name: Path<T>
   label: string
   description?: string
+  count?: number
   placeholder?: string
   type?: "text" | "email" | "password" | "number" | "tel" | "url"
   className?: string
@@ -22,6 +24,7 @@ export function InputField<T extends FieldValues>({
   name,
   label,
   description,
+  count,
   placeholder,
   type = "text",
   className,
@@ -46,7 +49,11 @@ export function InputField<T extends FieldValues>({
               field.onChange(value)
             }}
           />
-          {description && <FieldDescription>{description}</FieldDescription>}
+          {description && (
+            <FieldDescription>
+              {description}{count !== undefined && <> <Count n={count} /></>}
+            </FieldDescription>
+          )}
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
         </Field>
       )}

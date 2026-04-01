@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { InclusionCriteriaTab } from "@/components/meta-analysis/tabs/inclusion-criteria-tab"
 import { HighlightsTab } from "@/components/meta-analysis/tabs/highlights-tab"
 import { MetaAnalysisTab } from "@/components/meta-analysis/tabs/meta-analysis-tab"
+import { ModeratorAnalysisTab } from "@/components/meta-analysis/tabs/moderator-analysis-tab"
 
 import { runMetaAnalysis } from "@/lib/r-functions"
 import { Data, Datum, Egger, Estimate, Status } from "@/lib/types"
@@ -23,6 +24,7 @@ const MetaAnalysisPage = () => {
     criteria: true,
     highlights: false,
     analysis: false,
+    moderator: false,
   })
 
   const [data, setData] = useState<Data>()
@@ -54,12 +56,14 @@ const MetaAnalysisPage = () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" })
     }, 100)
+    // Run analysis in background while user reviews highlights
+    runAnalysis()
   }
 
-  // Handle going back from highlights to criteria
-  const handleBackToCriteria = () => {
-    setActiveTab("criteria")
-    // Scroll to top after tab content renders
+  // Handle meta-analysis reviewed and unlock moderator tab
+  const handleAnalysisReviewed = () => {
+    setUnlockedTabs((prev) => ({ ...prev, moderator: true }))
+    setActiveTab("moderator")
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" })
     }, 100)
@@ -73,17 +77,10 @@ const MetaAnalysisPage = () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" })
     }, 100)
-    // Run analysis when moving to step 3
-    runAnalysis()
-  }
-
-  // Handle going back from analysis to highlights
-  const handleBackToHighlights = () => {
-    setActiveTab("highlights")
-    // Scroll to top after tab content renders
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    }, 100)
+    // Ensure analysis runs if it hasn't completed yet
+    if (!estimate) {
+      runAnalysis()
+    }
   }
 
   // Run meta-analysis function (called manually via button)
@@ -170,32 +167,37 @@ const MetaAnalysisPage = () => {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <div className="w-full overflow-x-auto">
-          <TabsList className="w-full md:w-full justify-start min-w-fit">
-            <TabsTrigger
-              value="criteria"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-            >
-              Step 1: Filter studies
-            </TabsTrigger>
-            <TabsTrigger
-              value="highlights"
-              disabled={!unlockedTabs.highlights}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-            >
-              Step 2: Review selection
-            </TabsTrigger>
-            <TabsTrigger
-              value="analysis"
-              disabled={!unlockedTabs.analysis}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
-            >
-              Step 3: Run meta-analysis
-            </TabsTrigger>
-          </TabsList>
-        </div>
+        <TabsList className="w-full justify-start">
+          <TabsTrigger
+            value="criteria"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+          >
+            Step 1: Filter studies
+          </TabsTrigger>
+          <TabsTrigger
+            value="highlights"
+            disabled={!unlockedTabs.highlights}
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+          >
+            Step 2: Review selection
+          </TabsTrigger>
+          <TabsTrigger
+            value="analysis"
+            disabled={!unlockedTabs.analysis}
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+          >
+            Step 3: Run meta-analysis
+          </TabsTrigger>
+          <TabsTrigger
+            value="moderator"
+            disabled={!unlockedTabs.moderator}
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
+          >
+            Step 4: Moderator analysis
+          </TabsTrigger>
+        </TabsList>
 
-        <TabsContent value="criteria" className="mt-0" forceMount hidden={activeTab !== "criteria"}>
+        <TabsContent value="criteria" className="mt-0">
           <InclusionCriteriaTab
             status={status}
             setData={setData}
@@ -203,21 +205,28 @@ const MetaAnalysisPage = () => {
           />
         </TabsContent>
 
-        <TabsContent value="highlights" className="mt-0" forceMount hidden={activeTab !== "highlights"}>
+        <TabsContent value="highlights" className="mt-0">
           <HighlightsTab
             data={data}
             onContinue={handleHighlightsReviewed}
-            onBack={handleBackToCriteria}
           />
         </TabsContent>
 
-        <TabsContent value="analysis" className="mt-0" forceMount hidden={activeTab !== "analysis"}>
+        <TabsContent value="analysis" className="mt-0">
           <MetaAnalysisTab
             data={data}
             estimate={estimate}
             egger={egger}
             error={error}
-            onBack={handleBackToHighlights}
+            onContinue={handleAnalysisReviewed}
+          />
+        </TabsContent>
+
+        <TabsContent value="moderator" className="mt-0">
+          <ModeratorAnalysisTab
+            data={data}
+            webR={webR}
+            status={status}
           />
         </TabsContent>
       </Tabs>

@@ -28,10 +28,7 @@ export const HighlightRadialBarChart = ({
   ]
 
   return (
-    <ChartContainer
-      config={chartConfig}
-      className="h-[100px] w-full aspect-square"
-    >
+    <ChartContainer config={chartConfig} className="size-32 mx-auto">
       <RadialBarChart
         data={chartData}
         startAngle={90}

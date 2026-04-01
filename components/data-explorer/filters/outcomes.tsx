@@ -23,6 +23,9 @@ import { FilteredData } from "@/lib/data-explorer-utils"
 
 import { Outcomes } from "@/lib/types"
 import { outcomeCategoriesFieldsNew } from "@/lib/filter-schemas"
+import { loadFormValues, usePersistedForm } from "@/hooks/use-persisted-form"
+
+const STORAGE_KEY = "lime-data-explorer-outcomes"
 
 const formSchemaOutcomes = z.object({
   ...outcomeCategoriesFieldsNew,
@@ -48,21 +51,23 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
     setFilterOpen,
   } = props
 
+  const defaults = {
+    outcome_subcategory: [
+      ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+      ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+      ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+    ],
+    outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => option.value),
+  }
+
   const form = useForm<z.infer<typeof formSchemaOutcomes>>({
     resolver: zodResolver(formSchemaOutcomes),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      outcome_subcategory: [
-        ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-        ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-        ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
-      ],
-      outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map(
-        (option) => option.value
-      ),
-    },
+    defaultValues: loadFormValues(STORAGE_KEY, defaults),
   })
+
+  usePersistedForm(form, STORAGE_KEY)
 
   async function onSubmit(values: z.infer<typeof formSchemaOutcomes>) {
     let subset = data

@@ -41,6 +41,11 @@ export const PAPER_OPEN_ACCESS_OPTIONS = [
     label: "Open access",
     description: "Free to read",
   },
+  {
+    value: "inaccessible",
+    label: "Inaccessible",
+    description: "Could not be accessed",
+  },
 ]
 
 // Study-level

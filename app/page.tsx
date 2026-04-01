@@ -27,33 +27,25 @@ export default function Home() {
             <span className="text-stat-number">
               <Counter duration={1000} target={counts.papers} />
             </span>
-            <span className="text-stat-label">
-              Papers
-            </span>
+            <span className="text-stat-label">Papers</span>
           </div>
           <div className="flex flex-col gap-y-2">
             <span className="text-stat-number">
               <Counter duration={1250} target={counts.studies} />
             </span>
-            <span className="text-stat-label">
-              Studies
-            </span>
+            <span className="text-stat-label">Studies</span>
           </div>
           <div className="flex flex-col gap-y-2">
             <span className="text-stat-number">
               <Counter duration={1500} target={counts.effects} />
             </span>
-            <span className="text-stat-label">
-              Effects
-            </span>
+            <span className="text-stat-label">Effects</span>
           </div>
           <div className="flex flex-col gap-y-2">
             <span className="text-stat-number">
               <Counter duration={1750} target={counts.observations} />
             </span>
-            <span className="text-stat-label">
-              Observations
-            </span>
+            <span className="text-stat-label">Observations</span>
           </div>
         </div>
       </section>
@@ -68,10 +60,9 @@ export default function Home() {
           <p className="text-description">
             LIME is a continuously growing collection of experimental studies
             examining psychological interventions to reduce animal product
-            consumption and improve attitudes towards animals. With LIME, you
-            can explore individual studies, understand the current state of
-            research, and evaluate which interventions have the strongest
-            evidence behind them.
+            consumption. With LIME, you can explore individual studies,
+            understand the current state of research, and evaluate which
+            interventions have the strongest evidence behind them.
           </p>
         </div>
         <Button asChild>
@@ -110,18 +101,14 @@ export default function Home() {
         </p>
         <div className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div className="mx-auto max-w-80 space-y-2">
-            <h3 className="text-feature-title">
-              Summary statistics
-            </h3>
+            <h3 className="text-feature-title">Summary statistics</h3>
             <p className="text-description">
               Get statistics on selected papers such as sample sizes and open
               science practices.
             </p>
           </div>
           <div className="mx-auto max-w-80 space-y-2">
-            <h3 className="text-feature-title">
-              Meta-analysis
-            </h3>
+            <h3 className="text-feature-title">Meta-analysis</h3>
             <p className="text-description">
               Calculate meta-analytic effect sizes and see them translated into
               several alternatives to help you better understand the
@@ -129,9 +116,7 @@ export default function Home() {
             </p>
           </div>
           <div className="mx-auto max-w-80 space-y-2">
-            <h3 className="text-feature-title">
-              Data visualization
-            </h3>
+            <h3 className="text-feature-title">Data visualization</h3>
             <p className="text-description">
               Inspect data visualizations of effect sizes and other descriptives
               about intervention studies included in the database.

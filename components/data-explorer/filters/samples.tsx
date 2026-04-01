@@ -20,6 +20,9 @@ import {
 import { Samples } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { sampleFiltersFields } from "@/lib/filter-schemas"
+import { loadFormValues, usePersistedForm } from "@/hooks/use-persisted-form"
+
+const STORAGE_KEY = "lime-data-explorer-samples"
 
 const formSchemaSamples = z.object({
   ...sampleFiltersFields,
@@ -41,18 +44,20 @@ export const FilterSamples = (props: FilterSamplesProps) => {
     setFilterOpen,
   } = props
 
+  const defaults = {
+    sample_country: SAMPLE_COUNTRY_OPTIONS,
+    sample_type: SAMPLE_TYPE_OPTIONS.map((option) => option.value),
+    sample_representative: SAMPLE_REPRESENTATIVE_OPTIONS.map((option) => option.value),
+  }
+
   const form = useForm<z.infer<typeof formSchemaSamples>>({
     resolver: zodResolver(formSchemaSamples),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: {
-      sample_country: SAMPLE_COUNTRY_OPTIONS,
-      sample_type: SAMPLE_TYPE_OPTIONS.map((option) => option.value),
-      sample_representative: SAMPLE_REPRESENTATIVE_OPTIONS.map(
-        (option) => option.value
-      ),
-    },
+    defaultValues: loadFormValues(STORAGE_KEY, defaults),
   })
+
+  usePersistedForm(form, STORAGE_KEY)
 
   async function onSubmit(values: z.infer<typeof formSchemaSamples>) {
     let subset = data

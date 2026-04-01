@@ -63,3 +63,19 @@ export type Status =
   | "Installing packages..."
   | "Running meta-analysis..."
   | "Ready"
+
+export type ModeratorLevel = {
+  label: string
+  estimate: number
+  lower: number
+  upper: number
+  pval: number
+  k: number
+}
+
+export type ModeratorResult = {
+  levels: ModeratorLevel[]
+  qm: number
+  qmdf: number
+  qmp: number
+}

@@ -6,6 +6,7 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Slider } from "@/components/ui/slider"
+import { Count } from "@/components/ui/count"
 
 type SliderFieldProps<T extends FieldValues> = {
   control: Control<T>
@@ -15,6 +16,7 @@ type SliderFieldProps<T extends FieldValues> = {
   max: number
   step?: number
   minStepsBetweenThumbs?: number
+  count?: number
   className?: string
 }
 
@@ -26,6 +28,7 @@ export function SliderField<T extends FieldValues>({
   max,
   step = 1,
   minStepsBetweenThumbs,
+  count,
   className,
 }: SliderFieldProps<T>) {
   return (
@@ -57,7 +60,9 @@ export function SliderField<T extends FieldValues>({
               className={`my-2 ${className || ""}`}
               aria-invalid={fieldState.invalid}
             />
-            <FieldDescription>{displayValue}</FieldDescription>
+            <FieldDescription>
+              {displayValue}{count !== undefined && <> <Count n={count} /></>}
+            </FieldDescription>
             {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
           </Field>
         )

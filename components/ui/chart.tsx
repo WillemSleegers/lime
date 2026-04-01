@@ -56,7 +56,6 @@ function ChartContainer({
 }) {
   const uniqueId = React.useId()
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`
-
   return (
     <ChartContext.Provider value={{ config }}>
       <div
@@ -69,7 +68,11 @@ function ChartContainer({
         {...props}
       >
         <ChartStyle id={chartId} config={config} />
-        <RechartsPrimitive.ResponsiveContainer>
+        <RechartsPrimitive.ResponsiveContainer
+          width="100%"
+          height="100%"
+          initialDimension={{ width: 100, height: 50 }}
+        >
           {children}
         </RechartsPrimitive.ResponsiveContainer>
       </div>
@@ -209,7 +212,7 @@ function ChartTooltipContent({
 
           return (
             <div
-              key={item.dataKey}
+              key={`${item.dataKey}`}
               className={cn(
                 "[&>svg]:text-muted-foreground flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5",
                 indicator === "dot" && "items-center"

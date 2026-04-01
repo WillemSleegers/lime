@@ -46,6 +46,16 @@ import { FilterOutcomes } from "@/components/data-explorer/filters/outcomes"
 import { FilterEffects } from "@/components/data-explorer/filters/effects"
 
 import { useDataExplorerState } from "@/hooks/use-data-explorer-state"
+import { clearFormValues } from "@/hooks/use-persisted-form"
+
+const DATA_EXPLORER_STORAGE_KEYS = [
+  "lime-data-explorer-papers",
+  "lime-data-explorer-studies",
+  "lime-data-explorer-samples",
+  "lime-data-explorer-interventions",
+  "lime-data-explorer-outcomes",
+  "lime-data-explorer-effects",
+]
 
 export default function DataExplorer() {
   const [level, setLevel] = useState("paper")
@@ -127,6 +137,7 @@ export default function DataExplorer() {
   )
 
   const handleResetFilters = () => {
+    DATA_EXPLORER_STORAGE_KEYS.forEach(clearFormValues)
     setFilteredData({
       papers,
       studies,
@@ -261,7 +272,7 @@ export default function DataExplorer() {
           </div>
         </div>
 
-        <TabsContent value="paper" className="space-y-4" forceMount hidden={level !== "paper"}>
+        <TabsContent value="paper" className="space-y-4">
           <FilterPapers
             key={`papers-${resetKey}`}
             data={papers}
@@ -277,7 +288,7 @@ export default function DataExplorer() {
           />
           <DownloadButton />
         </TabsContent>
-        <TabsContent value="study" className="space-y-4" forceMount hidden={level !== "study"}>
+        <TabsContent value="study" className="space-y-4">
           <FilterStudies
             key={`studies-${resetKey}`}
             data={studies}
@@ -293,7 +304,7 @@ export default function DataExplorer() {
           />
           <DownloadButton />
         </TabsContent>
-        <TabsContent value="sample" className="space-y-4" forceMount hidden={level !== "sample"}>
+        <TabsContent value="sample" className="space-y-4">
           <FilterSamples
             key={`samples-${resetKey}`}
             data={samples}
@@ -309,7 +320,7 @@ export default function DataExplorer() {
           />
           <DownloadButton />
         </TabsContent>
-        <TabsContent value="intervention" className="space-y-4" forceMount hidden={level !== "intervention"}>
+        <TabsContent value="intervention" className="space-y-4">
           <FilterInterventions
             key={`interventions-${resetKey}`}
             data={interventions}
@@ -325,7 +336,7 @@ export default function DataExplorer() {
           />
           <DownloadButton />
         </TabsContent>
-        <TabsContent value="outcome" className="space-y-4" forceMount hidden={level !== "outcome"}>
+        <TabsContent value="outcome" className="space-y-4">
           <FilterOutcomes
             key={`outcomes-${resetKey}`}
             data={outcomes}
@@ -341,7 +352,7 @@ export default function DataExplorer() {
           />
           <DownloadButton />
         </TabsContent>
-        <TabsContent value="effect" className="space-y-4" forceMount hidden={level !== "effect"}>
+        <TabsContent value="effect" className="space-y-4">
           <FilterEffects
             key={`effects-${resetKey}`}
             data={effects}
