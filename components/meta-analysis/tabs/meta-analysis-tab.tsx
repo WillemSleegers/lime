@@ -28,6 +28,7 @@ type MetaAnalysisTabProps = {
   egger?: Egger
   error?: string
   onContinue: () => void
+  onBack: () => void
 }
 
 export const MetaAnalysisTab = ({
@@ -36,6 +37,7 @@ export const MetaAnalysisTab = ({
   egger,
   error,
   onContinue,
+  onBack,
 }: MetaAnalysisTabProps) => {
   // Show error state if there was an error
   if (error) {
@@ -85,10 +87,10 @@ export const MetaAnalysisTab = ({
       <DotPlotExample data={data} />
       <ForestPlot data={data} />
       <div className="flex items-center gap-3">
-        <Button
-          onClick={onContinue}
-          className="h-auto"
-        >
+        <Button onClick={onBack} variant="outline" className="h-auto">
+          Back
+        </Button>
+        <Button onClick={onContinue} className="h-auto">
           Next
         </Button>
         <RCode />

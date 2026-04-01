@@ -42,6 +42,7 @@ import {
   OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
   OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+  INTERVENTION_MULTICOMPONENT_OPTIONS,
   INTERVENTION_CONTENT_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
@@ -98,6 +99,7 @@ const defaults = {
     ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   ],
   outcome_measurement_type: META_ANALYSIS_DEFAULTS.outcome_measurement_type,
+  intervention_multicomponent: META_ANALYSIS_DEFAULTS.intervention_multicomponent,
   intervention_content: META_ANALYSIS_DEFAULTS.intervention_content,
   intervention_mechanism: META_ANALYSIS_DEFAULTS.intervention_mechanism,
   intervention_medium: META_ANALYSIS_DEFAULTS.intervention_medium,
@@ -312,6 +314,13 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
+              <CheckboxGroup
+                control={form.control}
+                name="intervention_multicomponent"
+                label="Intervention components"
+                options={INTERVENTION_MULTICOMPONENT_OPTIONS}
+                counts={counts.interventionMulticomponent}
+              />
               <MultiSelectField
                 control={form.control}
                 name="intervention_content"

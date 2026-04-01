@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LIME — Library of Interventions for Meat Elimination
 
-## Getting Started
+LIME is a web application that provides a searchable database of intervention studies focused on reducing animal product consumption. It includes tools for exploring the data, running meta-analyses, and visualizing results.
 
-First, run the development server:
+## Features
+
+- **Data Explorer** — Browse and filter papers, studies, interventions, outcomes, and effects. Supports cross-level filtering with a lock system that maintains relational integrity across tabs. Data can be exported to CSV.
+- **Meta-Analysis** — A four-step workflow for running a meta-analysis on a user-defined subset of effects. Runs entirely in the browser using WebR (R via WebAssembly), with `metafor` and `clubSandwich` for statistical computation. Results include forest plots, dot plots, and publication bias tests.
+- **Moderator Analysis** — Step 4 of the meta-analysis workflow, for exploring how effect sizes vary across moderator variables.
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # Start development server (Turbopack)
+npm run build   # Production build
+npm run lint    # Run ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 16** (App Router, Turbopack, React Compiler)
+- **React 19** with TypeScript 5
+- **Tailwind CSS 4** + **shadcn/ui**
+- **TanStack Table v8** for data tables
+- **React Hook Form** + **Zod** for form validation
+- **WebR** for in-browser R statistical computation
+- **Recharts** for data visualizations
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Data
 
-## Learn More
+Research data is stored as static JSON files in `assets/data/`. The dataset covers papers, studies, interventions, outcomes, and effect sizes, all linked by composite keys. Types are generated from the actual data files to keep runtime and compile-time types in sync.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/                  # Next.js App Router pages
+components/           # React components
+  data-explorer/      # Data table and filter components
+  meta-analysis/      # Forest plots, dot plots, meta-analysis tabs
+  charts/             # Recharts-based chart components
+  ui/                 # shadcn/ui base components
+hooks/                # Custom React hooks
+lib/                  # Types, utilities, R code generation
+constants/            # Filter options and meta-analysis defaults
+assets/data/          # Static JSON data files
+```

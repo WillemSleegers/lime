@@ -60,6 +60,16 @@ const MetaAnalysisPage = () => {
     runAnalysis()
   }
 
+  const handleBackToCriteria = () => {
+    setActiveTab("criteria")
+    setTimeout(() => { window.scrollTo({ top: 0, behavior: "smooth" }) }, 100)
+  }
+
+  const handleBackToHighlights = () => {
+    setActiveTab("highlights")
+    setTimeout(() => { window.scrollTo({ top: 0, behavior: "smooth" }) }, 100)
+  }
+
   // Handle meta-analysis reviewed and unlock moderator tab
   const handleAnalysisReviewed = () => {
     setUnlockedTabs((prev) => ({ ...prev, moderator: true }))
@@ -209,6 +219,7 @@ const MetaAnalysisPage = () => {
           <HighlightsTab
             data={data}
             onContinue={handleHighlightsReviewed}
+            onBack={handleBackToCriteria}
           />
         </TabsContent>
 
@@ -219,6 +230,7 @@ const MetaAnalysisPage = () => {
             egger={egger}
             error={error}
             onContinue={handleAnalysisReviewed}
+            onBack={handleBackToHighlights}
           />
         </TabsContent>
 
