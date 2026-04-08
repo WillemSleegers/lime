@@ -9,13 +9,14 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CollapsibleEstimate } from "@/components/meta-analysis/estimate"
 import { Spinner } from "@/components/ui/spinner"
 import { CollapsiblePublicationBias } from "@/components/meta-analysis/publication-bias"
+import { CollapsibleHeterogeneity } from "@/components/meta-analysis/heterogeneity"
 import { ForestPlot } from "@/components/meta-analysis/forest-plot"
 import { RCode } from "@/components/meta-analysis/R-code"
 import DotPlotExample from "@/components/meta-analysis/dot-plot"
 
 import { exportToCSV } from "@/lib/csv-utils"
 import codebook from "@/assets/data/codebook.json"
-import { Data, Egger, Estimate } from "@/lib/types"
+import { Data, Egger, Estimate, Heterogeneity } from "@/lib/types"
 
 const handleDownload = (fileName: string, data?: Record<string, unknown>[]) => {
   if (!data) return
@@ -26,6 +27,7 @@ type MetaAnalysisTabProps = {
   data?: Data
   estimate?: Estimate
   egger?: Egger
+  heterogeneity?: Heterogeneity
   error?: string
   onContinue: () => void
   onBack: () => void
@@ -35,6 +37,7 @@ export const MetaAnalysisTab = ({
   data,
   estimate,
   egger,
+  heterogeneity,
   error,
   onContinue,
   onBack,
@@ -61,7 +64,7 @@ export const MetaAnalysisTab = ({
   }
 
   // Show loading state until results are ready
-  if (!estimate || !egger || !data) {
+  if (!estimate || !egger || !heterogeneity || !data) {
     return (
       <div className="space-y-8">
         <Card>
@@ -83,6 +86,7 @@ export const MetaAnalysisTab = ({
   return (
     <div className="space-y-8">
       <CollapsibleEstimate estimate={estimate} />
+      <CollapsibleHeterogeneity heterogeneity={heterogeneity} />
       <CollapsiblePublicationBias estimate={estimate} egger={egger} data={data} />
       <DotPlotExample data={data} />
       <ForestPlot data={data} />

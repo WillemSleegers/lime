@@ -58,6 +58,19 @@ export type Egger = {
   egger_p: number
 }
 
+export type Heterogeneity = {
+  q: number
+  qDf: number
+  qp: number
+  i2Paper: number
+  i2Study: number
+  i2Outcome: number
+  i2Total: number
+  tau2Paper: number
+  tau2Study: number
+  tau2Outcome: number
+}
+
 export type Status =
   | "Loading webR..."
   | "Installing packages..."

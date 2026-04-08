@@ -11,7 +11,7 @@ import { MetaAnalysisTab } from "@/components/meta-analysis/tabs/meta-analysis-t
 import { ModeratorAnalysisTab } from "@/components/meta-analysis/tabs/moderator-analysis-tab"
 
 import { runMetaAnalysis } from "@/lib/r-functions"
-import { Data, Datum, Egger, Estimate, Status } from "@/lib/types"
+import { Data, Datum, Egger, Estimate, Heterogeneity, Status } from "@/lib/types"
 
 const MetaAnalysisPage = () => {
   const webR = useRef<WebR>(null)
@@ -30,6 +30,7 @@ const MetaAnalysisPage = () => {
   const [data, setData] = useState<Data>()
   const [estimate, setEstimate] = useState<Estimate | undefined>()
   const [egger, setEgger] = useState<Egger | undefined>()
+  const [heterogeneity, setHeterogeneity] = useState<Heterogeneity | undefined>()
   const [error, setError] = useState<string | undefined>()
 
   // Setup
@@ -103,6 +104,7 @@ const MetaAnalysisPage = () => {
 
       // Reset the effect and error
       setEstimate(undefined)
+      setHeterogeneity(undefined)
       setError(undefined)
 
       const subset = data.map((datum: Datum) =>
@@ -145,6 +147,18 @@ const MetaAnalysisPage = () => {
         egger_se: results[6],
         egger_z: results[7],
         egger_p: results[8],
+      })
+      setHeterogeneity({
+        q: results[9],
+        qDf: results[10],
+        qp: results[11],
+        i2Paper: results[12],
+        i2Study: results[13],
+        i2Outcome: results[14],
+        i2Total: results[15],
+        tau2Paper: results[16],
+        tau2Study: results[17],
+        tau2Outcome: results[18],
       })
       setStatus("Ready")
     } catch (err) {
@@ -228,6 +242,7 @@ const MetaAnalysisPage = () => {
             data={data}
             estimate={estimate}
             egger={egger}
+            heterogeneity={heterogeneity}
             error={error}
             onContinue={handleAnalysisReviewed}
             onBack={handleBackToHighlights}
