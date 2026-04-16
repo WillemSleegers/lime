@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { WebR } from "webr"
 
 import { Button } from "@/components/ui/button"
@@ -34,13 +34,14 @@ type ModeratorAnalysisProps = {
   data: Data
   webR: { current: WebR | null }
   status: Status
+  result: ModeratorResult | undefined
+  setResult: Dispatch<SetStateAction<ModeratorResult | undefined>>
 }
 
-export const ModeratorAnalysis = ({ data, webR, status }: ModeratorAnalysisProps) => {
+export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: ModeratorAnalysisProps) => {
   const [selectedVar, setSelectedVar] = useState<string>("")
   const [singleValueOnly, setSingleValueOnly] = useState(true)
   const [selectedLevels, setSelectedLevels] = useState<string[]>([])
-  const [result, setResult] = useState<ModeratorResult | undefined>()
   const [isRunning, setIsRunning] = useState(false)
   const [error, setError] = useState<string | undefined>()
 

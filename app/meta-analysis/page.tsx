@@ -11,7 +11,7 @@ import { MetaAnalysisTab } from "@/components/meta-analysis/tabs/meta-analysis-t
 import { ModeratorAnalysisTab } from "@/components/meta-analysis/tabs/moderator-analysis-tab"
 
 import { runMetaAnalysis } from "@/lib/r-functions"
-import { Data, Datum, Egger, Estimate, Heterogeneity, Status } from "@/lib/types"
+import { Data, Datum, Egger, Estimate, Heterogeneity, ModeratorResult, Status } from "@/lib/types"
 
 const MetaAnalysisPage = () => {
   const webR = useRef<WebR>(null)
@@ -28,6 +28,7 @@ const MetaAnalysisPage = () => {
   })
 
   const [data, setData] = useState<Data>()
+  const [moderatorResult, setModeratorResult] = useState<ModeratorResult | undefined>()
   const [estimate, setEstimate] = useState<Estimate | undefined>()
   const [egger, setEgger] = useState<Egger | undefined>()
   const [heterogeneity, setHeterogeneity] = useState<Heterogeneity | undefined>()
@@ -51,14 +52,13 @@ const MetaAnalysisPage = () => {
 
   // Handle filter application and unlock next tab
   const handleFiltersApplied = () => {
-    setUnlockedTabs((prev) => ({ ...prev, highlights: true }))
+    setUnlockedTabs((prev) => ({ ...prev, highlights: true, analysis: false, moderator: false }))
     setActiveTab("highlights")
+    setModeratorResult(undefined)
     // Scroll to top after tab content renders
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" })
     }, 100)
-    // Run analysis in background while user reviews highlights
-    runAnalysis()
   }
 
   const handleBackToCriteria = () => {
@@ -88,10 +88,6 @@ const MetaAnalysisPage = () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" })
     }, 100)
-    // Ensure analysis runs if it hasn't completed yet
-    if (!estimate) {
-      runAnalysis()
-    }
   }
 
   // Run meta-analysis function (called manually via button)
@@ -104,6 +100,7 @@ const MetaAnalysisPage = () => {
 
       // Reset the effect and error
       setEstimate(undefined)
+      setEgger(undefined)
       setHeterogeneity(undefined)
       setError(undefined)
 
@@ -190,7 +187,7 @@ const MetaAnalysisPage = () => {
         </p>
       </div>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+      <Tabs value={activeTab} onValueChange={(tab) => { setActiveTab(tab); if (tab === "analysis") runAnalysis() }} className="space-y-6">
         <TabsList className="w-full justify-start">
           <TabsTrigger
             value="criteria"
@@ -254,6 +251,8 @@ const MetaAnalysisPage = () => {
             data={data}
             webR={webR}
             status={status}
+            result={moderatorResult}
+            setResult={setModeratorResult}
           />
         </TabsContent>
       </Tabs>
