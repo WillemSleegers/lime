@@ -6,6 +6,22 @@ import {
 } from "@/components/ui/accordion"
 import Link from "next/link"
 
+import {
+  PrismaFlowChart,
+  type PrismaData,
+} from "@/components/prisma-flow-chart"
+
+const prismaData: PrismaData = {
+  identified_databases: null,
+  identified_other: null,
+  screened: null,
+  excluded_screening: null,
+  assessed: null,
+  excluded_eligibility: null,
+  excluded_eligibility_reasons: [],
+  included: 104,
+}
+
 const FAQ = () => {
   return (
     <main className="page-width page-container space-y-8">
@@ -236,6 +252,21 @@ const FAQ = () => {
                   On the landing page, you can see how many papers, studies, and
                   effect sizes are currently included.
                 </p>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="database-search-strategy">
+              <AccordionTrigger className="text-base">
+                How did you search for and select studies?
+              </AccordionTrigger>
+              <AccordionContent className="flex flex-col gap-4 text-base">
+                <p>
+                  We searched multiple databases and sources for studies that
+                  met our inclusion criteria. The diagram below shows how many
+                  records we found at each stage and how many were excluded,
+                  following the PRISMA (Preferred Reporting Items for Systematic
+                  Reviews and Meta-Analyses) guidelines.
+                </p>
+                <PrismaFlowChart data={prismaData} />
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="database-6">
