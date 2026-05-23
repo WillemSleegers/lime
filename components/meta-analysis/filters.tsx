@@ -43,7 +43,6 @@ import {
   OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   INTERVENTION_MULTICOMPONENT_OPTIONS,
-  INTERVENTION_CONTENT_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
   SAMPLE_TYPE_OPTIONS,
@@ -51,7 +50,6 @@ import {
 } from "@/constants/constants-filters"
 import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
 import {
-  loadFormValues,
   usePersistedForm,
   clearFormValues,
 } from "@/hooks/use-persisted-form"
@@ -100,7 +98,6 @@ const defaults = {
   ],
   outcome_measurement_type: META_ANALYSIS_DEFAULTS.outcome_measurement_type,
   intervention_multicomponent: META_ANALYSIS_DEFAULTS.intervention_multicomponent,
-  intervention_content: META_ANALYSIS_DEFAULTS.intervention_content,
   intervention_mechanism: META_ANALYSIS_DEFAULTS.intervention_mechanism,
   intervention_medium: META_ANALYSIS_DEFAULTS.intervention_medium,
   sample_country: COUNTRY_OPTIONS,
@@ -130,10 +127,10 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
     resolver: zodResolver(formSchema),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: loadFormValues(STORAGE_KEY, defaults),
+    defaultValues: defaults,
   })
 
-  usePersistedForm(form, STORAGE_KEY)
+  usePersistedForm(form, STORAGE_KEY, defaults)
 
   const handleReset = useCallback(() => {
     clearFormValues(STORAGE_KEY)
@@ -320,16 +317,6 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 label="Intervention components"
                 options={INTERVENTION_MULTICOMPONENT_OPTIONS}
                 counts={counts.interventionMulticomponent}
-              />
-              <MultiSelectField
-                control={form.control}
-                name="intervention_content"
-                label="Intervention content"
-                description="Topics or arguments used to persuade people (e.g., animal welfare, health, environment)"
-                placeholder="Select intervention content..."
-                options={INTERVENTION_CONTENT_OPTIONS}
-                counts={counts.interventionContent}
-                className="w-full"
               />
               <MultiSelectField
                 control={form.control}

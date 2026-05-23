@@ -35,7 +35,6 @@ export const Highlights = (props: HighLightsProps) => {
   let preregistrationPercentage
   let yearCounts
   let chartData
-  let interventionContentData
   let interventionMechanismData
   let interventionMediumData
   let paperTypeData
@@ -92,22 +91,6 @@ export const Highlights = (props: HighLightsProps) => {
     )
     yearCounts = countUniqueValuesByGroup(data, "paper", "paper_year")
     chartData = mapToXYArray(yearCounts)
-
-    // Calculate intervention content counts (split comma-separated values)
-    const interventionContentCounts: Record<string, number> = {}
-    data.forEach((datum) => {
-      const contents = datum.intervention_content?.split(", ") || []
-      contents.forEach((content) => {
-        interventionContentCounts[content] = (interventionContentCounts[content] || 0) + 1
-      })
-    })
-
-    interventionContentData = Object.entries(interventionContentCounts)
-      .map(([name, value]) => ({
-        name,
-        value,
-      }))
-      .sort((a, b) => b.value - a.value)
 
     // Calculate intervention mechanism counts (split comma-separated values)
     const interventionMechanismCounts: Record<string, number> = {}
@@ -223,7 +206,9 @@ export const Highlights = (props: HighLightsProps) => {
     // Calculate country distribution
     const countryCounts: Record<string, number> = {}
     uniqueStudies.forEach((datum) => {
-      countryCounts[datum.sample_country] = (countryCounts[datum.sample_country] || 0) + 1
+      if (datum.sample_country) {
+        countryCounts[datum.sample_country] = (countryCounts[datum.sample_country] || 0) + 1
+      }
     })
     countryData = Object.entries(countryCounts)
       .map(([name, value]) => ({ name, value }))
@@ -456,21 +441,7 @@ export const Highlights = (props: HighLightsProps) => {
       <div className="space-y-3">
         <h2 className="text-xl font-semibold">Interventions</h2>
         <div className="gap-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-          {/* Row 1: Intervention content - full width for potentially many items */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Intervention content</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by intervention content category
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="overflow-visible">
-              {interventionContentData && interventionContentData.length > 0 && (
-                <HighlightBarChart data={interventionContentData} />
-              )}
-            </CardContent>
-          </Card>
-          {/* Row 2: Intervention mechanism - full width for potentially many items */}
+          {/* Row 1: Intervention mechanism - full width for potentially many items */}
           <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
             <CardHeader>
               <CardTitle className="text-lg">Intervention mechanism</CardTitle>

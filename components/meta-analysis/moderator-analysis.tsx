@@ -91,17 +91,19 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
 
     try {
       // Bind data with moderator column included
-      const subset = data.map((datum) => ({
-        effect_size: datum.effect_size,
-        effect_size_var: datum.effect_size_var,
-        paper_study: datum.paper_study,
-        paper: datum.paper,
-        study: datum.study,
-        outcome: datum.outcome,
-        intervention_condition: datum.intervention_condition,
-        control_condition: datum.control_condition,
-        [selectedVar]: (datum as Record<string, unknown>)[selectedVar],
-      }))
+      const subset = data
+        .filter((datum) => datum.effect_size != null && datum.effect_size_var != null)
+        .map((datum) => ({
+          effect_size: datum.effect_size,
+          effect_size_var: datum.effect_size_var,
+          paper_study: datum.paper_study,
+          paper: datum.paper,
+          study: datum.study,
+          outcome: datum.outcome,
+          intervention_key: datum.intervention_key,
+          control_key: datum.control_key,
+          [selectedVar]: (datum as Record<string, unknown>)[selectedVar],
+        }))
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const df = await new webR.current.RObject(subset as any)

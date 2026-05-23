@@ -23,7 +23,7 @@ import { FilteredData } from "@/lib/data-explorer-utils"
 
 import { Outcomes } from "@/lib/types"
 import { outcomeCategoriesFieldsNew } from "@/lib/filter-schemas"
-import { loadFormValues, usePersistedForm } from "@/hooks/use-persisted-form"
+import { usePersistedForm } from "@/hooks/use-persisted-form"
 
 const STORAGE_KEY = "lime-data-explorer-outcomes"
 
@@ -64,10 +64,10 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
     resolver: zodResolver(formSchemaOutcomes),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: loadFormValues(STORAGE_KEY, defaults),
+    defaultValues: defaults,
   })
 
-  usePersistedForm(form, STORAGE_KEY)
+  usePersistedForm(form, STORAGE_KEY, defaults)
 
   async function onSubmit(values: z.infer<typeof formSchemaOutcomes>) {
     let subset = data

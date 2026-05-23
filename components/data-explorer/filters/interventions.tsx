@@ -13,7 +13,6 @@ import { CheckboxGroup } from "@/components/form/checkbox-group"
 
 import {
   INTERVENTION_MULTICOMPONENT_OPTIONS,
-  INTERVENTION_CONTENT_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
 } from "@/constants/constants-filters"
@@ -21,7 +20,7 @@ import {
 import { Interventions } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { interventionFiltersSchema } from "@/lib/filter-schemas"
-import { loadFormValues, usePersistedForm } from "@/hooks/use-persisted-form"
+import { usePersistedForm } from "@/hooks/use-persisted-form"
 
 const STORAGE_KEY = "lime-data-explorer-interventions"
 
@@ -43,7 +42,6 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
 
   const defaults = {
     intervention_multicomponent: INTERVENTION_MULTICOMPONENT_OPTIONS.map((o) => o.value),
-    intervention_content: INTERVENTION_CONTENT_OPTIONS,
     intervention_mechanism: INTERVENTION_MECHANISM_OPTIONS,
     intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
   }
@@ -52,10 +50,10 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
     resolver: zodResolver(interventionFiltersSchema),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: loadFormValues(STORAGE_KEY, defaults),
+    defaultValues: defaults,
   })
 
-  usePersistedForm(form, STORAGE_KEY)
+  usePersistedForm(form, STORAGE_KEY, defaults)
 
   async function onSubmit(values: z.infer<typeof interventionFiltersSchema>) {
     let subset = data
@@ -63,12 +61,6 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
     subset = subset.filter((datum) => {
       return values.intervention_multicomponent.some(
         (value) => datum.intervention_multicomponent === value
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.intervention_content.some((value) =>
-        datum.intervention_content?.includes(value)
       )
     })
 
@@ -101,15 +93,6 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               name="intervention_multicomponent"
               label="Intervention components"
               options={INTERVENTION_MULTICOMPONENT_OPTIONS}
-            />
-            <MultiSelectField
-              control={form.control}
-              name="intervention_content"
-              label="Intervention content"
-              description="Topics or arguments used to persuade people (e.g., animal welfare, health, environment)"
-              placeholder="Select intervention content..."
-              options={INTERVENTION_CONTENT_OPTIONS}
-              className="w-full"
             />
             <MultiSelectField
               control={form.control}

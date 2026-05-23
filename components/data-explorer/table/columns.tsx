@@ -231,27 +231,6 @@ export const ColumnsSamples: ColumnDef<Sample>[] = [
     ),
   },
   {
-    id: "sample_intervention",
-    accessorKey: "sample_intervention",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Sample" />
-    ),
-  },
-  {
-    id: "sample_intervention_n",
-    accessorKey: "sample_intervention_n",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Sample size (intervention)" />
-    ),
-  },
-  {
-    id: "sample_control_n",
-    accessorKey: "sample_control_n",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Sample size (control)" />
-    ),
-  },
-  {
     id: "sample_country",
     accessorKey: "sample_country",
     header: ({ column }) => (
@@ -289,17 +268,6 @@ export const ColumnsSamples: ColumnDef<Sample>[] = [
     },
   },
   {
-    id: "sample_description",
-    accessorKey: "sample_description",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Description" />
-    ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("sample_description")
-      return <CellLongText value={value} />
-    },
-  },
-  {
     id: "paper_details",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Details" />
@@ -327,32 +295,21 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
     ),
   },
   {
+    id: "condition",
+    accessorKey: "intervention_condition",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Condition" />
+    ),
+  },
+  {
     id: "intervention_description",
     accessorKey: "intervention_description",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Intervention" />
+      <DataTableColumnHeader column={column} title="Description" />
     ),
     cell: ({ row }) => {
       const value = row.getValue<string>("intervention_description")
       return <CellLongText value={value} />
-    },
-  },
-  {
-    accessorKey: "intervention_content",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Content" />
-    ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("intervention_content")
-      const content = value.split(", ").map((e) => (
-        <Badge
-          key={e}
-          className="text-sm font-normal whitespace-nowrap bg-muted text-foreground"
-        >
-          {e}
-        </Badge>
-      ))
-      return <div className="flex flex-wrap gap-1">{content}</div>
     },
   },
   {
@@ -394,31 +351,11 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
   {
     accessorKey: "intervention_multicomponent",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Components" />
+      <DataTableColumnHeader column={column} title="Multicomponent" />
     ),
     cell: ({ row }) => {
       const value = row.getValue<string>("intervention_multicomponent")
-      const label = value === "yes" ? "multicomponent" : "single-component"
-      return (
-        <Badge className="text-sm font-normal whitespace-nowrap bg-muted text-foreground">
-          {label}
-        </Badge>
-      )
-    },
-  },
-  {
-    id: "control_description",
-    accessorKey: "control_description",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Control" />
-    ),
-    cell: ({ row }) => {
-      const value = row.getValue<string | undefined>("control_description")
-      if (value) {
-        return <CellLongText value={value} />
-      } else {
-        return "-"
-      }
+      return value === "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
     },
   },
   {
@@ -449,8 +386,8 @@ export const ColumnsOutcomes: ColumnDef<Outcome>[] = [
     ),
   },
   {
-    id: "outcome_label",
-    accessorKey: "outcome_label",
+    id: "outcome",
+    accessorKey: "outcome",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Outcome" />
     ),

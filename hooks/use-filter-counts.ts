@@ -14,7 +14,6 @@ import {
   OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
   OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   INTERVENTION_MULTICOMPONENT_OPTIONS,
-  INTERVENTION_CONTENT_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
   SAMPLE_TYPE_OPTIONS,
@@ -26,7 +25,6 @@ type FilterValues = {
   outcome_measurement_type: string[]
   effect_sample_size: number
   intervention_multicomponent: string[]
-  intervention_content: string[]
   intervention_mechanism: string[]
   intervention_medium: string[]
   sample_country: string[]
@@ -66,11 +64,6 @@ function applyFilters(
   if (exclude !== "intervention_multicomponent")
     s = s.filter((d) => f.intervention_multicomponent.some((v) => d.intervention_multicomponent === v))
 
-  if (exclude !== "intervention_content")
-    s = s.filter((d) =>
-      f.intervention_content.some((v) => d.intervention_content?.includes(v)),
-    )
-
   if (exclude !== "intervention_mechanism")
     s = s.filter((d) =>
       f.intervention_mechanism.some((v) => d.intervention_mechanism?.includes(v)),
@@ -82,7 +75,7 @@ function applyFilters(
     )
 
   if (exclude !== "sample_country")
-    s = s.filter((d) => f.sample_country.includes(d.sample_country))
+    s = s.filter((d) => d.sample_country != null && f.sample_country.includes(d.sample_country))
 
   if (exclude !== "sample_type")
     s = s.filter((d) => f.sample_type.some((v) => d.sample_type.includes(v)))
@@ -173,7 +166,6 @@ export function useFilterCounts(values: FilterValues) {
     sampleRepresentative: makeCounts(applyFilters(data, values, "sample_representative"), "sample_representative", SAMPLE_REPRESENTATIVE_OPTIONS),
     sampleType: makeCounts(applyFilters(data, values, "sample_type"), "sample_type", SAMPLE_TYPE_OPTIONS),
     interventionMulticomponent: makeCounts(applyFilters(data, values, "intervention_multicomponent"), "intervention_multicomponent", INTERVENTION_MULTICOMPONENT_OPTIONS, "exact"),
-    interventionContent: makeCountsFromStrings(applyFilters(data, values, "intervention_content"), "intervention_content", INTERVENTION_CONTENT_OPTIONS),
     interventionMechanism: makeCountsFromStrings(applyFilters(data, values, "intervention_mechanism"), "intervention_mechanism", INTERVENTION_MECHANISM_OPTIONS),
     interventionMedium: makeCountsFromStrings(applyFilters(data, values, "intervention_medium"), "intervention_medium", INTERVENTION_MEDIUM_OPTIONS),
     outcomeSubcategory: makeCountsFromStrings(

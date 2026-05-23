@@ -35,13 +35,17 @@ export const CollapsiblePublicationBias = (
 ) => {
   const { estimate, egger, data } = props
 
-  const plotData = data.map((e) => {
-    return {
-      x: e.effect_size,
-      y: e.effect_size_se,
-      name: e.paper_label + " - " + e.effect,
-    }
-  })
+  const plotData = data
+    .filter((e): e is typeof e & { effect_size: number; effect_size_se: number } =>
+      e.effect_size != null && e.effect_size_se != null
+    )
+    .map((e) => {
+      return {
+        x: e.effect_size,
+        y: e.effect_size_se,
+        name: e.paper_label + " - " + e.effect,
+      }
+    })
 
   const ymax = Math.max(...plotData.map((e) => e.y))
 

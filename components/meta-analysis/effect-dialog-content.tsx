@@ -27,6 +27,23 @@ export const EffectDialogContent = ({ effect }: EffectDialogProps) => {
         <div className="text-sm text-muted-foreground">
           {effect.intervention_description}
         </div>
+        {effect.intervention_sample_n != null && (
+          <LabelValue
+            label="Sample"
+            value={`n = ${effect.intervention_sample_n}${effect.intervention_sample_description ? ` (${effect.intervention_sample_description})` : ""}`}
+          />
+        )}
+      </Section>
+
+      {/* Control Section */}
+      <Section title="Control">
+        <LabelValue label="Condition" value={effect.control_condition} />
+        {effect.control_sample_n != null && (
+          <LabelValue
+            label="Sample"
+            value={`n = ${effect.control_sample_n}${effect.control_sample_description ? ` (${effect.control_sample_description})` : ""}`}
+          />
+        )}
       </Section>
 
       {/* Outcome Section */}
@@ -44,11 +61,11 @@ export const EffectDialogContent = ({ effect }: EffectDialogProps) => {
         />
         <LabelValue
           label="Value (with 95% CI)"
-          value={formatEffectSize(
-            effect.effect_size,
-            effect.effect_size_lower,
-            effect.effect_size_upper
-          )}
+          value={
+            effect.effect_size != null
+              ? formatEffectSize(effect.effect_size, effect.effect_size_lower, effect.effect_size_upper)
+              : "N/A"
+          }
         />
       </Section>
     </div>

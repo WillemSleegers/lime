@@ -21,7 +21,7 @@ import {
 
 import { Papers } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
-import { loadFormValues, usePersistedForm } from "@/hooks/use-persisted-form"
+import { usePersistedForm } from "@/hooks/use-persisted-form"
 
 const STORAGE_KEY = "lime-data-explorer-papers"
 const formSchemaPapers = z.object(paperFiltersFields)
@@ -55,10 +55,10 @@ export const FilterPapers = (props: FilterPapersProps) => {
     resolver: zodResolver(formSchemaPapers),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
-    defaultValues: loadFormValues(STORAGE_KEY, defaults),
+    defaultValues: defaults,
   })
 
-  usePersistedForm(form, STORAGE_KEY)
+  usePersistedForm(form, STORAGE_KEY, defaults)
 
   async function onSubmit(values: z.infer<typeof formSchemaPapers>) {
     let subset = data

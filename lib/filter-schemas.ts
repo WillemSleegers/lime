@@ -75,10 +75,6 @@ export const interventionFiltersFields = {
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),
-  intervention_content: z
-    .string()
-    .array()
-    .nonempty({ message: "Must select at least one option." }),
   intervention_mechanism: z
     .string()
     .array()

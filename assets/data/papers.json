@@ -125,6 +125,7 @@
     "paper_authors": "Fehrenbach, K. S.",
     "paper_year": 2015,
     "paper_type": "thesis",
+    "paper_link": "https://d1rbsgppyrdqq4.cloudfront.net/s3fs-public/c7/140345/Fehrenbach_asu_0010E_15253.pdf?versionId=FDu98hlT0pmMwAKn3VUc3he2zF2amdyV&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIASBVQ3ZQ4YNQVYJLW/20250324/us-west-2/s3/aws4_request&X-Amz-Date=20250324T232209Z&X-Amz-SignedHeaders=host&X-Amz-Expires=120&X-Amz-Signature=8f6cce3d4b0b04c3cf4da15a9529ab0ea98814354792e3362ab823e44af77f56",
     "paper_open_access": "open access"
   },
   {
@@ -140,7 +141,7 @@
   {
     "paper": 23,
     "paper_label": "Loy et al. (2016)",
-    "paper_title": "Supporting sustainable food consumption: Mental contrasting with implementation intentions (mcii) aligns intentions and behavior",
+    "paper_title": "Supporting sustainable food consumption: Mental contrasting with implementation intentions (MCII) aligns intentions and behavior",
     "paper_authors": "Loy, L. S.; Wieber, F.; Gollwitzer, P. M.; Oettingen, G.",
     "paper_year": 2016,
     "paper_type": "peer reviewed paper",
@@ -184,7 +185,7 @@
   {
     "paper": 33,
     "paper_label": "Tian et al. (2016)",
-    "paper_title": "Confronting the meat paradox in different cultural contexts: Reactions among chinese and french participants",
+    "paper_title": "Confronting the meat paradox in different cultural contexts: Reactions among Chinese and French participants",
     "paper_authors": "Tian, Q.; Hilton, D.; Becker, M.",
     "paper_year": 2016,
     "paper_type": "peer reviewed paper",
@@ -366,17 +367,6 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Anthrozoös",
     "paper_link": "https://doi.org/10.1080/08927936.2023.2243738",
-    "paper_open_access": "paywalled"
-  },
-  {
-    "paper": 62,
-    "paper_label": "Kurz (2018)",
-    "paper_title": "Nudging to reduce meat consumption: Immediate and persistent effects of an intervention at a university restaurant",
-    "paper_authors": "Kurz, V.",
-    "paper_year": 2018,
-    "paper_type": "peer reviewed paper",
-    "paper_source": "Journal of Environmental Economics and Management",
-    "paper_link": "https://doi.org/10.1016/j.jeem.2018.06.005",
     "paper_open_access": "paywalled"
   },
   {
@@ -702,17 +692,6 @@
     "paper_open_access": "open access"
   },
   {
-    "paper": 159,
-    "paper_label": "Dissen & Crowell (2020)",
-    "paper_title": "We are what we eat: Assessing the use of a documentary film as an educational tool to change students’ nutritional attitudes and behaviors",
-    "paper_authors": "Dissen, A.; Crowell, T.",
-    "paper_year": 2020,
-    "paper_type": "peer reviewed paper",
-    "paper_source": "American Journal of Lifestyle Medicine",
-    "paper_link": "https://doi.org/10.1177/1559827620903701",
-    "paper_open_access": "open access"
-  },
-  {
     "paper": 163,
     "paper_label": "Bacon & Krpan (2018)",
     "paper_title": "(Not) Eating for the environment: The impact of restaurant menu design on vegetarian food choice",
@@ -736,7 +715,7 @@
   },
   {
     "paper": 173,
-    "paper_label": "Taufik et al. (2022)",
+    "paper_label": "Taufik et al. (2022a)",
     "paper_title": "A reversal of defaults: Implementing a menu-based default nudge to promote out-of-home consumer adoption of plant-based meat alternatives",
     "paper_authors": "Taufik, D.; Bouwman, E. P.; Reinders, M. J.; Dagevos, H.",
     "paper_year": 2022,
@@ -823,7 +802,7 @@
   },
   {
     "paper": 205,
-    "paper_label": "De-loyde et al. (2023)",
+    "paper_label": "De-loyde et al. (2022)",
     "paper_title": "Promoting sustainable diets using eco-labelling and social nudges: A randomised online experiment",
     "paper_authors": "De-loyde, K.; Pilling, M. A.; Thornton, A.; Spencer, G.; Maynard, O. M.",
     "paper_year": 2022,
@@ -910,17 +889,6 @@
     "paper_open_access": "paywalled"
   },
   {
-    "paper": 273,
-    "paper_label": "Radnitz et al. (2023)",
-    "paper_title": "Application of optimal defaults to increase selection of sustainable menu choices",
-    "paper_authors": "Radnitz, C.; Beezhold, B.; Pilato, I.; Drury, C. R.; Fruchter, S.; Murphy, B. D.G.; Loeb, K. L.",
-    "paper_year": 2023,
-    "paper_type": "peer reviewed paper",
-    "paper_source": "Food Quality and Preference",
-    "paper_link": "https://doi.org/10.1016/j.foodqual.2023.104954",
-    "paper_open_access": "paywalled"
-  },
-  {
     "paper": 274,
     "paper_label": "Hielkema et al. (2022)",
     "paper_title": "Veg on the menu? Differences in menu design interventions to increase vegetarian food choice between meat-reducers and non-reducers",
@@ -1000,7 +968,7 @@
   {
     "paper": 316,
     "paper_label": "Reinders et al. (2017)",
-    "paper_title": "Menu-engineering in restaurants - adapting portion sizes on plates to enhance vegetable consumption: a real-life experiment",
+    "paper_title": "Menu-engineering in restaurants - Adapting portion sizes on plates to enhance vegetable consumption: A real-life experiment",
     "paper_authors": "Reinders, M. J.; Huitink, M.; Dijkstra, S. C.; Maaskant, A. J.; Heijnen, J.",
     "paper_year": 2017,
     "paper_type": "peer reviewed paper",

@@ -31,7 +31,7 @@ function Stat({
     >
       <p className="text-muted-foreground">{label}</p>
       <p className={cn("font-semibold", highlight && "text-primary")}>
-        {n !== null ? `n = ${n.toLocaleString()}` : "n = —"}
+        {n !== null ? `n = ${n}` : "n = —"}
       </p>
     </div>
   )

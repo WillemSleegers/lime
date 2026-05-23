@@ -19,8 +19,14 @@ export function clearFormValues(key: string): void {
 
 export function usePersistedForm<T extends FieldValues>(
   form: UseFormReturn<T>,
-  key: string
+  key: string,
+  defaults: T
 ): void {
+  useEffect(() => {
+    form.reset(loadFormValues(key, defaults))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(() => {
     const subscription = form.watch((values) => {
       try {

@@ -441,7 +441,7 @@
     "study": 1,
     "study_n": 285,
     "study_preregistered": "yes",
-    "study_preregistration_link": "osf.io/3s4yj/",
+    "study_preregistration_link": "https://osf.io/3s4yj/",
     "study_data_available": "no",
     "study_data_link": "https://osf.io/7kx8u/?view_only=",
     "study_condition_assignment": "individual",
@@ -487,22 +487,12 @@
     "study_randomization": "yes"
   },
   {
-    "paper": 62,
-    "paper_label": "Kurz (2018)",
-    "study": 1,
-    "study_n": 8272,
-    "study_preregistered": "no",
-    "study_data_available": "no",
-    "study_condition_assignment": "time point",
-    "study_design": "within",
-    "study_randomization": "no"
-  },
-  {
     "paper": 63,
     "paper_label": "Andersson & Nelander (2021)",
     "study": 1,
     "study_n": 7968,
     "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/b4wp5",
     "study_data_available": "no",
     "study_condition_assignment": "time point",
     "study_design": "between",
@@ -578,7 +568,7 @@
     "study_data_available": "yes",
     "study_data_link": "https://osf.io/x9jaq/?view_only=9a68fdb44e6f4b1d986565492dda9202",
     "study_condition_assignment": "individual",
-    "study_design": "between",
+    "study_design": "mixed",
     "study_randomization": "yes"
   },
   {
@@ -888,17 +878,6 @@
     "study_randomization": "no"
   },
   {
-    "paper": 159,
-    "paper_label": "Dissen & Crowell (2020)",
-    "study": 1,
-    "study_n": 130,
-    "study_preregistered": "no",
-    "study_data_available": "no",
-    "study_condition_assignment": "individual",
-    "study_design": "between",
-    "study_randomization": "no"
-  },
-  {
     "paper": 163,
     "paper_label": "Bacon & Krpan (2018)",
     "study": 1,
@@ -935,22 +914,22 @@
   },
   {
     "paper": 173,
-    "paper_label": "Taufik et al. (2022)",
+    "paper_label": "Taufik et al. (2022a)",
     "study": 1,
     "study_n": 800,
     "study_preregistered": "no",
-    "study_data_available": "yes",
+    "study_data_available": "no",
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"
   },
   {
     "paper": 173,
-    "paper_label": "Taufik et al. (2022)",
+    "paper_label": "Taufik et al. (2022a)",
     "study": 2,
     "study_n": 127,
     "study_preregistered": "no",
-    "study_data_available": "yes",
+    "study_data_available": "no",
     "study_condition_assignment": "time point",
     "study_design": "between",
     "study_randomization": "no"
@@ -1042,7 +1021,7 @@
   },
   {
     "paper": 205,
-    "paper_label": "De-loyde et al. (2023)",
+    "paper_label": "De-loyde et al. (2022)",
     "study": 1,
     "study_n": 1399,
     "study_preregistered": "yes",
@@ -1060,7 +1039,7 @@
     "study_n": 275,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "osf.io/evzjn",
+    "study_data_link": "https://osf.io/evzjn",
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"
@@ -1072,7 +1051,7 @@
     "study_n": 275,
     "study_preregistered": "no",
     "study_data_available": "yes",
-    "study_data_link": "osf.io/evzjn",
+    "study_data_link": "https://osf.io/evzjn",
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"
@@ -1143,28 +1122,6 @@
     "study_condition_assignment": "individual",
     "study_design": "mixed",
     "study_randomization": "yes"
-  },
-  {
-    "paper": 273,
-    "paper_label": "Radnitz et al. (2023)",
-    "study": 1,
-    "study_n": 299,
-    "study_preregistered": "no",
-    "study_data_available": "no",
-    "study_condition_assignment": "individual",
-    "study_design": "between",
-    "study_randomization": "yes"
-  },
-  {
-    "paper": 273,
-    "paper_label": "Radnitz et al. (2023)",
-    "study": 2,
-    "study_n": 209,
-    "study_preregistered": "no",
-    "study_data_available": "no",
-    "study_condition_assignment": "time point",
-    "study_design": "between",
-    "study_randomization": "no"
   },
   {
     "paper": 274,
@@ -1661,6 +1618,7 @@
     "study": 1,
     "study_n": 391,
     "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/d73xg/",
     "study_data_available": "yes",
     "study_data_link": "https://osf.io/qf765/?view_only=b5a8db202b8f4bbf98d5cce90c9f0d33",
     "study_condition_assignment": "individual",

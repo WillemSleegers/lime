@@ -34,16 +34,21 @@ const MetaAnalysisPage = () => {
   const [heterogeneity, setHeterogeneity] = useState<Heterogeneity | undefined>()
   const [error, setError] = useState<string | undefined>()
 
+  // Register service worker to cache WebR package downloads
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw-webr.js").catch(() => {})
+    }
+  }, [])
+
   // Setup
   useEffect(() => {
     const initializeR = async () => {
       webR.current = new WebR()
-
       await webR.current.init()
 
       setStatus("Installing packages...")
-      await webR.current.installPackages(["metafor"])
-      await webR.current.installPackages(["clubSandwich"])
+      await webR.current.installPackages(["metafor", "clubSandwich"])
 
       setStatus("Ready")
     }
@@ -84,6 +89,7 @@ const MetaAnalysisPage = () => {
   const handleHighlightsReviewed = () => {
     setUnlockedTabs((prev) => ({ ...prev, analysis: true }))
     setActiveTab("analysis")
+    runAnalysis()
     // Scroll to top after tab content renders
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" })
@@ -92,6 +98,7 @@ const MetaAnalysisPage = () => {
 
   // Run meta-analysis function (called manually via button)
   const runAnalysis = async () => {
+    console.log("[meta-analysis] runAnalysis called, webR:", !!webR.current, "data:", !!data, "data rows:", data?.length)
     if (!webR.current || !data) return
 
     try {
@@ -104,29 +111,19 @@ const MetaAnalysisPage = () => {
       setHeterogeneity(undefined)
       setError(undefined)
 
-      const subset = data.map((datum: Datum) =>
-        (({
-          effect_size,
-          effect_size_var,
-          effect_size_se,
-          paper_study,
-          paper,
-          study,
-          outcome,
-          intervention_condition,
-          control_condition,
-        }) => ({
-          effect_size,
-          effect_size_var,
-          effect_size_se,
-          paper_study,
-          paper,
-          study,
-          outcome,
-          intervention_condition,
-          control_condition,
-        }))(datum)
-      )
+      const subset = data
+        .filter((datum: Datum) => datum.effect_size != null && datum.effect_size_var != null)
+        .map((datum: Datum) => ({
+          effect_size: datum.effect_size,
+          effect_size_var: datum.effect_size_var,
+          effect_size_se: datum.effect_size_se ?? null,
+          paper_study: datum.paper_study,
+          paper: datum.paper,
+          study: datum.study,
+          outcome: datum.outcome,
+          intervention_key: datum.intervention_key,
+          control_key: datum.control_key,
+        }))
 
       const df = await new webR.current.RObject(subset)
       await webR.current.objs.globalEnv.bind("data", df)
@@ -187,7 +184,7 @@ const MetaAnalysisPage = () => {
         </p>
       </div>
 
-      <Tabs value={activeTab} onValueChange={(tab) => { setActiveTab(tab); if (tab === "analysis") runAnalysis() }} className="space-y-6">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
         <TabsList className="w-full justify-start">
           <TabsTrigger
             value="criteria"

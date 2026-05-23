@@ -34,7 +34,6 @@ export const META_ANALYSIS_DEFAULTS = {
     (option) => option.value
   ),
   intervention_multicomponent: ["no"],
-  intervention_content: ["animal welfare", "environment", "health"],
   intervention_mechanism: ["factual", "logical argument", "infotainment"],
   intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
   study_preregistered: ["yes", "no"],
@@ -71,7 +70,6 @@ export const MODERATOR_VARIABLES: ModeratorVariable[] = [
   { value: "study_preregistered", label: "Preregistered", isMultiValue: false },
   { value: "study_randomization", label: "Randomization", isMultiValue: false },
   { value: "study_design", label: "Study design", isMultiValue: true },
-  { value: "intervention_content", label: "Intervention content", isMultiValue: true },
   { value: "intervention_mechanism", label: "Intervention mechanism", isMultiValue: true },
   { value: "intervention_medium", label: "Intervention medium", isMultiValue: true },
   { value: "sample_country", label: "Country", isMultiValue: false },

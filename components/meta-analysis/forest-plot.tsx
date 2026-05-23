@@ -43,7 +43,12 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
   let xMax = 2
   let xTicks = [-2, -1, 0, 1, 2]
 
-  const plotData = data
+  const validData = data.filter(
+    (e): e is typeof e & { effect_size: number; effect_size_lower: number; effect_size_upper: number } =>
+      e.effect_size != null && e.effect_size_lower != null && e.effect_size_upper != null
+  )
+
+  const plotData = validData
       .map((e) => {
         return {
           name: e.paper_label + " - " + e.effect,
@@ -59,13 +64,13 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
       })
       .sort((a, b) => a.value - b.value)
 
-  const longestLabel = data
+  const longestLabel = validData
     .map((e) => e.paper_label + " - " + e.effect)
-    .reduce((a, b) => (a.length > b.length ? a : b))
+    .reduce((a, b) => (a.length > b.length ? a : b), "")
 
   // Calculate dynamic x-axis range based on confidence intervals
-  const allLowerBounds = data.map((e) => e.effect_size_lower)
-  const allUpperBounds = data.map((e) => e.effect_size_upper)
+  const allLowerBounds = validData.map((e) => e.effect_size_lower)
+  const allUpperBounds = validData.map((e) => e.effect_size_upper)
   const dataMin = Math.min(...allLowerBounds)
   const dataMax = Math.max(...allUpperBounds)
 

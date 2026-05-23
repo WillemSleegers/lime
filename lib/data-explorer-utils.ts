@@ -44,13 +44,11 @@ export function applyFiltersToData(
     filteredData.studies.map((s) => `${s.paper}|${s.study}`)
   )
   const sampleIds = new Set(
-    filteredData.samples.map(
-      (s) => `${s.paper}|${s.study}|${s.sample_intervention}`
-    )
+    filteredData.samples.map((s) => `${s.paper}|${s.study}`)
   )
   const interventionIds = new Set(
     filteredData.interventions.map(
-      (i) => `${i.paper}|${i.study}|${i.intervention_condition}`
+      (i) => `${i.paper}|${i.study}|${i.condition}`
     )
   )
   const outcomeIds = new Set(
@@ -66,7 +64,7 @@ export function applyFiltersToData(
   const constrained = fullData.filter((row) => {
     if (!paperIds.has(row.paper)) return false
     if (!studyIds.has(`${row.paper}|${row.study}`)) return false
-    if (!sampleIds.has(`${row.paper}|${row.study}|${row.sample_intervention}`))
+    if (!sampleIds.has(`${row.paper}|${row.study}`))
       return false
     if (!interventionIds.has(`${row.paper}|${row.study}|${row.intervention_condition}`))
       return false
@@ -81,16 +79,12 @@ export function applyFiltersToData(
   return {
     papers: uniqueBy(constrained, ["paper"]) as Papers,
     studies: uniqueBy(constrained, ["paper", "study"]) as Studies,
-    samples: uniqueBy(constrained, [
-      "paper",
-      "study",
-      "sample_intervention",
-    ]) as Samples,
+    samples: uniqueBy(constrained, ["paper", "study"]) as Samples,
     interventions: uniqueBy(constrained, [
       "paper",
       "study",
       "intervention_condition",
-    ]) as Interventions,
+    ]) as unknown as Interventions,
     outcomes: uniqueBy(constrained, [
       "paper",
       "study",

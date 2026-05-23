@@ -8,8 +8,8 @@ V <- metafor::vcalc(
   cluster = paper_study,
   subgroup = outcome,
   data = data,
-  grp1 = intervention_condition,
-  grp2 = control_condition
+  grp1 = intervention_key,
+  grp2 = control_key
 )
   
 # Run the meta-analysis
@@ -76,8 +76,14 @@ export async function runMetaAnalysis(webR: WebR) {
 
 // ─── Moderator analysis ───────────────────────────────────────────────────────
 
-function moderatorSetupCode(moderatorVar: string, singleValueOnly: boolean, selectedLevels: string[]): string {
-  const rLevels = selectedLevels.map((l) => `"${l.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`).join(", ")
+function moderatorSetupCode(
+  moderatorVar: string,
+  singleValueOnly: boolean,
+  selectedLevels: string[],
+): string {
+  const rLevels = selectedLevels
+    .map((l) => `"${l.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`)
+    .join(", ")
   return `
 # Filter for single-value entries if required
 if (${singleValueOnly ? "TRUE" : "FALSE"}) {
@@ -100,8 +106,8 @@ V_mod <- metafor::vcalc(
   cluster = paper_study,
   subgroup = outcome,
   data = data_mod,
-  grp1 = intervention_condition,
-  grp2 = control_condition
+  grp1 = intervention_key,
+  grp2 = control_key
 )
 
 # Run moderated meta-analysis with cell-means parametrization
@@ -118,7 +124,11 @@ sav_mod <- metafor::robust(res_mod, cluster = paper, clubSandwich = TRUE)
 `
 }
 
-export function generateModeratorCode(moderatorVar: string, singleValueOnly: boolean, selectedLevels: string[]): string {
+export function generateModeratorCode(
+  moderatorVar: string,
+  singleValueOnly: boolean,
+  selectedLevels: string[],
+): string {
   return moderatorSetupCode(moderatorVar, singleValueOnly, selectedLevels)
 }
 
@@ -128,7 +138,11 @@ export async function runModeratorAnalysis(
   singleValueOnly: boolean,
   selectedLevels: string[],
 ): Promise<{ levels: string[]; numbers: number[] }> {
-  const setup = moderatorSetupCode(moderatorVar, singleValueOnly, selectedLevels)
+  const setup = moderatorSetupCode(
+    moderatorVar,
+    singleValueOnly,
+    selectedLevels,
+  )
 
   const levels = await webR.evalRRaw(
     setup + `\nas.character(valid_levels)`,
