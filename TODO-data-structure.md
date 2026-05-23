@@ -30,5 +30,8 @@
 
 `displayData.samples` is currently extracted from `data.json` rows (via `applyFiltersToData`), cast as `Samples`. But `samples.json` has fields not in `data.json` (`sample_n`, `sample_description`). The samples tab is missing those fields as a result.
 
+The cast in `lib/data-explorer-utils.ts:82` uses `as unknown as Samples` which is incorrect — the rows are genuinely missing `sample_n` and `sample_description` and TypeScript correctly rejects a direct cast.
+
 - [ ] Decide whether to join `samples.json` data into the display pipeline, or keep extracting from `data.json`
 - [ ] If joining: update `applyFiltersToData` and the data explorer state to merge `samples.json` fields by `paper|study` key
+- [ ] Replace `as unknown as Samples` cast with a proper type once the data source is resolved

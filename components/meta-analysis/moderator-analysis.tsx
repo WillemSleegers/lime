@@ -49,14 +49,13 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
   const isMultiValue = selectedModerator?.isMultiValue ?? false
   const canRun = selectedVar !== "" && selectedLevels.length >= 2 && status === "Ready" && !isRunning
 
-  // Compute available levels with counts from data
+  // Compute available levels with counts from data (counts reflect singleValueOnly filter)
   const levelOptions = (() => {
     if (!selectedVar) return []
     const counts = new Map<string, number>()
     data.forEach((datum) => {
       const val = String((datum as Record<string, unknown>)[selectedVar] ?? "").trim()
       if (!val) return
-      if (singleValueOnly && isMultiValue && val.includes(",")) return
       counts.set(val, (counts.get(val) ?? 0) + 1)
     })
     return Array.from(counts.entries())
@@ -64,7 +63,7 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
       .map(([value, k]) => ({ value, label: `${value} (${k})` }))
   })()
 
-  // Reset selected levels when variable or singleValueOnly changes
+  // Reset selected levels only when the variable changes, not when singleValueOnly changes
   useEffect(() => {
     if (!selectedVar) {
       setSelectedLevels([])
@@ -74,13 +73,12 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
     data.forEach((datum) => {
       const val = String((datum as Record<string, unknown>)[selectedVar] ?? "").trim()
       if (!val) return
-      if (singleValueOnly && isMultiValue && val.includes(",")) return
       counts.set(val, (counts.get(val) ?? 0) + 1)
     })
     setSelectedLevels(Array.from(counts.keys()).sort((a, b) => a.localeCompare(b)))
     setResult(undefined)
     setError(undefined)
-  }, [selectedVar, singleValueOnly, isMultiValue, data])
+  }, [selectedVar, data])
 
   const handleRun = async () => {
     if (!webR.current || !selectedVar) return
