@@ -37,7 +37,6 @@ export const EffectDialogContent = ({ effect }: EffectDialogProps) => {
 
       {/* Control Section */}
       <Section title="Control">
-        <LabelValue label="Condition" value={effect.control_condition} />
         {effect.control_sample_n != null && (
           <LabelValue
             label="Sample"

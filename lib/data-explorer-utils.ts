@@ -79,7 +79,7 @@ export function applyFiltersToData(
   return {
     papers: uniqueBy(constrained, ["paper"]) as Papers,
     studies: uniqueBy(constrained, ["paper", "study"]) as Studies,
-    samples: uniqueBy(constrained, ["paper", "study"]) as Samples,
+    samples: uniqueBy(constrained, ["paper", "study"]) as unknown as Samples,
     interventions: uniqueBy(constrained, [
       "paper",
       "study",
