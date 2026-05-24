@@ -58,17 +58,15 @@ export function MultiSelect({
   const [items, setItems] = useState<Map<string, ReactNode>>(new Map())
 
   function toggleValue(value: string) {
-    const getNewSet = (prev: Set<string>) => {
-      const newSet = new Set(prev)
-      if (newSet.has(value)) {
-        newSet.delete(value)
-      } else {
-        newSet.add(value)
-      }
-      return newSet
+    const current = values ? new Set(values) : selectedValues
+    const newSet = new Set(current)
+    if (newSet.has(value)) {
+      newSet.delete(value)
+    } else {
+      newSet.add(value)
     }
-    setSelectedValues(getNewSet)
-    onValuesChange?.([...getNewSet(selectedValues)])
+    setSelectedValues(newSet)
+    onValuesChange?.([...newSet])
   }
 
   const onItemAdded = useCallback((value: string, label: ReactNode) => {
