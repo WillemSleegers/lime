@@ -1,6 +1,7 @@
 import { countOption } from "@/lib/filter-counts"
 import data from "@/assets/data/data.json"
 import {
+  ALL_COUNTRY_VALUES,
   COUNTRY_OPTIONS,
   PAPER_TYPE_OPTIONS,
   PAPER_OPEN_ACCESS_OPTIONS,
@@ -162,7 +163,7 @@ export function useFilterCounts(values: FilterValues) {
     studyRandomization: makeCounts(applyFilters(data, values, "study_randomization"), "study_randomization", STUDY_RANDOMIZATION_OPTIONS),
     studyDesign: makeCounts(applyFilters(data, values, "study_design"), "study_design", STUDY_DESIGN_OPTIONS),
     studyConditionAssignment: makeCounts(applyFilters(data, values, "study_condition_assignment"), "study_condition_assignment", STUDY_CONDITION_ASSIGNMENT_OPTIONS),
-    sampleCountry: makeCountsFromStrings(applyFilters(data, values, "sample_country"), "sample_country", COUNTRY_OPTIONS, "exact"),
+    sampleCountry: makeCountsFromStrings(applyFilters(data, values, "sample_country"), "sample_country", ALL_COUNTRY_VALUES, "exact"),
     sampleRepresentative: makeCounts(applyFilters(data, values, "sample_representative"), "sample_representative", SAMPLE_REPRESENTATIVE_OPTIONS),
     sampleType: makeCounts(applyFilters(data, values, "sample_type"), "sample_type", SAMPLE_TYPE_OPTIONS),
     interventionMulticomponent: makeCounts(applyFilters(data, values, "intervention_multicomponent"), "intervention_multicomponent", INTERVENTION_MULTICOMPONENT_OPTIONS, "exact"),

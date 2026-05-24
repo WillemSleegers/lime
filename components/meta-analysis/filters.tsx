@@ -29,6 +29,7 @@ import { useFilterCounts, applyFilters } from "@/hooks/use-filter-counts"
 import data from "@/assets/data/data.json"
 
 import {
+  ALL_COUNTRY_VALUES,
   COUNTRY_OPTIONS,
   PAPER_TYPE_OPTIONS,
   PAPER_OPEN_ACCESS_OPTIONS,
@@ -100,7 +101,7 @@ const defaults = {
   intervention_multicomponent: META_ANALYSIS_DEFAULTS.intervention_multicomponent,
   intervention_mechanism: META_ANALYSIS_DEFAULTS.intervention_mechanism,
   intervention_medium: META_ANALYSIS_DEFAULTS.intervention_medium,
-  sample_country: COUNTRY_OPTIONS,
+  sample_country: ALL_COUNTRY_VALUES,
   sample_type: SAMPLE_TYPE_OPTIONS.map((option) => option.value),
   sample_representative: SAMPLE_REPRESENTATIVE_OPTIONS.map((option) => option.value),
   effect_sample_size: 1,

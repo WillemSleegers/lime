@@ -12,6 +12,7 @@ import { CheckboxGroup } from "@/components/form/checkbox-group"
 import { MultiSelectField } from "@/components/form/multi-select-field"
 
 import {
+  ALL_COUNTRY_VALUES,
   SAMPLE_COUNTRY_OPTIONS,
   SAMPLE_TYPE_OPTIONS,
   SAMPLE_REPRESENTATIVE_OPTIONS,
@@ -45,7 +46,7 @@ export const FilterSamples = (props: FilterSamplesProps) => {
   } = props
 
   const defaults = {
-    sample_country: SAMPLE_COUNTRY_OPTIONS,
+    sample_country: ALL_COUNTRY_VALUES,
     sample_type: SAMPLE_TYPE_OPTIONS.map((option) => option.value),
     sample_representative: SAMPLE_REPRESENTATIVE_OPTIONS.map((option) => option.value),
   }

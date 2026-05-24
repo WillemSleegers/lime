@@ -122,16 +122,31 @@ export const STUDY_RANDOMIZATION_OPTIONS = [
 ]
 
 // Sample-level
-export const SAMPLE_COUNTRY_OPTIONS = customSort(
-  [
-    ...new Set(
-      samples
-        .map((datum) => datum.sample_country)
-        .filter((str): str is string => str !== undefined)
-    ),
-  ],
+const SPECIAL_COUNTRY_VALUES = ["Multiple countries", "Unspecified"]
+
+const allCountryValues = [
+  ...new Set(
+    samples
+      .map((datum) => datum.sample_country)
+      .filter((str): str is string => str !== undefined)
+  ),
+]
+
+const regularCountries = customSort(
+  allCountryValues.filter((c) => !SPECIAL_COUNTRY_VALUES.includes(c)),
   NA_OPTIONS
 )
+
+const specialCountries = SPECIAL_COUNTRY_VALUES.filter((c) =>
+  allCountryValues.includes(c)
+)
+
+export const ALL_COUNTRY_VALUES = [...regularCountries, ...specialCountries]
+
+export const SAMPLE_COUNTRY_OPTIONS = [
+  { group: "Countries", items: regularCountries },
+  { group: "Other", items: specialCountries },
+]
 
 export const SAMPLE_TYPE_OPTIONS = [
   { value: "children", label: "Children", description: "Samples consisting of children or minors" },
@@ -183,16 +198,10 @@ export const INTERVENTION_MEDIUM_OPTIONS = customSort([
       .flatMap((str) => str.split(",").map((s) => s.trim()))
   ),
 ])
-export const COUNTRY_OPTIONS = customSort(
-  [
-    ...new Set(
-      samples
-        .map((datum) => datum.sample_country)
-        .filter((str): str is string => str !== undefined)
-    ),
-  ],
-  NA_OPTIONS
-)
+export const COUNTRY_OPTIONS = [
+  { group: "Countries", items: regularCountries },
+  { group: "Other", items: specialCountries },
+]
 
 // Outcome level
 export const OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS = customSort([
