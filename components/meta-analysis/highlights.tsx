@@ -214,10 +214,10 @@ export const Highlights = (props: HighLightsProps) => {
       .map(([name, value]) => ({ name, value }))
       .sort((a, b) => b.value - a.value)
 
-    // Calculate sample size statistics
-    const controlSizes = data.map(d => d.effect_control_n)
-    const interventionSizes = data.map(d => d.effect_intervention_n)
-    const allSizes = [...controlSizes, ...interventionSizes].sort((a, b) => a - b)
+    // Calculate sample size statistics (SMCC is within-subjects so n is counted once)
+    const allSizes = data
+      .map(d => d.effect_size_name === "SMCC" ? d.effect_intervention_n : d.effect_intervention_n + d.effect_control_n)
+      .sort((a, b) => a - b)
 
     sampleSizeStats = {
       min: Math.min(...allSizes),
@@ -389,38 +389,7 @@ export const Highlights = (props: HighLightsProps) => {
               </CardDescription>
             </CardHeader>
           </Card>
-          {/* Row 2: Sample size statistics - three separate cards */}
-          <Card className="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2">
-            <CardHeader>
-              <CardTitle className="text-2xl">
-                {sampleSizeStats ? Math.round(sampleSizeStats.min).toString() : "-"}
-              </CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Min sample size
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          <Card className="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2">
-            <CardHeader>
-              <CardTitle className="text-2xl">
-                {sampleSizeStats ? Math.round(sampleSizeStats.median).toString() : "-"}
-              </CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Median sample size
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          <Card className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-2">
-            <CardHeader>
-              <CardTitle className="text-2xl">
-                {sampleSizeStats ? Math.round(sampleSizeStats.max).toString() : "-"}
-              </CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Max sample size
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          {/* Row 3: Country distribution - potentially many countries, full width */}
+          {/* Row 2: Country distribution - potentially many countries, full width */}
           <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
             <CardHeader>
               <CardTitle className="text-lg">Country</CardTitle>
@@ -531,6 +500,37 @@ export const Highlights = (props: HighLightsProps) => {
               <CardTitle className="text-2xl">{effectsCount}</CardTitle>
               <CardDescription className="mt-0 leading-5">
                 Number of effects
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          {/* Row 2: Sample size statistics per effect */}
+          <Card className="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2">
+            <CardHeader>
+              <CardTitle className="text-2xl">
+                {sampleSizeStats ? Math.round(sampleSizeStats.min).toString() : "-"}
+              </CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Min sample size
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2">
+            <CardHeader>
+              <CardTitle className="text-2xl">
+                {sampleSizeStats ? Math.round(sampleSizeStats.median).toString() : "-"}
+              </CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Median sample size
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-2">
+            <CardHeader>
+              <CardTitle className="text-2xl">
+                {sampleSizeStats ? Math.round(sampleSizeStats.max).toString() : "-"}
+              </CardTitle>
+              <CardDescription className="mt-0 leading-5">
+                Max sample size
               </CardDescription>
             </CardHeader>
           </Card>

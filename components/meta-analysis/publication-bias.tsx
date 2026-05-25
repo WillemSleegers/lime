@@ -11,9 +11,12 @@ import {
   ReferenceLine,
 } from "recharts"
 
+import { useState } from "react"
 import { round } from "@/lib/utils"
 import { Data, Egger, Estimate } from "@/lib/types"
 import { Card, CardContent } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { Slider } from "@/components/ui/slider"
 import { ChartConfig, ChartContainer } from "@/components/ui/chart"
 
 import {
@@ -34,6 +37,7 @@ export const CollapsiblePublicationBias = (
   props: CollapsiblePublicationBiasProps
 ) => {
   const { estimate, egger, data } = props
+  const [dotSize, setDotSize] = useState(5)
 
   const plotData = data
     .filter((e): e is typeof e & { effect_size: number; effect_size_se: number } =>
@@ -98,7 +102,6 @@ export const CollapsiblePublicationBias = (
                 style={{ height: "500px", minWidth: "600px" }}
               >
                 <ScatterChart
-                  data={plotData}
                   margin={{
                     bottom: 20,
                     left: 20,
@@ -161,12 +164,34 @@ export const CollapsiblePublicationBias = (
                     ifOverflow="hidden"
                   />
                   <Scatter
-                    className="fill-primary/70 stroke-primary stroke-[1.5]"
-                    animationBegin={300}
+                    data={plotData}
+                    shape={(props: { cx?: number; cy?: number }) => (
+                      <circle
+                        cx={props.cx}
+                        cy={props.cy}
+                        r={dotSize}
+                        className="fill-primary/70 stroke-primary stroke-[1.5]"
+                      />
+                    )}
                   />
                 </ScatterChart>
               </ChartContainer>
             </CardContent>
+            <div className="flex items-center gap-3 px-5 pb-0">
+              <Label htmlFor="funnel-dot-size-slider" className="text-sm font-medium">
+                Dot size:
+              </Label>
+              <Slider
+                id="funnel-dot-size-slider"
+                value={[dotSize]}
+                onValueChange={(value) => setDotSize(value[0])}
+                min={1}
+                max={15}
+                step={1}
+                className="w-32"
+              />
+              <span className="text-sm font-medium min-w-8 text-center">{dotSize}</span>
+            </div>
           </Card>
         </div>
       </div>

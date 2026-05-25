@@ -30,8 +30,8 @@ export const ModeratorChart = ({ levels }: ModeratorChartProps) => {
 
   const allLower = levels.map((l) => l.lower)
   const allUpper = levels.map((l) => l.upper)
-  const dataMin = Math.min(...allLower)
-  const dataMax = Math.max(...allUpper)
+  const dataMin = Math.min(0, ...allLower)
+  const dataMax = Math.max(0, ...allUpper)
   const range = dataMax - dataMin
   const padding = range * 0.1
   const xMin = dataMin - padding
@@ -51,7 +51,7 @@ export const ModeratorChart = ({ levels }: ModeratorChartProps) => {
   for (let tick = firstTick; tick <= lastTick; tick += tickInterval) {
     xTicks.push(Number(tick.toFixed(2)))
   }
-  if (xMin < 0 && xMax > 0 && !xTicks.includes(0)) {
+  if (!xTicks.includes(0)) {
     xTicks.push(0)
     xTicks.sort((a, b) => a - b)
   }

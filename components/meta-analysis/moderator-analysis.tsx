@@ -261,9 +261,7 @@ const ModeratorResults = ({ result }: { result: ModeratorResult }) => {
 
   const pLabel = (p: number) => {
     if (p < 0.001) return "< .001"
-    if (p < 0.01) return "< .01"
-    if (p < 0.05) return "< .05"
-    return `= ${round(p, 3)}`
+    return String(round(p, 3))
   }
 
   return (
@@ -271,7 +269,7 @@ const ModeratorResults = ({ result }: { result: ModeratorResult }) => {
       {/* Omnibus test */}
       <p className="text-sm text-muted-foreground">
         Omnibus test of moderation: QM(df={qmdf}) = {round(qm, 2)}, p{" "}
-        {pLabel(qmp)}.{" "}
+        {qmp < 0.001 ? "< .001" : `= ${round(qmp, 3)}`}.{" "}
         {qmp < 0.05
           ? "Effects differ significantly across levels of this variable."
           : "No significant difference in effects across levels."}
@@ -304,7 +302,7 @@ const ModeratorResults = ({ result }: { result: ModeratorResult }) => {
                   [{round(level.lower, 2)}, {round(level.upper, 2)}]
                 </td>
                 <td className="text-right py-2 pl-4 tabular-nums">
-                  {round(level.pval, 3)}
+                  {pLabel(level.pval)}
                 </td>
               </tr>
             ))}

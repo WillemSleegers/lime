@@ -26,9 +26,9 @@ const ADAPTIVE_CONSTANTS = {
   DATA_TO_BINS_RATIO: 5,
   MIN_BINS: 8,
   MAX_BINS: 40,
-  DOT_SIZE_FACTOR: 660, // Calibrated for ~50 dot size at 174 data points
-  MIN_DOT_SIZE: 25,
-  MAX_DOT_SIZE: 100,
+  DOT_SIZE_FACTOR: 66, // Calibrated for ~5 radius at 174 data points
+  MIN_DOT_SIZE: 1,
+  MAX_DOT_SIZE: 15,
   MAX_DISPLAY_TICKS: 10,
 } as const
 
@@ -121,7 +121,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
           <circle
             cx={cx}
             cy={cy}
-            r={dotSize / 10}
+            r={dotSize}
             className="fill-primary/70 stroke-primary stroke-[1.5] cursor-pointer hover:fill-primary/90"
           />
         </DialogTrigger>
@@ -345,8 +345,8 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
                 id="dot-size-slider"
                 value={[dotSize]}
                 onValueChange={(value) => setDotSize(value[0])}
-                max={100}
-                min={25}
+                max={15}
+                min={1}
                 step={1}
                 className="w-32"
               />
