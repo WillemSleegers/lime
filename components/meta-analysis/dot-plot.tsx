@@ -26,9 +26,6 @@ const ADAPTIVE_CONSTANTS = {
   DATA_TO_BINS_RATIO: 5,
   MIN_BINS: 8,
   MAX_BINS: 40,
-  DOT_SIZE_FACTOR: 66, // Calibrated for ~5 radius at 174 data points
-  MIN_DOT_SIZE: 1,
-  MAX_DOT_SIZE: 15,
   MAX_DISPLAY_TICKS: 10,
 } as const
 
@@ -58,44 +55,29 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
   const rawData = validData.map((d) => d.effect_size)
 
   // Calculate adaptive defaults based on data size
-  const getAdaptiveDefaults = (dataSize: number) => {
-    if (dataSize === 0) return { bins: ADAPTIVE_CONSTANTS.MIN_BINS, size: 50 }
+  const getAdaptiveBins = (dataSize: number) => {
+    if (dataSize === 0) return ADAPTIVE_CONSTANTS.MIN_BINS
 
-    const adaptiveBins = Math.min(
+    return Math.min(
       Math.max(
         Math.ceil(dataSize / ADAPTIVE_CONSTANTS.DATA_TO_BINS_RATIO),
         ADAPTIVE_CONSTANTS.MIN_BINS,
       ),
       ADAPTIVE_CONSTANTS.MAX_BINS,
     )
-
-    const adaptiveSize = Math.max(
-      ADAPTIVE_CONSTANTS.MIN_DOT_SIZE,
-      Math.min(
-        ADAPTIVE_CONSTANTS.MAX_DOT_SIZE,
-        ADAPTIVE_CONSTANTS.DOT_SIZE_FACTOR / Math.sqrt(dataSize),
-      ),
-    )
-
-    return {
-      bins: adaptiveBins,
-      size: Math.round(adaptiveSize),
-    }
   }
 
   const [binCount, setBinCount] = useState(8)
-  const [dotSize, setDotSize] = useState(50)
+  const [dotSize, setDotSize] = useState(5)
 
   // Debounced values for actual rendering
   const [debouncedBinCount, setDebouncedBinCount] = useState(8)
 
-  // Update defaults when data changes
+  // Update bin count default when data changes
   useEffect(() => {
-    const defaults = getAdaptiveDefaults(rawData.length)
-    setBinCount(defaults.bins)
-    setDotSize(defaults.size)
-    // Also update debounced values immediately for data changes
-    setDebouncedBinCount(defaults.bins)
+    const bins = getAdaptiveBins(rawData.length)
+    setBinCount(bins)
+    setDebouncedBinCount(bins)
   }, [rawData.length])
 
   // Debounce slider changes
