@@ -46,36 +46,32 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
   const [error, setError] = useState<string | undefined>()
 
   const selectedModerator = MODERATOR_VARIABLES.find((v) => v.value === selectedVar)
-  const isMultiValue = selectedModerator?.isMultiValue ?? false
   const canRun = selectedVar !== "" && selectedLevels.length >= 2 && status === "Ready" && !isRunning
 
-  // Compute available levels with counts from data (counts reflect singleValueOnly filter)
+  // Compute available levels with counts from data using contains-match for multi-value fields
   const levelOptions = (() => {
-    if (!selectedVar) return []
-    const counts = new Map<string, number>()
-    data.forEach((datum) => {
-      const val = String((datum as Record<string, unknown>)[selectedVar] ?? "").trim()
-      if (!val) return
-      counts.set(val, (counts.get(val) ?? 0) + 1)
+    if (!selectedModerator) return []
+    return selectedModerator.levels.map((level) => {
+      const k = data.filter((datum) => {
+        const val = String((datum as Record<string, unknown>)[selectedVar] ?? "")
+        return val === level || val.includes(level)
+      }).length
+      return { value: level, label: `${level} (${k})` }
     })
-    return Array.from(counts.entries())
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([value, k]) => ({ value, label: `${value} (${k})` }))
   })()
 
-  // Reset selected levels only when the variable changes, not when singleValueOnly changes
+  // Check whether any data entries have multiple values for the selected variable
+  const hasMultiValues = selectedVar
+    ? data.some((datum) => String((datum as Record<string, unknown>)[selectedVar] ?? "").includes(","))
+    : false
+
+  // Reset selected levels when the variable changes
   useEffect(() => {
-    if (!selectedVar) {
+    if (!selectedModerator) {
       setSelectedLevels([])
       return
     }
-    const counts = new Map<string, number>()
-    data.forEach((datum) => {
-      const val = String((datum as Record<string, unknown>)[selectedVar] ?? "").trim()
-      if (!val) return
-      counts.set(val, (counts.get(val) ?? 0) + 1)
-    })
-    setSelectedLevels(Array.from(counts.keys()).sort((a, b) => a.localeCompare(b)))
+    setSelectedLevels(selectedModerator.levels)
     setResult(undefined)
     setError(undefined)
   }, [selectedVar, data])
@@ -207,23 +203,23 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
 
           {/* Single-value only toggle */}
           <div className="space-y-1.5">
-            <Label htmlFor="single-value-only" className={(!selectedVar || !isMultiValue) ? "text-muted-foreground" : ""}>
+            <Label htmlFor="single-value-only" className={(!selectedVar || !hasMultiValues) ? "text-muted-foreground" : ""}>
               Only effects with a single coded value
             </Label>
             <p className="text-sm text-muted-foreground">
               {!selectedVar
                 ? "Select a moderator variable to see options."
-                : !isMultiValue
+                : !hasMultiValues
                   ? "Not applicable — this variable always has a single value per effect."
                   : singleValueOnly
                     ? `Only includes effects tagged with a single ${selectedModerator?.label.toLowerCase()} value. Effects tagged with multiple ${selectedModerator?.label.toLowerCase()} values are excluded.`
-                    : `Includes all effects. Those coded under multiple categories (e.g. "animal welfare, health") are treated as a separate combined level, distinct from either single category.`}
+                    : `Includes all effects. Each effect is counted under every ${selectedModerator?.label.toLowerCase()} it is tagged with.`}
             </p>
             <Switch
               id="single-value-only"
               checked={singleValueOnly}
               onCheckedChange={setSingleValueOnly}
-              disabled={!selectedVar || !isMultiValue}
+              disabled={!selectedVar || !hasMultiValues}
             />
           </div>
 

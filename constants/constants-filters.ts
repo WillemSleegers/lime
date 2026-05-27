@@ -204,6 +204,8 @@ export const COUNTRY_OPTIONS = [
 ]
 
 // Outcome level
+export const OUTCOME_CATEGORY_OPTIONS = ["behavior", "intentions", "attitudes/beliefs"]
+
 export const OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS = customSort([
   ...new Set(
     outcomes
@@ -247,6 +249,12 @@ export const OUTCOME_MEASUREMENT_TYPE_OPTIONS = [
     description: "Observed food selection in controlled settings",
   },
 ]
+
+export const OUTCOME_SUBCATEGORY_OPTIONS = customSort([
+  ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
+  ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
+  ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+])
 
 // Grouped outcome categories for unified MultiSelect
 export const OUTCOME_CATEGORIES_GROUPED = [

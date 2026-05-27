@@ -727,7 +727,7 @@
     "intervention_description": "Participants saw a screen with a picture of a veggie burger and the label, “Student Choice.” The text on the screen read, “The garden fresh veggie burger is a tasty choice! In a taste test we did at the [name of cafe], 95% of people said that the veggie burger tasted good or very good! Consider giving the garden fresh veggie burger a try today!”",
     "intervention_mechanism": "info: taste/disgust, norms: descriptive",
     "intervention_medium": "text, label",
-    "intervention_multicomponent": "no"
+    "intervention_multicomponent": "yes"
   },
   {
     "paper": 57,

@@ -1459,7 +1459,7 @@
     "outcome_label": "meat commitment",
     "outcome_description": "Average score on the Meat Commitment Scale",
     "outcome_category": "attitudes/beliefs",
-    "outcome_subcategory": "meat commitment",
+    "outcome_subcategory": "meat attitude",
     "outcome_measurement_type": "survey"
   },
   {
@@ -1700,7 +1700,7 @@
     "outcome": 2,
     "outcome_label": "proportion meat and fish mains",
     "outcome_description": "Proportion of meat or fish mains chosen",
-    "outcome_category": "behavior",
+    "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "meal choice"
   },
@@ -2822,7 +2822,7 @@
     "outcome": 1,
     "outcome_label": "meat product selection",
     "outcome_description": "Proportion of meat-based dishes chosen",
-    "outcome_category": "behavior",
+    "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "meal choice"
   }

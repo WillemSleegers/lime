@@ -12,19 +12,15 @@ import {
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
-  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+  OUTCOME_CATEGORY_OPTIONS,
+  OUTCOME_SUBCATEGORY_OPTIONS,
   SAMPLE_TYPE_OPTIONS,
   SAMPLE_REPRESENTATIVE_OPTIONS,
+  ALL_COUNTRY_VALUES,
 } from "@/constants/constants-filters"
 
 export const META_ANALYSIS_DEFAULTS = {
-  outcome_subcategory: [
-    ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-    ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-    ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
-  ],
+  outcome_subcategory: OUTCOME_SUBCATEGORY_OPTIONS,
   outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map(
     (option) => option.value
   ),
@@ -33,6 +29,7 @@ export const META_ANALYSIS_DEFAULTS = {
   ),
   intervention_mechanism: INTERVENTION_MECHANISM_OPTIONS,
   intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
+  sample_country: ALL_COUNTRY_VALUES,
   study_preregistered: STUDY_PREREGISTERED_OPTIONS.map((option) => option.value),
   study_data_available: STUDY_DATA_AVAILABLE_OPTIONS.map(
     (option) => option.value
@@ -57,18 +54,18 @@ export const META_ANALYSIS_DEFAULTS = {
 export type ModeratorVariable = {
   value: DataKeys
   label: string
-  isMultiValue: boolean
+  levels: string[]
 }
 
 export const MODERATOR_VARIABLES: ModeratorVariable[] = [
-  { value: "outcome_category", label: "Outcome category", isMultiValue: false },
-  { value: "outcome_subcategory", label: "Outcome subcategory", isMultiValue: false },
-  { value: "outcome_measurement_type", label: "Measurement type", isMultiValue: true },
-  { value: "study_preregistered", label: "Preregistered", isMultiValue: false },
-  { value: "study_randomization", label: "Randomization", isMultiValue: false },
-  { value: "study_design", label: "Study design", isMultiValue: true },
-  { value: "intervention_mechanism", label: "Intervention mechanism", isMultiValue: true },
-  { value: "intervention_medium", label: "Intervention medium", isMultiValue: true },
-  { value: "sample_country", label: "Country", isMultiValue: false },
-  { value: "sample_type", label: "Sample type", isMultiValue: true },
+  { value: "outcome_category", label: "Outcome category", levels: OUTCOME_CATEGORY_OPTIONS },
+  { value: "outcome_subcategory", label: "Outcome subcategory", levels: OUTCOME_SUBCATEGORY_OPTIONS },
+  { value: "outcome_measurement_type", label: "Measurement type", levels: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((o) => o.value) },
+  { value: "study_preregistered", label: "Preregistered", levels: STUDY_PREREGISTERED_OPTIONS.map((o) => o.value) },
+  { value: "study_randomization", label: "Randomization", levels: STUDY_RANDOMIZATION_OPTIONS.map((o) => o.value) },
+  { value: "study_design", label: "Study design", levels: STUDY_DESIGN_OPTIONS.map((o) => o.value) },
+  { value: "intervention_mechanism", label: "Intervention mechanism", levels: INTERVENTION_MECHANISM_OPTIONS },
+  { value: "intervention_medium", label: "Intervention medium", levels: INTERVENTION_MEDIUM_OPTIONS },
+  { value: "sample_country", label: "Country", levels: ALL_COUNTRY_VALUES },
+  { value: "sample_type", label: "Sample type", levels: SAMPLE_TYPE_OPTIONS.map((o) => o.value) },
 ]
