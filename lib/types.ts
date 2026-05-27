@@ -88,7 +88,12 @@ export type ModeratorLevel = {
 
 export type ModeratorResult = {
   levels: ModeratorLevel[]
-  qm: number
-  qmdf: number
-  qmp: number
+  // Omnibus test is only meaningful for single-value moderators (joint factor
+  // model). For multi-value moderators we fit one model per level, so there is
+  // no joint test to report.
+  omnibus?: {
+    qm: number
+    qmdf: number
+    qmp: number
+  }
 }

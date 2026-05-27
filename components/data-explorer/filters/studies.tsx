@@ -71,7 +71,7 @@ export const FilterStudies = (props: FilterStudiesProps) => {
     let subset = data
 
     subset = subset.filter((datum) => {
-      return datum.study_n > values.study_n
+      return datum.study_n >= values.study_n
     })
 
     subset = subset.filter((datum) => {

@@ -58,7 +58,6 @@ const DATA_EXPLORER_STORAGE_KEYS = [
 ]
 
 export default function DataExplorer() {
-  const [level, setLevel] = useState("paper")
   const [filterOpen, setFilterOpen] = useState(false)
   const [resetKey, setResetKey] = useState(0)
 
@@ -178,48 +177,42 @@ export default function DataExplorer() {
           for detailed instructions.
         </p>
       </div>
-      <Tabs defaultValue={level} className="space-y-6">
+      <Tabs defaultValue="paper" className="space-y-6">
         <div className="flex flex-wrap items-center justify-center gap-3">
           <div className="overflow-x-auto">
             <TabsList className="w-auto justify-start">
               <TabsTrigger
                 value="paper"
-                onClick={() => setLevel("paper")}
                 className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Papers
               </TabsTrigger>
               <TabsTrigger
                 value="study"
-                onClick={() => setLevel("study")}
                 className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Studies
               </TabsTrigger>
               <TabsTrigger
                 value="sample"
-                onClick={() => setLevel("sample")}
                 className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Samples
               </TabsTrigger>
               <TabsTrigger
                 value="intervention"
-                onClick={() => setLevel("intervention")}
                 className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Interventions
               </TabsTrigger>
               <TabsTrigger
                 value="outcome"
-                onClick={() => setLevel("outcome")}
                 className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Outcomes
               </TabsTrigger>
               <TabsTrigger
                 value="effect"
-                onClick={() => setLevel("effect")}
                 className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Effects

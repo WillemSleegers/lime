@@ -22,7 +22,7 @@ const items = [
   },
   {
     title: "FAQ",
-    href: "/FAQ/",
+    href: "/faq",
   },
   {
     title: "Contributors",

@@ -33,21 +33,14 @@ export const u1 = (x: number) => {
   return 1 - 2 * cdfNormal((-1 * Math.abs(x)) / 2)
 }
 
-// From https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-export function shuffle<T>(array: T[]): T[] {
-  let currentIndex = array.length
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-    // Pick a remaining element...
-    const randomIndex = Math.floor(Math.random() * currentIndex)
-    currentIndex--
-    // And swap it with the current element.
-    ;[array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ]
+// Fisher–Yates. Returns a new array; the input is not mutated.
+export function shuffle<T>(array: readonly T[]): T[] {
+  const result = [...array]
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[result[i], result[j]] = [result[j], result[i]]
   }
-  return array
+  return result
 }
 
 export function generateTicks(min: number, max: number, targetCount = 10) {

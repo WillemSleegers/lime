@@ -55,16 +55,25 @@ const MetaAnalysisPage = () => {
 
   // Setup
   useEffect(() => {
+    let cancelled = false
+    const instance = new WebR()
+    webR.current = instance
+
     const initializeR = async () => {
-      webR.current = new WebR()
-      await webR.current.init()
-
+      await instance.init()
+      if (cancelled) return
       setStatus("Installing packages...")
-      await webR.current.installPackages(["metafor", "clubSandwich"])
-
+      await instance.installPackages(["metafor", "clubSandwich"])
+      if (cancelled) return
       setStatus("Ready")
     }
     initializeR()
+
+    return () => {
+      cancelled = true
+      instance.close()
+      if (webR.current === instance) webR.current = null
+    }
   }, [])
 
   // Handle filter application and unlock next tab

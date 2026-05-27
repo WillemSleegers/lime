@@ -76,16 +76,41 @@ export async function runMetaAnalysis(webR: WebR) {
 
 // ─── Moderator analysis ───────────────────────────────────────────────────────
 
-function moderatorSetupCode(
+import { ALLOWED_MODERATOR_VARS } from "@/constants/constants-meta-analysis"
+
+function assertAllowedModerator(moderatorVar: string): void {
+  if (!ALLOWED_MODERATOR_VARS.has(moderatorVar)) {
+    throw new Error(`Unknown moderator variable: ${moderatorVar}`)
+  }
+}
+
+export type FactorModeratorResult = {
+  levels: string[]
+  estimates: number[]
+  ciLower: number[]
+  ciUpper: number[]
+  pvals: number[]
+  k: number[]
+  qm: number
+  qmdf: number
+  qmp: number
+}
+
+/**
+ * Single-value moderator analysis: fits one cell-means rma.mv with a factor
+ * predictor. The model is fit once; we then read back named scalars/vectors.
+ */
+export async function runFactorModeratorAnalysis(
+  webR: WebR,
   moderatorVar: string,
-): string {
-  return `
-# Use the pre-filtered data passed from JavaScript
+): Promise<FactorModeratorResult> {
+  assertAllowedModerator(moderatorVar)
+
+  await webR.evalRVoid(`
 data_mod <- data[nchar(trimws(data$${moderatorVar})) > 0, ]
-valid_levels <- unique(data_mod$${moderatorVar})
+valid_levels <- sort(unique(data_mod$${moderatorVar}))
 k_per_level <- as.integer(table(data_mod$${moderatorVar})[valid_levels])
 
-# Recalculate variance-covariance matrix for the filtered data
 V_mod <- metafor::vcalc(
   vi = effect_size_var,
   cluster = paper_study,
@@ -95,40 +120,21 @@ V_mod <- metafor::vcalc(
   grp2 = control_key
 )
 
-# Run moderated meta-analysis with cell-means parametrization
 res_mod <- metafor::rma.mv(
   yi = effect_size,
   V = V_mod,
   random = ~ 1 | paper / study / outcome,
-  mods = ~ factor(${moderatorVar}) - 1,
+  mods = ~ factor(${moderatorVar}, levels = valid_levels) - 1,
   data = data_mod
 )
 
-# Get cluster-robust confidence intervals
 sav_mod <- metafor::robust(res_mod, cluster = paper, clubSandwich = TRUE)
-`
-}
+`)
 
-export function generateModeratorCode(
-  moderatorVar: string,
-): string {
-  return moderatorSetupCode(moderatorVar)
-}
-
-export async function runModeratorAnalysis(
-  webR: WebR,
-  moderatorVar: string,
-): Promise<{ levels: string[]; numbers: number[] }> {
-  const setup = moderatorSetupCode(moderatorVar)
-
-  const levels = await webR.evalRRaw(
-    setup + `\nas.character(valid_levels)`,
-    "string[]",
-  )
-
-  const numbers = await webR.evalRRaw(
-    setup +
-      `\nc(
+  const [levels, numbers] = await Promise.all([
+    webR.evalRRaw(`as.character(valid_levels)`, "string[]"),
+    webR.evalRRaw(
+      `c(
   as.numeric(sav_mod$b),
   sav_mod$ci.lb,
   sav_mod$ci.ub,
@@ -138,8 +144,97 @@ export async function runModeratorAnalysis(
   res_mod$QMdf[1],
   res_mod$QMp
 )`,
-    "number[]",
-  )
+      "number[]",
+    ),
+  ])
 
-  return { levels, numbers }
+  const n = levels.length
+  return {
+    levels,
+    estimates: numbers.slice(0, n),
+    ciLower: numbers.slice(n, 2 * n),
+    ciUpper: numbers.slice(2 * n, 3 * n),
+    pvals: numbers.slice(3 * n, 4 * n),
+    k: numbers.slice(4 * n, 5 * n),
+    qm: numbers[5 * n],
+    qmdf: numbers[5 * n + 1],
+    qmp: numbers[5 * n + 2],
+  }
+}
+
+export type LevelEstimate = {
+  level: string
+  estimate: number
+  lower: number
+  upper: number
+  pval: number
+  k: number
+}
+
+/**
+ * Multi-value moderator analysis: for each requested level, subset rows whose
+ * (comma-joined) moderator column contains that level as a token, and fit a
+ * separate rma.mv. Levels are passed via a bound character vector — never
+ * interpolated as R code — to avoid injection.
+ */
+export async function runPerLevelModeratorAnalysis(
+  webR: WebR,
+  moderatorVar: string,
+  levels: string[],
+): Promise<LevelEstimate[]> {
+  assertAllowedModerator(moderatorVar)
+  if (levels.length === 0) return []
+
+  await webR.objs.globalEnv.bind("mod_levels", levels)
+
+  await webR.evalRVoid(`
+mod_col <- as.character(data$${moderatorVar})
+mod_tokens <- strsplit(mod_col, ", ", fixed = TRUE)
+
+# results: 5 numbers per level (estimate, lower, upper, pval, k); NA if a level
+# has too few rows or papers to fit a multilevel model.
+.fit_level <- function(lvl) {
+  idx <- vapply(mod_tokens, function(toks) lvl %in% toks, logical(1))
+  sub <- data[idx, , drop = FALSE]
+  k <- nrow(sub)
+  if (k < 2 || length(unique(sub$paper)) < 2) {
+    return(c(NA_real_, NA_real_, NA_real_, NA_real_, k))
+  }
+  V <- metafor::vcalc(
+    vi = effect_size_var,
+    cluster = paper_study,
+    subgroup = outcome,
+    data = sub,
+    grp1 = intervention_key,
+    grp2 = control_key
+  )
+  fit <- try(
+    metafor::rma.mv(
+      yi = effect_size, V = V,
+      random = ~ 1 | paper / study / outcome,
+      data = sub
+    ),
+    silent = TRUE
+  )
+  if (inherits(fit, "try-error")) return(c(NA_real_, NA_real_, NA_real_, NA_real_, k))
+  sav <- try(metafor::robust(fit, cluster = sub$paper, clubSandwich = TRUE), silent = TRUE)
+  if (inherits(sav, "try-error")) return(c(NA_real_, NA_real_, NA_real_, NA_real_, k))
+  pred <- predict(sav)
+  c(pred$pred, pred$ci.lb, pred$ci.ub, as.numeric(sav$pval[1]), k)
+}
+
+level_results <- vapply(mod_levels, .fit_level, numeric(5))
+`)
+
+  const flat = await webR.evalRRaw(`as.numeric(level_results)`, "number[]")
+
+  // R fills the matrix column-major: 5 rows × N cols. Each col is a level.
+  return levels.map((lvl, i) => ({
+    level: lvl,
+    estimate: flat[i * 5 + 0],
+    lower: flat[i * 5 + 1],
+    upper: flat[i * 5 + 2],
+    pval: flat[i * 5 + 3],
+    k: flat[i * 5 + 4],
+  }))
 }

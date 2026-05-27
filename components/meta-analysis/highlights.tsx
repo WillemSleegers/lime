@@ -25,6 +25,8 @@ type HighLightsProps = {
 export const Highlights = (props: HighLightsProps) => {
   const { data } = props
 
+  if (!data) return null
+
   let participantsCount
   let effectsCount
   let papersCount
@@ -51,7 +53,6 @@ export const Highlights = (props: HighLightsProps) => {
   let singleComponentCount
   let singleComponentPercentage
 
-  if (data) {
     participantsCount = [
       ...data
         .reduce((map, { paper, study, study_n }) => {
@@ -64,7 +65,7 @@ export const Highlights = (props: HighLightsProps) => {
         .values(),
     ]
       .map((e) => e.study_n)
-      .reduce((partialSum, a) => Math.round(partialSum) + a, 0)
+      .reduce((partialSum, a) => partialSum + a, 0)
 
     studiesCount = [
       ...new Set(data.map((datum) => datum.paper + "-" + datum.study)),
@@ -230,13 +231,6 @@ export const Highlights = (props: HighLightsProps) => {
       (datum) => datum.intervention_mechanism_multicomponent === "no" && datum.intervention_medium_multicomponent === "no"
     ).length
     singleComponentPercentage = round((singleComponentCount / effectsCount) * 100, 0)
-  } else {
-    openAccessPercentage = 0
-    preregistrationPercentage = 0
-    studyRandomizationPercentage = 0
-    studyDataAvailablePercentage = 0
-    singleComponentPercentage = 0
-  }
 
   return (
     <div className="space-y-8">

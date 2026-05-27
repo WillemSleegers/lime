@@ -27,8 +27,6 @@ import {
 } from "@/components/ui/dialog"
 import { Card, CardContent } from "@/components/ui/card"
 
-import effects from "../../assets/data/data.json"
-
 import { EffectDialogContent } from "./effect-dialog-content"
 import { ChartConfig, ChartContainer } from "../ui/chart"
 
@@ -46,6 +44,12 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
   const validData = data.filter(
     (e): e is typeof e & { effect_size: number; effect_size_lower: number; effect_size_upper: number } =>
       e.effect_size != null && e.effect_size_lower != null && e.effect_size_upper != null
+  )
+
+  // Map axis-tick label → effect, restricted to the filtered set so clicks
+  // never open a dialog for an effect that was excluded.
+  const effectByLabel = new Map(
+    validData.map((e) => [e.paper_label + " - " + e.effect, e]),
   )
 
   const plotData = validData
@@ -170,7 +174,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
                   width={longestLabel.length * 8}
                   axisLine={false}
                   tickLine={false}
-                  tick={<CustomizedAxisTick />}
+                  tick={<CustomizedAxisTick effectByLabel={effectByLabel} />}
                   interval={0}
                 />
                 <ZAxis range={[40, 41]} />
@@ -222,24 +226,21 @@ type CustomAxisTickProps = {
   x?: number
   y?: number
   payload?: {
-    value: string | number // ✅ Specific union type
+    value: string | number
     index: number
     offset: number
     coordinate: number
   }
+  effectByLabel?: Map<string, Data[number]>
 }
 
 const CustomizedAxisTick = (props: CustomAxisTickProps) => {
-  const { x, y, payload } = props
+  const { x, y, payload, effectByLabel } = props
 
-  if (!payload) return
+  if (!payload || !effectByLabel) return null
 
-  const effect = effects.find(
-    (e) => e.paper_label + " - " + e.effect == payload.value
-  )
-
-  // Return nothing if no effect is found; shouldn't happen though
-  if (!effect) return
+  const effect = effectByLabel.get(String(payload.value))
+  if (!effect) return null
 
   return (
     <Dialog>

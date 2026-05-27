@@ -24,10 +24,25 @@ import {
 } from "@/components/ui/multi-select"
 
 import { ModeratorChart } from "@/components/meta-analysis/charts/moderator-chart"
-import { runModeratorAnalysis } from "@/lib/r-functions"
+import {
+  runFactorModeratorAnalysis,
+  runPerLevelModeratorAnalysis,
+} from "@/lib/r-functions"
 import { round } from "@/lib/utils"
 import { Data, ModeratorLevel, ModeratorResult, Status } from "@/lib/types"
 import { MODERATOR_VARIABLES } from "@/constants/constants-meta-analysis"
+
+/**
+ * Split a comma-joined moderator cell into its constituent tokens. Single-value
+ * columns produce a one-element array. Empty/missing cells produce an empty
+ * array so they don't match any level.
+ */
+function moderatorTokens(value: unknown): string[] {
+  if (value == null) return []
+  const s = String(value).trim()
+  if (!s) return []
+  return s.split(", ").map((t) => t.trim()).filter(Boolean)
+}
 
 type ModeratorAnalysisProps = {
   data: Data
@@ -58,15 +73,16 @@ export const ModeratorAnalysis = ({
     status === "Ready" &&
     !isRunning
 
-  // Compute available levels with counts from data using contains-match for multi-value fields
+  // Compute available levels with per-level k counts. For multi-value
+  // moderators a row contributes to every token it lists.
   const levelOptions = (() => {
     if (!selectedModerator) return []
     return selectedModerator.levels.flatMap((level) => {
       const k = data.filter((datum) => {
-        const val = String(
-          (datum as Record<string, unknown>)[selectedVar] ?? "",
+        const tokens = moderatorTokens(
+          (datum as Record<string, unknown>)[selectedModerator.value],
         )
-        return val === level || val.includes(level)
+        return tokens.includes(level)
       }).length
       return k > 0 ? [{ value: level, label: `${level} (${k})` }] : []
     })
@@ -80,36 +96,40 @@ export const ModeratorAnalysis = ({
     }
     setSelectedLevels(
       selectedModerator.levels.filter((level) =>
-        data.some((datum) => {
-          const val = String(
-            (datum as Record<string, unknown>)[selectedModerator.value] ?? "",
-          )
-          return val === level || val.includes(level)
-        }),
+        data.some((datum) =>
+          moderatorTokens(
+            (datum as Record<string, unknown>)[selectedModerator.value],
+          ).includes(level),
+        ),
       ),
     )
     setResult(undefined)
     setError(undefined)
+    // selectedModerator is derived from selectedVar; tracking selectedVar is
+    // sufficient and avoids re-resetting on every render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedVar, data])
 
   const handleRun = async () => {
-    if (!webR.current || !selectedVar) return
+    if (!webR.current || !selectedModerator) return
 
     setIsRunning(true)
     setError(undefined)
     setResult(undefined)
 
     try {
+      const moderatorVar = selectedModerator.value
+      const selectedSet = new Set(selectedLevels)
+
       const subset = data
         .filter((datum) => {
-          const val = String(
-            (datum as Record<string, unknown>)[selectedVar] ?? "",
+          if (datum.effect_size == null || datum.effect_size_var == null) {
+            return false
+          }
+          const tokens = moderatorTokens(
+            (datum as Record<string, unknown>)[moderatorVar],
           )
-          return (
-            datum.effect_size != null &&
-            datum.effect_size_var != null &&
-            selectedLevels.some((level) => val === level || val.includes(level))
-          )
+          return tokens.some((t) => selectedSet.has(t))
         })
         .map((datum) => ({
           effect_size: datum.effect_size,
@@ -120,43 +140,66 @@ export const ModeratorAnalysis = ({
           outcome: datum.outcome,
           intervention_key: datum.intervention_key,
           control_key: datum.control_key,
-          [selectedVar]: (datum as Record<string, unknown>)[selectedVar],
+          [moderatorVar]: (datum as Record<string, unknown>)[moderatorVar],
         }))
+
+      if (subset.length === 0) {
+        setError("No effects match the selected levels.")
+        return
+      }
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const df = await new webR.current.RObject(subset as any)
       await webR.current.objs.globalEnv.bind("data", df)
 
-      const { levels, numbers } = await runModeratorAnalysis(
-        webR.current,
-        selectedVar,
-      )
-
-      if (levels.length < 2) {
-        setError(
-          levels.length === 0
-            ? `No levels remain after filtering. Try selecting more levels.`
-            : `Only one level remains after filtering. At least two levels are needed for a moderation test.`,
+      if (selectedModerator.multivalue) {
+        const perLevel = await runPerLevelModeratorAnalysis(
+          webR.current,
+          moderatorVar,
+          selectedLevels,
         )
-        return
+        const moderatorLevels: ModeratorLevel[] = perLevel
+          .filter((r) => Number.isFinite(r.estimate))
+          .map((r) => ({
+            label: r.level,
+            estimate: r.estimate,
+            lower: r.lower,
+            upper: r.upper,
+            pval: r.pval,
+            k: r.k,
+          }))
+        if (moderatorLevels.length < 2) {
+          setError(
+            moderatorLevels.length === 0
+              ? "No level had enough data to fit a model."
+              : "Only one level could be estimated. At least two are needed to compare.",
+          )
+          return
+        }
+        setResult({ levels: moderatorLevels })
+      } else {
+        const res = await runFactorModeratorAnalysis(webR.current, moderatorVar)
+        if (res.levels.length < 2) {
+          setError(
+            res.levels.length === 0
+              ? "No levels remain after filtering. Try selecting more levels."
+              : "Only one level remains after filtering. At least two levels are needed for a moderation test.",
+          )
+          return
+        }
+        const moderatorLevels: ModeratorLevel[] = res.levels.map((label, i) => ({
+          label,
+          estimate: res.estimates[i],
+          lower: res.ciLower[i],
+          upper: res.ciUpper[i],
+          pval: res.pvals[i],
+          k: res.k[i],
+        }))
+        setResult({
+          levels: moderatorLevels,
+          omnibus: { qm: res.qm, qmdf: res.qmdf, qmp: res.qmp },
+        })
       }
-
-      const n = levels.length
-      const moderatorLevels: ModeratorLevel[] = levels.map((label, i) => ({
-        label,
-        estimate: numbers[i],
-        lower: numbers[n + i],
-        upper: numbers[2 * n + i],
-        pval: numbers[3 * n + i],
-        k: numbers[4 * n + i],
-      }))
-
-      setResult({
-        levels: moderatorLevels,
-        qm: numbers[5 * n],
-        qmdf: numbers[5 * n + 1],
-        qmp: numbers[5 * n + 2],
-      })
     } catch (err) {
       setError(err instanceof Error ? err.message : "An unknown error occurred")
     } finally {
@@ -260,7 +303,7 @@ export const ModeratorAnalysis = ({
 }
 
 const ModeratorResults = ({ result }: { result: ModeratorResult }) => {
-  const { levels, qm, qmdf, qmp } = result
+  const { levels, omnibus } = result
 
   const pLabel = (p: number) => {
     if (p < 0.001) return "< .001"
@@ -269,14 +312,23 @@ const ModeratorResults = ({ result }: { result: ModeratorResult }) => {
 
   return (
     <div className="space-y-4">
-      {/* Omnibus test */}
-      <p className="text-sm text-muted-foreground">
-        Omnibus test of moderation: QM(df={qmdf}) = {round(qm, 2)}, p{" "}
-        {qmp < 0.001 ? "< .001" : `= ${round(qmp, 3)}`}.{" "}
-        {qmp < 0.05
-          ? "Effects differ significantly across levels of this variable."
-          : "No significant difference in effects across levels."}
-      </p>
+      {/* Omnibus test (single-value moderators only) */}
+      {omnibus ? (
+        <p className="text-sm text-muted-foreground">
+          Omnibus test of moderation: QM(df={omnibus.qmdf}) ={" "}
+          {round(omnibus.qm, 2)}, p{" "}
+          {omnibus.qmp < 0.001 ? "< .001" : `= ${round(omnibus.qmp, 3)}`}.{" "}
+          {omnibus.qmp < 0.05
+            ? "Effects differ significantly across levels of this variable."
+            : "No significant difference in effects across levels."}
+        </p>
+      ) : (
+        <p className="text-sm text-muted-foreground">
+          Each level was meta-analyzed separately because rows can belong to
+          more than one level of this variable. Compare the per-level estimates
+          and confidence intervals below.
+        </p>
+      )}
 
       {/* Chart */}
       <ModeratorChart levels={levels} />

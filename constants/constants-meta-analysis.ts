@@ -58,6 +58,10 @@ export type ModeratorVariable = {
   value: DataKeys
   label: string
   levels: string[]
+  // True when the data column may hold multiple comma-joined tokens per row
+  // (e.g. "info: health, norms: descriptive"). For multi-value moderators we
+  // run a separate meta-analysis per level rather than a joint factor model.
+  multivalue?: boolean
 }
 
 export const MODERATOR_VARIABLES: ModeratorVariable[] = [
@@ -67,8 +71,12 @@ export const MODERATOR_VARIABLES: ModeratorVariable[] = [
   { value: "study_preregistered", label: "Preregistered", levels: STUDY_PREREGISTERED_OPTIONS.map((o) => o.value) },
   { value: "study_randomization", label: "Randomization", levels: STUDY_RANDOMIZATION_OPTIONS.map((o) => o.value) },
   { value: "study_design", label: "Study design", levels: STUDY_DESIGN_OPTIONS.map((o) => o.value) },
-  { value: "intervention_mechanism", label: "Intervention mechanism", levels: INTERVENTION_MECHANISM_OPTIONS },
-  { value: "intervention_medium", label: "Intervention medium", levels: INTERVENTION_MEDIUM_OPTIONS },
+  { value: "intervention_mechanism", label: "Intervention mechanism", levels: INTERVENTION_MECHANISM_OPTIONS, multivalue: true },
+  { value: "intervention_medium", label: "Intervention medium", levels: INTERVENTION_MEDIUM_OPTIONS, multivalue: true },
   { value: "sample_country", label: "Country", levels: ALL_COUNTRY_VALUES },
-  { value: "sample_type", label: "Sample type", levels: SAMPLE_TYPE_OPTIONS.map((o) => o.value) },
+  { value: "sample_type", label: "Sample type", levels: SAMPLE_TYPE_OPTIONS.map((o) => o.value), multivalue: true },
 ]
+
+export const ALLOWED_MODERATOR_VARS: ReadonlySet<string> = new Set(
+  MODERATOR_VARIABLES.map((v) => v.value),
+)

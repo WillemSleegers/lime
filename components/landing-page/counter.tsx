@@ -25,6 +25,7 @@ export const Counter = ({ duration, target }: CounterProps) => {
         clearInterval(counter)
       }
     }, frameDuration)
+    return () => clearInterval(counter)
   }, [duration, target])
 
   return count

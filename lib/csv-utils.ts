@@ -43,7 +43,8 @@ export const exportToCSV = <T extends Record<string, unknown>>(
   data.forEach((row: Record<string, unknown>) => {
     const rowData: string[] = []
     columnNames.forEach((columnName: string) => {
-      const value = String(row[columnName] || "")
+      const raw = row[columnName]
+      const value = raw == null ? "" : String(raw)
       // Properly escape CSV values (handle commas, quotes, and newlines)
       const escapedValue =
         value.includes(",") || value.includes('"') || value.includes("\n")
