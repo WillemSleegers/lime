@@ -22,6 +22,11 @@ import {
 import { Papers } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { usePersistedForm } from "@/hooks/use-persisted-form"
+import {
+  paperYearInRange,
+  paperTypeMatches,
+  paperOpenAccessMatches,
+} from "@/lib/filter-predicates"
 
 const STORAGE_KEY = "lime-data-explorer-papers"
 const formSchemaPapers = z.object(paperFiltersFields)
@@ -61,25 +66,12 @@ export const FilterPapers = (props: FilterPapersProps) => {
   usePersistedForm(form, STORAGE_KEY, defaults)
 
   async function onSubmit(values: z.infer<typeof formSchemaPapers>) {
-    let subset = data
-
-    subset = subset.filter(
+    const subset = data.filter(
       (datum) =>
-        datum.paper_year >= values.paper_year[0] &&
-        datum.paper_year <= values.paper_year[1]
+        paperYearInRange(datum, values.paper_year) &&
+        paperTypeMatches(datum, values.paper_type) &&
+        paperOpenAccessMatches(datum, values.paper_open_access),
     )
-
-    subset = subset.filter((datum) => {
-      return values.paper_type.some((paper_type) =>
-        datum.paper_type.includes(paper_type)
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.paper_open_access.some((open_acess) =>
-        datum.paper_open_access.includes(open_acess)
-      )
-    })
 
     setFilteredData((prev) => ({ ...prev, papers: subset }))
   }

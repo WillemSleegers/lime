@@ -23,6 +23,14 @@ import { Studies } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { studyFiltersFields } from "@/lib/filter-schemas"
 import { usePersistedForm } from "@/hooks/use-persisted-form"
+import {
+  studyNAtLeast,
+  studyPreregisteredMatches,
+  studyDataAvailableMatches,
+  studyConditionAssignmentMatches,
+  studyDesignMatches,
+  studyRandomizationMatches,
+} from "@/lib/filter-predicates"
 
 const STORAGE_KEY = "lime-data-explorer-studies"
 
@@ -68,41 +76,15 @@ export const FilterStudies = (props: FilterStudiesProps) => {
   usePersistedForm(form, STORAGE_KEY, defaults)
 
   async function onSubmit(values: z.infer<typeof formSchemaStudies>) {
-    let subset = data
-
-    subset = subset.filter((datum) => {
-      return datum.study_n >= values.study_n
-    })
-
-    subset = subset.filter((datum) => {
-      return values.study_preregistered.some((value) =>
-        datum.study_preregistered.includes(value)
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.study_data_available.some((value) =>
-        datum.study_data_available.includes(value)
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.study_condition_assignment.some((value) =>
-        datum.study_condition_assignment.includes(value)
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.study_design.some((value) =>
-        datum.study_design.includes(value)
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.study_randomization.some((value) =>
-        datum.study_randomization.includes(value)
-      )
-    })
+    const subset = data.filter(
+      (datum) =>
+        studyNAtLeast(datum, values.study_n) &&
+        studyPreregisteredMatches(datum, values.study_preregistered) &&
+        studyDataAvailableMatches(datum, values.study_data_available) &&
+        studyConditionAssignmentMatches(datum, values.study_condition_assignment) &&
+        studyDesignMatches(datum, values.study_design) &&
+        studyRandomizationMatches(datum, values.study_randomization),
+    )
 
     setFilteredData((prev) => ({ ...prev, studies: subset }))
   }

@@ -21,6 +21,12 @@ import { Interventions } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { interventionFiltersSchema } from "@/lib/filter-schemas"
 import { usePersistedForm } from "@/hooks/use-persisted-form"
+import {
+  interventionMechanismMatches,
+  interventionMediumMatches,
+  interventionMechanismMulticomponentMatches,
+  interventionMediumMulticomponentMatches,
+} from "@/lib/filter-predicates"
 
 const STORAGE_KEY = "lime-data-explorer-interventions"
 
@@ -57,27 +63,19 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
   usePersistedForm(form, STORAGE_KEY, defaults)
 
   async function onSubmit(values: z.infer<typeof interventionFiltersSchema>) {
-    let subset = data
-
-    subset = subset.filter((datum) =>
-      values.intervention_mechanism_multicomponent.some((v) => datum.intervention_mechanism_multicomponent === v)
+    const subset = data.filter(
+      (datum) =>
+        interventionMechanismMulticomponentMatches(
+          datum,
+          values.intervention_mechanism_multicomponent,
+        ) &&
+        interventionMediumMulticomponentMatches(
+          datum,
+          values.intervention_medium_multicomponent,
+        ) &&
+        interventionMechanismMatches(datum, values.intervention_mechanism) &&
+        interventionMediumMatches(datum, values.intervention_medium),
     )
-
-    subset = subset.filter((datum) =>
-      values.intervention_medium_multicomponent.some((v) => datum.intervention_medium_multicomponent === v)
-    )
-
-    subset = subset.filter((datum) => {
-      return values.intervention_mechanism.some((value) =>
-        datum.intervention_mechanism?.includes(value)
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.intervention_medium.some((value) =>
-        datum.intervention_medium?.includes(value)
-      )
-    })
 
     setFilteredData((prev) => ({ ...prev, interventions: subset }))
   }

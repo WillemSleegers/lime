@@ -15,6 +15,10 @@ import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible
 
 import { Effects } from "@/lib/types"
 import { usePersistedForm } from "@/hooks/use-persisted-form"
+import {
+  effectSampleSizeAtLeast,
+  effectSizeInRange,
+} from "@/lib/filter-predicates"
 
 const STORAGE_KEY = "lime-data-explorer-effects"
 
@@ -60,19 +64,11 @@ export const FilterEffects = (props: FilterEffectsProps) => {
   usePersistedForm(form, STORAGE_KEY, defaults)
 
   async function onSubmit(values: z.infer<typeof formSchemaEffects>) {
-    let subset = data
-
-    subset = subset.filter((datum) => {
-      const s = datum.effect_size
-      return s != null && s >= values.effect_size[0] && s <= values.effect_size[1]
-    })
-
     const sample_size = Number(values.sample_size)
-
-    subset = subset.filter(
+    const subset = data.filter(
       (datum) =>
-        (datum.effect_intervention_n ?? 0) >= sample_size &&
-        (datum.effect_control_n ?? 0) >= sample_size
+        effectSizeInRange(datum, values.effect_size) &&
+        effectSampleSizeAtLeast(datum, sample_size),
     )
 
     setFilteredData((prev) => ({ ...prev, effects: subset }))

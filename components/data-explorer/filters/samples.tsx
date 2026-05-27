@@ -22,6 +22,11 @@ import { Samples } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { sampleFiltersFields } from "@/lib/filter-schemas"
 import { usePersistedForm } from "@/hooks/use-persisted-form"
+import {
+  sampleCountryMatches,
+  sampleTypeMatches,
+  sampleRepresentativeMatches,
+} from "@/lib/filter-predicates"
 
 const STORAGE_KEY = "lime-data-explorer-samples"
 
@@ -61,25 +66,12 @@ export const FilterSamples = (props: FilterSamplesProps) => {
   usePersistedForm(form, STORAGE_KEY, defaults)
 
   async function onSubmit(values: z.infer<typeof formSchemaSamples>) {
-    let subset = data
-
-    subset = subset.filter((datum) => {
-      return values.sample_country.some((value) =>
-        datum.sample_country?.includes(value)
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.sample_type.some((value) =>
-        datum.sample_type.includes(value)
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.sample_representative.some((value) =>
-        datum.sample_representative.includes(value)
-      )
-    })
+    const subset = data.filter(
+      (datum) =>
+        sampleCountryMatches(datum, values.sample_country) &&
+        sampleTypeMatches(datum, values.sample_type) &&
+        sampleRepresentativeMatches(datum, values.sample_representative),
+    )
 
     setFilteredData((prev) => ({ ...prev, samples: subset }))
   }

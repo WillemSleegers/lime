@@ -24,6 +24,10 @@ import { FilteredData } from "@/lib/data-explorer-utils"
 import { Outcomes } from "@/lib/types"
 import { outcomeCategoriesFieldsNew } from "@/lib/filter-schemas"
 import { usePersistedForm } from "@/hooks/use-persisted-form"
+import {
+  outcomeSubcategoryMatches,
+  outcomeMeasurementTypeMatches,
+} from "@/lib/filter-predicates"
 
 const STORAGE_KEY = "lime-data-explorer-outcomes"
 
@@ -70,19 +74,11 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
   usePersistedForm(form, STORAGE_KEY, defaults)
 
   async function onSubmit(values: z.infer<typeof formSchemaOutcomes>) {
-    let subset = data
-
-    subset = subset.filter((datum) => {
-      return values.outcome_subcategory.some(
-        (value) => datum.outcome_subcategory === value
-      )
-    })
-
-    subset = subset.filter((datum) => {
-      return values.outcome_measurement_type.some(
-        (value) => datum.outcome_measurement_type === value
-      )
-    })
+    const subset = data.filter(
+      (datum) =>
+        outcomeSubcategoryMatches(datum, values.outcome_subcategory) &&
+        outcomeMeasurementTypeMatches(datum, values.outcome_measurement_type),
+    )
 
     setFilteredData((prev) => ({ ...prev, outcomes: subset }))
   }

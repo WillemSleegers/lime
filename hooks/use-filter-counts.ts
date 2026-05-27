@@ -20,6 +20,7 @@ import {
   SAMPLE_TYPE_OPTIONS,
   SAMPLE_REPRESENTATIVE_OPTIONS,
 } from "@/constants/constants-filters"
+import * as P from "@/lib/filter-predicates"
 
 type FilterValues = {
   outcome_subcategory: string[]
@@ -42,91 +43,46 @@ type FilterValues = {
   paper_open_access: string[]
 }
 
+// Map filter field name → predicate(row, value). Adding a new filter is a
+// single entry here plus an entry in the FilterValues type above.
+const PREDICATES = {
+  paper_year: P.paperYearInRange,
+  paper_type: P.paperTypeMatches,
+  paper_open_access: P.paperOpenAccessMatches,
+  study_preregistered: P.studyPreregisteredMatches,
+  study_data_available: P.studyDataAvailableMatches,
+  study_design: P.studyDesignMatches,
+  study_condition_assignment: P.studyConditionAssignmentMatches,
+  study_randomization: P.studyRandomizationMatches,
+  sample_country: P.sampleCountryMatches,
+  sample_type: P.sampleTypeMatches,
+  sample_representative: P.sampleRepresentativeMatches,
+  intervention_mechanism: P.interventionMechanismMatches,
+  intervention_medium: P.interventionMediumMatches,
+  intervention_mechanism_multicomponent: P.interventionMechanismMulticomponentMatches,
+  intervention_medium_multicomponent: P.interventionMediumMulticomponentMatches,
+  outcome_subcategory: P.outcomeSubcategoryMatches,
+  outcome_measurement_type: P.outcomeMeasurementTypeMatches,
+} as const
+
 function applyFilters(
   source: typeof data,
   f: FilterValues,
   exclude?: keyof FilterValues,
 ): typeof data {
-  let s = source
-
-  if (exclude !== "outcome_subcategory")
-    s = s.filter((d) => f.outcome_subcategory.some((v) => d.outcome_subcategory === v))
-
-  if (exclude !== "outcome_measurement_type")
-    s = s.filter((d) =>
-      f.outcome_measurement_type.some((v) => d.outcome_measurement_type.includes(v)),
-    )
-
-  s = s.filter(
-    (d) =>
-      d.effect_control_n >= f.effect_sample_size &&
-      d.effect_intervention_n >= f.effect_sample_size,
-  )
-
-  if (exclude !== "intervention_mechanism_multicomponent")
-    s = s.filter((d) => f.intervention_mechanism_multicomponent.some((v) => d.intervention_mechanism_multicomponent === v))
-
-  if (exclude !== "intervention_medium_multicomponent")
-    s = s.filter((d) => f.intervention_medium_multicomponent.some((v) => d.intervention_medium_multicomponent === v))
-
-  if (exclude !== "intervention_mechanism")
-    s = s.filter((d) =>
-      f.intervention_mechanism.some((v) => d.intervention_mechanism?.includes(v)),
-    )
-
-  if (exclude !== "intervention_medium")
-    s = s.filter((d) =>
-      f.intervention_medium.some((v) => d.intervention_medium?.includes(v)),
-    )
-
-  if (exclude !== "sample_country")
-    s = s.filter((d) => d.sample_country != null && f.sample_country.includes(d.sample_country))
-
-  if (exclude !== "sample_type")
-    s = s.filter((d) => f.sample_type.some((v) => d.sample_type.includes(v)))
-
-  if (exclude !== "sample_representative")
-    s = s.filter((d) =>
-      f.sample_representative.some((v) => d.sample_representative.includes(v)),
-    )
-
-  if (exclude !== "study_preregistered")
-    s = s.filter((d) => f.study_preregistered.includes(d.study_preregistered))
-
-  if (exclude !== "study_data_available")
-    s = s.filter((d) =>
-      f.study_data_available.some((v) => d.study_data_available.includes(v)),
-    )
-
-  if (exclude !== "study_design")
-    s = s.filter((d) => f.study_design.some((v) => d.study_design.includes(v)))
-
-  if (exclude !== "study_condition_assignment")
-    s = s.filter((d) =>
-      f.study_condition_assignment.some((v) =>
-        d.study_condition_assignment.includes(v),
-      ),
-    )
-
-  if (exclude !== "study_randomization")
-    s = s.filter((d) =>
-      f.study_randomization.some((v) => d.study_randomization.includes(v)),
-    )
-
-  if (exclude !== "paper_year")
-    s = s.filter(
-      (d) => d.paper_year >= f.paper_year[0] && d.paper_year <= f.paper_year[1],
-    )
-
-  if (exclude !== "paper_type")
-    s = s.filter((d) => f.paper_type.some((v) => d.paper_type.includes(v)))
-
-  if (exclude !== "paper_open_access")
-    s = s.filter((d) =>
-      f.paper_open_access.some((v) => d.paper_open_access.includes(v)),
-    )
-
-  return s
+  return source.filter((d) => {
+    // effect_sample_size is always applied (no exclude variant needed today).
+    if (!P.effectSampleSizeAtLeast(d, f.effect_sample_size)) return false
+    for (const key in PREDICATES) {
+      if (key === exclude) continue
+      const fn = PREDICATES[key as keyof typeof PREDICATES] as (
+        row: typeof d,
+        value: unknown,
+      ) => boolean
+      if (!fn(d, f[key as keyof typeof PREDICATES])) return false
+    }
+    return true
+  })
 }
 
 function makeCounts(
