@@ -95,9 +95,10 @@ if (${singleValueOnly ? "TRUE" : "FALSE"}) {
 # Remove blank entries
 data_mod <- data_mod[nchar(trimws(data_mod$${moderatorVar})) > 0, ]
 
-# Filter to selected levels
+# Filter to selected levels that actually appear in the data
 valid_levels <- c(${rLevels})
 data_mod <- data_mod[data_mod$${moderatorVar} %in% valid_levels, ]
+valid_levels <- valid_levels[valid_levels %in% data_mod$${moderatorVar}]
 k_per_level <- as.integer(table(data_mod$${moderatorVar})[valid_levels])
 
 # Recalculate variance-covariance matrix for the filtered data

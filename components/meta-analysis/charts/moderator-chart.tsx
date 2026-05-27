@@ -61,6 +61,15 @@ export const ModeratorChart = ({ levels }: ModeratorChartProps) => {
     plotData[0],
   ).name
 
+  const yAxisWidth = (() => {
+    if (typeof window === "undefined") return longestLabel.length * 7
+    const canvas = document.createElement("canvas")
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return longestLabel.length * 7
+    ctx.font = "12px sans-serif"
+    return Math.ceil(ctx.measureText(longestLabel).width) + 24
+  })()
+
   const chartConfig = {
     moderator: { label: "Moderator", color: "var(--chart-1)" },
   } satisfies ChartConfig
@@ -96,7 +105,7 @@ export const ModeratorChart = ({ levels }: ModeratorChartProps) => {
               dataKey="name"
               type="category"
               interval={0}
-              width={longestLabel.length * 11}
+              width={yAxisWidth}
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}

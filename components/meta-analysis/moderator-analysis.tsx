@@ -51,12 +51,12 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
   // Compute available levels with counts from data using contains-match for multi-value fields
   const levelOptions = (() => {
     if (!selectedModerator) return []
-    return selectedModerator.levels.map((level) => {
+    return selectedModerator.levels.flatMap((level) => {
       const k = data.filter((datum) => {
         const val = String((datum as Record<string, unknown>)[selectedVar] ?? "")
         return val === level || val.includes(level)
       }).length
-      return { value: level, label: `${level} (${k})` }
+      return k > 0 ? [{ value: level, label: `${level} (${k})` }] : []
     })
   })()
 
@@ -71,7 +71,12 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
       setSelectedLevels([])
       return
     }
-    setSelectedLevels(selectedModerator.levels)
+    setSelectedLevels(selectedModerator.levels.filter((level) =>
+      data.some((datum) => {
+        const val = String((datum as Record<string, unknown>)[selectedModerator.value] ?? "")
+        return val === level || val.includes(level)
+      })
+    ))
     setResult(undefined)
     setError(undefined)
   }, [selectedVar, data])
