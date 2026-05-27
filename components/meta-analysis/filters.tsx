@@ -98,7 +98,8 @@ const defaults = {
     ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
   ],
   outcome_measurement_type: META_ANALYSIS_DEFAULTS.outcome_measurement_type,
-  intervention_multicomponent: META_ANALYSIS_DEFAULTS.intervention_multicomponent,
+  intervention_mechanism_multicomponent: META_ANALYSIS_DEFAULTS.intervention_mechanism_multicomponent,
+  intervention_medium_multicomponent: META_ANALYSIS_DEFAULTS.intervention_medium_multicomponent,
   intervention_mechanism: META_ANALYSIS_DEFAULTS.intervention_mechanism,
   intervention_medium: META_ANALYSIS_DEFAULTS.intervention_medium,
   sample_country: ALL_COUNTRY_VALUES,
@@ -312,13 +313,6 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
-              <CheckboxGroup
-                control={form.control}
-                name="intervention_multicomponent"
-                label="Intervention components"
-                options={INTERVENTION_MULTICOMPONENT_OPTIONS}
-                counts={counts.interventionMulticomponent}
-              />
               <MultiSelectField
                 control={form.control}
                 name="intervention_mechanism"
@@ -329,6 +323,13 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 counts={counts.interventionMechanism}
                 className="w-full"
               />
+              <CheckboxGroup
+                control={form.control}
+                name="intervention_mechanism_multicomponent"
+                label="Mechanism components"
+                options={INTERVENTION_MULTICOMPONENT_OPTIONS}
+                counts={counts.interventionMechanismMulticomponent}
+              />
               <MultiSelectField
                 control={form.control}
                 name="intervention_medium"
@@ -337,6 +338,13 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 options={INTERVENTION_MEDIUM_OPTIONS}
                 counts={counts.interventionMedium}
                 className="w-full"
+              />
+              <CheckboxGroup
+                control={form.control}
+                name="intervention_medium_multicomponent"
+                label="Medium components"
+                options={INTERVENTION_MULTICOMPONENT_OPTIONS}
+                counts={counts.interventionMediumMulticomponent}
               />
             </div>
           </CardContent>

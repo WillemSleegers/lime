@@ -11,7 +11,15 @@ import { MetaAnalysisTab } from "@/components/meta-analysis/tabs/meta-analysis-t
 import { ModeratorAnalysisTab } from "@/components/meta-analysis/tabs/moderator-analysis-tab"
 
 import { runMetaAnalysis } from "@/lib/r-functions"
-import { Data, Datum, Egger, Estimate, Heterogeneity, ModeratorResult, Status } from "@/lib/types"
+import {
+  Data,
+  Datum,
+  Egger,
+  Estimate,
+  Heterogeneity,
+  ModeratorResult,
+  Status,
+} from "@/lib/types"
 
 const MetaAnalysisPage = () => {
   const webR = useRef<WebR>(null)
@@ -28,10 +36,14 @@ const MetaAnalysisPage = () => {
   })
 
   const [data, setData] = useState<Data>()
-  const [moderatorResult, setModeratorResult] = useState<ModeratorResult | undefined>()
+  const [moderatorResult, setModeratorResult] = useState<
+    ModeratorResult | undefined
+  >()
   const [estimate, setEstimate] = useState<Estimate | undefined>()
   const [egger, setEgger] = useState<Egger | undefined>()
-  const [heterogeneity, setHeterogeneity] = useState<Heterogeneity | undefined>()
+  const [heterogeneity, setHeterogeneity] = useState<
+    Heterogeneity | undefined
+  >()
   const [error, setError] = useState<string | undefined>()
 
   // Register service worker to cache WebR package downloads
@@ -57,7 +69,12 @@ const MetaAnalysisPage = () => {
 
   // Handle filter application and unlock next tab
   const handleFiltersApplied = () => {
-    setUnlockedTabs((prev) => ({ ...prev, highlights: true, analysis: false, moderator: false }))
+    setUnlockedTabs((prev) => ({
+      ...prev,
+      highlights: true,
+      analysis: false,
+      moderator: false,
+    }))
     setActiveTab("highlights")
     setModeratorResult(undefined)
     // Scroll to top after tab content renders
@@ -68,12 +85,16 @@ const MetaAnalysisPage = () => {
 
   const handleBackToCriteria = () => {
     setActiveTab("criteria")
-    setTimeout(() => { window.scrollTo({ top: 0, behavior: "smooth" }) }, 100)
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }, 100)
   }
 
   const handleBackToHighlights = () => {
     setActiveTab("highlights")
-    setTimeout(() => { window.scrollTo({ top: 0, behavior: "smooth" }) }, 100)
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }, 100)
   }
 
   // Handle meta-analysis reviewed and unlock moderator tab
@@ -98,7 +119,14 @@ const MetaAnalysisPage = () => {
 
   // Run meta-analysis function (called manually via button)
   const runAnalysis = async () => {
-    console.log("[meta-analysis] runAnalysis called, webR:", !!webR.current, "data:", !!data, "data rows:", data?.length)
+    console.log(
+      "[meta-analysis] runAnalysis called, webR:",
+      !!webR.current,
+      "data:",
+      !!data,
+      "data rows:",
+      data?.length,
+    )
     if (!webR.current || !data) return
 
     try {
@@ -112,7 +140,10 @@ const MetaAnalysisPage = () => {
       setError(undefined)
 
       const subset = data
-        .filter((datum: Datum) => datum.effect_size != null && datum.effect_size_var != null)
+        .filter(
+          (datum: Datum) =>
+            datum.effect_size != null && datum.effect_size_var != null,
+        )
         .map((datum: Datum) => ({
           effect_size: datum.effect_size,
           effect_size_var: datum.effect_size_var,
@@ -128,6 +159,17 @@ const MetaAnalysisPage = () => {
       const df = await new webR.current.RObject(subset)
       await webR.current.objs.globalEnv.bind("data", df)
       const results = await runMetaAnalysis(webR.current)
+
+      const tau2Paper = results[16]
+      const tau2Study = results[17]
+      const tau2Outcome = results[18]
+      if (tau2Paper === 0 && tau2Study === 0 && tau2Outcome === 0) {
+        setError(
+          "The variance components could not be estimated (all tau² values are zero). This usually happens when there are too few studies or effects.",
+        )
+        setStatus("Ready")
+        return
+      }
 
       setEstimate({
         value: results[0],
@@ -157,7 +199,11 @@ const MetaAnalysisPage = () => {
       setStatus("Ready")
     } catch (err) {
       console.error("Meta-analysis error:", err)
-      setError(err instanceof Error ? err.message : "An unknown error occurred while running the meta-analysis")
+      setError(
+        err instanceof Error
+          ? err.message
+          : "An unknown error occurred while running the meta-analysis",
+      )
       setStatus("Ready")
     }
   }
@@ -172,8 +218,8 @@ const MetaAnalysisPage = () => {
         <h1 className="text-page-title">Meta-Analysis</h1>
         <p className="max-w-2xl mx-auto text-description">
           Run a meta-analysis on selected effects from various intervention
-          studies. For more information on what to take into account when running
-          a meta-analysis, see the meta-analysis section in our{" "}
+          studies. For more information on what to take into account when
+          running a meta-analysis, see the meta-analysis section in our{" "}
           <Link
             href="/faq"
             className="font-medium text-primary hover:underline"
@@ -184,7 +230,11 @@ const MetaAnalysisPage = () => {
         </p>
       </div>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+      <Tabs
+        value={activeTab}
+        onValueChange={setActiveTab}
+        className="space-y-6"
+      >
         <TabsList className="w-full justify-start">
           <TabsTrigger
             value="criteria"

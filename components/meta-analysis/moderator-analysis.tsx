@@ -6,7 +6,6 @@ import { WebR } from "webr"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
 import { Spinner } from "@/components/ui/spinner"
 import {
   Select,
@@ -38,32 +37,40 @@ type ModeratorAnalysisProps = {
   setResult: Dispatch<SetStateAction<ModeratorResult | undefined>>
 }
 
-export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: ModeratorAnalysisProps) => {
+export const ModeratorAnalysis = ({
+  data,
+  webR,
+  status,
+  result,
+  setResult,
+}: ModeratorAnalysisProps) => {
   const [selectedVar, setSelectedVar] = useState<string>("")
-  const [singleValueOnly, setSingleValueOnly] = useState(true)
   const [selectedLevels, setSelectedLevels] = useState<string[]>([])
   const [isRunning, setIsRunning] = useState(false)
   const [error, setError] = useState<string | undefined>()
 
-  const selectedModerator = MODERATOR_VARIABLES.find((v) => v.value === selectedVar)
-  const canRun = selectedVar !== "" && selectedLevels.length >= 2 && status === "Ready" && !isRunning
+  const selectedModerator = MODERATOR_VARIABLES.find(
+    (v) => v.value === selectedVar,
+  )
+  const canRun =
+    selectedVar !== "" &&
+    selectedLevels.length >= 2 &&
+    status === "Ready" &&
+    !isRunning
 
   // Compute available levels with counts from data using contains-match for multi-value fields
   const levelOptions = (() => {
     if (!selectedModerator) return []
     return selectedModerator.levels.flatMap((level) => {
       const k = data.filter((datum) => {
-        const val = String((datum as Record<string, unknown>)[selectedVar] ?? "")
+        const val = String(
+          (datum as Record<string, unknown>)[selectedVar] ?? "",
+        )
         return val === level || val.includes(level)
       }).length
       return k > 0 ? [{ value: level, label: `${level} (${k})` }] : []
     })
   })()
-
-  // Check whether any data entries have multiple values for the selected variable
-  const hasMultiValues = selectedVar
-    ? data.some((datum) => String((datum as Record<string, unknown>)[selectedVar] ?? "").includes(","))
-    : false
 
   // Reset selected levels when the variable changes
   useEffect(() => {
@@ -71,12 +78,16 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
       setSelectedLevels([])
       return
     }
-    setSelectedLevels(selectedModerator.levels.filter((level) =>
-      data.some((datum) => {
-        const val = String((datum as Record<string, unknown>)[selectedModerator.value] ?? "")
-        return val === level || val.includes(level)
-      })
-    ))
+    setSelectedLevels(
+      selectedModerator.levels.filter((level) =>
+        data.some((datum) => {
+          const val = String(
+            (datum as Record<string, unknown>)[selectedModerator.value] ?? "",
+          )
+          return val === level || val.includes(level)
+        }),
+      ),
+    )
     setResult(undefined)
     setError(undefined)
   }, [selectedVar, data])
@@ -89,9 +100,17 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
     setResult(undefined)
 
     try {
-      // Bind data with moderator column included
       const subset = data
-        .filter((datum) => datum.effect_size != null && datum.effect_size_var != null)
+        .filter((datum) => {
+          const val = String(
+            (datum as Record<string, unknown>)[selectedVar] ?? "",
+          )
+          return (
+            datum.effect_size != null &&
+            datum.effect_size_var != null &&
+            selectedLevels.some((level) => val === level || val.includes(level))
+          )
+        })
         .map((datum) => ({
           effect_size: datum.effect_size,
           effect_size_var: datum.effect_size_var,
@@ -111,14 +130,12 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
       const { levels, numbers } = await runModeratorAnalysis(
         webR.current,
         selectedVar,
-        singleValueOnly,
-        selectedLevels,
       )
 
       if (levels.length < 2) {
         setError(
           levels.length === 0
-            ? `No levels remain after filtering. Try selecting more levels or disabling single-value only.`
+            ? `No levels remain after filtering. Try selecting more levels.`
             : `Only one level remains after filtering. At least two levels are needed for a moderation test.`,
         )
         return
@@ -191,7 +208,10 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
               values={selectedLevels}
               onValuesChange={setSelectedLevels}
             >
-              <MultiSelectTrigger className="w-full bg-card" disabled={!selectedVar}>
+              <MultiSelectTrigger
+                className="w-full bg-card"
+                disabled={!selectedVar}
+              >
                 <MultiSelectValue placeholder="Select levels…" />
               </MultiSelectTrigger>
               <MultiSelectContent>
@@ -206,30 +226,12 @@ export const ModeratorAnalysis = ({ data, webR, status, result, setResult }: Mod
             </MultiSelect>
           </div>
 
-          {/* Single-value only toggle */}
-          <div className="space-y-1.5">
-            <Label htmlFor="single-value-only" className={(!selectedVar || !hasMultiValues) ? "text-muted-foreground" : ""}>
-              Only effects with a single coded value
-            </Label>
-            <p className="text-sm text-muted-foreground">
-              {!selectedVar
-                ? "Select a moderator variable to see options."
-                : !hasMultiValues
-                  ? "Not applicable — this variable always has a single value per effect."
-                  : singleValueOnly
-                    ? `Only includes effects tagged with a single ${selectedModerator?.label.toLowerCase()} value. Effects tagged with multiple ${selectedModerator?.label.toLowerCase()} values are excluded.`
-                    : `Includes all effects. Each effect is counted under every ${selectedModerator?.label.toLowerCase()} it is tagged with.`}
-            </p>
-            <Switch
-              id="single-value-only"
-              checked={singleValueOnly}
-              onCheckedChange={setSingleValueOnly}
-              disabled={!selectedVar || !hasMultiValues}
-            />
-          </div>
-
           {/* Run button */}
-          <Button onClick={handleRun} disabled={!canRun} className="w-fit h-auto">
+          <Button
+            onClick={handleRun}
+            disabled={!canRun}
+            className="w-fit h-auto"
+          >
             {isRunning ? (
               <>
                 <Spinner className="size-4 mr-2" />

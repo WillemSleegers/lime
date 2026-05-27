@@ -8,7 +8,7 @@ import {
   STUDY_DESIGN_OPTIONS,
   STUDY_CONDITION_ASSIGNMENT_OPTIONS,
   STUDY_RANDOMIZATION_OPTIONS,
-  INTERVENTION_MULTICOMPONENT_OPTIONS,
+  INTERVENTION_MULTICOMPONENT_OPTIONS, // kept for shared yes/no options
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
@@ -24,7 +24,10 @@ export const META_ANALYSIS_DEFAULTS = {
   outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map(
     (option) => option.value
   ),
-  intervention_multicomponent: INTERVENTION_MULTICOMPONENT_OPTIONS.map(
+  intervention_mechanism_multicomponent: INTERVENTION_MULTICOMPONENT_OPTIONS.map(
+    (option) => option.value
+  ),
+  intervention_medium_multicomponent: INTERVENTION_MULTICOMPONENT_OPTIONS.map(
     (option) => option.value
   ),
   intervention_mechanism: INTERVENTION_MECHANISM_OPTIONS,

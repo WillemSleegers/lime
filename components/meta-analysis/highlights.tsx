@@ -227,7 +227,7 @@ export const Highlights = (props: HighLightsProps) => {
 
     // Calculate single-component percentage
     singleComponentCount = data.filter(
-      (datum) => datum.intervention_multicomponent === "no"
+      (datum) => datum.intervention_mechanism_multicomponent === "no" && datum.intervention_medium_multicomponent === "no"
     ).length
     singleComponentPercentage = round((singleComponentCount / effectsCount) * 100, 0)
   } else {

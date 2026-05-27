@@ -2560,17 +2560,6 @@
     "sample_description": "UK Prolific Academic workers"
   },
   {
-    "paper": 163,
-    "paper_label": "Bacon & Krpan (2018)",
-    "study": 1,
-    "sample": 5,
-    "sample_n": 186,
-    "sample_country": "United Kingdom",
-    "sample_type": "panel",
-    "sample_representative": "no",
-    "sample_description": "UK Prolific Academic workers"
-  },
-  {
     "paper": 171,
     "paper_label": "Attwood et al. (2020)",
     "study": 1,

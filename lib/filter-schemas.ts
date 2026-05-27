@@ -71,7 +71,11 @@ export const sampleFiltersFields = {
 // ============================================================================
 
 export const interventionFiltersFields = {
-  intervention_multicomponent: z
+  intervention_mechanism_multicomponent: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one option." }),
+  intervention_medium_multicomponent: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one option." }),

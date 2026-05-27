@@ -41,7 +41,8 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
   } = props
 
   const defaults = {
-    intervention_multicomponent: INTERVENTION_MULTICOMPONENT_OPTIONS.map((o) => o.value),
+    intervention_mechanism_multicomponent: INTERVENTION_MULTICOMPONENT_OPTIONS.map((o) => o.value),
+    intervention_medium_multicomponent: INTERVENTION_MULTICOMPONENT_OPTIONS.map((o) => o.value),
     intervention_mechanism: INTERVENTION_MECHANISM_OPTIONS,
     intervention_medium: INTERVENTION_MEDIUM_OPTIONS,
   }
@@ -58,11 +59,13 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
   async function onSubmit(values: z.infer<typeof interventionFiltersSchema>) {
     let subset = data
 
-    subset = subset.filter((datum) => {
-      return values.intervention_multicomponent.some(
-        (value) => datum.intervention_multicomponent === value
-      )
-    })
+    subset = subset.filter((datum) =>
+      values.intervention_mechanism_multicomponent.some((v) => datum.intervention_mechanism_multicomponent === v)
+    )
+
+    subset = subset.filter((datum) =>
+      values.intervention_medium_multicomponent.some((v) => datum.intervention_medium_multicomponent === v)
+    )
 
     subset = subset.filter((datum) => {
       return values.intervention_mechanism.some((value) =>
@@ -88,12 +91,6 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
           <div className="space-y-6">
-            <CheckboxGroup
-              control={form.control}
-              name="intervention_multicomponent"
-              label="Intervention components"
-              options={INTERVENTION_MULTICOMPONENT_OPTIONS}
-            />
             <MultiSelectField
               control={form.control}
               name="intervention_mechanism"
@@ -103,6 +100,12 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               options={INTERVENTION_MECHANISM_OPTIONS}
               className="w-full"
             />
+            <CheckboxGroup
+              control={form.control}
+              name="intervention_mechanism_multicomponent"
+              label="Mechanism components"
+              options={INTERVENTION_MULTICOMPONENT_OPTIONS}
+            />
             <MultiSelectField
               control={form.control}
               name="intervention_medium"
@@ -110,6 +113,12 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
               placeholder="Select intervention medium..."
               options={INTERVENTION_MEDIUM_OPTIONS}
               className="w-full"
+            />
+            <CheckboxGroup
+              control={form.control}
+              name="intervention_medium_multicomponent"
+              label="Medium components"
+              options={INTERVENTION_MULTICOMPONENT_OPTIONS}
             />
           </div>
 

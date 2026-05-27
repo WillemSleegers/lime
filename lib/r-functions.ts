@@ -78,27 +78,11 @@ export async function runMetaAnalysis(webR: WebR) {
 
 function moderatorSetupCode(
   moderatorVar: string,
-  singleValueOnly: boolean,
-  selectedLevels: string[],
 ): string {
-  const rLevels = selectedLevels
-    .map((l) => `"${l.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`)
-    .join(", ")
   return `
-# Filter for single-value entries if required
-if (${singleValueOnly ? "TRUE" : "FALSE"}) {
-  data_mod <- data[!grepl(",", data$${moderatorVar}), ]
-} else {
-  data_mod <- data
-}
-
-# Remove blank entries
-data_mod <- data_mod[nchar(trimws(data_mod$${moderatorVar})) > 0, ]
-
-# Filter to selected levels that actually appear in the data
-valid_levels <- c(${rLevels})
-data_mod <- data_mod[data_mod$${moderatorVar} %in% valid_levels, ]
-valid_levels <- valid_levels[valid_levels %in% data_mod$${moderatorVar}]
+# Use the pre-filtered data passed from JavaScript
+data_mod <- data[nchar(trimws(data$${moderatorVar})) > 0, ]
+valid_levels <- unique(data_mod$${moderatorVar})
 k_per_level <- as.integer(table(data_mod$${moderatorVar})[valid_levels])
 
 # Recalculate variance-covariance matrix for the filtered data
@@ -127,23 +111,15 @@ sav_mod <- metafor::robust(res_mod, cluster = paper, clubSandwich = TRUE)
 
 export function generateModeratorCode(
   moderatorVar: string,
-  singleValueOnly: boolean,
-  selectedLevels: string[],
 ): string {
-  return moderatorSetupCode(moderatorVar, singleValueOnly, selectedLevels)
+  return moderatorSetupCode(moderatorVar)
 }
 
 export async function runModeratorAnalysis(
   webR: WebR,
   moderatorVar: string,
-  singleValueOnly: boolean,
-  selectedLevels: string[],
 ): Promise<{ levels: string[]; numbers: number[] }> {
-  const setup = moderatorSetupCode(
-    moderatorVar,
-    singleValueOnly,
-    selectedLevels,
-  )
+  const setup = moderatorSetupCode(moderatorVar)
 
   const levels = await webR.evalRRaw(
     setup + `\nas.character(valid_levels)`,

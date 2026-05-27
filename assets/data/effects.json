@@ -3808,20 +3808,6 @@
     "effect_control_n": 194
   },
   {
-    "paper": 163,
-    "paper_label": "Bacon & Krpan (2018)",
-    "study": 1,
-    "outcome": 1,
-    "effect": 3,
-    "effect_size_name": "OR2DL",
-    "effect_size": -0.4784,
-    "effect_size_lower": -0.8865,
-    "effect_size_upper": -0.0704,
-    "effect_size_var": 0.0433,
-    "effect_intervention_n": 186,
-    "effect_control_n": 194
-  },
-  {
     "paper": 171,
     "paper_label": "Attwood et al. (2020)",
     "study": 1,

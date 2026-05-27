@@ -349,12 +349,22 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
     },
   },
   {
-    accessorKey: "intervention_multicomponent",
+    accessorKey: "intervention_mechanism_multicomponent",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Multicomponent" />
+      <DataTableColumnHeader column={column} title="Mechanism multicomponent" />
     ),
     cell: ({ row }) => {
-      const value = row.getValue<string>("intervention_multicomponent")
+      const value = row.getValue<string>("intervention_mechanism_multicomponent")
+      return value === "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
+    },
+  },
+  {
+    accessorKey: "intervention_medium_multicomponent",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Medium multicomponent" />
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue<string>("intervention_medium_multicomponent")
       return value === "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
     },
   },
