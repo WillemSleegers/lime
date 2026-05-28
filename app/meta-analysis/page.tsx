@@ -76,7 +76,12 @@ const MetaAnalysisPage = () => {
     }
   }, [])
 
-  // Handle filter application and unlock next tab
+  // Scroll to top whenever the active tab changes. Runs after React commits
+  // the new tab content, so no setTimeout is needed.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }, [activeTab])
+
   const handleFiltersApplied = () => {
     setUnlockedTabs((prev) => ({
       ...prev,
@@ -86,44 +91,20 @@ const MetaAnalysisPage = () => {
     }))
     setActiveTab("highlights")
     setModeratorResult(undefined)
-    // Scroll to top after tab content renders
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    }, 100)
   }
 
-  const handleBackToCriteria = () => {
-    setActiveTab("criteria")
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    }, 100)
-  }
+  const handleBackToCriteria = () => setActiveTab("criteria")
+  const handleBackToHighlights = () => setActiveTab("highlights")
 
-  const handleBackToHighlights = () => {
-    setActiveTab("highlights")
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    }, 100)
-  }
-
-  // Handle meta-analysis reviewed and unlock moderator tab
   const handleAnalysisReviewed = () => {
     setUnlockedTabs((prev) => ({ ...prev, moderator: true }))
     setActiveTab("moderator")
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    }, 100)
   }
 
-  // Handle highlights reviewed and unlock next tab
   const handleHighlightsReviewed = () => {
     setUnlockedTabs((prev) => ({ ...prev, analysis: true }))
     setActiveTab("analysis")
     runAnalysis()
-    // Scroll to top after tab content renders
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    }, 100)
   }
 
   // Run meta-analysis function (called manually via button)

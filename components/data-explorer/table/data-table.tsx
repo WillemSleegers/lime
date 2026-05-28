@@ -61,6 +61,8 @@ export function DataTable<TData, TValue>({
   data,
   totalRows,
 }: DataTableProps<TData, TValue>) {
+  // TanStack Table holds state internally that React Compiler can't track —
+  // memoizing this component caches stale `table` references on sort/paginate.
   "use no memo"
   const [sorting, setSorting] = useState<SortingState>([])
 
