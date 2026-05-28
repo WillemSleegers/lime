@@ -19,6 +19,20 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+type TableLike = {
+  getState: () => { pagination: { pageIndex: number; pageSize: number } }
+}
+
+function rowCountMessage(table: TableLike, filtered: number, total: number): string {
+  if (filtered === 0) return "No rows match"
+  const { pageIndex, pageSize } = table.getState().pagination
+  const start = pageIndex * pageSize + 1
+  const end = Math.min((pageIndex + 1) * pageSize, filtered)
+  const range = start === end ? `${start}` : `${start}–${end}`
+  if (filtered === total) return `Showing ${range} of ${total}`
+  return `Showing ${range} of ${filtered} (filtered from ${total})`
+}
+
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
@@ -65,9 +79,7 @@ export function DataTable<TData, TValue>({
   return (
     <div className="flex flex-col gap-4 mt-4">
       <div className="flex flex-wrap justify-center min-[575px]:justify-between w-full items-center gap-x-4 gap-y-2">
-        <div className="text-sm">
-          Showing {data.length} out of {totalRows} rows.
-        </div>
+        <div className="text-sm">{rowCountMessage(table, data.length, totalRows)}</div>
         <div className="flex gap-x-4 items-center">
           <div className="flex items-center space-x-2 justify-center">
             <Button
