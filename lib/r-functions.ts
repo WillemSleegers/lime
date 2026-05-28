@@ -129,12 +129,11 @@ res_mod <- metafor::rma.mv(
 )
 
 sav_mod <- metafor::robust(res_mod, cluster = paper, clubSandwich = TRUE)
-`)
 
-  const [levels, numbers] = await Promise.all([
-    webR.evalRRaw(`as.character(valid_levels)`, "string[]"),
-    webR.evalRRaw(
-      `c(
+# WebR's evalRRaw rejects vectors containing NA_real_ (R's NA encodes as JS
+# null, which trips the "Can't convert" guard). Coerce NAs to NaN so the JS
+# side gets back numeric values and can filter with Number.isFinite.
+.numbers <- c(
   as.numeric(sav_mod$b),
   sav_mod$ci.lb,
   sav_mod$ci.ub,
@@ -143,9 +142,13 @@ sav_mod <- metafor::robust(res_mod, cluster = paper, clubSandwich = TRUE)
   res_mod$QM,
   res_mod$QMdf[1],
   res_mod$QMp
-)`,
-      "number[]",
-    ),
+)
+.numbers[is.na(.numbers)] <- NaN
+`)
+
+  const [levels, numbers] = await Promise.all([
+    webR.evalRRaw(`as.character(valid_levels)`, "string[]"),
+    webR.evalRRaw(`.numbers`, "number[]"),
   ])
 
   const n = levels.length
@@ -197,17 +200,19 @@ mod_tokens <- strsplit(mod_col, ", ", fixed = TRUE)
   idx <- vapply(mod_tokens, function(toks) lvl %in% toks, logical(1))
   sub <- data[idx, , drop = FALSE]
   k <- nrow(sub)
-  if (k < 2 || length(unique(sub$paper)) < 2) {
-    return(c(NA_real_, NA_real_, NA_real_, NA_real_, k))
-  }
-  V <- metafor::vcalc(
+  # NaN sentinel (not NA_real_) because WebR's evalRRaw rejects NA in the
+  # returned vector — NaN survives as JS NaN and is filtered out client-side.
+  .fail <- c(NaN, NaN, NaN, NaN, k)
+  if (k < 2 || length(unique(sub$paper)) < 2) return(.fail)
+  V <- try(metafor::vcalc(
     vi = effect_size_var,
     cluster = paper_study,
     subgroup = outcome,
     data = sub,
     grp1 = intervention_key,
     grp2 = control_key
-  )
+  ), silent = TRUE)
+  if (inherits(V, "try-error")) return(.fail)
   fit <- try(
     metafor::rma.mv(
       yi = effect_size, V = V,
@@ -216,11 +221,14 @@ mod_tokens <- strsplit(mod_col, ", ", fixed = TRUE)
     ),
     silent = TRUE
   )
-  if (inherits(fit, "try-error")) return(c(NA_real_, NA_real_, NA_real_, NA_real_, k))
+  if (inherits(fit, "try-error")) return(.fail)
   sav <- try(metafor::robust(fit, cluster = sub$paper, clubSandwich = TRUE), silent = TRUE)
-  if (inherits(sav, "try-error")) return(c(NA_real_, NA_real_, NA_real_, NA_real_, k))
-  pred <- predict(sav)
-  c(pred$pred, pred$ci.lb, pred$ci.ub, as.numeric(sav$pval[1]), k)
+  if (inherits(sav, "try-error")) return(.fail)
+  pred <- try(predict(sav), silent = TRUE)
+  if (inherits(pred, "try-error")) return(.fail)
+  out <- c(pred$pred, pred$ci.lb, pred$ci.ub, as.numeric(sav$pval[1]), k)
+  out[is.na(out)] <- NaN
+  out
 }
 
 level_results <- vapply(mod_levels, .fit_level, numeric(5))

@@ -73,24 +73,28 @@ export const ModeratorAnalysis = ({
     status === "Ready" &&
     !isRunning
 
-  // Compute available levels with per-level k counts. For multi-value
-  // moderators a row contributes to every token it lists.
+  // Compute available levels with per-level k (effects) and paper counts. For
+  // multi-value moderators a row contributes to every token it lists.
+  // Levels with fewer than 2 unique papers can't get a robust CI from
+  // clubSandwich, so we mark them as un-fittable.
   const levelOptions = (() => {
     if (!selectedModerator) return []
     return selectedModerator.levels.flatMap((level) => {
-      const k = data.filter((datum) => {
-        const tokens = moderatorTokens(
+      const matching = data.filter((datum) =>
+        moderatorTokens(
           (datum as Record<string, unknown>)[selectedModerator.value],
-        )
-        return tokens.includes(level)
-      }).length
-      return k > 0 ? [{ value: level, label: `${level} (${k})` }] : []
+        ).includes(level),
+      )
+      const k = matching.length
+      if (k === 0) return []
+      const papers = new Set(matching.map((d) => d.paper)).size
+      return [{ value: level, k, papers, fittable: papers >= 2 }]
     })
   })()
 
-  // Reset selected levels when the variable changes. Derive the moderator
-  // inside the effect so the deps list can be honest (the outer
-  // `selectedModerator` is a fresh ref every render).
+  // Reset selected levels when the variable changes. Default to only the
+  // levels that are actually fittable (≥ 2 unique papers) — the user can
+  // opt in to un-fittable ones but they'll be skipped in the results.
   useEffect(() => {
     const moderator = MODERATOR_VARIABLES.find((v) => v.value === selectedVar)
     if (!moderator) {
@@ -98,13 +102,14 @@ export const ModeratorAnalysis = ({
       return
     }
     setSelectedLevels(
-      moderator.levels.filter((level) =>
-        data.some((datum) =>
+      moderator.levels.filter((level) => {
+        const matching = data.filter((datum) =>
           moderatorTokens(
             (datum as Record<string, unknown>)[moderator.value],
           ).includes(level),
-        ),
-      ),
+        )
+        return new Set(matching.map((d) => d.paper)).size >= 2
+      }),
     )
     setResult(undefined)
     setError(undefined)
@@ -261,8 +266,23 @@ export const ModeratorAnalysis = ({
               <MultiSelectContent>
                 <MultiSelectGroup>
                   {levelOptions.map((o) => (
-                    <MultiSelectItem key={o.value} value={o.value}>
-                      {o.label}
+                    <MultiSelectItem
+                      key={o.value}
+                      value={o.value}
+                      badgeLabel={o.value}
+                      disabled={!o.fittable}
+                    >
+                      <span className="flex-1">
+                        {o.value} ({o.k})
+                      </span>
+                      {!o.fittable && (
+                        <span
+                          className="text-xs text-muted-foreground"
+                          title="At least 2 unique papers are needed to fit a robust meta-analysis for this level."
+                        >
+                          too few papers
+                        </span>
+                      )}
                     </MultiSelectItem>
                   ))}
                 </MultiSelectGroup>
