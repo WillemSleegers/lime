@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { FieldValues, UseFormReturn } from "react-hook-form"
 
 export function loadFormValues<T>(key: string, defaults: T): T {
@@ -22,10 +22,14 @@ export function usePersistedForm<T extends FieldValues>(
   key: string,
   defaults: T
 ): void {
+  // Load persisted values exactly once. Gated by a ref so a fresh `defaults`
+  // object on a later re-render doesn't clobber in-progress user input.
+  const loaded = useRef(false)
   useEffect(() => {
+    if (loaded.current) return
+    loaded.current = true
     form.reset(loadFormValues(key, defaults))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [form, key, defaults])
 
   useEffect(() => {
     const subscription = form.watch((values) => {

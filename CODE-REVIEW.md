@@ -89,7 +89,11 @@ But the data column `intervention_mechanism` is a comma-joined string ("informat
 
 **29. `DataTable` opts out of memoization with `"use no memo"`** — [components/data-explorer/table/data-table.tsx:50](components/data-explorer/table/data-table.tsx#L50). With React Compiler enabled project-wide, this disables it for the largest render-heavy component. There's probably a reason (TanStack Table identity issues), but it deserves a comment so a future reader doesn't remove it.
 
-**30. ESLint disabled inline twice** — [hooks/use-persisted-form.ts:27](hooks/use-persisted-form.ts#L27) and [components/meta-analysis/moderator-analysis.tsx:93, 126](components/meta-analysis/moderator-analysis.tsx#L93). The moderator-analysis `useEffect` missing `selectedModerator`/`setResult` in deps is a real footgun: changing `selectedVar` to a value that *isn't* in `MODERATOR_VARIABLES` (race condition) wouldn't reset the level set.
+**30. ESLint disabled inline three times** — restructured all three out:
+
+- `usePersistedForm`'s mount-only effect now uses a `useRef` gate so the deps list can be honest.
+- `moderator-analysis` derives `selectedModerator` inside the effect rather than reading the outer derived value.
+- The WebR `RObject` cast was made unnecessary by stringifying the moderator cell when building the subset (the value is always a string at runtime).
 
 **31. Default form button is implicitly submit-on-Enter inside collapsibles** — none of the filter forms have an explicit `type="button"` on the close/reset secondary buttons (see filter pages). If the user presses Enter in a year-input, the form submits. Usually fine, but mixed with the "Update table" UX where the user expects to click the button.
 

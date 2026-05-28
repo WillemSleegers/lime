@@ -88,27 +88,27 @@ export const ModeratorAnalysis = ({
     })
   })()
 
-  // Reset selected levels when the variable changes
+  // Reset selected levels when the variable changes. Derive the moderator
+  // inside the effect so the deps list can be honest (the outer
+  // `selectedModerator` is a fresh ref every render).
   useEffect(() => {
-    if (!selectedModerator) {
+    const moderator = MODERATOR_VARIABLES.find((v) => v.value === selectedVar)
+    if (!moderator) {
       setSelectedLevels([])
       return
     }
     setSelectedLevels(
-      selectedModerator.levels.filter((level) =>
+      moderator.levels.filter((level) =>
         data.some((datum) =>
           moderatorTokens(
-            (datum as Record<string, unknown>)[selectedModerator.value],
+            (datum as Record<string, unknown>)[moderator.value],
           ).includes(level),
         ),
       ),
     )
     setResult(undefined)
     setError(undefined)
-    // selectedModerator is derived from selectedVar; tracking selectedVar is
-    // sufficient and avoids re-resetting on every render.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedVar, data])
+  }, [selectedVar, data, setResult])
 
   const handleRun = async () => {
     if (!webR.current || !selectedModerator) return
@@ -140,7 +140,9 @@ export const ModeratorAnalysis = ({
           outcome: datum.outcome,
           intervention_key: datum.intervention_key,
           control_key: datum.control_key,
-          [moderatorVar]: (datum as Record<string, unknown>)[moderatorVar],
+          [moderatorVar]: String(
+            (datum as Record<string, unknown>)[moderatorVar] ?? "",
+          ),
         }))
 
       if (subset.length === 0) {
@@ -148,8 +150,7 @@ export const ModeratorAnalysis = ({
         return
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const df = await new webR.current.RObject(subset as any)
+      const df = await new webR.current.RObject(subset)
       await webR.current.objs.globalEnv.bind("data", df)
 
       if (selectedModerator.multivalue) {
