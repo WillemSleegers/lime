@@ -3,18 +3,24 @@
 import { useEffect, useRef } from "react"
 import { FieldValues, UseFormReturn } from "react-hook-form"
 
+const DEV = process.env.NODE_ENV !== "production"
+
 export function loadFormValues<T>(key: string, defaults: T): T {
   try {
     const saved = localStorage.getItem(key)
     if (saved) return { ...defaults, ...JSON.parse(saved) }
-  } catch {}
+  } catch (err) {
+    if (DEV) console.warn(`[usePersistedForm] could not load "${key}":`, err)
+  }
   return defaults
 }
 
 export function clearFormValues(key: string): void {
   try {
     localStorage.removeItem(key)
-  } catch {}
+  } catch (err) {
+    if (DEV) console.warn(`[usePersistedForm] could not clear "${key}":`, err)
+  }
 }
 
 export function usePersistedForm<T extends FieldValues>(
@@ -35,7 +41,9 @@ export function usePersistedForm<T extends FieldValues>(
     const subscription = form.watch((values) => {
       try {
         localStorage.setItem(key, JSON.stringify(values))
-      } catch {}
+      } catch (err) {
+        if (DEV) console.warn(`[usePersistedForm] could not save "${key}":`, err)
+      }
     })
     return () => subscription.unsubscribe()
   }, [form, key])
