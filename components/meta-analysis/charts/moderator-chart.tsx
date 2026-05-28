@@ -8,7 +8,7 @@ import {
   ReferenceLine,
   ZAxis,
 } from "recharts"
-import { round } from "@/lib/utils"
+import { round, measureAxisWidth } from "@/lib/utils"
 import { ModeratorLevel } from "@/lib/types"
 import { ChartConfig, ChartContainer } from "@/components/ui/chart"
 import { Card, CardContent } from "@/components/ui/card"
@@ -56,19 +56,7 @@ export const ModeratorChart = ({ levels }: ModeratorChartProps) => {
     xTicks.sort((a, b) => a - b)
   }
 
-  const longestLabel = plotData.reduce(
-    (a, b) => (a.name.length > b.name.length ? a : b),
-    plotData[0],
-  ).name
-
-  const yAxisWidth = (() => {
-    if (typeof window === "undefined") return longestLabel.length * 7
-    const canvas = document.createElement("canvas")
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return longestLabel.length * 7
-    ctx.font = "12px sans-serif"
-    return Math.ceil(ctx.measureText(longestLabel).width) + 24
-  })()
+  const yAxisWidth = measureAxisWidth(plotData.map((d) => d.name))
 
   const chartConfig = {
     moderator: { label: "Moderator", color: "var(--chart-1)" },

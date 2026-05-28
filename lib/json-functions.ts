@@ -2,166 +2,95 @@ import { Data, DataKeys } from "@/lib/types"
 
 export const countUniqueValues = <T extends object, K extends keyof T>(
   array: T[],
-  propertyName: K
+  propertyName: K,
 ): number => {
-  // Create a Set to automatically track unique values
   const uniqueValues = new Set<T[K]>()
-
-  // Iterate through each object in the array
-  for (const item of array) {
-    // Add the value of the specified property to the Set
-    uniqueValues.add(item[propertyName])
-  }
-
-  // Return the size of the Set, which represents the count of unique values
+  for (const item of array) uniqueValues.add(item[propertyName])
   return uniqueValues.size
 }
 
 export const countValue = <T extends object, K extends keyof T>(
   array: T[],
   propertyName: K,
-  valueToCount: T[K]
+  valueToCount: T[K],
 ): number => {
-  // Initialize counter
-  let occurrenceCount = 0
-
-  // Iterate through each object in the array
-  for (const item of array) {
-    // Check if the property value matches the value we're counting
-    if (item[propertyName] === valueToCount) {
-      occurrenceCount++
-    }
-  }
-
-  return occurrenceCount
+  let count = 0
+  for (const item of array) if (item[propertyName] === valueToCount) count++
+  return count
 }
 
 export const countUniqueFilteredValues = <
   T extends object,
   K extends keyof T,
-  F extends keyof T
+  F extends keyof T,
 >(
   array: T[],
   targetProperty: K,
   filterProperty: F,
-  filterValue: T[F]
+  filterValue: T[F],
 ): number => {
-  // Create a Set to track unique values
   const uniqueValues = new Set<T[K]>()
-
-  // Iterate through each object in the array
   for (const item of array) {
-    // Only consider objects where the filter property matches the filter value
     if (item[filterProperty] === filterValue) {
-      // Add the value of the target property to the Set
       uniqueValues.add(item[targetProperty])
     }
   }
-
-  // Return the size of the Set, representing the count of unique values
   return uniqueValues.size
 }
 
 export const countUniqueValuesByGroup = <
   T extends object,
   K extends keyof T,
-  G extends keyof T
+  G extends keyof T,
 >(
   array: T[],
   targetProperty: K,
-  groupByProperty: G
+  groupByProperty: G,
 ): Map<T[G], number> => {
-  // Create a Map to store the result
-  // Keys are unique values of groupByProperty, values are Sets of unique targetProperty values
-  const groupMap = new Map<T[G], Set<T[K]>>()
-
-  // Iterate through each object in the array
+  const groupSets = new Map<T[G], Set<T[K]>>()
   for (const item of array) {
-    const groupValue = item[groupByProperty]
-    const targetValue = item[targetProperty]
-
-    // If this group doesn't exist in our Map yet, create a new Set for it
-    if (!groupMap.has(groupValue)) {
-      groupMap.set(groupValue, new Set<T[K]>())
-    }
-
-    // Add the target value to the Set for this group
-    groupMap.get(groupValue)?.add(targetValue)
+    const g = item[groupByProperty]
+    if (!groupSets.has(g)) groupSets.set(g, new Set<T[K]>())
+    groupSets.get(g)!.add(item[targetProperty])
   }
-
-  // Convert the Map of Sets to a Map of counts
-  const resultMap = new Map<T[G], number>()
-
-  for (const [groupValue, uniqueValues] of groupMap.entries()) {
-    resultMap.set(groupValue, uniqueValues.size)
-  }
-
-  // Sort
-  const sortedMap = new Map([...resultMap.entries()].sort())
-
-  return sortedMap
+  const counts = new Map<T[G], number>()
+  for (const [g, set] of groupSets) counts.set(g, set.size)
+  return new Map([...counts.entries()].sort())
 }
 
 export const mapToXYArray = <K, V>(map: Map<K, V>): Array<{ x: K; y: V }> => {
   const result: Array<{ x: K; y: V }> = []
-
-  // Iterate through each entry in the map
-  for (const [key, value] of map.entries()) {
-    // Add an object with x and y properties to the result array
-    result.push({
-      x: key,
-      y: value,
-    })
-  }
-
+  for (const [x, y] of map.entries()) result.push({ x, y })
   return result
 }
 
-export const getUniqueData = (data: Data, x: DataKeys) => {
-  const array = data.map((e) => {
-    return e[x]
-  })
+export const getUniqueData = (data: Data, x: DataKeys) =>
+  new Set(data.map((e) => e[x])).size
 
-  return new Set(array).size
-}
-
-/**
- * Fast lookup map builder for O(1) key lookups
- */
-function buildKeyMap<T extends Record<string, unknown>, K extends keyof T>(
+function buildKeySet<T extends Record<string, unknown>, K extends keyof T>(
   data: T[],
-  keys: K | ReadonlyArray<K>
-): Map<string, boolean> {
-  const map = new Map<string, boolean>()
-  const keysArray = Array.isArray(keys) ? keys : [keys]
-  
+  keys: ReadonlyArray<K>,
+): Set<string> {
+  const set = new Set<string>()
   for (const item of data) {
-    const key = keysArray.map(k => String(item[k])).join('|')
-    map.set(key, true)
+    set.add(keys.map((k) => String(item[k])).join("|"))
   }
-  
-  return map
+  return set
 }
 
 /**
- * Performs an optimized semi-join operation using lookup maps - O(n+m) instead of O(n*m)
- * @param sourceArray - The source array of objects to filter
- * @param lookupArray - The array of objects to match against
- * @param keys - The property key(s) to match on
- * @returns Filtered array containing only objects from sourceArray that have matching key-value pairs in lookupArray
+ * O(n+m) semi-join: returns rows from `sourceArray` whose joined `keys` also
+ * appear in `lookupArray`.
  */
 export function semiJoin<
   S extends Record<string, unknown>,
   L extends Record<string, unknown>,
-  K extends keyof S & keyof L
+  K extends keyof S & keyof L,
 >(sourceArray: S[], lookupArray: L[], keys: K | ReadonlyArray<K>): S[] {
   if (lookupArray.length === 0) return []
-  
-  const keysArray = Array.isArray(keys) ? keys : [keys]
-  const lookupMap = buildKeyMap(lookupArray, keys)
-  
-  return sourceArray.filter(item => {
-    const key = keysArray.map(k => String(item[k])).join('|')
-    return lookupMap.has(key)
-  })
+  const keysArray = Array.isArray(keys) ? keys : [keys as K]
+  const lookupSet = buildKeySet(lookupArray, keysArray)
+  return sourceArray.filter((item) =>
+    lookupSet.has(keysArray.map((k) => String(item[k])).join("|")),
+  )
 }

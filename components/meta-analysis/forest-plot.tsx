@@ -11,7 +11,7 @@ import {
   ZAxis,
 } from "recharts"
 import { ChevronRight } from "lucide-react"
-import { cn, round } from "@/lib/utils"
+import { cn, round, measureAxisWidth } from "@/lib/utils"
 import { Data } from "@/lib/types"
 import {
   Props,
@@ -68,9 +68,9 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
       })
       .sort((a, b) => a.value - b.value)
 
-  const longestLabel = validData
-    .map((e) => e.paper_label + " - " + e.effect)
-    .reduce((a, b) => (a.length > b.length ? a : b), "")
+  const yAxisWidth = measureAxisWidth(
+    validData.map((e) => e.paper_label + " - " + e.effect),
+  )
 
   // Calculate dynamic x-axis range based on confidence intervals
   const allLowerBounds = validData.map((e) => e.effect_size_lower)
@@ -171,7 +171,7 @@ export const ForestPlot = ({ data }: ForestPlotProps) => {
                   yAxisId="left"
                   dataKey="name"
                   type="category"
-                  width={longestLabel.length * 8}
+                  width={yAxisWidth}
                   axisLine={false}
                   tickLine={false}
                   tick={<CustomizedAxisTick effectByLabel={effectByLabel} />}

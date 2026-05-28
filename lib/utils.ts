@@ -97,6 +97,29 @@ function isNiceNumber(num: number) {
   return Number.isInteger(num) || Number.isInteger(num * 2)
 }
 
+// Reusable 2D canvas for text measurement. Created lazily to stay SSR-safe.
+let measureCtx: CanvasRenderingContext2D | null | undefined
+
+/**
+ * Returns the rendered pixel width needed for the longest of `labels` at the
+ * given CSS font, plus `padding`. Falls back to a character-count estimate
+ * during SSR or when canvas is unavailable.
+ */
+export function measureAxisWidth(
+  labels: string[],
+  font = "12px sans-serif",
+  padding = 24,
+): number {
+  const longest = labels.reduce((a, b) => (a.length > b.length ? a : b), "")
+  if (typeof window === "undefined") return longest.length * 7 + padding
+  if (measureCtx === undefined) {
+    measureCtx = document.createElement("canvas").getContext("2d")
+  }
+  if (!measureCtx) return longest.length * 7 + padding
+  measureCtx.font = font
+  return Math.ceil(measureCtx.measureText(longest).width) + padding
+}
+
 export const customSort = <T extends string | number>(
   inputArray: T[],
   excludeArray?: T[]
