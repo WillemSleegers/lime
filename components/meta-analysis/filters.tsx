@@ -3,7 +3,7 @@
 import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Dispatch, SetStateAction, useCallback } from "react"
+import { Dispatch, SetStateAction, useCallback, useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import { Spinner } from "@/components/ui/spinner"
@@ -172,8 +172,24 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
     onFiltersApplied()
   }
 
-  const values = form.watch()
-  const counts = useFilterCounts(values)
+  // Filter counts re-run ~18 full passes over data.json, so debounce the
+  // watched form values: fields update instantly, counts catch up after a
+  // brief pause.
+  const [debouncedValues, setDebouncedValues] = useState<FormValues>(() =>
+    form.getValues(),
+  )
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null
+    const sub = form.watch((v) => {
+      if (timer) clearTimeout(timer)
+      timer = setTimeout(() => setDebouncedValues(v as FormValues), 200)
+    })
+    return () => {
+      sub.unsubscribe()
+      if (timer) clearTimeout(timer)
+    }
+  }, [form])
+  const counts = useFilterCounts(debouncedValues)
 
   return (
     <Form {...form}>
