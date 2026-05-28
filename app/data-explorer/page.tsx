@@ -183,37 +183,31 @@ export default function DataExplorer() {
             <TabsList className="w-auto justify-start">
               <TabsTrigger
                 value="paper"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Papers
               </TabsTrigger>
               <TabsTrigger
                 value="study"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Studies
               </TabsTrigger>
               <TabsTrigger
                 value="sample"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Samples
               </TabsTrigger>
               <TabsTrigger
                 value="intervention"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Interventions
               </TabsTrigger>
               <TabsTrigger
                 value="outcome"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Outcomes
               </TabsTrigger>
               <TabsTrigger
                 value="effect"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
               >
                 Effects
               </TabsTrigger>

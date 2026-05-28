@@ -209,8 +209,8 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
                 control={form.control}
                 name="paper_year"
                 label="Publication year"
-                min={Math.min(...data.map((datum) => datum.paper_year))}
-                max={Math.max(...data.map((datum) => datum.paper_year))}
+                min={META_ANALYSIS_DEFAULTS.paper_year[0]}
+                max={META_ANALYSIS_DEFAULTS.paper_year[1]}
                 minStepsBetweenThumbs={1}
                 count={counts.total}
                 className="w-50"

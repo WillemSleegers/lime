@@ -13,6 +13,7 @@ import { SliderField } from "@/components/form/slider-field"
 
 import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
 
+import effectsData from "@/assets/data/effects.json"
 import { Effects } from "@/lib/types"
 import { usePersistedForm } from "@/hooks/use-persisted-form"
 import {
@@ -28,6 +29,13 @@ const formSchemaEffects = z.object({
     .number()
     .min(1, { message: "Must be a positive number." }) as z.ZodNumber,
 })
+
+// effect_size range is static at build time — compute once at module load.
+const EFFECT_SIZES = effectsData
+  .map((d) => d.effect_size)
+  .filter((v): v is number => v != null)
+const EFFECT_SIZE_MIN = Math.min(...EFFECT_SIZES)
+const EFFECT_SIZE_MAX = Math.max(...EFFECT_SIZES)
 
 type FilterEffectsProps = {
   data: Effects
@@ -45,12 +53,8 @@ export const FilterEffects = (props: FilterEffectsProps) => {
     setFilterOpen,
   } = props
 
-  const effectSizes = data.map((datum) => datum.effect_size).filter((v): v is number => v !== null)
-  const effect_size_min = Math.min(...effectSizes)
-  const effect_size_max = Math.max(...effectSizes)
-
   const defaults = {
-    effect_size: [effect_size_min, effect_size_max],
+    effect_size: [EFFECT_SIZE_MIN, EFFECT_SIZE_MAX],
     sample_size: 1,
   }
 
@@ -87,8 +91,8 @@ export const FilterEffects = (props: FilterEffectsProps) => {
               control={form.control}
               name="effect_size"
               label="Effect size"
-              min={effect_size_min}
-              max={effect_size_max}
+              min={EFFECT_SIZE_MIN}
+              max={EFFECT_SIZE_MAX}
               step={0.1}
               minStepsBetweenThumbs={0.1}
             />

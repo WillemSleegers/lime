@@ -128,14 +128,6 @@ const MetaAnalysisPage = () => {
 
   // Run meta-analysis function (called manually via button)
   const runAnalysis = async () => {
-    console.log(
-      "[meta-analysis] runAnalysis called, webR:",
-      !!webR.current,
-      "data:",
-      !!data,
-      "data rows:",
-      data?.length,
-    )
     if (!webR.current || !data) return
 
     try {
@@ -217,10 +209,6 @@ const MetaAnalysisPage = () => {
     }
   }
 
-  useEffect(() => {
-    console.log(status)
-  }, [status])
-
   return (
     <main className="page-width page-container space-y-8">
       <div className="text-center space-y-4">
@@ -247,28 +235,24 @@ const MetaAnalysisPage = () => {
         <TabsList className="w-full justify-start">
           <TabsTrigger
             value="criteria"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
           >
             Step 1: Filter studies
           </TabsTrigger>
           <TabsTrigger
             value="highlights"
             disabled={!unlockedTabs.highlights}
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
           >
             Step 2: Review selection
           </TabsTrigger>
           <TabsTrigger
             value="analysis"
             disabled={!unlockedTabs.analysis}
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
           >
             Step 3: Run meta-analysis
           </TabsTrigger>
           <TabsTrigger
             value="moderator"
             disabled={!unlockedTabs.moderator}
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground dark:data-[state=active]:bg-primary dark:data-[state=active]:text-primary-foreground"
           >
             Step 4: Moderator analysis
           </TabsTrigger>

@@ -19,6 +19,7 @@ import {
   PAPER_OPEN_ACCESS_OPTIONS,
 } from "@/constants/constants-filters"
 
+import papersData from "@/assets/data/papers.json"
 import { Papers } from "@/lib/types"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { usePersistedForm } from "@/hooks/use-persisted-form"
@@ -30,6 +31,10 @@ import {
 
 const STORAGE_KEY = "lime-data-explorer-papers"
 const formSchemaPapers = z.object(paperFiltersFields)
+
+// paper_year range is static at build time — compute once at module load.
+const PAPER_YEAR_MIN = Math.min(...papersData.map((p) => p.paper_year))
+const PAPER_YEAR_MAX = Math.max(...papersData.map((p) => p.paper_year))
 
 type FilterPapersProps = {
   data: Papers
@@ -48,10 +53,7 @@ export const FilterPapers = (props: FilterPapersProps) => {
   } = props
 
   const defaults = {
-    paper_year: [
-      Math.min(...data.map((datum) => datum.paper_year)),
-      Math.max(...data.map((datum) => datum.paper_year)),
-    ],
+    paper_year: [PAPER_YEAR_MIN, PAPER_YEAR_MAX],
     paper_type: PAPER_TYPE_OPTIONS.map((option) => option.value),
     paper_open_access: PAPER_OPEN_ACCESS_OPTIONS.map((option) => option.value),
   }
@@ -89,8 +91,8 @@ export const FilterPapers = (props: FilterPapersProps) => {
               control={form.control}
               name="paper_year"
               label="Publication year"
-              min={Math.min(...data.map((datum) => datum.paper_year))}
-              max={Math.max(...data.map((datum) => datum.paper_year))}
+              min={PAPER_YEAR_MIN}
+              max={PAPER_YEAR_MAX}
               minStepsBetweenThumbs={1}
               className="w-25"
             />

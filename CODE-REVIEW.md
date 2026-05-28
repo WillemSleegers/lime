@@ -75,8 +75,6 @@ But the data column `intervention_mechanism` is a comma-joined string ("informat
 **22. `Filters.tsx` calls `form.watch()` at render** — [components/meta-analysis/filters.tsx:175-176](components/meta-analysis/filters.tsx#L175)
 `form.watch()` returns the whole values object and triggers a re-render on every field change; `useFilterCounts(values)` then re-runs ~18 `applyFilters(data, ...)` passes against the full dataset every keystroke. Debounce, or scope subscriptions per group.
 
-**23. `meta-analysis/highlights.tsx` does ~12 sequential passes over `data` on every render** — see lines 95-232. With React Compiler this *might* memoize, but the dependency is the ref-equal `data` prop, so it's effectively a one-time hit; still, it should be in `useMemo` with `data` as the dep, or split into smaller memoized helpers.
-
 **24. `defaults` and `min/max` for sliders recomputed each render** — every filter component does `Math.min(...data.map(...))` / `Math.max(...)` on render. Hoist to module-level constants (the JSON is static).
 
 ## UI / UX
