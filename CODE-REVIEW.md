@@ -52,7 +52,8 @@ But the reducer does `Math.round(partialSum) + a` instead of `partialSum + a`, s
 ## Architectural issues
 
 **15. Hot-loop static-imported JSON loads everything client-side** — [app/data-explorer/page.tsx:33-39](app/data-explorer/page.tsx#L33), [components/meta-analysis/filters.tsx:29](components/meta-analysis/filters.tsx#L29)
-Every page that imports `@/assets/data/*.json` ships the full JSON to the client. `data.json` is the joined dataset — likely the largest. Same with `lib/filter-counts.ts` and `constants-meta-analysis.ts` both static-importing `data.json` just to compute min/max year. Move these counts/min-max into a small pre-computed JSON (or precompute at build) so the analytics pages don't haul the entire joined dataset to compute three numbers.
+
+Investigated and closed without changes. The claim that other pages incidentally ship `data.json` doesn't hold — Next App Router code-splits per route, `data.json` only lives in the chunks of pages that import it (meta-analysis + data-explorer), and both genuinely need the full dataset for filtering/counting. Trimming `lib/types.ts` and `constants-meta-analysis.ts` would not shrink any per-page bundle. Non-data pages (about/contact/faq/contributors) don't pull `lib/types.ts` transitively, so there's no leak there either.
 
 **16. Filter logic is duplicated three times** — `lib/data-explorer-utils.ts` (one form), `hooks/use-filter-counts.ts::applyFilters` (another form), each `components/data-explorer/filters/*.tsx` (a third form per level). They diverge on edge cases (the `>=` vs `>` bug above is exactly this) and on null handling. Consolidate behind a single `applyFilters(data, predicates)` that all callers use.
 
