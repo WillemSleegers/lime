@@ -165,6 +165,94 @@
     "sample_description": "young girls (9-10 years-old) from NJ, US"
   },
   {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 40,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students at a Midwestern university"
+  },
+  {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 40,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students at a Midwestern university"
+  },
+  {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 40,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students at a Midwestern university"
+  },
+  {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 40,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students at a Midwestern university"
+  },
+  {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 40,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students at a Midwestern university"
+  },
+  {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "study": 1,
+    "sample": 7,
+    "sample_n": 40,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students at a Midwestern university"
+  },
+  {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "study": 1,
+    "sample": 8,
+    "sample_n": 40,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students at a Midwestern university"
+  },
+  {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "study": 1,
+    "sample": 9,
+    "sample_n": 40,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students at a Midwestern university"
+  },
+  {
     "paper": 9,
     "paper_label": "Carfora et al. (2017a)",
     "study": 2,
@@ -1327,72 +1415,6 @@
     "sample_description": "University of Melbourne participant pool"
   },
   {
-    "paper": 59,
-    "paper_label": "Piazza et al. (2022)",
-    "study": 1,
-    "sample": 2,
-    "sample_n": 59,
-    "sample_country": "United Kingdom",
-    "sample_type": "university",
-    "sample_representative": "no",
-    "sample_description": "students from Lancaster University (UK)"
-  },
-  {
-    "paper": 59,
-    "paper_label": "Piazza et al. (2022)",
-    "study": 1,
-    "sample": 3,
-    "sample_n": 68,
-    "sample_country": "United Kingdom",
-    "sample_type": "university",
-    "sample_representative": "no",
-    "sample_description": "students from Lancaster University (UK)"
-  },
-  {
-    "paper": 59,
-    "paper_label": "Piazza et al. (2022)",
-    "study": 1,
-    "sample": 4,
-    "sample_n": 80,
-    "sample_country": "Germany",
-    "sample_type": "university",
-    "sample_representative": "no",
-    "sample_description": "students from Johannes Gutenberg-University Mainz (Germany)"
-  },
-  {
-    "paper": 59,
-    "paper_label": "Piazza et al. (2022)",
-    "study": 1,
-    "sample": 5,
-    "sample_n": 62,
-    "sample_country": "Germany",
-    "sample_type": "university",
-    "sample_representative": "no",
-    "sample_description": "students from Johannes Gutenberg-University Mainz (Germany)"
-  },
-  {
-    "paper": 59,
-    "paper_label": "Piazza et al. (2022)",
-    "study": 1,
-    "sample": 6,
-    "sample_n": 28,
-    "sample_country": "Australia",
-    "sample_type": "university, public",
-    "sample_representative": "no",
-    "sample_description": "students from La Trobe (Australia) and non-students living in Melbourne via targeted Facebook advertisements"
-  },
-  {
-    "paper": 59,
-    "paper_label": "Piazza et al. (2022)",
-    "study": 1,
-    "sample": 7,
-    "sample_n": 28,
-    "sample_country": "Australia",
-    "sample_type": "university, public",
-    "sample_representative": "no",
-    "sample_description": "students from La Trobe (Australia) and non-students living in Melbourne via targeted Facebook advertisements"
-  },
-  {
     "paper": 60,
     "paper_label": "Schwitzgebel et al. (2021)",
     "study": 1,
@@ -2021,6 +2043,39 @@
     "sample_description": "patrons of in-store restaurants of a retail chain in the UK"
   },
   {
+    "paper": 88,
+    "paper_label": "Zinn et al. (2023)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 100,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Australian and British Prolific workers"
+  },
+  {
+    "paper": 88,
+    "paper_label": "Zinn et al. (2023)",
+    "study": 1,
+    "sample": 8,
+    "sample_n": 99,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Australian and British Prolific workers"
+  },
+  {
+    "paper": 88,
+    "paper_label": "Zinn et al. (2023)",
+    "study": 1,
+    "sample": 9,
+    "sample_n": 100,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Australian and British Prolific workers"
+  },
+  {
     "paper": 89,
     "paper_label": "Carfora et al. (2019b)",
     "study": 1,
@@ -2250,6 +2305,50 @@
     "sample_type": "university",
     "sample_representative": "no",
     "sample_description": "students recruited in the library of a Dutch university"
+  },
+  {
+    "paper": 113,
+    "paper_label": "Stewart (2021)",
+    "study": 2,
+    "sample": 2,
+    "sample_n": 398,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Data points represent meal choices from a college meal plan"
+  },
+  {
+    "paper": 113,
+    "paper_label": "Stewart (2021)",
+    "study": 2,
+    "sample": 3,
+    "sample_n": 384,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Data points represent meal choices from a college meal plan"
+  },
+  {
+    "paper": 113,
+    "paper_label": "Stewart (2021)",
+    "study": 3,
+    "sample": 2,
+    "sample_n": 35,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Data points represent meal choices from a college meal plan"
+  },
+  {
+    "paper": 113,
+    "paper_label": "Stewart (2021)",
+    "study": 3,
+    "sample": 3,
+    "sample_n": 31,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Data points represent meal choices from a college meal plan"
   },
   {
     "paper": 116,
@@ -4742,6 +4841,72 @@
     "sample_description": "Finnish-speaking persons aged 18–65 whose diet contained meat"
   },
   {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 217,
+    "sample_country": "Belgium",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of target products sold"
+  },
+  {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 1969,
+    "sample_country": "Belgium",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of target products sold"
+  },
+  {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "study": 2,
+    "sample": 2,
+    "sample_n": 119,
+    "sample_country": "Belgium",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of products selected"
+  },
+  {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "study": 2,
+    "sample": 3,
+    "sample_n": 223,
+    "sample_country": "Belgium",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of products selected"
+  },
+  {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "study": 2,
+    "sample": 4,
+    "sample_n": 207,
+    "sample_country": "Belgium",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of products selected"
+  },
+  {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "study": 2,
+    "sample": 5,
+    "sample_n": 148,
+    "sample_country": "Belgium",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of products selected"
+  },
+  {
     "paper": 416,
     "paper_label": "Piernas et al. (2021)",
     "study": 1,
@@ -5094,6 +5259,28 @@
     "sample_description": "US Prolific workers"
   },
   {
+    "paper": 472,
+    "paper_label": "Çoker et al. (2025)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 12,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "datapoints represent worksite cafeterias in the UK"
+  },
+  {
+    "paper": 472,
+    "paper_label": "Çoker et al. (2025)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 13,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "datapoints represent worksite cafeterias in the UK"
+  },
+  {
     "paper": 473,
     "paper_label": "Marty et al. (2025)",
     "study": 1,
@@ -5237,6 +5424,28 @@
     "sample_description": "Participants who are at least 18 years old, fluent in Dutch and not vegetarian, vegan, or pescatarian. The majority of them 74% had received higher education."
   },
   {
+    "paper": 496,
+    "paper_label": "Pandey et al. (2025)",
+    "study": 1,
+    "sample": 1,
+    "sample_n": 1290,
+    "sample_country": "Denmark",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "meal purchases at three educational context canteens in Denmark"
+  },
+  {
+    "paper": 496,
+    "paper_label": "Pandey et al. (2025)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 1290,
+    "sample_country": "Denmark",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "meal purchases at three educational context canteens in Denmark"
+  },
+  {
     "paper": 500,
     "paper_label": "Dannenberg et al. (2024)",
     "study": 1,
@@ -5378,5 +5587,223 @@
     "sample_type": "panel",
     "sample_representative": "yes",
     "sample_description": "Austrian residents representative for the Austrian population concerning gender, age, state, and education level"
+  },
+  {
+    "paper": 517,
+    "paper_label": "Fonseca & De Groeve (2025)",
+    "study": 1,
+    "sample": 2,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "UK participants from Prolific"
+  },
+  {
+    "paper": 517,
+    "paper_label": "Fonseca & De Groeve (2025)",
+    "study": 1,
+    "sample": 4,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "UK participants from Prolific"
+  },
+  {
+    "paper": 528,
+    "paper_label": "Piazza et al. (2018)",
+    "study": 3,
+    "sample": 2,
+    "sample_n": 91,
+    "sample_country": "United States",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Amazon MTurk workers based on United States"
+  },
+  {
+    "paper": 528,
+    "paper_label": "Piazza et al. (2018)",
+    "study": 3,
+    "sample": 3,
+    "sample_n": 87,
+    "sample_country": "United States",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Amazon MTurk workers based on United States"
+  },
+  {
+    "paper": 528,
+    "paper_label": "Piazza et al. (2018)",
+    "study": 3,
+    "sample": 4,
+    "sample_n": 93,
+    "sample_country": "United States",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Amazon MTurk workers based on United States"
+  },
+  {
+    "paper": 855,
+    "paper_label": "Friis et al. (2017)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 24,
+    "sample_country": "Denmark",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants were recruited via posters, social media, word-of-mouth, and a study volunteer website"
+  },
+  {
+    "paper": 855,
+    "paper_label": "Friis et al. (2017)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 33,
+    "sample_country": "Denmark",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants were recruited via posters, social media, word-of-mouth, and a study volunteer website"
+  },
+  {
+    "paper": 855,
+    "paper_label": "Friis et al. (2017)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 31,
+    "sample_country": "Denmark",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants were recruited via posters, social media, word-of-mouth, and a study volunteer website"
+  },
+  {
+    "paper": 855,
+    "paper_label": "Friis et al. (2017)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 24,
+    "sample_country": "Denmark",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants were recruited via posters, social media, word-of-mouth, and a study volunteer website"
+  },
+  {
+    "paper": 855,
+    "paper_label": "Friis et al. (2017)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 33,
+    "sample_country": "Denmark",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants were recruited via posters, social media, word-of-mouth, and a study volunteer website"
+  },
+  {
+    "paper": 855,
+    "paper_label": "Friis et al. (2017)",
+    "study": 1,
+    "sample": 7,
+    "sample_n": 31,
+    "sample_country": "Denmark",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants were recruited via posters, social media, word-of-mouth, and a study volunteer website"
+  },
+  {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 218,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel, public",
+    "sample_representative": "no",
+    "sample_description": "UK participants from Prolific"
+  },
+  {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 218,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel, public",
+    "sample_representative": "no",
+    "sample_description": "UK participants from Prolific"
+  },
+  {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 218,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel, public",
+    "sample_representative": "no",
+    "sample_description": "UK participants from Prolific"
+  },
+  {
+    "paper": 1050,
+    "paper_label": "Murray et al. (2026)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 1721,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Cafeteria meals purchased at a UK university"
+  },
+  {
+    "paper": 1050,
+    "paper_label": "Murray et al. (2026)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 1953,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Cafeteria meals purchased at a UK university"
+  },
+  {
+    "paper": 1051,
+    "paper_label": "Denver et al. (2026)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 941,
+    "sample_country": "Denmark",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "Danish participants recruited via the panel provider Norstat"
+  },
+  {
+    "paper": 1051,
+    "paper_label": "Denver et al. (2026)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 937,
+    "sample_country": "Denmark",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "Danish participants recruited via the panel provider Norstat"
+  },
+  {
+    "paper": 1052,
+    "paper_label": "Ardesch et al. (2025)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 1245,
+    "sample_country": "Netherlands",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Visitors to a university cafeteria at a Dutch univesity"
+  },
+  {
+    "paper": 1052,
+    "paper_label": "Ardesch et al. (2025)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 1361,
+    "sample_country": "Netherlands",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Visitors to a university cafeteria at a Dutch univesity"
   }
 ]

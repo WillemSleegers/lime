@@ -69,6 +69,17 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "study": 1,
+    "study_n": 319,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 9,
     "paper_label": "Carfora et al. (2017a)",
     "study": 2,
@@ -449,19 +460,6 @@
     "study_randomization": "yes"
   },
   {
-    "paper": 59,
-    "paper_label": "Piazza et al. (2022)",
-    "study": 1,
-    "study_n": 325,
-    "study_preregistered": "yes",
-    "study_preregistration_link": "https://aspredicted.org/tj6a3.pdf",
-    "study_data_available": "yes",
-    "study_data_link": "https://osf.io/u4j58/",
-    "study_condition_assignment": "individual",
-    "study_design": "between",
-    "study_randomization": "no"
-  },
-  {
     "paper": 60,
     "paper_label": "Schwitzgebel et al. (2021)",
     "study": 1,
@@ -702,6 +700,19 @@
     "study_randomization": "no"
   },
   {
+    "paper": 88,
+    "paper_label": "Zinn et al. (2023)",
+    "study": 1,
+    "study_n": 899,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/6cjb8",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/uhxmb/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 89,
     "paper_label": "Carfora et al. (2019b)",
     "study": 1,
@@ -758,6 +769,30 @@
     "study_data_available": "yes",
     "study_data_link": "https://osf.io/k2pcn/",
     "study_condition_assignment": "individual",
+    "study_design": "within",
+    "study_randomization": "no"
+  },
+  {
+    "paper": 113,
+    "paper_label": "Stewart (2021)",
+    "study": 2,
+    "study_n": 782,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://www.researchgate.net/publication/352681174_Can_simple_nudges_reduce_meat_consumption?channel=doi&linkId=60d30e41a6fdcce58bab396a&showFulltext=true",
+    "study_condition_assignment": "time point",
+    "study_design": "within",
+    "study_randomization": "no"
+  },
+  {
+    "paper": 113,
+    "paper_label": "Stewart (2021)",
+    "study": 3,
+    "study_n": 66,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://www.researchgate.net/publication/352681174_Can_simple_nudges_reduce_meat_consumption?channel=doi&linkId=60d30e41a6fdcce58bab396a&showFulltext=true",
+    "study_condition_assignment": "time point",
     "study_design": "within",
     "study_randomization": "no"
   },
@@ -1517,6 +1552,30 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "study": 1,
+    "study_n": 4302,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/d2k6q/",
+    "study_condition_assignment": "time point",
+    "study_design": "within",
+    "study_randomization": "no"
+  },
+  {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "study": 2,
+    "study_n": 697,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/d2k6q/",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 416,
     "paper_label": "Piernas et al. (2021)",
     "study": 1,
@@ -1637,6 +1696,18 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 472,
+    "paper_label": "Çoker et al. (2025)",
+    "study": 1,
+    "study_n": 25,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/h7zkf",
+    "study_data_available": "no",
+    "study_condition_assignment": "cluster",
+    "study_design": "mixed",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 473,
     "paper_label": "Marty et al. (2025)",
     "study": 1,
@@ -1685,6 +1756,19 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "study": 1,
+    "study_n": 875,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/cfkmq/?view_only=1abf1754f7284593a8824ae3d8573373",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/cfkmq/overview?view_only=1abf1754f7284593a8824ae3d8573373",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 493,
     "paper_label": "Weijers et al. (2024)",
     "study": 1,
@@ -1695,6 +1779,17 @@
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"
+  },
+  {
+    "paper": 496,
+    "paper_label": "Pandey et al. (2025)",
+    "study": 1,
+    "study_n": 254,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "cluster",
+    "study_design": "within",
+    "study_randomization": "no"
   },
   {
     "paper": 500,
@@ -1745,5 +1840,76 @@
     "study_condition_assignment": "individual",
     "study_design": "between",
     "study_randomization": "yes"
+  },
+  {
+    "paper": 517,
+    "paper_label": "Fonseca & De Groeve (2025)",
+    "study": 1,
+    "study_n": 421,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/u695k/files/ykwma?view_only=4a035eb0961e4d94983c2f35ee37175d",
+    "study_data_available": "yes",
+    "study_data_link": "https://osf.io/u695k/files/osfstorage/67f01969251ead9753cf6d19",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 528,
+    "paper_label": "Piazza et al. (2018)",
+    "study": 3,
+    "study_n": 271,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 855,
+    "paper_label": "Friis et al. (2017)",
+    "study": 1,
+    "study_n": 88,
+    "study_preregistered": "no",
+    "study_data_available": "yes",
+    "study_data_link": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0176028#sec024",
+    "study_condition_assignment": "individual",
+    "study_design": "crossover",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 1050,
+    "paper_label": "Murray et al. (2026)",
+    "study": 1,
+    "study_n": 3674,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://aspredicted.org/9rjc-xj2x.pdf",
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "within",
+    "study_randomization": "no"
+  },
+  {
+    "paper": 1051,
+    "paper_label": "Denver et al. (2026)",
+    "study": 1,
+    "study_n": 1878,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_condition_assignment": "individual",
+    "study_design": "between",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 1052,
+    "paper_label": "Ardesch et al. (2025)",
+    "study": 1,
+    "study_n": 4099,
+    "study_preregistered": "yes",
+    "study_preregistration_link": "https://osf.io/q4hjm/overview",
+    "study_data_available": "no",
+    "study_condition_assignment": "time point",
+    "study_design": "within",
+    "study_randomization": "no"
   }
 ]

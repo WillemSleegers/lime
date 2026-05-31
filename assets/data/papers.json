@@ -65,6 +65,17 @@
     "paper_open_access": "paywalled"
   },
   {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "paper_title": "Motivating sustainable food choices: The role of nudges, value orientation, and information provision",
+    "paper_authors": "Campbell-Arvai, V.; Arvai, J.; Kalof, L.",
+    "paper_year": 2014,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Environment and Behavior",
+    "paper_link": "https://doi.org/10.1177/0013916512469099",
+    "paper_open_access": "paywalled"
+  },
+  {
     "paper": 9,
     "paper_label": "Carfora et al. (2017a)",
     "paper_title": "Correlational study and randomised controlled trial for understanding and changing red meat consumption: the role of eating identities",
@@ -337,17 +348,6 @@
     "paper_open_access": "paywalled"
   },
   {
-    "paper": 59,
-    "paper_label": "Piazza et al. (2022)",
-    "paper_title": "Monitoring a meat-free pledge with smartphones: An experimental study",
-    "paper_authors": "Piazza, J.; Gregson, R.; Kordoni, A.; Pfeiler, T. M.; Ruby, M. B.; Ellis, D. A.; Sahin, E.; Reith, M.",
-    "paper_year": 2022,
-    "paper_type": "peer reviewed paper",
-    "paper_source": "Appetite",
-    "paper_link": "https://doi.org/10.1016/j.appet.2021.105726",
-    "paper_open_access": "open access"
-  },
-  {
     "paper": 60,
     "paper_label": "Schwitzgebel et al. (2021)",
     "paper_title": "Students eat less meat after studying meat ethics",
@@ -535,6 +535,17 @@
     "paper_open_access": "open access"
   },
   {
+    "paper": 88,
+    "paper_label": "Zinn et al. (2023)",
+    "paper_title": "Increasing meat-free meal selections: The role of social identity salience and identity-related meal names",
+    "paper_authors": "Zinn, A. K.; Zhu, O. Y.; Dolnicar, S.",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2023.107067",
+    "paper_open_access": "open access"
+  },
+  {
     "paper": 89,
     "paper_label": "Carfora et al. (2019b)",
     "paper_title": "How to reduce red and processed meat consumption by daily text messages targeting environment or health benefits",
@@ -587,6 +598,16 @@
     "paper_type": "preprint",
     "paper_source": "OSF",
     "paper_link": "https://osf.io/preprints/psyarxiv/8y2me",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 113,
+    "paper_label": "Stewart (2021)",
+    "paper_title": "Can simple nudges reduce meat consumption?",
+    "paper_authors": "Stewart, G.",
+    "paper_year": 2021,
+    "paper_type": "report",
+    "paper_link": "http://dx.doi.org/10.13140/RG.2.2.34307.02089",
     "paper_open_access": "open access"
   },
   {
@@ -1162,6 +1183,17 @@
     "paper_open_access": "open access"
   },
   {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "paper_title": "Mock meat in the butchery: Nudging consumers toward meat substitutes",
+    "paper_authors": "Vandenbroele, J.; Slabbinck, H.; Van Kerckhove, A.; Vermeir, I.",
+    "paper_year": 2021,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Organizational Behavior and Human Decision Processes",
+    "paper_link": "https://doi.org/10.1016/j.obhdp.2019.09.004",
+    "paper_open_access": "paywalled"
+  },
+  {
     "paper": 416,
     "paper_label": "Piernas et al. (2021)",
     "paper_title": "Estimating the effect of moving meat-free products to the meat aisle on sales of meat and meat-free products: A non-randomised controlled intervention study in a large UK supermarket chain",
@@ -1261,6 +1293,17 @@
     "paper_open_access": "open access"
   },
   {
+    "paper": 472,
+    "paper_label": "Çoker et al. (2025)",
+    "paper_title": "Testing the effect of a dynamic descriptive social norm message on meat-free food selection in worksite cafeterias: A randomized controlled trial",
+    "paper_authors": "Çoker, E. N.; Pechey, R.; Jebb, S. A.",
+    "paper_year": 2025,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "BMC Medicine",
+    "paper_link": "https://doi.org/10.1186/s12916-025-04302-9",
+    "paper_open_access": "open access"
+  },
+  {
     "paper": 473,
     "paper_label": "Marty et al. (2025)",
     "paper_title": "The “Eat Less Meat” one-month challenge: a randomized controlled trial of a meat reduction pledge intervention among French university students",
@@ -1305,6 +1348,17 @@
     "paper_open_access": "open access"
   },
   {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "paper_title": "Masculinizing plant-based diets as an appeal for dietary change among men",
+    "paper_authors": "Fonseca, R. P.; De Groeve, B.; Graça, J.",
+    "paper_year": 2025,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Food Quality and Preference",
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2024.105341",
+    "paper_open_access": "open access"
+  },
+  {
     "paper": 493,
     "paper_label": "Weijers et al. (2024)",
     "paper_title": "Nudging towards sustainable dining: Exploring menu nudges to promote vegetarian meal choices in restaurants",
@@ -1313,6 +1367,17 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2024.107376",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 496,
+    "paper_label": "Pandey et al. (2025)",
+    "paper_title": "Nudging strategies to promote plant-based and sustainable food consumption in canteens",
+    "paper_authors": "Pandey, S.; Olsen, A.; Thomsen, M.",
+    "paper_year": 2025,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2025.107874",
     "paper_open_access": "open access"
   },
   {
@@ -1357,6 +1422,72 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2025.108242",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 517,
+    "paper_label": "Fonseca & De Groeve (2025)",
+    "paper_title": "‘Meating’ the animal and moral emotions: Exploring animal caring and cruelty appeals for dietary change",
+    "paper_authors": "Fonseca, R. P.; De Groeve, B.",
+    "paper_year": 2025,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2025.108018",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 528,
+    "paper_label": "Piazza et al. (2018)",
+    "paper_title": "Are baby animals less appetizing? Tenderness toward baby animals and appetite for meat",
+    "paper_authors": "Piazza, J.; McLatchie, N.; Olesen, C.",
+    "paper_year": 2018,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Anthrozoös",
+    "paper_link": "https://doi.org/10.1080/08927936.2018.1455456",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 855,
+    "paper_label": "Friis et al. (2017)",
+    "paper_title": "Comparison of three nudge interventions (priming, default option, and perceived variety) to promote vegetable consumption in a self-service buffet setting",
+    "paper_authors": "Friis, R.; Skov, L. R.; Olsen, A.; Appleton, K. M.; Saulais, L.; Dinnella, C.; Hartwell, H.; Depezay, L.; Monteleone, E.; Giboreau, A.; Perez-Cueto, F. J. A.",
+    "paper_year": 2017,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "PLOS ONE",
+    "paper_link": "https://doi.org/10.1371/journal.pone.0176028",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 1050,
+    "paper_label": "Murray et al. (2026)",
+    "paper_title": "Seeing animals, choosing plants: Evidence from a cafeteria field study on food choice",
+    "paper_authors": "Murray, S.; Meleady, R., Hodson, G.",
+    "paper_year": 2026,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Journal of Environmental Psychology",
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2026.102988",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 1051,
+    "paper_label": "Denver et al. (2026)",
+    "paper_title": "Double nudges can accelerate the transition towards more climate-friendly diets – experiment involving default meals and carbon footprint information",
+    "paper_authors": "Denver, S.; Nordström, J.; Christensen, T.",
+    "paper_year": 2026,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Journal of Cleaner Production",
+    "paper_link": "https://www.sciencedirect.com/science/article/pii/S0959652626001563?via%3Dihub",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 1052,
+    "paper_label": "Ardesch et al. (2025)",
+    "paper_title": "Reducing meat consumption through default nudging: a field study",
+    "paper_authors": "Ardesch, T. F.; Klaperski-van der Wal, S.; Nijssen, S. R. R.; Müller, B. C. N.",
+    "paper_year": 2025,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Frontiers in Psychology",
+    "paper_link": "https://doi.org/10.3389/fpsyg.2025.1439641",
     "paper_open_access": "open access"
   }
 ]

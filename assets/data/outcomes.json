@@ -88,6 +88,17 @@
     "outcome_measurement_type": "survey"
   },
   {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meal choices",
+    "outcome_description": "Percentage of participants choosing a non-meat option",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegetarian consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
     "paper": 9,
     "paper_label": "Carfora et al. (2017a)",
     "study": 2,
@@ -1045,17 +1056,6 @@
     "outcome_measurement_type": "survey"
   },
   {
-    "paper": 59,
-    "paper_label": "Piazza et al. (2022)",
-    "study": 1,
-    "outcome": 1,
-    "outcome_label": "food frequency of beef, pork, chicken, turkey, and other meats",
-    "outcome_description": "Daily consumption of beef, pork, chicken, turkey, and other meats",
-    "outcome_category": "behavior",
-    "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "food diary"
-  },
-  {
     "paper": 60,
     "paper_label": "Schwitzgebel et al. (2021)",
     "study": 1,
@@ -1331,6 +1331,17 @@
     "outcome_measurement_type": "sales data"
   },
   {
+    "paper": 88,
+    "paper_label": "Zinn et al. (2023)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "vegetarian burger selection",
+    "outcome_description": "Percentage of participants selecting a vegetarian burger",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegetarian consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
     "paper": 89,
     "paper_label": "Carfora et al. (2019b)",
     "study": 1,
@@ -1461,6 +1472,28 @@
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat attitude",
     "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 113,
+    "paper_label": "Stewart (2021)",
+    "study": 2,
+    "outcome": 1,
+    "outcome_label": "Meat meals selected",
+    "outcome_description": "The number of students who selected the meat dish for their meal plan",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 113,
+    "paper_label": "Stewart (2021)",
+    "study": 3,
+    "outcome": 1,
+    "outcome_label": "Meat meals selected",
+    "outcome_description": "The number of students who selected the meat dish for their meal plan",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "meal choice"
   },
   {
     "paper": 116,
@@ -2453,6 +2486,28 @@
     "outcome_measurement_type": "sales data"
   },
   {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "percentage chicken curry salad sales",
+    "outcome_description": "Percentage of curry salad sales that contained meat (vs. no meat)",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "study": 2,
+    "outcome": 1,
+    "outcome_label": "percentage meat-based sandwich spreads selected",
+    "outcome_description": "Percentage of sandwich spreads that contained meat (vs. no meat)",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
     "paper": 416,
     "paper_label": "Piernas et al. (2021)",
     "study": 1,
@@ -2594,6 +2649,17 @@
     "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 472,
+    "paper_label": "Çoker et al. (2025)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "weekly percentage of meat-free meal sales trial",
+    "outcome_description": "Percentage of weekly meat-free meal sales",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 473,
@@ -2783,6 +2849,17 @@
     "outcome_measurement_type": "meal choice"
   },
   {
+    "paper": 496,
+    "paper_label": "Pandey et al. (2025)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat-based plate post-intervention",
+    "outcome_description": "Quantity of meat-based meals in a purchased plate",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
     "paper": 500,
     "paper_label": "Dannenberg et al. (2024)",
     "study": 1,
@@ -2825,5 +2902,93 @@
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 517,
+    "paper_label": "Fonseca & De Groeve (2025)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "Willingness to change pork chop consumption",
+    "outcome_description": "Willingness to reduce pork chop consumption",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 528,
+    "paper_label": "Piazza et al. (2018)",
+    "study": 3,
+    "outcome": 1,
+    "outcome_label": "appetite for meat",
+    "outcome_description": "Participants rated how “appetizing” they found the meat on a sliding scale from 0 (Not at all appetizing) to 100 (Extremely appetizing)",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "meat hedonics",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 855,
+    "paper_label": "Friis et al. (2017)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "amount of chili con carne taken",
+    "outcome_description": "The amont of chili con carne (in grams) that participants took from the buffet.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "attitudes toward plant-based diets",
+    "outcome_description": "Participants were asked to rate plant-based diets using four semantic differential items on a 7-point scale: “bad” to “good”, “harmful” to “beneficial”, “unpleasant” to “pleasant”, “unenjoyable” to “enjoyable”",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "vegetarian attitude",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "willingness to follow a plant-based diet",
+    "outcome_description": "Participants rated their willingness to follow a plant-based diet with answer options ranging from 1 “not willing at all” (1) to “very willing” (7).",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "diet",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 1050,
+    "paper_label": "Murray et al. (2026)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat main meals sold",
+    "outcome_description": "The percentange of main meals sold that contained meat.",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 1051,
+    "paper_label": "Denver et al. (2026)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "plant-based steak",
+    "outcome_description": "The percentage of participants choosing the plant-based steak for their hypothetical meal, rather than beef, chicken, pork, or fish.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 1052,
+    "paper_label": "Ardesch et al. (2025)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat items sold",
+    "outcome_description": "The percentage of items sold that contained meat (vs. vegetarian).",
+    "outcome_category": "behavior",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
   }
 ]

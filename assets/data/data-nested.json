@@ -223,6 +223,82 @@
     ]
   },
   {
+    "paper": 8,
+    "paper_label": "Campbell-Arvai et al. (2014)",
+    "paper_authors": "Campbell-Arvai, V.; Arvai, J.; Kalof, L.",
+    "paper_title": "Motivating sustainable food choices: The role of nudges, value orientation, and information provision",
+    "paper_year": 2014,
+    "paper_link": "https://doi.org/10.1177/0013916512469099",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 319,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants received a menu listing only five appealing meat-free options. Participants were informed—verbally and in writing on the menu—that they could also consult a second menu with an array of popular non-vegetarian dining hall dishes that was posted on the wall approximately 3.5 m away from their table.",
+            "intervention_mechanism": "choice architecture: default",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants received a menu in which five appealing meat-free options were presented on the same menu as the meat options. The leaf symbol and accompanying text were not present, and thus meat-free options were not differentiated from those menu items containing meat."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants received a menu in which appealing meat-free options were presented on the same menu as the meat options but the meat-free options were differentiated by a stylized leaf symbol and accompanying text printed at the bottom of menu: \"Recent scientific studies have suggested that consuming less meat can help to reduce our environmental impact.\"",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants received a menu in which five appealing meat-free options were presented on the same menu as the meat options. The leaf symbol and accompanying text were not present, and thus meat-free options were not differentiated from those menu items containing meat."
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Participants received a menu listing only five appealing meat-free options which were accompanied by a stylized leaf symbol that directed participants to read the following text printed at the bottom of the menu: \"Recent scientific studies have suggested that consuming less meat can help to reduce our environmental impact.\" Participants were informed—verbally and in writing on the menu—that they could also consult a second menu with an array of popular non-vegetarian dining hall dishes that was posted on the wall approximately 3.5 m away from their table.",
+            "intervention_mechanism": "info: environment, choice architecture: default",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants received a menu in which five appealing meat-free options were presented on the same menu as the meat options. The leaf symbol and accompanying text were not present, and thus meat-free options were not differentiated from those menu items containing meat."
+          },
+          {
+            "intervention_condition": 6,
+            "intervention_description": "Participants received a menu listing only five unappealing meat-free options. Participants were informed—verbally and in writing on the menu—that they could also consult a second menu with an array of popular nonvegetarian dining hall dishes that was posted on the wall approximately 3.5 m away from their table.",
+            "intervention_mechanism": "choice architecture: default",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants received a menu in which five appealing meat-free options were presented on the same menu as the meat options; but, in this case, leaf symbol and accompanying text were not present, and thus meat-free options were not differentiated from those menu items containing meat."
+          },
+          {
+            "intervention_condition": 7,
+            "intervention_description": "Participants received a menu in which unappealing meat-free options were presented on the same menu as the meat options but the meat-free options were differentiated by a stylized leaf symbol and accompanying text: \"Recent scientific studies have suggested that consuming less meat can help to reduce our environmental impact.\"",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants received a menu in which five appealing meat-free options were presented on the same menu as the meat options; but, in this case, leaf symbol and accompanying text were not present, and thus meat-free options were not differentiated from those menu items containing meat."
+          },
+          {
+            "intervention_condition": 8,
+            "intervention_description": "Participants received a menu listing only five unappealing meat-free options which were accompanied by a stylized leaf symbol that directed participants to read the following text printed at the bottom of the menu: \"Recent scientific studies have suggested that consuming less meat can help to reduce our environmental impact.\" Participants were informed—verbally and in writing on the menu—that they could also consult a second menu with an array of popular non-vegetarian dining hall dishes that was posted on the wall approximately 3.5 m away from their table.",
+            "intervention_mechanism": "info: environment, choice architecture: default",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants received a menu in which five appealing meat-free options were presented on the same menu as the meat options; but, in this case, leaf symbol and accompanying text were not present, and thus meat-free options were not differentiated from those menu items containing meat."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants choosing a non-meat option"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 9,
     "paper_label": "Carfora et al. (2017a)",
     "paper_authors": "Carfora, V.; Caso, D.; Conner, M.",
@@ -1664,52 +1740,6 @@
     ]
   },
   {
-    "paper": 59,
-    "paper_label": "Piazza et al. (2022)",
-    "paper_authors": "Piazza, J.; Gregson, R.; Kordoni, A.; Pfeiler, T. M.; Ruby, M. B.; Ellis, D. A.; Sahin, E.; Reith, M.",
-    "paper_title": "Monitoring a meat-free pledge with smartphones: An experimental study",
-    "paper_year": 2022,
-    "paper_link": "https://doi.org/10.1016/j.appet.2021.105726",
-    "studies": [
-      {
-        "study": 1,
-        "study_n": 325,
-        "interventions": [
-          {
-            "intervention_condition": 2,
-            "intervention_description": "Participants were invited to take part in a 28-day commitment (experience sampling) to eat meat-free and they were given the opportunity to freely opt out of the pledge, by withdrawing from the study, or continue with it, by offering their written consent. Participants were encouraged to “do their best” to try to eat meat-free for the duration of the study.",
-            "intervention_mechanism": "goal pursuit: planning/pledge",
-            "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "in-person",
-            "intervention_medium_multicomponent": "no"
-          },
-          {
-            "intervention_condition": 4,
-            "intervention_description": "Participants were invited to take part in a 28-day commitment (experience sampling) to eat meat-free and they were given the opportunity to freely opt out of the pledge, by withdrawing from the study, or continue with it, by offering their written consent. Participants were encouraged to “do their best” to try to eat meat-free for the duration of the study.",
-            "intervention_mechanism": "goal pursuit: planning/pledge",
-            "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "in-person",
-            "intervention_medium_multicomponent": "no"
-          },
-          {
-            "intervention_condition": 6,
-            "intervention_description": "Participants were invited to take part in a 28-day commitment (experience sampling) to eat meat-free and they were given the opportunity to freely opt out of the pledge, by withdrawing from the study, or continue with it, by offering their written consent. Participants were encouraged to “do their best” to try to eat meat-free for the duration of the study.",
-            "intervention_mechanism": "goal pursuit: planning/pledge",
-            "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "in-person",
-            "intervention_medium_multicomponent": "no"
-          }
-        ],
-        "outcomes": [
-          {
-            "outcome": 1,
-            "outcome_description": "Daily consumption of beef, pork, chicken, turkey, and other meats"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "paper": 60,
     "paper_label": "Schwitzgebel et al. (2021)",
     "paper_authors": "Schwitzgebel, E.; Cokelet, B.; Singer, P.",
@@ -2424,6 +2454,46 @@
     ]
   },
   {
+    "paper": 88,
+    "paper_label": "Zinn et al. (2023)",
+    "paper_authors": "Zinn, A. K.; Zhu, O. Y.; Dolnicar, S.",
+    "paper_title": "Increasing meat-free meal selections: The role of social identity salience and identity-related meal names",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1016/j.appet.2023.107067",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 899,
+        "interventions": [
+          {
+            "intervention_condition": 8,
+            "intervention_description": "Participants completed an identity manipulation: Please think of yourself as an individual (personal identity). Please write at least 4–5 sentences (25 words) about the following topic: What are things that you personally do ... often? ... rarely? ... well? ... badly?. While asking about both negative and positive aspects, this manipulation aimed to activate a specific identity without emotional confounds. Meal name manipulation: the vegetarian burgers were labeled as a sustainable halloumi burger and a sustainable falafel burger.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text, label",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "Participants completed an identity manipulation: Please think of yourself as an individual (personal identity). Please write at least 4–5 sentences (25 words) about the following topic: What are things that you personally do ... often? ... rarely? ... well? ... badly?. Meal name manipulation: the vegetarian burgers were labeled as a halloumi burger and a falafel burger."
+          },
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants completed an identity manipulation: Please think of yourself as a person that cares about environmental sustainability (sustainable social identity). Please write at least 4–5 sentences (25 words) about the following topic: What are things that you and other people that care about environmental sustainability do ... often? ... rarely? ... well? ... badly? While asking about both negative and positive aspects, this manipulation aimed to activate a specific identity without emotional confounds. Meal name manipulation: the vegetarian burgers were labeled as a halloumi burger and a falafel burger.",
+            "intervention_mechanism": "identity/reputation",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text, label",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "Participants completed an identity manipulation: Please think of yourself as an individual (personal identity). Please write at least 4–5 sentences (25 words) about the following topic: What are things that you personally do ... often? ... rarely? ... well? ... badly?. Meal name manipulation: the vegetarian burgers were labeled as a halloumi burger and a falafel burger."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants selecting a vegetarian burger"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 89,
     "paper_label": "Carfora et al. (2019b)",
     "paper_authors": "Carfora, V.; Catellania, P.; Casob, D.; Conner, M.",
@@ -2660,6 +2730,58 @@
           {
             "outcome": 1,
             "outcome_description": "Average score on the Meat Commitment Scale"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 113,
+    "paper_label": "Stewart (2021)",
+    "paper_authors": "Stewart, G.",
+    "paper_title": "Can simple nudges reduce meat consumption?",
+    "paper_year": 2021,
+    "paper_link": "http://dx.doi.org/10.13140/RG.2.2.34307.02089",
+    "studies": [
+      {
+        "study": 2,
+        "study_n": 782,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "The order of the meals was changed and the vegetarian option appeared first on the meal selection form.",
+            "intervention_mechanism": "choice architecture: visibility/salience/ease",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "The order of the meals was not changed and the meat option appeared first on the meal selection form."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "The number of students who selected the meat dish for their meal plan"
+          }
+        ]
+      },
+      {
+        "study": 3,
+        "study_n": 66,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "The meal choice form was changed and the vegetarian option was selected as the default.",
+            "intervention_mechanism": "choice architecture: default",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "The meal choice form was not changed and the meat option was selected as the default."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "The number of students who selected the meat dish for their meal plan"
           }
         ]
       }
@@ -5302,6 +5424,67 @@
     ]
   },
   {
+    "paper": 412,
+    "paper_label": "Vandenbroele et al. (2021)",
+    "paper_authors": "Vandenbroele, J.; Slabbinck, H.; Van Kerckhove, A.; Vermeir, I.",
+    "paper_title": "Mock meat in the butchery: Nudging consumers toward meat substitutes",
+    "paper_year": 2021,
+    "paper_link": "https://doi.org/10.1016/j.obhdp.2019.09.004",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 4302,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Two sandwiches were target products in a large scale retail store: one containing meat (i.e., chicken curry salad) and one meat-free (i.e., vegetarian curry salad). The vegetarian curry salad was offered on a separate, vegetarian shelf in the vegetables and fruits department, as before, but also next to the meat version in the butchery department.",
+            "intervention_mechanism": "choice architecture: visibility/salience/ease",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Two sandwiches were target products in a large scale retail store: one containing meat (i.e., chicken curry salad) and one meat-free (i.e., vegetarian curry salad). The vegetarian curry salad was only offered on a separate, vegetarian shelf in the vegetables and fruits department."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of curry salad sales that contained meat (vs. no meat)"
+          }
+        ]
+      },
+      {
+        "study": 2,
+        "study_n": 697,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Eight sandwich spreads were the target products, representing four pairs of a meat product and meat substitute: (1) “martino” (i.e., spicy minced meat) and vegetarian “martino”, (2) thin chicken slices with herbs versus vegetarian baloney slices with tomato and basil, (3) chicken curry salad and vegetarian curry salad, and (4) baloney slices versus vegetarian baloney slices. The sandwich department in the hypothetical retail store, established in a university lab, consisted of two refrigerators, placed back-to-back; only one was immediately visible to the participants as they entered the lab. In each condition, an equal number of products appeared in both fridges (i.e., four products each), but we provided multiple packages of the same product to make the store appear realistic. For this condition, the fridge with the sandwich spreads was not immediately visible to participants. The vegetarian spreads were placed directly next to the meat-based spreads.",
+            "intervention_mechanism": "choice architecture: visibility/salience/ease",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Eight sandwich spreads were the target products, representing four pairs of a meat product and meat substitute: (1) “martino” (i.e., spicy minced meat) and vegetarian “martino”, (2) thin chicken slices with herbs versus vegetarian baloney slices with tomato and basil, (3) chicken curry salad and vegetarian curry salad, and (4) baloney slices versus vegetarian baloney slices. The sandwich department in the hypothetical retail store, established in a university lab, consisted of two refrigerators, placed back-to-back; only one was immediately visible to the participants as they entered the lab. In each condition, an equal number of products appeared in both fridges (i.e., four products each), but we provided multiple packages of the same product to make the store appear realistic. For this condition, the fridge with the sandwich spreads was not immediately visible to participants. The vegetarian spreads were placed seperate from the meat-based spreads."
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Eight sandwich spreads were the target products, representing four pairs of a meat product and meat substitute: (1) “martino” (i.e., spicy minced meat) and vegetarian “martino”, (2) thin chicken slices with herbs versus vegetarian baloney slices with tomato and basil, (3) chicken curry salad and vegetarian curry salad, and (4) baloney slices versus vegetarian baloney slices. The sandwich department in the hypothetical retail store, established in a university lab, consisted of two refrigerators, placed back-to-back; only one was immediately visible to the participants as they entered the lab. In each condition, an equal number of products appeared in both fridges (i.e., four products each), but we provided multiple packages of the same product to make the store appear realistic. For this condition, the fridge with the sandwich spreads was immediately visible to participants. The vegetarian spreads were placed directly next to the meat-based spreads.",
+            "intervention_mechanism": "choice architecture: visibility/salience/ease",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Eight sandwich spreads were the target products, representing four pairs of a meat product and meat substitute: (1) “martino” (i.e., spicy minced meat) and vegetarian “martino”, (2) thin chicken slices with herbs versus vegetarian baloney slices with tomato and basil, (3) chicken curry salad and vegetarian curry salad, and (4) baloney slices versus vegetarian baloney slices. The sandwich department in the hypothetical retail store, established in a university lab, consisted of two refrigerators, placed back-to-back; only one was immediately visible to the participants as they entered the lab. In each condition, an equal number of products appeared in both fridges (i.e., four products each), but we provided multiple packages of the same product to make the store appear realistic. For this condition, the fridge with the sandwich spreads was immediately visible to participants. The vegetarian spreads were placed seperate from the meat-based spreads."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of sandwich spreads that contained meat (vs. no meat)"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 416,
     "paper_label": "Piernas et al. (2021)",
     "paper_authors": "Piernas, C.; Cook, B.; Stevens, R.; Stewart, C.; Hollowell, J.; Scarborough, P.; Jebb, S. A.",
@@ -5722,6 +5905,36 @@
     ]
   },
   {
+    "paper": 472,
+    "paper_label": "Çoker et al. (2025)",
+    "paper_authors": "Çoker, E. N.; Pechey, R.; Jebb, S. A.",
+    "paper_title": "Testing the effect of a dynamic descriptive social norm message on meat-free food selection in worksite cafeterias: A randomized controlled trial",
+    "paper_year": 2025,
+    "paper_link": "https://doi.org/10.1186/s12916-025-04302-9",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 25,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Large free-standing banners promoting the intervention message (“More and more of your [company name] colleagues are choosing veggie options, join them today!\") were placed at the entrance of the cafeteria. Floor stickers that guided the customers from the entrance to the hot main meal buffet were placed in the dining area, A4-sized posters were placed next to or above the buffet, and star stickers that were placed next to the vegetarian options on the menu (\"Spotted the star? Look for the star on our most loved veggie options”)",
+            "intervention_mechanism": "norms: dynamic, choice architecture: visibility/salience/ease",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text, choice architecture",
+            "intervention_medium_multicomponent": "yes"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of weekly meat-free meal sales"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 473,
     "paper_label": "Marty et al. (2025)",
     "paper_authors": "Marty, L.; Biehlmann, M.; Louveau, A.; Poquet, D.; Robinson, E.",
@@ -5901,6 +6114,48 @@
     ]
   },
   {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "paper_authors": "Fonseca, R. P.; De Groeve, B.; Graça, J.",
+    "paper_title": "Masculinizing plant-based diets as an appeal for dietary change among men",
+    "paper_year": 2025,
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2024.105341",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 875,
+        "interventions": [
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants saw a social media post in which a masculine model was shown alongside a plant-based meal, associating plant-based dieting with masculinity. The post showed an entrepreneur ostensibly sharing the message: “switching to a plant-based diet was a game changer for my career. #focus #energy # success”.",
+            "intervention_mechanism": "authority/role models",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text, image",
+            "intervention_medium_multicomponent": "yes"
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Participants saw a social media post in which a masculine model was shown alongside a plant-based meal, associating plant-based dieting with masculinity. The post showed a bodybuilder ostensibly sharing the message: “switching to a plant-based diet was a game changer for my fitness. #power #strength #endurance”",
+            "intervention_mechanism": "authority/role models",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text, image",
+            "intervention_medium_multicomponent": "yes"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Participants were asked to rate plant-based diets using four semantic differential items on a 7-point scale: “bad” to “good”, “harmful” to “beneficial”, “unpleasant” to “pleasant”, “unenjoyable” to “enjoyable”"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Participants rated their willingness to follow a plant-based diet with answer options ranging from 1 “not willing at all” (1) to “very willing” (7)."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 493,
     "paper_label": "Weijers et al. (2024)",
     "paper_authors": "Weijers, R. J.; Claessens, I. W. H.; Gillebaart, M.; De Ridder, D. T. D.",
@@ -5944,6 +6199,36 @@
           {
             "outcome": 1,
             "outcome_description": "Participants' choice of vegetarian options in an imaginary restaurant condition"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 496,
+    "paper_label": "Pandey et al. (2025)",
+    "paper_authors": "Pandey, S.; Olsen, A.; Thomsen, M.",
+    "paper_title": "Nudging strategies to promote plant-based and sustainable food consumption in canteens",
+    "paper_year": 2025,
+    "paper_link": "https://doi.org/10.1016/j.appet.2025.107874",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 254,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "The menus in the canteen were modified by adding plant-based meal alternatives next to meat-based meals, along with priming tools (i.e. messages with each meal, emphasizing the environmental, nutritional and dietary benefits of choosing the plant-based target meal option). These messages were displayed on an A4 size board and placed strategically next to each meal to communicate its climate footprint, dietary recommendations, or nutritional content.",
+            "intervention_mechanism": "info: health, info: environment, choice architecture: visibility/salience/ease",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Quantity of meat-based meals in a purchased plate"
           }
         ]
       }
@@ -6113,6 +6398,217 @@
           {
             "outcome": 1,
             "outcome_description": "Proportion of meat-based dishes chosen"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 517,
+    "paper_label": "Fonseca & De Groeve (2025)",
+    "paper_authors": "Fonseca, R. P.; De Groeve, B.",
+    "paper_title": "‘Meating’ the animal and moral emotions: Exploring animal caring and cruelty appeals for dietary change",
+    "paper_year": 2025,
+    "paper_link": "https://doi.org/10.1016/j.appet.2025.108018",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 421,
+        "interventions": [
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants were exposed to the same image of a pork chop, paired with a human stunning a pig before slaughter.",
+            "intervention_mechanism": "info: animal welfare, origin of animal product",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "image",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants were exposed to an image of a pork chop."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Willingness to reduce pork chop consumption"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 528,
+    "paper_label": "Piazza et al. (2018)",
+    "paper_authors": "Piazza, J.; McLatchie, N.; Olesen, C.",
+    "paper_title": "Are baby animals less appetizing? Tenderness toward baby animals and appetite for meat",
+    "paper_year": 2018,
+    "paper_link": "https://doi.org/10.1080/08927936.2018.1455456",
+    "studies": [
+      {
+        "study": 3,
+        "study_n": 271,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants were presented an image of a cooked meat dish (same for all participants) paired with an image of a calf. The animal was presented above the meat dish on the page and participants were told the meat “comes from baby animal depicted above”.",
+            "intervention_mechanism": "origin of animal product",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "image",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants were only presented an image of a cooked meat dish without any animal image."
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants were presented an image of a cooked meat dish (same for all participants) paired with an image of a bull. The animal was presented above the meat dish on the page and participants were told the meat “comes from adult animal depicted above”.",
+            "intervention_mechanism": "origin of animal product",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "image",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants were only presented an image of a cooked meat dish without any animal image."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Participants rated how “appetizing” they found the meat on a sliding scale from 0 (Not at all appetizing) to 100 (Extremely appetizing)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 855,
+    "paper_label": "Friis et al. (2017)",
+    "paper_authors": "Friis, R.; Skov, L. R.; Olsen, A.; Appleton, K. M.; Saulais, L.; Dinnella, C.; Hartwell, H.; Depezay, L.; Monteleone, E.; Giboreau, A.; Perez-Cueto, F. J. A.",
+    "paper_title": "Comparison of three nudge interventions (priming, default option, and perceived variety) to promote vegetable consumption in a self-service buffet setting",
+    "paper_year": 2017,
+    "paper_link": "https://doi.org/10.1371/journal.pone.0176028",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 88,
+        "interventions": [
+          {
+            "intervention_condition": 4,
+            "intervention_description": "The food environment was tailored to accommodate a green ambience of plants, green servings bowls and herbs in the dining area. The plants and herbs were placed intentionally, so study participants would be visually exposed when interacting with the entire area. The fresh herbs provided a strong odour and participants could freely use the provided fresh herbs (basil, parsley) as part of their meal.",
+            "intervention_mechanism": "priming",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "other",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "The food environment was not manipulated. The buffet was organised for self-serving, and each dish component was presented in a large bowl (rice, chilli-con-carne and salads) and in a tall pot for the salsa."
+          },
+          {
+            "intervention_condition": 5,
+            "intervention_description": "The two salads were divided into pre-portioned individual transparent ‘takeaway’ bowls with the default amount of 150g of the white salad and 50g of the red salad. Participants were to take the individual bowls with them, compared to the control situation where they had to serve themselves on their plates. The participants had the possibility of taking as many bowls of salad as they liked.",
+            "intervention_mechanism": "choice architecture: visibility/salience/ease",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "The food environment was not manipulated. The buffet was organised for self-serving, and each dish component was presented in a large bowl (rice, chilli-con-carne and salads) and in a tall pot for the salsa."
+          },
+          {
+            "intervention_condition": 6,
+            "intervention_description": "The two mixed salads served in the control setting were split into each of the ingredients in separate two-litre square bowls. The overall selection of ingredients was exactly the same, but just divided in to more bowls, hence allowing each participant to compose their own salad.",
+            "intervention_mechanism": "choice architecture: availability/variety/size",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "The food environment was not manipulated. The buffet was organised for self-serving, and each dish component was presented in a large bowl (rice, chilli-con-carne and salads) and in a tall pot for the salsa."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "The amont of chili con carne (in grams) that participants took from the buffet."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1050,
+    "paper_label": "Murray et al. (2026)",
+    "paper_authors": "Murray, S.; Meleady, R., Hodson, G.",
+    "paper_title": "Seeing animals, choosing plants: Evidence from a cafeteria field study on food choice",
+    "paper_year": 2026,
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2026.102988",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 3674,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "During the intervention period, images of animals were added beside the corresponding meat-based meal options on the menus. For instance, an image of a chicken accompanied the sweet and sour chicken, an image of a pig accompanied the pork gyros, and an image of a cow accompanied the beef bolognese. No images were added next to the vegetarian dishes. The images showed the neutral depictions of the animals alone without any other contextual background.",
+            "intervention_mechanism": "origin of animal product",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "image",
+            "intervention_medium_multicomponent": "no"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "The percentange of main meals sold that contained meat."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1051,
+    "paper_label": "Denver et al. (2026)",
+    "paper_authors": "Denver, S.; Nordström, J.; Christensen, T.",
+    "paper_title": "Double nudges can accelerate the transition towards more climate-friendly diets – experiment involving default meals and carbon footprint information",
+    "paper_year": 2026,
+    "paper_link": "https://www.sciencedirect.com/science/article/pii/S0959652626001563?via%3Dihub",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 1878,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants' were asked to indicate their preferred protein source for a hypothetical dish and plant-based steak was presented as the default protein. Moreover, when participants ranked their preferred protein sources, plant-based steak was listed at the top.",
+            "intervention_mechanism": "choice architecture: visibility/salience/ease, choice architecture: default",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "choice architecture, text",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "Participants' were asked to indicate their preferred protein source for a hypothetical dish and ground beef was presented as the default protein. Moreover, when participants ranked their preferred protein sources, ground beef was listed at the top."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "The percentage of participants choosing the plant-based steak for their hypothetical meal, rather than beef, chicken, pork, or fish."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1052,
+    "paper_label": "Ardesch et al. (2025)",
+    "paper_authors": "Ardesch, T. F.; Klaperski-van der Wal, S.; Nijssen, S. R. R.; Müller, B. C. N.",
+    "paper_title": "Reducing meat consumption through default nudging: a field study",
+    "paper_year": 2025,
+    "paper_link": "https://doi.org/10.3389/fpsyg.2025.1439641",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 4099,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "The displayed food items in the cafeteria’s showcase (i.e., the defaults) were changed to exclusively feature vegetarian items. Fish and meat items remained available but were listed on screens above the counter and had to be specifically requested; they were no longer displayed in the showcase",
+            "intervention_mechanism": "choice architecture: visibility/salience/ease",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "The percentage of items sold that contained meat (vs. vegetarian)."
           }
         ]
       }
