@@ -20,7 +20,7 @@ export const paperFiltersFields = {
 // Study Filters
 // ============================================================================
 
-export const studyPreregistrationField = {
+const studyPreregistrationField = {
   study_preregistered: z
     .string()
     .array()

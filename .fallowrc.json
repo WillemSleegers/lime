@@ -1,0 +1,9 @@
+{
+  "ignoreExports": [
+    {
+      "file": "components/ui/**",
+      "exports": ["*"]
+    }
+  ],
+  "ignoreDependencies": ["babel-plugin-react-compiler"]
+}

@@ -12,36 +12,22 @@ export type DataKeys = keyof Data[0]
 
 export type Papers = typeof papers
 export type Paper = (typeof papers)[0]
-export type PapersKeys = keyof Papers[0]
 
 export type Studies = typeof studies
 export type Study = (typeof studies)[0]
-export type StudiesKeys = keyof Studies[0]
 
 export type Samples = typeof samples
 export type Sample = (typeof samples)[0]
-export type SamplesKeys = keyof Samples[0]
 
 export type Outcomes = typeof outcomes
 export type Outcome = (typeof outcomes)[0]
-export type OutcomesKeys = keyof Outcomes[0]
 
 export type Interventions = typeof interventions
 export type Intervention = (typeof interventions)[0]
-export type InterventionsKeys = keyof Interventions[0]
 
 export type Effects = typeof effects
 export type Effect = (typeof effects)[0] // Fix name later
-export type EffectsKeys = keyof Effects[0]
 
-export type Locks = {
-  paper: boolean
-  study: boolean
-  sample: boolean
-  intervention: boolean
-  outcome: boolean
-  effect: boolean
-}
 
 export type Estimate = {
   value: number

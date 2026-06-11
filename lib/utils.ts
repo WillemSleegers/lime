@@ -17,7 +17,7 @@ export const round = (num: number, digits = 2) => {
   return Number(r.toFixed(digits))
 }
 
-export const cdfNormal = (x: number, mean = 0, sd = 1) => {
+const cdfNormal = (x: number, mean = 0, sd = 1) => {
   return (1 - erf((mean - x) / (Math.sqrt(2) * sd))) / 2
 }
 
@@ -27,10 +27,6 @@ export const pSup = (x: number) => {
 
 export const u3 = (x: number) => {
   return cdfNormal(x)
-}
-
-export const u1 = (x: number) => {
-  return 1 - 2 * cdfNormal((-1 * Math.abs(x)) / 2)
 }
 
 // Fisher–Yates. Returns a new array; the input is not mutated.
