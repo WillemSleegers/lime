@@ -4,7 +4,8 @@
       "Bash(npm outdated:*)",
       "Bash(npm update:*)",
       "Bash(npm show:*)",
-      "Bash(npx npm-check-updates:*)"
+      "Bash(npx npm-check-updates:*)",
+      "Bash(npx fallow *)"
     ]
   }
 }
