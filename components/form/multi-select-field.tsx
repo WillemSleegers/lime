@@ -61,9 +61,17 @@ export function MultiSelectField<T extends FieldValues>({
   className,
   counts,
 }: MultiSelectFieldProps<T>) {
-  // Normalize a single option to always have value/label structure
   const normalizeOption = (option: OptionItem) =>
     typeof option === "string" ? { value: option, label: option } : option
+
+  const renderItem = (item: OptionItem) => {
+    const normalized = normalizeOption(item)
+    return (
+      <MultiSelectItem key={normalized.value} value={normalized.value} badgeLabel={normalized.label}>
+        <span>{normalized.label}{counts && <> <Count n={counts[normalized.value] ?? 0} /></>}</span>
+      </MultiSelectItem>
+    )
+  }
 
   return (
     <Controller
@@ -83,53 +91,24 @@ export function MultiSelectField<T extends FieldValues>({
             <MultiSelectContent
               search={
                 searchPlaceholder
-                  ? {
-                      placeholder: searchPlaceholder,
-                      emptyMessage: searchEmptyMessage,
-                    }
+                  ? { placeholder: searchPlaceholder, emptyMessage: searchEmptyMessage }
                   : undefined
               }
             >
               {isGroupedOptions(options) ? (
-                // Render grouped options
                 <>
                   {options.map((group, groupIndex) => (
                     <div key={group.group}>
                       <MultiSelectGroup heading={group.group}>
-                        {group.items.map((item) => {
-                          const normalized = normalizeOption(item)
-                          return (
-                            <MultiSelectItem
-                              key={normalized.value}
-                              value={normalized.value}
-                              badgeLabel={normalized.label}
-                            >
-                              <span>{normalized.label}{counts && <> <Count n={counts[normalized.value] ?? 0} /></>}</span>
-                            </MultiSelectItem>
-                          )
-                        })}
+                        {group.items.map(renderItem)}
                       </MultiSelectGroup>
-                      {groupIndex < options.length - 1 && (
-                        <MultiSelectSeparator />
-                      )}
+                      {groupIndex < options.length - 1 && <MultiSelectSeparator />}
                     </div>
                   ))}
                 </>
               ) : (
-                // Render flat options
                 <MultiSelectGroup>
-                  {options.map((item) => {
-                    const normalized = normalizeOption(item)
-                    return (
-                      <MultiSelectItem
-                        key={normalized.value}
-                        value={normalized.value}
-                        badgeLabel={normalized.label}
-                      >
-                        <span>{normalized.label}{counts && <> <Count n={counts[normalized.value] ?? 0} /></>}</span>
-                      </MultiSelectItem>
-                    )
-                  })}
+                  {options.map(renderItem)}
                 </MultiSelectGroup>
               )}
             </MultiSelectContent>

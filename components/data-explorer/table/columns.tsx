@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ColumnDef } from "@tanstack/react-table"
+import { Column, ColumnDef } from "@tanstack/react-table"
 import { CheckIcon, X, LinkIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -13,14 +13,52 @@ import { DataTableColumnHeader } from "@/components/data-explorer/table/column-h
 import { round } from "@/lib/utils"
 import { Effect, Intervention, Outcome, Paper, Sample, Study } from "@/lib/types"
 
+// ── Shared column definitions ────────────────────────────────────────────────
+
+const paperLabelColumn = {
+  id: "paper_label",
+  accessorKey: "paper_label" as const,
+  header: ({ column }: { column: Column<any, unknown> }) => (
+    <DataTableColumnHeader column={column} title="Paper" />
+  ),
+}
+
+const studyColumn = {
+  id: "study",
+  accessorKey: "study" as const,
+  header: ({ column }: { column: Column<any, unknown> }) => (
+    <DataTableColumnHeader column={column} title="Study" />
+  ),
+}
+
+const detailsColumn = {
+  id: "paper_details",
+  header: ({ column }: { column: Column<any, unknown> }) => (
+    <DataTableColumnHeader column={column} title="Details" />
+  ),
+  cell: ({ row }: { row: { original: unknown } }) => <PaperDialog row={row as never} variant="button" />,
+  enableSorting: false,
+}
+
+// ── Cell helpers ─────────────────────────────────────────────────────────────
+
+const cellYesNo = (value: string) =>
+  value === "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
+
+const cellCommaList = (value: string) => (
+  <div className="flex flex-wrap gap-1">
+    {value.split(", ").map((e) => (
+      <Badge key={e} className="text-sm font-normal whitespace-nowrap bg-muted text-foreground">
+        {e}
+      </Badge>
+    ))}
+  </div>
+)
+
+// ── Column definitions ───────────────────────────────────────────────────────
+
 export const ColumnsPapers: ColumnDef<Paper>[] = [
-  {
-    id: "paper_label",
-    accessorKey: "paper_label",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Paper" />
-    ),
-  },
+  paperLabelColumn,
   {
     id: "paper_authors",
     accessorKey: "paper_authors",
@@ -56,11 +94,9 @@ export const ColumnsPapers: ColumnDef<Paper>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Type" />
     ),
-    cell: ({ row }) => {
-      return (
-        <span className="whitespace-nowrap">{row.getValue("paper_type")}</span>
-      )
-    },
+    cell: ({ row }) => (
+      <span className="whitespace-nowrap">{row.getValue("paper_type")}</span>
+    ),
   },
   {
     id: "paper_source",
@@ -91,7 +127,6 @@ export const ColumnsPapers: ColumnDef<Paper>[] = [
     ),
     cell: ({ row }) => {
       const value = row.getValue("paper_link")
-
       if (value) {
         return (
           <Link href={value} target="_blank">
@@ -101,33 +136,12 @@ export const ColumnsPapers: ColumnDef<Paper>[] = [
       } else return "-"
     },
   },
-  {
-    id: "paper_details",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Details" />
-    ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} variant="button" />
-    },
-    enableSorting: false,
-  },
+  detailsColumn,
 ]
 
 export const ColumnsStudies: ColumnDef<Study>[] = [
-  {
-    id: "paper_label",
-    accessorKey: "paper_label",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Paper" />
-    ),
-  },
-  {
-    id: "study",
-    accessorKey: "study",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Study" />
-    ),
-  },
+  paperLabelColumn,
+  studyColumn,
   {
     id: "study_n",
     accessorKey: "study_n",
@@ -141,10 +155,7 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Preregistered" />
     ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("study_preregistered")
-      return value == "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
-    },
+    cell: ({ row }) => cellYesNo(row.getValue<string>("study_preregistered")),
   },
   {
     id: "study_pregistration_link",
@@ -154,7 +165,6 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
     ),
     cell: ({ row }) => {
       const value = row.getValue("study_pregistration_link")
-
       if (value) {
         return (
           <Link href={value} target="_blank">
@@ -170,11 +180,7 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Data available" />
     ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("study_data_available")
-
-      return value == "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
-    },
+    cell: ({ row }) => cellYesNo(row.getValue<string>("study_data_available")),
   },
   {
     id: "study_design",
@@ -190,46 +196,20 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
       <DataTableColumnHeader column={column} title="Condition assignment" />
     ),
   },
-
   {
     id: "study_randomization",
     accessorKey: "study_randomization",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Randomization" />
     ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("study_randomization")
-
-      return value == "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
-    },
+    cell: ({ row }) => cellYesNo(row.getValue<string>("study_randomization")),
   },
-  {
-    id: "paper_details",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Details" />
-    ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} variant="button" />
-    },
-    enableSorting: false,
-  },
+  detailsColumn,
 ]
 
 export const ColumnsSamples: ColumnDef<Sample>[] = [
-  {
-    id: "paper_label",
-    accessorKey: "paper_label",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Paper" />
-    ),
-  },
-  {
-    id: "study",
-    accessorKey: "study",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Study" />
-    ),
-  },
+  paperLabelColumn,
+  studyColumn,
   {
     id: "sample_country",
     accessorKey: "sample_country",
@@ -243,18 +223,7 @@ export const ColumnsSamples: ColumnDef<Sample>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Type" />
     ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("sample_type")
-      const content = value.split(", ").map((e) => (
-        <Badge
-          key={e}
-          className="text-sm font-normal whitespace-nowrap bg-muted text-foreground"
-        >
-          {e}
-        </Badge>
-      ))
-      return <div className="flex gap-1 flex-wrap">{content}</div>
-    },
+    cell: ({ row }) => cellCommaList(row.getValue<string>("sample_type")),
   },
   {
     id: "sample_representative",
@@ -262,38 +231,14 @@ export const ColumnsSamples: ColumnDef<Sample>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Representative" />
     ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("sample_representative")
-      return value == "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
-    },
+    cell: ({ row }) => cellYesNo(row.getValue<string>("sample_representative")),
   },
-  {
-    id: "paper_details",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Details" />
-    ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} variant="button" />
-    },
-    enableSorting: false,
-  },
+  detailsColumn,
 ]
 
 export const ColumnsInterventions: ColumnDef<Intervention>[] = [
-  {
-    id: "paper_label",
-    accessorKey: "paper_label",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Paper" />
-    ),
-  },
-  {
-    id: "study",
-    accessorKey: "study",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Study" />
-    ),
-  },
+  paperLabelColumn,
+  studyColumn,
   {
     id: "condition",
     accessorKey: "intervention_condition",
@@ -317,84 +262,35 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Mechanism" />
     ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("intervention_mechanism")
-      const content = value.split(", ").map((e) => (
-        <Badge
-          key={e}
-          className="text-sm font-normal whitespace-nowrap bg-muted text-foreground"
-        >
-          {e}
-        </Badge>
-      ))
-      return <div className="flex flex-wrap gap-1">{content}</div>
-    },
+    cell: ({ row }) => cellCommaList(row.getValue<string>("intervention_mechanism")),
   },
   {
     accessorKey: "intervention_medium",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Medium" />
     ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("intervention_medium")
-      const content = value.split(", ").map((e) => (
-        <Badge
-          key={e}
-          className="text-sm font-normal whitespace-nowrap bg-muted text-foreground"
-        >
-          {e}
-        </Badge>
-      ))
-      return <div className="flex flex-wrap gap-1">{content}</div>
-    },
+    cell: ({ row }) => cellCommaList(row.getValue<string>("intervention_medium")),
   },
   {
     accessorKey: "intervention_mechanism_multicomponent",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Mechanism multicomponent" />
     ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("intervention_mechanism_multicomponent")
-      return value === "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
-    },
+    cell: ({ row }) => cellYesNo(row.getValue<string>("intervention_mechanism_multicomponent")),
   },
   {
     accessorKey: "intervention_medium_multicomponent",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Medium multicomponent" />
     ),
-    cell: ({ row }) => {
-      const value = row.getValue<string>("intervention_medium_multicomponent")
-      return value === "yes" ? <CheckIcon className="h-4 w-4" strokeWidth={2} /> : <X className="h-4 w-4" />
-    },
+    cell: ({ row }) => cellYesNo(row.getValue<string>("intervention_medium_multicomponent")),
   },
-  {
-    id: "paper_details",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Details" />
-    ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} variant="button" />
-    },
-    enableSorting: false,
-  },
+  detailsColumn,
 ]
 
 export const ColumnsOutcomes: ColumnDef<Outcome>[] = [
-  {
-    id: "paper_label",
-    accessorKey: "paper_label",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Paper" />
-    ),
-  },
-  {
-    id: "study",
-    accessorKey: "study",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Study" />
-    ),
-  },
+  paperLabelColumn,
+  studyColumn,
   {
     id: "outcome",
     accessorKey: "outcome",
@@ -434,33 +330,12 @@ export const ColumnsOutcomes: ColumnDef<Outcome>[] = [
       <DataTableColumnHeader column={column} title="Measure" />
     ),
   },
-  {
-    id: "paper_details",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Details" />
-    ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} variant="button" />
-    },
-    enableSorting: false,
-  },
+  detailsColumn,
 ]
 
 export const ColumnsEffects: ColumnDef<Effect>[] = [
-  {
-    id: "paper_label",
-    accessorKey: "paper_label",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Paper" />
-    ),
-  },
-  {
-    id: "study",
-    accessorKey: "study",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Study" />
-    ),
-  },
+  paperLabelColumn,
+  studyColumn,
   // {
   //   id: "effect_size_name",
   //   accessorKey: "effect_size_name",
@@ -474,9 +349,7 @@ export const ColumnsEffects: ColumnDef<Effect>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Effect size" />
     ),
-    cell: ({ row }) => {
-      return round(row.getValue<number>("effect_size"), 2)
-    },
+    cell: ({ row }) => round(row.getValue<number>("effect_size"), 2),
   },
   {
     id: "effect_size_var",
@@ -484,9 +357,7 @@ export const ColumnsEffects: ColumnDef<Effect>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Effect variance" />
     ),
-    cell: ({ row }) => {
-      return round(row.getValue<number>("effect_size_var"), 2)
-    },
+    cell: ({ row }) => round(row.getValue<number>("effect_size_var"), 2),
   },
   {
     id: "effect_intervention_n",
@@ -497,9 +368,7 @@ export const ColumnsEffects: ColumnDef<Effect>[] = [
         title="Sample size (intervention)"
       />
     ),
-    cell: ({ row }) => {
-      return round(row.getValue<number>("effect_intervention_n"), 2)
-    },
+    cell: ({ row }) => round(row.getValue<number>("effect_intervention_n"), 2),
   },
   {
     id: "effect_control_n",
@@ -507,18 +376,7 @@ export const ColumnsEffects: ColumnDef<Effect>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Sample size (control)" />
     ),
-    cell: ({ row }) => {
-      return round(row.getValue<number>("effect_control_n"), 2)
-    },
+    cell: ({ row }) => round(row.getValue<number>("effect_control_n"), 2),
   },
-  {
-    id: "paper_details",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Details" />
-    ),
-    cell: ({ row }) => {
-      return <PaperDialog row={row} variant="button" />
-    },
-    enableSorting: false,
-  },
+  detailsColumn,
 ]

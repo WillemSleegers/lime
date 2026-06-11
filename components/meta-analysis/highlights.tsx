@@ -9,6 +9,30 @@ import { HighlightLineChart } from "./charts/highlight-line-chart"
 import { HighlightRadialBarChart } from "./charts/highlight-radial-bar-chart"
 import { HighlightBarChart } from "./charts/highlight-bar-chart"
 
+type BarChartItem = { name: string; value: number }
+
+const BarChartCard = ({
+  title,
+  description,
+  data,
+  className = "col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6",
+}: {
+  title: string
+  description: string
+  data: BarChartItem[] | undefined
+  className?: string
+}) => (
+  <Card className={className}>
+    <CardHeader>
+      <CardTitle className="text-lg">{title}</CardTitle>
+      <CardDescription className="mt-0 leading-5">{description}</CardDescription>
+    </CardHeader>
+    <CardContent className="overflow-visible">
+      {data && data.length > 0 && <HighlightBarChart data={data} />}
+    </CardContent>
+  </Card>
+)
+
 import { round } from "@/lib/utils"
 import {
   countUniqueFilteredValues,
@@ -267,19 +291,12 @@ export const Highlights = (props: HighLightsProps) => {
             </CardContent>
           </Card>
           {/* Row 2: Paper type distribution - 4 items, bars need width */}
-          <Card className="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-4">
-            <CardHeader>
-              <CardTitle className="text-lg">Publication type</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by publication type
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="overflow-visible">
-              {paperTypeData && paperTypeData.length > 0 && (
-                <HighlightBarChart data={paperTypeData} />
-              )}
-            </CardContent>
-          </Card>
+          <BarChartCard
+            title="Publication type"
+            description="Number of effects by publication type"
+            data={paperTypeData}
+            className="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-4"
+          />
         </div>
       </div>
 
@@ -339,32 +356,18 @@ export const Highlights = (props: HighLightsProps) => {
             </CardContent>
           </Card>
           {/* Row 3: Study design and condition assignment - both bar charts need width */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3">
-            <CardHeader>
-              <CardTitle className="text-lg">Study design</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of studies by study design
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="overflow-visible">
-              {studyDesignData && studyDesignData.length > 0 && (
-                <HighlightBarChart data={studyDesignData} />
-              )}
-            </CardContent>
-          </Card>
-          <Card className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3">
-            <CardHeader>
-              <CardTitle className="text-lg">Condition assignment</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of studies by condition assignment method
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="overflow-visible">
-              {studyConditionAssignmentData && studyConditionAssignmentData.length > 0 && (
-                <HighlightBarChart data={studyConditionAssignmentData} />
-              )}
-            </CardContent>
-          </Card>
+          <BarChartCard
+            title="Study design"
+            description="Number of studies by study design"
+            data={studyDesignData}
+            className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3"
+          />
+          <BarChartCard
+            title="Condition assignment"
+            description="Number of studies by condition assignment method"
+            data={studyConditionAssignmentData}
+            className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3"
+          />
         </div>
       </div>
 
@@ -384,19 +387,11 @@ export const Highlights = (props: HighLightsProps) => {
             </CardHeader>
           </Card>
           {/* Row 2: Country distribution - potentially many countries, full width */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Country</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of studies by country
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="overflow-visible">
-              {countryData && countryData.length > 0 && (
-                <HighlightBarChart data={countryData} />
-              )}
-            </CardContent>
-          </Card>
+          <BarChartCard
+            title="Country"
+            description="Number of studies by country"
+            data={countryData}
+          />
         </div>
       </div>
 
@@ -405,33 +400,17 @@ export const Highlights = (props: HighLightsProps) => {
         <h2 className="text-xl font-semibold">Interventions</h2>
         <div className="gap-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
           {/* Row 1: Intervention mechanism - full width for potentially many items */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Intervention mechanism</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by intervention mechanism
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="overflow-visible">
-              {interventionMechanismData && interventionMechanismData.length > 0 && (
-                <HighlightBarChart data={interventionMechanismData} />
-              )}
-            </CardContent>
-          </Card>
+          <BarChartCard
+            title="Intervention mechanism"
+            description="Number of effects by intervention mechanism"
+            data={interventionMechanismData}
+          />
           {/* Row 3: Intervention medium - full width */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Intervention medium</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by intervention medium
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="overflow-visible">
-              {interventionMediumData && interventionMediumData.length > 0 && (
-                <HighlightBarChart data={interventionMediumData} />
-              )}
-            </CardContent>
-          </Card>
+          <BarChartCard
+            title="Intervention medium"
+            description="Number of effects by intervention medium"
+            data={interventionMediumData}
+          />
           {/* Row 4: Single-component percentage */}
           <Card className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-2">
             <CardHeader>
@@ -454,33 +433,17 @@ export const Highlights = (props: HighLightsProps) => {
         <h2 className="text-xl font-semibold">Outcomes</h2>
         <div className="gap-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
           {/* Row 1: Outcome measurement type distribution - 4 items */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Measurement type</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by measurement type
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="overflow-visible">
-              {outcomeMeasurementTypeData && outcomeMeasurementTypeData.length > 0 && (
-                <HighlightBarChart data={outcomeMeasurementTypeData} />
-              )}
-            </CardContent>
-          </Card>
+          <BarChartCard
+            title="Measurement type"
+            description="Number of effects by measurement type"
+            data={outcomeMeasurementTypeData}
+          />
           {/* Row 2: Outcome subcategory distribution - potentially many items, full width */}
-          <Card className="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6">
-            <CardHeader>
-              <CardTitle className="text-lg">Outcome categories</CardTitle>
-              <CardDescription className="mt-0 leading-5">
-                Number of effects by outcome category
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="overflow-visible">
-              {outcomeSubcategoryData && outcomeSubcategoryData.length > 0 && (
-                <HighlightBarChart data={outcomeSubcategoryData} />
-              )}
-            </CardContent>
-          </Card>
+          <BarChartCard
+            title="Outcome categories"
+            description="Number of effects by outcome category"
+            data={outcomeSubcategoryData}
+          />
         </div>
       </div>
 
