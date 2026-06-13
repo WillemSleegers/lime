@@ -5,10 +5,7 @@ import { useForm } from "react-hook-form"
 import { Dispatch, SetStateAction } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import { Button } from "@/components/ui/button"
-import { Form } from "@/components/ui/form"
-
-import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
+import { FilterForm } from "@/components/data-explorer/filter-form"
 import { CheckboxGroup } from "@/components/form/checkbox-group"
 import { MultiSelectField } from "@/components/form/multi-select-field"
 
@@ -84,39 +81,26 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
   }
 
   return (
-    <FilterCollapsible
-      title="Filter"
-      open={filterOpen}
-      onOpenChange={setFilterOpen}
-    >
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="space-y-6">
-            <MultiSelectField
-              control={form.control}
-              name="outcome_subcategory"
-              label="Outcome categories"
-              description="Choose between behaviors (actual consumption and food choices), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
-              placeholder="Select outcome categories..."
-              searchPlaceholder="Search categories..."
-              searchEmptyMessage="No category found."
-              options={OUTCOME_CATEGORIES_GROUPED}
-              className="w-full"
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="outcome_measurement_type"
-              label="Measurement type"
-              options={OUTCOME_MEASUREMENT_TYPE_OPTIONS}
-            />
-          </div>
-          <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto">
-              Update table
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </FilterCollapsible>
+    <FilterForm form={form} filterOpen={filterOpen} setFilterOpen={setFilterOpen} onSubmit={onSubmit}>
+      <div className="space-y-6">
+        <MultiSelectField
+          control={form.control}
+          name="outcome_subcategory"
+          label="Outcome categories"
+          description="Choose between behaviors (actual consumption and food choices), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
+          placeholder="Select outcome categories..."
+          searchPlaceholder="Search categories..."
+          searchEmptyMessage="No category found."
+          options={OUTCOME_CATEGORIES_GROUPED}
+          className="w-full"
+        />
+        <CheckboxGroup
+          control={form.control}
+          name="outcome_measurement_type"
+          label="Measurement type"
+          options={OUTCOME_MEASUREMENT_TYPE_OPTIONS}
+        />
+      </div>
+    </FilterForm>
   )
 }

@@ -5,9 +5,7 @@ import { useForm } from "react-hook-form"
 import { Dispatch, SetStateAction } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import { Button } from "@/components/ui/button"
-import { Form } from "@/components/ui/form"
-import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
+import { FilterForm } from "@/components/data-explorer/filter-form"
 import { MultiSelectField } from "@/components/form/multi-select-field"
 import { CheckboxGroup } from "@/components/form/checkbox-group"
 
@@ -81,52 +79,38 @@ export const FilterInterventions = (props: FilterInterventionsProps) => {
   }
 
   return (
-    <FilterCollapsible
-      title="Filter"
-      open={filterOpen}
-      onOpenChange={setFilterOpen}
-    >
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="space-y-6">
-            <MultiSelectField
-              control={form.control}
-              name="intervention_mechanism"
-              label="Intervention mechanism"
-              description="Persuasion strategies used by researchers (facts, emotions, social pressure, etc.)"
-              placeholder="Select intervention mechanism..."
-              options={INTERVENTION_MECHANISM_OPTIONS}
-              className="w-full"
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="intervention_mechanism_multicomponent"
-              label="Mechanism components"
-              options={INTERVENTION_MULTICOMPONENT_OPTIONS}
-            />
-            <MultiSelectField
-              control={form.control}
-              name="intervention_medium"
-              label="Intervention medium"
-              placeholder="Select intervention medium..."
-              options={INTERVENTION_MEDIUM_OPTIONS}
-              className="w-full"
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="intervention_medium_multicomponent"
-              label="Medium components"
-              options={INTERVENTION_MULTICOMPONENT_OPTIONS}
-            />
-          </div>
-
-          <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto">
-              Update table
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </FilterCollapsible>
+    <FilterForm form={form} filterOpen={filterOpen} setFilterOpen={setFilterOpen} onSubmit={onSubmit}>
+      <div className="space-y-6">
+        <MultiSelectField
+          control={form.control}
+          name="intervention_mechanism"
+          label="Intervention mechanism"
+          description="Persuasion strategies used by researchers (facts, emotions, social pressure, etc.)"
+          placeholder="Select intervention mechanism..."
+          options={INTERVENTION_MECHANISM_OPTIONS}
+          className="w-full"
+        />
+        <CheckboxGroup
+          control={form.control}
+          name="intervention_mechanism_multicomponent"
+          label="Mechanism components"
+          options={INTERVENTION_MULTICOMPONENT_OPTIONS}
+        />
+        <MultiSelectField
+          control={form.control}
+          name="intervention_medium"
+          label="Intervention medium"
+          placeholder="Select intervention medium..."
+          options={INTERVENTION_MEDIUM_OPTIONS}
+          className="w-full"
+        />
+        <CheckboxGroup
+          control={form.control}
+          name="intervention_medium_multicomponent"
+          label="Medium components"
+          options={INTERVENTION_MULTICOMPONENT_OPTIONS}
+        />
+      </div>
+    </FilterForm>
   )
 }

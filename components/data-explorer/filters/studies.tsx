@@ -5,9 +5,7 @@ import { useForm } from "react-hook-form"
 import { Dispatch, SetStateAction } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import { Button } from "@/components/ui/button"
-import { Form } from "@/components/ui/form"
-import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
+import { FilterForm } from "@/components/data-explorer/filter-form"
 import { CheckboxGroup } from "@/components/form/checkbox-group"
 import { InputField } from "@/components/form/input-field"
 
@@ -90,61 +88,47 @@ export const FilterStudies = (props: FilterStudiesProps) => {
   }
 
   return (
-    <FilterCollapsible
-      title="Filter"
-      open={filterOpen}
-      onOpenChange={setFilterOpen}
-    >
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] lg:max-w-4xl xl:max-w-full xl:grid-cols-[1fr_1fr_1fr] gap-6">
-            <CheckboxGroup
-              control={form.control}
-              name="study_preregistered"
-              label="Preregistration"
-              options={STUDY_PREREGISTERED_OPTIONS}
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="study_data_available"
-              label="Data availability"
-              options={STUDY_DATA_AVAILABLE_OPTIONS}
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="study_randomization"
-              label="Randomization"
-              options={STUDY_RANDOMIZATION_OPTIONS}
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="study_design"
-              label="Study design"
-              options={STUDY_DESIGN_OPTIONS}
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="study_condition_assignment"
-              label="Condition assignment"
-              options={STUDY_CONDITION_ASSIGNMENT_OPTIONS}
-            />
-            <InputField
-              control={form.control}
-              name="study_n"
-              label="Minimum sample size"
-              description="This is the total sample size across all conditions in a study"
-              type="number"
-              className="rounded-lg w-60"
-            />
-          </div>
-
-          <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto">
-              Update table
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </FilterCollapsible>
+    <FilterForm form={form} filterOpen={filterOpen} setFilterOpen={setFilterOpen} onSubmit={onSubmit}>
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] lg:max-w-4xl xl:max-w-full xl:grid-cols-[1fr_1fr_1fr] gap-6">
+        <CheckboxGroup
+          control={form.control}
+          name="study_preregistered"
+          label="Preregistration"
+          options={STUDY_PREREGISTERED_OPTIONS}
+        />
+        <CheckboxGroup
+          control={form.control}
+          name="study_data_available"
+          label="Data availability"
+          options={STUDY_DATA_AVAILABLE_OPTIONS}
+        />
+        <CheckboxGroup
+          control={form.control}
+          name="study_randomization"
+          label="Randomization"
+          options={STUDY_RANDOMIZATION_OPTIONS}
+        />
+        <CheckboxGroup
+          control={form.control}
+          name="study_design"
+          label="Study design"
+          options={STUDY_DESIGN_OPTIONS}
+        />
+        <CheckboxGroup
+          control={form.control}
+          name="study_condition_assignment"
+          label="Condition assignment"
+          options={STUDY_CONDITION_ASSIGNMENT_OPTIONS}
+        />
+        <InputField
+          control={form.control}
+          name="study_n"
+          label="Minimum sample size"
+          description="This is the total sample size across all conditions in a study"
+          type="number"
+          className="rounded-lg w-60"
+        />
+      </div>
+    </FilterForm>
   )
 }

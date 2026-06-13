@@ -5,13 +5,11 @@ import { useForm } from "react-hook-form"
 import { Dispatch, SetStateAction } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import { Button } from "@/components/ui/button"
-import { Form } from "@/components/ui/form"
 import { FilteredData } from "@/lib/data-explorer-utils"
 import { InputField } from "@/components/form/input-field"
 import { SliderField } from "@/components/form/slider-field"
 
-import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
+import { FilterForm } from "@/components/data-explorer/filter-form"
 
 import effectsData from "@/assets/data/effects.json"
 import { Effects } from "@/lib/types"
@@ -79,40 +77,26 @@ export const FilterEffects = (props: FilterEffectsProps) => {
   }
 
   return (
-    <FilterCollapsible
-      title="Filter"
-      open={filterOpen}
-      onOpenChange={setFilterOpen}
-    >
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <SliderField
-              control={form.control}
-              name="effect_size"
-              label="Effect size"
-              min={EFFECT_SIZE_MIN}
-              max={EFFECT_SIZE_MAX}
-              step={0.1}
-              minStepsBetweenThumbs={0.1}
-            />
-            <InputField
-              control={form.control}
-              name="sample_size"
-              label="Minimum sample size"
-              description="Minimum per control or intervention condition"
-              type="number"
-              className="rounded-lg"
-            />
-          </div>
-
-          <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto">
-              Update table
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </FilterCollapsible>
+    <FilterForm form={form} filterOpen={filterOpen} setFilterOpen={setFilterOpen} onSubmit={onSubmit}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <SliderField
+          control={form.control}
+          name="effect_size"
+          label="Effect size"
+          min={EFFECT_SIZE_MIN}
+          max={EFFECT_SIZE_MAX}
+          step={0.1}
+          minStepsBetweenThumbs={0.1}
+        />
+        <InputField
+          control={form.control}
+          name="sample_size"
+          label="Minimum sample size"
+          description="Minimum per control or intervention condition"
+          type="number"
+          className="rounded-lg"
+        />
+      </div>
+    </FilterForm>
   )
 }

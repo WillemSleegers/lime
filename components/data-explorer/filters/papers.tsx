@@ -6,10 +6,7 @@ import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 
-import { Form } from "@/components/ui/form"
-import { Button } from "@/components/ui/button"
-
-import { FilterCollapsible } from "@/components/data-explorer/filter-collapsible"
+import { FilterForm } from "@/components/data-explorer/filter-form"
 import { CheckboxGroup } from "@/components/form/checkbox-group"
 import { SliderField } from "@/components/form/slider-field"
 import { paperFiltersFields } from "@/lib/filter-schemas"
@@ -79,44 +76,30 @@ export const FilterPapers = (props: FilterPapersProps) => {
   }
 
   return (
-    <FilterCollapsible
-      title="Filter"
-      open={filterOpen}
-      onOpenChange={setFilterOpen}
-    >
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-3">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-6">
-            <SliderField
-              control={form.control}
-              name="paper_year"
-              label="Publication year"
-              min={PAPER_YEAR_MIN}
-              max={PAPER_YEAR_MAX}
-              minStepsBetweenThumbs={1}
-              className="w-25"
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="paper_type"
-              label="Publication type"
-              options={PAPER_TYPE_OPTIONS}
-            />
-            <CheckboxGroup
-              control={form.control}
-              name="paper_open_access"
-              label="Access type"
-              options={PAPER_OPEN_ACCESS_OPTIONS}
-            />
-          </div>
-
-          <div className="flex gap-2 justify-between">
-            <Button type="submit" className="h-auto">
-              Update table
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </FilterCollapsible>
+    <FilterForm form={form} filterOpen={filterOpen} setFilterOpen={setFilterOpen} onSubmit={onSubmit}>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-6">
+        <SliderField
+          control={form.control}
+          name="paper_year"
+          label="Publication year"
+          min={PAPER_YEAR_MIN}
+          max={PAPER_YEAR_MAX}
+          minStepsBetweenThumbs={1}
+          className="w-25"
+        />
+        <CheckboxGroup
+          control={form.control}
+          name="paper_type"
+          label="Publication type"
+          options={PAPER_TYPE_OPTIONS}
+        />
+        <CheckboxGroup
+          control={form.control}
+          name="paper_open_access"
+          label="Access type"
+          options={PAPER_OPEN_ACCESS_OPTIONS}
+        />
+      </div>
+    </FilterForm>
   )
 }
