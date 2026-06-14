@@ -76,11 +76,19 @@ export async function runMetaAnalysis(webR: WebR) {
 
 // ─── Moderator analysis ───────────────────────────────────────────────────────
 
-import { ALLOWED_MODERATOR_VARS } from "@/constants/constants-meta-analysis"
+import { ALLOWED_BINARY_COLUMNS, ALLOWED_MODERATOR_VARS } from "@/constants/constants-meta-analysis"
 
 function assertAllowedModerator(moderatorVar: string): void {
   if (!ALLOWED_MODERATOR_VARS.has(moderatorVar)) {
     throw new Error(`Unknown moderator variable: ${moderatorVar}`)
+  }
+}
+
+function assertAllowedBinaryColumns(columns: string[]): void {
+  for (const col of columns) {
+    if (!ALLOWED_BINARY_COLUMNS.has(col)) {
+      throw new Error(`Unknown binary column: ${col}`)
+    }
   }
 }
 
@@ -245,4 +253,95 @@ level_results <- vapply(mod_levels, .fit_level, numeric(5))
     pval: flat[i * 5 + 3],
     k: flat[i * 5 + 4],
   }))
+}
+
+export type BinaryEstimatePair = {
+  absentEstimate: number
+  absentLower: number
+  absentUpper: number
+  absentK: number
+  presentEstimate: number
+  presentLower: number
+  presentUpper: number
+  presentK: number
+  qm: number
+  qmp: number
+}
+
+/**
+ * Binary moderator analysis: fits one univariable rma.mv using the 0/1
+ * indicator column as the predictor and returns predicted means at binary = 0
+ * (absent) and binary = 1 (present), plus the slope p-value. Data must
+ * include all inclusion-criteria rows (not just present-mechanism rows).
+ */
+export async function runBinaryModeratorAnalysis(
+  webR: WebR,
+  level: { label: string; column: string },
+): Promise<BinaryEstimatePair> {
+  assertAllowedBinaryColumns([level.column])
+
+  await webR.objs.globalEnv.bind("binary_col", level.column)
+
+  await webR.evalRVoid(`
+col <- binary_col
+k_present <- sum(data[[col]] == 1L, na.rm = TRUE)
+k_absent  <- sum(data[[col]] == 0L, na.rm = TRUE)
+.fail <- c(NaN, NaN, NaN, k_absent, NaN, NaN, NaN, k_present, NaN, NaN)
+
+if (k_present >= 2 && length(unique(data$paper[data[[col]] == 1L])) >= 2) {
+  V <- try(metafor::vcalc(
+    vi = effect_size_var,
+    cluster = paper_study,
+    subgroup = outcome,
+    data = data,
+    grp1 = intervention_key,
+    grp2 = control_key
+  ), silent = TRUE)
+
+  if (!inherits(V, "try-error")) {
+    fit <- try(
+      metafor::rma.mv(
+        yi = effect_size, V = V,
+        random = ~ 1 | paper / study / outcome,
+        mods = reformulate(col, intercept = TRUE),
+        data = data
+      ),
+      silent = TRUE
+    )
+
+    if (!inherits(fit, "try-error")) {
+      sav  <- try(metafor::robust(fit, cluster = data$paper, clubSandwich = TRUE), silent = TRUE)
+      pred0 <- try(predict(sav, newmods = 0), silent = TRUE)
+      pred1 <- try(predict(sav, newmods = 1), silent = TRUE)
+
+      if (!inherits(sav, "try-error") && !inherits(pred0, "try-error") && !inherits(pred1, "try-error")) {
+        .fail <- c(pred0$pred, pred0$ci.lb, pred0$ci.ub, k_absent,
+                   pred1$pred, pred1$ci.lb, pred1$ci.ub, k_present,
+                   sav$QM, sav$QMp)
+        .fail[is.na(.fail)] <- NaN
+      }
+    }
+  }
+}
+
+binary_out <- .fail
+`)
+
+  const [ae, al, au, ak, pe, pl, pu, pk, qm, qmp] = await webR.evalRRaw(
+    `as.numeric(binary_out)`,
+    "number[]",
+  )
+
+  return {
+    absentEstimate: ae,
+    absentLower: al,
+    absentUpper: au,
+    absentK: ak,
+    presentEstimate: pe,
+    presentLower: pl,
+    presentUpper: pu,
+    presentK: pk,
+    qm,
+    qmp,
+  }
 }

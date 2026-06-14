@@ -7,6 +7,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Spinner } from "@/components/ui/spinner"
+import { Switch } from "@/components/ui/switch"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 import {
   Select,
   SelectContent,
@@ -25,6 +34,7 @@ import {
 
 import { ModeratorChart } from "@/components/meta-analysis/charts/moderator-chart"
 import {
+  runBinaryModeratorAnalysis,
   runFactorModeratorAnalysis,
   runPerLevelModeratorAnalysis,
 } from "@/lib/r-functions"
@@ -61,30 +71,56 @@ export const ModeratorAnalysis = ({
 }: ModeratorAnalysisProps) => {
   const [selectedVar, setSelectedVar] = useState<string>("")
   const [selectedLevels, setSelectedLevels] = useState<string[]>([])
+  const [selectedBinaryLevel, setSelectedBinaryLevel] = useState<string>("")
+  const [singleOnly, setSingleOnly] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [error, setError] = useState<string | undefined>()
 
   const selectedModerator = MODERATOR_VARIABLES.find(
     (v) => v.value === selectedVar,
   )
+  const isBinary = !!selectedModerator?.binaryLevels
   const canRun =
     selectedVar !== "" &&
-    selectedLevels.length >= 2 &&
+    (isBinary ? selectedBinaryLevel !== "" : selectedLevels.length >= 2) &&
     status === "Ready" &&
     !isRunning
 
-  // Compute available levels with per-level k (effects) and paper counts. For
-  // multi-value moderators a row contributes to every token it lists.
+  // Count rows for a given level label, using binary column lookup when
+  // binaryLevels is defined, otherwise string-token matching.
+  const matchingRowsForLevel = (
+    moderator: (typeof MODERATOR_VARIABLES)[0],
+    level: string,
+  ) => {
+    const base =
+      singleOnly && moderator.multicomponentColumn
+        ? data.filter(
+            (datum) =>
+              (datum as Record<string, unknown>)[moderator.multicomponentColumn!] === "no",
+          )
+        : data
+
+    if (moderator.binaryLevels) {
+      const binaryLevel = moderator.binaryLevels.find((b) => b.label === level)
+      if (!binaryLevel) return []
+      return base.filter(
+        (datum) => (datum as Record<string, unknown>)[binaryLevel.column] === 1,
+      )
+    }
+    return base.filter((datum) =>
+      moderatorTokens(
+        (datum as Record<string, unknown>)[moderator.value],
+      ).includes(level),
+    )
+  }
+
+  // Compute available levels with per-level k (effects) and paper counts.
   // Levels with fewer than 2 unique papers can't get a robust CI from
   // clubSandwich, so we mark them as un-fittable.
   const levelOptions = (() => {
     if (!selectedModerator) return []
     return selectedModerator.levels.flatMap((level) => {
-      const matching = data.filter((datum) =>
-        moderatorTokens(
-          (datum as Record<string, unknown>)[selectedModerator.value],
-        ).includes(level),
-      )
+      const matching = matchingRowsForLevel(selectedModerator, level)
       const k = matching.length
       if (k === 0) return []
       const papers = new Set(matching.map((d) => d.paper)).size
@@ -92,27 +128,39 @@ export const ModeratorAnalysis = ({
     })
   })()
 
-  // Reset selected levels when the variable changes. Default to only the
-  // levels that are actually fittable (≥ 2 unique papers) — the user can
-  // opt in to un-fittable ones but they'll be skipped in the results.
+  // Clear the binary selection if it's no longer in the available options
+  // (e.g. after toggling singleOnly causes a level to drop out).
+  useEffect(() => {
+    if (
+      selectedBinaryLevel &&
+      !levelOptions.some((o) => o.value === selectedBinaryLevel)
+    ) {
+      setSelectedBinaryLevel("")
+    }
+  }, [levelOptions, selectedBinaryLevel])
+
+  // Reset selections when the variable changes.
   useEffect(() => {
     const moderator = MODERATOR_VARIABLES.find((v) => v.value === selectedVar)
     if (!moderator) {
       setSelectedLevels([])
+      setSelectedBinaryLevel("")
       return
     }
-    setSelectedLevels(
-      moderator.levels.filter((level) => {
-        const matching = data.filter((datum) =>
-          moderatorTokens(
-            (datum as Record<string, unknown>)[moderator.value],
-          ).includes(level),
-        )
-        return new Set(matching.map((d) => d.paper)).size >= 2
-      }),
-    )
+    if (moderator.binaryLevels) {
+      setSelectedBinaryLevel("")
+      setSingleOnly(false)
+    } else {
+      setSelectedLevels(
+        moderator.levels.filter((level) => {
+          const matching = matchingRowsForLevel(moderator, level)
+          return new Set(matching.map((d) => d.paper)).size >= 2
+        }),
+      )
+    }
     setResult(undefined)
     setError(undefined)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedVar, data, setResult])
 
   const handleRun = async () => {
@@ -126,6 +174,76 @@ export const ModeratorAnalysis = ({
       const moderatorVar = selectedModerator.value
       const selectedSet = new Set(selectedLevels)
 
+      if (selectedModerator.binaryLevels) {
+        // Binary indicator path: one level, two predicted means (absent/present)
+        const binaryLevel = selectedModerator.binaryLevels.find(
+          (b) => b.label === selectedBinaryLevel,
+        )
+        if (!binaryLevel) return
+
+        const subset = data
+          .filter((datum) => {
+            if (datum.effect_size == null || datum.effect_size_var == null) return false
+            if (singleOnly && selectedModerator.multicomponentColumn) {
+              return (datum as Record<string, unknown>)[selectedModerator.multicomponentColumn] === "no"
+            }
+            return true
+          })
+          .map((datum) => ({
+            effect_size: datum.effect_size,
+            effect_size_var: datum.effect_size_var,
+            paper_study: datum.paper_study,
+            paper: datum.paper,
+            study: datum.study,
+            outcome: datum.outcome,
+            intervention_key: datum.intervention_key,
+            control_key: datum.control_key,
+            [binaryLevel.column]: Number(
+              (datum as Record<string, unknown>)[binaryLevel.column],
+            ),
+          }))
+
+        if (subset.length === 0) {
+          setError("No effects match the inclusion criteria.")
+          return
+        }
+
+        const df = await new webR.current.RObject(subset)
+        await webR.current.objs.globalEnv.bind("data", df)
+
+        const res = await runBinaryModeratorAnalysis(webR.current, {
+          label: binaryLevel.label,
+          column: String(binaryLevel.column),
+        })
+
+        if (!Number.isFinite(res.presentEstimate)) {
+          setError("Not enough data to fit a model for this mechanism.")
+          return
+        }
+
+        setResult({
+          levels: [
+            {
+              label: "Present",
+              estimate: res.presentEstimate,
+              lower: res.presentLower,
+              upper: res.presentUpper,
+              k: res.presentK,
+            },
+            {
+              label: "Absent",
+              estimate: res.absentEstimate,
+              lower: res.absentLower,
+              upper: res.absentUpper,
+              k: res.absentK,
+            },
+          ],
+          omnibus: { qm: res.qm, qmdf: 1, qmp: res.qmp },
+        })
+        return
+      }
+
+      // String-token path (multivalue) or factor path
       const subset = data
         .filter((datum) => {
           if (datum.effect_size == null || datum.effect_size_var == null) {
@@ -243,52 +361,105 @@ export const ModeratorAnalysis = ({
             </Select>
           </div>
 
-          {/* Levels multi-select */}
-          <div className="space-y-1.5">
-            <Label className={!selectedVar ? "text-muted-foreground" : ""}>
-              Levels to include
-            </Label>
-            <p className="text-sm text-muted-foreground">
-              {!selectedVar
-                ? "Select a moderator variable to see available levels."
-                : "Deselect levels to exclude them from the analysis. Counts show the number of effects per level."}
-            </p>
-            <MultiSelect
-              values={selectedLevels}
-              onValuesChange={setSelectedLevels}
-            >
-              <MultiSelectTrigger
-                className="w-full bg-card"
+          {/* Single-component switch */}
+          {selectedModerator?.multicomponentColumn && (
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2">
+                <Switch
+                  id="single-only"
+                  checked={singleOnly}
+                  onCheckedChange={setSingleOnly}
+                  disabled={!selectedVar}
+                />
+                <Label htmlFor="single-only">
+                  Exclude multi-{(selectedModerator.levelLabel ?? "level").toLowerCase()} interventions
+                </Label>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Some interventions combine multiple {(selectedModerator.levelLabel ?? "level").toLowerCase()}s, making it hard to attribute the effect to any single one. Turn this on to restrict the analysis to interventions that use only one {(selectedModerator.levelLabel ?? "level").toLowerCase()}.
+              </p>
+            </div>
+          )}
+
+          {/* Level selector: single-select for binary moderators, multi-select otherwise */}
+          {isBinary ? (
+            <div className="space-y-1.5">
+              <Label className={!selectedVar ? "text-muted-foreground" : ""}>
+                {selectedModerator?.levelLabel ?? "Level"}
+              </Label>
+              <p className="text-sm text-muted-foreground">
+                {!selectedVar
+                  ? "Select a moderator variable to see available levels."
+                  : `Select a ${(selectedModerator?.levelLabel ?? "level").toLowerCase()} to compare effects between interventions that use it and those that don't. Counts show the number of effects where the ${(selectedModerator?.levelLabel ?? "level").toLowerCase()} is present. Grayed out options don't have enough data to fit a model.`}
+              </p>
+              <Select
+                value={selectedBinaryLevel}
+                onValueChange={setSelectedBinaryLevel}
                 disabled={!selectedVar}
               >
-                <MultiSelectValue placeholder="Select levels…" />
-              </MultiSelectTrigger>
-              <MultiSelectContent>
-                <MultiSelectGroup>
+                <SelectTrigger className="w-64">
+                  <SelectValue placeholder="Select a level…" />
+                </SelectTrigger>
+                <SelectContent>
                   {levelOptions.map((o) => (
-                    <MultiSelectItem
+                    <SelectItem
                       key={o.value}
                       value={o.value}
-                      badgeLabel={o.value}
                       disabled={!o.fittable}
                     >
-                      <span className="flex-1">
-                        {o.value} ({o.k})
-                      </span>
-                      {!o.fittable && (
-                        <span
-                          className="text-xs text-muted-foreground"
-                          title="At least 2 unique papers are needed to fit a robust meta-analysis for this level."
-                        >
-                          too few papers
-                        </span>
-                      )}
-                    </MultiSelectItem>
+                      {o.value} ({o.k})
+                    </SelectItem>
                   ))}
-                </MultiSelectGroup>
-              </MultiSelectContent>
-            </MultiSelect>
-          </div>
+                </SelectContent>
+              </Select>
+            </div>
+          ) : (
+            <div className="space-y-1.5">
+              <Label className={!selectedVar ? "text-muted-foreground" : ""}>
+                Levels to include
+              </Label>
+              <p className="text-sm text-muted-foreground">
+                {!selectedVar
+                  ? "Select a moderator variable to see available levels."
+                  : "Deselect levels to exclude them from the analysis. Counts show the number of effects per level. Grayed out levels don't have enough data to fit a model."}
+              </p>
+              <MultiSelect
+                values={selectedLevels}
+                onValuesChange={setSelectedLevels}
+              >
+                <MultiSelectTrigger
+                  className="w-full bg-card"
+                  disabled={!selectedVar}
+                >
+                  <MultiSelectValue placeholder="Select levels…" />
+                </MultiSelectTrigger>
+                <MultiSelectContent>
+                  <MultiSelectGroup>
+                    {levelOptions.map((o) => (
+                      <MultiSelectItem
+                        key={o.value}
+                        value={o.value}
+                        badgeLabel={o.value}
+                        disabled={!o.fittable}
+                      >
+                        <span className="flex-1">
+                          {o.value} ({o.k})
+                        </span>
+                        {!o.fittable && (
+                          <span
+                            className="text-xs text-muted-foreground"
+                            title="At least 2 unique papers are needed to fit a robust meta-analysis for this level."
+                          >
+                            too few papers
+                          </span>
+                        )}
+                      </MultiSelectItem>
+                    ))}
+                  </MultiSelectGroup>
+                </MultiSelectContent>
+              </MultiSelect>
+            </div>
+          )}
 
           {/* Run button */}
           <Button
@@ -325,6 +496,7 @@ export const ModeratorAnalysis = ({
 
 const ModeratorResults = ({ result }: { result: ModeratorResult }) => {
   const { levels, omnibus } = result
+  const showPval = levels.some((l) => l.pval != null)
 
   const pLabel = (p: number) => {
     if (p < 0.001) return "< .001"
@@ -355,36 +527,36 @@ const ModeratorResults = ({ result }: { result: ModeratorResult }) => {
       <ModeratorChart levels={levels} />
 
       {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b text-muted-foreground">
-              <th className="text-left py-2 pr-4 font-medium">Level</th>
-              <th className="text-right py-2 px-4 font-medium">k</th>
-              <th className="text-right py-2 px-4 font-medium">d</th>
-              <th className="text-right py-2 px-4 font-medium">95% CI</th>
-              <th className="text-right py-2 pl-4 font-medium">p</th>
-            </tr>
-          </thead>
-          <tbody>
-            {levels.map((level) => (
-              <tr key={level.label} className="border-b last:border-0">
-                <td className="py-2 pr-4">{level.label}</td>
-                <td className="text-right py-2 px-4 tabular-nums">{level.k}</td>
-                <td className="text-right py-2 px-4 tabular-nums font-medium">
-                  {round(level.estimate, 2)}
-                </td>
-                <td className="text-right py-2 px-4 tabular-nums text-muted-foreground">
-                  [{round(level.lower, 2)}, {round(level.upper, 2)}]
-                </td>
-                <td className="text-right py-2 pl-4 tabular-nums">
-                  {pLabel(level.pval)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Level</TableHead>
+            <TableHead className="text-right">k</TableHead>
+            <TableHead className="text-right">d</TableHead>
+            <TableHead className="text-right">95% CI</TableHead>
+            {showPval && <TableHead className="text-right">p</TableHead>}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {levels.map((level) => (
+            <TableRow key={level.label}>
+              <TableCell>{level.label}</TableCell>
+              <TableCell className="text-right tabular-nums">{level.k}</TableCell>
+              <TableCell className="text-right tabular-nums font-medium">
+                {round(level.estimate, 2)}
+              </TableCell>
+              <TableCell className="text-right tabular-nums text-muted-foreground">
+                [{round(level.lower, 2)}, {round(level.upper, 2)}]
+              </TableCell>
+              {showPval && (
+                <TableCell className="text-right tabular-nums">
+                  {level.pval != null ? pLabel(level.pval) : "—"}
+                </TableCell>
+              )}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   )
 }

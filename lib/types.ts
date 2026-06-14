@@ -68,7 +68,7 @@ export type ModeratorLevel = {
   estimate: number
   lower: number
   upper: number
-  pval: number
+  pval?: number
   k: number
 }
 
