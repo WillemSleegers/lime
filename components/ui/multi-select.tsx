@@ -168,6 +168,9 @@ export function MultiSelectValue({
   }, [])
 
   useLayoutEffect(() => {
+    // Requires a real layout measurement (scrollWidth/clientWidth), which
+    // only exists post-paint, so it can't be computed during render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     checkOverflow()
   }, [selectedValues, checkOverflow, shouldWrap])
 

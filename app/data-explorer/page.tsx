@@ -57,6 +57,64 @@ const DATA_EXPLORER_STORAGE_KEYS = [
   "lime-data-explorer-effects",
 ]
 
+const handleDownload = (data: Record<string, unknown>[], fileName: string) => {
+  exportToCSV(data, fileName)
+}
+
+const DownloadButton = () => (
+  <div className="flex justify-end">
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">
+          Download
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>Individual Tables</DropdownMenuLabel>
+        <DropdownMenuItem
+          onClick={() => handleDownload(papers, "lime-papers.csv")}
+        >
+          Papers
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => handleDownload(studies, "lime-studies.csv")}
+        >
+          Studies
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => handleDownload(samples, "lime-samples.csv")}
+        >
+          Samples
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() =>
+            handleDownload(interventions, "lime-interventions.csv")
+          }
+        >
+          Interventions
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => handleDownload(outcomes, "lime-outcomes.csv")}
+        >
+          Outcomes
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => handleDownload(effects, "lime-effects.csv")}
+        >
+          Effects
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuLabel>Complete Dataset</DropdownMenuLabel>
+        <DropdownMenuItem
+          onClick={() => handleDownload(all, "lime-data.csv")}
+        >
+          All (joined)
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  </div>
+)
+
 export default function DataExplorer() {
   const [filterOpen, setFilterOpen] = useState(false)
   const [resetKey, setResetKey] = useState(0)
@@ -73,67 +131,6 @@ export default function DataExplorer() {
       },
       all
     )
-
-  const handleDownload = (
-    data: Record<string, unknown>[],
-    fileName: string
-  ) => {
-    exportToCSV(data, fileName)
-  }
-
-  const DownloadButton = () => (
-    <div className="flex justify-end">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline">
-            Download
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuLabel>Individual Tables</DropdownMenuLabel>
-          <DropdownMenuItem
-            onClick={() => handleDownload(papers, "lime-papers.csv")}
-          >
-            Papers
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => handleDownload(studies, "lime-studies.csv")}
-          >
-            Studies
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => handleDownload(samples, "lime-samples.csv")}
-          >
-            Samples
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() =>
-              handleDownload(interventions, "lime-interventions.csv")
-            }
-          >
-            Interventions
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => handleDownload(outcomes, "lime-outcomes.csv")}
-          >
-            Outcomes
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => handleDownload(effects, "lime-effects.csv")}
-          >
-            Effects
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuLabel>Complete Dataset</DropdownMenuLabel>
-          <DropdownMenuItem
-            onClick={() => handleDownload(all, "lime-data.csv")}
-          >
-            All (joined)
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
-  )
 
   const handleResetFilters = () => {
     DATA_EXPLORER_STORAGE_KEYS.forEach(clearFormValues)

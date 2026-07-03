@@ -51,210 +51,184 @@ export const Highlights = (props: HighLightsProps) => {
 
   if (!data) return null
 
-  let participantsCount
-  let effectsCount
-  let papersCount
-  let studiesCount
-  let openAccessCount
-  let openAccessPercentage
-  let preregistrationsCount
-  let preregistrationPercentage
-  let yearCounts
-  let chartData
-  let interventionMechanismData
-  let interventionMediumData
-  let paperTypeData
-  let studyDesignData
-  let studyRandomizationCount
-  let studyRandomizationPercentage
-  let studyDataAvailableCount
-  let studyDataAvailablePercentage
-  let studyConditionAssignmentData
-  let outcomeSubcategoryData
-  let outcomeMeasurementTypeData
-  let countryData
-  let sampleSizeStats
-  let singleComponentCount
-  let singleComponentPercentage
+  const participantsCount = [
+    ...data
+      .reduce((map, { paper, study, study_n }) => {
+        return map.set(`${paper}-${study}`, {
+          paper,
+          study,
+          study_n,
+        })
+      }, new Map())
+      .values(),
+  ]
+    .map((e) => e.study_n)
+    .reduce((partialSum, a) => partialSum + a, 0)
 
-    participantsCount = [
-      ...data
-        .reduce((map, { paper, study, study_n }) => {
-          return map.set(`${paper}-${study}`, {
-            paper,
-            study,
-            study_n,
-          })
-        }, new Map())
-        .values(),
-    ]
-      .map((e) => e.study_n)
-      .reduce((partialSum, a) => partialSum + a, 0)
+  const studiesCount = [
+    ...new Set(data.map((datum) => datum.paper + "-" + datum.study)),
+  ].length
 
-    studiesCount = [
-      ...new Set(data.map((datum) => datum.paper + "-" + datum.study)),
-    ].length
+  const effectsCount = data.length
+  const papersCount = countUniqueValues(data, "paper")
+  const openAccessCount = countUniqueFilteredValues(
+    data,
+    "paper",
+    "paper_open_access",
+    "open access"
+  )
+  const openAccessPercentage = round((openAccessCount / papersCount) * 100, 0)
+  const preregistrationsCount = countUniqueFilteredValues(
+    data,
+    "paper_study",
+    "study_preregistered",
+    "yes"
+  )
+  const preregistrationPercentage = round(
+    (preregistrationsCount / studiesCount) * 100,
+    0
+  )
+  const yearCounts = countUniqueValuesByGroup(data, "paper", "paper_year")
+  const chartData = mapToXYArray(yearCounts)
 
-    effectsCount = data.length
-    papersCount = countUniqueValues(data, "paper")
-    openAccessCount = countUniqueFilteredValues(
-      data,
-      "paper",
-      "paper_open_access",
-      "open access"
-    )
-    openAccessPercentage = round((openAccessCount / papersCount) * 100, 0)
-    preregistrationsCount = countUniqueFilteredValues(
-      data,
-      "paper_study",
-      "study_preregistered",
-      "yes"
-    )
-    preregistrationPercentage = round(
-      (preregistrationsCount / studiesCount) * 100,
-      0
-    )
-    yearCounts = countUniqueValuesByGroup(data, "paper", "paper_year")
-    chartData = mapToXYArray(yearCounts)
-
-    // Calculate intervention mechanism counts (split comma-separated values)
-    const interventionMechanismCounts: Record<string, number> = {}
-    data.forEach((datum) => {
-      const mechanisms = datum.intervention_mechanism?.split(", ") || []
-      mechanisms.forEach((mechanism) => {
-        interventionMechanismCounts[mechanism] = (interventionMechanismCounts[mechanism] || 0) + 1
-      })
+  // Calculate intervention mechanism counts (split comma-separated values)
+  const interventionMechanismCounts: Record<string, number> = {}
+  data.forEach((datum) => {
+    const mechanisms = datum.intervention_mechanism?.split(", ") || []
+    mechanisms.forEach((mechanism) => {
+      interventionMechanismCounts[mechanism] = (interventionMechanismCounts[mechanism] || 0) + 1
     })
+  })
 
-    interventionMechanismData = Object.entries(interventionMechanismCounts)
-      .map(([name, value]) => ({
-        name,
-        value,
-      }))
-      .sort((a, b) => b.value - a.value)
+  const interventionMechanismData = Object.entries(interventionMechanismCounts)
+    .map(([name, value]) => ({
+      name,
+      value,
+    }))
+    .sort((a, b) => b.value - a.value)
 
-    // Calculate intervention medium counts (split comma-separated values)
-    const interventionMediumCounts: Record<string, number> = {}
-    data.forEach((datum) => {
-      const mediums = datum.intervention_medium?.split(", ") || []
-      mediums.forEach((medium) => {
-        interventionMediumCounts[medium] = (interventionMediumCounts[medium] || 0) + 1
-      })
+  // Calculate intervention medium counts (split comma-separated values)
+  const interventionMediumCounts: Record<string, number> = {}
+  data.forEach((datum) => {
+    const mediums = datum.intervention_medium?.split(", ") || []
+    mediums.forEach((medium) => {
+      interventionMediumCounts[medium] = (interventionMediumCounts[medium] || 0) + 1
     })
+  })
 
-    interventionMediumData = Object.entries(interventionMediumCounts)
-      .map(([name, value]) => ({
-        name,
-        value,
-      }))
-      .sort((a, b) => b.value - a.value)
+  const interventionMediumData = Object.entries(interventionMediumCounts)
+    .map(([name, value]) => ({
+      name,
+      value,
+    }))
+    .sort((a, b) => b.value - a.value)
 
-    // Calculate paper type distribution
-    const paperTypeCounts: Record<string, number> = {}
-    data.forEach((datum) => {
-      const types = datum.paper_type.split(", ")
-      types.forEach((type) => {
-        paperTypeCounts[type] = (paperTypeCounts[type] || 0) + 1
-      })
+  // Calculate paper type distribution
+  const paperTypeCounts: Record<string, number> = {}
+  data.forEach((datum) => {
+    const types = datum.paper_type.split(", ")
+    types.forEach((type) => {
+      paperTypeCounts[type] = (paperTypeCounts[type] || 0) + 1
     })
-    paperTypeData = Object.entries(paperTypeCounts)
-      .map(([name, value]) => ({ name, value }))
-      .sort((a, b) => b.value - a.value)
+  })
+  const paperTypeData = Object.entries(paperTypeCounts)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value)
 
-    // Calculate study design distribution
-    const studyDesignCounts: Record<string, number> = {}
-    const uniqueStudies = new Map<string, typeof data[0]>()
-    data.forEach((datum) => {
-      uniqueStudies.set(`${datum.paper}-${datum.study}`, datum)
+  // Calculate study design distribution
+  const studyDesignCounts: Record<string, number> = {}
+  const uniqueStudies = new Map<string, typeof data[0]>()
+  data.forEach((datum) => {
+    uniqueStudies.set(`${datum.paper}-${datum.study}`, datum)
+  })
+  uniqueStudies.forEach((datum) => {
+    const designs = datum.study_design.split(", ")
+    designs.forEach((design) => {
+      studyDesignCounts[design] = (studyDesignCounts[design] || 0) + 1
     })
-    uniqueStudies.forEach((datum) => {
-      const designs = datum.study_design.split(", ")
-      designs.forEach((design) => {
-        studyDesignCounts[design] = (studyDesignCounts[design] || 0) + 1
-      })
+  })
+  const studyDesignData = Object.entries(studyDesignCounts)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value)
+
+  // Calculate randomization percentage (count "yes")
+  const studyRandomizationCount = Array.from(uniqueStudies.values()).filter(
+    (datum) => datum.study_randomization === "yes"
+  ).length
+  const studyRandomizationPercentage = round(
+    (studyRandomizationCount / studiesCount) * 100,
+    0
+  )
+
+  // Calculate data availability percentage (count "yes")
+  const studyDataAvailableCount = Array.from(uniqueStudies.values()).filter(
+    (datum) => datum.study_data_available.includes("yes")
+  ).length
+  const studyDataAvailablePercentage = round(
+    (studyDataAvailableCount / studiesCount) * 100,
+    0
+  )
+
+  // Calculate condition assignment distribution
+  const studyConditionAssignmentCounts: Record<string, number> = {}
+  uniqueStudies.forEach((datum) => {
+    const assignments = datum.study_condition_assignment.split(", ")
+    assignments.forEach((assignment) => {
+      studyConditionAssignmentCounts[assignment] = (studyConditionAssignmentCounts[assignment] || 0) + 1
     })
-    studyDesignData = Object.entries(studyDesignCounts)
-      .map(([name, value]) => ({ name, value }))
-      .sort((a, b) => b.value - a.value)
+  })
+  const studyConditionAssignmentData = Object.entries(studyConditionAssignmentCounts)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value)
 
-    // Calculate randomization percentage (count "yes")
-    studyRandomizationCount = Array.from(uniqueStudies.values()).filter(
-      (datum) => datum.study_randomization === "yes"
-    ).length
-    studyRandomizationPercentage = round(
-      (studyRandomizationCount / studiesCount) * 100,
-      0
-    )
+  // Calculate outcome subcategory distribution
+  const outcomeSubcategoryCounts: Record<string, number> = {}
+  data.forEach((datum) => {
+    outcomeSubcategoryCounts[datum.outcome_subcategory] = (outcomeSubcategoryCounts[datum.outcome_subcategory] || 0) + 1
+  })
+  const outcomeSubcategoryData = Object.entries(outcomeSubcategoryCounts)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value)
 
-    // Calculate data availability percentage (count "yes")
-    studyDataAvailableCount = Array.from(uniqueStudies.values()).filter(
-      (datum) => datum.study_data_available.includes("yes")
-    ).length
-    studyDataAvailablePercentage = round(
-      (studyDataAvailableCount / studiesCount) * 100,
-      0
-    )
-
-    // Calculate condition assignment distribution
-    const studyConditionAssignmentCounts: Record<string, number> = {}
-    uniqueStudies.forEach((datum) => {
-      const assignments = datum.study_condition_assignment.split(", ")
-      assignments.forEach((assignment) => {
-        studyConditionAssignmentCounts[assignment] = (studyConditionAssignmentCounts[assignment] || 0) + 1
-      })
+  // Calculate outcome measurement type distribution
+  const outcomeMeasurementTypeCounts: Record<string, number> = {}
+  data.forEach((datum) => {
+    const types = datum.outcome_measurement_type.split(", ")
+    types.forEach((type) => {
+      outcomeMeasurementTypeCounts[type] = (outcomeMeasurementTypeCounts[type] || 0) + 1
     })
-    studyConditionAssignmentData = Object.entries(studyConditionAssignmentCounts)
-      .map(([name, value]) => ({ name, value }))
-      .sort((a, b) => b.value - a.value)
+  })
+  const outcomeMeasurementTypeData = Object.entries(outcomeMeasurementTypeCounts)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value)
 
-    // Calculate outcome subcategory distribution
-    const outcomeSubcategoryCounts: Record<string, number> = {}
-    data.forEach((datum) => {
-      outcomeSubcategoryCounts[datum.outcome_subcategory] = (outcomeSubcategoryCounts[datum.outcome_subcategory] || 0) + 1
-    })
-    outcomeSubcategoryData = Object.entries(outcomeSubcategoryCounts)
-      .map(([name, value]) => ({ name, value }))
-      .sort((a, b) => b.value - a.value)
-
-    // Calculate outcome measurement type distribution
-    const outcomeMeasurementTypeCounts: Record<string, number> = {}
-    data.forEach((datum) => {
-      const types = datum.outcome_measurement_type.split(", ")
-      types.forEach((type) => {
-        outcomeMeasurementTypeCounts[type] = (outcomeMeasurementTypeCounts[type] || 0) + 1
-      })
-    })
-    outcomeMeasurementTypeData = Object.entries(outcomeMeasurementTypeCounts)
-      .map(([name, value]) => ({ name, value }))
-      .sort((a, b) => b.value - a.value)
-
-    // Calculate country distribution
-    const countryCounts: Record<string, number> = {}
-    uniqueStudies.forEach((datum) => {
-      if (datum.sample_country) {
-        countryCounts[datum.sample_country] = (countryCounts[datum.sample_country] || 0) + 1
-      }
-    })
-    countryData = Object.entries(countryCounts)
-      .map(([name, value]) => ({ name, value }))
-      .sort((a, b) => b.value - a.value)
-
-    // Calculate sample size statistics (SMCC is within-subjects so n is counted once)
-    const allSizes = data
-      .map(d => d.effect_size_name === "SMCC" ? d.effect_intervention_n : d.effect_intervention_n + d.effect_control_n)
-      .sort((a, b) => a - b)
-
-    sampleSizeStats = {
-      min: Math.min(...allSizes),
-      median: allSizes[Math.floor(allSizes.length / 2)],
-      max: Math.max(...allSizes),
+  // Calculate country distribution
+  const countryCounts: Record<string, number> = {}
+  uniqueStudies.forEach((datum) => {
+    if (datum.sample_country) {
+      countryCounts[datum.sample_country] = (countryCounts[datum.sample_country] || 0) + 1
     }
+  })
+  const countryData = Object.entries(countryCounts)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value)
 
-    // Calculate single-component percentage
-    singleComponentCount = data.filter(
-      (datum) => datum.intervention_mechanism_multicomponent === "no" && datum.intervention_medium_multicomponent === "no"
-    ).length
-    singleComponentPercentage = round((singleComponentCount / effectsCount) * 100, 0)
+  // Calculate sample size statistics (SMCC is within-subjects so n is counted once)
+  const allSizes = data
+    .map(d => d.effect_size_name === "SMCC" ? d.effect_intervention_n : d.effect_intervention_n + d.effect_control_n)
+    .sort((a, b) => a - b)
+
+  const sampleSizeStats = {
+    min: Math.min(...allSizes),
+    median: allSizes[Math.floor(allSizes.length / 2)],
+    max: Math.max(...allSizes),
+  }
+
+  // Calculate single-component percentage
+  const singleComponentCount = data.filter(
+    (datum) => datum.intervention_mechanism_multicomponent === "no" && datum.intervention_medium_multicomponent === "no"
+  ).length
+  const singleComponentPercentage = round((singleComponentCount / effectsCount) * 100, 0)
 
   return (
     <div className="space-y-8">

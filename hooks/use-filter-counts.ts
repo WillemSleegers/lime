@@ -2,7 +2,6 @@ import { countOption } from "@/lib/filter-counts"
 import data from "@/assets/data/data.json"
 import {
   ALL_COUNTRY_VALUES,
-  COUNTRY_OPTIONS,
   PAPER_TYPE_OPTIONS,
   PAPER_OPEN_ACCESS_OPTIONS,
   STUDY_PREREGISTERED_OPTIONS,

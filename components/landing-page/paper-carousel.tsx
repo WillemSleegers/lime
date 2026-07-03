@@ -16,6 +16,9 @@ export const PaperCarousel = () => {
   const [shuffledPapers, setShuffledPapers] = useState<typeof papers>([])
 
   useEffect(() => {
+    // Shuffling must happen post-mount, client-side only, so the
+    // server-rendered order matches what's hydrated (avoids a mismatch).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShuffledPapers(shuffle(papers))
   }, [])
 

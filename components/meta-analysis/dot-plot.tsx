@@ -42,6 +42,89 @@ type DotPlotProps = {
   data: Data
 }
 
+const CustomDot = (props: {
+  cx?: number
+  cy?: number
+  payload?: DotData
+  dotSize: number
+}) => {
+  const { cx, cy, payload, dotSize } = props
+
+  if (!payload) return null
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <circle
+          cx={cx}
+          cy={cy}
+          r={dotSize}
+          className="fill-primary/70 stroke-primary stroke-[1.5] cursor-pointer hover:fill-primary/90"
+        />
+      </DialogTrigger>
+      <DialogContent
+        className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl overflow-auto p-4"
+        style={{ maxHeight: "95dvh" }}
+        aria-description={
+          "Effect information of " +
+          payload.effect.paper_label +
+          " - " +
+          payload.effect.effect
+        }
+        aria-describedby={
+          payload.effect.paper_label + " - " + payload.effect.effect
+        }
+      >
+        <DialogHeader>
+          <DialogTitle className="text-center">
+            {payload.effect.paper_label + " - " + payload.effect.effect}
+          </DialogTitle>
+        </DialogHeader>
+        <EffectDialogContent effect={payload.effect} />
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+const CustomTooltip = ({
+  active,
+  payload,
+}: {
+  active?: boolean
+  payload?: Array<{
+    payload: {
+      originalValue: number
+      paperLabel: string
+      binRange: string
+      y: number
+    }
+  }>
+}) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload
+    return (
+      <div className="bg-card border border-border rounded-xl p-3 shadow-sm text-xs">
+        <p className="font-medium">
+          <span className="text-muted-foreground">Paper:</span>{" "}
+          {data.paperLabel}
+        </p>
+        <p className="font-medium">
+          <span className="text-muted-foreground">Effect Size:</span>{" "}
+          {data.originalValue.toFixed(3)}
+        </p>
+        <p className="font-medium">
+          <span className="text-muted-foreground">Bin:</span> {data.binRange}
+        </p>
+        <p className="font-medium">
+          <span className="text-muted-foreground">Position in bin:</span>{" "}
+          {data.y}
+        </p>
+      </div>
+    )
+  }
+  return null
+}
+
 const DotPlotExample = ({ data }: DotPlotProps) => {
   const chartConfig = {
     desktop: {
@@ -67,18 +150,20 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
     )
   }
 
-  const [binCount, setBinCount] = useState(8)
+  const [binCount, setBinCount] = useState(() => getAdaptiveBins(rawData.length))
   const [dotSize, setDotSize] = useState(5)
 
   // Debounced values for actual rendering
-  const [debouncedBinCount, setDebouncedBinCount] = useState(8)
+  const [debouncedBinCount, setDebouncedBinCount] = useState(binCount)
 
-  // Update bin count default when data changes
-  useEffect(() => {
+  // Reset bin count to the adaptive default when the data set changes
+  const [prevDataLength, setPrevDataLength] = useState(rawData.length)
+  if (rawData.length !== prevDataLength) {
+    setPrevDataLength(rawData.length)
     const bins = getAdaptiveBins(rawData.length)
     setBinCount(bins)
     setDebouncedBinCount(bins)
-  }, [rawData.length])
+  }
 
   // Debounce slider changes
   useEffect(() => {
@@ -87,49 +172,6 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
     }, 150)
     return () => clearTimeout(timer)
   }, [binCount])
-
-  const CustomDot = (props: {
-    cx?: number
-    cy?: number
-    payload?: DotData
-  }) => {
-    const { cx, cy, payload } = props
-
-    if (!payload) return null
-
-    return (
-      <Dialog>
-        <DialogTrigger asChild>
-          <circle
-            cx={cx}
-            cy={cy}
-            r={dotSize}
-            className="fill-primary/70 stroke-primary stroke-[1.5] cursor-pointer hover:fill-primary/90"
-          />
-        </DialogTrigger>
-        <DialogContent
-          className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl overflow-auto p-4"
-          style={{ maxHeight: "95dvh" }}
-          aria-description={
-            "Effect information of " +
-            payload.effect.paper_label +
-            " - " +
-            payload.effect.effect
-          }
-          aria-describedby={
-            payload.effect.paper_label + " - " + payload.effect.effect
-          }
-        >
-          <DialogHeader>
-            <DialogTitle className="text-center">
-              {payload.effect.paper_label + " - " + payload.effect.effect}
-            </DialogTitle>
-          </DialogHeader>
-          <EffectDialogContent effect={payload.effect} />
-        </DialogContent>
-      </Dialog>
-    )
-  }
 
   // Process data for plotting
   const dotData: DotData[] = []
@@ -191,45 +233,6 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
   }
 
   const yAxisTicks = Array.from({ length: maxY + 2 }, (_, i) => i)
-
-  const CustomTooltip = ({
-    active,
-    payload,
-  }: {
-    active?: boolean
-    payload?: Array<{
-      payload: {
-        originalValue: number
-        paperLabel: string
-        binRange: string
-        y: number
-      }
-    }>
-  }) => {
-    if (active && payload && payload.length) {
-      const data = payload[0].payload
-      return (
-        <div className="bg-card border border-border rounded-xl p-3 shadow-sm text-xs">
-          <p className="font-medium">
-            <span className="text-muted-foreground">Paper:</span>{" "}
-            {data.paperLabel}
-          </p>
-          <p className="font-medium">
-            <span className="text-muted-foreground">Effect Size:</span>{" "}
-            {data.originalValue.toFixed(3)}
-          </p>
-          <p className="font-medium">
-            <span className="text-muted-foreground">Bin:</span> {data.binRange}
-          </p>
-          <p className="font-medium">
-            <span className="text-muted-foreground">Position in bin:</span>{" "}
-            {data.y}
-          </p>
-        </div>
-      )
-    }
-    return null
-  }
 
   return (
     <div className="space-y-6">
@@ -293,7 +296,7 @@ const DotPlotExample = ({ data }: DotPlotProps) => {
                 <Scatter
                   name="Data Points"
                   data={dotData}
-                  shape={<CustomDot />}
+                  shape={<CustomDot dotSize={dotSize} />}
                 />
               </ScatterChart>
             </ChartContainer>

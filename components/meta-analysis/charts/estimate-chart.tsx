@@ -38,9 +38,7 @@ const ChartEstimate = ({ estimate }: ChartEstimateProps) => {
     maxX,
     point: DataPoint[] = [],
     lineCiLeft: DataPoint[] = [],
-    lineCiRight: DataPoint[] = [],
-    linePiLeft: DataPoint[] = [],
-    linePiRight: DataPoint[] = []
+    lineCiRight: DataPoint[] = []
 
   if (estimate) {
     const range = estimate.piUpper - estimate.piLower
@@ -58,24 +56,12 @@ const ChartEstimate = ({ estimate }: ChartEstimateProps) => {
       { x: estimate.value, y: 0 },
       { x: estimate.upper, y: 0 },
     ]
-
-    // PI lines - much thicker to show it as a band
-    linePiLeft = [
-      { x: estimate.value, y: 0 },
-      { x: estimate.piLower, y: 0 },
-    ]
-    linePiRight = [
-      { x: estimate.value, y: 0 },
-      { x: estimate.piUpper, y: 0 },
-    ]
   } else {
     minX = -2
     maxX = 2
     point = []
     lineCiLeft = []
     lineCiRight = []
-    linePiLeft = []
-    linePiRight = []
   }
 
   const ticks = generateTicks(minX, maxX)

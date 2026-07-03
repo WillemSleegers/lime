@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../ui/card"
+import { Card, CardContent } from "../ui/card"
 import {
   Dialog,
   DialogContent,
