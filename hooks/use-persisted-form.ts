@@ -5,7 +5,7 @@ import { FieldValues, UseFormReturn } from "react-hook-form"
 
 const DEV = process.env.NODE_ENV !== "production"
 
-function loadFormValues<T>(key: string, defaults: T): T {
+export function loadFormValues<T>(key: string, defaults: T): T {
   try {
     const saved = localStorage.getItem(key)
     if (saved) return { ...defaults, ...JSON.parse(saved) }
