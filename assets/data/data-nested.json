@@ -313,7 +313,7 @@
           {
             "intervention_condition": 2,
             "intervention_description": "At the beginning of the experimental phase, e-mails clarified that the recommended intake of red meat is at most two medium portions per week (200 g). Participants received daily SMS text messages to remind them to self-monitor their red meat consumption using a food diary, and not exceed 200g per week.",
-            "intervention_mechanism": "info: health, info: taste/disgust, goal pursuit: planning/pledge/reminder",
+            "intervention_mechanism": "info: health, goal pursuit: planning/pledge/reminder",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text",
             "intervention_medium_multicomponent": "no"
@@ -355,7 +355,7 @@
           {
             "intervention_condition": 2,
             "intervention_description": "Participants were informed they would receive an e-mail, in which was clarified that the recommended PMC is at most one small portion per week (50g), and that they would daily receive for 1 week a SMS on WhatsApp. This message focused on anticipated regret that urged participants to self-monitor processed meat consumption.",
-            "intervention_mechanism": "info: health, emotions: negative, info: taste/disgust, goal pursuit: planning/pledge/reminder",
+            "intervention_mechanism": "info: health, goal pursuit: planning/pledge/reminder, goal pursuit: efficacy/consequences/feedback",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text",
             "intervention_medium_multicomponent": "no"
@@ -749,7 +749,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Meat consumption in grams per day."
+            "outcome_description": "Reported meat consumption in grams per day"
           }
         ]
       }
@@ -779,7 +779,7 @@
           {
             "intervention_condition": 3,
             "intervention_description": "Participants watched \"The Ghost in Our Machine\", a Canadian documentary movie about the animal rights activist and photographer Jo-Ann McArthur.",
-            "intervention_mechanism": "info: animal welfare, logical argument, perspective taking/individuation",
+            "intervention_mechanism": "info: animal welfare, perspective taking/individuation",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "video",
             "intervention_medium_multicomponent": "no",
@@ -1130,7 +1130,7 @@
           {
             "intervention_condition": 1,
             "intervention_description": "Participants attended a presentation that documents the abuse on factory farms, is pro animal, and asked students to reduce or eliminate animal meat and products from their diets. The focus was mainly on the ethical implications of factory farming, and also touched on health and environmental consequences.",
-            "intervention_mechanism": "info: health, info: environment, info: animal welfare, info: taste/disgust",
+            "intervention_mechanism": "info: health, info: environment, info: animal welfare",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "presentation",
             "intervention_medium_multicomponent": "no",
@@ -1343,8 +1343,8 @@
           {
             "intervention_condition": 2,
             "intervention_description": "Participants read James Rachels' article “The Basic Argument for Vegetarianism”, an introductory-level ten-page philosophy article arguing that it is unethical to eat meat. Participants were also encouraged to view, on their own outside of class, an optional eleven-minute vegetarianism advocacy video “What Came Before”.",
-            "intervention_mechanism": "info: animal welfare, logical argument",
-            "intervention_mechanism_multicomponent": "yes",
+            "intervention_mechanism": "info: animal welfare",
+            "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text, video, in-person",
             "intervention_medium_multicomponent": "yes",
             "control_description": "Participants read Peter Singer's article “The Singer Solution to World Poverty”, a six-page opinion article that had originally appeared in New York Times Magazine arguing unethical aspect of luxury spending instead of making donations to charity. Participants were also encouraged to view, on their own outside of class, an optional nineteen-minute video advocating donation to hunger-relief initiatives: “Ending Hunger Now”."
@@ -1469,16 +1469,16 @@
           {
             "intervention_condition": 4,
             "intervention_description": "Customers were presented with a digital menu (Swedish fast-food company MAX Burgers) featuring the message, \"The green option feels good!\", accompanied by a \"halo\" emoji. This was designed to convey a sense of personal satisfaction derived from making an environmentally or socially responsible choice.",
-            "intervention_mechanism": "emotions: positive",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "text, image",
+            "intervention_medium": "image, label",
             "intervention_medium_multicomponent": "yes",
             "control_description": "Customers were presented with original digital menu without any nudging adjustments, serving as the baseline for vegetarian sales."
           },
           {
             "intervention_condition": 5,
             "intervention_description": "Customers were presented with a digital menu (Swedish fast-food company MAX Burgers) featuring the message, \"The green option tastes good!\", accompanied by a \"savoring\" emoji (with its tongue to one side). This focused on the sensory pleasure and tastiness of the vegetarian alternatives.",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text, image",
             "intervention_medium_multicomponent": "yes",
@@ -1549,8 +1549,8 @@
           {
             "intervention_condition": 2,
             "intervention_description": "Participants attended a moral philosophy course in which various controversial topics, including meat eating, were discussed. They read Alastair Norcross' Puppies, Pigs, and People. They were also instructed to reflect on their views as an additional manipulation.",
-            "intervention_mechanism": "info: animal welfare, logical argument",
-            "intervention_mechanism_multicomponent": "yes",
+            "intervention_mechanism": "info: animal welfare",
+            "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text, in-person",
             "intervention_medium_multicomponent": "yes",
             "control_description": "Participants did not attended to the moral philosophy course."
@@ -1558,8 +1558,8 @@
           {
             "intervention_condition": 3,
             "intervention_description": "Participants attended a moral philosophy course in which various controversial topics, including meat eating, were discussed. They read Alastair Norcross' Puppies, Pigs, and People.",
-            "intervention_mechanism": "info: animal welfare, logical argument",
-            "intervention_mechanism_multicomponent": "yes",
+            "intervention_mechanism": "info: animal welfare",
+            "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text, in-person",
             "intervention_medium_multicomponent": "yes",
             "control_description": "Participants did not attended to the moral philosophy course."
@@ -1589,7 +1589,7 @@
           {
             "intervention_condition": 2,
             "intervention_description": "Participants received daily persuasive messages that cited the health and environmental outcomes of red processed meat cosumption. The information was presented in a way that was meant to evoke anticipated regret (e.g., “If you eat an excessive amount of red/processed meat, you could feel regret for not protecting your health from cancer and the environment from the release of harmful greenhouse gases”).",
-            "intervention_mechanism": "info: environment, info: health, emotions: negative",
+            "intervention_mechanism": "info: environment, info: health",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text",
             "intervention_medium_multicomponent": "no",
@@ -1658,15 +1658,15 @@
           {
             "intervention_condition": 3,
             "intervention_description": "Participants saw a screen with a picture of a veggie burger and the label, “Student Choice.” The text on the screen read, “The garden fresh veggie burger is a tasty choice! In a taste test we did at the [name of cafe], 95% of people said that the veggie burger tasted good or very good! Consider giving the garden fresh veggie burger a try today!”",
-            "intervention_mechanism": "info: taste/disgust, norms: descriptive",
+            "intervention_mechanism": "norms: descriptive, hedonic labeling",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, label",
             "intervention_medium_multicomponent": "yes"
           },
           {
             "intervention_condition": 4,
-            "intervention_description": "Participants saw a screen with a picture of a veggie burger and the label, “Student Choice.” The text on the screen read, “The garden fresh veggie burger is a tasty choice! In a taste test we did at the [name of caf´e], 95% of people said that the veggie burger tasted good or very good! Consider giving the garden fresh veggie burger a try today!”. They also saw a screen with a picture of a veggie burger and the label, “Sustainable Choice.” The text on this screen read, “Many people don’t know how much our food choices impact the environment. Eating sustainable foods is a good way we can fight climate change! The Garden Fresh Veggie Burger is an especially sustainable choice. Consider giving the Garden Fresh Veggie Burger a try today!”.",
-            "intervention_mechanism": "info: taste/disgust, info: environment, norms: descriptive",
+            "intervention_description": "Participants saw a screen with a picture of a veggie burger and the label, “Student Choice.” The text on the screen read, “The garden fresh veggie burger is a tasty choice! In a taste test we did at the [name of café], 95% of people said that the veggie burger tasted good or very good! Consider giving the garden fresh veggie burger a try today!”. They also saw a screen with a picture of a veggie burger and the label, “Sustainable Choice.” The text on this screen read, “Many people don’t know how much our food choices impact the environment. Eating sustainable foods is a good way we can fight climate change! The Garden Fresh Veggie Burger is an especially sustainable choice. Consider giving the Garden Fresh Veggie Burger a try today!”.",
+            "intervention_mechanism": "info: environment, norms: descriptive, hedonic labeling",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, label",
             "intervention_medium_multicomponent": "yes"
@@ -1754,7 +1754,7 @@
           {
             "intervention_condition": 1,
             "intervention_description": "Participants read James Rachels’ article “The Basic Argument for Vegetarianism”. Teaching assistants played the 11-minute vegetarianism advocacy video “What Came Before” that contained factory farm footage. They also presented both pro and con considerations in their discussion sections, encouraging debate among students.",
-            "intervention_mechanism": "info: animal welfare, logical argument, perspective taking/individuation, origin of animal product",
+            "intervention_mechanism": "info: animal welfare, perspective taking/individuation, origin of animal product",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, video, in-person",
             "intervention_medium_multicomponent": "yes"
@@ -1762,7 +1762,7 @@
           {
             "intervention_condition": 2,
             "intervention_description": "Participants read James Rachels’ article “The Basic Argument for Vegetarianism”. Teaching assistants presented both pro and con considerations in their discussion sections, encouraging debate among students.",
-            "intervention_mechanism": "info: animal welfare, logical argument, origin of animal product",
+            "intervention_mechanism": "info: animal welfare, origin of animal product",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, in-person",
             "intervention_medium_multicomponent": "yes"
@@ -2312,9 +2312,9 @@
           {
             "intervention_condition": 3,
             "intervention_description": "Participants viewed an online menu offered by a mock meal-kit delivery service and prior to viewing the menu, they read a definition of meal kits. Then they were instructed to imagine they were selecting a meal for themselves and each meal had the same cost. All menus presented the same dish, an orzo pasta salad, that could be ordered with either a plant-based or pork sausage on skewers. Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. In the tasty plant-based default conditions, the plant-based sausage was selected and a pop-up message said \"We have selected the tastiest sausage for you”.",
-            "intervention_mechanism": "info: taste/disgust, choice architecture: default",
+            "intervention_mechanism": "choice architecture: default, hedonic labeling",
             "intervention_mechanism_multicomponent": "yes",
-            "intervention_medium": "text, choice architecture",
+            "intervention_medium": "choice architecture, label",
             "intervention_medium_multicomponent": "yes",
             "control_description": "Participants viewed an online menu offered by a mock meal-kit delivery service and prior to viewing the menu, they read a definition of meal kits. Then they were instructed to imagine they were selecting a meal for themselves and each meal had the same cost. All menus presented the same dish, an orzo pasta salad, that could be ordered with either a plant-based or pork sausage on skewers. Each menu had a pre-selected sausage such that one type of sausage was in the electronic shopping cart upon viewing the menu. The baseline condition, in which pork was pre-selected, was used to reflect the real-world status quo."
           }
@@ -2343,7 +2343,7 @@
           {
             "intervention_condition": 1,
             "intervention_description": "Participants were exposed to a four-week behavioral intervention targeting five psychosocial variables: attitudes, perceived behavioral control, and subjective social norms regarding a low-meat diet, alongside meat attachment and eating identities (e.g., \"meat-eater\" or \"vegetarian\"). The intervention utilized four behavioral change functions: environmental restructuring (provision of meat alternatives), training (provision of recipes), education (infographics on health and environmental benefits), and social modeling (vignettes detailing successful meat-reduction stories). Consequently, the intervention comprised four distinct components: (1) free household meat substitutes for four weeks; (2) educational leaflets; (3) recipes; and (4) success stories in the form of written vignettes.",
-            "intervention_mechanism": "info: health, info: environment, goal pursuit: food provision, goal pursuit: cooking skills, priming, goal pursuit: efficacy/consequences/feedback",
+            "intervention_mechanism": "info: health, info: environment, goal pursuit: food provision, goal pursuit: cooking skills, goal pursuit: efficacy/consequences/feedback",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text",
             "intervention_medium_multicomponent": "no"
@@ -2925,7 +2925,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Participants' choice of meatless meals in a choice experiment task including one meat-based and one meatless meal. These meals adapted from university canteens, not labeled,as vegetarian or not, and they had a fixed price."
+            "outcome_description": "Participants' choice of meatless meals in a choice experiment task including one meat-based and one meatless meal. These meals adapted from university canteens, not labeled as vegetarian or not, and they had a fixed price."
           }
         ]
       }
@@ -2976,7 +2976,7 @@
           {
             "intervention_condition": 1,
             "intervention_description": "Following a fictional background story regarding a new food box delivery start-up, participants were presented with descriptors and pictures of three food boxes (and later sandwiches and salads) from which they were asked to choose one. Vegetarian food box options described with indulgent words-phrases such as \"soul comforting\", \"feel good'', ''fresh and crispy''. Meat food box options had basic descriptions in all conditions.",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no",
@@ -3074,7 +3074,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Reported Total Percentages of Meat-Containing Meals from Monday through Sunday Following Intervention"
+            "outcome_description": "Reported total percentages of meat-containing meals from Monday through Sunday following intervention"
           }
         ]
       }
@@ -3126,7 +3126,7 @@
           {
             "intervention_condition": 2,
             "intervention_description": "The treatment schools offered plant-based CSF (Cool School Food) entrées to the students; taste-testing was offered, morning announcements advertised the CSF recipe of the day, and recipe-specific posters and signs placed on the way to and around the cafeteria. Announcements made reference to both health and environmental benefits.",
-            "intervention_mechanism": "choice architecture: visibility/salience/ease, info: environment, info: health, info: taste/disgust",
+            "intervention_mechanism": "choice architecture: visibility/salience/ease, info: environment, info: health, other",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, image, choice architecture",
             "intervention_medium_multicomponent": "yes"
@@ -3135,7 +3135,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Percentage of observations that chose the CSF entrée option at the baseline"
+            "outcome_description": "Percentage of total school meal servings of the plant-based \"Cool School Food\" option during the intervention phase"
           }
         ]
       }
@@ -3165,9 +3165,9 @@
           {
             "intervention_condition": 3,
             "intervention_description": "For the descriptive menu, the name of the vegetarian dish at the top was changed from “Risotto Primavera” to “Fresh Seasonal Risotto Primavera.”",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "choice architecture",
+            "intervention_medium": "label",
             "intervention_medium_multicomponent": "no",
             "control_description": "Participants were presented with the original menu, with vegetarian dishes appearing in the first and last positions on the list."
           }
@@ -3584,7 +3584,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Proportion of plant-based meat purchases"
+            "outcome_description": "Proportion of plant-based products that were chosen from the meat/meat alternatives aisle in an incentivized online grocery shopping task"
           }
         ]
       }
@@ -3780,7 +3780,7 @@
           },
           {
             "outcome": 2,
-            "outcome_description": "Amount of red, processed adn white meat consumption over the previous week"
+            "outcome_description": "Self-reported amount of red, processed, and white meat consumnedover the previous week"
           }
         ]
       }
@@ -3986,7 +3986,7 @@
           {
             "intervention_condition": 2,
             "intervention_description": "Participants were shown both burgers on the menu, but the vegetarian burger was indulgently labeled “Flame-grilled Black Bean Burger.”",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no",
@@ -4513,9 +4513,9 @@
           {
             "intervention_condition": 3,
             "intervention_description": "Participants were shown a restaurant menu in which two vegetarian dishes are listed with a title “Refreshing Main Courses for Relaxing Conversations”. For some participants this section was on the top of menu, whereas it was on the down for others.",
-            "intervention_mechanism": "emotions: positive",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "choice architecture",
+            "intervention_medium": "label",
             "intervention_medium_multicomponent": "no",
             "control_description": "Participants were shown a restaurant menu in which two vegetarian dishes are listed under the title of vegetarian, this section was either at the top or down of the menu."
           }
@@ -4543,9 +4543,9 @@
           {
             "intervention_condition": 3,
             "intervention_description": "Participants were shown a restaurant menu in which two vegetarian dishes are listed with a title  “Refreshing Main Courses for Relaxing Conversations”. For some participants this section was on the top of menu, whereas it was on the down for others.",
-            "intervention_mechanism": "emotions: positive",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "choice architecture",
+            "intervention_medium": "label",
             "intervention_medium_multicomponent": "no",
             "control_description": "Participants were shown a restaurant menu in which two vegetaran dishes are listed under the title of \"Vegetarian Main Dishes\" section. This part of menu was either on the top or down."
           },
@@ -5016,7 +5016,7 @@
           {
             "intervention_condition": 2,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Triple Cheese Lasagna\".",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5024,7 +5024,7 @@
           {
             "intervention_condition": 3,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Florentine Lasagna.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5032,7 +5032,7 @@
           {
             "intervention_condition": 4,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Mediterranean Lasagna.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5040,7 +5040,7 @@
           {
             "intervention_condition": 6,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Spicy Burger with Relish.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5048,7 +5048,7 @@
           {
             "intervention_condition": 7,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Beijing Burger\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5056,7 +5056,7 @@
           {
             "intervention_condition": 8,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Black Belt Burger\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5064,7 +5064,7 @@
           {
             "intervention_condition": 10,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Melt in the Mouth Gnocchi.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5072,7 +5072,7 @@
           {
             "intervention_condition": 11,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Gnocchi Rustica.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5080,7 +5080,7 @@
           {
             "intervention_condition": 12,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Punchy Parmesan Sauce Gnocchi.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5088,7 +5088,7 @@
           {
             "intervention_condition": 14,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Carribean Sunset Squash.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5096,7 +5096,7 @@
           {
             "intervention_condition": 15,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Mama's Sunday Squash.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5104,7 +5104,7 @@
           {
             "intervention_condition": 16,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Carnival Squash.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5112,7 +5112,7 @@
           {
             "intervention_condition": 18,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Loaded Burger.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5120,7 +5120,7 @@
           {
             "intervention_condition": 19,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Sunshine Burger.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5128,7 +5128,7 @@
           {
             "intervention_condition": 20,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Plant Power Burger.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5136,7 +5136,7 @@
           {
             "intervention_condition": 22,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names.",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5144,7 +5144,7 @@
           {
             "intervention_condition": 23,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names.",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5152,7 +5152,7 @@
           {
             "intervention_condition": 24,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names.",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5160,7 +5160,7 @@
           {
             "intervention_condition": 25,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names.",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5168,7 +5168,7 @@
           {
             "intervention_condition": 27,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Feel Good Breakfast.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5176,7 +5176,7 @@
           {
             "intervention_condition": 28,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Garden Breakfast\".",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5184,7 +5184,7 @@
           {
             "intervention_condition": 29,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Super Value Breakfast\".",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5192,7 +5192,7 @@
           {
             "intervention_condition": 30,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Field Grown Breakfast.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5200,7 +5200,7 @@
           {
             "intervention_condition": 32,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as regular, \"Meat Free Sausage and Mash\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5208,7 +5208,7 @@
           {
             "intervention_condition": 33,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Better Sausage and Mash.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5216,7 +5216,7 @@
           {
             "intervention_condition": 34,
             "intervention_description": "Customers were presented with menus including appealing alternative names for vegetarian dishes instead of regular names. In this case the dish was named as \"Field Grown Sausage and Mash.\"",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
@@ -5309,7 +5309,7 @@
           {
             "intervention_condition": 3,
             "intervention_description": "The posters and blackboards in the café presented the name of the vegan and the vegetarian wraps as “Mexican Style”.",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no",
@@ -5318,7 +5318,7 @@
           {
             "intervention_condition": 4,
             "intervention_description": "The vegetarian wraps were framed as \"Mexican Style\" and described as a \"wrap of the day\" in a more salient way on the posters and blackboards",
-            "intervention_mechanism": "info: taste/disgust, choice architecture: visibility/salience/ease",
+            "intervention_mechanism": "choice architecture: visibility/salience/ease, hedonic labeling",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "label, choice architecture",
             "intervention_medium_multicomponent": "yes",
@@ -5831,7 +5831,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Sum of plant-based dishes chosen"
+            "outcome_description": "Participants were asked to make a mock menu choice where they chose 6 dishes from a list of 30 options (15 meat dishes and 15 vegetable dishes) A score of plant‐based choice was computed as the sum of plant‐based dishes."
           }
         ]
       }
@@ -5990,7 +5990,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Meat consumption per meal"
+            "outcome_description": "Self-reported grams of meat per meal"
           }
         ]
       }
@@ -6136,8 +6136,8 @@
           {
             "intervention_condition": 4,
             "intervention_description": "Participants saw a social media post in which a masculine model was shown alongside a plant-based meal, associating plant-based dieting with masculinity. The post showed a bodybuilder ostensibly sharing the message: “switching to a plant-based diet was a game changer for my fitness. #power #strength #endurance”",
-            "intervention_mechanism": "authority/role models",
-            "intervention_mechanism_multicomponent": "no",
+            "intervention_mechanism": "authority/role models, info: health",
+            "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, image",
             "intervention_medium_multicomponent": "yes"
           }
@@ -6169,8 +6169,8 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants  were presented with a menu in which vegetarian option was enhanced using an appealing, taste, description.",
-            "intervention_mechanism": "info: taste/disgust",
+            "intervention_description": "Participants were presented with a menu in which vegetarian option was enhanced using an appealing taste description.",
+            "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
             "intervention_medium_multicomponent": "no",

@@ -96,8 +96,12 @@ export const interventionFiltersSchema = z.object(interventionFiltersFields)
 // ============================================================================
 
 export const outcomeCategoriesFieldsNew = {
-  outcome_subcategory: z
+  outcome_category: z
     .string()
     .array()
     .nonempty({ message: "Must select at least one outcome category." }),
+  outcome_subcategory: z
+    .string()
+    .array()
+    .nonempty({ message: "Must select at least one outcome subcategory." }),
 }

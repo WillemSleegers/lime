@@ -6,7 +6,7 @@
     "outcome": 1,
     "outcome_label": "red meat consumption",
     "outcome_description": "Percentage of participants who reduced red meat consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -17,7 +17,7 @@
     "outcome": 2,
     "outcome_label": "white meat consumption",
     "outcome_description": "Percentage of participants who reduced white meat consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -28,7 +28,7 @@
     "outcome": 1,
     "outcome_label": "total meat consumption",
     "outcome_description": "Total meat consumption over two weekdays and one weekend day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
   },
@@ -39,7 +39,7 @@
     "outcome": 1,
     "outcome_label": "pork consumption",
     "outcome_description": "Frequency of pork consumption over the past 30 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -61,7 +61,7 @@
     "outcome": 2,
     "outcome_label": "animal products consumption",
     "outcome_description": "Frequency of animal product consumption (poultry, fish, beef, pork, eggs, dairy) during the past week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "survey"
   },
@@ -138,7 +138,7 @@
     "outcome": 4,
     "outcome_label": "red meat consumption",
     "outcome_description": "Total number of red meat portions weighted by portion size",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
   },
@@ -182,7 +182,7 @@
     "outcome": 4,
     "outcome_label": "processed meat consumption",
     "outcome_description": "Total number of processed meat portions weighted by portion size",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
   },
@@ -193,7 +193,7 @@
     "outcome": 1,
     "outcome_label": "red meat consumption",
     "outcome_description": "Number of meals in a typical week that include beef or pork",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -204,7 +204,7 @@
     "outcome": 2,
     "outcome_label": "poultry consumption",
     "outcome_description": "Number of meals in a typical week that include chicken or turkey",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -215,7 +215,7 @@
     "outcome": 3,
     "outcome_label": "fish consumption",
     "outcome_description": "Number of meals in a typical week that include fish",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -226,7 +226,7 @@
     "outcome": 4,
     "outcome_label": "eggs consumption",
     "outcome_description": "Number of meals in a typical week that include eggs",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
   },
@@ -237,7 +237,7 @@
     "outcome": 5,
     "outcome_label": "animal product consumption",
     "outcome_description": "Average number of meals in a typical week that include animal products (red meat, poultry, fish, eggs)",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "survey"
   },
@@ -303,7 +303,7 @@
     "outcome": 1,
     "outcome_label": "red meat consumption",
     "outcome_description": "Number of meals that contain beef or pork in a typical week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -314,7 +314,7 @@
     "outcome": 2,
     "outcome_label": "poultry consumption",
     "outcome_description": "Number of meals that contain chicken or turkey in a typical week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -325,7 +325,7 @@
     "outcome": 3,
     "outcome_label": "fish consumption",
     "outcome_description": "Number of meals that contain fish in a typical week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -336,7 +336,7 @@
     "outcome": 4,
     "outcome_label": "eggs consumption",
     "outcome_description": "Number of meals that contain eggs in a typical week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
   },
@@ -347,7 +347,7 @@
     "outcome": 5,
     "outcome_label": "dairy consumption",
     "outcome_description": "Number of meals that contain dairy in a typical week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -358,7 +358,7 @@
     "outcome": 6,
     "outcome_label": "animal product consumption",
     "outcome_description": "Average number of meals that include animal products (beef, pork, chicken, turkey, fish, eggs, dairy) in a typical week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "survey"
   },
@@ -402,7 +402,7 @@
     "outcome": 4,
     "outcome_label": "reported meat consumption in the past week",
     "outcome_description": "Participants indicated how many meals they ate containing meat in the past 7 days for breakfast (0-7), lunch (0-7), and dinner (0-7).",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -413,7 +413,7 @@
     "outcome": 1,
     "outcome_label": "reported change in chicken consumption",
     "outcome_description": "Change in chicken consumption in the last 3 months",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -424,7 +424,7 @@
     "outcome": 2,
     "outcome_label": "reported change in beef consumption",
     "outcome_description": "Change in beef consumption in the last 3 months",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -435,7 +435,7 @@
     "outcome": 3,
     "outcome_label": "reported change in pork consumption",
     "outcome_description": "Change in pork consumption in the last 3 months",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -446,7 +446,7 @@
     "outcome": 4,
     "outcome_label": "reported change in fish consumption",
     "outcome_description": "Change in fish consumption in the last 3 months",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -457,7 +457,7 @@
     "outcome": 5,
     "outcome_label": "reported change in dairy consumption",
     "outcome_description": "Change in dairy consumption in the last 3 months",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -467,8 +467,8 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "meat consumption",
-    "outcome_description": "Meat consumption in grams per day.",
-    "outcome_category": "behavior",
+    "outcome_description": "Reported meat consumption in grams per day",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
   },
@@ -479,7 +479,7 @@
     "outcome": 1,
     "outcome_label": "beef consumption",
     "outcome_description": "Frequency of beef consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -490,7 +490,7 @@
     "outcome": 2,
     "outcome_label": "chicken consumption",
     "outcome_description": "Frequency of chicken consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -501,7 +501,7 @@
     "outcome": 3,
     "outcome_label": "dairy consumption",
     "outcome_description": "Frequency of dairy consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -512,7 +512,7 @@
     "outcome": 4,
     "outcome_label": "egg consumption",
     "outcome_description": "Frequency of egg consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
   },
@@ -523,7 +523,7 @@
     "outcome": 5,
     "outcome_label": "fish consumption",
     "outcome_description": "Frequency of fish consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -534,7 +534,7 @@
     "outcome": 6,
     "outcome_label": "pork consumption",
     "outcome_description": "Frequency of pork consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -545,7 +545,7 @@
     "outcome": 7,
     "outcome_label": "red meat consumption",
     "outcome_description": "Average frequency of beef and pork consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -556,7 +556,7 @@
     "outcome": 8,
     "outcome_label": "animal product consumption",
     "outcome_description": "Average frequency of beef, chicken, dairy, egg, fish, and pork consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -611,7 +611,7 @@
     "outcome": 1,
     "outcome_label": "meat purchase",
     "outcome_description": "Percentage of purchased meals containing meat",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -655,7 +655,7 @@
     "outcome": 1,
     "outcome_label": "red meat consumption",
     "outcome_description": "Frequency of red meat consumption in the last 7 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -666,7 +666,7 @@
     "outcome": 2,
     "outcome_label": "poultry consumption",
     "outcome_description": "Frequency of poultry consumption in the last 7 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -677,7 +677,7 @@
     "outcome": 3,
     "outcome_label": "fish consumption",
     "outcome_description": "Frequency of fish consumption in the last 7 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -688,7 +688,7 @@
     "outcome": 4,
     "outcome_label": "eggs consumption",
     "outcome_description": "Frequency of egg consumption in the last 7 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
   },
@@ -699,7 +699,7 @@
     "outcome": 5,
     "outcome_label": "dairy consumption",
     "outcome_description": "Frequency of dairy consumption in the last 7 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -710,7 +710,7 @@
     "outcome": 6,
     "outcome_label": "vegetarian diet",
     "outcome_description": "Percentage of participants describing their current diet as a vegetarian diet.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
   },
@@ -721,7 +721,7 @@
     "outcome": 7,
     "outcome_label": "vegan diet",
     "outcome_description": "Percentage of participants describing their current diet as a vegan diet.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
   },
@@ -732,7 +732,7 @@
     "outcome": 8,
     "outcome_label": "meat reduction diet",
     "outcome_description": "Percentage of participants describing their current diet as a meat reduction diet.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
   },
@@ -743,7 +743,7 @@
     "outcome": 1,
     "outcome_label": "red meat consumption",
     "outcome_description": "Frequency of red meat consumption in the last 7 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -754,7 +754,7 @@
     "outcome": 2,
     "outcome_label": "poultry consumption",
     "outcome_description": "Frequency of poultry consumption in the last 7 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -765,7 +765,7 @@
     "outcome": 3,
     "outcome_label": "fish consumption",
     "outcome_description": "Frequency of fish consumption in the last 7 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -776,7 +776,7 @@
     "outcome": 4,
     "outcome_label": "eggs consumption",
     "outcome_description": "Frequency of egg consumption in the last 7 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
   },
@@ -787,7 +787,7 @@
     "outcome": 5,
     "outcome_label": "dairy consumption",
     "outcome_description": "Frequency of dairy consumption in the last 7 days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -798,7 +798,7 @@
     "outcome": 6,
     "outcome_label": "vegetarian diet",
     "outcome_description": "Percentage of participants describing their current diet as a vegetarian diet.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
   },
@@ -809,7 +809,7 @@
     "outcome": 7,
     "outcome_label": "vegan diet",
     "outcome_description": "Percentage of participants describing their current diet as a vegan diet.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
   },
@@ -820,7 +820,7 @@
     "outcome": 8,
     "outcome_label": "meat reduction diet",
     "outcome_description": "Percentage of participants describing their current diet as a meat reduction diet.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
   },
@@ -842,7 +842,7 @@
     "outcome": 1,
     "outcome_label": "meat consumption in past two days",
     "outcome_description": "Total pork, beef, chicken and turkey, and fish and seafood servings in the past two days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -853,7 +853,7 @@
     "outcome": 2,
     "outcome_label": "animal product consumption in the past two days",
     "outcome_description": "Total pork, beef, dairy, eggs, chicken and turkey, and fish and seafood servings in the past two days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "survey"
   },
@@ -864,7 +864,7 @@
     "outcome": 3,
     "outcome_label": "decrease in meat consumption at any time in the past four months",
     "outcome_description": "Percentage of participants decreasing their consumption of meat, chicken and fish at any time in the past four months",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -875,7 +875,7 @@
     "outcome": 4,
     "outcome_label": "decrease in meat consumption compared to four months ago",
     "outcome_description": "Percentage of participants decreasing their consumption of meat, chicken and fish compared to four months ago",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -919,7 +919,7 @@
     "outcome": 2,
     "outcome_label": "meat purchase with voucher",
     "outcome_description": "Percentage of participants buying a meal containing meat with a restaurant voucher",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -930,7 +930,7 @@
     "outcome": 3,
     "outcome_label": "% meat purchase among all food purchases above $4.99 with university dining card",
     "outcome_description": "Percentage of main meals containing meat purchased at the univerity's dining hall",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -941,7 +941,7 @@
     "outcome": 1,
     "outcome_label": "reported meat consumption in the past week",
     "outcome_description": "Total weight of animal product consumption over the past week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -963,7 +963,7 @@
     "outcome": 1,
     "outcome_label": "reported meat consumption in the past week",
     "outcome_description": "Total weight of animal product consumption over the past week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -974,7 +974,7 @@
     "outcome": 1,
     "outcome_label": "% vegetarian food sales",
     "outcome_description": "Percentage of vegetarian sales",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1007,7 +1007,7 @@
     "outcome": 1,
     "outcome_label": "reported red processed meat consumption",
     "outcome_description": "Total number of processed red meat portions weighted by portion size",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
   },
@@ -1018,7 +1018,7 @@
     "outcome": 1,
     "outcome_label": "menu item choice with more than 4 leaves",
     "outcome_description": "Percentage of participants choosing a sustainable menu item",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegan consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1029,7 +1029,7 @@
     "outcome": 1,
     "outcome_label": "bought the veggie burger",
     "outcome_description": "Percentage of participants buying a veggie burger",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1040,7 +1040,7 @@
     "outcome": 2,
     "outcome_label": "bought a vegetarian option",
     "outcome_description": "Percentage of participants buying a vegetarian menu item",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1051,7 +1051,7 @@
     "outcome": 1,
     "outcome_label": "reported meat consumption",
     "outcome_description": "Total servings of 10 common meat types over the past seven days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -1062,7 +1062,7 @@
     "outcome": 4,
     "outcome_label": "percent meat purchases as measured from dining card receipts (all purchases)",
     "outcome_description": "Percentage of purchases containing meat",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1073,7 +1073,7 @@
     "outcome": 5,
     "outcome_label": "percent meat purchases as measured from dining card receipts ($4.99 or higher)",
     "outcome_description": "Percentage of main meals containing meat",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1095,7 +1095,7 @@
     "outcome": 1,
     "outcome_label": "percentage vegetarian sales",
     "outcome_description": "Percentage of vegetarian dish sales",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1117,7 +1117,7 @@
     "outcome": 1,
     "outcome_label": "percentage vegetarian sandwich sales",
     "outcome_description": "Percentage of vegetarian sandwich sales",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1128,7 +1128,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian lunch sales",
     "outcome_description": "Percentage of vegetarian lunch sales",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1139,7 +1139,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian meal sales",
     "outcome_description": "Percentage of vegetarian meal sales",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1150,7 +1150,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian meal sales",
     "outcome_description": "Percentage of vegetarian meal sales",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1161,7 +1161,7 @@
     "outcome": 1,
     "outcome_label": "eating habit (vegan, vegetarian, or omnivorous)",
     "outcome_description": "Percentage of participants identifying as vegan or vegetarian",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
   },
@@ -1183,7 +1183,7 @@
     "outcome": 1,
     "outcome_label": "meat choice",
     "outcome_description": "Number of meat menu item sales",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1194,7 +1194,7 @@
     "outcome": 1,
     "outcome_label": "wrap choice",
     "outcome_description": "Percentage of participants choosing a wrap containing meat (BLT or chicken) over a falafel wrap",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -1205,7 +1205,7 @@
     "outcome": 1,
     "outcome_label": "number of meat-dish servings",
     "outcome_description": "Number of meat-dish servings",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1216,7 +1216,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian dish sales",
     "outcome_description": "Percentage of vegetarian dish sales",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1227,7 +1227,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian meal selection",
     "outcome_description": "Percentage of vegetarian meal selections",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -1238,7 +1238,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian sales",
     "outcome_description": "Percentage of vegetarian meal selections",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1260,7 +1260,7 @@
     "outcome": 4,
     "outcome_label": "meat consumption",
     "outcome_description": "Daily meat consumption",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
   },
@@ -1304,7 +1304,7 @@
     "outcome": 5,
     "outcome_label": "non-meat-eating identity (vegetarian, vegan)",
     "outcome_description": "Percentage of participants identifying as vegan or vegetarian",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "diet",
     "outcome_measurement_type": "survey"
   },
@@ -1326,7 +1326,7 @@
     "outcome": 1,
     "outcome_label": "plant-based meal sales",
     "outcome_description": "Percentage of main meals that were plant-based",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1348,9 +1348,9 @@
     "outcome": 1,
     "outcome_label": "red and processed meat consumption",
     "outcome_description": "Number of red and processed meat servings over the previous week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
-    "outcome_measurement_type": "survey"
+    "outcome_measurement_type": "food diary"
   },
   {
     "paper": 90,
@@ -1359,7 +1359,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian meal sales",
     "outcome_description": "Percentage of main meals that were vegetarian",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1370,7 +1370,7 @@
     "outcome": 2,
     "outcome_label": "meat meal sales",
     "outcome_description": "Percentage of main meals that were meat-based",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1458,7 +1458,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian meal choices",
     "outcome_description": "Percentage of customers choosing the vegetarian dish advertised as the dish of the day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1478,9 +1478,9 @@
     "paper_label": "Stewart (2021)",
     "study": 2,
     "outcome": 1,
-    "outcome_label": "Meat meals selected",
+    "outcome_label": "meat meals selected",
     "outcome_description": "The number of students who selected the meat dish for their meal plan",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -1489,9 +1489,9 @@
     "paper_label": "Stewart (2021)",
     "study": 3,
     "outcome": 1,
-    "outcome_label": "Meat meals selected",
+    "outcome_label": "meat meals selected",
     "outcome_description": "The number of students who selected the meat dish for their meal plan",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -1502,7 +1502,7 @@
     "outcome": 1,
     "outcome_label": "percentage of purchasing a meatless entrée/meal",
     "outcome_description": "Number of participants purchasing a meatless entrée/meal ordered in NYPcafeteria.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1513,7 +1513,7 @@
     "outcome": 2,
     "outcome_label": "cutting back the amount of consumed meat",
     "outcome_description": "Participants were asked a multiple-choice question regarding whether they try to cut back on the amount of meat they eat. They could select from the following options: (a) Yes, I am actively trying to cut back; (b) No, but I have cut back on meat in the past; (c) No, but I am considering cutting back; (d) No, I am not considering cutting back (skip to question 6B); (e) I do not eat meat; (f) I'm not sure. The outcome represents the percentage of participants trying to cut back on their meat consumption.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -1524,7 +1524,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian meals sold",
     "outcome_description": "Percentage of dishes sold that were vegetarian",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1535,7 +1535,7 @@
     "outcome": 4,
     "outcome_label": "meat choice",
     "outcome_description": "Percentage of participants choosing the voucher for a meat sandwich",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -1544,9 +1544,9 @@
     "paper_label": "Weikertova & Urban (2023)",
     "study": 1,
     "outcome": 1,
-    "outcome_label": "Preference for Meatless Meals",
-    "outcome_description": "Participants' choice of meatless meals in a choice experiment task including one meat-based and one meatless meal. These meals adapted from university canteens, not labeled,as vegetarian or not, and they had a fixed price.",
-    "outcome_category": "behavior",
+    "outcome_label": "preference for Meatless Meals",
+    "outcome_description": "Participants' choice of meatless meals in a choice experiment task including one meat-based and one meatless meal. These meals adapted from university canteens, not labeled as vegetarian or not, and they had a fixed price.",
+    "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -1557,7 +1557,7 @@
     "outcome": 1,
     "outcome_label": "red meat purchases",
     "outcome_description": "Amount of red meat purchased at the grocery store on average",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1579,7 +1579,7 @@
     "outcome": 1,
     "outcome_label": "meatless meal order",
     "outcome_description": "Percentage of meatless meal orders",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -1611,8 +1611,8 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "weekly meat consumption",
-    "outcome_description": "Reported Total Percentages of Meat-Containing Meals from Monday through Sunday Following Intervention",
-    "outcome_category": "behavior",
+    "outcome_description": "Reported total percentages of meat-containing meals from Monday through Sunday following intervention",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
   },
@@ -1632,9 +1632,9 @@
     "paper_label": "Narang (2018)",
     "study": 1,
     "outcome": 1,
-    "outcome_label": "selection of CSF",
-    "outcome_description": "Percentage of observations that chose the CSF entrée option at the baseline",
-    "outcome_category": "behavior",
+    "outcome_label": "selection of the \"Cool School Food\" option",
+    "outcome_description": "Percentage of total school meal servings of the plant-based \"Cool School Food\" option during the intervention phase",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -1700,7 +1700,7 @@
     "outcome": 1,
     "outcome_label": "beef consumption",
     "outcome_description": "Participants were asked, “In comparison to recent weeks, did you consume more or less beef?”",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -1777,7 +1777,7 @@
     "outcome": 1,
     "outcome_label": "the amount of the bid (premium)",
     "outcome_description": "The amount of money (premium) a participant is willing to pay to replace their endowed 6-oz. sliced deli beef with 6 oz. of plant-based meat substitute.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegan consumption",
     "outcome_measurement_type": "survey"
   },
@@ -1786,9 +1786,9 @@
     "paper_label": "Segovia et al. (2022)",
     "study": 1,
     "outcome": 1,
-    "outcome_label": "plant-based meat alternative selection",
-    "outcome_description": "Proportion of plant-based meat purchases",
-    "outcome_category": "behavior",
+    "outcome_label": "proportion of plant-based meat purchases",
+    "outcome_description": "Proportion of plant-based products that were chosen from the meat/meat alternatives aisle in an incentivized online grocery shopping task",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -1864,8 +1864,8 @@
     "study": 1,
     "outcome": 2,
     "outcome_label": "meat consumption",
-    "outcome_description": "Amount of red, processed adn white meat consumption over the previous week",
-    "outcome_category": "behavior",
+    "outcome_description": "Self-reported amount of red, processed, and white meat consumnedover the previous week",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -1876,7 +1876,7 @@
     "outcome": 1,
     "outcome_label": "meat balls selection",
     "outcome_description": "Proportion of meat balls dish chosen",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -1898,7 +1898,7 @@
     "outcome": 1,
     "outcome_label": "all fish and sea foods consumption",
     "outcome_description": "Average values of the weekly serving frequency of all fish and sea foods for all women participating",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "food diary"
   },
@@ -1920,7 +1920,7 @@
     "outcome": 1,
     "outcome_label": "consumption behaviour",
     "outcome_description": "All meat meal purchases two weeks after study participation (10 working days); Meat consumption behaviour was measured based on purchases of participants in the university canteen",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -1929,7 +1929,7 @@
     "paper_label": "Hielkema et al. (2022)",
     "study": 1,
     "outcome": 2,
-    "outcome_label": "Food choice (classic burger)",
+    "outcome_label": "food choice (classic burger)",
     "outcome_description": "Number of participants choosing the meat burger option from the menu",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
@@ -1940,7 +1940,7 @@
     "paper_label": "Hielkema et al. (2022)",
     "study": 2,
     "outcome": 2,
-    "outcome_label": "Food choice (classic burger)",
+    "outcome_label": "food choice (classic burger)",
     "outcome_description": "Number of participants choosing the meat burger option from the menu",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
@@ -1953,7 +1953,7 @@
     "outcome": 1,
     "outcome_label": "proportion of vegetarian dish choices",
     "outcome_description": "The percentage of vegetarian dishes chosen by the customers",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2028,7 +2028,7 @@
     "paper_label": "Pauer et al. (2022)",
     "study": 2,
     "outcome": 1,
-    "outcome_label": "Intention to reduce meat consumption",
+    "outcome_label": "intention to reduce meat consumption",
     "outcome_description": "Participants' intention to reduce meat consumption, in this case, it was measured with a 2 item scale - the future consumption was mentioned to be next week",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
@@ -2039,7 +2039,7 @@
     "paper_label": "Pauer et al. (2022)",
     "study": 3,
     "outcome": 1,
-    "outcome_label": "Intention to reduce meat consumption",
+    "outcome_label": "intention to reduce meat consumption",
     "outcome_description": "Participants' intention to reduce meat consumption, in this case, it was measured with a 2 item scale - the future consumption was mentioned to be next week",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
@@ -2052,7 +2052,7 @@
     "outcome": 2,
     "outcome_label": "meat servings",
     "outcome_description": "Meat servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2063,7 +2063,7 @@
     "outcome": 3,
     "outcome_label": "poultry servings",
     "outcome_description": "Poultry servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2074,7 +2074,7 @@
     "outcome": 4,
     "outcome_label": "seafood servings",
     "outcome_description": "Fish servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2085,7 +2085,7 @@
     "outcome": 5,
     "outcome_label": "eggs servings",
     "outcome_description": "Eggs servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "egg consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2107,7 +2107,7 @@
     "outcome": 1,
     "outcome_label": "shares of vegetarian meals",
     "outcome_description": "Percentage of vegetarian portions shared",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2118,7 +2118,7 @@
     "outcome": 2,
     "outcome_label": "shares of fish meals",
     "outcome_description": "Percentage of fish portions shared",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2129,7 +2129,7 @@
     "outcome": 3,
     "outcome_label": "shares of meat meals",
     "outcome_description": "Percentage of meat portions shared",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2140,7 +2140,7 @@
     "outcome": 1,
     "outcome_label": "veg*n food choice",
     "outcome_description": "Percentage of participants choosing to redeem a vegetarian or vegan food item with the voucher",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2151,7 +2151,7 @@
     "outcome": 1,
     "outcome_label": "plant-based meal selection",
     "outcome_description": "Percentage of participants choosing the plant-based meal",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2162,7 +2162,7 @@
     "outcome": 3,
     "outcome_label": "meat/fish consumption",
     "outcome_description": "Amount of meat/fish consumed in total",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2173,7 +2173,7 @@
     "outcome": 1,
     "outcome_label": "choice of the dish (meatballs)",
     "outcome_description": "Number of participants choosing the meat-based dish (meatballs)",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2184,7 +2184,7 @@
     "outcome": 2,
     "outcome_label": "choice of the vegetarian dish (veggieballs)",
     "outcome_description": "Number of participants choosing the vegetarian dish (veggieballs)",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2195,7 +2195,7 @@
     "outcome": 3,
     "outcome_label": "choice of the dish (fishballs)",
     "outcome_description": "Number of participants choosing the fish based dish (fishballs)",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2228,7 +2228,7 @@
     "outcome": 1,
     "outcome_label": "chef's special selection",
     "outcome_description": "Percentage of participants choosing the \"Chef’s Special: A hearth-baked mélange of assorted flavorful seasoned vegetables nestled on quinoa\"",
-    "outcome_category": "behavior",
+    "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2239,7 +2239,7 @@
     "outcome": 2,
     "outcome_label": "veggie burger selection",
     "outcome_description": "Percentage of participants choosing the veggie burger",
-    "outcome_category": "behavior",
+    "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2248,7 +2248,7 @@
     "paper_label": "Krpan & Houtsma (2020)",
     "study": 1,
     "outcome": 1,
-    "outcome_label": "Vegetarian food choice",
+    "outcome_label": "vegetarian food choice",
     "outcome_description": "Percentage of participants who selected a vegetarian main course",
     "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption intentions",
@@ -2259,7 +2259,7 @@
     "paper_label": "Krpan & Houtsma (2020)",
     "study": 2,
     "outcome": 1,
-    "outcome_label": "Vegetarian food choice",
+    "outcome_label": "vegetarian food choice",
     "outcome_description": "Percentage of participants who selected a vegetarian main course",
     "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption intentions",
@@ -2270,7 +2270,7 @@
     "paper_label": "Krpan & Houtsma (2020)",
     "study": 3,
     "outcome": 1,
-    "outcome_label": "Vegetarian food choice",
+    "outcome_label": "vegetarian food choice",
     "outcome_description": "Percentage of participants who selected a vegetarian main course",
     "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption intentions",
@@ -2316,7 +2316,7 @@
     "outcome": 2,
     "outcome_label": "vegetarian only consumption past three days",
     "outcome_description": "Average count of vegetarian only meals days over the past three days",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2327,7 +2327,7 @@
     "outcome": 3,
     "outcome_label": "vegetarian only consumption past week",
     "outcome_description": "Average count of vegetarian only meals over the past week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2349,7 +2349,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian burger sold",
     "outcome_description": "Proportion of vegetarian burgers sold (relative to the total amount of burgers sold)",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2360,7 +2360,7 @@
     "outcome": 1,
     "outcome_label": "plant-based recipe",
     "outcome_description": "Number of reported meals per week that were plant based recipes using olive oil for cooking and did not contain meat/poultry/seafood",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2371,7 +2371,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian choice",
     "outcome_description": "Percentage of participants choosing the vegetarian option for lunch",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2382,7 +2382,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian choice",
     "outcome_description": "Percentage of participants choosing the vegetarian option for lunch",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2393,7 +2393,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian choice",
     "outcome_description": "Percentage of participants choosing the vegetarian option for lunch",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2459,7 +2459,7 @@
     "outcome": 1,
     "outcome_label": "vegetarian wrap choice",
     "outcome_description": "Percentage of participants who bought a vegetarian wrap",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2470,7 +2470,7 @@
     "outcome": 1,
     "outcome_label": "meat consumption",
     "outcome_description": "Consumption of red, processed, and white meat over the previous week",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2481,7 +2481,7 @@
     "outcome": 1,
     "outcome_label": "mean share of MMC (meat dish)",
     "outcome_description": "Mean share of MMC in the meal weight",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2492,7 +2492,7 @@
     "outcome": 1,
     "outcome_label": "percentage chicken curry salad sales",
     "outcome_description": "Percentage of curry salad sales that contained meat (vs. no meat)",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2514,7 +2514,7 @@
     "outcome": 1,
     "outcome_label": "total meat product sales",
     "outcome_description": "changes in (units/items sold) per store per week for intervention and control conditions",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2525,7 +2525,7 @@
     "outcome": 1,
     "outcome_label": "fish sauce used per bowl sold per day",
     "outcome_description": "Amount of fish sauce used (in grams) out of the number of bowls sold",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "animal product consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2558,7 +2558,7 @@
     "outcome": 1,
     "outcome_label": "shares of vegetarian dishes sold",
     "outcome_description": "Percentage of vegetarian dishes sold",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2569,7 +2569,7 @@
     "outcome": 2,
     "outcome_label": "shares of meat dishes sold",
     "outcome_description": "Percentage of meat dishes sold",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2634,8 +2634,8 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "plant-based choice",
-    "outcome_description": "Sum of plant-based dishes chosen",
-    "outcome_category": "behavior",
+    "outcome_description": "Participants were asked to make a mock menu choice where they chose 6 dishes from a list of 30 options (15 meat dishes and 15 vegetable dishes) A score of plant‐based choice was computed as the sum of plant‐based dishes.",
+    "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2657,7 +2657,7 @@
     "outcome": 1,
     "outcome_label": "weekly percentage of meat-free meal sales trial",
     "outcome_description": "Percentage of weekly meat-free meal sales",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2668,7 +2668,7 @@
     "outcome": 1,
     "outcome_label": "meat consumption",
     "outcome_description": "Daily meat intake in grams (i.e., beef patties, beef, pork, veal, lamb, poultry, liver, other offal, salami, mortadella, ham and sausages)",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2678,8 +2678,8 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "eating meat",
-    "outcome_description": "Meat consumption per meal",
-    "outcome_category": "behavior",
+    "outcome_description": "Self-reported grams of meat per meal",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2690,7 +2690,7 @@
     "outcome": 1,
     "outcome_label": "total dairy servings",
     "outcome_description": "Total dairy servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2701,7 +2701,7 @@
     "outcome": 2,
     "outcome_label": "milk servings",
     "outcome_description": "Milk servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2712,7 +2712,7 @@
     "outcome": 3,
     "outcome_label": "yoghurt servings",
     "outcome_description": "Yoghurt servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2723,7 +2723,7 @@
     "outcome": 4,
     "outcome_label": "cheese servings",
     "outcome_description": "Cheese servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2734,7 +2734,7 @@
     "outcome": 5,
     "outcome_label": "meat, poultry, fish servings",
     "outcome_description": "Meat, poultry, and fish servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2745,7 +2745,7 @@
     "outcome": 6,
     "outcome_label": "red meat servings",
     "outcome_description": "Red meat servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2756,7 +2756,7 @@
     "outcome": 7,
     "outcome_label": "processed meat servings",
     "outcome_description": "Processed meat servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2767,7 +2767,7 @@
     "outcome": 8,
     "outcome_label": "poultry servings",
     "outcome_description": "Poultry servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2778,7 +2778,7 @@
     "outcome": 9,
     "outcome_label": "fish servings",
     "outcome_description": "Fish servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2789,7 +2789,7 @@
     "outcome": 10,
     "outcome_label": "eggs servings",
     "outcome_description": "Eggs servings consumed during the previous day",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "dairy consumption",
     "outcome_measurement_type": "survey"
   },
@@ -2855,7 +2855,7 @@
     "outcome": 1,
     "outcome_label": "meat-based plate post-intervention",
     "outcome_description": "Quantity of meat-based meals in a purchased plate",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2866,7 +2866,7 @@
     "outcome": 3,
     "outcome_label": "meat choice",
     "outcome_description": "Percentage of participants choosing the voucher for a meat sandwich",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2877,7 +2877,7 @@
     "outcome": 1,
     "outcome_label": "reduced portion chosen",
     "outcome_description": "Percentage of participants choosing the reduced meat portion for their meal",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2886,7 +2886,7 @@
     "paper_label": "Hope et al. (2025)",
     "study": 1,
     "outcome": 1,
-    "outcome_label": "Taco filling choice - meat",
+    "outcome_label": "taco filling choice - meat",
     "outcome_description": "Primary dependent variable was taco filling selection: chicken, steak, beef barbacoa, carnitas, vegetables and guacamole, sofritas, chick’nitas, no protein, or no taco at all.",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
@@ -2908,7 +2908,7 @@
     "paper_label": "Fonseca & De Groeve (2025)",
     "study": 1,
     "outcome": 1,
-    "outcome_label": "Willingness to change pork chop consumption",
+    "outcome_label": "willingness to change pork chop consumption",
     "outcome_description": "Willingness to reduce pork chop consumption",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
@@ -2932,7 +2932,7 @@
     "outcome": 1,
     "outcome_label": "amount of chili con carne taken",
     "outcome_description": "The amont of chili con carne (in grams) that participants took from the buffet.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "meal choice"
   },
@@ -2955,7 +2955,7 @@
     "outcome_label": "willingness to follow a plant-based diet",
     "outcome_description": "Participants rated their willingness to follow a plant-based diet with answer options ranging from 1 “not willing at all” (1) to “very willing” (7).",
     "outcome_category": "intentions",
-    "outcome_subcategory": "diet",
+    "outcome_subcategory": "diet intentions",
     "outcome_measurement_type": "survey"
   },
   {
@@ -2965,7 +2965,7 @@
     "outcome": 1,
     "outcome_label": "meat main meals sold",
     "outcome_description": "The percentange of main meals sold that contained meat.",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   },
@@ -2987,7 +2987,7 @@
     "outcome": 1,
     "outcome_label": "meat items sold",
     "outcome_description": "The percentage of items sold that contained meat (vs. vegetarian).",
-    "outcome_category": "behavior",
+    "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
   }

@@ -205,29 +205,44 @@ export const COUNTRY_OPTIONS = [
 ]
 
 // Outcome level
-export const OUTCOME_CATEGORY_OPTIONS = ["behavior", "intentions", "attitudes/beliefs"]
+export const OUTCOME_CATEGORY_OPTIONS = customSort([
+  ...new Set(outcomes.map((datum) => datum.outcome_category)),
+])
 
-export const OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS = customSort([
-  ...new Set(
-    outcomes
-      .filter((datum) => datum.outcome_category === "behavior")
-      .map((datum) => datum.outcome_subcategory)
-  ),
-])
-export const OUTCOME_SUBCATEGORY_INTENTION_OPTIONS = customSort([
-  ...new Set(
-    outcomes
-      .filter((datum) => datum.outcome_category === "intentions")
-      .map((datum) => datum.outcome_subcategory)
-  ),
-])
-export const OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS = customSort([
-  ...new Set(
-    outcomes
-      .filter((datum) => datum.outcome_category === "attitudes/beliefs")
-      .map((datum) => datum.outcome_subcategory)
-  ),
-])
+const OUTCOME_CATEGORY_LABELS: Record<string, string> = {
+  "behavior - observed": "Behaviors (observed)",
+  "behavior - self-reported": "Behaviors (self-reported)",
+  intentions: "Intentions",
+  "attitudes/beliefs": "Attitudes/beliefs",
+}
+
+export const OUTCOME_CATEGORY_CHECKBOX_OPTIONS = OUTCOME_CATEGORY_OPTIONS.map((category) => ({
+  value: category,
+  label: OUTCOME_CATEGORY_LABELS[category] ?? category,
+}))
+
+const OUTCOME_SUBCATEGORIES_BY_CATEGORY: Record<string, string[]> = Object.fromEntries(
+  OUTCOME_CATEGORY_OPTIONS.map((category) => [
+    category,
+    customSort([
+      ...new Set(
+        outcomes
+          .filter((datum) => datum.outcome_category === category)
+          .map((datum) => datum.outcome_subcategory)
+      ),
+    ]),
+  ])
+)
+
+// Subcategory labels (e.g. "meat consumption") can repeat across categories
+// (e.g. "behavior - observed" vs "behavior - self-reported"), so once a
+// category is selected its subcategories are shown as one deduplicated
+// list rather than the same label appearing twice.
+export const getOutcomeSubcategoryOptions = (categories: string[]) =>
+  customSort([
+    ...new Set(categories.flatMap((category) => OUTCOME_SUBCATEGORIES_BY_CATEGORY[category] ?? [])),
+  ])
+
 export const OUTCOME_MEASUREMENT_TYPE_OPTIONS = [
   {
     value: "survey",
@@ -252,23 +267,5 @@ export const OUTCOME_MEASUREMENT_TYPE_OPTIONS = [
 ]
 
 export const OUTCOME_SUBCATEGORY_OPTIONS = customSort([
-  ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-  ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-  ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+  ...new Set(outcomes.map((datum) => datum.outcome_subcategory)),
 ])
-
-// Grouped outcome categories for unified MultiSelect
-export const OUTCOME_CATEGORIES_GROUPED = [
-  {
-    group: "Behaviors",
-    items: OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-  },
-  {
-    group: "Intentions",
-    items: OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-  },
-  {
-    group: "Attitudes/beliefs",
-    items: OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
-  },
-]

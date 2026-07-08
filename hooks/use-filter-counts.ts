@@ -10,9 +10,8 @@ import {
   STUDY_CONDITION_ASSIGNMENT_OPTIONS,
   STUDY_RANDOMIZATION_OPTIONS,
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
-  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+  OUTCOME_CATEGORY_OPTIONS,
+  OUTCOME_SUBCATEGORY_OPTIONS,
   INTERVENTION_MULTICOMPONENT_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
@@ -22,6 +21,7 @@ import {
 import * as P from "@/lib/filter-predicates"
 
 type FilterValues = {
+  outcome_category: string[]
   outcome_subcategory: string[]
   outcome_measurement_type: string[]
   effect_sample_size: number
@@ -60,6 +60,7 @@ const PREDICATES = {
   intervention_medium: P.interventionMediumMatches,
   intervention_mechanism_multicomponent: P.interventionMechanismMulticomponentMatches,
   intervention_medium_multicomponent: P.interventionMediumMulticomponentMatches,
+  outcome_category: P.outcomeCategoryMatches,
   outcome_subcategory: P.outcomeSubcategoryMatches,
   outcome_measurement_type: P.outcomeMeasurementTypeMatches,
 } as const
@@ -129,12 +130,8 @@ export function useFilterCounts(values: FilterValues) {
     interventionMediumMulticomponent: makeCounts(applyFilters(data, values, "intervention_medium_multicomponent"), "intervention_medium_multicomponent", INTERVENTION_MULTICOMPONENT_OPTIONS, "exact"),
     interventionMechanism: makeCountsFromStrings(applyFilters(data, values, "intervention_mechanism"), "intervention_mechanism", INTERVENTION_MECHANISM_OPTIONS),
     interventionMedium: makeCountsFromStrings(applyFilters(data, values, "intervention_medium"), "intervention_medium", INTERVENTION_MEDIUM_OPTIONS),
-    outcomeSubcategory: makeCountsFromStrings(
-      applyFilters(data, values, "outcome_subcategory"),
-      "outcome_subcategory",
-      [...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS, ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS, ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS],
-      "exact",
-    ),
+    outcomeCategory: makeCountsFromStrings(applyFilters(data, values, "outcome_category"), "outcome_category", OUTCOME_CATEGORY_OPTIONS, "exact"),
+    outcomeSubcategory: makeCountsFromStrings(applyFilters(data, values, "outcome_subcategory"), "outcome_subcategory", OUTCOME_SUBCATEGORY_OPTIONS, "exact"),
     outcomeMeasurementType: makeCounts(applyFilters(data, values, "outcome_measurement_type"), "outcome_measurement_type", OUTCOME_MEASUREMENT_TYPE_OPTIONS),
   }
 }

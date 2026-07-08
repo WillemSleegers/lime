@@ -100,6 +100,11 @@ export const interventionMediumMulticomponentMatches = (
 
 // ── Outcome ──────────────────────────────────────────────────────────────────
 
+export const outcomeCategoryMatches = (
+  row: { outcome_category: string },
+  values: string[],
+) => values.includes(row.outcome_category)
+
 export const outcomeSubcategoryMatches = (
   row: { outcome_subcategory: string },
   values: string[],

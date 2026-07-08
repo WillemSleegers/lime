@@ -20,7 +20,6 @@ import {
 } from "@/constants/constants-filters"
 
 export const META_ANALYSIS_DEFAULTS = {
-  outcome_subcategory: OUTCOME_SUBCATEGORY_OPTIONS,
   outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map(
     (option) => option.value
   ),
@@ -91,13 +90,11 @@ export const MECHANISM_BINARY_LEVELS: BinaryModeratorLevel[] = [
   { label: "Goal pursuit (efficacy/consequences/feedback)", column: "has_mechanism_goal_pursuit_efficacy_consequences_feedback" },
   { label: "Goal pursuit (food provision)", column: "has_mechanism_goal_pursuit_food_provision" },
   { label: "Goal pursuit (planning/pledge/reminder)", column: "has_mechanism_goal_pursuit_planning_pledge_reminder" },
-  { label: "Emotions (negative)", column: "has_mechanism_emotions_negative" },
-  { label: "Emotions (positive)", column: "has_mechanism_emotions_positive" },
+  { label: "Hedonic labeling", column: "has_mechanism_hedonic_labeling" },
   { label: "Identity/reputation", column: "has_mechanism_identity_reputation" },
   { label: "Authority/role models", column: "has_mechanism_authority_role_models" },
   { label: "Origin of animal product", column: "has_mechanism_origin_of_animal_product" },
   { label: "Perspective taking/individuation", column: "has_mechanism_perspective_taking_individuation" },
-  { label: "Logical argument", column: "has_mechanism_logical_argument" },
   { label: "Priming", column: "has_mechanism_priming" },
   { label: "Price", column: "has_mechanism_price" },
   { label: "Taste", column: "has_mechanism_taste" },
@@ -115,7 +112,6 @@ export const MEDIUM_BINARY_LEVELS: BinaryModeratorLevel[] = [
   { label: "Label", column: "has_medium_label" },
   { label: "Price", column: "has_medium_price" },
   { label: "Other", column: "has_medium_other" },
-  { label: "Taste", column: "has_medium_taste" },
 ]
 
 export const MODERATOR_VARIABLES: ModeratorVariable[] = [

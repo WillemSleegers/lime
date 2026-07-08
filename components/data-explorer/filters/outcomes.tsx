@@ -10,18 +10,19 @@ import { CheckboxGroup } from "@/components/form/checkbox-group"
 import { MultiSelectField } from "@/components/form/multi-select-field"
 
 import {
-  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+  OUTCOME_CATEGORY_OPTIONS,
+  OUTCOME_CATEGORY_CHECKBOX_OPTIONS,
+  OUTCOME_SUBCATEGORY_OPTIONS,
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
-  OUTCOME_CATEGORIES_GROUPED,
 } from "@/constants/constants-filters"
 import { FilteredData } from "@/lib/data-explorer-utils"
 
 import { Outcomes } from "@/lib/types"
 import { outcomeCategoriesFieldsNew } from "@/lib/filter-schemas"
 import { usePersistedForm } from "@/hooks/use-persisted-form"
+import { useOutcomeSubcategorySync } from "@/hooks/use-outcome-subcategory-sync"
 import {
+  outcomeCategoryMatches,
   outcomeSubcategoryMatches,
   outcomeMeasurementTypeMatches,
 } from "@/lib/filter-predicates"
@@ -53,11 +54,8 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
   } = props
 
   const defaults = {
-    outcome_subcategory: [
-      ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-      ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-      ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
-    ],
+    outcome_category: OUTCOME_CATEGORY_OPTIONS,
+    outcome_subcategory: OUTCOME_SUBCATEGORY_OPTIONS,
     outcome_measurement_type: OUTCOME_MEASUREMENT_TYPE_OPTIONS.map((option) => option.value),
   }
 
@@ -70,9 +68,12 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
 
   usePersistedForm(form, STORAGE_KEY, defaults)
 
+  const subcategoryOptions = useOutcomeSubcategorySync(form)
+
   async function onSubmit(values: z.infer<typeof formSchemaOutcomes>) {
     const subset = data.filter(
       (datum) =>
+        outcomeCategoryMatches(datum, values.outcome_category) &&
         outcomeSubcategoryMatches(datum, values.outcome_subcategory) &&
         outcomeMeasurementTypeMatches(datum, values.outcome_measurement_type),
     )
@@ -83,15 +84,22 @@ export const FilterOutcomes = (props: FilterOutcomesProps) => {
   return (
     <FilterForm form={form} filterOpen={filterOpen} setFilterOpen={setFilterOpen} onSubmit={onSubmit}>
       <div className="space-y-6">
+        <CheckboxGroup
+          control={form.control}
+          name="outcome_category"
+          label="Outcome categories"
+          description="Choose between behaviors, observed directly (e.g. sales data) or self-reported (e.g. surveys), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
+          options={OUTCOME_CATEGORY_CHECKBOX_OPTIONS}
+        />
         <MultiSelectField
           control={form.control}
           name="outcome_subcategory"
-          label="Outcome categories"
-          description="Choose between behaviors (actual consumption and food choices), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
-          placeholder="Select outcome categories..."
-          searchPlaceholder="Search categories..."
-          searchEmptyMessage="No category found."
-          options={OUTCOME_CATEGORIES_GROUPED}
+          label="Outcome subcategories"
+          description="Narrow down to specific outcome measures within the categories selected above."
+          placeholder="Select outcome subcategories..."
+          searchPlaceholder="Search subcategories..."
+          searchEmptyMessage="No subcategory found."
+          options={subcategoryOptions}
           className="w-full"
         />
         <CheckboxGroup

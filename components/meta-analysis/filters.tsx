@@ -39,10 +39,9 @@ import {
   STUDY_CONDITION_ASSIGNMENT_OPTIONS,
   STUDY_RANDOMIZATION_OPTIONS,
   OUTCOME_MEASUREMENT_TYPE_OPTIONS,
-  OUTCOME_CATEGORIES_GROUPED,
-  OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-  OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-  OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
+  OUTCOME_CATEGORY_OPTIONS,
+  OUTCOME_CATEGORY_CHECKBOX_OPTIONS,
+  OUTCOME_SUBCATEGORY_OPTIONS,
   INTERVENTION_MULTICOMPONENT_OPTIONS,
   INTERVENTION_MECHANISM_OPTIONS,
   INTERVENTION_MEDIUM_OPTIONS,
@@ -55,6 +54,7 @@ import {
   clearFormValues,
   loadFormValues,
 } from "@/hooks/use-persisted-form"
+import { useOutcomeSubcategorySync } from "@/hooks/use-outcome-subcategory-sync"
 
 import { Data } from "@/lib/types"
 
@@ -93,11 +93,8 @@ type FormValues = z.infer<typeof formSchema>
 const STORAGE_KEY = "lime-meta-analysis-filters"
 
 const defaults = {
-  outcome_subcategory: [
-    ...OUTCOME_SUBCATEGORY_BEHAVIOR_OPTIONS,
-    ...OUTCOME_SUBCATEGORY_INTENTION_OPTIONS,
-    ...OUTCOME_SUBCATEGORY_ATTITUDE_OPTIONS,
-  ],
+  outcome_category: OUTCOME_CATEGORY_OPTIONS,
+  outcome_subcategory: OUTCOME_SUBCATEGORY_OPTIONS,
   outcome_measurement_type: META_ANALYSIS_DEFAULTS.outcome_measurement_type,
   intervention_mechanism_multicomponent: META_ANALYSIS_DEFAULTS.intervention_mechanism_multicomponent,
   intervention_medium_multicomponent: META_ANALYSIS_DEFAULTS.intervention_medium_multicomponent,
@@ -134,6 +131,8 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
   })
 
   usePersistedForm(form, STORAGE_KEY, defaults)
+
+  const outcomeSubcategoryOptions = useOutcomeSubcategorySync(form)
 
   const handleReset = useCallback(() => {
     clearFormValues(STORAGE_KEY)
@@ -383,15 +382,23 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
+              <CheckboxGroup
+                control={form.control}
+                name="outcome_category"
+                label="Outcome categories"
+                description="Choose between behaviors, observed directly (e.g. sales data) or self-reported (e.g. surveys), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
+                options={OUTCOME_CATEGORY_CHECKBOX_OPTIONS}
+                counts={counts.outcomeCategory}
+              />
               <MultiSelectField
                 control={form.control}
                 name="outcome_subcategory"
-                label="Outcome categories"
-                description="Choose between behaviors (actual consumption and food choices), intentions (plans to change diet), or attitudes/beliefs (moral views and feelings about meat)."
-                placeholder="Select outcome categories..."
-                searchPlaceholder="Search categories..."
-                searchEmptyMessage="No category found."
-                options={OUTCOME_CATEGORIES_GROUPED}
+                label="Outcome subcategories"
+                description="Narrow down to specific outcome measures within the categories selected above."
+                placeholder="Select outcome subcategories..."
+                searchPlaceholder="Search subcategories..."
+                searchEmptyMessage="No subcategory found."
+                options={outcomeSubcategoryOptions}
                 counts={counts.outcomeSubcategory}
                 className="w-full"
               />
