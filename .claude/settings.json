@@ -6,7 +6,8 @@
       "Bash(npm show:*)",
       "Bash(npx npm-check-updates:*)",
       "Bash(npx fallow *)",
-      "Bash(npx eslint *)"
+      "Bash(npx eslint *)",
+      "Bash(npx tsx -e ' *)"
     ]
   }
 }
