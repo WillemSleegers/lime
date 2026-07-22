@@ -135,6 +135,7 @@ export const ModeratorAnalysis = ({
       selectedBinaryLevel &&
       !levelOptions.some((o) => o.value === selectedBinaryLevel)
     ) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- clearing a selection that fell out of the derived options list, not representable during render
       setSelectedBinaryLevel("")
     }
   }, [levelOptions, selectedBinaryLevel])
@@ -143,6 +144,7 @@ export const ModeratorAnalysis = ({
   useEffect(() => {
     const moderator = MODERATOR_VARIABLES.find((v) => v.value === selectedVar)
     if (!moderator) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- resetting selections in response to the chosen variable changing
       setSelectedLevels([])
       setSelectedBinaryLevel("")
       return
