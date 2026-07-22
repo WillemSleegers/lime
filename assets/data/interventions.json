@@ -2629,6 +2629,17 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 342,
+    "paper_label": "Lohmann et al. (2022)",
+    "study": 1,
+    "condition": 1,
+    "intervention_description": "An intervention focusing on carbon footprint labels on meals was applied at five university cafeterias. Carbon footprint labels were displayed in the servery directly above the cafeteria meals during lunch and dinner. The label depicts the carbon footprint (CO2 equivalent) per 100 g serving of each meal, combined with a traffic-light coloured scheme and a numerical scale. Vegan dishes usually have a green (or orange) label while meat dishes are usually red or orange.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
     "paper": 346,
     "paper_label": "Krpan & Houtsma (2020)",
     "study": 1,
@@ -3261,6 +3272,61 @@
     "study": 1,
     "condition": 4,
     "intervention_description": "For this intervention condition, the name for the vegetarian breakfast was changed from 'meat-free breakfast' to a more appealing name that did not emphasize the absence of meat: 'garden breakfast'.",
+    "intervention_mechanism": "hedonic labeling",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "condition": 6,
+    "intervention_description": "For this intervention condition, the name for the vegetarian lunch was changed from 'vegetable lasagna' to a more appealing name that did not emphasize the absence of meat: 'triple cheese and slow roasted vegetable lasagne'.",
+    "intervention_mechanism": "hedonic labeling",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "condition": 7,
+    "intervention_description": "For this intervention condition, the name for the vegetarian lunch was changed from 'vegetable lasagna' to a more appealing name that did not emphasize the absence of meat: 'florentine lasagne'.",
+    "intervention_mechanism": "hedonic labeling",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "condition": 9,
+    "intervention_description": "For this intervention condition, the name for the vegetarian lunch was changed from 'vegetarian sausages and mash' to a more appealing name that did not emphasize the absence of meat: 'field-grown sausages and mash'.",
+    "intervention_mechanism": "hedonic labeling",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "condition": 10,
+    "intervention_description": "For this intervention condition, the name for the vegetarian lunch was changed from 'vegetarian sausages and mash' to a more appealing name that did not emphasize the absence of meat: 'cumberland spiced veggie sausages and mash'.",
+    "intervention_mechanism": "hedonic labeling",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "condition": 11,
+    "intervention_description": "For this intervention condition, the name for the vegetarian lunch was changed from 'vegetarian sausages and mash' to a more appealing name that did not emphasize the absence of meat: 'better sausages and mash'.",
     "intervention_mechanism": "hedonic labeling",
     "intervention_mechanism_multicomponent": "no",
     "intervention_medium": "label",
@@ -4027,7 +4093,7 @@
   },
   {
     "paper": 1050,
-    "paper_label": "Murray et al. (2026)",
+    "paper_label": "Murray et al. (2026a)",
     "study": 1,
     "condition": 1,
     "intervention_description": "During the intervention period, images of animals were added beside the corresponding meat-based meal options on the menus. For instance, an image of a chicken accompanied the sweet and sour chicken, an image of a pig accompanied the pork gyros, and an image of a cow accompanied the beef bolognese. No images were added next to the vegetarian dishes. The images showed the neutral depictions of the animals alone without any other contextual background.",

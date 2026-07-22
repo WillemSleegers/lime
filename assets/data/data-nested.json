@@ -3909,11 +3909,8 @@
             "intervention_mechanism": "info: environment",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "in-person",
-            "intervention_medium_multicomponent": "no"
-          },
-          {
-            "intervention_condition": 2,
-            "control_description": "Participants attended two 75-min lectures per week (see SI for syllabus) covering a broad range of general science topics, including the Big Bang, stellar nucleosynthesis, planet formation, plate tectonics, biological evolution, genetics, and human evolution."
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants attended two 75-min lectures per week covering a broad range of general science topics, including the Big Bang, stellar nucleosynthesis, planet formation, plate tectonics, biological evolution, genetics, and human evolution."
           }
         ],
         "outcomes": [
@@ -5093,7 +5090,13 @@
         "study_n": 2228,
         "interventions": [
           {
-            "intervention_condition": 2
+            "intervention_condition": 1,
+            "intervention_description": "An intervention focusing on carbon footprint labels on meals was applied at five university cafeterias. Carbon footprint labels were displayed in the servery directly above the cafeteria meals during lunch and dinner. The label depicts the carbon footprint (CO2 equivalent) per 100 g serving of each meal, combined with a traffic-light coloured scheme and a numerical scale. Vegan dishes usually have a green (or orange) label while meat dishes are usually red or orange.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Two cafeterias were selected as control groups and displayed no additional carbon footprint information."
           }
         ],
         "outcomes": [
@@ -5990,10 +5993,49 @@
             "control_description": "For this control condition, the original name for the vegetarian breakfast version was retained: 'meat-free breakfast'."
           },
           {
-            "intervention_condition": 5
+            "intervention_condition": 6,
+            "intervention_description": "For this intervention condition, the name for the vegetarian lunch was changed from 'vegetable lasagna' to a more appealing name that did not emphasize the absence of meat: 'triple cheese and slow roasted vegetable lasagne'.",
+            "intervention_mechanism": "hedonic labeling",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "For this control condition, the original name for the vegetarian lunch version was retained: 'vegetable lasagne'."
           },
           {
-            "intervention_condition": 8
+            "intervention_condition": 7,
+            "intervention_description": "For this intervention condition, the name for the vegetarian lunch was changed from 'vegetable lasagna' to a more appealing name that did not emphasize the absence of meat: 'florentine lasagne'.",
+            "intervention_mechanism": "hedonic labeling",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "For this control condition, the original name for the vegetarian lunch version was retained: 'vegetable lasagne'."
+          },
+          {
+            "intervention_condition": 9,
+            "intervention_description": "For this intervention condition, the name for the vegetarian lunch was changed from 'vegetarian sausages and mash' to a more appealing name that did not emphasize the absence of meat: 'field-grown sausages and mash'.",
+            "intervention_mechanism": "hedonic labeling",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "For this control condition, the original name for the vegetarian lunch version was retained: 'vegetarian sausages and mash'."
+          },
+          {
+            "intervention_condition": 10,
+            "intervention_description": "For this intervention condition, the name for the vegetarian lunch was changed from 'vegetarian sausages and mash' to a more appealing name that did not emphasize the absence of meat: 'cumberland spiced veggie sausages and mash'.",
+            "intervention_mechanism": "hedonic labeling",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "For this control condition, the original name for the vegetarian lunch version was retained: 'vegetarian sausages and mash'."
+          },
+          {
+            "intervention_condition": 11,
+            "intervention_description": "For this intervention condition, the name for the vegetarian lunch was changed from 'vegetarian sausages and mash' to a more appealing name that did not emphasize the absence of meat: 'better sausages and mash'.",
+            "intervention_mechanism": "hedonic labeling",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "For this control condition, the original name for the vegetarian lunch version was retained: 'vegetarian sausages and mash'."
           }
         ],
         "outcomes": [
@@ -7440,7 +7482,7 @@
   },
   {
     "paper": 1050,
-    "paper_label": "Murray et al. (2026)",
+    "paper_label": "Murray et al. (2026a)",
     "paper_authors": "Murray, S.; Meleady, R., Hodson, G.",
     "paper_title": "Seeing animals, choosing plants: Evidence from a cafeteria field study on food choice",
     "paper_year": 2026,
