@@ -1540,6 +1540,39 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 2,
+    "condition": 1,
+    "intervention_description": "Impossible foodprint project is an intervention aiming to reduce animal-based protein consumption with a focus on health and environmental sustainability promotion. Impossible plant-based meat was only implemented at Rendezvous West, and only Rendezvous West received the  intervention’s stanchion sign (key educational piece with carbon footprint scorecard), “Swap the  Meat, Save the Planet” promotional banner, check stand sign, promotional screens, and Low Carbon Foodprint green Earth icons on the menus.",
+    "intervention_mechanism": "info: environment, taste, info: health",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "choice architecture, text, image",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 3,
+    "condition": 2,
+    "intervention_description": "Participants were presented the same two menu items: 1) chicken enchiladas, and 2) roasted cauliflower and lentil tacos (i.e., plant-based tacos). The two menu items were both priced at $7.50 and included comparable descriptions and photographs. The health framing condition included a heart health icon with the phrase “Healthy Choice” next to the plant-based tacos.",
+    "intervention_mechanism": "info: health",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 3,
+    "condition": 3,
+    "intervention_description": "Participants were presented the same two menu items: 1) chicken enchiladas, and 2) roasted cauliflower and lentil tacos (i.e., plant-based tacos). The two menu items were both be priced at $7.50 and included comparable descriptions and photographs. The environmental sustainability framing condition included an Earth icon with the phrase “Environmentally Sustainable Choice” next to the plan-based tacos.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
     "paper": 140,
     "paper_label": "Schwantes (2018)",
     "study": 1,
@@ -1626,6 +1659,83 @@
     "intervention_mechanism_multicomponent": "yes",
     "intervention_medium": "text, image, choice architecture",
     "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 1,
+    "condition": 1,
+    "intervention_description": "Participants received a three-step intervention: first, they were made aware of their prejudice towards animals by conducting and receiving a bogus result from an Animal-Human Implicit Association Test (IAT), suggesting they preferred humans over animals,an attitude explained as contributing to harm toward animals. Then they were instructed for perspective taking by imagining they are one of the animals per each video fragment, and they watched the video including information texts and clips portraying how is the common practice towards animals in different sectors.",
+    "intervention_mechanism": "identity/reputation, perspective taking/individuation, info: animal welfare",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "video, text",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants were instructed to take perspective of the animals that undergo the consequences of speciesism by imagining for each video fragment that they are one of the animals. Then they were shown a video including video fragments and texts, and these are indicated as common practices from different animal industries.",
+    "intervention_mechanism": "info: animal welfare, perspective taking/individuation",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "video, text",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "Participants watched a video including information texts and clips portraying common practices involving animals in various sectors.",
+    "intervention_mechanism": "info: animal welfare",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "video, text",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 2,
+    "condition": 1,
+    "intervention_description": "Participants received a three-step intervention: first, they were made aware of their prejudice towards animals by conducting and receiving a bogus result from an Animal-Human Implicit Association Test (IAT), suggesting they preferred humans over animals,an attitude explained as contributing to harm toward animals. Then they were instructed for perspective taking by imagining they are one of the animals per each video fragment, and they watched the video including information texts and clips portraying how is the common practice towards animals in different sectors.",
+    "intervention_mechanism": "identity/reputation, perspective taking/individuation, info: animal welfare",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text, video",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 160,
+    "paper_label": "Fresán et al. (2025)",
+    "study": 1,
+    "condition": 1,
+    "intervention_description": "Participants received text message twice a week, each falling into one or more of the following categories: (i) educational messages on the health (e.g., debunking nutritional myths), environmental (e.g., pointing out the need of reducing the consumption of animal products, food waste or unnecessary food packaging), and socio-economic (e.g., highlighting the necessity of supporting small stakeholders within the food system) consequences of eating behaviors; (ii) motivational messages to encourage sustainable diets, with tips on goal achievement; and (iii) recipes for simple yet tasty sustainable meals. In addition, participants received an online feedback session, in which a member of the research team with extensive knowledge of sustainable diets (UF) commented with the participants on the food consumption as registered during the last two evaluation weeks. The researcher provided tailored advice on improving the healthiness and sustainability of their diets and addressed any questions or concerns participants might have had regarding sustainable diets.",
+    "intervention_mechanism": "info: health, info: environment, goal pursuit: cooking skills, goal pursuit: planning/pledge/reminder",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "in-person, text",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 161,
+    "paper_label": "Severijns et al. (2024)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Individual Veggie Challenge (VC-I): For 30 days, participants aimed to reduce their animal product consumption (APC) according to their own chosen goal (meatless, vegetarian, or vegan). The app supported them with recipes, articles, habit-tracking, and feedback on saved animals, land, water, and emissions.",
+    "intervention_mechanism": "goal pursuit: cooking skills, goal pursuit: efficacy/consequences/feedback, goal pursuit: planning/pledge/reminder, info: environment, info: animal welfare",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "other",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 161,
+    "paper_label": "Severijns et al. (2024)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "Social Veggie Challenge (VC-S): For 30 days, participants aimed to reduce their animal product consumption (APC) according to their own chosen goal (meatless, vegetarian, or vegan). The app supported them with recipes, articles, habit-tracking, and feedback on saved animals, land, water, and emissions. This condition included social features in addition to the Individual Veggie Challenge (VC-I): participants could form virtual teams, view each other’s activity, join a WhatsApp group, and receive group-level feedback on savings.",
+    "intervention_mechanism": "goal pursuit: cooking skills, goal pursuit: efficacy/consequences/feedback, goal pursuit: planning/pledge/reminder, info: environment, info: animal welfare",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "other",
+    "intervention_medium_multicomponent": "no"
   },
   {
     "paper": 163,
@@ -1892,6 +2002,39 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 211,
+    "paper_label": "Bschaden et al. (2020)",
+    "study": 1,
+    "condition": 1,
+    "intervention_description": "Participants were shown a 25-min sequence out of the documentary “Cowspiracy” in which various environmental impacts of meat production were presented, such as GHG emissions, water consumption or water pollution.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "video",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 211,
+    "paper_label": "Bschaden et al. (2020)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants were shown a 25-min clip out of an online seminar about sustainable nutrition, in the style of a lecture with PowerPoint slides, on similar topics of Cowspiracy.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "video, presentation",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 220,
+    "paper_label": "Jay et al. (2019)",
+    "study": 1,
+    "condition": 1,
+    "intervention_description": "Students attended three 1-h lectures per week. The course covered general environmental science topics such as biodiversity, ecology, climate regulation, nutrient cycling, and the water cycle, carbon cycle, wind currents, atmospheric science, the mechanics of global warming, and histories of food production. Case studies were used to show the impacts of food systems on these processes and ecosystem services. As a writing assignment, students analyzed a peer-reviewed paper comparing the greenhouse gas emissions associated with various animal-based foods. Through classroom activities, students learned how to calculate the environmental footprint of meals using conversion factors from the Heller and Keoleian (2015) life cycle assessment (LCA) meta-analysis. Each student had to write a research paper on the carbon cost of producing a grocery store item of their choice, and then make a short film or performance to communicate something about their research findings for a general audience. Students also took midterm and final exams in both fall and winter quarters based largely on the Withgott and Laposata textbook Environment: The Science Behind the Stories (2014) and selected additional readings.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "in-person",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
     "paper": 229,
     "paper_label": "Choueiki et al. (2021)",
     "study": 1,
@@ -1999,6 +2142,17 @@
     "intervention_mechanism": "info: environment, norms: dynamic",
     "intervention_mechanism_multicomponent": "yes",
     "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 240,
+    "paper_label": "Thamer et al. (2024)",
+    "study": 1,
+    "condition": 1,
+    "intervention_description": "Participants were exposed to a labelling nudge displayed in the cafeteria, in the form of a green leaf, which was placed on the (a) blackboard displaying the vegetarian menus, (b) on the tills corresponding to vegetarian foods, and (c) on the salad bar.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
     "intervention_medium_multicomponent": "no"
   },
   {
@@ -2145,6 +2299,116 @@
     "intervention_medium_multicomponent": "yes"
   },
   {
+    "paper": 282,
+    "paper_label": "Weingarten & Lagerkvist (2023)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants were exposed to a conflict-text describing negative health effects of red and processed meat consumption, as well as the positive effects of a meat-reduced diet, and a control image only including the picture of the sandwich (no animals).",
+    "intervention_mechanism": "info: health",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 282,
+    "paper_label": "Weingarten & Lagerkvist (2023)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "Participants were exposed to a control text about an unrelated topic, i.e., the local university, and a conflictual image aimed to highlight the origins of the food, including a picture of the animal (pig) and sandwich (ham sandwich) together.",
+    "intervention_mechanism": "origin of animal product",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "image",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 282,
+    "paper_label": "Weingarten & Lagerkvist (2023)",
+    "study": 1,
+    "condition": 4,
+    "intervention_description": "Participants were exposed to a conflict-text describing negative health effects of red and processed meat consumption, as well as the positive effects of a meat-reduced diet, and a conflict image aimed to highlight the origins of the food - including the picture of the animal (pig) and sandwich (ham sandwich) together.",
+    "intervention_mechanism": "info: health, origin of animal product",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text, image",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants were shown the written prompt: \"Choose the vegetarian menu or serve yourself at the balanced salad buffet. Compared to the recommendation of the Swiss Food Pyramid, we eat 2-3 times too much meat per week.\"",
+    "intervention_mechanism": "info: health",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "Participants were shown the visual prompt: the unbalanced Swiss Food Pyramid adapted from the Federal Food Safety and Veterinary Office, to demonstrate how much from each food category should be consumed proportionally for a balanced diet, and to illustrate the overconsumption of meat.",
+    "intervention_mechanism": "info: health",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "image",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "condition": 4,
+    "intervention_description": "Participants were shown dynamic social norm information: \"In Switzerland, more and more people are reducing their meat consumption. Whereas ten years ago, it was 40% of the population that occasionally refrained from meat, today it is 60%, which have adjusted their eating habits and occasionally refrain from meat.\" to show how the social norm has changed over the 10 years.",
+    "intervention_mechanism": "norms: dynamic",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "condition": 5,
+    "intervention_description": "Participants were shown both the visual prompt of the unbalanced Swiss Food Pyramid and the written prompt: \"Choose the vegetarian menu or serve yourself at the balanced salad buffet. Compared to the recommendations of the Swiss Food Pyramid, we eat 2–3 times too much meat per week.\"",
+    "intervention_mechanism": "info: health",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text, image",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "condition": 6,
+    "intervention_description": "Participants were shown both the written prompt and dynamic social norm: \"Choose the vegetarian menu or serve yourself at the balanced salad buffet. Compared to the recommendations of the Swiss Food Pyramid, we eat 2–3 times too much meat per week. However, more and more people in Switzerland are reducing their meat consumption. Whereas ten years ago, it was 40 % of the population that occasionally refrained from meat, today it is 60 %, which have adjusted their eating habits and occasionally refrain from meat.\"",
+    "intervention_mechanism": "info: health, norms: dynamic",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "condition": 7,
+    "intervention_description": "Participants were shown both the visual prompt of the unbalanced Swiss Food Pyramid and the dynamic social prompt: \"In Switzerland, more and more people are reducing their meat consumption. Whereas ten years ago, it was 40% of the population that occasionally refrained from meat, today it is 60%, which have adjusted their eating habits and occasionally refrain from meat.\"",
+    "intervention_mechanism": "info: health, norms: dynamic",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text, image",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "condition": 8,
+    "intervention_description": "Participants were shown the visual prompt of the unbalanced Swiss Food Pyramid, the dynamic social norm, and the written prompt: \"Choose the vegetarian menu or serve yourself at the balanced salad buffet. Compared to the recommendations of the Swiss Food Pyramid, we eat 2–3 times too much meat per week1. However, more and more people in Switzerland are reducing their meat consumption. Whereas ten years ago, it was 40 % of the population that occasionally refrained from meat, today it is 60 %, which have adjusted their eating habits and occasionally refrain from meat.\"",
+    "intervention_mechanism": "info: health, norms: dynamic",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text, image",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
     "paper": 294,
     "paper_label": "Pauer et al. (2022)",
     "study": 2,
@@ -2200,6 +2464,17 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 299,
+    "paper_label": "Haile et al. (2021)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "The treatment group received the animal-advocacy pamphlet named Compassionate Choices, produced by an activist group, Vegan Outreach. The pamphlet discusses the impact of factory farming and the conditions under which farm animals are treated. The pamphlet also contains information on how to eat less meat, i.e., discussions about the health benefits of eating a plant-based diet, meal ideas that contain no animal products, and personal testimonies from people who have made the choice to adopt a vegetarian lifestyle.",
+    "intervention_mechanism": "perspective taking/individuation, info: animal welfare, info: health, authority/role models, goal pursuit: planning/pledge/reminder, norms: dynamic",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
     "paper": 308,
     "paper_label": "Hankins et al. (2025)",
     "study": 1,
@@ -2244,6 +2519,17 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 317,
+    "paper_label": "Pechey et al. (2022c)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "The composition of the main meals was changed and consisted of two meat-free meals and one meat meal.",
+    "intervention_mechanism": "choice architecture: availability/variety/size",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
     "paper": 318,
     "paper_label": "dos Santos et al. (2018)",
     "study": 1,
@@ -2264,6 +2550,39 @@
     "intervention_mechanism_multicomponent": "no",
     "intervention_medium": "label",
     "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 320,
+    "paper_label": "Ye & Mattila (2021)",
+    "study": 2,
+    "condition": 1,
+    "intervention_description": "Participants were instructed to complete two ostensibly unrelated tasks: the first was about message comprehension and the second about restaurant food choices. In this message comprehension task, participants read an article talking about the social cost of meat consumption (i.e., climate change and animal slaughter).",
+    "intervention_mechanism": "info: environment, info: animal welfare",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 320,
+    "paper_label": "Ye & Mattila (2021)",
+    "study": 2,
+    "condition": 2,
+    "intervention_description": "Participants were instructed to complete two ostensibly unrelated tasks: the first was about message comprehension and the second about restaurant food choices. In this message comprehension task, participants read an article talking about the health risks of meat consumption.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 322,
+    "paper_label": "Godfrey & Feng (2017)",
+    "study": 1,
+    "condition": 4,
+    "intervention_description": "Participants were presented with three signs designed to help them understand whether their meal choices had high, medium, or low water footprints. These signs were displayed throughout a three-week dinner rotation. The informational poster contained a call to action, “Eat Water Smart,” along with concise definitions of food water footprints. The bottom half of the poster categorized meals into three levels: low (vegetarian), medium (pork, chicken, or seafood), and high (beef). Each category included the average water footprint of the Dining Center meals: 300 liters (low), 590 liters (medium), and 1,350 liters (high). In the previous week, participants also saw additional signs that presented a daily “Water Smart Choice” directly below the informational signs, but these signs were removed again for this condition.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label, text",
+    "intervention_medium_multicomponent": "yes"
   },
   {
     "paper": 323,
@@ -2442,6 +2761,17 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 350,
+    "paper_label": "Ginn & Sparkman (2024)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "The experimental stations used the same food service provider, so shared access to the same rotating menu of eight dishes. For this condition, the signage listed both options; it listed the vegan dish first, followed by the meat dish, which was available \"upon request\". Only the vegan dish was displayed at the counter, with the meat dish kept in a separate location and retrieved when it was requested.",
+    "intervention_mechanism": "choice architecture: default",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
     "paper": 352,
     "paper_label": "Bouwman et al. (2022)",
     "study": 1,
@@ -2572,6 +2902,39 @@
     "intervention_mechanism_multicomponent": "no",
     "intervention_medium": "text",
     "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 377,
+    "paper_label": "Flynn et al. (2019)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants followed a four-week plant-based cooking course program (Food is Medicine) supported by weekly topic discussions on health. The cooking classes took place weekly and lasted 30 minutes. Durng the discussions, it was highlighted, for example, that Americans consume more protein than they need, that vegetables and starches contain plant-based protein and diets based on them are sufficient to cover protein meats, and that eating more plant-based protein can improve body weight, health, and food costs.",
+    "intervention_mechanism": "info: health, goal pursuit: cooking skills",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "in-person",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 380,
+    "paper_label": "Einhorn (2020)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "A descriptive norm message was presented to guests by posters at the entrance of three dining halls (Mensa A, B, and C). The posters claimed that two out of three students in the respective dining hall ate a meat-free dish every day.",
+    "intervention_mechanism": "norms: descriptive",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 380,
+    "paper_label": "Einhorn (2020)",
+    "study": 1,
+    "condition": 4,
+    "intervention_description": "A stand was installed at the entrance of two dining halls (Mensa D and E) that exposed students to the injunctive norm message that eating meat was harmful to the environment and to animals, and that members of the ProVeg organization would approve of choosing a vegetarian over a meat dish. The stands were both set up in front of the dining hall entrances and were highly visible. Four members of the organization were present at any time and reached out to anyone interested in talking to them. In addition, bills and flags conveyed the norm message.",
+    "intervention_mechanism": "info: environment, info: animal welfare",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text, in-person",
+    "intervention_medium_multicomponent": "yes"
   },
   {
     "paper": 381,
@@ -2871,6 +3234,39 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "For this intervention condition, the name for the vegetarian breakfast was changed from 'meat-free breakfast' to a more appealing name that did not emphasize the absence of meat: 'feel good fry up'.",
+    "intervention_mechanism": "hedonic labeling",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "For this intervention condition, the name for the vegetarian breakfast was changed from 'meat-free breakfast' to a more appealing name that did not emphasize the absence of meat: 'field-grown breakfast'.",
+    "intervention_mechanism": "hedonic labeling",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "condition": 4,
+    "intervention_description": "For this intervention condition, the name for the vegetarian breakfast was changed from 'meat-free breakfast' to a more appealing name that did not emphasize the absence of meat: 'garden breakfast'.",
+    "intervention_mechanism": "hedonic labeling",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
     "paper": 389,
     "paper_label": "Scharmer (2021)",
     "study": 1,
@@ -3000,6 +3396,17 @@
     "intervention_mechanism": "choice architecture: visibility/salience/ease",
     "intervention_mechanism_multicomponent": "no",
     "intervention_medium": "label, choice architecture",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 408,
+    "paper_label": "Malan et al. (2020)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants were enrolled in the Foodprint seminar, a one-unit academic course on connections between food systems and environmental sustainability. It incorporates academic readings, written reading reflections, group discussions, and skills-based active learning exercises. For example, students calculated the carbon, water, and land footprints at scales ranging from individual meals to the average diets of countries and presented their findings.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "in-person, presentation, text",
     "intervention_medium_multicomponent": "yes"
   },
   {
@@ -3410,6 +3817,28 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 498,
+    "paper_label": "Fesenfeld et al. (2023)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants were presented with a graphical and textual definition of plant-based meat substitutes (same as participants in the control condition) plus a graphical and textual message about the negative impacts of meat and positive impacts of meat substitutes on human health, animal welfare, and the environment.",
+    "intervention_mechanism": "info: health, info: environment, info: animal welfare",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text, image",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 498,
+    "paper_label": "Fesenfeld et al. (2023)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "Participants were presented with a graphical and textual definition of plant-based meat substitutes (same as participants in the control condition) plus a graphical and textual message about the negative impacts of meat and positive impacts of meat substitutes on human health, animal welfare, and the environment, combined with a social norms appeal, consisting of a statement saying that a vast majority of the population, as well as celebrities start to reduce their meat consumption, for example by eating plant-based meat substitutes (descriptive social norm), as well as a statement saying the official dietary guidelines recommend that meat consumption should be reduced and people should switch towards more plant-based diets (injunctive social norm).",
+    "intervention_mechanism": "norms: descriptive, authority/role models, info: health, info: environment, info: animal welfare",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text, image",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
     "paper": 500,
     "paper_label": "Dannenberg et al. (2024)",
     "study": 1,
@@ -3542,6 +3971,28 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 540,
+    "paper_label": "Ring et al. (2019)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "Participants continued with the second component of \"Cooking Up Health\" intervention, intergrating service-learning experience in which participants applied their nutritional and socioeconomic knowledge by teaching at Chicago Public Schools, requiring students to co-lead at least four sessions of the \"Small Bites\" nutrition curriculum for elementary-age children. By synthesizing classroom learning with community service, students solidified their understanding of the complex relationships between food, health, and disease. In the first part of the program, participants had learned about six core pillars: applied nutrition science, hands-on plant-based cooking, disease management, patient coaching, cultural competency, and public health perspectives. Students had first completed the in-class learning component (six in-class didactic sessions) and, subsequently, completed the service component in the CPS classrooms after the last in-class learning component.",
+    "intervention_mechanism": "info: health",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "in-person",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 540,
+    "paper_label": "Ring et al. (2019)",
+    "study": 1,
+    "condition": 5,
+    "intervention_description": "Participants were exposed to an updated version of the \"Cooking Up Health\" intervention, a six-session culinary medicine elective course with each session lasting approximately 2.5 hours. The curriculum is delivered to small groups of 10-12 students by a multidisciplinary team consisting of faculty facilitators and a chef instructor. It integrated six core pillars: applied nutrition science, hands-on plant-based cooking, disease management, patient coaching, cultural competency, and public health perspectives. For the updated version, the didactics were removed from the actual meeting time, and shifted to a series of 3–8 min videos students watched before class. In-person time was devoted to simulated patient coaching, student-led research discussions, and culinary sessions in the kitchen. Preparation for each class included videos, article review, and assignments totaled 60–90 min for cohort 2. In addition, the in-class learning component and the service component were completed concurrently in cohort two. For the service component, participants applied their nutritional and socioeconomic knowledge by teaching at Chicago Public Schools, requiring students to co-lead at least four sessions of the \"Small Bites\" nutrition curriculum for elementary-age children. By synthesizing classroom learning with community service, students solidified their understanding of the complex relationships between food, health, and disease.",
+    "intervention_mechanism": "info: health, goal pursuit: cooking skills",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "in-person",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
     "paper": 855,
     "paper_label": "Friis et al. (2017)",
     "study": 1,
@@ -3605,6 +4056,248 @@
     "intervention_mechanism": "choice architecture: visibility/salience/ease",
     "intervention_mechanism_multicomponent": "no",
     "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1053,
+    "paper_label": "Kramer & Landry (2026)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants watched a 16-minute clip from the beginning of the Dominion documentary, which focuses predominantly on industrial-scale pork production and does not include any discussion of dietary choices, nor any appeals to adopt a plant-based diet. In this  way, the task of connecting the experiences of pigs on industrial-scale farms (as depicted  in the video) to one’s own consumption choices is left entirely to the viewer. After watching the first 11 minutes of the treatment video, participants were given an  explicit choice of whether or not to watch the remaining five minutes, which contained a detailed overview of methods used to slaughter pigs.",
+    "intervention_mechanism": "info: animal welfare",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "video",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "People saw the following message: \"We’ve noticed that more and more College [X] students are choosing veggie lunches.\" In cafeterias where meal selections were made in the cafeteria, messages were  printed on A4 (210 x 297 mm) posters and displayed at the point of decision-making in at  least two highly visible locations to ensure message salience. For cafeterias that used an  online meal booking system for meal selections, we placed messages as text in a prominent  location in the booking system.",
+    "intervention_mechanism": "norms: dynamic",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "People saw the following message: \"Did you know? More and more people in the UK are choosing veggie options *According to Stewart et al, 2021.\" In cafeterias where meal selections were made in the cafeteria, messages were  printed on A4 (210 x 297 mm) posters and displayed at the point of decision-making in at  least two highly visible locations to ensure message salience. For cafeterias that used an  online meal booking system for meal selections, we placed messages as text in a prominent  location in the booking system.",
+    "intervention_mechanism": "norms: dynamic",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 2,
+    "condition": 2,
+    "intervention_description": "In the online bookng system, the hot vegetarian lunchtime option was listed first in a drop-down list (instead of the meat option). If an individual would prefer a meat hot meal, they would have to manually switch their meal selection to a meat meal.",
+    "intervention_mechanism": "choice architecture: default",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 3,
+    "condition": 2,
+    "intervention_description": "On virtual and physical lunchtime menus, the main vegetarian option was listed first (instead of the meat option). In addition, the main vegetarian option was physically placed first in the cafeteria.",
+    "intervention_mechanism": "choice architecture: visibility/salience/ease",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 4,
+    "condition": 2,
+    "intervention_description": "For each lunch offering, one meat and two vegetarian hot main meals were offered (instead of only one vegetarian meal).",
+    "intervention_mechanism": "choice architecture: availability/variety/size, info: health",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1056,
+    "paper_label": "Becker et al. (2026)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "One meat dish on the lunch menu was exchanged for a vegetarian dish",
+    "intervention_mechanism": "choice architecture: availability/variety/size",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1060,
+    "paper_label": "Pizzo et al. (2026)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants saw one additional page highlighting the carbon footprint of different meats in contrast to other food alternatives in both absolute and relative terms. There was also a motivational statement: “Your choice can make a difference! Switching from a meat/fish-based option to a vegetarian alternative can reduce the carbon emissions of your meal by up to 90%, which is equivalent to driving a car for 40 km!”",
+    "intervention_mechanism": "info: environment, goal pursuit: efficacy/consequences/feedback",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1060,
+    "paper_label": "Pizzo et al. (2026)",
+    "study": 1,
+    "condition": 4,
+    "intervention_description": "Participants received a voucher worth $1.40 if they chose a meat-based dish, or $2.80 if they choise a vegetarian dish.",
+    "intervention_mechanism": "price",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "price",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1060,
+    "paper_label": "Pizzo et al. (2026)",
+    "study": 1,
+    "condition": 5,
+    "intervention_description": "Participants received a voucher worth $1.40 if they chose a meat-based dish, or $4.20 if they choise a vegetarian dish.",
+    "intervention_mechanism": "price",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "price",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1061,
+    "paper_label": "De Lint et al. (2026a)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Promotional fresh meat products were removed from end-cap displays and remained available only in regular aisle positions.  Within the fresh meat aisle, the promotional products retained standard-sized price tags visually identical to non-promotional items, showing only the discounted price. Vacated end-cap space displayed non-meat promotions alongside a weekly plant-based recipe featuring some promoted items. Green footsteps on the floor guided customers from the fresh meat section toward the meat replacement aisle.",
+    "intervention_mechanism": "choice architecture: visibility/salience/ease",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1061,
+    "paper_label": "De Lint et al. (2026a)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "Promotional fresh meat products were removed from end-cap displays and remained available only in regular aisle positions.  Within the fresh meat aisle, the promotional products retained standard-sized price tags visually identical to non-promotional items, showing only the discounted price. Vacated end-cap space displayed non-meat promotions alongside a weekly plant-based recipe featuring some promoted items. Green footsteps on the floor guided customers from the fresh meat section toward the meat replacement aisle. In addition, promotional materials with a plant-based reflective cue were added at two store locations: the entrance handscanner pickup and the fresh meat aisle end-cap. Materials stated: \"Will you choose more plant-based today? Affordable, tasty, and better for nature,\" accompanied by plant-based product images.",
+    "intervention_mechanism": "choice architecture: visibility/salience/ease, info: environment, info: taste/disgust",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "choice architecture, image, text",
+    "intervention_medium_multicomponent": "yes"
+  },
+  {
+    "paper": 1062,
+    "paper_label": "Gavrilaș et al. (2026)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Overall, the availability of vegan meal items in the cafeteria was increased from 34.7% to 42.5%. Vegan counterparts for all soups were developed and introduced alongside their non-vegan versions. Eight new vegan main dishes and two new fruit-based desserts were added to the rotation. Production volumes of pre-existing vegan dishes across other categories were scaled up to better match anticipated demand.",
+    "intervention_mechanism": "choice architecture: availability/variety/size",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1066,
+    "paper_label": "De Lint et al. (2026b)",
+    "study": 2,
+    "condition": 2,
+    "intervention_description": "As in the control condition, there was an equal distribution of vegetarian and non-vegetarian dishes as meal box options.All vegetarian dishes were prominently labeled with a green-colored ’Healthy & sustainable’ label.",
+    "intervention_mechanism": "info: health, info: environment",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1066,
+    "paper_label": "De Lint et al. (2026b)",
+    "study": 2,
+    "condition": 3,
+    "intervention_description": "The ratio of vegetarian versus non-vegetarian meal box options was shifted from 50% (control condition) to 75% vegetarian.",
+    "intervention_mechanism": "choice architecture: availability/variety/size",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 1069,
+    "paper_label": "Stiletto et al. (2026)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants selected products labeled with nutri-score.",
+    "intervention_mechanism": "info: health",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "label",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "condition": 2,
+    "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "condition": 3,
+    "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases, including information on how many kilometers driven in an average European car are equal to the emissions associated with their food purchases.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "condition": 4,
+    "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on what percentage of people have more or less emissions than them.",
+    "intervention_mechanism": "norms: descriptive",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "condition": 5,
+    "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases. They also received feedback on what percentage of people have more or less emissions than them.",
+    "intervention_mechanism": "norms: dynamic, info: environment",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "condition": 6,
+    "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases, including information on how many kilometers driven in an average European car are equal to the emissions associated with their food purchases. They also received feedback on what percentage of people have more or less emissions than them.",
+    "intervention_mechanism": "info: environment, norms: descriptive",
+    "intervention_mechanism_multicomponent": "yes",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 275,
+    "paper_label": "Pohlmann (2021)",
+    "study": 4,
+    "condition": 1,
+    "intervention_description": "Participants were asked to view pretested photographs that induce compassion. They viewed a slideshow consisting of 15 stock photographs portraying scenes of vulnerability, care-giving, human connection, and times of emotional distress of animals. The scenes depicted female and male adults, as well as children and the elderly, all of whom belong to a range of ethnicities.",
+    "intervention_mechanism": "priming",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "image",
     "intervention_medium_multicomponent": "no"
   }
 ]

@@ -2461,6 +2461,72 @@
     "sample_description": "Participants were Charles University Students obtained through snowball sampling via email lists and facebook posts."
   },
   {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 2,
+    "sample": 3,
+    "sample_n": 141321,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Rendezvouz West Intervention  - Post lunch and dinner entrée sales"
+  },
+  {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 2,
+    "sample": 5,
+    "sample_n": 106333,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Rendezvouz East Intervention  - Post lunch and dinner entrée sales"
+  },
+  {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 2,
+    "sample": 7,
+    "sample_n": 72918,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Bruin Café - Post lunch and dinner entrée sales"
+  },
+  {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 3,
+    "sample": 2,
+    "sample_n": 137,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "UCLA students and staff members"
+  },
+  {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 3,
+    "sample": 3,
+    "sample_n": 129,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "UCLA students and staff members"
+  },
+  {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 3,
+    "sample": 4,
+    "sample_n": 132,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "UCLA students and staff members"
+  },
+  {
     "paper": 140,
     "paper_label": "Schwantes (2018)",
     "study": 1,
@@ -2624,6 +2690,115 @@
     "sample_type": "children",
     "sample_representative": "no",
     "sample_description": "one datapoint represents one tray or one child-day and consists of elementary school children from four public elementary schools in NY who participate in school lunches"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 148,
+    "sample_country": "Unspecified",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants recruited via Prolific platform with a financial compensation"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 150,
+    "sample_country": "Unspecified",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants recruited via Prolific platform with a financial compensation"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 149,
+    "sample_country": "Unspecified",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants recruited via Prolific platform with a financial compensation"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 156,
+    "sample_country": "Unspecified",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants recruited via Prolific platform with a financial compensation"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 2,
+    "sample": 5,
+    "sample_n": 251,
+    "sample_country": "Unspecified",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants recruited via Prolific platform with a financial compensation"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 2,
+    "sample": 6,
+    "sample_country": "Unspecified",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Participants recruited via Prolific platform with a financial compensation"
+  },
+  {
+    "paper": 160,
+    "paper_label": "Fresán et al. (2025)",
+    "study": 1,
+    "sample": 1,
+    "sample_n": 12,
+    "sample_country": "Spain",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Spanish adults residing in Barcelona who are following an omnivorious diet"
+  },
+  {
+    "paper": 161,
+    "paper_label": "Severijns et al. (2024)",
+    "study": 1,
+    "sample": 10,
+    "sample_n": 215,
+    "sample_country": "Multiple countries",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Participants from Netherlands and Belgium who already had an intention to reduce APC  recruited via personal and social networks via paid advertisement"
+  },
+  {
+    "paper": 161,
+    "paper_label": "Severijns et al. (2024)",
+    "study": 1,
+    "sample": 11,
+    "sample_n": 393,
+    "sample_country": "Multiple countries",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Participants from Netherlands and Belgium who already had an intention to reduce APC  recruited via personal and social networks via paid advertisement"
+  },
+  {
+    "paper": 161,
+    "paper_label": "Severijns et al. (2024)",
+    "study": 1,
+    "sample": 12,
+    "sample_n": 403,
+    "sample_country": "Multiple countries",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Participants from Netherlands and Belgium who already had an intention to reduce APC recruited via personal and social networks via paid advertisement"
   },
   {
     "paper": 163,
@@ -3055,6 +3230,61 @@
     "sample_description": "UK Prolific workers"
   },
   {
+    "paper": 211,
+    "paper_label": "Bschaden et al. (2020)",
+    "study": 1,
+    "sample": 10,
+    "sample_n": 23,
+    "sample_country": "Germany",
+    "sample_type": "university, public",
+    "sample_representative": "no",
+    "sample_description": "respondents recruited via posts that were displayed on the university's website, in social media and by flyers on the university campus and at places around campus; another group of participants were recruited via vocational schools"
+  },
+  {
+    "paper": 211,
+    "paper_label": "Bschaden et al. (2020)",
+    "study": 1,
+    "sample": 11,
+    "sample_n": 25,
+    "sample_country": "Germany",
+    "sample_type": "university, public",
+    "sample_representative": "no",
+    "sample_description": "respondents recruited via posts that were displayed on the university's website, in social media and by flyers on the university campus and at places around campus; another group of participants were recruited via vocational schools"
+  },
+  {
+    "paper": 211,
+    "paper_label": "Bschaden et al. (2020)",
+    "study": 1,
+    "sample": 12,
+    "sample_n": 17,
+    "sample_country": "Germany",
+    "sample_type": "university, public",
+    "sample_representative": "no",
+    "sample_description": "respondents recruited via posts that were displayed on the university's website, in social media and by flyers on the university campus and at places around campus; another group of participants were recruited via vocational schools"
+  },
+  {
+    "paper": 220,
+    "paper_label": "Jay et al. (2019)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 90,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Freshmen students at UCLA who were enrolled in the course \"Food: A Lens for Environment and Sustainability\""
+  },
+  {
+    "paper": 220,
+    "paper_label": "Jay et al. (2019)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 73,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Freshmen students at UCLA who were enrolled in the course \"Evolution of the Cosmos and Life\""
+  },
+  {
     "paper": 229,
     "paper_label": "Choueiki et al. (2021)",
     "study": 1,
@@ -3197,6 +3427,17 @@
     "sample_type": "public",
     "sample_representative": "no",
     "sample_description": "Italian young adults between 18 and 30 years"
+  },
+  {
+    "paper": 240,
+    "paper_label": "Thamer et al. (2024)",
+    "study": 1,
+    "sample": 1,
+    "sample_n": 129,
+    "sample_country": "Germany",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "German university students who have registered at the university canteen at least once a week"
   },
   {
     "paper": 243,
@@ -3580,6 +3821,138 @@
     "sample_description": "US MTurk participants"
   },
   {
+    "paper": 282,
+    "paper_label": "Weingarten & Lagerkvist (2023)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 94,
+    "sample_country": "Unspecified",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "International Sample obtained via Prolific Platform"
+  },
+  {
+    "paper": 282,
+    "paper_label": "Weingarten & Lagerkvist (2023)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 90,
+    "sample_country": "Unspecified",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "International Sample obtained via Prolific Platform"
+  },
+  {
+    "paper": 282,
+    "paper_label": "Weingarten & Lagerkvist (2023)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 95,
+    "sample_country": "Unspecified",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "International Sample obtained via Prolific Platform"
+  },
+  {
+    "paper": 282,
+    "paper_label": "Weingarten & Lagerkvist (2023)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 100,
+    "sample_country": "Unspecified",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "International Sample obtained via Prolific Platform"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 280,
+    "sample_country": "Switzerland",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via the panel service provider BilendiAG"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 265,
+    "sample_country": "Switzerland",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via the panel service provider BilendiAG"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 274,
+    "sample_country": "Switzerland",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via the panel service provider BilendiAG"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 269,
+    "sample_country": "Switzerland",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via the panel service provider BilendiAG"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 272,
+    "sample_country": "Switzerland",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via the panel service provider BilendiAG"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "sample": 7,
+    "sample_n": 277,
+    "sample_country": "Switzerland",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via the panel service provider BilendiAG"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "sample": 8,
+    "sample_n": 277,
+    "sample_country": "Switzerland",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via the panel service provider BilendiAG"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "sample": 9,
+    "sample_n": 284,
+    "sample_country": "Switzerland",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via the panel service provider BilendiAG"
+  },
+  {
     "paper": 294,
     "paper_label": "Pauer et al. (2022)",
     "study": 2,
@@ -3664,6 +4037,28 @@
     "sample_description": "datapoint represents purchases made in the canteen of a ferry going between Helsingborg in Sweden and Helsingør in Denmark"
   },
   {
+    "paper": 299,
+    "paper_label": "Haile et al. (2021)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 338,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "U.S. college campus"
+  },
+  {
+    "paper": 299,
+    "paper_label": "Haile et al. (2021)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 338,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "U.S. college campus"
+  },
+  {
     "paper": 308,
     "paper_label": "Hankins et al. (2025)",
     "study": 1,
@@ -3741,6 +4136,28 @@
     "sample_description": "patrons at one of the three participating restaurant locations of a major restaurant chain in the Netherlands"
   },
   {
+    "paper": 317,
+    "paper_label": "Pechey et al. (2022c)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 24857.7,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Data points represent items sold at a university cafeteria"
+  },
+  {
+    "paper": 317,
+    "paper_label": "Pechey et al. (2022c)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 18962.4,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Data points represent items sold at a university cafeteria"
+  },
+  {
     "paper": 318,
     "paper_label": "dos Santos et al. (2018)",
     "study": 1,
@@ -3783,6 +4200,61 @@
     "sample_type": "public",
     "sample_representative": "no",
     "sample_description": "Older people recruited from three different centres in Denmark (Aktivitetscenter Nødager, located in Lejre Commune; Aktivitets- og Frivilligcenter in Solrød Commune and Seniorhuset Korsagergård in Vallensbæk Commune) and some from the food panel of Copenhagen University"
+  },
+  {
+    "paper": 320,
+    "paper_label": "Ye & Mattila (2021)",
+    "study": 2,
+    "sample": 2,
+    "sample_n": 54,
+    "sample_country": "United States",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "US MTurk participants"
+  },
+  {
+    "paper": 320,
+    "paper_label": "Ye & Mattila (2021)",
+    "study": 2,
+    "sample": 3,
+    "sample_n": 53,
+    "sample_country": "United States",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "US MTurk participants"
+  },
+  {
+    "paper": 320,
+    "paper_label": "Ye & Mattila (2021)",
+    "study": 2,
+    "sample": 4,
+    "sample_n": 53,
+    "sample_country": "United States",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "US MTurk participants"
+  },
+  {
+    "paper": 322,
+    "paper_label": "Godfrey & Feng (2017)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 567,
+    "sample_country": "Canada",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Data point represents number of Meat- and Vegetarian-Based Entrées Produced at Two Dining Center Stations"
+  },
+  {
+    "paper": 322,
+    "paper_label": "Godfrey & Feng (2017)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 461,
+    "sample_country": "Canada",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Data point represents number of Meat- and Vegetarian-Based Entrées Produced at Two Dining Center Stations"
   },
   {
     "paper": 323,
@@ -3849,6 +4321,28 @@
     "sample_type": "university",
     "sample_representative": "no",
     "sample_description": "students outside of the university's main cafeteria"
+  },
+  {
+    "paper": 342,
+    "paper_label": "Lohmann et al. (2022)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 1112,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students buying a meal at one of the five university cafeterias at University of Cambridge"
+  },
+  {
+    "paper": 342,
+    "paper_label": "Lohmann et al. (2022)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 1116,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students buying a meal at one of the five university cafeterias at University of Cambridge"
   },
   {
     "paper": 346,
@@ -4071,6 +4565,26 @@
     "sample_description": "UK Prolific workers"
   },
   {
+    "paper": 350,
+    "paper_label": "Ginn & Sparkman (2024)",
+    "study": 1,
+    "sample": 2,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "data point represents dishes sold at the intervention stations in the private research university cafeterias"
+  },
+  {
+    "paper": 350,
+    "paper_label": "Ginn & Sparkman (2024)",
+    "study": 1,
+    "sample": 3,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "data point represents dishes sold at the intervention stations in the private research university cafeterias"
+  },
+  {
     "paper": 352,
     "paper_label": "Bouwman et al. (2022)",
     "study": 1,
@@ -4267,6 +4781,72 @@
     "sample_type": "panel",
     "sample_representative": "no",
     "sample_description": "US adults recruited through CloudResearch Prime Panels"
+  },
+  {
+    "paper": 377,
+    "paper_label": "Flynn et al. (2019)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 43,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Medical students from Rhode Island"
+  },
+  {
+    "paper": 377,
+    "paper_label": "Flynn et al. (2019)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 43,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Medical students from Rhode Island"
+  },
+  {
+    "paper": 380,
+    "paper_label": "Einhorn (2020)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 1319,
+    "sample_country": "Germany",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students who entered one of the five Mensa dining halls of a university in Germany"
+  },
+  {
+    "paper": 380,
+    "paper_label": "Einhorn (2020)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 4107,
+    "sample_country": "Germany",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students who entered one of the five Mensa dining halls of a university in Germany"
+  },
+  {
+    "paper": 380,
+    "paper_label": "Einhorn (2020)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 1086,
+    "sample_country": "Germany",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students who entered one of the five Mensa dining halls of a university in Germany"
+  },
+  {
+    "paper": 380,
+    "paper_label": "Einhorn (2020)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 4018,
+    "sample_country": "Germany",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students who entered one of the five Mensa dining halls of a university in Germany"
   },
   {
     "paper": 381,
@@ -4665,6 +5245,127 @@
     "sample_description": "Prolific participants living in the UK and consuming meat"
   },
   {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 18,
+    "sample_n": 74569,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 19,
+    "sample_n": 17812,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 20,
+    "sample_n": 15616,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 21,
+    "sample_n": 12196,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 23,
+    "sample_n": 105352,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 24,
+    "sample_n": 11895,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 25,
+    "sample_n": 12361,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 27,
+    "sample_n": 105352,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 28,
+    "sample_n": 15375,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 29,
+    "sample_n": 13817,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "sample": 30,
+    "sample_n": 13856,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "data points represent number of main dishes sold"
+  },
+  {
     "paper": 389,
     "paper_label": "Scharmer (2021)",
     "study": 1,
@@ -4839,6 +5540,28 @@
     "sample_type": "public, university",
     "sample_representative": "no",
     "sample_description": "Finnish-speaking persons aged 18–65 whose diet contained meat"
+  },
+  {
+    "paper": 408,
+    "paper_label": "Malan et al. (2020)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 87,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students who were enrolled in one of the eight other one-unit seminars at UCLA, Stanford University or UCD"
+  },
+  {
+    "paper": 408,
+    "paper_label": "Malan et al. (2020)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 89,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students who were enrolled in the one-unit Foodprint seminar at UCLA, Stanford University, or UCD"
   },
   {
     "paper": 412,
@@ -5380,6 +6103,39 @@
     "sample_description": "UK Prolific workers"
   },
   {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 218,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel, public",
+    "sample_representative": "no",
+    "sample_description": "UK participants from Prolific"
+  },
+  {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 218,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel, public",
+    "sample_representative": "no",
+    "sample_description": "UK participants from Prolific"
+  },
+  {
+    "paper": 492,
+    "paper_label": "Fonseca et al. (2025)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 218,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel, public",
+    "sample_representative": "no",
+    "sample_description": "UK participants from Prolific"
+  },
+  {
     "paper": 493,
     "paper_label": "Weijers et al. (2024)",
     "study": 1,
@@ -5444,6 +6200,72 @@
     "sample_type": "university",
     "sample_representative": "no",
     "sample_description": "meal purchases at three educational context canteens in Denmark"
+  },
+  {
+    "paper": 498,
+    "paper_label": "Fesenfeld et al. (2023)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 405,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "American residents representative of the 18 + voting age population of US citizens + Chinese residents representative of the Chinese urban middle-class"
+  },
+  {
+    "paper": 498,
+    "paper_label": "Fesenfeld et al. (2023)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 453,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "American residents representative of the 18 + voting age population of US citizens + Chinese residents representative of the Chinese urban middle-class"
+  },
+  {
+    "paper": 498,
+    "paper_label": "Fesenfeld et al. (2023)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 412,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "American residents representative of the 18 + voting age population of US citizens + Chinese residents representative of the Chinese urban middle-class"
+  },
+  {
+    "paper": 498,
+    "paper_label": "Fesenfeld et al. (2023)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 454,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "American residents representative of the 18 + voting age population of US citizens + Chinese residents representative of the Chinese urban middle-class"
+  },
+  {
+    "paper": 498,
+    "paper_label": "Fesenfeld et al. (2023)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 413,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "American residents representative of the 18 + voting age population of US citizens + Chinese residents representative of the Chinese urban middle-class"
+  },
+  {
+    "paper": 498,
+    "paper_label": "Fesenfeld et al. (2023)",
+    "study": 1,
+    "sample": 7,
+    "sample_n": 453,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "American residents representative of the 18 + voting age population of US citizens + Chinese residents representative of the Chinese urban middle-class"
   },
   {
     "paper": 500,
@@ -5642,6 +6464,28 @@
     "sample_description": "Amazon MTurk workers based on United States"
   },
   {
+    "paper": 540,
+    "paper_label": "Ring et al. (2019)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 9,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Medical students at Northwestern University's Feinberg School of Medicine"
+  },
+  {
+    "paper": 540,
+    "paper_label": "Ring et al. (2019)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 12,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Medical students at Northwestern University's Feinberg School of Medicine"
+  },
+  {
     "paper": 855,
     "paper_label": "Friis et al. (2017)",
     "study": 1,
@@ -5708,39 +6552,6 @@
     "sample_description": "Participants were recruited via posters, social media, word-of-mouth, and a study volunteer website"
   },
   {
-    "paper": 492,
-    "paper_label": "Fonseca et al. (2025)",
-    "study": 1,
-    "sample": 3,
-    "sample_n": 218,
-    "sample_country": "United Kingdom",
-    "sample_type": "panel, public",
-    "sample_representative": "no",
-    "sample_description": "UK participants from Prolific"
-  },
-  {
-    "paper": 492,
-    "paper_label": "Fonseca et al. (2025)",
-    "study": 1,
-    "sample": 4,
-    "sample_n": 218,
-    "sample_country": "United Kingdom",
-    "sample_type": "panel, public",
-    "sample_representative": "no",
-    "sample_description": "UK participants from Prolific"
-  },
-  {
-    "paper": 492,
-    "paper_label": "Fonseca et al. (2025)",
-    "study": 1,
-    "sample": 5,
-    "sample_n": 218,
-    "sample_country": "United Kingdom",
-    "sample_type": "panel, public",
-    "sample_representative": "no",
-    "sample_description": "UK participants from Prolific"
-  },
-  {
     "paper": 1050,
     "paper_label": "Murray et al. (2026)",
     "study": 1,
@@ -5805,5 +6616,393 @@
     "sample_type": "university",
     "sample_representative": "no",
     "sample_description": "Visitors to a university cafeteria at a Dutch univesity"
+  },
+  {
+    "paper": 1053,
+    "paper_label": "Kramer & Landry (2026)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 557.96,
+    "sample_country": "Canada",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Undergraduate students in introductory commerce courses from the Rotman School of Management’s credit pool"
+  },
+  {
+    "paper": 1053,
+    "paper_label": "Kramer & Landry (2026)",
+    "study": 1,
+    "sample": 9,
+    "sample_n": 553.068,
+    "sample_country": "Canada",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Undergraduate students in introductory commerce courses from the Rotman School of Management’s credit pool"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 5738,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Students and staff visiting a college cafeteria at the University of Oxford"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 17344,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Students and staff visiting a college cafeteria at the University of Oxford"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 1,
+    "sample": 7,
+    "sample_n": 13498,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Students and staff visiting a college cafeteria at the University of Oxford"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 2,
+    "sample": 9,
+    "sample_n": 4586,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Students and staff visiting a college cafeteria at the University of Oxford"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 2,
+    "sample": 10,
+    "sample_n": 5131,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Students and staff visiting a college cafeteria at the University of Oxford"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 3,
+    "sample": 12,
+    "sample_n": 5332,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Students and staff visiting a college cafeteria at the University of Oxford"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 3,
+    "sample": 13,
+    "sample_n": 7438,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Students and staff visiting a college cafeteria at the University of Oxford"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 4,
+    "sample": 15,
+    "sample_n": 5009,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Students and staff visiting a college cafeteria at the University of Oxford"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 4,
+    "sample": 16,
+    "sample_n": 4354,
+    "sample_country": "United Kingdom",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Students and staff visiting a college cafeteria at the University of Oxford"
+  },
+  {
+    "paper": 1056,
+    "paper_label": "Becker et al. (2026)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 16325,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Workers at different companies in the UK"
+  },
+  {
+    "paper": 1056,
+    "paper_label": "Becker et al. (2026)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 9845,
+    "sample_country": "United Kingdom",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Workers at different companies in the UK"
+  },
+  {
+    "paper": 1060,
+    "paper_label": "Pizzo et al. (2026)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 226.08,
+    "sample_country": "Denmark",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "People attending a sports festival in Copenhagen"
+  },
+  {
+    "paper": 1060,
+    "paper_label": "Pizzo et al. (2026)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 244.92,
+    "sample_country": "Denmark",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "People attending a sports festival in Copenhagen"
+  },
+  {
+    "paper": 1060,
+    "paper_label": "Pizzo et al. (2026)",
+    "study": 1,
+    "sample": 4,
+    "sample_country": "Denmark",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "People attending a sports festival in Copenhagen"
+  },
+  {
+    "paper": 1060,
+    "paper_label": "Pizzo et al. (2026)",
+    "study": 1,
+    "sample": 5,
+    "sample_country": "Denmark",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "People attending a sports festival in Copenhagen"
+  },
+  {
+    "paper": 1060,
+    "paper_label": "Pizzo et al. (2026)",
+    "study": 1,
+    "sample": 6,
+    "sample_country": "Denmark",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "People attending a sports festival in Copenhagen"
+  },
+  {
+    "paper": 1061,
+    "paper_label": "De Lint et al. (2026a)",
+    "study": 1,
+    "sample": 4,
+    "sample_country": "Netherlands",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "N represent sales data from one store on one day"
+  },
+  {
+    "paper": 1061,
+    "paper_label": "De Lint et al. (2026a)",
+    "study": 1,
+    "sample": 5,
+    "sample_country": "Netherlands",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "N represent sales data from one store on one day"
+  },
+  {
+    "paper": 1061,
+    "paper_label": "De Lint et al. (2026a)",
+    "study": 1,
+    "sample": 6,
+    "sample_country": "Netherlands",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "N represent sales data from one store on one day"
+  },
+  {
+    "paper": 1062,
+    "paper_label": "Gavrilaș et al. (2026)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 216327,
+    "sample_country": "Romania",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "N represent sales data from a cafeteria at a university in Romania"
+  },
+  {
+    "paper": 1062,
+    "paper_label": "Gavrilaș et al. (2026)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 217882,
+    "sample_country": "Romania",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "N represent sales data from a cafeteria at a university in Romania"
+  },
+  {
+    "paper": 1066,
+    "paper_label": "De Lint et al. (2026b)",
+    "study": 2,
+    "sample": 2,
+    "sample_n": 145,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Dutch and Belgian participants recruited from Prolific"
+  },
+  {
+    "paper": 1066,
+    "paper_label": "De Lint et al. (2026b)",
+    "study": 2,
+    "sample": 3,
+    "sample_n": 147,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Dutch and Belgian participants recruited from Prolific"
+  },
+  {
+    "paper": 1066,
+    "paper_label": "De Lint et al. (2026b)",
+    "study": 2,
+    "sample": 4,
+    "sample_n": 147,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "Dutch and Belgian participants recruited from Prolific"
+  },
+  {
+    "paper": 1069,
+    "paper_label": "Stiletto et al. (2026)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 202,
+    "sample_country": "Italy",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Convenience sample of Italian adults who are responsible for their family's food purchases"
+  },
+  {
+    "paper": 1069,
+    "paper_label": "Stiletto et al. (2026)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 202,
+    "sample_country": "Italy",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Convenience sample of Italian adults who are responsible for their family's food purchases"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "sample": 2,
+    "sample_n": 103,
+    "sample_country": "Netherlands",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Dutch participants reruited from Prolific"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "sample": 3,
+    "sample_n": 108,
+    "sample_country": "Netherlands",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Dutch participants reruited from Prolific"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "sample": 4,
+    "sample_n": 91,
+    "sample_country": "Netherlands",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Dutch participants reruited from Prolific"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "sample": 5,
+    "sample_n": 96,
+    "sample_country": "Netherlands",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Dutch participants reruited from Prolific"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "sample": 6,
+    "sample_n": 91,
+    "sample_country": "Netherlands",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Dutch participants reruited from Prolific"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "sample": 7,
+    "sample_n": 107,
+    "sample_country": "Netherlands",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Dutch participants reruited from Prolific"
+  },
+  {
+    "paper": 275,
+    "paper_label": "Pohlmann (2021)",
+    "study": 4,
+    "sample": 2,
+    "sample_n": 42,
+    "sample_country": "Unspecified",
+    "sample_type": "university",
+    "sample_representative": "no"
+  },
+  {
+    "paper": 275,
+    "paper_label": "Pohlmann (2021)",
+    "study": 4,
+    "sample": 3,
+    "sample_n": 41,
+    "sample_country": "Unspecified",
+    "sample_type": "university",
+    "sample_representative": "no"
   }
 ]

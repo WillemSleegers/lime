@@ -1551,6 +1551,39 @@
     "outcome_measurement_type": "meal choice"
   },
   {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 2,
+    "outcome": 1,
+    "outcome_label": "animal-based",
+    "outcome_description": "The proportion of animal-based entrées sold—including red meat, poultry, fish, and shrimp.",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 3,
+    "outcome": 1,
+    "outcome_label": "plant-based tacos",
+    "outcome_description": "Percentage of participants choosing plant-based Tacos",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegetarian consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 133,
+    "paper_label": "Malan (2020)",
+    "study": 3,
+    "outcome": 4,
+    "outcome_label": "anticipated enjoyment - chicken enchiladas",
+    "outcome_description": "Participants anticipated enjoyment of the taste of Chicken Enchiladas",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "meat hedonics",
+    "outcome_measurement_type": "survey"
+  },
+  {
     "paper": 140,
     "paper_label": "Schwantes (2018)",
     "study": 1,
@@ -1637,6 +1670,105 @@
     "outcome_category": "behavior - observed",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "behavioral intentions",
+    "outcome_description": "Participants were asked to what extent they intend to change their harmful behaviour regarding animals. They could indicate separately for different categories (9 items), and choose their intent to show this behavior \"more\", \"equal\", \"less\", \"not at all\" for future.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "animal product intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 2,
+    "outcome": 1,
+    "outcome_label": "meat consumption",
+    "outcome_description": "Participants were asked to indicate how many days in the past 7 days they consumed meat. They were asked to indicate for breakfast, lunch, dinner, and in between snacks separately.",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 2,
+    "outcome": 2,
+    "outcome_label": "dairy consumption",
+    "outcome_description": "Participants were asked to indicate how many days in the past 7 days they consumed dairy. They were asked to indicate for breakfast, lunch, dinner, and in between snacks separately.",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 2,
+    "outcome": 3,
+    "outcome_label": "egg consumption",
+    "outcome_description": "Participants were asked to indicate how many days in the past 7 days they consumed eggs. They were asked to indicate for breakfast, lunch, dinner, and in between snacks separately.",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "egg consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 157,
+    "paper_label": "Stel & Unterweger (2025)",
+    "study": 2,
+    "outcome": 6,
+    "outcome_label": "behavioral intentions",
+    "outcome_description": "Participants were asked to what extent they intend to change their harmful behaviour regarding animals. They could indicate separately for different categories (9 items), and choose their intent to show this behavior \"more\", \"equal\", \"less\", \"not at all\" for future.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "animal product intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 160,
+    "paper_label": "Fresán et al. (2025)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "white meat, fish, and egg consumption",
+    "outcome_description": "Number of servings of white meat, fish, and egg consumed during the assessed day",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "food diary"
+  },
+  {
+    "paper": 160,
+    "paper_label": "Fresán et al. (2025)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "red and processed meat consumption",
+    "outcome_description": "Number of servings of red and processed meat consumed during the assessed day",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "food diary"
+  },
+  {
+    "paper": 160,
+    "paper_label": "Fresán et al. (2025)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "dairy products",
+    "outcome_description": "Number of servings of dairy products consumed during the assessed day",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "food diary"
+  },
+  {
+    "paper": 161,
+    "paper_label": "Severijns et al. (2024)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "animal product consumption",
+    "outcome_description": "Number of times one had an animal product in the past 3 days",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "animal product consumption",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 163,
@@ -1804,6 +1936,28 @@
     "outcome_measurement_type": "meal choice"
   },
   {
+    "paper": 211,
+    "paper_label": "Bschaden et al. (2020)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat consumption",
+    "outcome_description": "Meat consumption frequency within a week (1 year post-intervention)",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 220,
+    "paper_label": "Jay et al. (2019)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "reported ruminant consumption",
+    "outcome_description": "Participants' reported how many servings of ruminant meat thye eat per week",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
     "paper": 229,
     "paper_label": "Choueiki et al. (2021)",
     "study": 1,
@@ -1868,6 +2022,17 @@
     "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 240,
+    "paper_label": "Thamer et al. (2024)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat-demand",
+    "outcome_description": "Sum total of all meat-based items consumed over a week",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 243,
@@ -2024,6 +2189,28 @@
     "outcome_measurement_type": "survey"
   },
   {
+    "paper": 282,
+    "paper_label": "Weingarten & Lagerkvist (2023)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "food choice outcome frequencies (meat)",
+    "outcome_description": "Participants' meat avoidance is measured with a food choice task in which they are asked to choose one of two options meat vs. vegetarian, or an opt-out alternative. Meat avoidance is defined as choosing vegetarian or opt-out options here. This outcome indicates number of participants choosing meat option.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 286,
+    "paper_label": "Zumthurm & Stämpfli (2024)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat dish chosen",
+    "outcome_description": "Number of meat dishes chosen",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
     "paper": 294,
     "paper_label": "Pauer et al. (2022)",
     "study": 2,
@@ -2134,6 +2321,17 @@
     "outcome_measurement_type": "sales data"
   },
   {
+    "paper": 299,
+    "paper_label": "Haile et al. (2021)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "Percentage of self-identified vegetarians",
+    "outcome_description": "Participants' self identified current diet",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "vegetarian identity",
+    "outcome_measurement_type": "survey"
+  },
+  {
     "paper": 308,
     "paper_label": "Hankins et al. (2025)",
     "study": 1,
@@ -2162,6 +2360,17 @@
     "outcome": 3,
     "outcome_label": "meat/fish consumption",
     "outcome_description": "Amount of meat/fish consumed in total",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 317,
+    "paper_label": "Pechey et al. (2022c)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "Percentage of hot meals sold containing meat",
+    "outcome_description": "Percentage of hot meals sold containing meat",
     "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
@@ -2197,6 +2406,17 @@
     "outcome_description": "Number of participants choosing the fish based dish (fishballs)",
     "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 320,
+    "paper_label": "Ye & Mattila (2021)",
+    "study": 2,
+    "outcome": 1,
+    "outcome_label": "plant-based meatballs selection",
+    "outcome_description": "Percentage of participants choosing the blant-based meatballs",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
   },
   {
@@ -2242,6 +2462,17 @@
     "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 342,
+    "paper_label": "Lohmann et al. (2022)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat/fish meal sales share",
+    "outcome_description": "Percentage of meat or fish meals sold",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 346,
@@ -2332,6 +2563,17 @@
     "outcome_measurement_type": "survey"
   },
   {
+    "paper": 350,
+    "paper_label": "Ginn & Sparkman (2024)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "servings",
+    "outcome_description": "Number of meat dishes served",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
     "paper": 352,
     "paper_label": "Bouwman et al. (2022)",
     "study": 1,
@@ -2420,6 +2662,39 @@
     "outcome_measurement_type": "meal choice"
   },
   {
+    "paper": 377,
+    "paper_label": "Flynn et al. (2019)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "frequency eating red meat/month",
+    "outcome_description": "Frequency of consuming red meat (e.g., steak, ground beef as hamburgers, meatloaf, or meatballs)",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 377,
+    "paper_label": "Flynn et al. (2019)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "Vegetarian meals/week",
+    "outcome_description": "Number of meals per week that do not include meat/ chicken/ seafood?",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 380,
+    "paper_label": "Einhorn (2020)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "Nveg",
+    "outcome_description": "Number of vegetarian meals sold at the dining halls",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
     "paper": 381,
     "paper_label": "Brachem et al. (2019)",
     "study": 2,
@@ -2440,6 +2715,17 @@
     "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 384,
+    "paper_label": "Bacon et al. (2018)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "percentage vegetarian dishes sold",
+    "outcome_description": "Percentage of vegetarian main dishes sold out of all main dishes",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
   },
   {
     "paper": 389,
@@ -2484,6 +2770,83 @@
     "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 408,
+    "paper_label": "Malan et al. (2020)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "animal-based protein intake",
+    "outcome_description": "Animal-based protein servings consumed per week",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "animal product consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 408,
+    "paper_label": "Malan et al. (2020)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "ruminant intake",
+    "outcome_description": "Ruminant (beef/lamb) servings consumed per week",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 408,
+    "paper_label": "Malan et al. (2020)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "pork intake",
+    "outcome_description": "Pork servings consumed per week",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 408,
+    "paper_label": "Malan et al. (2020)",
+    "study": 1,
+    "outcome": 4,
+    "outcome_label": "poultry intake",
+    "outcome_description": "Poultry servings consumed per week",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 408,
+    "paper_label": "Malan et al. (2020)",
+    "study": 1,
+    "outcome": 5,
+    "outcome_label": "fish/seafood intake",
+    "outcome_description": "Fish/seafood servings consumed per week",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 408,
+    "paper_label": "Malan et al. (2020)",
+    "study": 1,
+    "outcome": 6,
+    "outcome_label": "eggs intake",
+    "outcome_description": "Eggs servings consumed per week",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "egg consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 408,
+    "paper_label": "Malan et al. (2020)",
+    "study": 1,
+    "outcome": 7,
+    "outcome_label": "dairy intake",
+    "outcome_description": "Dairy servings consumed per week",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "dairy consumption",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 412,
@@ -2860,6 +3223,28 @@
     "outcome_measurement_type": "sales data"
   },
   {
+    "paper": 498,
+    "paper_label": "Fesenfeld et al. (2023)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "intentions to reduce meat consumption",
+    "outcome_description": "Intentions to reduce meat consumption in the next two weeks",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 498,
+    "paper_label": "Fesenfeld et al. (2023)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "meat reduction policy support",
+    "outcome_description": "Likelihood to support government policies to reduce the consumption of meat products in the country",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "signing a petition",
+    "outcome_measurement_type": "survey"
+  },
+  {
     "paper": 500,
     "paper_label": "Dannenberg et al. (2024)",
     "study": 1,
@@ -2923,6 +3308,39 @@
     "outcome_description": "Participants rated how “appetizing” they found the meat on a sliding scale from 0 (Not at all appetizing) to 100 (Extremely appetizing)",
     "outcome_category": "attitudes/beliefs",
     "outcome_subcategory": "meat hedonics",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 322,
+    "paper_label": "Godfrey & Feng (2017)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "vegetarian-Based Entrées",
+    "outcome_description": "Vegetarian-Based Entrées Produced at Two Dining Center Stations",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 540,
+    "paper_label": "Ring et al. (2019)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "frequency of eating meat",
+    "outcome_description": "Participants' reported meat consumption via PrimeScreen Dietary Screening Tool. This tool was a 17-item questionnaire that assesses the frequency that respondents consume various foods.  In cohort 1, participants responded to the questionnaire using the original scale: 0 = never, 1 = less than once per week, 2 = once per week, 3 = 2–4 times per week, 4 = nearly daily or daily, and 5 = twice or more daily",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 540,
+    "paper_label": "Ring et al. (2019)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "frequency of eating meat",
+    "outcome_description": "Participants' reported meat consumption via PrimeScreen Dietary Screening Tool. This tool was a 17-item questionnaire that assesses the frequency that respondents consume various foods. In cohort 2, the authors modified the scale for clarity as follows: 0 = never/rarely, 1 = 1–3 times a month, 2 = 1–4 times a week, 3 = daily/almost daily, and 4 = twice or more daily",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "survey"
   },
   {
@@ -2990,5 +3408,148 @@
     "outcome_category": "behavior - observed",
     "outcome_subcategory": "meat consumption",
     "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 1053,
+    "paper_label": "Kramer & Landry (2026)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "protein choice",
+    "outcome_description": "Percentage of participants choosing a meat as the protein for their base meal. Participants had a roughly 50 percent chance of winning a voucher for one of the menu items that they selected.",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "percentage of vegan or vegetarian sales",
+    "outcome_description": "Percentage of vegetarian or vegan menu items that were sold",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 2,
+    "outcome": 1,
+    "outcome_label": "percentage of vegan or vegetarian sales",
+    "outcome_description": "Percentage of vegetarian or vegan menu items that were sold",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 3,
+    "outcome": 1,
+    "outcome_label": "percentage of vegan or vegetarian sales",
+    "outcome_description": "Percentage of vegetarian or vegan menu items that were sold",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 1054,
+    "paper_label": "Biggs et al. (2026a)",
+    "study": 4,
+    "outcome": 1,
+    "outcome_label": "percentage of vegan or vegetarian sales",
+    "outcome_description": "Percentage of vegetarian or vegan menu items that were sold",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 1056,
+    "paper_label": "Becker et al. (2026)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "percentage of vegetarian meals sold",
+    "outcome_description": "Proportion of lunch meals sold that were vegetarian",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 1060,
+    "paper_label": "Pizzo et al. (2026)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "proportion of vegetarian choices",
+    "outcome_description": "The proportion of participants who used their voucher to buy a vegetarian (vs. meat-based) dish",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 1061,
+    "paper_label": "De Lint et al. (2026a)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "daily meat sales (kg)",
+    "outcome_description": "Average kilograms of meat sold in a store",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 1062,
+    "paper_label": "Gavrilaș et al. (2026)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "vegan meal items sold",
+    "outcome_description": "Percentage of vegan meal items sold in the cafeteria",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegan consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 1066,
+    "paper_label": "De Lint et al. (2026b)",
+    "study": 2,
+    "outcome": 1,
+    "outcome_label": "vegetarian selection",
+    "outcome_description": "Percentage of participants choosing a vegetarian meal box",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegetarian consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 1069,
+    "paper_label": "Stiletto et al. (2026)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "vegetable alternatives selected",
+    "outcome_description": "Percentage of times participants selected a plant-based option in the proteins and fats category instead of red/white meat, fish, or cheese.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "study": 2,
+    "outcome": 1,
+    "outcome_label": "percentage of plant-based alternatives",
+    "outcome_description": "Participants indicated their hypothetical purchase intentions in 5 choice sets that always included one plant-based option",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 275,
+    "paper_label": "Pohlmann (2021)",
+    "study": 4,
+    "outcome": 1,
+    "outcome_label": "choice of falafel wrap",
+    "outcome_description": "Percentage of participants who chose the plant-based falafel wrap and not one of the meat wraps",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "vegetarian consumption",
+    "outcome_measurement_type": "meal choice"
   }
 ]
