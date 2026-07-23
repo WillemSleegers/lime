@@ -15,9 +15,15 @@ type HighlightBarChartProps = {
     name: string
     value: number
   }[]
+  unit: string
 }
 
-export const HighlightBarChart = ({ data }: HighlightBarChartProps) => {
+const pluralize = (unit: string, count: number) => {
+  if (count === 1) return unit
+  return /[^aeiou]y$/.test(unit) ? `${unit.slice(0, -1)}ies` : `${unit}s`
+}
+
+export const HighlightBarChart = ({ data, unit }: HighlightBarChartProps) => {
   // Calculate dynamic height: 25px per bar (more compact) + padding
   const height = Math.max(150, data.length * 25 + 40)
 
@@ -67,7 +73,7 @@ export const HighlightBarChart = ({ data }: HighlightBarChartProps) => {
                       {payload[0].payload.name}
                     </span>
                     <span className="text-sm text-muted-foreground">
-                      {payload[0].value} effects
+                      {payload[0].value} {pluralize(unit, Number(payload[0].value))}
                     </span>
                   </div>
                 </div>

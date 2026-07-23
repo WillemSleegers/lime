@@ -9,6 +9,7 @@
 ## Meta-Analysis
 
 - [ ] **Factor model for intervention mechanism moderator** — When "Exclude multi-mechanism interventions" is on, mechanism becomes a clean categorical variable. Add an option to run a single factor model across all mechanism levels simultaneously, giving predicted means for each in one chart/table, rather than picking one mechanism at a time.
+- [ ] **Double-check remaining "effect"-labeled Highlights tooltips** — `components/meta-analysis/highlights.tsx` has four bar charts still counting directly over the effect-level `data` array with `unit="effect"`: Intervention mechanism, Intervention medium, Measurement type, Outcome categories. Verify each field (`intervention_mechanism`, `intervention_medium`, `outcome_measurement_type`, `outcome_subcategory`) is genuinely effect-level rather than constant across multiple effect rows for the same intervention/outcome/study — if it's coarser, counting per raw effect row over-counts, the same bug just fixed for `paper_type` (was constant per paper but counted per effect row, ~3x inflation) in the "Publication type" chart.
 
 ## Data Quality and Coding Review
 

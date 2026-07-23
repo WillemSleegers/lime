@@ -15,11 +15,13 @@ const BarChartCard = ({
   title,
   description,
   data,
+  unit,
   className = "col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6",
 }: {
   title: string
   description: string
   data: BarChartItem[] | undefined
+  unit: string
   className?: string
 }) => (
   <Card className={className}>
@@ -28,7 +30,7 @@ const BarChartCard = ({
       <CardDescription className="mt-0 leading-5">{description}</CardDescription>
     </CardHeader>
     <CardContent className="overflow-visible">
-      {data && data.length > 0 && <HighlightBarChart data={data} />}
+      {data && data.length > 0 && <HighlightBarChart data={data} unit={unit} />}
     </CardContent>
   </Card>
 )
@@ -125,7 +127,11 @@ export const Highlights = (props: HighLightsProps) => {
 
   // Calculate paper type distribution
   const paperTypeCounts: Record<string, number> = {}
+  const uniquePapers = new Map<number, typeof data[0]>()
   data.forEach((datum) => {
+    uniquePapers.set(datum.paper, datum)
+  })
+  uniquePapers.forEach((datum) => {
     const types = datum.paper_type.split(", ")
     types.forEach((type) => {
       paperTypeCounts[type] = (paperTypeCounts[type] || 0) + 1
@@ -267,8 +273,9 @@ export const Highlights = (props: HighLightsProps) => {
           {/* Row 2: Paper type distribution - 4 items, bars need width */}
           <BarChartCard
             title="Publication type"
-            description="Number of effects by publication type"
+            description="Number of papers by publication type"
             data={paperTypeData}
+            unit="paper"
             className="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-4"
           />
         </div>
@@ -334,12 +341,14 @@ export const Highlights = (props: HighLightsProps) => {
             title="Study design"
             description="Number of studies by study design"
             data={studyDesignData}
+            unit="study"
             className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3"
           />
           <BarChartCard
             title="Condition assignment"
             description="Number of studies by condition assignment method"
             data={studyConditionAssignmentData}
+            unit="study"
             className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3"
           />
         </div>
@@ -365,6 +374,7 @@ export const Highlights = (props: HighLightsProps) => {
             title="Country"
             description="Number of studies by country"
             data={countryData}
+            unit="study"
           />
         </div>
       </div>
@@ -378,12 +388,14 @@ export const Highlights = (props: HighLightsProps) => {
             title="Intervention mechanism"
             description="Number of effects by intervention mechanism"
             data={interventionMechanismData}
+            unit="effect"
           />
           {/* Row 3: Intervention medium - full width */}
           <BarChartCard
             title="Intervention medium"
             description="Number of effects by intervention medium"
             data={interventionMediumData}
+            unit="effect"
           />
           {/* Row 4: Single-component percentage */}
           <Card className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-2">
@@ -411,12 +423,14 @@ export const Highlights = (props: HighLightsProps) => {
             title="Measurement type"
             description="Number of effects by measurement type"
             data={outcomeMeasurementTypeData}
+            unit="effect"
           />
           {/* Row 2: Outcome subcategory distribution - potentially many items, full width */}
           <BarChartCard
             title="Outcome categories"
             description="Number of effects by outcome category"
             data={outcomeSubcategoryData}
+            unit="effect"
           />
         </div>
       </div>
