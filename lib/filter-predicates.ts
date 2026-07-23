@@ -6,11 +6,17 @@
  * Conventions:
  * - Single-value cells (one atomic token per row) use exact membership:
  *   `values.includes(row.field)`.
- * - Multi-value cells (comma-joined tokens) use substring match. This is
- *   permissive but matches the long-standing behavior; a stricter
- *   split-on-", " match would be a separate change (see CODE-REVIEW.md #20
- *   for the equivalent fix already applied to the moderator analysis).
+ * - Multi-value cells (comma-joined tokens) are split into exact tokens via
+ *   `hasToken`, matching the approach used for the moderator analysis
+ *   (lib/r-functions.ts). A plain substring match would also match a
+ *   filter value against an unrelated token that merely contains it as a
+ *   substring (e.g. mechanism "taste" matching "info: taste/disgust").
  */
+
+const hasToken = (cell: string, values: string[]) => {
+  const tokens = cell.split(",").map((t) => t.trim())
+  return values.some((v) => tokens.includes(v))
+}
 
 // ── Paper ────────────────────────────────────────────────────────────────────
 
@@ -22,12 +28,12 @@ export const paperYearInRange = (
 export const paperTypeMatches = (
   row: { paper_type: string },
   values: string[],
-) => values.some((v) => row.paper_type.includes(v))
+) => hasToken(row.paper_type, values)
 
 export const paperOpenAccessMatches = (
   row: { paper_open_access: string },
   values: string[],
-) => values.some((v) => row.paper_open_access.includes(v))
+) => hasToken(row.paper_open_access, values)
 
 // ── Study ────────────────────────────────────────────────────────────────────
 
@@ -39,17 +45,17 @@ export const studyPreregisteredMatches = (
 export const studyDataAvailableMatches = (
   row: { study_data_available: string },
   values: string[],
-) => values.some((v) => row.study_data_available.includes(v))
+) => hasToken(row.study_data_available, values)
 
 export const studyDesignMatches = (
   row: { study_design: string },
   values: string[],
-) => values.some((v) => row.study_design.includes(v))
+) => hasToken(row.study_design, values)
 
 export const studyConditionAssignmentMatches = (
   row: { study_condition_assignment: string },
   values: string[],
-) => values.some((v) => row.study_condition_assignment.includes(v))
+) => hasToken(row.study_condition_assignment, values)
 
 export const studyRandomizationMatches = (
   row: { study_randomization: string },
@@ -69,24 +75,24 @@ export const sampleCountryMatches = (
 export const sampleTypeMatches = (
   row: { sample_type: string },
   values: string[],
-) => values.some((v) => row.sample_type.includes(v))
+) => hasToken(row.sample_type, values)
 
 export const sampleRepresentativeMatches = (
   row: { sample_representative: string },
   values: string[],
-) => values.some((v) => row.sample_representative.includes(v))
+) => hasToken(row.sample_representative, values)
 
 // ── Intervention ─────────────────────────────────────────────────────────────
 
 export const interventionMechanismMatches = (
   row: { intervention_mechanism: string | null },
   values: string[],
-) => values.some((v) => row.intervention_mechanism?.includes(v) ?? false)
+) => row.intervention_mechanism != null && hasToken(row.intervention_mechanism, values)
 
 export const interventionMediumMatches = (
   row: { intervention_medium: string | null },
   values: string[],
-) => values.some((v) => row.intervention_medium?.includes(v) ?? false)
+) => row.intervention_medium != null && hasToken(row.intervention_medium, values)
 
 export const interventionMechanismMulticomponentMatches = (
   row: { intervention_mechanism_multicomponent: string },
