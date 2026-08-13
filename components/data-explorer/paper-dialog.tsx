@@ -13,9 +13,10 @@ import {
 
 import data from "@/assets/data/data-nested.json"
 import { Effect, Intervention, Outcome, Paper, Sample, Study } from "@/lib/types"
+import { Features } from "@/components/data-explorer/table/table-features"
 
 type PaperDialogProps = {
-  row: Row<Paper | Study | Sample | Intervention | Outcome | Effect>
+  row: Row<Features, Paper | Study | Sample | Intervention | Outcome | Effect>
   variant?: "label" | "button"
 }
 

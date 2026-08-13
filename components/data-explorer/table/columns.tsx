@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Column, ColumnDef } from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table"
 import { CheckIcon, X, LinkIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -12,32 +12,50 @@ import { DataTableColumnHeader } from "@/components/data-explorer/table/column-h
 
 import { round } from "@/lib/utils"
 import { Effect, Intervention, Outcome, Paper, Sample, Study } from "@/lib/types"
+import { Features } from "@/components/data-explorer/table/table-features"
 
 // ── Shared column definitions ────────────────────────────────────────────────
+// Factory functions (rather than plain objects) so each caller's TData flows
+// through to the header/cell context instead of widening to `any`.
 
-const paperLabelColumn = {
-  id: "paper_label",
-  accessorKey: "paper_label" as const,
-  header: ({ column }: { column: Column<any, unknown> }) => (
-    <DataTableColumnHeader column={column} title="Paper" />
-  ),
+function paperLabelColumn<TData extends Record<string, unknown>>(): ColumnDef<
+  Features,
+  TData
+> {
+  return {
+    id: "paper_label",
+    accessorKey: "paper_label",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Paper" />
+    ),
+  }
 }
 
-const studyColumn = {
-  id: "study",
-  accessorKey: "study" as const,
-  header: ({ column }: { column: Column<any, unknown> }) => (
-    <DataTableColumnHeader column={column} title="Study" />
-  ),
+function studyColumn<TData extends Record<string, unknown>>(): ColumnDef<
+  Features,
+  TData
+> {
+  return {
+    id: "study",
+    accessorKey: "study",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Study" />
+    ),
+  }
 }
 
-const detailsColumn = {
-  id: "paper_details",
-  header: ({ column }: { column: Column<any, unknown> }) => (
-    <DataTableColumnHeader column={column} title="Details" />
-  ),
-  cell: ({ row }: { row: { original: unknown } }) => <PaperDialog row={row as never} variant="button" />,
-  enableSorting: false,
+function detailsColumn<TData extends Record<string, unknown>>(): ColumnDef<
+  Features,
+  TData
+> {
+  return {
+    id: "paper_details",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Details" />
+    ),
+    cell: ({ row }) => <PaperDialog row={row as never} variant="button" />,
+    enableSorting: false,
+  }
 }
 
 // ── Cell helpers ─────────────────────────────────────────────────────────────
@@ -57,8 +75,8 @@ const cellCommaList = (value: string) => (
 
 // ── Column definitions ───────────────────────────────────────────────────────
 
-export const ColumnsPapers: ColumnDef<Paper>[] = [
-  paperLabelColumn,
+export const ColumnsPapers: ColumnDef<Features, Paper>[] = [
+  paperLabelColumn<Paper>(),
   {
     id: "paper_authors",
     accessorKey: "paper_authors",
@@ -136,12 +154,12 @@ export const ColumnsPapers: ColumnDef<Paper>[] = [
       } else return "-"
     },
   },
-  detailsColumn,
+  detailsColumn<Paper>(),
 ]
 
-export const ColumnsStudies: ColumnDef<Study>[] = [
-  paperLabelColumn,
-  studyColumn,
+export const ColumnsStudies: ColumnDef<Features, Study>[] = [
+  paperLabelColumn<Study>(),
+  studyColumn<Study>(),
   {
     id: "study_n",
     accessorKey: "study_n",
@@ -204,12 +222,12 @@ export const ColumnsStudies: ColumnDef<Study>[] = [
     ),
     cell: ({ row }) => cellYesNo(row.getValue<string>("study_randomization")),
   },
-  detailsColumn,
+  detailsColumn<Study>(),
 ]
 
-export const ColumnsSamples: ColumnDef<Sample>[] = [
-  paperLabelColumn,
-  studyColumn,
+export const ColumnsSamples: ColumnDef<Features, Sample>[] = [
+  paperLabelColumn<Sample>(),
+  studyColumn<Sample>(),
   {
     id: "sample_country",
     accessorKey: "sample_country",
@@ -233,12 +251,12 @@ export const ColumnsSamples: ColumnDef<Sample>[] = [
     ),
     cell: ({ row }) => cellYesNo(row.getValue<string>("sample_representative")),
   },
-  detailsColumn,
+  detailsColumn<Sample>(),
 ]
 
-export const ColumnsInterventions: ColumnDef<Intervention>[] = [
-  paperLabelColumn,
-  studyColumn,
+export const ColumnsInterventions: ColumnDef<Features, Intervention>[] = [
+  paperLabelColumn<Intervention>(),
+  studyColumn<Intervention>(),
   {
     id: "condition",
     accessorKey: "intervention_condition",
@@ -285,12 +303,12 @@ export const ColumnsInterventions: ColumnDef<Intervention>[] = [
     ),
     cell: ({ row }) => cellYesNo(row.getValue<string>("intervention_medium_multicomponent")),
   },
-  detailsColumn,
+  detailsColumn<Intervention>(),
 ]
 
-export const ColumnsOutcomes: ColumnDef<Outcome>[] = [
-  paperLabelColumn,
-  studyColumn,
+export const ColumnsOutcomes: ColumnDef<Features, Outcome>[] = [
+  paperLabelColumn<Outcome>(),
+  studyColumn<Outcome>(),
   {
     id: "outcome",
     accessorKey: "outcome",
@@ -330,12 +348,12 @@ export const ColumnsOutcomes: ColumnDef<Outcome>[] = [
       <DataTableColumnHeader column={column} title="Measure" />
     ),
   },
-  detailsColumn,
+  detailsColumn<Outcome>(),
 ]
 
-export const ColumnsEffects: ColumnDef<Effect>[] = [
-  paperLabelColumn,
-  studyColumn,
+export const ColumnsEffects: ColumnDef<Features, Effect>[] = [
+  paperLabelColumn<Effect>(),
+  studyColumn<Effect>(),
   // {
   //   id: "effect_size_name",
   //   accessorKey: "effect_size_name",
@@ -378,5 +396,5 @@ export const ColumnsEffects: ColumnDef<Effect>[] = [
     ),
     cell: ({ row }) => round(row.getValue<number>("effect_control_n"), 2),
   },
-  detailsColumn,
+  detailsColumn<Effect>(),
 ]

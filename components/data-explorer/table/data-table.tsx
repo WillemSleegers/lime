@@ -3,11 +3,9 @@
 import {
   ColumnDef,
   flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  useReactTable,
+  useTable,
+  RowData,
   SortingState,
-  getSortedRowModel,
 } from "@tanstack/react-table"
 
 import {
@@ -18,14 +16,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { features } from "@/components/data-explorer/table/table-features"
 
 type TableLike = {
-  getState: () => { pagination: { pageIndex: number; pageSize: number } }
+  state: { pagination: { pageIndex: number; pageSize: number } }
 }
 
 function rowCountMessage(table: TableLike, filtered: number, total: number): string {
   if (filtered === 0) return "No rows match"
-  const { pageIndex, pageSize } = table.getState().pagination
+  const { pageIndex, pageSize } = table.state.pagination
   const start = pageIndex * pageSize + 1
   const end = Math.min((pageIndex + 1) * pageSize, filtered)
   const range = start === end ? `${start}` : `${start}–${end}`
@@ -50,29 +49,27 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
+interface DataTableProps<TData extends RowData> {
+  columns: ColumnDef<typeof features, TData>[]
   data: TData[]
   totalRows: number
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends RowData>({
   columns,
   data,
   totalRows,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   // TanStack Table holds state internally that React Compiler can't track —
   // memoizing this component caches stale `table` references on sort/paginate.
   "use no memo"
   const [sorting, setSorting] = useState<SortingState>([])
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
     state: {
       sorting,
     },
@@ -103,7 +100,7 @@ export function DataTable<TData, TValue>({
               <ChevronLeft />
             </Button>
             <div className="text-sm text-center sm:text-left">
-              Page {table.getState().pagination.pageIndex + 1} of{" "}
+              Page {table.state.pagination.pageIndex + 1} of{" "}
               {table.getPageCount()}
             </div>
             <Button
@@ -129,13 +126,13 @@ export function DataTable<TData, TValue>({
         <div className="flex items-center space-x-2 justify-center sm:justify-end">
           <p className="text-sm">Rows per page</p>
           <Select
-            value={`${table.getState().pagination.pageSize}`}
+            value={`${table.state.pagination.pageSize}`}
             onValueChange={(value) => {
               table.setPageSize(Number(value))
             }}
           >
             <SelectTrigger className="h-8 w-20 rounded-lg">
-              <SelectValue placeholder={table.getState().pagination.pageSize} />
+              <SelectValue placeholder={table.state.pagination.pageSize} />
             </SelectTrigger>
             <SelectContent side="top" className="rounded-lg">
               {[10, 25, 50, 100, 200].map((pageSize) => (
@@ -182,12 +179,8 @@ export function DataTable<TData, TValue>({
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  className="hover:bg-transparent"
-                >
-                  {row.getVisibleCells().map((cell) => (
+                <TableRow key={row.id} className="hover:bg-transparent">
+                  {row.getAllCells().map((cell) => (
                     <TableCell className="p-3" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
