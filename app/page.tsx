@@ -24,25 +24,37 @@ export default function Home() {
         </div>
         <div className="mx-auto flex max-w-xs flex-wrap justify-center gap-6 text-center sm:max-w-lg sm:justify-between">
           <div className="flex flex-col gap-y-2">
-            <span className="text-stat-number">
+            <span
+              className="text-stat-number inline-block text-center"
+              style={{ minWidth: `${String(counts.papers).length}ch` }}
+            >
               <Counter duration={1000} target={counts.papers} />
             </span>
             <span className="text-stat-label">Papers</span>
           </div>
           <div className="flex flex-col gap-y-2">
-            <span className="text-stat-number">
+            <span
+              className="text-stat-number inline-block text-center"
+              style={{ minWidth: `${String(counts.studies).length}ch` }}
+            >
               <Counter duration={1250} target={counts.studies} />
             </span>
             <span className="text-stat-label">Studies</span>
           </div>
           <div className="flex flex-col gap-y-2">
-            <span className="text-stat-number">
+            <span
+              className="text-stat-number inline-block text-center"
+              style={{ minWidth: `${String(counts.effects).length}ch` }}
+            >
               <Counter duration={1500} target={counts.effects} />
             </span>
             <span className="text-stat-label">Effects</span>
           </div>
           <div className="flex flex-col gap-y-2">
-            <span className="text-stat-number">
+            <span
+              className="text-stat-number inline-block text-center"
+              style={{ minWidth: `${String(counts.observations).length}ch` }}
+            >
               <Counter duration={1750} target={counts.observations} />
             </span>
             <span className="text-stat-label">Observations</span>

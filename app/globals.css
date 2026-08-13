@@ -184,6 +184,6 @@
 
   /* Counter/stat numbers */
   .text-stat-number {
-    @apply text-2xl font-bold sm:text-3xl;
+    @apply text-2xl font-bold tabular-nums sm:text-3xl;
   }
 }
