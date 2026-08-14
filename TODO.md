@@ -5,6 +5,7 @@
 - [ ] **Resolve remaining lint warnings** — 5 warnings surfaced by `npm run lint`, none currently blocking:
   - `components/data-explorer/table/columns.tsx` — 3x `@typescript-eslint/no-explicit-any` on shared column defs (`Column<any, unknown>`) reused across different row types. Try narrowing to `Column<unknown, unknown>`; may run into TanStack Table type friction.
   - `components/data-explorer/table/data-table.tsx` and `components/meta-analysis/filters.tsx` — React Compiler skips memoization around TanStack Table's `useReactTable()` and React Hook Form's `watch()` (both flagged as "incompatible library"). No clear fix short of replacing those libraries.
+- [ ] Add tests
 
 ## Meta-Analysis
 
