@@ -1,0 +1,9 @@
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
+  fsevents: true
+  sharp: true
+
+overrides:
+  postcss: ^8.5.10
+  sharp: ^0.35.3
