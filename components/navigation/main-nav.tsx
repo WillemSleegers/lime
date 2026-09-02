@@ -21,6 +21,10 @@ const items = [
     href: "/meta-analysis/",
   },
   {
+    title: "Methodology",
+    href: "/methodology/",
+  },
+  {
     title: "FAQ",
     href: "/faq",
   },
