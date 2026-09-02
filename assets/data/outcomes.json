@@ -1122,6 +1122,17 @@
     "outcome_measurement_type": "sales data"
   },
   {
+    "paper": 66,
+    "paper_label": "Sparkman et al. (2021)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat consumption",
+    "outcome_description": "Weekly meat servings in the past month",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
     "paper": 67,
     "paper_label": "Guedes et al. (2023)",
     "study": 1,
@@ -1547,7 +1558,7 @@
     "outcome_label": "preference for Meatless Meals",
     "outcome_description": "Participants' choice of meatless meals in a choice experiment task including one meat-based and one meatless meal. These meals adapted from university canteens, not labeled as vegetarian or not, and they had a fixed price.",
     "outcome_category": "intentions",
-    "outcome_subcategory": "vegetarian consumption",
+    "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
   },
   {
@@ -1780,6 +1791,28 @@
     "outcome_category": "intentions",
     "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "24h food frequency questionnaire",
+    "outcome_description": "People's frequency of consuming some animal products over the previous 24 h: “In the past day, how many times did you consume the following food and drinks?” Participants could respond from 0 times to 5 or more times for the following items: Dairy, chicken, turkey, fish, pork, eggs, beef, bacon, sausages, processed meats, hamburgers, or any animal meat (any kind). Responses were coded from 0 to 5.",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "animal product consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "study": 2,
+    "outcome": 1,
+    "outcome_label": "24h food frequency questionnaire",
+    "outcome_description": "People's frequency of consuming some animal products over the previous 24 h: “In the past day, how many times did you consume the following food and drinks?” Participants could respond from 0 times to 5 or more times for the following items: Dairy, chicken, turkey, fish, pork, eggs, beef, bacon, sausages, processed meats, hamburgers, or any animal meat (any kind). Responses were coded from 0 to 5.",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "animal product consumption",
+    "outcome_measurement_type": "survey"
   },
   {
     "paper": 171,
@@ -2211,6 +2244,138 @@
     "outcome_measurement_type": "meal choice"
   },
   {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "plant-based choice",
+    "outcome_description": "Proportion of food-choice trials in which participants chose the plant-based alternative over the animal-based (meat, dairy, or egg) alternative — out of 11 dish/product pairs (e.g., veggie burger vs. beef burger, oat milk vs. cow milk, tofu wrap vs. chicken wrap).",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "plant-based burger choice",
+    "outcome_description": "Proportion of participants choosing the veggie burger over the beef burger in a burger food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "plant-based sushi choice",
+    "outcome_description": "Proportion of participants choosing the cucumber maki over the salmon maki in a sushi food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 4,
+    "outcome_label": "plant-based milk choice",
+    "outcome_description": "Proportion of participants choosing oat milk over cow milk in a milk food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 5,
+    "outcome_label": "plant-based lasagna choice",
+    "outcome_description": "Proportion of participants choosing the vegetable lasagna over the beef lasagna in a lasagna food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegetarian consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 6,
+    "outcome_label": "plant-based cutlet choice",
+    "outcome_description": "Proportion of participants choosing the seitan cutlet over the veal cutlet in a cutlet food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 7,
+    "outcome_label": "plant-based ramen choice",
+    "outcome_description": "Proportion of participants choosing the Quorn (meat-substitute) ramen over the beef ramen in a ramen food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegetarian consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 8,
+    "outcome_label": "plant-based sandwich choice",
+    "outcome_description": "Proportion of participants choosing the vegetarian sandwich (egg and curd cheese, no meat) over the sliced-meat sandwich in a sandwich food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegetarian consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 9,
+    "outcome_label": "plant-based chili choice",
+    "outcome_description": "Proportion of participants choosing chili sin carne (bean-based) over chili con carne (beef-based) in a chili food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 10,
+    "outcome_label": "plant-based butter choice",
+    "outcome_description": "Proportion of participants choosing margarine over butter in a butter/margarine food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 11,
+    "outcome_label": "plant-based brownie choice",
+    "outcome_description": "Proportion of participants choosing the vegan brownie over the standard brownie (made with eggs and butter) in a brownie food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "outcome": 12,
+    "outcome_label": "plant-based wrap choice",
+    "outcome_description": "Proportion of participants choosing the tofu vegetable wrap over the chicken wrap in a wrap food-choice scenario.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "vegan consumption intentions",
+    "outcome_measurement_type": "meal choice"
+  },
+  {
     "paper": 294,
     "paper_label": "Pauer et al. (2022)",
     "study": 2,
@@ -2449,7 +2614,7 @@
     "outcome_label": "chef's special selection",
     "outcome_description": "Percentage of participants choosing the \"Chef’s Special: A hearth-baked mélange of assorted flavorful seasoned vegetables nestled on quinoa\"",
     "outcome_category": "intentions",
-    "outcome_subcategory": "vegetarian consumption",
+    "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
   },
   {
@@ -2460,7 +2625,7 @@
     "outcome_label": "veggie burger selection",
     "outcome_description": "Percentage of participants choosing the veggie burger",
     "outcome_category": "intentions",
-    "outcome_subcategory": "vegetarian consumption",
+    "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
   },
   {
@@ -2601,7 +2766,7 @@
     "study": 1,
     "outcome": 1,
     "outcome_label": "plant-based recipe",
-    "outcome_description": "Number of reported meals per week that were plant based recipes using olive oil for cooking and did not contain meat/poultry/seafood",
+    "outcome_description": "Number of reported meals per week that were plant based recipes using olive oil for cooking and did not contain meat/poultry/seafood.",
     "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "vegetarian consumption",
     "outcome_measurement_type": "survey"
@@ -2999,7 +3164,7 @@
     "outcome_label": "plant-based choice",
     "outcome_description": "Participants were asked to make a mock menu choice where they chose 6 dishes from a list of 30 options (15 meat dishes and 15 vegetable dishes) A score of plant‐based choice was computed as the sum of plant‐based dishes.",
     "outcome_category": "intentions",
-    "outcome_subcategory": "vegetarian consumption",
+    "outcome_subcategory": "vegetarian consumption intentions",
     "outcome_measurement_type": "meal choice"
   },
   {
@@ -3157,6 +3322,127 @@
     "outcome_measurement_type": "survey"
   },
   {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "actual meat consumption",
+    "outcome_description": "Participants' meat consumption over the past week measured with a food frequency questionnaire",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "chicken consumption",
+    "outcome_description": "Participants' chicken consumption over the past week measured with a food frequency questionnaire",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 4,
+    "outcome_label": "turkey consumption",
+    "outcome_description": "Participants' turkey consumption over the past week measured with a food frequency questionnaire",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 5,
+    "outcome_label": "fish and seafood consumption",
+    "outcome_description": "Participants' fish and seafood consumption over the past week measured with a food frequency questionnaire",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 6,
+    "outcome_label": "pork consumption",
+    "outcome_description": "Participants' pork consumption over the past week measured with a food frequency questionnaire",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 7,
+    "outcome_label": "beef consumption",
+    "outcome_description": "Participants' beef consumption over the past week measured with a food frequency questionnaire",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 8,
+    "outcome_label": "other meat consumption",
+    "outcome_description": "Participants' other meat consumption (e.g., duck, lamb, venison, etc.) over the past week measured with a food frequency questionnaire",
+    "outcome_category": "behavior - self-reported",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 9,
+    "outcome_label": "attitude toward reducing meat consumption",
+    "outcome_description": "Attitude towards reducing meat consumption, measured on a scale from extremely unfavourable to extremely favourable",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "meat attitude",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 10,
+    "outcome_label": "interest in reducing meat consumption",
+    "outcome_description": "Interest in eating less meat, measured on a scale from not at all interested to extremely interested",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "meat attitude",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 11,
+    "outcome_label": "bipolar intention to change meat consumption",
+    "outcome_description": "Exploratory single-item measure of intention to increase or decrease meat consumption over the next week, measured on a scale from greatly decrease to greatly increase",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "intention to reduce meat consumption",
+    "outcome_description": "Intention to reduce meat consumption over the next week",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption intentions",
+    "outcome_measurement_type": "survey"
+  },
+  {
     "paper": 482,
     "paper_label": "Aldoh et al. (2021)",
     "study": 1,
@@ -3201,6 +3487,28 @@
     "outcome_measurement_type": "survey"
   },
   {
+    "paper": 489,
+    "paper_label": "Voşki et al. (2025)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "meat consumption",
+    "outcome_description": "Weight of meat used per patron",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
+    "paper": 489,
+    "paper_label": "Voşki et al. (2025)",
+    "study": 2,
+    "outcome": 1,
+    "outcome_label": "meat consumption",
+    "outcome_description": "Weight of meat used per patron",
+    "outcome_category": "behavior - observed",
+    "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "sales data"
+  },
+  {
     "paper": 493,
     "paper_label": "Weijers et al. (2024)",
     "study": 1,
@@ -3231,17 +3539,6 @@
     "outcome_description": "Intentions to reduce meat consumption in the next two weeks",
     "outcome_category": "intentions",
     "outcome_subcategory": "meat consumption intentions",
-    "outcome_measurement_type": "survey"
-  },
-  {
-    "paper": 498,
-    "paper_label": "Fesenfeld et al. (2023)",
-    "study": 1,
-    "outcome": 2,
-    "outcome_label": "meat reduction policy support",
-    "outcome_description": "Likelihood to support government policies to reduce the consumption of meat products in the country",
-    "outcome_category": "intentions",
-    "outcome_subcategory": "signing a petition",
     "outcome_measurement_type": "survey"
   },
   {
@@ -3341,6 +3638,39 @@
     "outcome_description": "Participants' reported meat consumption via PrimeScreen Dietary Screening Tool. This tool was a 17-item questionnaire that assesses the frequency that respondents consume various foods. In cohort 2, the authors modified the scale for clarity as follows: 0 = never/rarely, 1 = 1–3 times a month, 2 = 1–4 times a week, 3 = daily/almost daily, and 4 = twice or more daily",
     "outcome_category": "behavior - self-reported",
     "outcome_subcategory": "meat consumption",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 541,
+    "paper_label": "Herchenroeder et al. (2022)",
+    "study": 1,
+    "outcome": 1,
+    "outcome_label": "implicit wanting of meat",
+    "outcome_description": "Participants paired six meat images and six non-meat images against one another, and they were asked to respond to the prompt, \"Which food do you most want to eat now?\" as quickly as possible and all trials were presented in a randomized order. Stimuli remained on the screen for 5000 ms or until the participant made their choice and each trial was separated by an intertrial interval of 500 ms. To improve reliability, participants completed four test trials before completing the main task.",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "meat hedonics",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 541,
+    "paper_label": "Herchenroeder et al. (2022)",
+    "study": 1,
+    "outcome": 2,
+    "outcome_label": "explicit wanting of meat",
+    "outcome_description": "Participants were asked to rate each of the 12 single food images according to “How much do you want some of this food right now?” Responses were on a scale ranging from 1 (Not at all) to 7 (Extremely).",
+    "outcome_category": "attitudes/beliefs",
+    "outcome_subcategory": "meat hedonics",
+    "outcome_measurement_type": "survey"
+  },
+  {
+    "paper": 541,
+    "paper_label": "Herchenroeder et al. (2022)",
+    "study": 1,
+    "outcome": 3,
+    "outcome_label": "intention to reduce meat consumption",
+    "outcome_description": "Participants were asked to respond to four statements: “I am willing to eat meat less often per week,” I am willing to eat smaller quantities of meat per meal,” I am willing to adopt a more vegetarian diet,” and “I am planning to reduce my meat intake in the near future.” The four items were averaged to create a total score and higher scores indicated greater intention to reduce meat.",
+    "outcome_category": "intentions",
+    "outcome_subcategory": "meat consumption intentions",
     "outcome_measurement_type": "survey"
   },
   {

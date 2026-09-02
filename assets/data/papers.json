@@ -403,6 +403,17 @@
     "paper_open_access": "open access"
   },
   {
+    "paper": 66,
+    "paper_label": "Sparkman et al. (2021)",
+    "paper_title": "Cut back or give it up? The effectiveness of reduce and eliminate appeals and dynamic norm messaging to curb meat consumption",
+    "paper_authors": "Sparkman, G.; Macdonald, B. N. J.; Caldwell, K. D.; Kateman, B.; Boese, G. D.",
+    "paper_year": 2021,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Journal of Environmental Psychology",
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2021.101592",
+    "paper_open_access": "open access"
+  },
+  {
     "paper": 67,
     "paper_label": "Guedes et al. (2023)",
     "paper_title": "Promoting plant-based eating in meat-centric meal contexts: A field study",
@@ -767,6 +778,17 @@
     "paper_open_access": "paywalled"
   },
   {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "paper_title": "Educational interventions and animal consumption: Results from lab and field studies",
+    "paper_authors": "Feltz, A.; Caton, J. N.; Cogley, Z.; Engel, M.; Feltz, S.; Ilea, R.; Johnson, L. S. M.; Offer-Westort, T.; Tuvel, R.",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Appetite",
+    "paper_link": "https://doi.org/10.1016/j.appet.2022.105981",
+    "paper_open_access": "paywalled"
+  },
+  {
     "paper": 171,
     "paper_label": "Attwood et al. (2020)",
     "paper_title": "Menu engineering to encourage sustainable food choices when dining out: An online trial of priced-based decoys",
@@ -1049,6 +1071,17 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Food Quality and Preference",
     "paper_link": "https://doi.org/10.1016/j.foodqual.2024.105105",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "paper_title": "Carbon footprint labels involving traffic lights foster sustainable food choices",
+    "paper_authors": "Holenweger, G.; Stöckli, S.; Brügger, A.",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Food Quality and Preference",
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2023.104813",
     "paper_open_access": "open access"
   },
   {
@@ -1556,6 +1589,17 @@
     "paper_open_access": "paywalled"
   },
   {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "paper_title": "Shifting norms, static behaviour: effects of dynamic norms on meat consumption",
+    "paper_authors": "Aldoh, A.; Sparks, P.; Harris, P. R.",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Royal Society Open Science",
+    "paper_link": "https://doi.org/10.1098/rsos.240407",
+    "paper_open_access": "open access"
+  },
+  {
     "paper": 482,
     "paper_label": "Aldoh et al. (2021)",
     "paper_title": "Dynamic norms and food choice: Reflections on a failure of minority norm information to influence motivation to reduce meat consumption",
@@ -1564,6 +1608,17 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Sustainability",
     "paper_link": "https://doi.org/10.3390/su13158315",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 489,
+    "paper_label": "Voşki et al. (2025)",
+    "paper_title": "Effect of a portion-size default nudge on meat consumption and diner satisfaction: Controlled experiments in Stanford University dining halls",
+    "paper_authors": "Voşki, A.; Braginsky, M.; Zhang, A.; Bertoldo, J.; Egan, S.; Levig, L. A.; Mueller Ihrig, M.; Mathur, M. B.",
+    "paper_year": 2025,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "BMC Public Health",
+    "paper_link": "https://doi.org/10.1186/s12889-025-22495-9",
     "paper_open_access": "open access"
   },
   {
@@ -1696,6 +1751,17 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "The Journal of Alternative and Complementary Medicine",
     "paper_link": "https://doi.org/10.1089/acm.2018.0313",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 541,
+    "paper_label": "Herchenroeder et al. (2022)",
+    "paper_title": "The effectiveness of animal welfare-, environmental-, and health-focused video appeals on implicit and explicit wanting of meat and intentions to reduce meat consumption",
+    "paper_authors": "Herchenroeder, L.; Forestell, C.A.; Bravo, A.J.",
+    "paper_year": 2022,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "The Journal of Social Psychology",
+    "paper_link": "https://doi.org/10.1080/00224545.2022.2081529",
     "paper_open_access": "paywalled"
   },
   {

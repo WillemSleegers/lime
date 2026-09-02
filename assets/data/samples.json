@@ -1569,6 +1569,36 @@
     "sample_description": "data points represent food items sold at a restaurant"
   },
   {
+    "paper": 66,
+    "paper_label": "Sparkman et al. (2021)",
+    "study": 1,
+    "sample": 14,
+    "sample_country": "United States",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "US MTurk participants"
+  },
+  {
+    "paper": 66,
+    "paper_label": "Sparkman et al. (2021)",
+    "study": 1,
+    "sample": 15,
+    "sample_country": "United States",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "US MTurk participants"
+  },
+  {
+    "paper": 66,
+    "paper_label": "Sparkman et al. (2021)",
+    "study": 1,
+    "sample": 16,
+    "sample_country": "United States",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "US MTurk participants"
+  },
+  {
     "paper": 67,
     "paper_label": "Guedes et al. (2023)",
     "study": 1,
@@ -2834,6 +2864,83 @@
     "sample_description": "UK Prolific Academic workers"
   },
   {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 51,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students recruited from subjects’ pool at a large state university"
+  },
+  {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 50,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students recruited from subjects’ pool at a large state university"
+  },
+  {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 51,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students recruited from subjects’ pool at a large state university"
+  },
+  {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 49,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students recruited from subjects’ pool at a large state university"
+  },
+  {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 46,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "undergraduate students recruited from subjects’ pool at a large state university"
+  },
+  {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "study": 2,
+    "sample": 2,
+    "sample_n": 101,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students from from four U.S. universities and classes without animal ethics content"
+  },
+  {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "study": 2,
+    "sample": 3,
+    "sample_n": 92,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students from from four U.S. universities and philosophy classes with animal ethics content"
+  },
+  {
     "paper": 171,
     "paper_label": "Attwood et al. (2020)",
     "study": 1,
@@ -3951,6 +4058,50 @@
     "sample_type": "panel",
     "sample_representative": "no",
     "sample_description": "Swiss residents recruited via the panel service provider BilendiAG"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 288,
+    "sample_country": "Switzerland",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via blogs, social media, mailing lists"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 271,
+    "sample_country": "Switzerland",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via blogs, social media, mailing lists"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 280,
+    "sample_country": "Switzerland",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via blogs, social media, mailing lists"
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 280,
+    "sample_country": "Switzerland",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Swiss residents recruited via blogs, social media, mailing lists"
   },
   {
     "paper": 294,
@@ -6070,6 +6221,61 @@
     "sample_description": "Women between 35 and 46 years with low soya intake, a normal mammogram, regular menstrual cycles, and an intact uterus, from Hawaii."
   },
   {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 262,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "UK Prolific workers"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 260,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "UK Prolific workers"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 261,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "UK Prolific workers"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 259,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "UK Prolific workers"
+  },
+  {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 252,
+    "sample_country": "United Kingdom",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "UK Prolific workers"
+  },
+  {
     "paper": 482,
     "paper_label": "Aldoh et al. (2021)",
     "study": 1,
@@ -6101,6 +6307,50 @@
     "sample_type": "panel",
     "sample_representative": "no",
     "sample_description": "UK Prolific workers"
+  },
+  {
+    "paper": 489,
+    "paper_label": "Voşki et al. (2025)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 219,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "diners who ate at the intervention station in the university dining halls"
+  },
+  {
+    "paper": 489,
+    "paper_label": "Voşki et al. (2025)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 145,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "diners who ate at the intervention station in the university dining halls"
+  },
+  {
+    "paper": 489,
+    "paper_label": "Voşki et al. (2025)",
+    "study": 2,
+    "sample": 2,
+    "sample_n": 631,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "diners who ate at the intervention station in the university dining halls"
+  },
+  {
+    "paper": 489,
+    "paper_label": "Voşki et al. (2025)",
+    "study": 2,
+    "sample": 3,
+    "sample_n": 1171,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "diners who ate at the intervention station in the university dining halls"
   },
   {
     "paper": 492,
@@ -6486,6 +6736,50 @@
     "sample_description": "Medical students at Northwestern University's Feinberg School of Medicine"
   },
   {
+    "paper": 541,
+    "paper_label": "Herchenroeder et al. (2022)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 97,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "University students were recruited from the Psychology Department participant pool at William & Mary, a four-year liberal arts university located in Virginia."
+  },
+  {
+    "paper": 541,
+    "paper_label": "Herchenroeder et al. (2022)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 103,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "University students were recruited from the Psychology Department participant pool at William & Mary, a four-year liberal arts university located in Virginia."
+  },
+  {
+    "paper": 541,
+    "paper_label": "Herchenroeder et al. (2022)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 97,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "University students were recruited from the Psychology Department participant pool at William & Mary, a four-year liberal arts university located in Virginia."
+  },
+  {
+    "paper": 541,
+    "paper_label": "Herchenroeder et al. (2022)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 108,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "University students were recruited from the Psychology Department participant pool at William & Mary, a four-year liberal arts university located in Virginia."
+  },
+  {
     "paper": 855,
     "paper_label": "Friis et al. (2017)",
     "study": 1,
@@ -6641,7 +6935,7 @@
   },
   {
     "paper": 1054,
-    "paper_label": "Biggs et al. (2026)",
+    "paper_label": "Biggs et al. (2026a)",
     "study": 1,
     "sample": 5,
     "sample_n": 5738,
@@ -6652,7 +6946,7 @@
   },
   {
     "paper": 1054,
-    "paper_label": "Biggs et al. (2026)",
+    "paper_label": "Biggs et al. (2026a)",
     "study": 1,
     "sample": 6,
     "sample_n": 17344,

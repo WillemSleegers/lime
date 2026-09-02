@@ -48,7 +48,7 @@
           {
             "intervention_condition": 2,
             "intervention_description": "Participants received a presentation on declining meat consumption trends in Canada since 1980 and the negative health, animal welfare, and environmental impacts of meat consumption (including PETA videos). They completed a mind attribution task writing about a cow's thoughts and feelings, received practical tips for planning meat-free meals and making substitutions, and set a monthly goal to reduce, maintain, or increase their meat consumption.",
-            "intervention_mechanism": "info: health, info: environment, info: animal welfare, norms: dynamic, perspective taking/individuation, goal pursuit: planning/pledge/reminder",
+            "intervention_mechanism": "info: health, info: environment, info: animal welfare, norms: dynamic, perspective taking/individuation, goal pursuit: planning/pledge/reminder, goal pursuit: cooking skills",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "presentation, video",
             "intervention_medium_multicomponent": "yes",
@@ -837,7 +837,7 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants read a persuasive essay describing disgust-evoking aspects of meat production and consumption (e.g. \"...ABC News recently broke a story higlighting the amount of \"pink slime\" that is added to the ground beef that you see in grocery stores, restaurants, and even school cafeterias...\").",
+            "intervention_description": "Participants read a persuasive essay describing disgust-evoking aspects of meat production and consumption (e.g. \"...ABC News recently broke a story highlighting the amount of \"pink slime\" that is added to the ground beef that you see in grocery stores, restaurants, and even school cafeterias...\").",
             "intervention_mechanism": "info: taste/disgust",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -876,7 +876,7 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants read a persuasive essay describing disgust-evoking aspects of meat production and consumption (e.g. \"...ABC News recently broke a story higlighting the amount of \"pink slime\" that is added to the ground beef that you see in grocery stores, restaurants, and even school cafeterias...\").",
+            "intervention_description": "Participants read a persuasive essay describing disgust-evoking aspects of meat production and consumption (e.g. \"...ABC News recently broke a story highlighting the amount of \"pink slime\" that is added to the ground beef that you see in grocery stores, restaurants, and even school cafeterias...\").",
             "intervention_mechanism": "info: taste/disgust",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -1923,6 +1923,46 @@
     ]
   },
   {
+    "paper": 66,
+    "paper_label": "Sparkman et al. (2021)",
+    "paper_authors": "Sparkman, G.; Macdonald, B. N. J.; Caldwell, K. D.; Kateman, B.; Boese, G. D.",
+    "paper_title": "Cut back or give it up? The effectiveness of reduce and eliminate appeals and dynamic norm messaging to curb meat consumption",
+    "paper_year": 2021,
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2021.101592",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 3239,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants read an op-ed discussing a rise in people curbing meat consumption, and the beneficial consequences of this dietary trend on personal and public health, the environment and mitigating climate change, and animal welfare. The op-ed included statistics regarding these impacts, and also discussed the moral imperative to avoid factory farming. The eliminate op-ed included references to how “eliminating meat” is becoming more mainstream, that many Americans have “eliminated meat from their diets”, the rise of “vegetarians”, and appeals and a campaign that encourages people to “cut [meat] out.”",
+            "intervention_mechanism": "info: health, info: environment, info: animal welfare, norms: dynamic",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants read a control op-ed on the benefits of walking."
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants read an op-ed that discusses a rise in people curbing meat consumption, and the beneficial consequences of this dietary trend on personal and public health, the environment and mitigating climate change, and animal welfare. The op-ed included statistics regarding these impacts, and also discussed the moral imperative to avoid factory farming. The reduce op-ed includes references to how “eating less meat” is becoming more mainstream, that many Americans have “reduced their intake of meat”, the rise of “reducetarians”, appeals to “reduce” one’s meat consumption and a campaign that encourages people to “take the middle road and go ‘reducetarian’ by reducing their meat consumption without entirely cutting it out of their diets.”",
+            "intervention_mechanism": "info: health, info: environment, info: animal welfare, norms: dynamic",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants read a control op-ed on the benefits of walking."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Weekly meat servings in the past month"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 67,
     "paper_label": "Guedes et al. (2023)",
     "paper_authors": "Guedes, D.; Brazão, V.; Roque, L; Campos, L.; Godinho, C.; Truninger, M.; Vinnari, M.; João Graça, J.",
@@ -1932,7 +1972,7 @@
     "studies": [
       {
         "study": 1,
-        "study_n": 1253,
+        "study_n": 12972,
         "interventions": [
           {
             "intervention_condition": 1,
@@ -2046,7 +2086,7 @@
           {
             "intervention_condition": 1,
             "intervention_description": "Participants completed a 12-week compassion and caring-based training which consisted of weekly sessions á 75 min and weekly homework assignments. Participants were introduced to a way to offer love to themselves, other people, or animals. Affect dyad situations were applied where partners sit face to face, and one partner contemplates a situation to a specific theme of the main topics. The other partner listens attentively without giving any verbal or non-verbal feedback. Each session included a talk about a specific topic. The main subjects of this course were breath, handling difficult emotions, the four Buddhist Brahmaviharas, prosociality, compassion, appreciative joy, equanimity, forgiveness, gratitude, and self-compassion.",
-            "intervention_mechanism": "other",
+            "intervention_mechanism": "priming",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "in-person",
             "intervention_medium_multicomponent": "no"
@@ -2054,7 +2094,7 @@
           {
             "intervention_condition": 2,
             "intervention_description": "Participants completed a 12-week mindfulness-based stress reduction program that included various elements of meditation: body scan, mindful eating, emphasizing the breath, and sitting and walking meditation training. Every session contained a talk about specific topics such as different forms of meditation and problems that may arise with them. The focus of this mindfulness group was on the rather cognitive elements of mindfulness and its qualities of awareness. All sessions followed the same fixed sequence of quiet time, check-in, talk, meditation, exercise, homework, and check-out.",
-            "intervention_mechanism": "other",
+            "intervention_mechanism": "priming",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "in-person",
             "intervention_medium_multicomponent": "no"
@@ -2945,7 +2985,7 @@
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "Impossible foodprint project is an intervention aiming to reduce animal-based protein consumption with a focus on health and environmental sustainability promotion. Impossible plant-based meat was only implemented at Rendezvous West, and only Rendezvous West received the  intervention’s stanchion sign (key educational piece with carbon footprint scorecard), “Swap the  Meat, Save the Planet” promotional banner, check stand sign, promotional screens, and Low Carbon Foodprint green Earth icons on the menus.",
+            "intervention_description": "Impossible foodprint project is an intervention aiming to reduce animal-based protein consumption with a focus on health and environmental sustainability promotion. Impossible plant-based meat was only implemented at Rendezvous West, and only Rendezvous West received the intervention’s stanchion sign (key educational piece with carbon footprint scorecard), “Swap the  Meat, Save the Planet” promotional banner, check stand sign, promotional screens, and Low Carbon Foodprint green Earth icons on the menus.",
             "intervention_mechanism": "info: environment, taste, info: health",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "choice architecture, text, image",
@@ -3256,7 +3296,7 @@
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "Participants received a three-step intervention: first, they were made aware of their prejudice towards animals by conducting and receiving a bogus result from an Animal-Human Implicit Association Test (IAT), suggesting they preferred humans over animals,an attitude explained as contributing to harm toward animals. Then they were instructed for perspective taking by imagining they are one of the animals per each video fragment, and they watched the video including information texts and clips portraying how is the common practice towards animals in different sectors.",
+            "intervention_description": "Participants received a three-step intervention: first, they were made aware of their prejudice towards animals by conducting and receiving a bogus result from an Animal-Human Implicit Association Test (IAT), suggesting they preferred humans over animals, an attitude explained as contributing to harm toward animals. Then they were instructed for perspective taking by imagining they are one of the animals per each video fragment, and they watched the video including information texts and clips portraying how is the common practice towards animals in different sectors.",
             "intervention_mechanism": "identity/reputation, perspective taking/individuation, info: animal welfare",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, video",
@@ -3403,6 +3443,85 @@
     ]
   },
   {
+    "paper": 168,
+    "paper_label": "Feltz et al. (2022)",
+    "paper_authors": "Feltz, A.; Caton, J. N.; Cogley, Z.; Engel, M.; Feltz, S.; Ilea, R.; Johnson, L. S. M.; Offer-Westort, T.; Tuvel, R.",
+    "paper_title": "Educational interventions and animal consumption: Results from lab and field studies",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.1016/j.appet.2022.105981",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 263,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants read a philosophical ethics paper by the ethicist Mylan Engel (2002) that discussed the ethics of consuming animals for food. The focus of the paper was to argue that most people are already morally committed not to eat animals. The paper clarifies those moral beliefs and draws implications for consuming animals.",
+            "intervention_mechanism": "info: animal welfare",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants in the control condition watched a short video about coffee called “Two Minute Coffee.” The video length was 140 s and discussed a way to make coffee."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants in the video condition watched a short educational video about the conditions of factory farmed animals called “What Is Factory Farming? Us and the Planet.” The video was 145s long and covered issues concerning treatment of factory farmed animals and the impacts of factory farming on the environment and human health.",
+            "intervention_mechanism": "info: health, info: environment, info: animal welfare",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "video",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants in the control condition watched a short video about coffee called “Two Minute Coffee.” The video length was 140 s and discussed a way to make coffee."
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Participants were instructed to read an educational pamphlet about the conditions of factory farmed animals called “Compassionate Choices: If You Care about Animals, Please Consider not Eating Them.” The pamphlet was sixteen A5 sized pages discussing various aspects of factory farming, including the effects on the animals and human health. The pamphlet also included tips for reducing animal consumption including alternatives to animal products.",
+            "intervention_mechanism": "perspective taking/individuation, info: animal welfare, info: health, authority/role models, goal pursuit: planning/pledge/reminder, norms: dynamic",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants in the control condition watched a short video about coffee called “Two Minute Coffee.” The video length was 140 s and discussed a way to make coffee."
+          },
+          {
+            "intervention_condition": 5,
+            "intervention_description": "Participants read a philosophical ethics paper by James Rachels (2017) that discussed the ethics of consuming animals for food. The focus of the paper was to elucidate a basic argument concerning animals that causing unnecessary pain is wrong and animals in factory farms experience unnecessary pain.",
+            "intervention_mechanism": "info: animal welfare",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants in the control condition watched a short video about coffee called “Two Minute Coffee.” The video length was 140 s and discussed a way to make coffee."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 3,
+            "outcome_description": "People's frequency of consuming some animal products over the previous 24 h: “In the past day, how many times did you consume the following food and drinks?” Participants could respond from 0 times to 5 or more times for the following items: Dairy, chicken, turkey, fish, pork, eggs, beef, bacon, sausages, processed meats, hamburgers, or any animal meat (any kind). Responses were coded from 0 to 5."
+          }
+        ]
+      },
+      {
+        "study": 2,
+        "study_n": 208,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants were exposed to a course focusing on animal ethics, delivered at four different locations across the universities. Each location had a one-week module on animal ethics, where students actively engaged in reading material and related activities. Readings were composed of the works such as Singer, Levy, Hettinger, and Cohen. Students completed reflection writings, answered questions, or participated in discussions. Class durations were varying from one to two 1-hour 15-minute sessions per week, and the number of participants ranged from 3 to 56 across different locations.",
+            "intervention_mechanism": "info: animal welfare, info: health",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text, in-person",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "Participants in the control condition were in classes without animal ethics content"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "People's frequency of consuming some animal products over the previous 24 h: “In the past day, how many times did you consume the following food and drinks?” Participants could respond from 0 times to 5 or more times for the following items: Dairy, chicken, turkey, fish, pork, eggs, beef, bacon, sausages, processed meats, hamburgers, or any animal meat (any kind). Responses were coded from 0 to 5."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 171,
     "paper_label": "Attwood et al. (2020)",
     "paper_authors": "Attwood, S.; Chesworth, S. J.; Parkin, B. L.",
@@ -3468,7 +3587,7 @@
         "interventions": [
           {
             "intervention_condition": 3,
-            "intervention_description": "The bean burger was presented as default option, but in a separate box next to it: “Rather have a beef burger? This is also possible on request.”",
+            "intervention_description": "The bean burger was presented as the default option, but in a separate box next to it: “Rather have a beef burger? This is also possible on request.”",
             "intervention_mechanism": "choice architecture: default",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "choice architecture",
@@ -3498,7 +3617,7 @@
         "interventions": [
           {
             "intervention_condition": 3,
-            "intervention_description": "In the fourth week condition, the beans option (v) was the default and below in smaller italic text the following was added:''Rather have a richly filled wrap with chicken? This is also possible on request.''",
+            "intervention_description": "In the fourth week condition, the beans option (v) was the default and below in smaller italic text the following was added: \"Rather have a richly filled wrap with chicken? This is also possible on request.\"",
             "intervention_mechanism": "choice architecture: default",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "choice architecture",
@@ -4325,6 +4444,37 @@
     ]
   },
   {
+    "paper": 275,
+    "paper_label": "Pohlmann (2021)",
+    "paper_authors": "Pohlmann, A.",
+    "paper_title": "Lowering barriers to plant-based diets: The effect of human and non-human animal self-similarity on meat avoidance intent and sensory food satisfaction",
+    "paper_year": 2021,
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2021.104272",
+    "studies": [
+      {
+        "study": 4,
+        "study_n": 83,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants were asked to view pretested photographs that induce compassion. They viewed a slideshow consisting of 15 stock photographs portraying scenes of vulnerability, care-giving, human connection, and times of emotional distress of animals. The scenes depicted female and male adults, as well as children and the elderly, all of whom belong to a range of ethnicities.",
+            "intervention_mechanism": "priming",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "image",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants viewed 15 slides with geometric shapes."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants who chose the plant-based falafel wrap and not one of the meat wraps"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 278,
     "paper_label": "Lange et al. (2023)",
     "paper_authors": "Lange, F.; Cnudde, M.; Maesen, H.",
@@ -4567,6 +4717,99 @@
           {
             "outcome": 1,
             "outcome_description": "Number of meat dishes chosen"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 290,
+    "paper_label": "Holenweger et al. (2023)",
+    "paper_authors": "Holenweger, G.; Stöckli, S.; Brügger, A.",
+    "paper_title": "Carbon footprint labels involving traffic lights foster sustainable food choices",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2023.104813",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 1126,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "A label was displayed on the products that consisted of five feet — from a dark green (most sustainable) to a red foot (least sustainable) — with the appropriate foot being shown as larger depending on the food option’s carbon emissions.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "No label was displayed on the products."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "A label was displayed on the products. The CO2 label consisted of a black foot displaying the food option’s absolute carbon emissions in kg CO2.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label, text",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "No label was displayed on the products."
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "A label was displayed on the products. The label on the products showed green to red feet (with the appropriate foot being shown as larger depending on the food option’s carbon emissions) and the food option’s absolute carbon emissions (written on the magnified foot).",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label, text",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "No label was displayed on the products."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Proportion of food-choice trials in which participants chose the plant-based alternative over the animal-based (meat, dairy, or egg) alternative — out of 11 dish/product pairs (e.g., veggie burger vs. beef burger, oat milk vs. cow milk, tofu wrap vs. chicken wrap)."
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Proportion of participants choosing the veggie burger over the beef burger in a burger food-choice scenario."
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Proportion of participants choosing the cucumber maki over the salmon maki in a sushi food-choice scenario."
+          },
+          {
+            "outcome": 4,
+            "outcome_description": "Proportion of participants choosing oat milk over cow milk in a milk food-choice scenario."
+          },
+          {
+            "outcome": 5,
+            "outcome_description": "Proportion of participants choosing the vegetable lasagna over the beef lasagna in a lasagna food-choice scenario."
+          },
+          {
+            "outcome": 6,
+            "outcome_description": "Proportion of participants choosing the seitan cutlet over the veal cutlet in a cutlet food-choice scenario."
+          },
+          {
+            "outcome": 7,
+            "outcome_description": "Proportion of participants choosing the Quorn (meat-substitute) ramen over the beef ramen in a ramen food-choice scenario."
+          },
+          {
+            "outcome": 8,
+            "outcome_description": "Proportion of participants choosing the vegetarian sandwich (egg and curd cheese, no meat) over the sliced-meat sandwich in a sandwich food-choice scenario."
+          },
+          {
+            "outcome": 9,
+            "outcome_description": "Proportion of participants choosing chili sin carne (bean-based) over chili con carne (beef-based) in a chili food-choice scenario."
+          },
+          {
+            "outcome": 10,
+            "outcome_description": "Proportion of participants choosing margarine over butter in a butter/margarine food-choice scenario."
+          },
+          {
+            "outcome": 11,
+            "outcome_description": "Proportion of participants choosing the vegan brownie over the standard brownie (made with eggs and butter) in a brownie food-choice scenario."
+          },
+          {
+            "outcome": 12,
+            "outcome_description": "Proportion of participants choosing the tofu vegetable wrap over the chicken wrap in a wrap food-choice scenario."
           }
         ]
       }
@@ -4850,7 +5093,7 @@
     "studies": [
       {
         "study": 1,
-        "study_n": 43820.1,
+        "study_n": 43820,
         "interventions": [
           {
             "intervention_condition": 2,
@@ -5488,7 +5731,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Number of reported meals per week that were plant based recipes using olive oil for cooking and did not contain meat/poultry/seafood"
+            "outcome_description": "Number of reported meals per week that were plant based recipes using olive oil for cooking and did not contain meat/poultry/seafood."
           }
         ]
       }
@@ -6427,7 +6670,7 @@
           },
           {
             "intervention_condition": 5,
-            "intervention_description": "After buying their noodles, consumers can add fish sauce. The fish sauce was served in a bottle, but an A4-sized information sheet with an affective-provoking picture was also displayed nearby the fish sauce bottle. The sheet provided information regarding the amount of sodium already in noodles and the recommended sodium consumption per meal. In addition, there was a picture of a girl making a disgusted face with a short message saying “too salty”.",
+            "intervention_description": "After buying their noodles, consumers could add fish sauce. The fish sauce was served in a bottle, but an A4-sized information sheet with an affective-provoking picture was also displayed nearby the fish sauce bottle. The sheet provided information regarding the amount of sodium already in noodles and the recommended sodium consumption per meal. In addition, there was a picture of a girl making a disgusted face with a short message saying “too salty”.",
             "intervention_mechanism": "info: taste/disgust, info: health, info: environment",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, image, other",
@@ -6683,15 +6926,15 @@
           {
             "intervention_condition": 1,
             "intervention_description": "Participants were exposed to a manipulation by reading a message referring to the unhealthy conditions of animals and poor hygienic conditions in intensive livestock farming, e.g. \"Neglecting their hygienic conditions makes the situation even worse. Excessive amounts of excrement in cages and kennels cannot be constantly removed.\"",
-            "intervention_mechanism": "info: animal welfare, info: taste/disgust",
-            "intervention_mechanism_multicomponent": "yes",
+            "intervention_mechanism": "info: animal welfare",
+            "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
             "intervention_medium_multicomponent": "no",
             "control_description": "Participants assigned to the control group did not read any message."
           },
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants were exposed to a manipulation by reading a message concerning poor animal welfare in intensive farming, e.g. \"A lack of respect for their emotional state exacerbates the situation. There is no shortage of incidents of physical and sexual violence, leading to constant experiences of fear.\"",
+            "intervention_description": "Participants read a message concerning poor animal welfare in intensive farming, e.g. \"A lack of respect for their emotional state exacerbates the situation. There is no shortage of incidents of physical and sexual violence, leading to constant experiences of fear.\"",
             "intervention_mechanism": "info: animal welfare",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -6935,6 +7178,104 @@
     ]
   },
   {
+    "paper": 476,
+    "paper_label": "Aldoh et al. (2023)",
+    "paper_authors": "Aldoh, A.; Sparks, P.; Harris, P. R.",
+    "paper_title": "Shifting norms, static behaviour: effects of dynamic norms on meat consumption",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1098/rsos.240407",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 1294,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants were presented with a textual and visual cue depicting an increasing trend of people decreasing their meat consumption \"More and more people in the UK are changing. In 2020, 33% of British people—a figure increasing every year over the previous 5 years—successfully engaged in one or more of the following behaviours to eat less meat: Eating small portions of meat, Opting out of eating meat several days of the week, Adopting a vegan/vegetarian diet, Taking part in Veganuary-style events.\"",
+            "intervention_mechanism": "norms: dynamic",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text, image",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "Participants were not provided with any normative information."
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants were presented with the following text: More and more people in the UK are changing. In 2020, 33% of British people—a figure increasing every year over the previous 5 years—successfully engaged in one or more of the following behaviours to eat less meat: Eating small portions of meat, Opting out of eating meat several days of the week, Adopting a vegan/vegetarian diet, Taking part in Veganuary-style events.",
+            "intervention_mechanism": "norms: dynamic",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants were not provided with any normative information."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants were presented with a textual and visual cue depicting a stable trend of people's meat consumption \"In 2020, 33% of British people—roughly the same figure as in the previous 5 years—successfully engaged in one or more of the following behaviours to eat less meat: Eating small portions of meat, Opting out of eating meat several days of the week, Adopting a vegan/vegetarian diet, Taking part in Veganuary-style events.\"",
+            "intervention_mechanism": "norms: descriptive",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text, image",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "Participants were not provided with any normative information."
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Participants were presented with the following text: In 2020, 33% of British people—roughly the same figure as in the previous 5 years—successfully engaged in one or more of the following behaviours to eat less meat: Eating small portions of meat, Opting out of eating meat several days of the week, Adopting a vegan/vegetarian diet, Taking part in Veganuary-style events.",
+            "intervention_mechanism": "norms: descriptive",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants were not provided with any normative information."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 2,
+            "outcome_description": "Participants' meat consumption over the past week measured with a food frequency questionnaire"
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Participants' chicken consumption over the past week measured with a food frequency questionnaire"
+          },
+          {
+            "outcome": 4,
+            "outcome_description": "Participants' turkey consumption over the past week measured with a food frequency questionnaire"
+          },
+          {
+            "outcome": 5,
+            "outcome_description": "Participants' fish and seafood consumption over the past week measured with a food frequency questionnaire"
+          },
+          {
+            "outcome": 6,
+            "outcome_description": "Participants' pork consumption over the past week measured with a food frequency questionnaire"
+          },
+          {
+            "outcome": 7,
+            "outcome_description": "Participants' beef consumption over the past week measured with a food frequency questionnaire"
+          },
+          {
+            "outcome": 8,
+            "outcome_description": "Participants' other meat consumption (e.g., duck, lamb, venison, etc.) over the past week measured with a food frequency questionnaire"
+          },
+          {
+            "outcome": 9,
+            "outcome_description": "Attitude towards reducing meat consumption, measured on a scale from extremely unfavourable to extremely favourable"
+          },
+          {
+            "outcome": 10,
+            "outcome_description": "Interest in eating less meat, measured on a scale from not at all interested to extremely interested"
+          },
+          {
+            "outcome": 11,
+            "outcome_description": "Exploratory single-item measure of intention to increase or decrease meat consumption over the next week, measured on a scale from greatly decrease to greatly increase"
+          },
+          {
+            "outcome": 1,
+            "outcome_description": "Intention to reduce meat consumption over the next week"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 482,
     "paper_label": "Aldoh et al. (2021)",
     "paper_authors": "Aldoh, A.; Sparks, P.; Harris, P. R.",
@@ -6985,6 +7326,58 @@
     ]
   },
   {
+    "paper": 489,
+    "paper_label": "Voşki et al. (2025)",
+    "paper_authors": "Voşki, A.; Braginsky, M.; Zhang, A.; Bertoldo, J.; Egan, S.; Levig, L. A.; Mueller Ihrig, M.; Mathur, M. B.",
+    "paper_title": "Effect of a portion-size default nudge on meat consumption and diner satisfaction: Controlled experiments in Stanford University dining halls",
+    "paper_year": 2025,
+    "paper_link": "https://doi.org/10.1186/s12889-025-22495-9",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 364,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Meat at the cafeteria was scooped using 3oz spoons (25% reduction from the standard size); the serving staff at the intervention station were instructed to provide an additional, i.e., beyond the standard one-scoop, serving of meat only to diners who explicitly requested it, in the same manner they normally would were the study not taking place.",
+            "intervention_mechanism": "choice architecture: availability/variety/size",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "During control weeks, the same standardly used 4 oz spoons were used to scoop the meat at the intervention lunch station."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Weight of meat used per patron"
+          }
+        ]
+      },
+      {
+        "study": 2,
+        "study_n": 1802,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Meat at the cafeteria was scooped using 2oz spoons (50% reduction from the standard size); the serving staff at the intervention station were instructed to provide an additional, i.e., beyond the standard one-scoop, serving of meat only to diners who explicitly requested it, in the same manner they normally would were the study not taking place.",
+            "intervention_mechanism": "choice architecture: availability/variety/size",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "During control weeks, the same standardly used 4 oz spoons were used to scoop the meat at the intervention lunch station."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Weight of meat used per patron"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 492,
     "paper_label": "Fonseca et al. (2025)",
     "paper_authors": "Fonseca, R. P.; De Groeve, B.; Graça, J.",
@@ -6998,9 +7391,9 @@
         "interventions": [
           {
             "intervention_condition": 3,
-            "intervention_description": "Participants saw a social media post in which a masculine model was shown alongside a plant-based meal, associating plant-based dieting with masculinity. The post showed an entrepreneur ostensibly sharing the message: “switching to a plant-based diet was a game changer for my career. #focus #energy # success”.",
-            "intervention_mechanism": "authority/role models",
-            "intervention_mechanism_multicomponent": "no",
+            "intervention_description": "Participants saw a social media post in which a masculine model was shown alongside a plant-based meal, associating plant-based dieting with masculinity. The post showed an entrepreneur ostensibly sharing the message: “switching to a plant-based diet was a game changer for my career. #focus #energy #success”.",
+            "intervention_mechanism": "authority/role models, goal pursuit: efficacy/consequences/feedback",
+            "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, image",
             "intervention_medium_multicomponent": "yes"
           },
@@ -7129,7 +7522,7 @@
           {
             "intervention_condition": 3,
             "intervention_description": "Participants were presented with a graphical and textual definition of plant-based meat substitutes (same as participants in the control condition) plus a graphical and textual message about the negative impacts of meat and positive impacts of meat substitutes on human health, animal welfare, and the environment, combined with a social norms appeal, consisting of a statement saying that a vast majority of the population, as well as celebrities start to reduce their meat consumption, for example by eating plant-based meat substitutes (descriptive social norm), as well as a statement saying the official dietary guidelines recommend that meat consumption should be reduced and people should switch towards more plant-based diets (injunctive social norm).",
-            "intervention_mechanism": "norms: descriptive, authority/role models, info: health, info: environment, info: animal welfare",
+            "intervention_mechanism": "authority/role models, info: health, info: environment, info: animal welfare, norms: dynamic",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, image",
             "intervention_medium_multicomponent": "yes",
@@ -7140,10 +7533,6 @@
           {
             "outcome": 1,
             "outcome_description": "Intentions to reduce meat consumption in the next two weeks"
-          },
-          {
-            "outcome": 2,
-            "outcome_description": "Likelihood to support government policies to reduce the consumption of meat products in the country"
           }
         ]
       }
@@ -7222,8 +7611,8 @@
           {
             "intervention_condition": 3,
             "intervention_description": "The dish with the reduced meat portion was set as the meat default choice. Consequently, if cafeteria users did not explicitly request the regular meat portion size, they would automatically receive the dish with the smaller meat portion. Signs were placed everywhere that cafeteria users are free to adjust their meat components.",
-            "intervention_mechanism": "choice architecture: availability/variety/size, choice architecture: default",
-            "intervention_mechanism_multicomponent": "yes",
+            "intervention_mechanism": "choice architecture: availability/variety/size",
+            "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "choice architecture, text, in-person",
             "intervention_medium_multicomponent": "yes",
             "control_description": "The control phase provided a baseline measurement within the cafeteria setting. Reduced meat portions were already an option in the cafeteria, but users were only informed once about the possibility of portion size adjustments upon their arrival at the clinic. This option was not advertised in the cafeteria itself at the time they were making their meal choices"
@@ -7264,6 +7653,73 @@
           {
             "outcome": 1,
             "outcome_description": "Primary dependent variable was taco filling selection: chicken, steak, beef barbacoa, carnitas, vegetables and guacamole, sofritas, chick’nitas, no protein, or no taco at all."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 514,
+    "paper_label": "Bronnenberg et al. (2025)",
+    "paper_authors": "Bronnenberg, B. J.; Bùi, T.; Deleersnyder, B.; Haerkens, L.; Knox, G.; van Lin, A.; Pachali, M. J.; Paley, A.; Smith, R. W.; Stäbler, S.",
+    "paper_title": "Closing the knowledge gap: Understanding and reducing the environmental impact of food choices",
+    "paper_year": 2025,
+    "paper_link": "https://doi.org/10.1177/00222429251348436",
+    "studies": [
+      {
+        "study": 2,
+        "study_n": 596,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants entered their weekly servings of food purchased across 13 categories in an app but did not receive any feedback on the emissions associated with their food purchases."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases, including information on how many kilometers driven in an average European car are equal to the emissions associated with their food purchases.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants entered their weekly servings of food purchased across 13 categories in an app but did not receive any feedback on the emissions associated with their food purchases."
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on what percentage of people have more or less emissions than them.",
+            "intervention_mechanism": "norms: descriptive",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants entered their weekly servings of food purchased across 13 categories in an app but did not receive any feedback on the emissions associated with their food purchases."
+          },
+          {
+            "intervention_condition": 5,
+            "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases. They also received feedback on what percentage of people have more or less emissions than them.",
+            "intervention_mechanism": "norms: dynamic, info: environment",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants entered their weekly servings of food purchased across 13 categories in an app but did not receive any feedback on the emissions associated with their food purchases."
+          },
+          {
+            "intervention_condition": 6,
+            "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases, including information on how many kilometers driven in an average European car are equal to the emissions associated with their food purchases. They also received feedback on what percentage of people have more or less emissions than them.",
+            "intervention_mechanism": "info: environment, norms: descriptive",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants entered their weekly servings of food purchased across 13 categories in an app but did not receive any feedback on the emissions associated with their food purchases."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Participants indicated their hypothetical purchase intentions in 5 choice sets that always included one plant-based option"
           }
         ]
       }
@@ -7426,6 +7882,63 @@
           {
             "outcome": 2,
             "outcome_description": "Participants' reported meat consumption via PrimeScreen Dietary Screening Tool. This tool was a 17-item questionnaire that assesses the frequency that respondents consume various foods. In cohort 2, the authors modified the scale for clarity as follows: 0 = never/rarely, 1 = 1–3 times a month, 2 = 1–4 times a week, 3 = daily/almost daily, and 4 = twice or more daily"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 541,
+    "paper_label": "Herchenroeder et al. (2022)",
+    "paper_authors": "Herchenroeder, L.; Forestell, C.A.; Bravo, A.J.",
+    "paper_title": "The effectiveness of animal welfare-, environmental-, and health-focused video appeals on implicit and explicit wanting of meat and intentions to reduce meat consumption",
+    "paper_year": 2022,
+    "paper_link": "https://doi.org/10.1080/00224545.2022.2081529",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 476,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants watched a brief (~10 minute) video excerpt from the documentary film \"H.O.P.E. What You Eat Matters\" by Nina Messinger. In these videos a variety of well- respected experts revealed the effects of meat consumption on animal welfare (i.e., the inhumane living conditions of factory farmed animals)",
+            "intervention_mechanism": "info: animal welfare",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "video",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants in the control condition watched a brief (~10 minute) video excerpt from the documentary film Voices of Debt – The Student Loan Crisis: Don’t Major in Debt\" by Michael Porte which discussed the negative effects of student loans on college students and recent graduates."
+          },
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants watched a brief (~10 minute) video excerpt from the documentary film \"H.O.P.E. What You Eat Matters\" by Nina Messinger. In these videos a variety of well- respected experts revealed the effects of meat consumption on the environment (i.e., climate change and deforestation),",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "video",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants in the control condition watched a brief (~10 minute) video excerpt from the documentary film Voices of Debt – The Student Loan Crisis: Don’t Major in Debt\" by Michael Porte which discussed the negative effects of student loans on college students and recent graduates."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Participants watched a brief (~10 minute) video excerpt from the documentary film \"H.O.P.E. What You Eat Matters\" by Nina Messinger. In these videos a variety of well- respected experts revealed the effects of meat consumption on health (i.e., the increased risk of heart disease, cancer, diabetes)",
+            "intervention_mechanism": "info: health",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "video",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants in the control condition watched a brief (~10 minute) video excerpt from the documentary film Voices of Debt – The Student Loan Crisis: Don’t Major in Debt\" by Michael Porte which discussed the negative effects of student loans on college students and recent graduates."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Participants paired six meat images and six non-meat images against one another, and they were asked to respond to the prompt, \"Which food do you most want to eat now?\" as quickly as possible and all trials were presented in a randomized order. Stimuli remained on the screen for 5000 ms or until the participant made their choice and each trial was separated by an intertrial interval of 500 ms. To improve reliability, participants completed four test trials before completing the main task."
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Participants were asked to rate each of the 12 single food images according to “How much do you want some of this food right now?” Responses were on a scale ranging from 1 (Not at all) to 7 (Extremely)."
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Participants were asked to respond to four statements: “I am willing to eat meat less often per week,” I am willing to eat smaller quantities of meat per meal,” I am willing to adopt a more vegetarian diet,” and “I am planning to reduce my meat intake in the near future.” The four items were averaged to create a total score and higher scores indicated greater intention to reduce meat."
           }
         ]
       }
@@ -7615,7 +8128,7 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "People saw the following message: \"We’ve noticed that more and more College [X] students are choosing veggie lunches.\" In cafeterias where meal selections were made in the cafeteria, messages were  printed on A4 (210 x 297 mm) posters and displayed at the point of decision-making in at  least two highly visible locations to ensure message salience. For cafeterias that used an  online meal booking system for meal selections, we placed messages as text in a prominent  location in the booking system.",
+            "intervention_description": "People saw the following message: \"We’ve noticed that more and more College [X] students are choosing veggie lunches.\" In cafeterias where meal selections were made in the cafeteria, messages were printed on A4 posters and displayed at the point of decision-making in at  least two highly visible locations to ensure message salience. For cafeterias that used an  online meal booking system for meal selections, we placed messages as text in a prominent  location in the booking system.",
             "intervention_mechanism": "norms: dynamic",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -7758,7 +8271,7 @@
           },
           {
             "intervention_condition": 4,
-            "intervention_description": "Participants received a voucher worth $1.40 if they chose a meat-based dish, or $2.80 if they choise a vegetarian dish.",
+            "intervention_description": "Participants received a voucher worth $1.40 if they chose a meat-based dish, or $2.80 if they chose a vegetarian dish.",
             "intervention_mechanism": "price",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "price",
@@ -7767,7 +8280,7 @@
           },
           {
             "intervention_condition": 5,
-            "intervention_description": "Participants received a voucher worth $1.40 if they chose a meat-based dish, or $4.20 if they choise a vegetarian dish.",
+            "intervention_description": "Participants received a voucher worth $1.40 if they chose a meat-based dish, or $4.20 if they chose a vegetarian dish.",
             "intervention_mechanism": "price",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "price",
@@ -7921,104 +8434,6 @@
           {
             "outcome": 1,
             "outcome_description": "Percentage of times participants selected a plant-based option in the proteins and fats category instead of red/white meat, fish, or cheese."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "paper": 514,
-    "paper_label": "Bronnenberg et al. (2025)",
-    "paper_authors": "Bronnenberg, B. J.; Bùi, T.; Deleersnyder, B.; Haerkens, L.; Knox, G.; van Lin, A.; Pachali, M. J.; Paley, A.; Smith, R. W.; Stäbler, S.",
-    "paper_title": "Closing the knowledge gap: Understanding and reducing the environmental impact of food choices",
-    "paper_year": 2025,
-    "paper_link": "https://doi.org/10.1177/00222429251348436",
-    "studies": [
-      {
-        "study": 2,
-        "study_n": 596,
-        "interventions": [
-          {
-            "intervention_condition": 2,
-            "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases.",
-            "intervention_mechanism": "info: environment",
-            "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "text",
-            "intervention_medium_multicomponent": "no",
-            "control_description": "Participants entered their weekly servings of food purchased across 13 categories in an app but did not receive any feedback on the emissions associated with their food purchases."
-          },
-          {
-            "intervention_condition": 3,
-            "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases, including information on how many kilometers driven in an average European car are equal to the emissions associated with their food purchases.",
-            "intervention_mechanism": "info: environment",
-            "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "text",
-            "intervention_medium_multicomponent": "no",
-            "control_description": "Participants entered their weekly servings of food purchased across 13 categories in an app but did not receive any feedback on the emissions associated with their food purchases."
-          },
-          {
-            "intervention_condition": 4,
-            "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on what percentage of people have more or less emissions than them.",
-            "intervention_mechanism": "norms: descriptive",
-            "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "text",
-            "intervention_medium_multicomponent": "no",
-            "control_description": "Participants entered their weekly servings of food purchased across 13 categories in an app but did not receive any feedback on the emissions associated with their food purchases."
-          },
-          {
-            "intervention_condition": 5,
-            "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases. They also received feedback on what percentage of people have more or less emissions than them.",
-            "intervention_mechanism": "norms: dynamic, info: environment",
-            "intervention_mechanism_multicomponent": "yes",
-            "intervention_medium": "text",
-            "intervention_medium_multicomponent": "no",
-            "control_description": "Participants entered their weekly servings of food purchased across 13 categories in an app but did not receive any feedback on the emissions associated with their food purchases."
-          },
-          {
-            "intervention_condition": 6,
-            "intervention_description": "Participants entered their weekly servings of food purchased across 13 categories in an app and received feedback on the emissions associated with their food purchases, including information on how many kilometers driven in an average European car are equal to the emissions associated with their food purchases. They also received feedback on what percentage of people have more or less emissions than them.",
-            "intervention_mechanism": "info: environment, norms: descriptive",
-            "intervention_mechanism_multicomponent": "yes",
-            "intervention_medium": "text",
-            "intervention_medium_multicomponent": "no",
-            "control_description": "Participants entered their weekly servings of food purchased across 13 categories in an app but did not receive any feedback on the emissions associated with their food purchases."
-          }
-        ],
-        "outcomes": [
-          {
-            "outcome": 1,
-            "outcome_description": "Participants indicated their hypothetical purchase intentions in 5 choice sets that always included one plant-based option"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "paper": 275,
-    "paper_label": "Pohlmann (2021)",
-    "paper_authors": "Pohlmann, A.",
-    "paper_title": "Lowering barriers to plant-based diets: The effect of human and non-human animal self-similarity on meat avoidance intent and sensory food satisfaction",
-    "paper_year": 2021,
-    "paper_link": "https://doi.org/10.1016/j.foodqual.2021.104272",
-    "studies": [
-      {
-        "study": 4,
-        "study_n": 83,
-        "interventions": [
-          {
-            "intervention_condition": 1,
-            "intervention_description": "Participants were asked to view pretested photographs that induce compassion. They viewed a slideshow consisting of 15 stock photographs portraying scenes of vulnerability, care-giving, human connection, and times of emotional distress of animals. The scenes depicted female and male adults, as well as children and the elderly, all of whom belong to a range of ethnicities.",
-            "intervention_mechanism": "priming",
-            "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "image",
-            "intervention_medium_multicomponent": "no",
-            "control_description": "Participants viewed 15 slides with geometric shapes."
-          }
-        ],
-        "outcomes": [
-          {
-            "outcome": 1,
-            "outcome_description": "Percentage of participants who chose the plant-based falafel wrap and not one of the meat wraps"
           }
         ]
       }
