@@ -1,8 +1,8 @@
 # Methodology
 
-_Last updated: 1 September 2026_
+_Last updated: 13 September 2026_
 
-This page describes how the studies in LIME were identified, selected, and coded.
+This page describes how the studies in LIME were identified, selected, and coded, and how we calculated effect sizes.
 
 # 1 Study identification
 
@@ -354,6 +354,32 @@ Finally, a **measurement type** variable indicates what type of measurement inst
 - **Sales data**: records of products sold in a restaurant, supermarket, or another venue.
 - **Survey**: questionnaires that capture self-reported attitudes, beliefs, or intentions with single items or multi-item scales.
 
+# 3 Calculating effect sizes
+
+Papers report their results in different ways. Some give means and standard deviations, others give the number of people who chose a vegetarian meal, and others only give the result of a statistical model. To combine these results in one meta-analysis, we convert them to a standardized mean difference. When a paper doesn't report the effect size we need, we calculate it from the statistics it does report.
+
+## 3.1 Calculation methods
+
+- **Means and standard deviations per group**: a standardized mean difference (Hedges' _g_).
+- **Counts per group** (e.g., 40 of 120 participants chose the vegetarian dish): a log odds ratio, converted to a standardized mean difference by multiplying it by √3/π.
+- **The same participants measured before and after an intervention, without a control group**: a standardized mean change, which uses the correlation between the two measurements.
+- **Measurements before and after an intervention, in both an intervention and a control group**: a difference-in-differences. We take the change in the intervention group and subtract the change in the control group, so that changes that happened in every group (e.g., because of the season or repeated testing) aren't counted as an effect of the intervention. For means, we follow Morris (2008). For counts, we take the difference between the changes in log odds and convert it with √3/π.
+- **Odds ratios reported by the paper** (e.g., from a logistic regression): converted with √3/π, with the standard error taken from the reported 95% confidence interval.
+
+When a paper reports the same comparison in more than one way, we record each version but include only one in the meta-analysis. When an outcome was measured at several time points after the intervention, the meta-analysis uses the latest time point among the included effects (see section 3.2 for when a time point is not included).
+
+## 3.2 Judgment calls
+
+Papers don't always report what we need, so sometimes we have to decide how to handle a gap. These are the decisions we have made so far.
+
+- **Sample size per condition not reported**: we split the total sample size equally across conditions, or by the number of days each condition ran when that is reported. These values are marked as approximate.
+- **Results pooled across several studies**: when a supplement reports the statistics for each study, we calculate an effect for each study instead of using the pooled estimate.
+- **Control groups reported together**: we keep them combined, as the paper reports them.
+- **Conditions that don't aim to reduce animal product consumption** (e.g., a "humane" label in a study that also tests a vegetarian label): we leave them out.
+- **Counts from the same participants at two time points**: calculating a difference-in-differences from counts alone treats the two time points as if they came from different people. Because most people give the same answer both times (e.g., omnivores at the pre-test are usually still omnivores at the post-test), this makes the estimate look more uncertain than it is. When the raw data are available, we calculate the uncertainty from the raw data instead. When they aren't, we use the counts and note this in the effect notes.
+- **Control group measured at only some time points**: sometimes the intervention group was measured at more time points than the control group (e.g., both groups at baseline and during the intervention, but only the intervention group afterwards). Without a control group, a change over time can't be separated from things that affect everyone, such as the season or holidays. We therefore only include effects at time points where both groups were measured. This can mean that the included effect is a short-term one, even though later measurements exist. We may still record the uncontrolled changes in the database, but they are not included in the meta-analysis.
+- **Counts that don't come from the same group** (e.g., red meat packages bought, out of the number of shoppers who entered the store): we treat the ratio as a proportion, even though it's really a rate (one shopper can buy several packages). These values are marked as approximate.
+
 # References
 
 Aberman, Y., & Plaks, J. (2022). When Less is better: Messages that Present Dietary Carbon Emissions Data at the individual (vs. Aggregate) Level Increase Commitment to Sustainable Beef Consumption. *Appetite*, *174*, 105980. https://doi.org/10.1016/j.appet.2022.105980
@@ -421,6 +447,8 @@ Malan, H. J. (2020). *Swap the Meat, Save the Planet: A Community-Based Particip
 Marty, L., Biehlmann, M., Louveau, A., Poquet, D., & Robinson, E. (2025). The “Eat Less Meat” one-month challenge: A randomized controlled trial of a meat reduction pledge intervention among French university students. *International Journal of Behavioral Nutrition and Physical Activity*, *22*(1), 131. https://doi.org/10.1186/s12966-025-01831-7
 
 Mercy for Animals. (2016). *Do Online Videos of Farmed Animal Cruelty Change People’s Diets and Attitudes?*
+
+Morris, S. B. (2008). Estimating effect sizes from pretest-posttest-control group designs. *Organizational Research Methods*, *11*(2), 364–386. https://doi.org/10.1177/1094428106291059
 
 Palomo-Vélez, G., Tybur, J. M., & van Vugt, M. (2018). Unsustainable, unhealthy, or disgusting? Comparing different persuasive messages against meat consumption. *Journal of Environmental Psychology*, *58*, 63–71. https://doi.org/10.1016/j.jenvp.2018.08.002
 

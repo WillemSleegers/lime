@@ -29,11 +29,19 @@ Read this before running any LIME data skill.
   ```
   The same trick works for testing `r/meta-analysis.r` without `btw_mcp_session()` or `write_json()`.
 
+## Paper-specific scripts
+
+When a paper needs a calculation that `r/calculate-effects.r` can't do from sheet statistics (typically raw data), write `<paper> - <paper_label>.r` in the paper's Paperbank folder, next to the data (named `<paper> - <paper_label> - <original name>`). Turn a single PDF into a folder first. Follow the existing scripts' sections (Setup, Data import, Data preparation, Data analysis), run it from that folder, and name the script in `effect_notes`. Example: paper 70 (paired variance for a binary difference-in-differences).
+
+Judgment calls on how to calculate effects are listed in `check-paper/SKILL.md` and publicly in section 3 of `app/methodology/methodology.md`.
+
 ## Output files (paste-ready)
 
 - CSV (the user prefers CSV over TSV), written with `write_csv(..., na = "-")`.
 - Include every column of the target sheet, in sheet order, even empty ones: take the order from `names(read_sheet(...))`.
 - Name files `r/output/<paper>-<level>.csv` (e.g. `34-effects.csv`, `443-statistics.csv`).
+- Notes columns (`*_notes`): don't cite the paper itself (author, year); everything extracted obviously comes from it. Point to the location instead when useful (e.g. "Table 2", "p. 5").
+- p-values (`effect_p`): copy what the paper reports, including thresholds like "<0.001", when `effect_from_paper` is "yes". When we calculate or convert an effect ourselves, give the exact p (e.g. a Wald z = log(OR) / SE for a converted OR), never a threshold.
 - Tell the user when rows must be deleted before pasting (renumbered statistics groups, restructured studies).
 - Positron's data preview shows "no" as "false"; mention it when output has yes/no columns.
 
@@ -65,8 +73,11 @@ Read this before running any LIME data skill.
 
 - Total N for a whole dish, menu, or study used as the per-condition n: check the methods for how participants were split (paper 383).
 - Effect sizes computed from rounded percentages instead of the coded counts (paper 31).
-- Control-side keys pointing at the intervention's condition, sample, or statistics group (paper 4).
+- Control-side keys pointing at the intervention's condition, sample, or statistics group (paper 4). Or shifted keys: an effect comparing control at T2 with control at T1, and the next one comparing the intervention at T2 with control at T1 (paper 3).
+- Typos in statistic values that still recalculate without error, e.g. n = 9.14 instead of 914 (paper 3). Check that n values are whole numbers.
 - Placeholder values left in `effect_size` (e.g. 0.25 with p = 0) or in `statistic_name` (paper 443).
 - Stored p-values belonging to a different comparison (paper 273).
 - Values copied from the wrong cell of a figure or table (paper 383: a squash percentage entered for a gnocchi dish).
 - Pooled internal meta-analysis estimates coded instead of per-study effects when the supplement has per-study M/SD/n (paper 34).
+- Pre-post change within the intervention group coded as the effect in a mixed design that has a control group, ignoring the control (paper 70). Use difference-in-differences against the control. The old rows also used OR2DL on the same participants at two time points, treating them as independent groups.
+- Another paper cited as precedent without checking its design: paper 62's DiD counts dishes sold (independent observations), paper 70's counts the same participants twice. Check `study_design` and `sample_notes` before reusing an approach.

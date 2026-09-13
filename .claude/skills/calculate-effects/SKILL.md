@@ -20,6 +20,8 @@ All calculations live in `r/calculate-effects.r`. Use it; don't write one-off co
 
 Effects with other measures (d, eta squared, IRR) are skipped and listed. Tell the user about them.
 
+The g difference-in-differences treats all four cells as independent samples. That's right when different people are counted at each time (e.g. sales data), but conservative when the same participants are measured twice. In that case, use raw data if available to compute the paired variance in a paper-specific script (see lime-context, "Paper-specific scripts"). Otherwise note the assumption in `effect_notes`.
+
 Reported odds ratios (effect_size_name "OR", with a 95% CI) are converted with `convert_reported_or()`: it returns a new `g` row per OR (log(OR) × √3/π, SE from the CI). Add those as new effects and set the original OR rows to `effect_exclude` "yes", so exactly one row per comparison is pooled.
 
 ## Steps
