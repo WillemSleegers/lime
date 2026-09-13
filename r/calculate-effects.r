@@ -192,10 +192,43 @@ calculate_did_logit <- function(data) {
   )
 }
 
+# Difference-in-differences on means (Morris, 2008, d_ppc2): the change in the
+# intervention group (_1 minus _2) minus the change in the control group,
+# divided by the pooled SD of the _2 groups and bias-corrected. The variance
+# needs the correlation between _1 and _2 in effect_r.
+calculate_did_smd <- function(data) {
+  n_i <- data$i2_n
+  n_c <- data$c2_n
+  n <- n_i + n_c
+  r <- data$effect_r
+  sd_pooled <- sqrt(
+    ((n_i - 1) * data$i2_SD^2 + (n_c - 1) * data$c2_SD^2) / (n - 2)
+  )
+  cp <- 1 - 3 / (4 * (n - 2) - 1)
+  d <- cp * ((data$i1_M - data$i2_M) - (data$c1_M - data$c2_M)) / sd_pooled
+  k <- 2 * (1 - r) * n / (n_i * n_c)
+  v <- cp^2 * k * ((n - 2) / (n - 4)) * (1 + d^2 / k) - d^2
+  z <- d / sqrt(v)
+
+  tibble(
+    effect_size = d,
+    effect_size_lower = d - qnorm(0.975) * sqrt(v),
+    effect_size_upper = d + qnorm(0.975) * sqrt(v),
+    effect_size_var = v,
+    effect_size_se = sqrt(v),
+    effect_analysis = "ANOVA",
+    effect_statistic_name = "z",
+    effect_statistic_value = z,
+    effect_df = NA_real_,
+    effect_p = 2 * pnorm(-abs(z))
+  )
+}
+
 # Converts effects reported as odds ratios with a 95% CI (effect_size_name
 # "OR") to the logit-based d used for difference-in-differences effects:
-# log(OR) * sqrt(3) / pi, with the SE of log(OR) recovered from the CI.
-# Returns new rows to pool; the original OR rows should get effect_exclude "yes".
+# log(OR) * sqrt(3) / pi, with the SE of log(OR) recovered from the CI and an
+# exact Wald z-test p-value. Returns new rows to pool; the original OR rows
+# should get effect_exclude "yes".
 convert_reported_or <- function(effects) {
   k <- sqrt(3) / pi
   effects |>
@@ -210,9 +243,13 @@ convert_reported_or <- function(effects) {
       effect_size_upper = log(effect_size_upper) * k,
       effect_size_var = (se_log_or * k)^2,
       effect_size_se = se_log_or * k,
+      effect_statistic_name = "z",
+      effect_statistic_value = log_or / se_log_or,
+      effect_df = NA_real_,
+      effect_p = 2 * pnorm(-abs(log_or / se_log_or)),
       effect_from_paper = "no",
       effect_exclude = "no",
-      effect_notes = "Converted from the reported odds ratio and 95% CI: log(OR) * sqrt(3) / pi; SE from the CI of log(OR)."
+      effect_notes = "Converted from the reported odds ratio and 95% CI: log(OR) * sqrt(3) / pi; SE from the CI of log(OR); p from a Wald z-test."
     ) |>
     select(-log_or, -se_log_or)
 }
@@ -224,7 +261,8 @@ calculate_effects <- function(effects, statistics) {
     smd = calculate_smd,
     or2dl = calculate_or2dl,
     smcc = calculate_smcc,
-    did_logit = calculate_did_logit
+    did_logit = calculate_did_logit,
+    did_smd = calculate_did_smd
   )
 
   data <- effects |>
@@ -238,6 +276,8 @@ calculate_effects <- function(effects, statistics) {
     attach_statistics(statistics) |>
     mutate(
       .method = case_when(
+        effect_size_name == "SMD" & !is.na(intervention_statistics_2) ~
+          "did_smd",
         effect_size_name == "SMD" ~ "smd",
         effect_size_name == "OR2DL" ~ "or2dl",
         effect_size_name == "SMCC" ~ "smcc",

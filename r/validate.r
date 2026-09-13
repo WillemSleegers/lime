@@ -130,8 +130,9 @@ check_smd <- function(effects, statistics, tolerance = 0.001) {
       values_from = statistic_value
     )
 
+  # Difference-in-differences SMDs (with _2 groups) aren't _1 vs _1 comparisons
   data <- effects |>
-    filter(effect_size_name == "SMD") |>
+    filter(effect_size_name == "SMD", is.na(intervention_statistics_2)) |>
     left_join(
       select(
         stats_wide,
