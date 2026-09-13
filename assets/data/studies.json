@@ -114,6 +114,17 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "study": 1,
+    "study_n": 590,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "within",
+    "study_condition_assignment": "individual",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 13,
     "paper_label": "da Silva (2016)",
     "study": 1,
@@ -255,6 +266,39 @@
     "paper_label": "Tian et al. (2016)",
     "study": 2,
     "study_n": 518,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "between",
+    "study_condition_assignment": "individual",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 1,
+    "study_n": 145,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "between",
+    "study_condition_assignment": "individual",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 2,
+    "study_n": 103,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "between",
+    "study_condition_assignment": "individual",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 3,
+    "study_n": 150,
     "study_preregistered": "no",
     "study_data_available": "no",
     "study_design": "between",
@@ -483,6 +527,17 @@
     "study_design": "between",
     "study_condition_assignment": "individual",
     "study_randomization": "yes"
+  },
+  {
+    "paper": 62,
+    "paper_label": "Kurz (2018)",
+    "study": 1,
+    "study_n": 8272,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "within",
+    "study_condition_assignment": "time point",
+    "study_randomization": "no"
   },
   {
     "paper": 63,
@@ -744,6 +799,17 @@
     "study_data_link": "https://www.repository.cam.ac.uk/items/24be297d-f03e-4b96-b7c5-f19784a0aa74",
     "study_design": "between",
     "study_condition_assignment": "time point",
+    "study_randomization": "no"
+  },
+  {
+    "paper": 92,
+    "paper_label": "Randers & Thøgersen (2023)",
+    "study": 1,
+    "study_n": 605,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "crossover",
+    "study_condition_assignment": "cluster",
     "study_randomization": "no"
   },
   {
@@ -1296,6 +1362,28 @@
     "study_design": "mixed",
     "study_condition_assignment": "individual",
     "study_randomization": "yes"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "study": 1,
+    "study_n": 299,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "between",
+    "study_condition_assignment": "individual",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "study": 2,
+    "study_n": 209,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "between",
+    "study_condition_assignment": "time point",
+    "study_randomization": "no"
   },
   {
     "paper": 274,
@@ -1911,6 +1999,39 @@
     "study_randomization": "yes"
   },
   {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 2,
+    "study_n": 1231,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "mixed",
+    "study_condition_assignment": "individual",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 3,
+    "study_n": 3645,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "between",
+    "study_condition_assignment": "time point",
+    "study_randomization": "yes"
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 4,
+    "study_n": 1985,
+    "study_preregistered": "no",
+    "study_data_available": "no",
+    "study_design": "between",
+    "study_condition_assignment": "time point",
+    "study_randomization": "yes"
+  },
+  {
     "paper": 453,
     "paper_label": "Egeler & Baur (2022)",
     "study": 1,
@@ -2364,7 +2485,7 @@
     "study_data_available": "no",
     "study_design": "within",
     "study_condition_assignment": "time point",
-    "study_randomization": "no"
+    "study_randomization": "yes"
   },
   {
     "paper": 1060,

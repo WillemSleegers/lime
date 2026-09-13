@@ -47,6 +47,17 @@
     "paper": 3,
     "paper_label": "Anderson (2017)",
     "study": 1,
+    "sample": 5,
+    "sample_n": 1782,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "presumably mostly university students from the US east and west coast"
+  },
+  {
+    "paper": 3,
+    "paper_label": "Anderson (2017)",
+    "study": 1,
     "sample": 6,
     "sample_n": 638,
     "sample_country": "United States",
@@ -75,6 +86,17 @@
     "sample_type": "university",
     "sample_representative": "no",
     "sample_description": "presumably mostly university students from the US east and west coast"
+  },
+  {
+    "paper": 4,
+    "paper_label": "Anderson & Feldman Barrett (2016)",
+    "study": 3,
+    "sample": 2,
+    "sample_n": 114,
+    "sample_country": "United States",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "Northeastern undergraduate students"
   },
   {
     "paper": 4,
@@ -394,6 +416,61 @@
     "sample_type": "university, public",
     "sample_representative": "no",
     "sample_description": "young individuals at the Warped Tour Music Festival in a variety of cities in the northeastern U.S and students at colleges and universities in the Boston, Philadelphia, and Dallas regions."
+  },
+  {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 564,
+    "sample_country": "Germany",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "approximately representative sample of the German population"
+  },
+  {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 150,
+    "sample_country": "Germany",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "approximately representative sample of the German population"
+  },
+  {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 136,
+    "sample_country": "Germany",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "approximately representative sample of the German population"
+  },
+  {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "study": 1,
+    "sample": 5,
+    "sample_n": 128,
+    "sample_country": "Germany",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "approximately representative sample of the German population"
+  },
+  {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 149,
+    "sample_country": "Germany",
+    "sample_type": "panel",
+    "sample_representative": "yes",
+    "sample_description": "approximately representative sample of the German population"
   },
   {
     "paper": 13,
@@ -893,6 +970,72 @@
     "sample_type": "university, public",
     "sample_representative": "no",
     "sample_description": "Chinese residents"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 42,
+    "sample_country": "Netherlands",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students from a Dutch university"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 103,
+    "sample_country": "Netherlands",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students from a Dutch university"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 2,
+    "sample": 2,
+    "sample_n": 53,
+    "sample_country": "Netherlands",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students from a Dutch university"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 2,
+    "sample": 3,
+    "sample_n": 52,
+    "sample_country": "Netherlands",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students from a Dutch university"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 3,
+    "sample": 2,
+    "sample_n": 50,
+    "sample_country": "Netherlands",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students from a Dutch university"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 3,
+    "sample": 3,
+    "sample_n": 100,
+    "sample_country": "Netherlands",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students from a Dutch university"
   },
   {
     "paper": 37,
@@ -1492,6 +1635,28 @@
     "sample_description": "undergraduate students at a Canadian university"
   },
   {
+    "paper": 62,
+    "paper_label": "Kurz (2018)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 7000,
+    "sample_country": "Sweden",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students and staff of the economics, business administration, and law faculty at the University of Gothenburg"
+  },
+  {
+    "paper": 62,
+    "paper_label": "Kurz (2018)",
+    "study": 1,
+    "sample": 6,
+    "sample_n": 6966,
+    "sample_country": "Sweden",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students and staff of the humanities institutions at the University of Gothenburg"
+  },
+  {
     "paper": 63,
     "paper_label": "Andersson & Nelander (2021)",
     "study": 1,
@@ -1724,28 +1889,6 @@
     "paper": 70,
     "paper_label": "Winkelmair & Jansen (2023)",
     "study": 1,
-    "sample": 2,
-    "sample_n": 31,
-    "sample_country": "Germany",
-    "sample_type": "university",
-    "sample_representative": "no",
-    "sample_description": "students from the University of Regensburg"
-  },
-  {
-    "paper": 70,
-    "paper_label": "Winkelmair & Jansen (2023)",
-    "study": 1,
-    "sample": 3,
-    "sample_n": 34,
-    "sample_country": "Germany",
-    "sample_type": "university",
-    "sample_representative": "no",
-    "sample_description": "students from the University of Regensburg"
-  },
-  {
-    "paper": 70,
-    "paper_label": "Winkelmair & Jansen (2023)",
-    "study": 1,
     "sample": 10,
     "sample_n": 31,
     "sample_country": "Germany",
@@ -1759,6 +1902,17 @@
     "study": 1,
     "sample": 11,
     "sample_n": 34,
+    "sample_country": "Germany",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students from the University of Regensburg"
+  },
+  {
+    "paper": 70,
+    "paper_label": "Winkelmair & Jansen (2023)",
+    "study": 1,
+    "sample": 12,
+    "sample_n": 26,
     "sample_country": "Germany",
     "sample_type": "university",
     "sample_representative": "no",
@@ -2172,6 +2326,26 @@
     "sample_description": "data points represent meals served at a university cafeteria"
   },
   {
+    "paper": 92,
+    "paper_label": "Randers & Thøgersen (2023)",
+    "study": 1,
+    "sample": 5,
+    "sample_country": "Denmark",
+    "sample_type": "children",
+    "sample_representative": "no",
+    "sample_description": "9th and 10th graders at Danish continuation schools (boarding schools for 9th-10th grade)"
+  },
+  {
+    "paper": 92,
+    "paper_label": "Randers & Thøgersen (2023)",
+    "study": 1,
+    "sample": 6,
+    "sample_country": "Denmark",
+    "sample_type": "children",
+    "sample_representative": "no",
+    "sample_description": "9th and 10th graders at Danish continuation schools (boarding schools for 9th-10th grade)"
+  },
+  {
     "paper": 94,
     "paper_label": "Hughes et al. (2024)",
     "study": 1,
@@ -2560,8 +2734,8 @@
     "paper": 140,
     "paper_label": "Schwantes (2018)",
     "study": 1,
-    "sample": 3,
-    "sample_n": 3589,
+    "sample": 4,
+    "sample_n": 3030,
     "sample_country": "Canada",
     "sample_type": "public",
     "sample_representative": "no",
@@ -2571,8 +2745,8 @@
     "paper": 140,
     "paper_label": "Schwantes (2018)",
     "study": 1,
-    "sample": 7,
-    "sample_n": 3428,
+    "sample": 5,
+    "sample_n": 3795,
     "sample_country": "Canada",
     "sample_type": "public",
     "sample_representative": "no",
@@ -3798,6 +3972,72 @@
     "sample_type": "university",
     "sample_representative": "no",
     "sample_description": "students from a university in Germany who regularly visited the university canteen"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "study": 1,
+    "sample": 2,
+    "sample_n": 97,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "MTurk participants"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "study": 1,
+    "sample": 3,
+    "sample_n": 101,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "MTurk participants"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "study": 1,
+    "sample": 4,
+    "sample_n": 101,
+    "sample_country": "Multiple countries",
+    "sample_type": "panel",
+    "sample_representative": "no",
+    "sample_description": "MTurk participants"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "study": 2,
+    "sample": 2,
+    "sample_n": 27,
+    "sample_country": "Unspecified",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students participating in the college dining hall meal plan"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "study": 2,
+    "sample": 3,
+    "sample_n": 100,
+    "sample_country": "Unspecified",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students participating in the college dining hall meal plan"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "study": 2,
+    "sample": 4,
+    "sample_n": 82,
+    "sample_country": "Unspecified",
+    "sample_type": "university",
+    "sample_representative": "no",
+    "sample_description": "students participating in the college dining hall meal plan"
   },
   {
     "paper": 274,
@@ -5878,6 +6118,72 @@
     "sample_type": "public",
     "sample_representative": "no",
     "sample_description": "Young adults who consumed meat almost on a daily basis recruited via flyers, social media, and e-mail"
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 2,
+    "sample": 5,
+    "sample_n": 306,
+    "sample_country": "United States",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Customers of a virtual restaurant ''Farm Hill'' that has lunch delivery service and serving business employees within the greater San Francisco Bay Area via an online account."
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 2,
+    "sample": 6,
+    "sample_n": 286,
+    "sample_country": "United States",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Customers of a virtual restaurant ''Farm Hill'' that has lunch delivery service and serving business employees within the greater San Francisco Bay Area via an online account."
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 3,
+    "sample": 2,
+    "sample_n": 1779,
+    "sample_country": "United States",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Dining parties (customers) during the lunch in a fine-dining and sit-down Italian restaurant where customers typically dine with others"
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 3,
+    "sample": 3,
+    "sample_n": 1866,
+    "sample_country": "United States",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Dining parties (customers) during the lunch in a fine-dining and sit-down Italian restaurant where customers typically dine with others"
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 4,
+    "sample": 2,
+    "sample_n": 992,
+    "sample_country": "United States",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Dining parties (customers) during the dinner in a fine-dining and sit-down Italian restaurant where customers typically dine with others"
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 4,
+    "sample": 3,
+    "sample_n": 993,
+    "sample_country": "United States",
+    "sample_type": "public",
+    "sample_representative": "no",
+    "sample_description": "Dining parties (customers) during the dinner in a fine-dining and sit-down Italian restaurant where customers typically dine with others"
   },
   {
     "paper": 453,

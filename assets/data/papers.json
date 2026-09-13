@@ -109,6 +109,17 @@
     "paper_open_access": "open access"
   },
   {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "paper_title": "Consumer response to negative information on meat consumption in Germany",
+    "paper_authors": "Cordts, A.; Nitzko, S.; Spiller, A.",
+    "paper_year": 2014,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "International Food and Agribusiness Management Review",
+    "paper_link": "https://doi.org/10.22004/ag.econ.164599",
+    "paper_open_access": "open access"
+  },
+  {
     "paper": 13,
     "paper_label": "da Silva (2016)",
     "paper_title": "Am I too cute to eat? The effect of cuteness appeal on the promotion of a more plant-based diet",
@@ -202,6 +213,17 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Appetite",
     "paper_link": "https://doi.org/10.1016/j.appet.2015.09.009",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "paper_title": "How pathogen cues shape impressions of foods: The omnivore's dilemma and functionally specialized conditioning",
+    "paper_authors": "Tybur, J. M.; Laakasuo, M.; Ruff, J.; Klauke, F.",
+    "paper_year": 2016,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Evolution and Human Behavior",
+    "paper_link": "https://www.sciencedirect.com/science/article/abs/pii/S1090513816300149",
     "paper_open_access": "paywalled"
   },
   {
@@ -367,6 +389,17 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Anthrozoös",
     "paper_link": "https://doi.org/10.1080/08927936.2023.2243738",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 62,
+    "paper_label": "Kurz (2018)",
+    "paper_title": "Nudging to reduce meat consumption: Immediate and persistent effects of an intervention at a university restaurant",
+    "paper_authors": "Kurz, V.",
+    "paper_year": 2018,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Journal of Environmental Economics and Management",
+    "paper_link": "https://doi.org/10.1016/j.jeem.2018.06.005",
     "paper_open_access": "paywalled"
   },
   {
@@ -576,6 +609,17 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Journal of Environmental Psychology",
     "paper_link": "https://doi.org/10.1016/j.jenvp.2021.101589",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 92,
+    "paper_label": "Randers & Thøgersen (2023)",
+    "paper_title": "From attitude to identity? A field experiment on attitude activation, identity formation, and meat reduction",
+    "paper_authors": "Randers, L.; Thøgersen, J.",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Journal of Environmental Psychology",
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2023.101996",
     "paper_open_access": "open access"
   },
   {
@@ -1005,6 +1049,17 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Food Quality and Preference",
     "paper_link": "https://doi.org/10.1016/j.foodqual.2021.104498",
+    "paper_open_access": "paywalled"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "paper_title": "Application of optimal defaults to increase selection of sustainable menu choices",
+    "paper_authors": "Radnitz, C.; Beezhold, B.; Pilato, I.; Drury, C. R.; Fruchter, S.; Murphy, B. D.G.; Loeb, K. L.",
+    "paper_year": 2023,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Food Quality and Preference",
+    "paper_link": "https://doi.org/10.1016/j.foodqual.2023.104954",
     "paper_open_access": "paywalled"
   },
   {
@@ -1476,6 +1531,17 @@
     "paper_type": "peer reviewed paper",
     "paper_source": "Frontiers in Communication",
     "paper_link": "https://doi.org/10.3389/fcomm.2020.00069",
+    "paper_open_access": "open access"
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "paper_title": "Developing a scalable dynamic norm menu-based intervention to reduce meat consumption",
+    "paper_authors": "Sparkman, G.; Weitz, E.; Robinson, T. N.; Malhotra, N.; Walton, G. M.",
+    "paper_year": 2020,
+    "paper_type": "peer reviewed paper",
+    "paper_source": "Sustainability",
+    "paper_link": "https://doi.org/10.3390/su12062453",
     "paper_open_access": "open access"
   },
   {

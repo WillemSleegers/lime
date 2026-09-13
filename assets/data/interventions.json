@@ -286,6 +286,50 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "Participants were given a newspaper article with fictional results of a scientific investigation, reporting the negative impact of meat consumption on animal welfare.",
+    "intervention_mechanism": "info: animal welfare",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "study": 1,
+    "condition": 3,
+    "intervention_description": "Participants were given a newspaper article with fictional results of a scientific investigation, reporting the negative impact of meat consumption on personal health.",
+    "intervention_mechanism": "info: health",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "study": 1,
+    "condition": 4,
+    "intervention_description": "Participants were given a newspaper article with fictional results of a scientific investigation, reporting the negative impact of meat consumption on climate.",
+    "intervention_mechanism": "info: environment",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 12,
+    "paper_label": "Cordts et al. (2014)",
+    "study": 1,
+    "condition": 5,
+    "intervention_description": "Participants were given a newspaper article with fictional results of a scientific investigation, reporting the negative impact of meat consumption on personal image.",
+    "intervention_mechanism": "identity/reputation",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
     "paper": 13,
     "paper_label": "da Silva (2016)",
     "study": 1,
@@ -611,6 +655,39 @@
     "condition": 4,
     "intervention_description": "Participants saw a beef dish recipe in a short text with a photo of a cow, illustrating the source of beef in the dish.",
     "intervention_mechanism": "origin of animal product",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "image",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 1,
+    "condition": 1,
+    "intervention_description": "Across 60 trials, participants saw images of meats (e.g., a grilled hamburger, steak tartar) each paired with either a visual cue to pathogens (an infected boil, an infected toe, a toilet covered with bodily wastes, a pile of vomit) or an image of a building.",
+    "intervention_mechanism": "priming",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "image",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 2,
+    "condition": 1,
+    "intervention_description": "Across 100 trials, each of five raw meat images (beef, sausages, chicken breast, ground pork, pork schnitzel) was shown for 500 ms followed by an image containing cues to pathogens; vegetable images were paired with neutral images.",
+    "intervention_mechanism": "priming",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "image",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 34,
+    "paper_label": "Tybur et al. (2016)",
+    "study": 3,
+    "condition": 1,
+    "intervention_description": "Across 300 trials, each meat image was paired once with each pathogen cue image (25 meat-pathogen trials); plants and non-food products were paired with neutral images.",
+    "intervention_mechanism": "priming",
     "intervention_mechanism_multicomponent": "no",
     "intervention_medium": "image",
     "intervention_medium_multicomponent": "no"
@@ -965,6 +1042,17 @@
     "intervention_mechanism": "info: animal welfare",
     "intervention_mechanism_multicomponent": "no",
     "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 62,
+    "paper_label": "Kurz (2018)",
+    "study": 1,
+    "condition": 2,
+    "intervention_description": "A vegetarian dish, instead of a meat dish, was listed as the first item on the menu and was also made visible to customers at the counter.",
+    "intervention_mechanism": "choice architecture: visibility/salience/ease",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
     "intervention_medium_multicomponent": "no"
   },
   {
@@ -1375,6 +1463,17 @@
     "intervention_medium_multicomponent": "no"
   },
   {
+    "paper": 92,
+    "paper_label": "Randers & Thøgersen (2023)",
+    "study": 1,
+    "condition": 1,
+    "intervention_description": "Pupils signed up for their meals one week at a time and could choose between a vegetarian meal plan and standard meals (p. 5). In weeks 1-4, the vegetarian meal plan was the default; pupils had to opt out to get standard meals.",
+    "intervention_mechanism": "choice architecture: default",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
     "paper": 94,
     "paper_label": "Hughes et al. (2024)",
     "study": 1,
@@ -1522,7 +1621,7 @@
     "paper_label": "Dannenberg & Weingärtner (2023)",
     "study": 1,
     "condition": 2,
-    "intervention_description": "Participants were eligible to win a transferable voucher for two sandwiches (meat, vegetarian, or vegan options), redeemable at a local establishment. Participants read the following information on meat consumption reduction: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\" before privately announced their choice of voucher.",
+    "intervention_description": "Participants were eligible to win a non-transferable voucher for two sandwiches (meat, vegetarian, or vegan options), redeemable at a local establishment. Participants read the following information on meat consumption reduction: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\" before privately announced their choice of voucher.",
     "intervention_mechanism": "info: environment",
     "intervention_mechanism_multicomponent": "no",
     "intervention_medium": "text",
@@ -1532,19 +1631,8 @@
     "paper": 124,
     "paper_label": "Dannenberg & Weingärtner (2023)",
     "study": 1,
-    "condition": 3,
-    "intervention_description": "Participants were eligible to win a voucher for two sandwiches (meat, vegetarian, or vegan options). Participants read the following text just before they made their decision on which sandwich they wanted (meat, vegetarian or vegan): \"The winners will be publicly announced directly in the breakout room and asked for their choice of voucher so that we can pass on the selection to the restaurant. Please indicate which type of voucher you would like to receive if you win.\"",
-    "intervention_mechanism": "identity/reputation",
-    "intervention_mechanism_multicomponent": "no",
-    "intervention_medium": "text",
-    "intervention_medium_multicomponent": "no"
-  },
-  {
-    "paper": 124,
-    "paper_label": "Dannenberg & Weingärtner (2023)",
-    "study": 1,
     "condition": 4,
-    "intervention_description": "Participants were eligible to win a transferable voucher for two sandwiches (meat, vegetarian, or vegan options), redeemable at a local establishment. Participants read the following text just before they made their decision on which sandwich they wanted: \"The winners will be publicly announced directly in the breakout room and asked for their choice of voucher so that we can pass on the selection to the restaurant. Please indicate which type of voucher you would like to receive if you win.\" Participants read the following information on meat consumption reduction before their choice of voucher was publicly announced: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\"",
+    "intervention_description": "Participants were eligible to win a non-transferable voucher for two sandwiches (meat, vegetarian, or vegan options), redeemable at a local establishment. Participants read the following text just before they made their decision on which sandwich they wanted: \"The winners will be publicly announced directly in the breakout room and asked for their choice of voucher so that we can pass on the selection to the restaurant. Please indicate which type of voucher you would like to receive if you win.\" Participants read the following information on meat consumption reduction before their choice of voucher was publicly announced: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\"",
     "intervention_mechanism": "info: environment, identity/reputation",
     "intervention_mechanism_multicomponent": "yes",
     "intervention_medium": "text",
@@ -2296,6 +2384,28 @@
     "intervention_mechanism": "info: environment",
     "intervention_mechanism_multicomponent": "no",
     "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "study": 1,
+    "condition": 1,
+    "intervention_description": "Participants were presented with a menu in which four vegan entrees were featured prominently as the default items on the menu and four common meat/poultry-based (i.e., omnivore) entrees as the opt-out items",
+    "intervention_mechanism": "choice architecture: default",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 273,
+    "paper_label": "Radnitz et al. (2023)",
+    "study": 2,
+    "condition": 1,
+    "intervention_description": "Participants were presented with a menu in which four vegan entrees were featured prominently as the default items on the menu and four common meat/poultry-based (i.e., omnivore) entrees as the opt-out items",
+    "intervention_mechanism": "choice architecture: default",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "choice architecture",
     "intervention_medium_multicomponent": "no"
   },
   {
@@ -3481,8 +3591,8 @@
     "study": 1,
     "condition": 5,
     "intervention_description": "The intervention included a message-matching procedure in which individuals view a randomly assigned persuasive appeal related to one of the four previously identified motives. Participants were presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of social. (e.g. positive outcomes about social life, conformity, peers, belonging)",
-    "intervention_mechanism": "norms: descriptive",
-    "intervention_mechanism_multicomponent": "no",
+    "intervention_mechanism": "norms: descriptive, identity/reputation",
+    "intervention_mechanism_multicomponent": "yes",
     "intervention_medium": "text",
     "intervention_medium_multicomponent": "no"
   },
@@ -3682,6 +3792,39 @@
     "intervention_mechanism": "info: environment, goal pursuit: efficacy/consequences/feedback",
     "intervention_mechanism_multicomponent": "yes",
     "intervention_medium": "video",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 2,
+    "condition": 1,
+    "intervention_description": "For the dynamic norm condition, they saw an online menu with a centered note at the top of the menu including a dynamic norm message: ''We’ve noticed that customers are starting to eat less meat by choosing more meatless dishes. We’re committed to ordering a menu that gives you a variety of choices, all with fresh ingredients''",
+    "intervention_mechanism": "norms: dynamic",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 3,
+    "condition": 1,
+    "intervention_description": "Participants received a lunch menu including a dynamic norm message: ''We’ve noticed that our customers are starting to order our meatless dishes for lunch more often. We delight in bringing you the of Italian food inspired by California’s bounty: all of our dishes feature carefully sourced ingredients and fresh produce.'' Further, a leaf symbol appeared next to the vegetarian items, clarifying which items were meatless and becoming more popular.",
+    "intervention_mechanism": "norms: dynamic",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
+    "intervention_medium_multicomponent": "no"
+  },
+  {
+    "paper": 443,
+    "paper_label": "Sparkman et al. (2020)",
+    "study": 4,
+    "condition": 1,
+    "intervention_description": "Participants received a dinner menu including a dynamic norm message: ''We’ve noticed that our customers are starting to order our meatless dishes for lunch more often. We delight in bringing you the of Italian food inspired by California’s bounty: all of our dishes feature carefully sourced ingredients and fresh produce.'' Further, a leaf symbol appeared next to the vegetarian items, clarifying which items were meatless and becoming more popular.",
+    "intervention_mechanism": "norms: dynamic",
+    "intervention_mechanism_multicomponent": "no",
+    "intervention_medium": "text",
     "intervention_medium_multicomponent": "no"
   },
   {
@@ -4130,8 +4273,8 @@
     "study": 1,
     "condition": 3,
     "intervention_description": "The dish with the reduced meat portion was set as the meat default choice. Consequently, if cafeteria users did not explicitly request the regular meat portion size, they would automatically receive the dish with the smaller meat portion. Signs were placed everywhere that cafeteria users are free to adjust their meat components.",
-    "intervention_mechanism": "choice architecture: availability/variety/size",
-    "intervention_mechanism_multicomponent": "no",
+    "intervention_mechanism": "choice architecture: availability/variety/size, choice architecture: default",
+    "intervention_mechanism_multicomponent": "yes",
     "intervention_medium": "choice architecture, text, in-person",
     "intervention_medium_multicomponent": "yes"
   },
@@ -4328,8 +4471,8 @@
     "study": 1,
     "condition": 1,
     "intervention_description": "The displayed food items in the cafeteria’s showcase (i.e., the defaults) were changed to exclusively feature vegetarian items. Fish and meat items remained available but were listed on screens above the counter and had to be specifically requested; they were no longer displayed in the showcase",
-    "intervention_mechanism": "choice architecture: visibility/salience/ease",
-    "intervention_mechanism_multicomponent": "no",
+    "intervention_mechanism": "choice architecture: default, priming",
+    "intervention_mechanism_multicomponent": "yes",
     "intervention_medium": "choice architecture",
     "intervention_medium_multicomponent": "no"
   },
