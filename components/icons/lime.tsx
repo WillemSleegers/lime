@@ -1,8 +1,10 @@
-export const Lime = () => {
+import { cn } from "@/lib/utils"
+
+export const Lime = ({ className }: { className?: string }) => {
   return (
     <svg
-      height="32px"
-      width="32px"
+      className={cn("size-8", className)}
+      aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="-4.35 -6.82 108.72 108.72"
       strokeLinejoin="round"
