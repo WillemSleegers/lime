@@ -11,6 +11,8 @@ const nextConfig = {
       },
     ]
   },
+  // Lets other devices on the local network (e.g. an iPad) load dev-only assets
+  allowedDevOrigins: ["192.168.68.61"],
   reactStrictMode: true,
   reactCompiler: true,
 }
