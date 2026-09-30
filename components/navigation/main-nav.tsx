@@ -42,7 +42,7 @@ export function MainNav() {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="mx-auto w-full flex max-w-6xl flex-col items-stretch justify-center gap-6 p-3 md:flex-row md:items-center">
+    <div className="mx-auto w-full flex max-w-6xl flex-col items-stretch justify-center gap-6 p-3 lg:flex-row lg:items-center">
       <div className=" flex h-10 items-center justify-between">
         <Link
           href="/"
@@ -52,7 +52,7 @@ export function MainNav() {
           LIME
         </Link>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
           <Button
             className="flex"
@@ -83,7 +83,7 @@ export function MainNav() {
       </div>
 
       <nav
-        className={`flex-wrap justify-center gap-4 space-x-1 md:flex ${
+        className={`flex-wrap justify-center gap-x-5 gap-y-3 lg:flex ${
           open ? "flex" : "hidden"
         }`}
       >
@@ -98,7 +98,7 @@ export function MainNav() {
         ))}
       </nav>
 
-      <div className="ml-auto hidden md:block">
+      <div className="ml-auto hidden lg:block">
         <ThemeToggle />
       </div>
     </div>
