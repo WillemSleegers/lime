@@ -1,9 +1,10 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 
-import { Lime } from "@/components/icons/lime"
+import lime from "@/app/icon.svg"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 
@@ -48,7 +49,7 @@ export function MainNav() {
           href="/"
           className="flex flex-row items-center gap-3 text-2xl leading-normal font-semibold"
         >
-          <Lime />
+          <Image src={lime} alt="" className="size-8" />
           LIME
         </Link>
 
