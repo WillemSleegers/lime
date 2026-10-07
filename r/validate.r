@@ -1009,7 +1009,12 @@ check_orphans(
     filter(effect_exclude == "no") |>
     select(paper, study, outcome, intervention_statistics_1),
   n_statistics,
-  by = c("paper", "study", "outcome", "intervention_statistics_1" = "statistics")
+  by = c(
+    "paper",
+    "study",
+    "outcome",
+    "intervention_statistics_1" = "statistics"
+  )
 )
 
 check_orphans(

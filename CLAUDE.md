@@ -1,25 +1,27 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project Overview
 
 LIME (Library of Interventions for Meat Elimination) is a Next.js application providing a database of intervention studies on reducing animal product consumption, with data exploration tools, meta-analysis (via WebR), and data visualizations.
 
-## Stack
+This file holds conventions and things that aren't visible from the code. For what the app currently contains (pages, tabs, steps, columns, dependencies, scripts), read the code and `package.json` — don't rely on descriptions here or in the README.
 
-- Next.js App Router, React, TypeScript
-- Tailwind CSS + shadcn/ui, using the `@theme` syntax
-- TanStack React Table for the data explorer
-- React Hook Form + Zod for forms/validation
-- Recharts for charts, WebR (R via WebAssembly) for meta-analysis stats
-- Research data lives as static JSON in `assets/data/`; all pages are client-rendered (`"use client"`) — no server components for data pages
+## Conventions
+
+- Uses pnpm
 - React Compiler is enabled — don't add manual `useMemo`/`useCallback`
+- Data pages are client components; there is no server-side data fetching
+- Tailwind v4 config lives in `app/globals.css` (`@theme`)
 
-## How it works
+## Data
 
-- **Data explorer**: tabbed Papers → Studies → Interventions → Outcomes → Effects (+ All, a full joined dataset). Levels can be "locked" so filtering one constrains the others (`semiJoin` in `json-functions.ts`, coordinated by `use-data-explorer-state.ts`).
-- **Meta-analysis**: mutiple-step progressive disclosure, each unlocking after the previous. Runs `metafor`/`clubSandwich` client-side via WebR.
+The JSON in `assets/data/` is generated from the Google Sheet by `r/meta-analysis.r` — don't edit it by hand. The R scripts and data-pipeline skills are described in `.claude/skills/lime-context.md`.
+
+## Non-obvious wiring
+
+- **Data explorer locking**: filtering one level can constrain the others via `semiJoin` in `lib/json-functions.ts`, coordinated by `hooks/use-data-explorer-state.ts`.
+- **WebR** needs cross-origin isolation headers, set per route in `next.config.ts`. A new page that runs WebR needs them too.
+- **Methodology and FAQ** text lives in Markdown next to the page (`app/*/*.md`). The methodology describes how effects are calculated, so keep it in sync with `r/calculate-effects.r`.
 
 ## CSS and styling
 
@@ -38,17 +40,9 @@ Prefer simple solutions:
 
 Add complexity only after the simple version proves insufficient, and after discussing the tradeoff with the user.
 
-## Testing
-
-No test suite is configured (no test command in `package.json`, no test files). Filter/lock logic, `json-functions.ts`, WebR/R code generation, and the Zod schemas are the parts most worth covering if tests get added.
-
 ## Accuracy requirements
 
-Never assume what the app contains or does — verify against the code before writing documentation or descriptions:
-
-- Table columns: `components/data-explorer/table/columns.tsx`
-- Data structures: `lib/types.ts`
-- Features: the relevant component file
+Never assume what the app contains or does — verify against the code before writing documentation or descriptions (e.g. table columns in `components/data-explorer/table/columns.tsx`, data structures in `lib/types.ts`).
 
 ## Writing style (user-facing content)
 

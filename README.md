@@ -4,16 +4,16 @@ LIME is a web application that provides a searchable database of intervention st
 
 ## Features
 
-- **Data Explorer** — Browse and filter papers, studies, interventions, outcomes, and effects. Supports cross-level filtering with a lock system that maintains relational integrity across tabs. Data can be exported to CSV.
-- **Meta-Analysis** — A four-step workflow for running a meta-analysis on a user-defined subset of effects. Runs entirely in the browser using WebR (R via WebAssembly), with `metafor` and `clubSandwich` for statistical computation. Results include forest plots, dot plots, and publication bias tests.
-- **Moderator Analysis** — Step 4 of the meta-analysis workflow, for exploring how effect sizes vary across moderator variables.
+- **Data Explorer** — Browse and filter the database at each level, from papers down to individual effects. Filters on one level can be locked to narrow down the others, and data can be exported to CSV.
+- **Meta-Analysis** — Run a meta-analysis on a subset of effects you choose, including moderator analyses and publication bias tests. It runs entirely in the browser using WebR (R via WebAssembly) with `metafor` and `clubSandwich`.
 
-## Tech Stack
+## Development
 
-- **Next.js 16** (App Router, Turbopack, React Compiler)
-- **React 19** with TypeScript 5
-- **Tailwind CSS 4** + **shadcn/ui**
-- **TanStack Table v8** for data tables
-- **React Hook Form** + **Zod** for form validation
-- **WebR** for in-browser R statistical computation
-- **Recharts** for data visualizations
+Built with Next.js, Tailwind CSS, and shadcn/ui. See `package.json` for dependencies and scripts.
+
+```sh
+pnpm install
+pnpm dev
+```
+
+The data in `assets/data/` is generated from the project's Google Sheet by the scripts in `r/`.
