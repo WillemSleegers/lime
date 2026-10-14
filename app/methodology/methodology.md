@@ -287,12 +287,14 @@ Interventions that aim to improve the taste of vegetarian dishes.
 - A two-day workshop was conducted with the canteen kitchen, which included practical demonstrations of how to improve the visual and sensory appeal of plant-based meals (Guedes et al., 2023).
 - Higher-end plant-based meats (from Impossible Foods) were offered in a cafeteria (Malan, 2020).
 
-#### Price
+#### Price/tax/incentives
 
-Interventions that reduce the price of vegetarian options relative to meat options.
+Interventions that increase the price of animal products (with or without framing it as, for example, a meat tax), decrease the price of vegetarian options, or provide other concrete incentives for choosing a vegetarian option.
 
 - The college cafeteria decreased the price of the vegetarian option by 20 pence (from £2.05 to £1.85) and increased the price of meat options by 20 pence (from £2.52 to £2.72; Garnett et al., 2021).
 - Participants received a voucher worth $1.40 if they chose a meat-based dish, or $2.80 if they chose a vegetarian dish (Pizzo et al., 2026).
+- Participants received a stamp in their loyalty card for every vegetarian meal they purchased. After collecting three stamps, they could claim a free meal (Gold et al., 2024).
+
 
 #### Other
 
@@ -425,6 +427,8 @@ Friis, R., Skov, L. R., Olsen, A., Appleton, K. M., Saulais, L., Dinnella, C., H
 Garnett, E. E., Balmford, A., Marteau, T. M., Pilling, M. A., & Sandbrook, C. (2021). Price of change: Does a small alteration to the price of meat and vegetarian options affect their sales? *Journal of Environmental Psychology*, *75*, 101589. https://doi.org/10.1016/j.jenvp.2021.101589
 
 Gavrieli, A., Attwood, S., Wise, J., Putnam-Farr, E., Stillman, P., Giambastiani, S., Upritchard, J., Hanson, C., & Bakker, M. (2022). Appealing dish names to nudge diners to more sustainable food choices: A quasi-experimental study. *BMC Public Health*, *22*(1), 2229. https://doi.org/10.1186/s12889-022-14683-8
+
+Gold, N., Cornel, P., Zhuo, S., Thornton, K., Riddle, R., & McPhedran, R. (2024). Exploring the impact of giving free food samples and loyalty cards on sustainable food choices: A stepped wedge trial in workplace food outlets. International Journal of Market Research, 66(5), 650–673. https://doi.org/10.1177/14707853241264242 
 
 Green, S. A., Smith, B., & Mathur, M. B. (2026). Meaningfully reducing consumption of meat and animal products is an unsolved problem: A meta-analysis. *Appetite*, *216*, 108233. https://doi.org/10.1016/j.appet.2025.108233
 
