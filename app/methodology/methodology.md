@@ -1,6 +1,6 @@
 # Methodology
 
-_Last updated: 13 September 2026_
+_Last updated: 14 October 2026_
 
 This page describes how the studies in LIME were identified, selected, and coded, and how we calculated effect sizes.
 
