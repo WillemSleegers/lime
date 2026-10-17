@@ -53,11 +53,6 @@ check_formula_errors <- function(spreadsheet, sheet) {
     select(loc, row, col, error_type)
 }
 
-check_year_range <- function(data, column, min = 1950, max = 2026) {
-  data |>
-    filter(!is.na({{ column }}), {{ column }} < min | {{ column }} > max)
-}
-
 check_orphans <- function(data, ref, by) {
   data |>
     anti_join(ref, by = by)
@@ -590,19 +585,72 @@ full_join(reviews_included, paper_in_paper_levels, by = "value") |>
 
 check_duplicates(papers, paper)
 check_duplicates(papers, paper_label)
+
+# Duplicate titles, ignoring case and punctuation
 papers |>
   mutate(
-    paper_title_normalized = str_to_lower(
-      str_remove_all(paper_title, "[^a-z0-9 ]")
-    )
+    title = paper_title |>
+      str_to_lower() |>
+      str_remove_all("[^a-z0-9 ]") |>
+      str_squish()
   ) |>
-  check_duplicates(paper_title_normalized)
-check_duplicates(papers, paper_link) |> print(n = Inf)
-check_duplicates(papers, paper_link, na.rm = TRUE)
+  check_duplicates(title, na.rm = TRUE) |>
+  select(.row, paper, paper_label, paper_title)
 
-check_year_range(papers, paper_year, min = 1950, max = 2026)
+# Duplicate links, ignoring http(s), www, dx., case, and a trailing slash
+papers |>
+  mutate(
+    link = paper_link |>
+      str_to_lower() |>
+      str_remove("^https?://(dx\\.)?(www\\.)?") |>
+      str_remove("/$")
+  ) |>
+  check_duplicates(link, na.rm = TRUE) |>
+  select(.row, paper, paper_label, paper_link)
 
-check_missing(papers)
+# Years after this year (the codebook checks the minimum)
+papers |>
+  filter(paper_year > year(today())) |>
+  select(.row, paper, paper_label, paper_year)
+
+# Labels should look like "Author (2020)", "Author & Author (2020)", or
+# "Author et al. (2020a)", with "&" rather than "and"
+papers |>
+  filter(
+    !str_detect(paper_label, "^\\S.* \\((.+, )?\\d{4}[a-z]?\\)$") |
+      str_detect(paper_label, " and |\\Set al\\.|et al(?!\\.)|et a\\.")
+  ) |>
+  select(.row, paper, paper_label)
+
+# The label's year should be paper_year
+papers |>
+  mutate(label_year = as.numeric(str_extract(paper_label, "\\d{4}(?=[a-z]?\\)$)"))) |>
+  filter(label_year != paper_year) |>
+  select(.row, paper, paper_label, paper_year)
+
+# The label's first author should be the first author in paper_authors.
+# Names with particles can be written either way round ("da Silva" vs
+# "Rocha Possidónio da Silva"), so one may end with the other. Organisations
+# as authors show up here too.
+papers |>
+  mutate(
+    label_author = str_to_lower(str_extract(paper_label, "^.*?(?= et a| & | and | \\()")),
+    first_author = str_to_lower(str_extract(paper_authors, "^[^,;]+"))
+  ) |>
+  filter(
+    !str_ends(label_author, fixed(first_author)),
+    !str_ends(first_author, fixed(label_author))
+  ) |>
+  select(.row, paper, paper_label, paper_authors)
+
+# paper_authors should be "Last, I.; Last, I.": each author separated by a
+# semicolon, with one comma between last name and initials
+papers |>
+  select(.row, paper, paper_label, paper_authors) |>
+  mutate(author = paper_authors) |>
+  separate_longer_delim(author, delim = ";") |>
+  filter(str_count(author, ",") > 1 | str_detect(author, "&")) |>
+  distinct(.row, paper, paper_label, paper_authors)
 
 # Validation: Study-level ------------------------------------------------
 
