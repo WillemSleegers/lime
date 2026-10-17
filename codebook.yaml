@@ -278,40 +278,64 @@ columns:
     label: Status
     type: factor
     required: true
-    description: Where the paper is in the coding process.
+    description: >-
+      Where the paper is in the coding process. paper_status_detail gives the
+      reason or the next step.
     levels:
       - value: unscreened
         description: Not yet checked against the inclusion criteria.
       - value: in progress
-        description: >-
-          Meets the inclusion criteria and is being coded;
-          paper_status_detail says what it's waiting on.
+        description: Meets the inclusion criteria and is being coded.
       - value: included
-        description: Fully coded and included on the website.
-      - value: excluded
-        description: Checked and doesn't meet the inclusion criteria.
-      - value: data unavailable
         description: >-
-          Meets the inclusion criteria, but the statistics needed to calculate
-          an effect size aren't available.
+          Coded and included on the website. It can still be waiting on the
+          authors for statistics for more effects.
+      - value: excluded
+        description: >-
+          Not included on the website: it doesn't meet the inclusion criteria,
+          or the statistics needed for an effect size aren't available (yet).
 
   paper_status_detail:
     label: Status detail
     type: factor
-    description: For papers in progress, the next step in coding them.
+    description: >-
+      Why a paper is excluded, what an in-progress paper needs next, or
+      whether the authors are being asked for statistics.
     levels:
+      - value: ineligible
+        description: Doesn't meet the inclusion criteria.
+        requires:
+          paper_status: [excluded]
+      - value: paper inaccessible
+        description: The full text couldn't be accessed.
+        requires:
+          paper_status: [excluded]
+      - value: data unavailable
+        description: >-
+          Meets the inclusion criteria, but the statistics needed for an
+          effect size aren't available, not even from the authors.
+        requires:
+          paper_status: [excluded]
       - value: contact authors
         description: >-
           Statistics needed for an effect size aren't reported; the authors
-          need to be asked for them.
+          need to be asked for them. For an included paper: for more effects.
+        requires:
+          paper_status: [excluded, included]
       - value: contacted
         description: The authors have been asked for the missing statistics.
+        requires:
+          paper_status: [excluded, included]
       - value: analyze raw data
         description: >-
           Statistics needed for an effect size aren't reported, but can be
           calculated from the shared raw data.
+        requires:
+          paper_status: [in progress]
       - value: calculate effect sizes
         description: Coded; the effect sizes still need to be calculated.
+        requires:
+          paper_status: [in progress]
 
   paper_authors:
     label: Authors
@@ -1221,7 +1245,9 @@ columns:
         requires:
           outcome_category: [attitudes/beliefs]
       - value: meat belief
-        description: Beliefs about meat or meat consumption.
+        description: >-
+          Beliefs about the consequences of eating meat, e.g. that eating pork
+          contributes to the suffering of pigs.
         requires:
           outcome_category: [attitudes/beliefs]
       - value: meat hedonics
@@ -1273,7 +1299,7 @@ columns:
         requires:
           outcome_category: [behavior - self-reported]
       - value: donation
-        description: Donating to an animal or environmental cause.
+        description: Donations to animal advocacy, e.g. part of a study bonus.
         notes: >-
           Coded to keep the information, but its effects are excluded from the
           meta-analysis (effect_exclude) because it isn't about diet.
@@ -1300,7 +1326,7 @@ columns:
         requires:
           outcome_category: [intentions]
       - value: signing a petition
-        description: Intentions to sign a petition, e.g. for animal welfare.
+        description: Intentions to support petitions or policies that reduce meat consumption.
         notes: >-
           Coded to keep the information, but its effects are excluded from the
           meta-analysis (effect_exclude) because it isn't about diet.
@@ -1377,8 +1403,6 @@ columns:
         requires: {outcome_product_type: [meat]}
       - value: shrimp
         requires: {outcome_product_type: [meat]}
-      - value: dairy
-        requires: {outcome_product_type: [dairy]}
       - value: milk
         requires: {outcome_product_type: [dairy]}
       - value: cheese

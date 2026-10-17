@@ -2,23 +2,12 @@
 
 library(tidyverse)
 library(googlesheets4)
+library(yaml)
 library(btw)
 
 btw_mcp_session()
 
 # Validation functions ----------------------------------------------------
-
-check_factor_levels <- function(
-  data,
-  factor_levels,
-  id_cols = c("paper", "paper_label")
-) {
-  data |>
-    select(all_of(id_cols), unique(factor_levels$column)) |>
-    pivot_longer(-all_of(id_cols), names_to = "column", values_to = "value") |>
-    filter(!is.na(value)) |>
-    anti_join(factor_levels, by = c("column", "value" = "allowed"))
-}
 
 check_duplicates <- function(data, ..., na.rm = FALSE) {
   if (na.rm) {
@@ -67,11 +56,6 @@ check_formula_errors <- function(spreadsheet, sheet) {
 check_year_range <- function(data, column, min = 1950, max = 2026) {
   data |>
     filter(!is.na({{ column }}), {{ column }} < min | {{ column }} > max)
-}
-
-check_url_format <- function(data, column) {
-  data |>
-    filter(!is.na({{ column }}), !str_detect({{ column }}, "^https?://"))
 }
 
 check_orphans <- function(data, ref, by) {
@@ -364,89 +348,245 @@ check_or2dl <- function(effects, statistics, tolerance = 0.001) {
     )
 }
 
+# Codebook ----------------------------------------------------------------
+
+# codebook.yaml defines each sheet's columns and what values they allow; see
+# the comment at the top of that file for the format
+codebook <- read_yaml("codebook.yaml")
+
+# One row per sheet column, in sheet order, and whether it's a lookup
+codebook_sheets <- tibble(
+  sheet = names(codebook$sheets),
+  definition = codebook$sheets
+) |>
+  unnest_wider(definition)
+
+codebook_sheet_columns <- codebook_sheets |>
+  select(sheet, column = columns, lookups) |>
+  unnest_longer(column) |>
+  mutate(
+    position = row_number(),
+    lookup = map2_lgl(column, lookups, `%in%`),
+    .by = sheet
+  ) |>
+  select(-lookups)
+
+# One row per column definition: type, multiple, required, min, max, status
+codebook_columns <- tibble(
+  column = names(codebook$columns),
+  definition = codebook$columns
+) |>
+  unnest_wider(definition) |>
+  mutate(multiple = multiple %in% TRUE, required = required %in% TRUE)
+
+# One row per allowed level. Levels are written as a plain string or as a map
+# with value, description, and requires; plain strings become maps too.
+level_as_map <- function(level) {
+  if (is.list(level)) level else list(value = level)
+}
+
+codebook_levels <- codebook_columns |>
+  select(column, level = levels) |>
+  mutate(level = map(level, \(levels) map(as.list(levels), level_as_map))) |>
+  unnest_longer(level) |>
+  unnest_wider(level) |>
+  mutate(value = as.character(value))
+
+# One row per level that requires another column, and each level allowed there
+codebook_requires <- codebook_levels |>
+  select(column, value, requires) |>
+  filter(!map_lgl(requires, is.null)) |>
+  unnest_longer(
+    requires,
+    indices_to = "other_column",
+    values_to = "other_level"
+  ) |>
+  unnest_longer(other_level)
+
 # Import data -------------------------------------------------------------
 
 url <- "https://docs.google.com/spreadsheets/"
 url_id <- "d/1asBfkq4AkTtdcb_yZTkN685LVeV5DYHNrO83g9N5HCU/"
 
-papers <- read_sheet(
+# .row is the row number in the sheet, to find a problem there. Trailing rows
+# without a paper are empty rows whose formulas show #REF! or #N/A.
+sheets <- names(codebook$sheets) |>
+  set_names() |>
+  map(\(sheet) {
+    read_sheet(paste0(url, url_id), sheet = sheet, na = c("", "-")) |>
+      mutate(.row = row_number() + 1, .before = 1) |>
+      filter(!is.na(paper))
+  })
+
+papers <- sheets$`Paper-level`
+studies <- sheets$`Study-level`
+samples <- sheets$`Sample-level`
+conditions <- sheets$`Condition-level`
+outcomes <- sheets$`Outcome-level`
+statistics <- sheets$`Statistics-level`
+effects <- sheets$`Effects-level`
+
+reviews <- read_sheet(
   paste0(url, url_id),
-  sheet = "Paper-level",
-  na = c("", "-")
+  sheet = "Meta-reviews & reviews",
+  na = c("", "-", "NA")
 )
 
-studies <- read_sheet(
-  paste0(url, url_id),
-  sheet = "Study-level",
-  na = c("", "-")
-)
+# Validation: Codebook ---------------------------------------------------
 
-samples <- read_sheet(
-  paste0(url, url_id),
-  sheet = "Sample-level",
-  na = c("", "-")
-)
+# Columns in the codebook but not in the sheet, and the other way round
+sheet_columns <- sheets |>
+  imap(\(data, sheet) {
+    tibble(sheet = sheet, column = setdiff(names(data), ".row")) |>
+      mutate(position = row_number())
+  }) |>
+  list_rbind()
 
-conditions <- read_sheet(
-  paste0(url, url_id),
-  sheet = "Condition-level",
-  na = c("", "-")
-)
+anti_join(codebook_sheet_columns, sheet_columns, by = c("sheet", "column"))
+anti_join(sheet_columns, codebook_sheet_columns, by = c("sheet", "column"))
 
-outcomes <- read_sheet(
-  paste0(url, url_id),
-  sheet = "Outcome-level",
-  na = c("", "-")
-)
+# Columns that both have, but in a different order
+inner_join(
+  sheet_columns,
+  codebook_sheet_columns,
+  by = c("sheet", "column"),
+  suffix = c("_sheet", "_codebook")
+) |>
+  filter(
+    rank(position_sheet) != rank(position_codebook),
+    .by = sheet
+  )
 
-statistics <- read_sheet(
-  paste0(url, url_id),
-  sheet = "Statistics-level",
-  na = c("", "-")
-)
+# One row per cell of every column that is entered by hand: lookups (sheet
+# formulas) and draft columns are left out. Cells with mixed types come in as
+# a list column, so all values are compared as text.
+as_text <- function(x) {
+  if (is.list(x)) {
+    x <- map_chr(x, \(v) if (length(v) == 0) NA_character_ else as.character(v))
+  }
+  na_if(str_trim(as.character(x)), "")
+}
 
-effects <- read_sheet(
-  paste0(url, url_id),
-  sheet = "Effects-level",
-  na = c("", "-")
-)
+cells <- sheets |>
+  imap(\(data, sheet) {
+    data |>
+      mutate(across(-c(.row, paper), as_text)) |>
+      pivot_longer(-c(.row, paper), names_to = "column", values_to = "value") |>
+      mutate(sheet = sheet, .before = 1)
+  }) |>
+  list_rbind() |>
+  semi_join(
+    filter(codebook_sheet_columns, !lookup),
+    by = c("sheet", "column")
+  ) |>
+  inner_join(
+    select(
+      codebook_columns,
+      column,
+      type,
+      multiple,
+      required,
+      min,
+      max,
+      status
+    ),
+    by = "column"
+  ) |>
+  filter(!status %in% "draft")
 
-glimpse(papers)
-glimpse(studies)
-glimpse(samples)
-glimpse(conditions)
-glimpse(outcomes)
-glimpse(statistics)
-glimpse(effects)
+# Required cells that are empty
+cells |>
+  filter(required, is.na(value)) |>
+  select(sheet, .row, paper, column)
+
+# Numbers: not a number, not a whole number, or outside the allowed range
+numbers <- cells |>
+  filter(type %in% c("integer", "number"), !is.na(value)) |>
+  mutate(number = suppressWarnings(as.numeric(value)))
+
+numbers |>
+  filter(is.na(number)) |>
+  select(sheet, .row, paper, column, value)
+
+numbers |>
+  filter(type == "integer", number %% 1 != 0) |>
+  select(sheet, .row, paper, column, value)
+
+numbers |>
+  filter(number < min | number > max) |>
+  select(sheet, .row, paper, column, value, min, max)
+
+# Links that don't start with http(s)://
+cells |>
+  filter(type == "url", !is.na(value), !str_detect(value, "^https?://")) |>
+  select(sheet, .row, paper, column, value)
+
+# Factor cells, one row per level; multi-value cells are split on commas
+factor_cells <- bind_rows(
+  cells |>
+    filter(type == "factor", !multiple, !is.na(value)) |>
+    mutate(level = value),
+  cells |>
+    filter(type == "factor", multiple, !is.na(value)) |>
+    mutate(level = value) |>
+    separate_longer_delim(level, delim = ",")
+) |>
+  mutate(level = str_trim(level))
+
+# Levels that aren't in the codebook
+factor_cells |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  count(sheet, column, level, sort = TRUE)
+
+factor_cells |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  select(sheet, .row, paper, column, value)
+
+# Levels that require another column in the same row to hold one of the
+# listed levels, e.g. product subtype "beef" requires product type "meat"
+factor_cells |>
+  select(sheet, .row, paper, column, level) |>
+  inner_join(
+    codebook_requires,
+    by = c("column", "level" = "value"),
+    relationship = "many-to-many"
+  ) |>
+  left_join(
+    factor_cells |>
+      select(sheet, .row, other_column = column, other_level = level) |>
+      mutate(found = TRUE),
+    by = c("sheet", ".row", "other_column", "other_level")
+  ) |>
+  summarise(
+    ok = any(found %in% TRUE),
+    allowed = paste(other_level, collapse = " or "),
+    .by = c(sheet, .row, paper, column, level, other_column)
+  ) |>
+  filter(!ok) |>
+  left_join(
+    select(cells, sheet, .row, other_column = column, other_value = value),
+    by = c("sheet", ".row", "other_column")
+  ) |>
+  select(-ok)
+
+# The included reviews should be the paper_in_paper levels, with the same
+# reference. Meta-reviews led to reviews, not to papers, so they're no level.
+reviews_included <- reviews |>
+  filter(status == "included", `source type` != "meta-review") |>
+  select(value = label, reference)
+
+paper_in_paper_levels <- codebook_levels |>
+  filter(column == "paper_in_paper", value != "Other") |>
+  select(value, description)
+
+full_join(reviews_included, paper_in_paper_levels, by = "value") |>
+  filter(
+    is.na(reference) |
+      is.na(description) |
+      str_squish(reference) != str_squish(description)
+  )
 
 # Validation: Paper-level ------------------------------------------------
-
-paper_factor_levels <- list(
-  paper_status = c(
-    "included",
-    "excluded",
-    "contact authors",
-    "calculate effect sizes",
-    "analyze raw data",
-    "unscreened",
-    "ready to code",
-    "add to website"
-  ),
-  paper_type = c(
-    "peer reviewed paper",
-    "report",
-    "thesis",
-    "unpublished manuscript",
-    "preprint",
-    "conference paper"
-  ),
-  paper_open_access = c("paywalled", "open access", "inaccessible"),
-  paper_extracted_all_statistics = c("no", "yes")
-) |>
-  enframe(name = "column", value = "allowed") |>
-  unnest(allowed)
-
-check_factor_levels(papers, paper_factor_levels)
 
 check_duplicates(papers, paper)
 check_duplicates(papers, paper_label)
@@ -462,27 +602,9 @@ check_duplicates(papers, paper_link, na.rm = TRUE)
 
 check_year_range(papers, paper_year, min = 1950, max = 2026)
 
-check_url_format(papers, paper_link)
-
 check_missing(papers)
 
 # Validation: Study-level ------------------------------------------------
-
-study_factor_levels <- list(
-  study_preregistered = c("yes", "no"),
-  study_data_available = c("yes", "no"),
-  study_design = c("between", "within", "mixed", "crossover"),
-  study_condition_assignment = c("individual", "time point", "cluster"),
-  study_randomization = c("yes", "no")
-) |>
-  enframe(name = "column", value = "allowed") |>
-  unnest(allowed)
-
-check_factor_levels(
-  studies,
-  study_factor_levels,
-  id_cols = c("paper", "paper_label", "study")
-)
 
 check_duplicates(studies, paper, study)
 check_duplicates_across(
@@ -507,92 +629,9 @@ check_conditional_required(
   study_data_link
 )
 
-check_url_format(studies, study_preregistration_link)
-check_url_format(studies, study_data_link)
-
 check_missing(studies)
 
 # Validation: Condition-level --------------------------------------------
-
-condition_factor_levels <- list(
-  condition_category = c("control", "intervention"),
-  intervention_multicomponent = c("yes", "no"),
-  intervention_mechanism = c(
-    "authority/role models",
-    "choice architecture: availability/variety/size",
-    "choice architecture: default",
-    "choice architecture: visibility/salience/ease",
-    "emotions: negative",
-    "emotions: positive",
-    "goal pursuit: cooking skills",
-    "goal pursuit: efficacy/consequences/feedback",
-    "goal pursuit: food provision",
-    "goal pursuit: planning/pledge/reminder",
-    "identity/reputation",
-    "info: animal welfare",
-    "info: environment",
-    "info: health",
-    "info: taste/disgust",
-    "logical argument",
-    "norms: descriptive",
-    "norms: dynamic",
-    "origin of animal product",
-    "other",
-    "perspective taking/individuation",
-    "price",
-    "priming",
-    "taste"
-  ),
-  intervention_medium = c(
-    "text",
-    "presentation",
-    "video",
-    "3D video",
-    "image",
-    "choice architecture",
-    "in-person",
-    "label",
-    "price",
-    "other"
-  )
-) |>
-  enframe(name = "column", value = "allowed") |>
-  unnest(allowed)
-
-check_factor_levels(
-  conditions,
-  filter(
-    condition_factor_levels,
-    column %in% c("condition_category", "intervention_multicomponent")
-  ),
-  id_cols = c("paper", "paper_label", "study", "condition")
-)
-
-# intervention_mechanism and intervention_medium are multi-value columns, so
-# split comma-separated entries before checking against allowed factor levels
-conditions |>
-  select(
-    paper,
-    paper_label,
-    study,
-    condition,
-    intervention_mechanism,
-    intervention_medium
-  ) |>
-  pivot_longer(
-    -c(paper, paper_label, study, condition),
-    names_to = "column",
-    values_to = "value"
-  ) |>
-  filter(!is.na(value)) |>
-  separate_rows(value, sep = ", ") |>
-  anti_join(
-    filter(
-      condition_factor_levels,
-      column %in% c("intervention_mechanism", "intervention_medium")
-    ),
-    by = c("column", "value" = "allowed")
-  )
 
 check_duplicates(conditions, paper, study, condition)
 
@@ -609,112 +648,6 @@ conditions |>
 
 # Validation: Outcome-level ----------------------------------------------
 
-outcome_factor_levels <- list(
-  outcome_expectation = c("increase", "decrease", "neither"),
-  outcome_category = c("behavior", "attitudes/beliefs", "intentions"),
-  outcome_measurement_type = c(
-    "survey",
-    "food diary",
-    "sales data",
-    "meal choice"
-  ),
-  outcome_subcategory = c(
-    "animal attitude",
-    "animal product consumption",
-    "animal product intentions",
-    "diet intentions",
-    "dairy consumption",
-    "diet",
-    "donation",
-    "egg consumption",
-    "ethical consumption",
-    "meat attitude",
-    "meat belief",
-    "meat commitment",
-    "meat consumption",
-    "meat consumption intentions",
-    "meat hedonics",
-    "moral judgment",
-    "other",
-    "signing a petition",
-    "vegan consumption",
-    "vegan hedonics",
-    "vegan consumption intentions",
-    "vegetarian attitude",
-    "vegetarian consumption",
-    "vegetarian consumption intentions",
-    "vegetarian identity",
-    "vegetarian hedonics"
-  ),
-  outcome_product_type = c("meat", "eggs", "dairy"),
-  outcome_product_subtype = c(
-    "red meat",
-    "white meat",
-    "pork",
-    "processed meat",
-    "poultry",
-    "fish",
-    "beef",
-    "chicken",
-    "turkey",
-    "dairy",
-    "lamb",
-    "seafood",
-    "red and processed meat",
-    "shrimp",
-    "cheese",
-    "yoghurt",
-    "milk"
-  )
-) |>
-  enframe(name = "column", value = "allowed") |>
-  unnest(allowed)
-
-check_factor_levels(
-  outcomes,
-  filter(
-    outcome_factor_levels,
-    column %in%
-      c(
-        "outcome_expectation",
-        "outcome_category",
-        "outcome_subcategory",
-        "outcome_measurement_type"
-      )
-  ),
-  id_cols = c("paper", "paper_label", "study", "time", "outcome")
-)
-
-outcomes |>
-  select(
-    paper,
-    paper_label,
-    study,
-    time,
-    outcome,
-    outcome_product_type,
-    outcome_product_subtype
-  ) |>
-  pivot_longer(
-    -c(paper, paper_label, study, time, outcome),
-    names_to = "column",
-    values_to = "value"
-  ) |>
-  filter(!is.na(value)) |>
-  separate_rows(value, sep = ", ") |>
-  anti_join(
-    filter(
-      outcome_factor_levels,
-      column %in% c("outcome_product_type", "outcome_product_subtype")
-    ),
-    by = c("column", "value" = "allowed")
-  )
-
-# Flag subcategories assigned to more than one outcome category (e.g. "diet" under both "behavior" and "attitudes/beliefs")
-outcomes |>
-  distinct(outcome_subcategory, outcome_category) |>
-  check_duplicates_across(outcome_subcategory, outcome_category, na.rm = TRUE)
-
 check_duplicates(outcomes, paper, study, outcome, time)
 
 check_formula_errors(paste0(url, url_id), "Outcome-level")
@@ -729,36 +662,7 @@ outcomes |>
 
 check_missing(outcomes)
 
-# TODO: Add check where certain values can only appear when another column has another value, Poultry as a subtype can only appear when type is meat, for example
-
 # Validation: Sample-level -----------------------------------------------
-
-sample_factor_levels <- list(
-  sample_representative = c("yes", "no"),
-  sample_type = c("public", "university", "children", "panel")
-) |>
-  enframe(name = "column", value = "allowed") |>
-  unnest(allowed)
-
-check_factor_levels(
-  samples,
-  filter(sample_factor_levels, column == "sample_representative"),
-  id_cols = c("paper", "paper_label", "study", "sample")
-)
-
-samples |>
-  select(paper, paper_label, study, sample, sample_type) |>
-  pivot_longer(
-    -c(paper, paper_label, study, sample),
-    names_to = "column",
-    values_to = "value"
-  ) |>
-  filter(!is.na(value)) |>
-  separate_rows(value, sep = ", ") |>
-  anti_join(
-    filter(sample_factor_levels, column == "sample_type"),
-    by = c("column", "value" = "allowed")
-  )
 
 check_duplicates(samples, paper, study, sample)
 
@@ -781,40 +685,6 @@ check_sequence(samples, sample, paper, study)
 check_missing(samples)
 
 # Validation: Statistics-level -------------------------------------------
-
-statistic_factor_levels <- list(
-  condition_category = c("control", "intervention"),
-  statistic_name = c(
-    "successes",
-    "failures",
-    "n",
-    "percentage",
-    "M",
-    "SD",
-    "SE",
-    "beta"
-  ),
-  statistic_from_paper = c("yes", "no", "approx.")
-) |>
-  enframe(name = "column", value = "allowed") |>
-  unnest(allowed)
-
-check_factor_levels(
-  statistics,
-  statistic_factor_levels,
-  id_cols = c(
-    "paper",
-    "paper_label",
-    "study",
-    "outcome",
-    "time_1",
-    "time_2",
-    "sample",
-    "sample_label",
-    "condition",
-    "statistic"
-  )
-)
 
 check_duplicates(
   statistics,
@@ -875,53 +745,6 @@ statistics |>
   print(n = Inf)
 
 # Validation: Effects-level ----------------------------------------------
-
-effect_factor_levels <- list(
-  effect_size_name = c(
-    "SMD",
-    "SMCC",
-    "OR2DL",
-    "OR",
-    "g",
-    "d",
-    "eta squared",
-    "partial eta squared"
-  ),
-  effect_analysis = c(
-    "ANCOVA",
-    "ANOVA",
-    "Fisher's exact test",
-    "Logistic regression",
-    "MANCOVA",
-    "Meta-analytic estimate",
-    "Mixed regression model",
-    "One-sample t-test",
-    "Paired-sample t-test",
-    "Pearson's Chi-squared test",
-    "Planned contrast",
-    "Welch's two-sample t-test"
-  ),
-  effect_statistic_name = c("t", "F", "chi squared", "z"),
-  effect_from_paper = c("yes", "no"),
-  effect_exclude = c("yes", "no", "maybe")
-) |>
-  enframe(name = "column", value = "allowed") |>
-  unnest(allowed)
-
-check_factor_levels(
-  effects,
-  effect_factor_levels,
-  id_cols = c(
-    "paper_label",
-    "study",
-    "outcome",
-    "intervention_condition",
-    "intervention_time",
-    "control_condition",
-    "control_time",
-    "effect"
-  )
-)
 
 check_duplicates(
   effects,

@@ -121,7 +121,7 @@ Second, the breadth of our categories is informed by the availability of studies
 
 Third, this means that in some cases, our labeling of an intervention deviates from how the intervention was labeled by the researchers who conducted the study.
 
-Below are descriptions and examples for the 23 categories into which intervention studies are currently organized. These intervention categories are organized into six broader groups. This organization might change in the future, if we deem it informative to split up certain categories due to the availability of more evidence. Note that categories are not exclusive. Many interventions target multiple mechanisms (we refer to these as multi-component interventions), and this is also reflected in our coding. Many categories contain interventions that either steer people away from meat consumption, or toward vegetarian alternatives, or both simultaneously. However, when describing intervention types below, we mostly focus on the anti-meat framing for brevity.
+Below are descriptions and examples for the categories into which intervention studies are currently organized. These intervention categories are organized into six broader groups. This organization might change in the future, if we deem it informative to split up certain categories due to the availability of more evidence. Note that categories are not exclusive. Many interventions target multiple mechanisms (we refer to these as multi-component interventions), and this is also reflected in our coding. Many categories contain interventions that either steer people away from meat consumption, or toward vegetarian alternatives, or both simultaneously. However, when describing intervention types below, we mostly focus on the anti-meat framing for brevity.
 
 ### 2.2.1 Persuasion interventions
 
@@ -309,12 +309,13 @@ We distinguish between four **outcome categories**.
 - **Behaviors (self-reported)** include outcomes such as self-reported changes in meat consumption (Aberman & Plaks, 2022), and the frequency of animal product consumption as assessed with multi-day food diaries (Animal Charity Evaluators, 2013) or 24-hour recalls (Feltz et al., 2022).
 - **Intentions** include outcomes such as self-reported intentions to reduce future meat consumption (Pauer et al., 2022) and hypothetical choices of vegetarian dishes (Krpan & Houtsma, 2020).
 
-These categories are divided into 22 **outcome subcategories**.
+These categories are divided into more specific **outcome subcategories**. Donation and signing a petition are recorded, but not included in the meta-analysis, because they don't measure diet.
 
 Attitudes/beliefs
 
 - **Meat attitude**: general evaluations of meat or meat eaters.
-- **Meat hedonic**: perceived tastiness and anticipated enjoyment of meat products.
+- **Meat belief**: beliefs about the consequences of eating meat (e.g., that eating pork contributes to the suffering of pigs).
+- **Meat hedonics**: perceived tastiness and anticipated enjoyment of meat products.
 - **Moral judgment**: judgments about the ethicality of eating meat.
 - **Vegan hedonics**: perceived tastiness and anticipated enjoyment of vegan products.
 - **Vegetarian attitude**: general evaluations of vegetarian food or vegetarians.
@@ -323,6 +324,8 @@ Attitudes/beliefs
 Behaviors (observed)
 
 - **Animal product consumption**: observed consumption of animal products.
+- **Dairy consumption**: observed consumption of dairy.
+- **Donation**: donations to animal advocacy (e.g., part of a study bonus).
 - **Meat consumption**: observed consumption of meat.
 - **Vegan consumption**: observed consumption of vegan food.
 - **Vegetarian consumption**: observed consumption of vegetarian food.
@@ -342,10 +345,11 @@ Intentions
 - **Animal product intentions**: self-reported intentions to change one's consumption of animal products.
 - **Diet intentions**: self-reported intentions to change one's diet (e.g., omnivorous, vegetarian, vegan).
 - **Meat consumption intentions**: self-reported intentions to change one's consumption of meat.
+- **Signing a petition**: intentions to support petitions or policies that reduce meat consumption.
 - **Vegan consumption intentions**: self-reported intentions to change one's consumption of vegan food.
 - **Vegetarian consumption intentions**: self-reported intentions to change one's consumption of vegetarian food.
 
-Some measures specifically target certain foods, such as the consumption of red meat or eggs. This is captured with a **product type** variable that shows whether a measure captured a specific category of animal products (meat, eggs, dairy), and a **product subtype** variable that shows whether a measure captured a more specific subcategory (beef, cheese, chicken, dairy, fish, lamb, milk, pork, poultry, processed meat, red meat, red and processed meat, seafood, shrimp, turkey, white meat, yogurt).
+Some measures specifically target certain foods, such as the consumption of red meat or eggs. This is captured with a **product type** variable that shows whether a measure captured a specific category of animal products (meat, eggs, dairy), and a **product subtype** variable that shows whether a measure captured a more specific subcategory (beef, butter, cheese, chicken, fish, lamb, milk, pork, poultry, processed meat, red meat, red and processed meat, seafood, shrimp, turkey, veal, white meat, yoghurt).
 
 Finally, a **measurement type** variable indicates what type of measurement instrument was used to record the outcome.
 
