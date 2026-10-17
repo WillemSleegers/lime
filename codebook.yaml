@@ -1,0 +1,1873 @@
+# LIME codebook
+#
+# The single source of truth for the columns of the LIME Google Sheet and the
+# data the website publishes. r/validate.r checks the sheet against it, and
+# r/meta-analysis.r writes the app's codebook JSON from it.
+#
+# sheets: one entry per sheet tab, in tab order
+#   level:    the level of the data model the tab holds
+#   columns:  the tab's columns, in sheet order
+#   lookups:  columns filled by sheet formulas (look-ups from other tabs or
+#             calculations); validate.r doesn't check them as entered data
+#
+# columns: one entry per column name; a name means the same thing on every tab
+#   label:        short display name, used by the app
+#   type:         integer | number | string | url | factor
+#   description:  what the column holds
+#   levels:       allowed values of a factor, in display order. Each is a
+#                 string, or a map with value, and optionally label,
+#                 description, notes, and requires (see below)
+#   multiple:     true when a cell can hold several comma-separated values
+#   min, max:     allowed range of a number
+#   required:     true when every row must have a value
+#   status:       temporary (in use, will be removed) or draft (not yet in
+#                 use; validate.r only checks that the column exists)
+#   derived:      true for columns that r/meta-analysis.r creates for the
+#                 website; they're not in the sheet
+#   pattern:      for derived columns: a regex matching a family of columns
+#   app_description: replaces description in the app's codebook, when the
+#                 published column differs from the sheet column
+#   notes:        coding conventions and rules. Not the current state of the
+#                 data (counts, what's coded so far): that goes stale, and
+#                 validate.r can report it instead
+#
+# requires (on a level): the level is only allowed when another column in the
+# same row holds one of the listed levels, e.g. a product subtype "beef" only
+# with product type "meat". For a multi-value column, one match is enough.
+#
+# Quote "yes", "no", and single letters like "n" and "F": R's YAML parser
+# reads them unquoted as true and false.
+
+sheets:
+  Paper-level:
+    level: paper
+    columns:
+      - paper
+      - paper_label
+      - paper_status
+      - paper_status_detail
+      - paper_authors
+      - paper_year
+      - paper_title
+      - paper_type
+      - paper_source
+      - paper_link
+      - paper_open_access
+      - paper_coded_by
+      - paper_notes
+      - paper_extracted_all_statistics
+      - code_study_level
+      - paper_in_paper
+
+  Study-level:
+    level: study
+    columns:
+      - paper
+      - paper_label
+      - study
+      - study_n
+      - study_preregistered
+      - study_preregistration_link
+      - study_data_available
+      - study_data_link
+      - study_design
+      - study_condition_assignment
+      - study_randomization
+      - study_condition_assignment_unit
+      - study_cluster_label
+      - study_cluster_k
+      - study_condition_assignment_process
+      - study_condition_assignment_structure
+      - study_measurement_unit
+      - study_data_tracking
+      - study_pseudoreplication_risk
+      - study_crossover_contamination_risk
+      - study_rct
+      - study_notes
+    lookups:
+      - paper_label
+
+  Sample-level:
+    level: sample
+    columns:
+      - paper
+      - paper_label
+      - study
+      - sample
+      - sample_label
+      - sample_n
+      - sample_gender_f_n
+      - sample_gender_f_pct
+      - sample_gender_m_n
+      - sample_gender_m_pct
+      - sample_gender_other_n
+      - sample_gender_other_pct
+      - sample_age_mean
+      - sample_age_sd
+      - sample_age_min
+      - sample_age_max
+      - sample_description
+      - sample_type
+      - sample_representative
+      - sample_recruitment_location
+      - sample_country
+      - sample_compensation
+      - sample_notes
+    lookups:
+      - paper_label
+      - sample_gender_f_n
+
+  Condition-level:
+    level: condition
+    columns:
+      - paper
+      - paper_label
+      - study
+      - study_design
+      - condition
+      - condition_label
+      - condition_category
+      - condition_description
+      - intervention_count
+      - intervention_multicomponent
+      - intervention_duration
+      - intervention_mechanism
+      - intervention_medium
+      - condition_notes
+    lookups:
+      - paper_label
+      - study_design
+
+  Outcome-level:
+    level: outcome
+    columns:
+      - paper
+      - paper_label
+      - study
+      - outcome
+      - outcome_label
+      - outcome_description
+      - time
+      - time_label
+      - outcome_days_since_intervention_min
+      - outcome_days_since_intervention_max
+      - outcome_expectation
+      - outcome_category
+      - outcome_subcategory
+      - outcome_measurement_type
+      - outcome_product_type
+      - outcome_product_subtype
+      - outcome_is_suboutcome
+      - outcome_scale
+      - outcome_notes
+    lookups:
+      - paper_label
+
+  Statistics-level:
+    level: statistics
+    columns:
+      - paper
+      - paper_label
+      - study
+      - outcome
+      - outcome_label
+      - time_1
+      - time_1_label
+      - time_2
+      - time_2_label
+      - condition
+      - condition_label
+      - condition_category
+      - sample
+      - sample_label
+      - statistics
+      - statistic
+      - statistic_name
+      - statistic_value
+      - statistic_from_paper
+      - statistic_notes
+    lookups:
+      - paper_label
+      - outcome_label
+      - time_1_label
+      - time_2_label
+      - condition_label
+      - condition_category
+      - sample_label
+
+  Effects-level:
+    level: effects
+    columns:
+      - paper
+      - paper_label
+      - study
+      - outcome
+      - outcome_label
+      - intervention_condition
+      - intervention_time_1
+      - intervention_time_2
+      - intervention_label
+      - intervention_sample
+      - control_condition
+      - control_time_1
+      - control_time_2
+      - control_label
+      - control_sample
+      - effect
+      - intervention_statistics_1
+      - intervention_statistics_2
+      - control_statistics_1
+      - control_statistics_2
+      - effect_size_name
+      - effect_r
+      - effect_size
+      - effect_size_lower
+      - effect_size_upper
+      - effect_size_var
+      - effect_size_se
+      - effect_analysis
+      - effect_statistic_name
+      - effect_statistic_value
+      - effect_df
+      - effect_df_num
+      - effect_df_den
+      - effect_p
+      - effect_from_paper
+      - effect_covariates
+      - effect_exclude
+      - effect_notes
+    lookups:
+      - paper_label
+      - study
+      - outcome
+      - outcome_label
+      - intervention_condition
+      - intervention_time_1
+      - intervention_time_2
+      - intervention_label
+      - intervention_sample
+      - control_condition
+      - control_time_1
+      - control_time_2
+      - control_label
+      - control_sample
+      - effect_size_se
+
+columns:
+
+  # Paper ----------------------------------------------------------------------
+
+  paper:
+    label: Paper
+    type: integer
+    required: true
+    min: 1
+    description: A number that identifies the paper.
+
+  paper_label:
+    label: Paper
+    type: string
+    required: true
+    description: >-
+      A short label for the paper in APA in-text citation style: the authors
+      and year of publication, e.g. "Carfora et al. (2017b)". Papers with one
+      or two authors list them all; papers with more list the first author
+      followed by "et al.".
+
+  paper_status:
+    label: Status
+    type: factor
+    required: true
+    description: Where the paper is in the coding process.
+    levels:
+      - value: unscreened
+        description: Not yet checked against the inclusion criteria.
+      - value: in progress
+        description: >-
+          Meets the inclusion criteria and is being coded;
+          paper_status_detail says what it's waiting on.
+      - value: included
+        description: Fully coded and included on the website.
+      - value: excluded
+        description: Checked and doesn't meet the inclusion criteria.
+      - value: data unavailable
+        description: >-
+          Meets the inclusion criteria, but the statistics needed to calculate
+          an effect size aren't available.
+
+  paper_status_detail:
+    label: Status detail
+    type: factor
+    description: For papers in progress, the next step in coding them.
+    levels:
+      - value: contact authors
+        description: >-
+          Statistics needed for an effect size aren't reported; the authors
+          need to be asked for them.
+      - value: contacted
+        description: The authors have been asked for the missing statistics.
+      - value: analyze raw data
+        description: >-
+          Statistics needed for an effect size aren't reported, but can be
+          calculated from the shared raw data.
+      - value: calculate effect sizes
+        description: Coded; the effect sizes still need to be calculated.
+
+  paper_authors:
+    label: Authors
+    type: string
+    required: true
+    description: >-
+      The paper's authors as last name followed by initials, separated by
+      semicolons.
+
+  paper_year:
+    label: Year
+    type: integer
+    required: true
+    min: 1950
+    description: The year the paper was published.
+
+  paper_title:
+    label: Title
+    type: string
+    required: true
+    description: The title of the paper, in sentence case.
+
+  paper_type:
+    label: Paper type
+    type: factor
+    description: The kind of publication.
+    levels:
+      - value: peer reviewed paper
+        label: Peer reviewed paper
+        description: Journal articles
+      - value: conference paper
+        label: Conference paper
+        description: Papers published in conference proceedings
+      - value: preprint
+        label: Preprint
+        description: Publications that are not yet peer-reviewed
+      - value: thesis
+        label: Thesis
+        description: Student research
+      - value: report
+        label: Report
+        description: Government and institutional publications
+      - value: unpublished manuscript
+        label: Unpublished manuscript
+        description: Manuscripts that are not publicly available
+
+  paper_source:
+    label: Source
+    type: string
+    description: >-
+      Where the paper was published or is hosted, e.g. the journal or
+      website.
+
+  paper_link:
+    label: URL
+    type: url
+    description: A link to the paper, usually its DOI.
+
+  paper_open_access:
+    label: Open access
+    type: factor
+    description: Whether the paper is free to read.
+    levels:
+      - value: open access
+        label: Open access
+        description: Free to read
+      - value: paywalled
+        label: Paywalled
+        description: Paid access required
+      - value: inaccessible
+        label: Inaccessible
+        description: Could not be accessed
+
+  paper_coded_by:
+    label: Coded by
+    type: string
+    multiple: true
+    description: Who coded the paper, as first names separated by commas.
+
+  paper_notes:
+    label: Notes
+    type: string
+    description: >-
+      Remarks about the paper, e.g. which statistics are missing, or why a
+      relevant-looking paper was excluded.
+
+  paper_extracted_all_statistics:
+    label: All statistics extracted
+    type: factor
+    description: >-
+      Whether all relevant statistics have been extracted from the paper. "no"
+      means there may be more to code, usually for less relevant outcomes.
+    levels: ["yes", "no"]
+
+  code_study_level:
+    label: Code study level
+    type: factor
+    status: temporary
+    description: >-
+      A working column for recoding the Study-level tab: whether the paper's
+      studies still need their study-level variables coded.
+    levels: ["ready to code", "no"]
+
+  paper_in_paper:
+    label: Included in
+    type: factor
+    multiple: true
+    required: true
+    description: >-
+      Earlier meta-analyses, reviews, or databases that include the paper,
+      used to find papers for LIME.
+    notes: Levels must not contain commas, since cells are split on them.
+    levels:
+      - value: "Benningstad & Kunst (2020)"
+        description: >-
+          Benningstad, N. C. G., & Kunst, J. R. (2020). Dissociating meat from
+          its animal origins: A systematic literature review. Appetite, 147,
+          Article 104554. https://doi.org/10.1016/j.appet.2019.104554
+      - value: "Bianchi et al. (2018a)"
+        description: >-
+          Bianchi, F., Dorsel, C., Garnett, E., Aveyard, P., & Jebb, S. A.
+          (2018a). Interventions targeting conscious determinants of human
+          behaviour to reduce the demand for meat: A systematic review with
+          qualitative comparative analysis. International Journal of
+          Behavioral Nutrition and Physical Activity, 15(1), Article 102.
+          https://doi.org/10.1186/s12966-018-0729-6
+      - value: "Bianchi et al. (2018b)"
+        description: >-
+          Bianchi, F., Garnett, E., Dorsel, C., Aveyard, P., & Jebb, S. A.
+          (2018b). Restructuring physical micro-environments to reduce the
+          demand for meat: A systematic review and qualitative comparative
+          analysis. The Lancet Planetary Health, 2(9), e384–e397.
+          https://doi.org/10.1016/s2542-5196(18)30188-8
+      - value: "Byerly et al. (2018)"
+        description: >-
+          Byerly, H., Balmford, A., Ferraro, P. J., Hammond Wagner, C.,
+          Palchak, E., Polasky, S., Ricketts, T. H., Schwartz, A. J., &
+          Fisher, B. (2018). Nudging pro-environmental behavior: Evidence and
+          opportunities. Frontiers in Ecology and the Environment, 16(3),
+          159–168. https://doi.org/10.1002/fee.1777
+      - value: "Chang et al. (2023)"
+        description: >-
+          Chang, K. B., Wooden, A., Rosman, L., Altema-Johnson, D., & Ramsing,
+          R. (2023). Strategies for reducing meat consumption within college
+          and university settings: A systematic review and meta-analysis.
+          Frontiers in Sustainable Food Systems, 7, Article 1103060.
+          https://doi.org/10.3389/fsufs.2023.1103060
+      - value: "Di Gennaro et al. (2024)"
+        description: >-
+          Di Gennaro, G., Licata, F., Pujia, A., Montalcini, T., & Bianco, A.
+          (2024). How may we effectively motivate people to reduce the
+          consumption of meat? Results of a meta-analysis of randomized
+          clinical trials. Preventive Medicine, 184, Article 108007.
+          https://doi.org/10.1016/j.ypmed.2024.108007
+      - value: "Fonseca & Sanchez-Sabate (2022)"
+        description: >-
+          Fonseca, R. P., & Sanchez-Sabate, R. (2022). Consumers' attitudes
+          towards animal suffering: A systematic review on awareness,
+          willingness and dietary change. International Journal of
+          Environmental Research and Public Health, 19(23), Article 16372.
+          https://doi.org/10.3390/ijerph192316372
+      - value: "Graça et al. (2019)"
+        description: >-
+          Graça, J., Godinho, C. A., & Truninger, M. (2019). Reducing meat
+          consumption and following plant-based diets: Current evidence and
+          future directions to inform integrated transitions. Trends in Food
+          Science & Technology, 91, 380–390.
+          https://doi.org/10.1016/j.tifs.2019.07.046
+      - value: "Green et al. (2026)"
+        description: >-
+          Green, S. A., Smith, B., & Mathur, M. B. (2026). Meaningfully
+          reducing consumption of meat and animal products is an unsolved
+          problem: A meta-analysis. Appetite, 216, Article 108233.
+          https://doi.org/10.1016/j.appet.2025.108233
+      - value: "Harguess et al. (2020)"
+        description: >-
+          Harguess, J. M., Crespo, N. C., & Hong, M. Y. (2020). Strategies to
+          reduce meat consumption: A systematic literature review of
+          experimental studies. Appetite, 144, Article 104478.
+          https://doi.org/10.1016/j.appet.2019.104478
+      - value: "Hartmann & Siegrist (2017)"
+        description: >-
+          Hartmann, C., & Siegrist, M. (2017). Consumer perception and
+          behaviour regarding sustainable protein consumption: A systematic
+          review. Trends in Food Science & Technology, 61, 11–25.
+          https://doi.org/10.1016/j.tifs.2016.12.006
+      - value: "Hartmann-Boyce et al. (2018)"
+        description: >-
+          Hartmann-Boyce, J., Bianchi, F., Piernas, C., Riches, S. P., Frie,
+          K., Nourse, R., & Jebb, S. A. (2018). Grocery store interventions to
+          change food purchasing behaviors: A systematic review of randomized
+          controlled trials. The American Journal of Clinical Nutrition,
+          107(6), 1004–1016. https://doi.org/10.1093/ajcn/nqy045
+      - value: "Kwasny et al. (2022)"
+        description: >-
+          Kwasny, T., Dobernig, K., & Riefler, P. (2022). Towards reduced meat
+          consumption: A systematic literature review of intervention
+          effectiveness, 2001–2019. Appetite, 168, Article 105739.
+          https://doi.org/10.1016/j.appet.2021.105739
+      - value: "Lohmann et al. (2026)"
+        description: >-
+          Lohmann, P. M., Pizzo, A., Bauer, J. M., Khanna, T. M., Flecke, S.
+          L., Callaghan, M., Minx, J. C., & Reisch, L. A. (2026). A
+          meta-analysis assessing the effectiveness of demand-side
+          interventions for sustainable food consumption and food waste
+          reduction. Nature Food, 7(1), 88–99.
+          https://doi.org/10.1038/s43016-025-01279-9
+      - value: "Mathur et al. (2021)"
+        description: >-
+          Mathur, M. B., Peacock, J., Reichling, D. B., Nadler, J., Bain, P.
+          A., Gardner, C. D., & Robinson, T. N. (2021). Interventions to
+          reduce meat consumption by appealing to animal welfare:
+          Meta-analysis and evidence-based recommendations. Appetite, 164,
+          Article 105277. https://doi.org/10.1016/j.appet.2021.105277
+      - value: "Meier et al. (2022)"
+        description: >-
+          Meier, J., Andor, M. A., Doebbe, F. C., Haddaway, N. R., & Reisch,
+          L. A. (2022). Review: Do green defaults reduce meat consumption?
+          Food Policy, 110, Article 102298.
+          https://doi.org/10.1016/j.foodpol.2022.102298
+      - value: "Nguyen et al. (2022)"
+        description: >-
+          Nguyen, J., Ferraro, C., Sands, S., & Luxton, S. (2022). Alternative
+          protein consumption: A systematic review and future research
+          directions. International Journal of Consumer Studies, 46(5),
+          1691–1717. https://doi.org/10.1111/ijcs.12797
+      - value: "Nisa et al. (2019)"
+        description: >-
+          Nisa, C. F., Bélanger, J. J., Schumpe, B. M., & Faller, D. G.
+          (2019). Meta-analysis of randomised controlled trials testing
+          behavioural interventions to promote household action on climate
+          change. Nature Communications, 10(1), Article 4545.
+          https://doi.org/10.1038/s41467-019-12457-2
+      - value: "Pandey et al. (2023)"
+        description: >-
+          Pandey, S., Olsen, A., Perez-Cueto, F. J. A., & Thomsen, M. (2023).
+          Nudging toward sustainable food consumption at university canteens:
+          A systematic review and meta-analysis. Journal of Nutrition
+          Education and Behavior, 55(12), 894–904.
+          https://doi.org/10.1016/j.jneb.2023.09.006
+      - value: "Sanchez-Sabate & Sabaté (2019)"
+        description: >-
+          Sanchez-Sabate, R., & Sabaté, J. (2019). Consumer attitudes towards
+          environmental concerns of meat consumption: A systematic review.
+          International Journal of Environmental Research and Public Health,
+          16(7), Article 1220. https://doi.org/10.3390/ijerph16071220
+      - value: "Sanchez-Sabate et al. (2019)"
+        description: >-
+          Sanchez-Sabate, R., Badilla-Briones, Y., & Sabaté, J. (2019).
+          Understanding attitudes towards reducing meat consumption for
+          environmental reasons. A qualitative synthesis review.
+          Sustainability, 11(22), Article 6295.
+          https://doi.org/10.3390/su11226295
+      - value: "Schäufele-Elbers et al. (2025)"
+        description: >-
+          Schäufele-Elbers, I., Bosnjak, M., Gastaldello, G., & Schamel, G.
+          (2025). Nudging meat off the plate in foodservice? A systematic
+          review and meta-analysis identifying moderators in field-based
+          intervention studies. Journal of Environmental Psychology, 108,
+          Article 102830. https://doi.org/10.1016/j.jenvp.2025.102830
+      - value: "Stevenson et al. (2025)"
+        description: >-
+          Stevenson, B., Peacock, J. R., Sandkühler, J. F., Hope, J. E.,
+          Arévalo, C., Anderson, J. E., & Mathur, M. B. (2025). Database of
+          sources investigating interventions to reduce meat and animal
+          product consumption [Report]. Rethink Priorities.
+          https://rethinkpriorities.org/research-area/database-of-sources-investigating-interventions-to-reduce-meat-and-animal-product-consumption/
+      - value: "Stiles et al. (2022)"
+        description: >-
+          Stiles, G., Collins, J., & Beck, K. L. (2022). Effectiveness of
+          strategies to decrease animal-sourced protein and/or increase
+          plant-sourced protein in foodservice settings: A systematic
+          literature review. Journal of the Academy of Nutrition and
+          Dietetics, 122(5), 1013–1048.
+          https://doi.org/10.1016/j.jand.2021.12.010
+      - value: "Taufik et al. (2019)"
+        description: >-
+          Taufik, D., Verain, M. C. D., Bouwman, E. P., & Reinders, M. J.
+          (2019). Determinants of real-life behavioural interventions to
+          stimulate more plant-based and less animal-based diets: A systematic
+          review. Trends in Food Science & Technology, 93, 281–303.
+          https://doi.org/10.1016/j.tifs.2019.09.019
+      - value: "Valli et al. (2019)"
+        description: >-
+          Valli, C., Rabassa, M., Johnston, B. C., Kuijpers, R.,
+          Prokop-Dorner, A., Zajac, J., Storman, D., Storman, M., Bala, M. M.,
+          Solà, I., Zeraatkar, D., Han, M. A., Vernooij, R. W. M., Guyatt, G.
+          H., & Alonso-Coello, P. (2019). Health-related values and
+          preferences regarding meat consumption: A mixed-methods systematic
+          review. Annals of Internal Medicine, 171(10), 742–755.
+          https://doi.org/10.7326/m19-1326
+      - value: "Veul (2018)"
+        description: >-
+          Veul, J. (2018). Interventions to reduce meat consumption in OECD
+          countries: An understanding of differences in success [Master's
+          thesis, Radboud University].
+          https://theses.ubn.ru.nl/handle/123456789/6391
+      - value: "Wynes et al. (2018)"
+        description: >-
+          Wynes, S., Nicholas, K. A., Zhao, J., & Donner, S. D. (2018).
+          Measuring what works: Quantifying greenhouse gas emission reductions
+          of behavioural interventions to reduce driving, meat consumption,
+          and household energy use. Environmental Research Letters, 13(11),
+          Article 113002. https://doi.org/10.1088/1748-9326/aae5d7
+      - value: "Other"
+        description: Found some other way, e.g. a reference list or a search.
+
+  # Study ----------------------------------------------------------------------
+
+  study:
+    label: Study
+    type: integer
+    required: true
+    min: 1
+    description: A number that identifies the study within its paper.
+
+  study_n:
+    label: Sample size
+    type: integer
+    min: 1
+    description: >-
+      The number of participants or observations in the study that were
+      retained for analysis. For studies with several measurement points, the
+      number at the earliest one.
+
+  study_preregistered:
+    label: Preregistered
+    type: factor
+    required: true
+    description: Whether the study was preregistered.
+    levels:
+      - value: "yes"
+        label: Preregistered
+        description: Study design registered before data collection
+      - value: "no"
+        label: Not preregistered
+
+  study_preregistration_link:
+    label: Preregistration URL
+    type: url
+    description: A link to the study's preregistration.
+
+  study_data_available:
+    label: Data available
+    type: factor
+    required: true
+    description: Whether the study's data are publicly available.
+    levels:
+      - value: "yes"
+        label: Data available
+        description: Study datasets can be downloaded
+      - value: "no"
+        label: Data not available
+
+  study_data_link:
+    label: Data URL
+    type: url
+    description: A link to the study's data.
+
+  study_design:
+    label: Design
+    type: factor
+    required: true
+    description: >-
+      Whether the conditions were compared between different participants,
+      within the same participants, or both.
+    levels:
+      - value: between
+        label: Between-subjects
+        description: Different participants per condition
+      - value: within
+        label: Within-subjects
+        description: >-
+          Same participants across conditions, e.g. a pre-post design
+      - value: mixed
+        label: Mixed design
+        description: >-
+          Combines between and within elements, e.g. a pre-post design with
+          an intervention and a control group
+      - value: crossover
+        label: Crossover
+        description: Participants rotate through conditions in different orders
+
+  study_condition_assignment:
+    label: Condition assignment
+    type: factor
+    required: true
+    description: The unit to which conditions were assigned.
+    levels:
+      - value: individual
+        label: Individual assignment
+        description: Participants assigned to conditions
+      - value: cluster
+        label: Cluster assignment
+        description: >-
+          Groups assigned to conditions, e.g. schools or restaurants
+      - value: time point
+        label: Time-based assignment
+        description: >-
+          Conditions assigned to time periods, e.g. control on day 1 and
+          intervention on day 2
+
+  study_randomization:
+    label: Randomization
+    type: factor
+    required: true
+    description: >-
+      Whether conditions were randomly assigned. Pre-post designs, crossover
+      designs, and self-selection into conditions are not randomized.
+    levels:
+      - value: "yes"
+        label: Randomized assignment
+        description: Eliminates selection bias
+      - value: "no"
+        label: Non-randomized assignment
+        description: Potential for confounding
+
+  # Draft columns for the new study design scheme: not in use yet, and not
+  # described in the methodology (section 2.1 covers the current scheme).
+  # Definitions to follow once the scheme is settled.
+
+  study_condition_assignment_unit:
+    status: draft
+    description: TODO
+
+  study_cluster_label:
+    status: draft
+    description: TODO
+
+  study_cluster_k:
+    status: draft
+    description: TODO
+
+  study_condition_assignment_process:
+    status: draft
+    description: TODO
+
+  study_condition_assignment_structure:
+    status: draft
+    description: TODO
+
+  study_measurement_unit:
+    status: draft
+    description: TODO
+
+  study_data_tracking:
+    status: draft
+    description: TODO
+
+  study_pseudoreplication_risk:
+    status: draft
+    description: TODO
+
+  study_crossover_contamination_risk:
+    status: draft
+    description: TODO
+
+  study_rct:
+    status: draft
+    description: TODO
+
+  study_notes:
+    label: Notes
+    type: string
+    description: Remarks about the study.
+
+  # Sample ---------------------------------------------------------------------
+
+  sample:
+    label: Sample
+    type: integer
+    required: true
+    min: 1
+    description: A number that identifies the sample within its study.
+    notes: >-
+      Each study has a "(total)" sample with all participants, plus one
+      sample per condition (and per period, if relevant).
+
+  sample_label:
+    label: Sample
+    type: string
+    required: true
+    description: A short description of the sample, e.g. "(total)" or the condition it received.
+
+  sample_n:
+    label: Sample size
+    type: integer
+    min: 1
+    description: The number of participants in the sample.
+
+  sample_gender_f_n:
+    label: Women (n)
+    type: number
+    min: 0
+    description: The number of female participants in the sample.
+
+  sample_gender_f_pct:
+    label: Women (%)
+    type: number
+    min: 0
+    max: 100
+    description: The percentage of female participants in the sample.
+
+  sample_gender_m_n:
+    label: Men (n)
+    type: number
+    min: 0
+    description: The number of male participants in the sample.
+
+  sample_gender_m_pct:
+    label: Men (%)
+    type: number
+    min: 0
+    max: 100
+    description: The percentage of male participants in the sample.
+
+  sample_gender_other_n:
+    label: Other gender (n)
+    type: number
+    min: 0
+    description: The number of participants in the sample who are neither female nor male.
+
+  sample_gender_other_pct:
+    label: Other gender (%)
+    type: number
+    min: 0
+    max: 100
+    description: The percentage of participants in the sample who are neither female nor male.
+
+  sample_age_mean:
+    label: Mean age
+    type: number
+    min: 0
+    description: The mean age of the participants in the sample.
+
+  sample_age_sd:
+    label: Age SD
+    type: number
+    min: 0
+    description: The standard deviation of the participants' age.
+
+  sample_age_min:
+    label: Minimum age
+    type: number
+    min: 0
+    description: The age of the youngest participant in the sample.
+
+  sample_age_max:
+    label: Maximum age
+    type: number
+    min: 0
+    description: The age of the oldest participant in the sample.
+
+  sample_description:
+    label: Description
+    type: string
+    description: >-
+      A brief description of who the participants were, e.g. residents of a
+      mid-sized city in Australia.
+
+  sample_type:
+    label: Sample type
+    type: factor
+    multiple: true
+    required: true
+    description: Where the participants came from.
+    levels:
+      - value: public
+        label: Public
+        description: >-
+          Members of the public recruited through flyers, social media ads,
+          door-to-door canvassing, or at a venue
+      - value: university
+        label: University
+        description: University students or staff recruited on campus
+      - value: panel
+        label: Panel
+        description: >-
+          Participants recruited via a recruitment service such as MTurk,
+          Prolific, or Kantar
+      - value: children
+        label: Children
+        description: Samples of children or minors
+
+  sample_representative:
+    label: Representative
+    type: factor
+    required: true
+    description: >-
+      Whether the sample was broadly representative of the country's
+      population, e.g. in gender, age, income, and political orientation.
+    levels:
+      - value: "yes"
+        label: Representative
+        description: Efforts were made to recruit a representative sample of the population
+      - value: "no"
+        label: Not representative
+
+  sample_recruitment_location:
+    label: Recruitment
+    type: string
+    description: >-
+      Where or how participants were recruited, e.g. a specific campus or
+      social media ads.
+
+  sample_country:
+    label: Country
+    type: string
+    multiple: true
+    required: true
+    description: >-
+      The country or countries where the sample was collected, as English
+      country names separated by commas. "Unspecified" when the paper doesn't
+      say.
+    app_description: >-
+      The country where the sample was collected. "Multiple countries" when it
+      was collected in more than one, and "Unspecified" when the paper doesn't
+      say.
+
+  sample_compensation:
+    label: Compensation
+    type: string
+    description: What participants received for taking part, and how much.
+
+  sample_notes:
+    label: Notes
+    type: string
+    description: Remarks about the sample.
+
+  # Condition ------------------------------------------------------------------
+
+  condition:
+    label: Condition
+    type: integer
+    required: true
+    min: 1
+    description: A number that identifies the condition within its study.
+
+  condition_label:
+    label: Condition
+    type: string
+    required: true
+    description: A short label for the condition.
+
+  condition_category:
+    label: Condition type
+    type: factor
+    required: true
+    description: Whether the condition is a control or an intervention.
+    levels: [control, intervention]
+
+  condition_description:
+    label: Description
+    type: string
+    description: A detailed description of the condition, usually copied verbatim from the paper.
+
+  intervention_count:
+    label: Number of interventions
+    type: integer
+    min: 0
+    description: >-
+      How many qualitatively different interventions participants in the
+      condition were exposed to.
+
+  intervention_multicomponent:
+    label: Intervention components
+    type: factor
+    description: >-
+      Whether the intervention combines several qualitatively different
+      interventions.
+    levels:
+      - value: "no"
+        label: Single-component
+        description: Intervention uses one strategy or content focus
+      - value: "yes"
+        label: Multicomponent
+        description: Intervention combines multiple strategies or content areas
+
+  intervention_duration:
+    label: Duration (days)
+    type: integer
+    min: 0
+    description: >-
+      How long the intervention lasted, in days. Interventions shorter than
+      half a day are coded 0.
+
+  intervention_mechanism:
+    label: Mechanism
+    type: factor
+    multiple: true
+    description: >-
+      The pathway via which the intervention is expected to change behavior.
+      Section 2.2 of the methodology describes each mechanism, with examples.
+    levels:
+      - value: "info: health"
+        label: Information (health)
+        description: Information on the negative effects of meat consumption on health.
+      - value: "info: environment"
+        label: Information (environment)
+        description: Information on the negative effects of meat consumption on the environment and climate.
+      - value: "info: animal welfare"
+        label: Information (animal welfare)
+        description: Information on the negative effects of meat consumption on animal welfare.
+      - value: "info: taste/disgust"
+        label: Information (taste/disgust)
+        description: >-
+          Information on the tastiness of vegetarian food, or on aspects of
+          meat consumption meant to evoke disgust.
+      - value: "authority/role models"
+        label: Authority/role models
+        description: Authority figures or role models who advocate against meat consumption.
+      - value: "norms: descriptive"
+        label: Norms (descriptive)
+        description: Information on how common an attitude or behavior is.
+      - value: "norms: dynamic"
+        label: Norms (dynamic)
+        description: Information on how an attitude or behavior is becoming more common.
+      - value: "identity/reputation"
+        label: Identity/reputation
+        description: >-
+          Activating image concerns, or highlighting how desirable traits or
+          values favor vegetarian choices.
+      - value: "hedonic labeling"
+        label: Hedonic labeling
+        description: Appealing names for dishes that promote vegetarian choices.
+      - value: "origin of animal product"
+        label: Origin of animal product
+        description: Connecting an animal product to the animal it comes from.
+      - value: "perspective taking/individuation"
+        label: Perspective taking/individuation
+        description: >-
+          Introducing individual animals, or prompting participants to imagine
+          what it's like to be an animal.
+      - value: "priming"
+        label: Priming
+        description: >-
+          Visual or other sensory stimuli meant to induce emotions, thoughts, or
+          goals conducive to plant-based choices.
+      - value: "choice architecture: default"
+        label: Choice architecture (default)
+        description: Making the vegetarian option the default.
+      - value: "choice architecture: visibility/salience/ease"
+        label: Choice architecture (visibility/salience/ease)
+        description: Making vegetarian options more visible, salient, or easier to choose.
+      - value: "choice architecture: availability/variety/size"
+        label: Choice architecture (availability/variety/size)
+        description: >-
+          Offering more or more varied vegetarian options, or less meat in
+          dishes.
+      - value: "goal pursuit: planning/pledge/reminder"
+        label: Goal pursuit (planning/pledge/reminder)
+        description: >-
+          Prompting people to pledge to change, helping them plan a change, or
+          reminding them of their plans.
+      - value: "goal pursuit: efficacy/consequences/feedback"
+        label: Goal pursuit (efficacy/consequences/feedback)
+        description: >-
+          Highlighting the positive consequences of eating less meat, or giving
+          feedback on progress.
+      - value: "goal pursuit: food provision"
+        label: Goal pursuit (food provision)
+        description: Providing free meat replacements or other vegetarian food.
+      - value: "goal pursuit: cooking skills"
+        label: Goal pursuit (cooking skills)
+        description: Helping people plan and cook vegetarian meals.
+      - value: "taste"
+        label: Taste
+        description: Improving the taste of vegetarian dishes.
+      - value: "price/tax/incentives"
+        label: Price
+        description: >-
+          Reducing the price of vegetarian options relative to meat options, or
+          rewarding vegetarian choices.
+      - value: "other"
+        label: Other
+        description: Interventions that don't fit one of the other mechanisms.
+
+  intervention_medium:
+    label: Medium
+    type: factor
+    multiple: true
+    description: How the intervention was delivered.
+    levels:
+      - value: text
+        label: Text
+      - value: presentation
+        label: Presentation
+      - value: video
+        label: Video
+      - value: 3D video
+        label: 3D video
+      - value: image
+        label: Image
+      - value: choice architecture
+        label: Choice architecture
+      - value: in-person
+        label: In person
+      - value: label
+        label: Label
+      - value: "price/tax/incentives"
+        label: Price
+      - value: other
+        label: Other
+
+  condition_notes:
+    label: Notes
+    type: string
+    description: Remarks about the condition.
+
+  # Outcome --------------------------------------------------------------------
+
+  outcome:
+    label: Outcome
+    type: integer
+    required: true
+    min: 1
+    description: A number that identifies the outcome measure within its study.
+
+  outcome_label:
+    label: Outcome
+    type: string
+    required: true
+    description: A short label for the outcome measure.
+
+  outcome_description:
+    label: Description
+    type: string
+    required: true
+    description: How the outcome was measured.
+
+  time:
+    label: Time
+    type: integer
+    required: true
+    description: >-
+      The measurement point of the outcome. Negative numbers are measurements
+      before the intervention (-1 is the last one before it), positive numbers
+      are measurements after it (1 is the first one after it). 0 isn't used.
+    notes: >-
+      An outcome has one row per measurement point. Effects on the website use
+      the latest measurement point of each outcome.
+
+  time_label:
+    label: Time
+    type: string
+    description: A short description of the measurement point, e.g. "baseline" or "4-week follow-up".
+
+  outcome_days_since_intervention_min:
+    label: Days since intervention (min)
+    type: integer
+    description: >-
+      How many days after the intervention the outcome was measured; the
+      minimum if measurement took several days. 0 means the same day, and
+      negative numbers mean before the intervention.
+
+  outcome_days_since_intervention_max:
+    label: Days since intervention (max)
+    type: integer
+    description: >-
+      How many days after the intervention the outcome was measured; the
+      maximum if measurement took several days. 0 means the same day, and
+      negative numbers mean before the intervention.
+
+  outcome_expectation:
+    label: Expected direction
+    type: factor
+    required: true
+    description: >-
+      Whether the intervention is expected to increase or decrease the
+      outcome. Effect sizes on the website are flipped by this, so that
+      positive always means a change in the intended direction.
+    levels: [increase, decrease]
+
+  outcome_category:
+    label: Outcome category
+    type: factor
+    required: true
+    description: What kind of outcome was measured.
+    levels:
+      - value: attitudes/beliefs
+        label: Attitudes/beliefs
+        description: >-
+          E.g. scores on a meat attachment questionnaire, or anticipated
+          enjoyment of plant-based dishes.
+      - value: behavior - observed
+        label: Behaviors (observed)
+        description: E.g. vegetarian sales records, or meal choices at events.
+      - value: behavior - self-reported
+        label: Behaviors (self-reported)
+        description: E.g. self-reported meat consumption, food diaries, or 24-hour recalls.
+      - value: intentions
+        label: Intentions
+        description: >-
+          E.g. intentions to reduce future meat consumption, or hypothetical
+          choices of vegetarian dishes.
+
+  outcome_subcategory:
+    label: Outcome subcategory
+    type: factor
+    required: true
+    description: >-
+      A more specific kind of outcome within the outcome category. Section 2.3
+      of the methodology describes each subcategory.
+    levels:
+      - value: meat attitude
+        description: General evaluations of meat or meat eaters.
+        requires:
+          outcome_category: [attitudes/beliefs]
+      - value: meat belief
+        description: Beliefs about meat or meat consumption.
+        requires:
+          outcome_category: [attitudes/beliefs]
+      - value: meat hedonics
+        description: Perceived tastiness and anticipated enjoyment of meat products.
+        requires:
+          outcome_category: [attitudes/beliefs]
+      - value: moral judgment
+        description: Judgments about the ethicality of eating meat.
+        requires:
+          outcome_category: [attitudes/beliefs]
+      - value: vegan hedonics
+        description: Perceived tastiness and anticipated enjoyment of vegan products.
+        requires:
+          outcome_category: [attitudes/beliefs]
+      - value: vegetarian attitude
+        description: General evaluations of vegetarian food or vegetarians.
+        requires:
+          outcome_category: [attitudes/beliefs]
+      - value: vegetarian hedonics
+        description: Perceived tastiness and anticipated enjoyment of vegetarian products.
+        requires:
+          outcome_category: [attitudes/beliefs]
+      - value: animal product consumption
+        description: Consumption of animal products.
+        requires:
+          outcome_category: [behavior - observed, behavior - self-reported]
+      - value: dairy consumption
+        description: Consumption of dairy.
+        requires:
+          outcome_category: [behavior - observed, behavior - self-reported]
+      - value: egg consumption
+        description: Consumption of eggs.
+        requires:
+          outcome_category: [behavior - self-reported]
+      - value: meat consumption
+        description: Consumption of meat.
+        requires:
+          outcome_category: [behavior - observed, behavior - self-reported]
+      - value: vegan consumption
+        description: Consumption of vegan food.
+        requires:
+          outcome_category: [behavior - observed, behavior - self-reported]
+      - value: vegetarian consumption
+        description: Consumption of vegetarian food.
+        requires:
+          outcome_category: [behavior - observed, behavior - self-reported]
+      - value: diet
+        description: Self-reported diet, e.g. omnivorous, vegetarian, or vegan.
+        requires:
+          outcome_category: [behavior - self-reported]
+      - value: donation
+        description: Donating to an animal or environmental cause.
+        notes: >-
+          Coded to keep the information, but its effects are excluded from the
+          meta-analysis (effect_exclude) because it isn't about diet.
+        requires:
+          outcome_category: [behavior - observed]
+      - value: animal product intentions
+        description: Intentions to change one's consumption of animal products.
+        requires:
+          outcome_category: [intentions]
+      - value: diet intentions
+        description: Intentions to change one's diet, e.g. to become vegetarian.
+        requires:
+          outcome_category: [intentions]
+      - value: meat consumption intentions
+        description: Intentions to change one's consumption of meat.
+        requires:
+          outcome_category: [intentions]
+      - value: vegan consumption intentions
+        description: Intentions to change one's consumption of vegan food.
+        requires:
+          outcome_category: [intentions]
+      - value: vegetarian consumption intentions
+        description: Intentions to change one's consumption of vegetarian food.
+        requires:
+          outcome_category: [intentions]
+      - value: signing a petition
+        description: Intentions to sign a petition, e.g. for animal welfare.
+        notes: >-
+          Coded to keep the information, but its effects are excluded from the
+          meta-analysis (effect_exclude) because it isn't about diet.
+        requires:
+          outcome_category: [intentions]
+      - value: other
+        description: Outcomes that don't fit one of the other subcategories.
+
+  outcome_measurement_type:
+    label: Measure
+    type: factor
+    required: true
+    description: The kind of instrument used to record the outcome.
+    levels:
+      - value: survey
+        label: Survey
+        description: >-
+          Questionnaires that capture self-reported attitudes, beliefs, or
+          intentions with single items or multi-item scales
+      - value: food diary
+        label: Food diary
+        description: >-
+          Detailed records of food consumption, e.g. 24-hour recalls or food
+          frequency questionnaires
+      - value: sales data
+        label: Sales data
+        description: Records of products sold in a restaurant, supermarket, or other venue
+      - value: meal choice
+        label: Meal choice
+        description: Real or hypothetical choices of specific dishes or products
+
+  outcome_product_type:
+    label: Product type
+    type: factor
+    multiple: true
+    description: >-
+      The kind of animal product the outcome is specifically about, if any.
+      Empty for outcomes about animal products or diet in general.
+    levels: [meat, eggs, dairy]
+
+  outcome_product_subtype:
+    label: Product subtype
+    type: factor
+    multiple: true
+    description: >-
+      The more specific animal product the outcome is about, if any. Requires
+      the matching product type.
+    levels:
+      - value: red meat
+        requires: {outcome_product_type: [meat]}
+      - value: white meat
+        requires: {outcome_product_type: [meat]}
+      - value: processed meat
+        requires: {outcome_product_type: [meat]}
+      - value: red and processed meat
+        requires: {outcome_product_type: [meat]}
+      - value: beef
+        requires: {outcome_product_type: [meat]}
+      - value: veal
+        requires: {outcome_product_type: [meat]}
+      - value: pork
+        requires: {outcome_product_type: [meat]}
+      - value: lamb
+        requires: {outcome_product_type: [meat]}
+      - value: poultry
+        requires: {outcome_product_type: [meat]}
+      - value: chicken
+        requires: {outcome_product_type: [meat]}
+      - value: turkey
+        requires: {outcome_product_type: [meat]}
+      - value: fish
+        requires: {outcome_product_type: [meat]}
+      - value: seafood
+        requires: {outcome_product_type: [meat]}
+      - value: shrimp
+        requires: {outcome_product_type: [meat]}
+      - value: dairy
+        requires: {outcome_product_type: [dairy]}
+      - value: milk
+        requires: {outcome_product_type: [dairy]}
+      - value: cheese
+        requires: {outcome_product_type: [dairy]}
+      - value: yoghurt
+        requires: {outcome_product_type: [dairy]}
+      - value: butter
+        requires: {outcome_product_type: [dairy]}
+
+  outcome_is_suboutcome:
+    label: Suboutcome
+    type: integer
+    required: true
+    min: 0
+    max: 1
+    description: >-
+      Whether the outcome is part of a broader outcome measure. Some papers
+      report both an overall measure and the measures it consists of, e.g.
+      meat consumption and its parts: chicken, beef, and pork consumption.
+      1 for the parts (suboutcomes), 0 for the overall measure and for
+      outcomes that aren't split up.
+
+  outcome_scale:
+    label: Scale
+    type: string
+    description: The scale the outcome was measured on, e.g. a 7-point Likert scale.
+
+  outcome_notes:
+    label: Notes
+    type: string
+    description: Remarks about the outcome.
+
+  # Statistics -----------------------------------------------------------------
+
+  time_1:
+    label: Time
+    type: integer
+    required: true
+    description: >-
+      The measurement point (time on Outcome-level) the statistics are from.
+      For change scores, the later of the two measurement points.
+
+  time_1_label:
+    label: Time label
+    type: string
+    description: The time_label of time_1.
+
+  time_2:
+    label: Baseline time
+    type: integer
+    description: >-
+      For change scores: the measurement point the change is relative to,
+      usually the baseline. Empty otherwise.
+
+  time_2_label:
+    label: Baseline time label
+    type: string
+    description: The time_label of time_2.
+
+  statistics:
+    label: Statistics group
+    type: integer
+    required: true
+    min: 1
+    description: >-
+      A number that identifies a group of statistics: the statistics for one
+      condition, sample, outcome, and measurement point. Numbered across the
+      paper.
+
+  statistic:
+    label: Statistic
+    type: integer
+    required: true
+    min: 1
+    description: A number that identifies the statistic within its group.
+
+  statistic_name:
+    label: Statistic
+    type: factor
+    required: true
+    description: Which statistic the row holds.
+    levels:
+      - value: "n"
+        description: Number of participants or observations.
+      - value: successes
+        description: Number of participants or observations with the outcome, e.g. vegetarian meals chosen.
+      - value: failures
+        description: Number of participants or observations without the outcome.
+      - value: percentage
+        description: Successes as a percentage of n (0-100).
+      - value: M
+        description: Mean.
+      - value: SD
+        description: Standard deviation.
+      - value: SE
+        description: Standard error of the mean.
+      - value: beta
+        description: A regression coefficient.
+
+  statistic_value:
+    label: Value
+    type: number
+    required: true
+    description: The value of the statistic.
+
+  statistic_from_paper:
+    label: From paper
+    type: factor
+    description: Whether the value was taken directly from the paper.
+    levels:
+      - value: "yes"
+        description: Reported in the paper (or its supplement).
+      - value: "no"
+        description: Calculated from other reported values, e.g. failures as n minus successes.
+      - value: approx.
+        description: >-
+          Estimated, e.g. a per-condition n from splitting the total equally,
+          or a value read from a figure. Explain how in statistic_notes.
+
+  statistic_notes:
+    label: Notes
+    type: string
+    description: Remarks about the statistic, e.g. where it comes from or how it was calculated.
+
+  # Effects --------------------------------------------------------------------
+
+  intervention_condition:
+    label: Intervention condition
+    type: integer
+    required: true
+    description: The intervention condition of the comparison.
+
+  intervention_time_1:
+    label: Intervention time
+    type: integer
+    required: true
+    description: The measurement point of the intervention group's statistics.
+
+  intervention_time_2:
+    label: Intervention baseline time
+    type: integer
+    description: >-
+      For difference-in-differences: the measurement point of the intervention
+      group's second statistics group (intervention_statistics_2).
+
+  intervention_label:
+    label: Intervention
+    type: string
+    description: The condition_label of the intervention condition.
+
+  intervention_sample:
+    label: Intervention sample
+    type: integer
+    description: The sample of the intervention group.
+
+  control_condition:
+    label: Control condition
+    type: integer
+    required: true
+    description: The control condition of the comparison.
+
+  control_time_1:
+    label: Control time
+    type: integer
+    required: true
+    description: The measurement point of the control group's statistics.
+
+  control_time_2:
+    label: Control baseline time
+    type: integer
+    description: >-
+      For difference-in-differences: the measurement point of the control
+      group's second statistics group (control_statistics_2).
+
+  control_label:
+    label: Control
+    type: string
+    description: The condition_label of the control condition.
+
+  control_sample:
+    label: Control sample
+    type: integer
+    description: The sample of the control group.
+
+  effect:
+    label: Effect
+    type: integer
+    required: true
+    min: 1
+    description: A number that identifies the effect. Numbered across the paper.
+
+  intervention_statistics_1:
+    label: Intervention statistics
+    type: integer
+    required: true
+    description: >-
+      The statistics group of the intervention side of the comparison. Also
+      needed for effects reported directly by the paper; the group can then
+      hold just n.
+
+  intervention_statistics_2:
+    label: Intervention statistics (2)
+    type: integer
+    description: >-
+      For difference-in-differences: the intervention group's statistics at
+      the other measurement point.
+
+  control_statistics_1:
+    label: Control statistics
+    type: integer
+    required: true
+    description: >-
+      The statistics group of the control side of the comparison. Also needed
+      for effects reported directly by the paper; the group can then hold
+      just n.
+
+  control_statistics_2:
+    label: Control statistics (2)
+    type: integer
+    description: >-
+      For difference-in-differences: the control group's statistics at the
+      other measurement point.
+
+  effect_size_name:
+    label: Effect size type
+    type: factor
+    required: true
+    description: >-
+      The kind of effect size. Only OR2DL, SMCC, SMD, and g are included in
+      the meta-analysis; the others are kept for reference.
+    levels:
+      - value: SMD
+        description: Standardized mean difference (Hedges' g), calculated from means and SDs.
+      - value: OR2DL
+        description: Log odds ratio converted to a standardized mean difference (√3/π), calculated from counts.
+      - value: SMCC
+        description: >-
+          Standardized mean change for the same participants measured twice,
+          using the pre-post correlation (effect_r).
+      - value: g
+        description: Hedges' g reported or converted from another effect size.
+      - value: d
+        description: Cohen's d as reported by the paper.
+      - value: OR
+        description: Odds ratio as reported by the paper.
+      - value: IRR
+        description: Incidence rate ratio as reported by the paper.
+      - value: eta squared
+        description: Eta squared as reported by the paper.
+      - value: partial eta squared
+        description: Partial eta squared as reported by the paper.
+
+  effect_r:
+    label: Pre-post correlation
+    type: number
+    min: -1
+    max: 1
+    description: >-
+      The correlation between the two measurements of the same participants,
+      used for SMCC effects.
+
+  effect_size:
+    label: Effect size
+    type: number
+    description: >-
+      The effect size. Positive means the intervention group's raw value is
+      higher than the control group's, regardless of outcome_expectation.
+    app_description: >-
+      The effect size. Positive means the outcome changed in the direction the
+      intervention intended (e.g. less meat consumption, or more vegetarian
+      choices).
+
+  effect_size_lower:
+    label: Lower bound
+    type: number
+    description: The lower bound of the effect size's 95% confidence interval.
+
+  effect_size_upper:
+    label: Upper bound
+    type: number
+    description: The upper bound of the effect size's 95% confidence interval.
+
+  effect_size_var:
+    label: Effect variance
+    type: number
+    min: 0
+    description: The sampling variance of the effect size.
+
+  effect_size_se:
+    label: Standard error
+    type: number
+    min: 0
+    description: The standard error of the effect size, the square root of effect_size_var.
+
+  effect_analysis:
+    label: Analysis
+    type: factor
+    description: The statistical test the effect is based on.
+    levels:
+      - "Welch's t-test"
+      - "One-sample t-test"
+      - "Paired-sample t-test"
+      - "ANOVA"
+      - "ANCOVA"
+      - "MANCOVA"
+      - "Planned contrast"
+      - "Pearson's chi-squared test"
+      - "Fisher's exact test"
+      - "Logistic regression"
+      - "Mixed regression model"
+      - "Meta-analytic estimate"
+
+  effect_statistic_name:
+    label: Test statistic
+    type: factor
+    description: The name of the test statistic.
+    levels: ["t", "F", "chi-squared", "z"]
+
+  effect_statistic_value:
+    label: Test statistic value
+    type: number
+    description: The value of the test statistic.
+
+  effect_df:
+    label: df
+    type: number
+    min: 0
+    description: The degrees of freedom of the test.
+
+  effect_df_num:
+    label: df (numerator)
+    type: number
+    min: 0
+    description: The numerator degrees of freedom of an F test.
+
+  effect_df_den:
+    label: df (denominator)
+    type: number
+    min: 0
+    description: The denominator degrees of freedom of an F test.
+
+  effect_p:
+    label: p
+    type: string
+    description: >-
+      The p-value of the test. When effect_from_paper is "yes", as reported,
+      including thresholds like "<0.001". When we calculated the effect, the
+      exact p.
+
+  effect_from_paper:
+    label: From paper
+    type: factor
+    required: true
+    description: Whether the effect size was taken directly from the paper.
+    levels: ["yes", "no"]
+
+  effect_covariates:
+    label: Covariates
+    type: string
+    description: The covariates the effect was adjusted for, if any.
+
+  effect_exclude:
+    label: Exclude
+    type: factor
+    required: true
+    description: Whether the effect is left out of the meta-analysis.
+    levels:
+      - value: "yes"
+        description: Left out; effect_notes says why.
+      - value: "no"
+        description: Included in the meta-analysis.
+      - value: maybe
+        description: Not decided yet. Papers with status "included" shouldn't have these.
+    notes: >-
+      A comparison can have several rows, e.g. a reported odds ratio and the
+      g converted from it. Exactly one of them has "no".
+
+  effect_notes:
+    label: Notes
+    type: string
+    description: >-
+      Remarks about the effect, e.g. how it was calculated or why it's
+      excluded.
+
+  # Derived (website only) -----------------------------------------------------
+
+  paper_study:
+    label: Paper-study
+    type: string
+    derived: true
+    description: The paper and study numbers combined, e.g. "12 - 2"; identifies a study across papers.
+
+  intervention_description:
+    label: Intervention
+    type: string
+    derived: true
+    description: The condition_description of the intervention condition.
+
+  control_description:
+    label: Control
+    type: string
+    derived: true
+    description: The condition_description of the control condition.
+
+  intervention_mechanism_multicomponent:
+    label: Multiple mechanisms
+    type: factor
+    derived: true
+    description: Whether the intervention targets more than one mechanism.
+    levels: ["yes", "no"]
+
+  intervention_medium_multicomponent:
+    label: Multiple media
+    type: factor
+    derived: true
+    description: Whether the intervention uses more than one medium.
+    levels: ["yes", "no"]
+
+  intervention_sample_n:
+    label: Sample size (intervention sample)
+    type: integer
+    derived: true
+    description: >-
+      The sample_n of the intervention group's sample. Can differ from
+      effect_intervention_n, e.g. because of missing data on the outcome.
+
+  intervention_sample_description:
+    label: Intervention sample
+    type: string
+    derived: true
+    description: The sample_description of the intervention group's sample.
+
+  control_sample_n:
+    label: Sample size (control sample)
+    type: integer
+    derived: true
+    description: >-
+      The sample_n of the control group's sample. Can differ from
+      effect_control_n, e.g. because of missing data on the outcome.
+
+  control_sample_description:
+    label: Control sample
+    type: string
+    derived: true
+    description: The sample_description of the control group's sample.
+
+  intervention_key:
+    label: Intervention key
+    type: string
+    derived: true
+    description: >-
+      Identifies the intervention group (condition, sample, and measurement
+      points), used to model effects that share a group.
+
+  control_key:
+    label: Control key
+    type: string
+    derived: true
+    description: >-
+      Identifies the control group (condition, sample, and measurement
+      points), used to model effects that share a control group. Empty for
+      single-group (SMCC) effects.
+
+  effect_intervention_n:
+    label: Sample size (intervention)
+    type: integer
+    derived: true
+    description: The n in the intervention group's statistics for this effect.
+
+  effect_control_n:
+    label: Sample size (control)
+    type: integer
+    derived: true
+    description: The n in the control group's statistics for this effect.
+
+  has_mechanism:
+    label: Has mechanism
+    type: integer
+    derived: true
+    pattern: "^has_mechanism_"
+    description: >-
+      One column per intervention mechanism, e.g. has_mechanism_info_health:
+      1 when the intervention targets that mechanism, otherwise 0.
+
+  has_medium:
+    label: Has medium
+    type: integer
+    derived: true
+    pattern: "^has_medium_"
+    description: >-
+      One column per intervention medium, e.g. has_medium_video: 1 when the
+      intervention uses that medium, otherwise 0.

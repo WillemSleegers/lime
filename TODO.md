@@ -1,5 +1,10 @@
 # TODO
 
+## Important
+
+- [ ] **Methodology section 2.1 is out of sync with the Study-level columns** — It describes study design variables the sheet doesn't hold yet: cluster label, cluster number, a three-level assignment process (random / non-random researcher-assigned / self-selection), data tracking, and study RCT. The sheet has draft columns for a new scheme (`study_condition_assignment_unit`, `_process`, `_structure`, `study_cluster_label`, `study_cluster_k`, `study_measurement_unit`, `study_data_tracking`, `study_pseudoreplication_risk`, `study_crossover_contamination_risk`, `study_rct`), but they're empty or copies of the current columns. Settle the scheme, then bring the methodology, the draft entries in `codebook.yaml`, and the app's study filters in line with it.
+- [ ] When creating the data from the R script, go back to selecting effects with the shortest time point from intervention to outcome, rather than the longest. The idea is that this makes the effects more comparable. Or, alternatively, include all effects but add a filter on the website so users can select what they want, like minimum days since intervention. The main challenge is that our model does not support multiple effects that only differ in their time point, so we need to make sure each outcome only includes one time point
+
 ## Code Quality
 
 - [ ] **Resolve remaining lint warnings** — 5 warnings surfaced by `pnpm lint`, none currently blocking:
@@ -36,6 +41,11 @@
   - Verify study design classifications
   - Review sample type categorizations
   - Suggest alternative or additional coding schemes where current ones may be inadequate
+
+### Reviews tab ("Meta-reviews & reviews")
+
+- [ ] **What does the tab's `status` column mean?** Lohmann et al. (2026) is "unscreened" there, but 19 papers in Paper-level (1102 onwards) already list it in `paper_in_paper`. Decide whether "unscreened" means the review or the papers taken from it, and update the status if needed.
+- [ ] **Meta-reviews in `paper_in_paper`?** Grundy et al. (2022) and Onwezen & Dagevos (2024) are "included" but aren't `paper_in_paper` levels in `codebook.yaml`, presumably because they led to reviews rather than papers. Confirm, so `validate.r` can check the tab's included reviews against the codebook.
 
 ### Areas to Focus On
 
