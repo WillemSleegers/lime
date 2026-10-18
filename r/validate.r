@@ -605,12 +605,13 @@ check_duplicates(conditions, paper, study, condition_label) |>
   select(.row, paper, paper_label, study, condition, condition_label)
 
 # Find interventions without a number of interventions, components,
-# mechanism, or medium
+# duration, mechanism, or medium
 conditions |>
   filter(
     condition_category == "intervention",
     is.na(intervention_count) |
       is.na(intervention_multicomponent) |
+      is.na(intervention_duration) |
       is.na(intervention_mechanism) |
       is.na(intervention_medium)
   ) |>
@@ -622,6 +623,7 @@ conditions |>
     condition,
     intervention_count,
     intervention_multicomponent,
+    intervention_duration,
     intervention_mechanism,
     intervention_medium
   )
