@@ -11,6 +11,14 @@ btw_mcp_session()
 
 # Validation functions ----------------------------------------------------
 
+# Turn cell values into text, since a column can mix numbers and text
+as_text <- function(x) {
+  if (is.list(x)) {
+    x <- map_chr(x, \(v) if (length(v) == 0) NA_character_ else as.character(v))
+  }
+  na_if(str_trim(as.character(x)), "")
+}
+
 # Find duplicates: rows with the same values in the given columns, e.g. two
 # studies with the same paper and study number. With na.rm = TRUE, empty
 # values don't count as duplicates of each other.
@@ -330,14 +338,6 @@ inner_join(
     rank(position_sheet) != rank(position_codebook),
     .by = sheet
   )
-
-# Turn cell values into text, since a column can mix numbers and text
-as_text <- function(x) {
-  if (is.list(x)) {
-    x <- map_chr(x, \(v) if (length(v) == 0) NA_character_ else as.character(v))
-  }
-  na_if(str_trim(as.character(x)), "")
-}
 
 # Put every hand-entered cell of every sheet in one table, next to the
 # codebook rules for its column, so each check below can look at all sheets at
@@ -729,21 +729,78 @@ outcomes |>
 
 check_duplicates(samples, paper, study, sample)
 
+# Find samples of a study that isn't in Study-level
+check_orphans(samples, studies, by = c("paper", "study")) |>
+  select(.row, paper, paper_label, study, sample)
+
+# Find studies without a "(total)" sample
 check_orphans(
-  distinct(studies, paper, study),
+  distinct(studies, paper, paper_label, study),
   filter(samples, str_starts(sample_label, "\\(total\\)")),
   by = c("paper", "study")
 )
 
-check_duplicates(
-  filter(samples, str_starts(sample_label, "\\(total\\)")),
-  paper,
-  study
-)
+# Find studies whose samples aren't numbered 1, 2, 3, ...
+check_sequence(samples, sample, paper, study) |>
+  select(.row, paper, paper_label, study, sample, sample_label)
 
-check_sequence(samples, sample, paper, study)
+# Find samples with the same label in a study, e.g. two "(total)" samples
+# where one should be "(total) - follow-up"
+check_duplicates(samples, paper, study, sample_label) |>
+  select(.row, paper, paper_label, study, sample, sample_label)
 
-check_missing(samples)
+# Read ages and gender percentages as numbers. Text like "60+" can't be
+# compared and is already reported by the codebook checks.
+samples_numbers <- samples |>
+  mutate(
+    across(
+      c(starts_with("sample_age"), starts_with("sample_gender")),
+      \(x) suppressWarnings(as.numeric(as_text(x)))
+    )
+  )
+
+# Find ages where the minimum is above the mean or the maximum, or the mean
+# above the maximum
+samples_numbers |>
+  filter(
+    sample_age_min > sample_age_max |
+      sample_age_mean < sample_age_min |
+      sample_age_mean > sample_age_max
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    sample,
+    sample_age_mean,
+    sample_age_min,
+    sample_age_max
+  )
+
+# Find samples whose gender percentages add up to more than 100, or whose
+# gender counts add up to more than sample_n. Rounding can add up to 1.
+samples_numbers |>
+  mutate(
+    gender_pct = rowSums(
+      pick(sample_gender_f_pct, sample_gender_m_pct, sample_gender_other_pct),
+      na.rm = TRUE
+    ),
+    gender_n = rowSums(
+      pick(sample_gender_f_n, sample_gender_m_n, sample_gender_other_n),
+      na.rm = TRUE
+    )
+  ) |>
+  filter(gender_pct > 101 | gender_n > sample_n + 1) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    sample,
+    sample_n,
+    starts_with("sample_gender"),
+    gender_pct,
+    gender_n
+  )
 
 # Validation: Statistics-level -------------------------------------------
 
