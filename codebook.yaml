@@ -13,7 +13,7 @@
 # columns: one entry per column name; a name means the same thing on every tab
 #   label:        short display name, used by the app
 #   type:         integer | number | string | url | factor
-#   description:  what the column holds
+#   description:  a plain-language definition of the column
 #   levels:       allowed values of a factor, in display order. Each is a
 #                 string, or a map with value, and optionally label,
 #                 description, notes, and requires (see below)
