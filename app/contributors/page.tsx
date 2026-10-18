@@ -22,7 +22,7 @@ const Contributors = () => {
             />
             <span className="block font-semibold">Dr. Willem Sleegers</span>
             <span className="block">
-              Senior Behavioral Scientist at Rethink Priorities{" "}
+              Research Affiliation at Tilburg University{" "}
             </span>
             <Link
               className="block"
