@@ -1005,19 +1005,17 @@ columns:
   intervention_multicomponent:
     label: Intervention components
     type: factor
-    description: >-
-      Whether the intervention combines several qualitatively different
-      interventions.
+    description: Whether the intervention is based on more than one mechanism.
     levels:
       - value: "no"
         label: Single-component
-        description: Intervention uses one strategy or content focus
+        description: Intervention is based on one mechanism
       - value: "yes"
         label: Multicomponent
-        description: Intervention combines multiple strategies or content areas
+        description: Intervention is based on several mechanisms
     notes: >-
-      "yes" when the intervention has more than one mechanism
-      (intervention_mechanism), "no" when it has one.
+      Follows intervention_mechanism: "yes" when it lists more than one
+      mechanism, "no" when it lists one.
 
   intervention_duration:
     label: Duration (days)
