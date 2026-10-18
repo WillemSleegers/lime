@@ -102,15 +102,6 @@ check_sequence <- function(data, sequence_col, ..., skip_zero = FALSE) {
     ungroup()
 }
 
-# Count missing values: the number of empty cells in each column
-check_missing <- function(data) {
-  data |>
-    summarise(across(everything(), ~ sum(is.na(.x)))) |>
-    pivot_longer(everything(), names_to = "column", values_to = "n_missing") |>
-    filter(n_missing > 0) |>
-    arrange(desc(n_missing))
-}
-
 # Find effects with the wrong sign: effects whose sign doesn't match the data,
 # e.g. a positive effect size while the intervention's mean is lower than the
 # control's
@@ -139,7 +130,7 @@ check_effect_direction <- function(effects, statistics, outcomes) {
   effects |>
     filter(is.na(intervention_statistics_2)) |>
     left_join(
-      select(outcomes, paper, study, outcome, outcome_expectation),
+      distinct(outcomes, paper, study, outcome, outcome_expectation),
       by = c("paper", "study", "outcome")
     ) |>
     left_join(
@@ -960,19 +951,88 @@ statistics |>
 
 # Validation: Effects-level ----------------------------------------------
 
-check_duplicates(
-  effects,
-  paper,
-  study,
-  outcome,
-  intervention_condition,
-  intervention_time_1,
-  intervention_time_2,
-  control_condition,
-  control_time_1,
-  control_time_2,
-  effect
-)
+check_duplicates(effects, paper, effect) |>
+  select(.row, paper, paper_label, effect)
+
+# Find papers whose effects aren't numbered 1, 2, 3, ...
+effects |>
+  distinct(paper, paper_label, effect) |>
+  check_sequence(effect, paper)
+
+# Find effects that refer to a statistics group that isn't in
+# Statistics-level
+effects |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    effect,
+    intervention_statistics_1,
+    intervention_statistics_2,
+    control_statistics_1,
+    control_statistics_2
+  ) |>
+  pivot_longer(
+    -c(.row, paper, paper_label, effect),
+    names_to = "column",
+    values_to = "statistics",
+    values_drop_na = TRUE
+  ) |>
+  check_orphans(statistics, by = c("paper", "statistics"))
+
+# Find effects whose study, outcome, conditions, times, or samples differ from
+# those of their statistics groups (intervention_statistics_1 and
+# control_statistics_1), e.g. because a lookup formula was typed over
+statistics_groups <- statistics |>
+  distinct(paper, statistics, study, outcome, time_1, condition, sample)
+
+effects |>
+  left_join(
+    rename_with(statistics_groups, \(x) paste0(x, "_i"), -paper),
+    by = c("paper", "intervention_statistics_1" = "statistics_i")
+  ) |>
+  left_join(
+    rename_with(statistics_groups, \(x) paste0(x, "_c"), -paper),
+    by = c("paper", "control_statistics_1" = "statistics_c")
+  ) |>
+  filter(
+    study != study_i |
+      study != study_c |
+      outcome != outcome_i |
+      outcome != outcome_c |
+      intervention_condition != condition_i |
+      intervention_time_1 != time_1_i |
+      intervention_sample != sample_i |
+      control_condition != condition_c |
+      control_time_1 != time_1_c |
+      control_sample != sample_c
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    effect,
+    intervention_statistics_1,
+    control_statistics_1,
+    study,
+    study_i,
+    study_c,
+    outcome,
+    outcome_i,
+    outcome_c,
+    intervention_condition,
+    condition_i,
+    control_condition,
+    condition_c,
+    intervention_time_1,
+    time_1_i,
+    control_time_1,
+    time_1_c,
+    intervention_sample,
+    sample_i,
+    control_sample,
+    sample_c
+  )
 
 # Find comparisons with more than one effect that goes into the meta-analysis
 # (e.g. a reported test and a recalculated effect, or an original d and a
@@ -1001,6 +1061,7 @@ effects |>
     !(effect_size_name %in% "SMCC" & is.na(effect_r))
   ) |>
   select(
+    .row,
     paper,
     paper_label,
     effect,
@@ -1009,26 +1070,47 @@ effects |>
     control_statistics_1
   )
 
-check_orphans(
-  effects |>
-    filter(effect_exclude == "no") |>
-    select(paper, study, outcome, intervention_time_1),
-  select(outcomes, paper, study, outcome, intervention_time_1 = time),
-  by = c("paper", "study", "outcome", "intervention_time_1")
-)
-check_orphans(
-  effects |>
-    filter(effect_exclude == "no") |>
-    select(paper, study, intervention_condition),
-  conditions |>
-    filter(condition_category == "intervention") |>
-    select(paper, study, condition),
-  by = c("paper", "study", "intervention_condition" = "condition")
-)
+# Find effects in the meta-analysis whose intervention side isn't an
+# intervention condition
+effects |>
+  filter(effect_exclude == "no") |>
+  check_orphans(
+    filter(conditions, condition_category == "intervention"),
+    by = c("paper", "study", "intervention_condition" = "condition")
+  ) |>
+  select(.row, paper, paper_label, effect, intervention_condition)
 
-check_sequence(effects, effect, paper, study, outcome)
+# Find effects in the meta-analysis of a kind it doesn't use: only OR2DL,
+# SMCC, SMD, and g are pooled
+effects |>
+  filter(
+    effect_exclude == "no",
+    !effect_size_name %in% c("OR2DL", "SMCC", "SMD", "g")
+  ) |>
+  select(.row, paper, paper_label, effect, effect_size_name)
 
-check_missing(effects)
+# Find excluded effects without a note that says why
+effects |>
+  filter(effect_exclude == "yes", is.na(effect_notes)) |>
+  select(.row, paper, paper_label, effect, effect_size_name)
+
+# Find effect sizes outside their confidence interval, or intervals whose
+# lower bound is above the upper bound
+effects |>
+  filter(
+    effect_size < effect_size_lower |
+      effect_size > effect_size_upper |
+      effect_size_lower > effect_size_upper
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    effect,
+    effect_size,
+    effect_size_lower,
+    effect_size_upper
+  )
 
 # Find effects that don't reproduce: effect sizes or variances that differ
 # from a recalculation from the statistics with r/effect-functions.r. Effects
@@ -1085,28 +1167,23 @@ check_effect_direction(effects, statistics, outcomes)
 # intervention or the control group
 n_statistics <- statistics |>
   filter(statistic_name == "n") |>
-  select(paper, study, outcome, statistics)
+  distinct(paper, statistics)
 
-check_orphans(
-  effects |>
-    filter(effect_exclude == "no") |>
-    select(paper, study, outcome, intervention_statistics_1),
-  n_statistics,
-  by = c(
-    "paper",
-    "study",
-    "outcome",
-    "intervention_statistics_1" = "statistics"
-  )
-)
+effects |>
+  filter(effect_exclude == "no") |>
+  check_orphans(
+    n_statistics,
+    by = c("paper", "intervention_statistics_1" = "statistics")
+  ) |>
+  select(.row, paper, paper_label, effect, intervention_statistics_1)
 
-check_orphans(
-  effects |>
-    filter(effect_exclude == "no") |>
-    select(paper, study, outcome, control_statistics_1),
-  n_statistics,
-  by = c("paper", "study", "outcome", "control_statistics_1" = "statistics")
-)
+effects |>
+  filter(effect_exclude == "no") |>
+  check_orphans(
+    n_statistics,
+    by = c("paper", "control_statistics_1" = "statistics")
+  ) |>
+  select(.row, paper, paper_label, effect, control_statistics_1)
 
 # Validation: Paper status -----------------------------------------------
 
@@ -1117,8 +1194,10 @@ effects_kept <- effects |>
 
 # Find included papers that aren't coded all the way down
 check_status_missing_rows(papers, studies, "included")
+check_status_missing_rows(papers, samples, "included")
 check_status_missing_rows(papers, conditions, "included")
 check_status_missing_rows(papers, outcomes, "included")
+check_status_missing_rows(papers, statistics, "included")
 check_status_missing_rows(papers, effects_kept, "included")
 
 # Find included papers whose coding isn't finished: effects still undecided
