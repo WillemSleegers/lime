@@ -7,7 +7,7 @@ description: Calculate effect sizes, variances, and test statistics for LIME pap
 
 Read `.claude/skills/lime-context.md` first.
 
-All calculations live in `r/calculate-effects.r`. Use it; don't write one-off conversion code. If a new kind of calculation is needed, add a function there and discuss it with the user first.
+All calculations live in `r/effect-functions.r`; `r/calculate-effects.r` runs them. Use them; don't write one-off conversion code. If a new kind of calculation is needed, add a function to `r/effect-functions.r` and discuss it with the user first. `r/validate.r` uses the same functions to check that the sheet's effects reproduce.
 
 ## Supported calculations
 

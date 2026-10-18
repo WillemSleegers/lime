@@ -9,7 +9,8 @@ Read this before running any LIME data skill.
 - Paper PDFs: `/Users/willem/Google Drive/Projects/Meata-analysis/Papers/Paperbank`, named `<paper> - <paper_label>.pdf` (e.g. `10 - Carfora et al. (2017b).pdf`). Some papers are a folder `<paper> - <paper_label>/` instead, holding the PDF plus supplements (.docx: convert with `textutil -convert txt`), raw data, notes, and an R script used to extract statistics. Check it before concluding something isn't reported.
 - R scripts:
   - `r/validate.r`: data checks
-  - `r/calculate-effects.r`: all effect size calculations and conversions
+  - `r/effect-functions.r`: all effect size calculations and conversions (sourced by the two scripts below)
+  - `r/calculate-effects.r`: runs them for papers and writes paste-ready effects
   - `r/meta-analysis.r`: builds the app's JSON in `assets/data/` and fits the model
 - App codebook: `assets/data/codebook.json`
 - Paste-ready output: `r/output/` (git-ignored)
@@ -21,17 +22,16 @@ Read this before running any LIME data skill.
 - Write non-trivial R to a file in the scratchpad and run it; inline `Rscript -e '...'` breaks on quoting (`\(x)` lambdas, regex escapes).
 - The user's live R session (btw MCP) is read-only: it can only inspect objects they've loaded, not run code.
 - Load sheets with `read_sheet(..., na = c("", "-"))`. Filter out rows with `is.na(paper)`: the sheets have trailing empty rows whose formulas show `#REF!` / `#N/A`.
-- To use functions from `r/calculate-effects.r` without running its "Run" section, evaluate only the expressions before `gs4_auth`:
+- To use the effect size functions, `source("r/effect-functions.r")`.
+- To test `r/meta-analysis.r` without `btw_mcp_session()` or `write_json()`, parse it and evaluate only the expressions you need:
   ```r
-  exprs <- parse("r/calculate-effects.r")
-  stop_at <- which(vapply(exprs, function(e) grepl("^gs4_auth", deparse(e)[1]), logical(1)))
-  for (e in exprs[seq_len(stop_at - 1)]) eval(e, globalenv())
+  exprs <- parse("r/meta-analysis.r")
+  for (e in exprs[...]) eval(e, globalenv())
   ```
-  The same trick works for testing `r/meta-analysis.r` without `btw_mcp_session()` or `write_json()`.
 
 ## Paper-specific scripts
 
-When a paper needs a calculation that `r/calculate-effects.r` can't do from sheet statistics (typically raw data), write `<paper> - <paper_label>.r` in the paper's Paperbank folder, next to the data (named `<paper> - <paper_label> - <original name>`). Turn a single PDF into a folder first. Follow the existing scripts' sections (Setup, Data import, Data preparation, Data analysis), run it from that folder, and name the script in `effect_notes`. Example: paper 70 (paired variance for a binary difference-in-differences).
+When a paper needs a calculation that `r/effect-functions.r` can't do from sheet statistics (typically raw data), write `<paper> - <paper_label>.r` in the paper's Paperbank folder, next to the data (named `<paper> - <paper_label> - <original name>`). Turn a single PDF into a folder first. Follow the existing scripts' sections (Setup, Data import, Data preparation, Data analysis), run it from that folder, and name the script in `effect_notes`. Example: paper 70 (paired variance for a binary difference-in-differences).
 
 Judgment calls on how to calculate effects are listed in `check-paper/SKILL.md` and publicly in section 3 of `app/methodology/methodology.md`.
 

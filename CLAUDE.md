@@ -21,7 +21,7 @@ The JSON in `assets/data/` is generated from the Google Sheet by `r/meta-analysi
 
 - **Data explorer locking**: filtering one level can constrain the others via `semiJoin` in `lib/json-functions.ts`, coordinated by `hooks/use-data-explorer-state.ts`.
 - **WebR** needs cross-origin isolation headers, set per route in `next.config.ts`. A new page that runs WebR needs them too.
-- **Methodology and FAQ** text lives in Markdown next to the page (`app/*/*.md`). The methodology describes how effects are calculated, so keep it in sync with `r/calculate-effects.r`.
+- **Methodology and FAQ** text lives in Markdown next to the page (`app/*/*.md`). The methodology describes how effects are calculated, so keep it in sync with `r/effect-functions.r`.
 
 ## CSS and styling
 
