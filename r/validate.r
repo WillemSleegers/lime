@@ -5,10 +5,15 @@ library(googlesheets4)
 library(yaml)
 library(btw)
 
+source("r/effect-functions.r")
+
 btw_mcp_session()
 
 # Validation functions ----------------------------------------------------
 
+# Find duplicates: rows with the same values in the given columns, e.g. two
+# studies with the same paper and study number. With na.rm = TRUE, empty
+# values don't count as duplicates of each other.
 check_duplicates <- function(data, ..., na.rm = FALSE) {
   if (na.rm) {
     data <- filter(data, !if_any(c(...), is.na))
@@ -20,6 +25,9 @@ check_duplicates <- function(data, ..., na.rm = FALSE) {
     arrange(...)
 }
 
+# Find values shared across groups: values of one column that appear under
+# different values of another, e.g. the same data link in different papers.
+# With na.rm = TRUE, empty values are left out.
 check_duplicates_across <- function(data, column, across, na.rm = FALSE) {
   if (na.rm) {
     data <- filter(data, !is.na({{ column }}))
@@ -31,34 +39,23 @@ check_duplicates_across <- function(data, column, across, na.rm = FALSE) {
     arrange({{ column }})
 }
 
+# Find missing values that a condition requires: rows where a column should
+# be filled but is empty, e.g. a study that was preregistered but has no
+# preregistration link
 check_conditional_required <- function(data, condition, required) {
   data |>
     filter({{ condition }}, is.na({{ required }}))
 }
 
-check_formula_errors <- function(spreadsheet, sheet) {
-  cells <- googlesheets4::range_read_cells(
-    spreadsheet,
-    sheet = sheet,
-    cell_data = "full"
-  )
-  cells |>
-    mutate(
-      error_type = map_chr(
-        cell,
-        \(x) x$effectiveValue$errorValue$type %||% NA_character_
-      )
-    ) |>
-    filter(!is.na(error_type)) |>
-    select(loc, row, col, error_type)
-}
-
+# Find orphans: rows of data with no matching row in ref, e.g. studies of a
+# paper that isn't in Paper-level
 check_orphans <- function(data, ref, by) {
   data |>
     anti_join(ref, by = by)
 }
 
-# Papers with a given status that have no matching rows in a lower-level sheet
+# Find papers that should be coded further: papers with a given status that
+# have no rows in a lower-level sheet, e.g. an included paper without studies
 check_status_missing_rows <- function(papers, ref, status) {
   papers |>
     filter(paper_status %in% status) |>
@@ -66,7 +63,9 @@ check_status_missing_rows <- function(papers, ref, status) {
     check_orphans(distinct(ref, paper), by = "paper")
 }
 
-# Rows in a lower-level sheet that a paper's status says should not be there
+# Find rows that a paper's status rules out: rows in a lower-level sheet of
+# papers with a given status, optionally only those that meet a condition,
+# e.g. effects of an excluded paper
 check_status_unexpected_rows <- function(
   data,
   papers,
@@ -79,6 +78,9 @@ check_status_unexpected_rows <- function(
     relocate(paper, paper_label, paper_status)
 }
 
+# Find gaps in numbering: groups whose numbers don't run 1, 2, 3, ..., e.g.
+# conditions 1, 2, 4 in a study. With skip_zero = TRUE, negative numbers
+# (baseline measurements) come first and there's no 0: -1, 1, 2, ...
 check_sequence <- function(data, sequence_col, ..., skip_zero = FALSE) {
   data |>
     group_by(...) |>
@@ -92,6 +94,7 @@ check_sequence <- function(data, sequence_col, ..., skip_zero = FALSE) {
     ungroup()
 }
 
+# Count missing values: the number of empty cells in each column
 check_missing <- function(data) {
   data |>
     summarise(across(everything(), ~ sum(is.na(.x)))) |>
@@ -100,97 +103,14 @@ check_missing <- function(data) {
     arrange(desc(n_missing))
 }
 
-check_smd <- function(effects, statistics, tolerance = 0.001) {
-  stats_wide <- statistics |>
-    filter(statistic_name %in% c("M", "SD", "n")) |>
-    pivot_wider(
-      id_cols = c(paper, study, outcome, sample, statistics),
-      names_from = statistic_name,
-      values_from = statistic_value
-    )
-
-  # Difference-in-differences SMDs (with _2 groups) aren't _1 vs _1 comparisons
-  data <- effects |>
-    filter(effect_size_name == "SMD", is.na(intervention_statistics_2)) |>
-    left_join(
-      select(
-        stats_wide,
-        paper,
-        study,
-        outcome,
-        statistics,
-        m1i = M,
-        sd1i = SD,
-        n1i = n
-      ),
-      by = c(
-        "paper",
-        "study",
-        "outcome",
-        "intervention_statistics_1" = "statistics"
-      )
-    ) |>
-    left_join(
-      select(
-        stats_wide,
-        paper,
-        study,
-        outcome,
-        statistics,
-        m2i = M,
-        sd2i = SD,
-        n2i = n
-      ),
-      by = c("paper", "study", "outcome", "control_statistics_1" = "statistics")
-    ) |>
-    filter(
-      !is.na(m1i),
-      !is.na(sd1i),
-      !is.na(n1i),
-      !is.na(m2i),
-      !is.na(sd2i),
-      !is.na(n2i)
-    )
-
-  recalculated <- metafor::escalc(
-    measure = "SMD",
-    m1i = data$m1i,
-    sd1i = data$sd1i,
-    n1i = data$n1i,
-    m2i = data$m2i,
-    sd2i = data$sd2i,
-    n2i = data$n2i
-  )
-
-  data |>
-    mutate(
-      effect_size_recalculated = recalculated$yi,
-      effect_size_var_recalculated = recalculated$vi
-    ) |>
-    filter(
-      abs(effect_size - effect_size_recalculated) > tolerance |
-        abs(effect_size_var - effect_size_var_recalculated) > tolerance
-    ) |>
-    select(
-      paper,
-      paper_label,
-      study,
-      outcome,
-      effect,
-      effect_size,
-      effect_size_recalculated,
-      effect_size_var,
-      effect_size_var_recalculated
-    )
-}
-
+# Find effects with the wrong sign: effects whose sign doesn't match the data,
+# e.g. a positive effect size while the intervention's mean is lower than the
+# control's
 check_effect_direction <- function(effects, statistics, outcomes) {
-  # effect_size is stored unflipped, i.e. positive means the intervention's
-  # raw descriptive value (M, or percentage for successes/failures-based
-  # effects like OR2DL) is higher than the control's (the convention used by
-  # escalc in check_smd/check_or2dl). Flipping by outcome_expectation happens
-  # later, in meta-analysis.r. M is preferred over percentage when both are
-  # present for a statistics group.
+  # In the sheet, a positive effect size means the intervention's mean (or
+  # percentage, for effects like OR2DL) is higher than the control's;
+  # meta-analysis.r flips it by outcome_expectation later. Groups with both a
+  # mean and a percentage are compared on the mean.
   raw_stats <- statistics |>
     filter(statistic_name %in% c("M", "percentage")) |>
     mutate(priority = if_else(statistic_name == "M", 1L, 2L)) |>
@@ -206,7 +126,8 @@ check_effect_direction <- function(effects, statistics, outcomes) {
       value = statistic_value
     )
 
-  # Difference-in-differences effects don't follow the sign of _1 vs _1
+  # Leave out difference-in-differences effects, which compare more than two
+  # groups
   effects |>
     filter(is.na(intervention_statistics_2)) |>
     left_join(
@@ -270,92 +191,21 @@ check_effect_direction <- function(effects, statistics, outcomes) {
     )
 }
 
-check_or2dl <- function(effects, statistics, tolerance = 0.001) {
-  stats_wide <- statistics |>
-    filter(statistic_name %in% c("successes", "failures")) |>
-    pivot_wider(
-      id_cols = c(paper, study, outcome, sample, statistics),
-      names_from = statistic_name,
-      values_from = statistic_value,
-      values_fn = \(x) if (length(x) == 1) x else NA_real_
-    )
-
-  data <- effects |>
-    filter(effect_size_name == "OR2DL") |>
-    left_join(
-      select(
-        stats_wide,
-        paper,
-        study,
-        outcome,
-        statistics,
-        ai = successes,
-        bi = failures
-      ),
-      by = c(
-        "paper",
-        "study",
-        "outcome",
-        "intervention_statistics_1" = "statistics"
-      )
-    ) |>
-    left_join(
-      select(
-        stats_wide,
-        paper,
-        study,
-        outcome,
-        statistics,
-        ci = successes,
-        di = failures
-      ),
-      by = c("paper", "study", "outcome", "control_statistics_1" = "statistics")
-    ) |>
-    filter(!is.na(ai), !is.na(bi), !is.na(ci), !is.na(di))
-
-  recalculated <- metafor::escalc(
-    measure = "OR2DL",
-    ai = data$ai,
-    bi = data$bi,
-    ci = data$ci,
-    di = data$di
-  )
-
-  data |>
-    mutate(
-      effect_size_recalculated = recalculated$yi,
-      effect_size_var_recalculated = recalculated$vi
-    ) |>
-    filter(
-      abs(effect_size - effect_size_recalculated) > tolerance |
-        abs(effect_size_var - effect_size_var_recalculated) > tolerance
-    ) |>
-    select(
-      paper,
-      paper_label,
-      study,
-      outcome,
-      effect,
-      effect_size,
-      effect_size_recalculated,
-      effect_size_var,
-      effect_size_var_recalculated
-    )
-}
-
 # Codebook ----------------------------------------------------------------
 
-# codebook.yaml defines each sheet's columns and what values they allow; see
-# the comment at the top of that file for the format
+# Read the codebook, which defines each sheet's columns and the values they
+# allow
 codebook <- read_yaml("codebook.yaml")
 
-# One row per sheet column, in sheet order, and whether it's a lookup
+# List the sheet tabs in the codebook, with their columns and lookups
 codebook_sheets <- tibble(
   sheet = names(codebook$sheets),
   definition = codebook$sheets
 ) |>
   unnest_wider(definition)
 
+# List each sheet's columns in the order the codebook gives them, and mark
+# those filled by a sheet formula (lookups)
 codebook_sheet_columns <- codebook_sheets |>
   select(sheet, column = columns, lookups) |>
   unnest_longer(column) |>
@@ -366,7 +216,10 @@ codebook_sheet_columns <- codebook_sheets |>
   ) |>
   select(-lookups)
 
-# One row per column definition: type, multiple, required, min, max, status
+# Turn the codebook's column definitions into a table, so the checks below
+# can look up each column's type, levels, range, and whether it's required.
+# multiple and required are only in the yaml when true, so columns without
+# them get NA; replace NA with FALSE instead.
 codebook_columns <- tibble(
   column = names(codebook$columns),
   definition = codebook$columns
@@ -374,12 +227,14 @@ codebook_columns <- tibble(
   unnest_wider(definition) |>
   mutate(multiple = multiple %in% TRUE, required = required %in% TRUE)
 
-# One row per allowed level. Levels are written as a plain string or as a map
-# with value, description, and requires; plain strings become maps too.
+# Give every level the same shape, whether it's written as a plain string or
+# with extra fields
 level_as_map <- function(level) {
   if (is.list(level)) level else list(value = level)
 }
 
+# List the allowed values of each factor column, one row per value, e.g.
+# study_design with "between", "within", "mixed", and "crossover"
 codebook_levels <- codebook_columns |>
   select(column, level = levels) |>
   mutate(level = map(level, \(levels) map(as.list(levels), level_as_map))) |>
@@ -387,7 +242,9 @@ codebook_levels <- codebook_columns |>
   unnest_wider(level) |>
   mutate(value = as.character(value))
 
-# One row per level that requires another column, and each level allowed there
+# List the requires rules: which level needs which level in another column,
+# e.g. product_subtype "beef" needs product_type "meat". A level that allows
+# several other levels gets one row for each.
 codebook_requires <- codebook_levels |>
   select(column, value, requires) |>
   filter(!map_lgl(requires, is.null)) |>
@@ -403,15 +260,36 @@ codebook_requires <- codebook_levels |>
 url <- "https://docs.google.com/spreadsheets/"
 url_id <- "d/1asBfkq4AkTtdcb_yZTkN685LVeV5DYHNrO83g9N5HCU/"
 
-# .row is the row number in the sheet, to find a problem there. Trailing rows
-# without a paper are empty rows whose formulas show #REF! or #N/A.
-sheets <- names(codebook$sheets) |>
+# Read every cell of every sheet in the codebook, once
+sheet_cells <- names(codebook$sheets) |>
   set_names() |>
-  map(\(sheet) {
-    read_sheet(paste0(url, url_id), sheet = sheet, na = c("", "-")) |>
+  map(\(sheet) range_read_cells(paste0(url, url_id), sheet = sheet))
+
+# Turn each sheet into a table. Each row gets its row number in the sheet
+# (.row), so you can find a flagged problem there, and the empty rows at the
+# bottom of each sheet are dropped.
+sheets <- sheet_cells |>
+  map(\(cells) {
+    spread_sheet(cells, na = c("", "-")) |>
       mutate(.row = row_number() + 1, .before = 1) |>
       filter(!is.na(paper))
   })
+
+# Collect the cells whose formula gives an error, such as #REF! or #N/A. In
+# the tables above these are just empty, so they're kept here to check
+# separately.
+formula_errors <- sheet_cells |>
+  list_rbind(names_to = "sheet") |>
+  mutate(
+    error = map_chr(
+      cell,
+      \(x) x$effectiveValue$errorValue$type %||% NA_character_
+    )
+  ) |>
+  filter(!is.na(error)) |>
+  select(sheet, .row = row, col, error)
+
+rm(sheet_cells)
 
 papers <- sheets$`Paper-level`
 studies <- sheets$`Study-level`
@@ -421,6 +299,7 @@ outcomes <- sheets$`Outcome-level`
 statistics <- sheets$`Statistics-level`
 effects <- sheets$`Effects-level`
 
+# Read the reviews and meta-reviews that papers were found through
 reviews <- read_sheet(
   paste0(url, url_id),
   sheet = "Meta-reviews & reviews",
@@ -429,7 +308,7 @@ reviews <- read_sheet(
 
 # Validation: Codebook ---------------------------------------------------
 
-# Columns in the codebook but not in the sheet, and the other way round
+# Find columns in the codebook but not in the sheet, and the other way round
 sheet_columns <- sheets |>
   imap(\(data, sheet) {
     tibble(sheet = sheet, column = setdiff(names(data), ".row")) |>
@@ -440,7 +319,7 @@ sheet_columns <- sheets |>
 anti_join(codebook_sheet_columns, sheet_columns, by = c("sheet", "column"))
 anti_join(sheet_columns, codebook_sheet_columns, by = c("sheet", "column"))
 
-# Columns that both have, but in a different order
+# Find columns that both have, but in a different order
 inner_join(
   sheet_columns,
   codebook_sheet_columns,
@@ -452,9 +331,7 @@ inner_join(
     .by = sheet
   )
 
-# One row per cell of every column that is entered by hand: lookups (sheet
-# formulas) and draft columns are left out. Cells with mixed types come in as
-# a list column, so all values are compared as text.
+# Turn cell values into text, since a column can mix numbers and text
 as_text <- function(x) {
   if (is.list(x)) {
     x <- map_chr(x, \(v) if (length(v) == 0) NA_character_ else as.character(v))
@@ -462,6 +339,10 @@ as_text <- function(x) {
   na_if(str_trim(as.character(x)), "")
 }
 
+# Put every hand-entered cell of every sheet in one table, next to the
+# codebook rules for its column, so each check below can look at all sheets at
+# once.
+# Lookups (filled by sheet formulas) and draft columns are left out.
 cells <- sheets |>
   imap(\(data, sheet) {
     data |>
@@ -489,12 +370,13 @@ cells <- sheets |>
   ) |>
   filter(!status %in% "draft")
 
-# Required cells that are empty
+# Find required cells that are empty
 cells |>
   filter(required, is.na(value)) |>
   select(sheet, .row, paper, column)
 
-# Numbers: not a number, not a whole number, or outside the allowed range
+# Find number cells that aren't a number, aren't a whole number (for
+# integers), or are outside the allowed range
 numbers <- cells |>
   filter(type %in% c("integer", "number"), !is.na(value)) |>
   mutate(number = suppressWarnings(as.numeric(value)))
@@ -511,12 +393,13 @@ numbers |>
   filter(number < min | number > max) |>
   select(sheet, .row, paper, column, value, min, max)
 
-# Links that don't start with http(s)://
+# Find links that don't start with http(s)://
 cells |>
   filter(type == "url", !is.na(value), !str_detect(value, "^https?://")) |>
   select(sheet, .row, paper, column, value)
 
-# Factor cells, one row per level; multi-value cells are split on commas
+# List the levels used in factor cells, one per row, so a cell with several
+# comma-separated levels is checked level by level
 factor_cells <- bind_rows(
   cells |>
     filter(type == "factor", !multiple, !is.na(value)) |>
@@ -528,7 +411,7 @@ factor_cells <- bind_rows(
 ) |>
   mutate(level = str_trim(level))
 
-# Levels that aren't in the codebook
+# Find levels that aren't in the codebook
 factor_cells |>
   anti_join(codebook_levels, by = c("column", "level" = "value")) |>
   count(sheet, column, level, sort = TRUE)
@@ -537,8 +420,8 @@ factor_cells |>
   anti_join(codebook_levels, by = c("column", "level" = "value")) |>
   select(sheet, .row, paper, column, value)
 
-# Levels that require another column in the same row to hold one of the
-# listed levels, e.g. product subtype "beef" requires product type "meat"
+# Find levels whose requires rule isn't met, e.g. product subtype "beef"
+# without product type "meat" in the same row
 factor_cells |>
   select(sheet, .row, paper, column, level) |>
   inner_join(
@@ -564,8 +447,9 @@ factor_cells |>
   ) |>
   select(-ok)
 
-# The included reviews should be the paper_in_paper levels, with the same
-# reference. Meta-reviews led to reviews, not to papers, so they're no level.
+# Find included reviews that aren't a paper_in_paper level with the same
+# reference, and the other way round. Meta-reviews led to reviews, not to
+# papers, so they aren't levels.
 reviews_included <- reviews |>
   filter(status == "included", `source type` != "meta-review") |>
   select(value = label, reference)
@@ -581,12 +465,26 @@ full_join(reviews_included, paper_in_paper_levels, by = "value") |>
       str_squish(reference) != str_squish(description)
   )
 
+# Find formula errors (#REF!, #N/A) in rows that have a paper. The empty rows
+# at the bottom of each sheet always have them, so they're left out.
+sheet_rows <- sheets |>
+  map(\(data) select(data, .row, paper)) |>
+  list_rbind(names_to = "sheet")
+
+formula_errors |>
+  inner_join(sheet_rows, by = c("sheet", ".row")) |>
+  left_join(
+    select(sheet_columns, sheet, col = position, column),
+    by = c("sheet", "col")
+  ) |>
+  select(sheet, .row, paper, column, error)
+
 # Validation: Paper-level ------------------------------------------------
 
 check_duplicates(papers, paper)
 check_duplicates(papers, paper_label)
 
-# Duplicate titles, ignoring case and punctuation
+# Find duplicate titles, ignoring case and punctuation
 papers |>
   mutate(
     title = paper_title |>
@@ -597,7 +495,8 @@ papers |>
   check_duplicates(title, na.rm = TRUE) |>
   select(.row, paper, paper_label, paper_title)
 
-# Duplicate links, ignoring http(s), www, dx., case, and a trailing slash
+# Find duplicate links, ignoring http(s), www, dx., case, and a trailing
+# slash
 papers |>
   mutate(
     link = paper_link |>
@@ -608,13 +507,13 @@ papers |>
   check_duplicates(link, na.rm = TRUE) |>
   select(.row, paper, paper_label, paper_link)
 
-# Years after this year (the codebook checks the minimum)
+# Find years after this year (the codebook checks the minimum)
 papers |>
   filter(paper_year > year(today())) |>
   select(.row, paper, paper_label, paper_year)
 
-# Labels should look like "Author (2020)", "Author & Author (2020)", or
-# "Author et al. (2020a)", with "&" rather than "and"
+# Find labels that don't look like "Author (2020)", "Author & Author (2020)",
+# or "Author et al. (2020a)", with "&" rather than "and"
 papers |>
   filter(
     !str_detect(paper_label, "^\\S.* \\((.+, )?\\d{4}[a-z]?\\)$") |
@@ -622,19 +521,24 @@ papers |>
   ) |>
   select(.row, paper, paper_label)
 
-# The label's year should be paper_year
+# Find labels whose year isn't paper_year
 papers |>
-  mutate(label_year = as.numeric(str_extract(paper_label, "\\d{4}(?=[a-z]?\\)$)"))) |>
+  mutate(
+    label_year = as.numeric(str_extract(paper_label, "\\d{4}(?=[a-z]?\\)$)"))
+  ) |>
   filter(label_year != paper_year) |>
   select(.row, paper, paper_label, paper_year)
 
-# The label's first author should be the first author in paper_authors.
+# Find labels whose first author isn't the first author in paper_authors.
 # Names with particles can be written either way round ("da Silva" vs
 # "Rocha Possidónio da Silva"), so one may end with the other. Organisations
 # as authors show up here too.
 papers |>
   mutate(
-    label_author = str_to_lower(str_extract(paper_label, "^.*?(?= et a| & | and | \\()")),
+    label_author = str_to_lower(str_extract(
+      paper_label,
+      "^.*?(?= et a| & | and | \\()"
+    )),
     first_author = str_to_lower(str_extract(paper_authors, "^[^,;]+"))
   ) |>
   filter(
@@ -643,8 +547,8 @@ papers |>
   ) |>
   select(.row, paper, paper_label, paper_authors)
 
-# paper_authors should be "Last, I.; Last, I.": each author separated by a
-# semicolon, with one comma between last name and initials
+# Find paper_authors not written as "Last, I.; Last, I.": each author
+# separated by a semicolon, with one comma between last name and initials
 papers |>
   select(.row, paper, paper_label, paper_authors) |>
   mutate(author = paper_authors) |>
@@ -655,6 +559,12 @@ papers |>
 # Validation: Study-level ------------------------------------------------
 
 check_duplicates(studies, paper, study)
+
+# Find studies of a paper that isn't in Paper-level
+check_orphans(studies, papers, by = "paper") |>
+  select(.row, paper, paper_label, study)
+
+# Find the same preregistration or data link in different papers
 check_duplicates_across(
   studies,
   study_preregistration_link,
@@ -663,13 +573,18 @@ check_duplicates_across(
 )
 check_duplicates_across(studies, study_data_link, paper, na.rm = TRUE)
 
-check_formula_errors(paste0(url, url_id), "Study-level")
-
+# Find preregistration and data links that are missing although the study
+# says it was preregistered or its data are available, or that are there
+# although it says not
 check_conditional_required(
   studies,
   study_preregistered == "yes",
   study_preregistration_link
 )
+
+studies |>
+  filter(study_preregistered == "no", !is.na(study_preregistration_link)) |>
+  select(.row, paper, paper_label, study, study_preregistration_link)
 
 check_conditional_required(
   studies,
@@ -677,13 +592,13 @@ check_conditional_required(
   study_data_link
 )
 
-check_missing(studies)
+studies |>
+  filter(study_data_available == "no", !is.na(study_data_link)) |>
+  select(.row, paper, paper_label, study, study_data_link)
 
 # Validation: Condition-level --------------------------------------------
 
 check_duplicates(conditions, paper, study, condition)
-
-check_formula_errors(paste0(url, url_id), "Condition-level")
 
 check_sequence(conditions, condition, paper, study)
 
@@ -698,12 +613,11 @@ conditions |>
 
 check_duplicates(outcomes, paper, study, outcome, time)
 
-check_formula_errors(paste0(url, url_id), "Outcome-level")
-
-# Time within each outcome should sequence (allow negative baseline, skip 0)
+# Find outcomes whose times aren't numbered 1, 2, 3, ..., with negative
+# numbers for baseline measurements and no 0
 check_sequence(outcomes, time, paper, study, outcome, skip_zero = TRUE)
 
-# Distinct outcomes within each (paper, study) should sequence from 1
+# Find studies whose outcomes aren't numbered 1, 2, 3, ...
 outcomes |>
   distinct(paper, study, outcome) |>
   check_sequence(outcome, paper, study)
@@ -713,8 +627,6 @@ check_missing(outcomes)
 # Validation: Sample-level -----------------------------------------------
 
 check_duplicates(samples, paper, study, sample)
-
-check_formula_errors(paste0(url, url_id), "Sample-level")
 
 check_orphans(
   distinct(studies, paper, study),
@@ -741,7 +653,37 @@ check_duplicates(
   statistic
 )
 
-check_formula_errors(paste0(url, url_id), "Statistics-level")
+# Find statistics groups used for more than one combination of study,
+# outcome, time, condition, and sample, e.g. for two outcomes
+statistics |>
+  filter(!is.na(statistics)) |>
+  distinct(
+    paper,
+    paper_label,
+    statistics,
+    study,
+    outcome,
+    time_1,
+    time_2,
+    condition,
+    sample
+  ) |>
+  check_duplicates(paper, statistics)
+
+# Find statistics that appear more than once in a statistics group, e.g. two
+# n's
+statistics |>
+  filter(!is.na(statistic_name)) |>
+  check_duplicates(paper, statistics, statistic_name) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    statistics,
+    statistic,
+    statistic_name,
+    statistic_value
+  )
 
 check_orphans(
   statistics |>
@@ -751,8 +693,7 @@ check_orphans(
   by = c("paper", "study", "sample")
 )
 
-# Check whether within each statistics group, the statistic values form sequences
-
+# Find statistics groups whose statistics aren't numbered 1, 2, 3, ...
 check_sequence(
   statistics,
   statistic,
@@ -760,7 +701,7 @@ check_sequence(
   statistics
 )
 
-# Check whether percentages are between 0 and 100
+# Find percentages below 0 or above 100
 statistics |>
   filter(
     statistic_name == "percentage",
@@ -768,7 +709,8 @@ statistics |>
     statistic_value < 0 | statistic_value > 100
   )
 
-# Within each statistics group that has a percentage, successes + failures = n
+# Find statistics groups with a percentage whose successes, failures, or n
+# are missing, or where successes + failures isn't n
 statistics |>
   filter(statistic_name %in% c("percentage", "successes", "failures", "n")) |>
   pivot_wider(
@@ -808,9 +750,9 @@ check_duplicates(
   effect
 )
 
-# Each comparison should have at most one effect that goes into the
-# meta-analysis (e.g. a reported test and a recalculated effect, or an original
-# d and a converted SMD, where only one has effect_exclude "no")
+# Find comparisons with more than one effect that goes into the meta-analysis
+# (e.g. a reported test and a recalculated effect, or an original d and a
+# converted SMD, where only one should have effect_exclude "no")
 effects |>
   filter(effect_exclude %in% "no") |>
   check_duplicates(
@@ -827,8 +769,8 @@ effects |>
     control_sample
   )
 
-# Intervention and control should use different statistics groups, except for
-# one-sample SMCC effects on change scores (no effect_r)
+# Find effects whose intervention and control use the same statistics group,
+# except one-sample SMCC effects on change scores (no effect_r)
 effects |>
   filter(
     intervention_statistics_1 == control_statistics_1,
@@ -842,8 +784,6 @@ effects |>
     intervention_statistics_1,
     control_statistics_1
   )
-
-check_formula_errors(paste0(url, url_id), "Effects-level")
 
 check_orphans(
   effects |>
@@ -866,11 +806,59 @@ check_sequence(effects, effect, paper, study, outcome)
 
 check_missing(effects)
 
-check_smd(effects, statistics)
-check_or2dl(effects, statistics)
+# Find effects that don't reproduce: effect sizes or variances that differ
+# from a recalculation from the statistics with r/effect-functions.r. Effects
+# it can't calculate, such as a reported d, are left out.
+recalculated <- effects |>
+  select(-.row) |>
+  calculate_effects(statistics) |>
+  select(
+    paper,
+    study,
+    outcome,
+    effect,
+    effect_size_recalculated = effect_size,
+    effect_size_var_recalculated = effect_size_var
+  )
+
+effects |>
+  inner_join(recalculated, by = c("paper", "study", "outcome", "effect")) |>
+  filter(
+    abs(effect_size - effect_size_recalculated) > 0.001 |
+      abs(effect_size_var - effect_size_var_recalculated) > 0.001
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    effect,
+    effect_size_name,
+    effect_size,
+    effect_size_recalculated,
+    effect_size_var,
+    effect_size_var_recalculated
+  )
+
+# Find effects we calculated (effect_from_paper "no") that can't be
+# recalculated, e.g. because a statistic is missing or appears twice in a group
+effects |>
+  filter(effect_from_paper == "no") |>
+  inner_join(recalculated, by = c("paper", "study", "outcome", "effect")) |>
+  filter(is.na(effect_size_recalculated)) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    effect,
+    effect_size_name,
+    intervention_statistics_1,
+    control_statistics_1
+  )
+
 check_effect_direction(effects, statistics, outcomes)
 
-# Check whether effects have sample sizes in the statistics level
+# Find effects that go into the meta-analysis without an n for the
+# intervention or the control group
 n_statistics <- statistics |>
   filter(statistic_name == "n") |>
   select(paper, study, outcome, statistics)
@@ -898,19 +886,19 @@ check_orphans(
 
 # Validation: Paper status -----------------------------------------------
 
-# Effects that still count towards a paper: "maybe" and missing are not
-# exclusions, so only an explicit "yes" removes an effect from the pool
+# Keep the effects that still count towards a paper: "maybe" and missing are
+# not exclusions, so only an explicit "yes" removes an effect from the pool
 effects_kept <- effects |>
   filter(!(effect_exclude %in% "yes"))
 
-# Papers marked "included" should be coded all the way down
+# Find included papers that aren't coded all the way down
 check_status_missing_rows(papers, studies, "included")
 check_status_missing_rows(papers, conditions, "included")
 check_status_missing_rows(papers, outcomes, "included")
 check_status_missing_rows(papers, effects_kept, "included")
 
-# Coding of an included paper should be finished: no undecided effects left,
-# and every effect that counts should have an effect size
+# Find included papers whose coding isn't finished: effects still undecided
+# (effect_exclude "maybe"), or effects that count without an effect size
 check_status_unexpected_rows(
   effects,
   papers,
@@ -925,5 +913,5 @@ check_status_unexpected_rows(
   is.na(effect_size) | is.na(effect_size_var)
 )
 
-# Papers marked "excluded" should have no effects left that still count
+# Find excluded papers that still have effects that count
 check_status_unexpected_rows(effects_kept, papers, "excluded")

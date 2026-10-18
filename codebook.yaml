@@ -656,6 +656,7 @@ columns:
     label: Sample size
     type: integer
     min: 1
+    required: true
     description: >-
       The number of participants or observations in the study that were
       retained for analysis. For studies with several measurement points, the
