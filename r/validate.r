@@ -649,16 +649,81 @@ conditions |>
 
 check_duplicates(outcomes, paper, study, outcome, time)
 
+# Find outcomes of a study that isn't in Study-level
+check_orphans(outcomes, studies, by = c("paper", "study")) |>
+  select(.row, paper, paper_label, study, outcome, time)
+
 # Find outcomes whose times aren't numbered 1, 2, 3, ..., with negative
 # numbers for baseline measurements and no 0
-check_sequence(outcomes, time, paper, study, outcome, skip_zero = TRUE)
+check_sequence(outcomes, time, paper, study, outcome, skip_zero = TRUE) |>
+  select(.row, paper, paper_label, study, outcome, time, time_label)
 
 # Find studies whose outcomes aren't numbered 1, 2, 3, ...
 outcomes |>
-  distinct(paper, study, outcome) |>
+  distinct(paper, paper_label, study, outcome) |>
   check_sequence(outcome, paper, study)
 
-check_missing(outcomes)
+# Find outcomes with the same label in a study, which makes them hard to tell
+# apart in Statistics-level, Effects-level, and the app
+outcomes |>
+  distinct(paper, paper_label, study, outcome, outcome_label) |>
+  check_duplicates(paper, study, outcome_label)
+
+# Find outcomes coded differently at different times, e.g. a different
+# category at baseline than at follow-up. The description can differ, e.g. to
+# say how a follow-up was measured.
+outcomes |>
+  select(
+    paper,
+    paper_label,
+    study,
+    outcome,
+    outcome_label,
+    outcome_expectation,
+    outcome_category,
+    outcome_subcategory,
+    outcome_measurement_type,
+    outcome_product_type,
+    outcome_product_subtype,
+    outcome_is_suboutcome,
+    outcome_scale
+  ) |>
+  pivot_longer(
+    -c(paper, paper_label, study, outcome),
+    names_to = "column",
+    values_transform = as.character
+  ) |>
+  summarise(
+    values = paste(unique(value), collapse = " | "),
+    n_values = n_distinct(value),
+    .by = c(paper, paper_label, study, outcome, column)
+  ) |>
+  filter(n_values > 1) |>
+  select(-n_values)
+
+# Find days since the intervention where the minimum is above the maximum, or
+# that don't match the time: baseline measurements (negative times) can't be
+# after the intervention, and follow-ups (positive times) can't be before it
+outcomes |>
+  filter(
+    outcome_days_since_intervention_min > outcome_days_since_intervention_max |
+      time < 0 &
+        (outcome_days_since_intervention_min > 0 |
+          outcome_days_since_intervention_max > 0) |
+      time > 0 &
+        (outcome_days_since_intervention_min < 0 |
+          outcome_days_since_intervention_max < 0)
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    outcome,
+    time,
+    time_label,
+    outcome_days_since_intervention_min,
+    outcome_days_since_intervention_max
+  )
 
 # Validation: Sample-level -----------------------------------------------
 
