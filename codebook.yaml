@@ -987,6 +987,7 @@ columns:
     required: true
     description: Whether the condition is a control or an intervention.
     levels: [control, intervention]
+    notes: Controls leave the intervention_* columns empty.
 
   condition_description:
     label: Description
@@ -1014,6 +1015,9 @@ columns:
       - value: "yes"
         label: Multicomponent
         description: Intervention combines multiple strategies or content areas
+    notes: >-
+      "yes" when the intervention has more than one mechanism
+      (intervention_mechanism), "no" when it has one.
 
   intervention_duration:
     label: Duration (days)
@@ -1177,7 +1181,9 @@ columns:
       before the intervention (-1 is the last one before it), positive numbers
       are measurements after it (1 is the first one after it). 0 isn't used.
     notes: >-
-      An outcome has one row per measurement point. Effects on the website use
+      An outcome has one row per measurement point. Times are numbered per
+      outcome, not across the study: an outcome measured at baseline and only
+      at the second follow-up has times -1 and 1. Effects on the website use
       the latest measurement point of each outcome.
 
   time_label:

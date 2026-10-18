@@ -628,6 +628,49 @@ conditions |>
     intervention_medium
   )
 
+# Find interventions whose components don't match their mechanisms: "yes"
+# (multicomponent) with one mechanism, or "no" with more than one
+conditions |>
+  mutate(n_mechanisms = str_count(intervention_mechanism, ",") + 1) |>
+  filter(
+    intervention_multicomponent == "yes" & n_mechanisms == 1 |
+      intervention_multicomponent == "no" & n_mechanisms > 1
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    study,
+    condition,
+    condition_label,
+    intervention_multicomponent,
+    intervention_mechanism
+  )
+
+# Find controls with intervention details, which only interventions have
+conditions |>
+  filter(
+    condition_category == "control",
+    !is.na(intervention_count) |
+      !is.na(intervention_multicomponent) |
+      !is.na(intervention_duration) |
+      !is.na(intervention_mechanism) |
+      !is.na(intervention_medium)
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    study,
+    condition,
+    condition_label,
+    intervention_count,
+    intervention_multicomponent,
+    intervention_duration,
+    intervention_mechanism,
+    intervention_medium
+  )
+
 # Find study designs that differ from the study's design in Study-level,
 # e.g. because the lookup formula was typed over
 conditions |>
