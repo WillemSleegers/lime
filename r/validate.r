@@ -843,32 +843,93 @@ statistics |>
     statistic_value
   )
 
+# Find statistics whose study, condition, sample, or outcome and time isn't in
+# the sheet for that level. Empty ones are reported by the codebook checks.
+check_orphans(statistics, studies, by = c("paper", "study")) |>
+  select(.row, paper, paper_label, study, statistics)
+
 check_orphans(
-  statistics |>
-    filter(!is.na(sample)) |>
-    select(paper, study, sample),
-  select(samples, paper, study, sample),
+  filter(statistics, !is.na(condition)),
+  conditions,
+  by = c("paper", "study", "condition")
+) |>
+  select(.row, paper, paper_label, study, statistics, condition)
+
+check_orphans(
+  filter(statistics, !is.na(sample)),
+  samples,
   by = c("paper", "study", "sample")
-)
+) |>
+  select(.row, paper, paper_label, study, statistics, sample)
+
+check_orphans(
+  filter(statistics, !is.na(outcome), !is.na(time_1)),
+  outcomes,
+  by = c("paper", "study", "outcome", "time_1" = "time")
+) |>
+  select(.row, paper, paper_label, study, statistics, outcome, time_1)
+
+check_orphans(
+  filter(statistics, !is.na(time_2)),
+  outcomes,
+  by = c("paper", "study", "outcome", "time_2" = "time")
+) |>
+  select(.row, paper, paper_label, study, statistics, outcome, time_2)
+
+# Find change scores whose baseline (time_2) isn't before time_1
+statistics |>
+  filter(time_2 >= time_1) |>
+  select(.row, paper, paper_label, statistics, outcome, time_1, time_2)
+
+# Find papers whose statistics groups aren't numbered 1, 2, 3, ...
+statistics |>
+  distinct(paper, paper_label, statistics) |>
+  filter(!is.na(statistics)) |>
+  check_sequence(statistics, paper)
 
 # Find statistics groups whose statistics aren't numbered 1, 2, 3, ...
-check_sequence(
-  statistics,
-  statistic,
-  paper,
-  statistics
-)
+check_sequence(statistics, statistic, paper, statistics) |>
+  select(.row, paper, paper_label, statistics, statistic)
 
 # Find percentages below 0 or above 100
 statistics |>
   filter(
     statistic_name == "percentage",
-    !is.na(statistic_value),
     statistic_value < 0 | statistic_value > 100
-  )
+  ) |>
+  select(.row, paper, paper_label, statistics, statistic_value)
 
-# Find statistics groups with a percentage whose successes, failures, or n
-# are missing, or where successes + failures isn't n
+# Find counts from the paper (n, successes, failures) that aren't whole
+# numbers. Calculated or estimated counts can have decimals, but then
+# statistic_from_paper should be "no" or "approx.".
+statistics |>
+  filter(
+    statistic_name %in% c("n", "successes", "failures"),
+    statistic_from_paper == "yes",
+    statistic_value %% 1 != 0
+  ) |>
+  select(.row, paper, paper_label, statistics, statistic_name, statistic_value)
+
+# Find statistics groups with a mean that lack n or an SD or SE, or with an
+# SD or SE but no mean or regression coefficient (beta)
+statistics |>
+  filter(!is.na(statistic_name)) |>
+  summarise(
+    statistic_names = paste(sort(statistic_name), collapse = ", "),
+    has_m = "M" %in% statistic_name,
+    has_n = "n" %in% statistic_name,
+    has_spread = any(c("SD", "SE") %in% statistic_name),
+    has_beta = "beta" %in% statistic_name,
+    .by = c(paper, paper_label, study, statistics)
+  ) |>
+  filter(has_m & (!has_n | !has_spread) | has_spread & !has_m & !has_beta) |>
+  select(paper, paper_label, study, statistics, statistic_names)
+
+# Find statistics groups with successes, failures, or a percentage that lack
+# one of the four (successes, failures, n, percentage), or where they don't
+# add up: successes + failures should be n, and successes / n the percentage.
+# Rounding can add up to 0.5 to the count and 1 to the percentage, e.g. when
+# successes were calculated from a reported percentage.
 statistics |>
   filter(statistic_name %in% c("percentage", "successes", "failures", "n")) |>
   pivot_wider(
@@ -877,20 +938,25 @@ statistics |>
     values_from = statistic_value,
     values_fn = \(x) if (length(x) == 1) x else NA_real_
   ) |>
-  filter(!is.na(percentage)) |>
+  filter(!is.na(percentage) | !is.na(successes) | !is.na(failures)) |>
   filter(
-    is.na(successes) | is.na(failures) | is.na(n) | successes + failures != n
+    is.na(successes) |
+      is.na(failures) |
+      is.na(n) |
+      is.na(percentage) |
+      abs(successes + failures - n) > 0.5 |
+      abs(successes / n * 100 - percentage) > 1
   )
 
-check_missing(statistics)
-
+# Find statistics groups with an estimated value (statistic_from_paper
+# "approx.") but no note in the group that says how it was estimated
 statistics |>
-  filter(is.na(condition_category)) |>
-  print(n = Inf)
-
-statistics |>
-  filter(is.na(sample)) |>
-  print(n = Inf)
+  filter(
+    any(statistic_from_paper %in% "approx."),
+    all(is.na(statistic_notes)),
+    .by = c(paper, statistics)
+  ) |>
+  distinct(paper, paper_label, study, statistics)
 
 # Validation: Effects-level ----------------------------------------------
 
