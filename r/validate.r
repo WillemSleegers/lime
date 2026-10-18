@@ -600,14 +600,50 @@ studies |>
 
 check_duplicates(conditions, paper, study, condition)
 
-check_sequence(conditions, condition, paper, study)
+# Find conditions of a study that isn't in Study-level
+check_orphans(conditions, studies, by = c("paper", "study")) |>
+  select(.row, paper, paper_label, study, condition)
 
-check_missing(conditions)
-check_missing(filter(conditions, condition_category == "intervention"))
+# Find studies whose conditions aren't numbered 1, 2, 3, ...
+check_sequence(conditions, condition, paper, study) |>
+  select(.row, paper, paper_label, study, condition)
 
+# Find conditions with the same label in a study, which makes them hard to
+# tell apart in Statistics-level, Effects-level, and the app
+check_duplicates(conditions, paper, study, condition_label) |>
+  select(.row, paper, paper_label, study, condition, condition_label)
+
+# Find interventions without a number of interventions, components,
+# mechanism, or medium
 conditions |>
-  filter(condition_category == "intervention") |>
-  filter(is.na(intervention_medium))
+  filter(
+    condition_category == "intervention",
+    is.na(intervention_count) |
+      is.na(intervention_multicomponent) |
+      is.na(intervention_mechanism) |
+      is.na(intervention_medium)
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    study,
+    condition,
+    intervention_count,
+    intervention_multicomponent,
+    intervention_mechanism,
+    intervention_medium
+  )
+
+# Find study designs that differ from the study's design in Study-level,
+# e.g. because the lookup formula was typed over
+conditions |>
+  left_join(
+    select(studies, paper, study, study_design_study = study_design),
+    by = c("paper", "study")
+  ) |>
+  filter(!is.na(study_design_study), study_design != study_design_study) |>
+  select(.row, paper, paper_label, study, study_design, study_design_study)
 
 # Validation: Outcome-level ----------------------------------------------
 
