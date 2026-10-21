@@ -838,6 +838,25 @@ samples_numbers |>
     gender_n
   )
 
+# Find gender counts and percentages that don't match, e.g. 59 men out of 319
+# (18.5%) coded as 22.7% men. Rounding can add up to 1 percentage point.
+samples_numbers |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    sample,
+    sample_n,
+    starts_with("sample_gender")
+  ) |>
+  pivot_longer(
+    starts_with("sample_gender"),
+    names_to = c("gender", ".value"),
+    names_pattern = "sample_gender_(.+)_(n|pct)"
+  ) |>
+  mutate(pct_from_n = n / sample_n * 100) |>
+  filter(abs(pct_from_n - pct) > 1)
+
 # Validation: Statistics-level -------------------------------------------
 
 check_duplicates(
