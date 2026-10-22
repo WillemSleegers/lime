@@ -326,6 +326,10 @@ columns:
         description: The authors have been asked for the missing statistics.
         requires:
           paper_status: [excluded, included]
+      - value: ready to code
+        description: Meets the inclusion criteria; the paper still needs to be coded.
+        requires:
+          paper_status: [in progress]
       - value: analyze raw data
         description: >-
           Statistics needed for an effect size aren't reported, but can be

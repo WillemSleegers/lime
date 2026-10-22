@@ -9,7 +9,7 @@ source("r/effect-functions.r")
 
 btw_mcp_session()
 
-# Validation functions ----------------------------------------------------
+# Functions ---------------------------------------------------------------
 
 # Turn cell values into text, since a column can mix numbers and text
 as_text <- function(x) {
@@ -17,6 +17,65 @@ as_text <- function(x) {
     x <- map_chr(x, \(v) if (length(v) == 0) NA_character_ else as.character(v))
   }
   na_if(str_trim(as.character(x)), "")
+}
+
+# Turn a sheet's cells into a table. Each row gets its row number in the sheet
+# (.row), so you can find a flagged problem there, and the empty rows at the
+# bottom of the sheet are dropped.
+sheet_table <- function(cells) {
+  spread_sheet(cells, na = c("", "-")) |>
+    mutate(.row = row_number() + 1, .before = 1) |>
+    filter(!is.na(paper))
+}
+
+# Put every hand-entered cell of a sheet in one table, next to the codebook
+# rules for its column, so the codebook checks can look at all its columns at
+# once. Lookups (filled by sheet formulas) and draft columns are left out.
+# Number cells also get their value as a number, or NA if it isn't one.
+codebook_cells <- function(data, sheet_name) {
+  data |>
+    mutate(across(-c(.row, paper), as_text)) |>
+    pivot_longer(-c(.row, paper), names_to = "column", values_to = "value") |>
+    semi_join(
+      filter(codebook_sheet_columns, sheet == sheet_name, !lookup),
+      by = "column"
+    ) |>
+    inner_join(
+      select(
+        codebook_columns,
+        column,
+        type,
+        multiple,
+        required,
+        min,
+        max,
+        status
+      ),
+      by = "column"
+    ) |>
+    filter(!status %in% "draft") |>
+    mutate(
+      number = if_else(
+        type %in% c("integer", "number"),
+        suppressWarnings(as.numeric(value)),
+        NA_real_
+      )
+    )
+}
+
+# List the levels used in factor cells, one per row, so a cell with several
+# comma-separated levels is checked level by level
+factor_levels <- function(cells) {
+  bind_rows(
+    cells |>
+      filter(type == "factor", !multiple, !is.na(value)) |>
+      mutate(level = value),
+    cells |>
+      filter(type == "factor", multiple, !is.na(value)) |>
+      mutate(level = value) |>
+      separate_longer_delim(level, delim = ",")
+  ) |>
+    mutate(level = str_trim(level))
 }
 
 # Find duplicates: rows with the same values in the given columns, e.g. two
@@ -190,6 +249,27 @@ check_effect_direction <- function(effects, statistics, outcomes) {
     )
 }
 
+# Find formula errors, such as #REF! or #N/A, in rows that have a paper. In a
+# sheet's table these are just empty, so they're found in its cells. The empty
+# rows at the bottom of each sheet always have them, so they're left out.
+check_formula_errors <- function(cells, data) {
+  columns <- tibble(column = setdiff(names(data), ".row")) |>
+    mutate(col = row_number())
+
+  cells |>
+    mutate(
+      error = map_chr(
+        cell,
+        \(x) x$effectiveValue$errorValue$type %||% NA_character_
+      )
+    ) |>
+    filter(!is.na(error)) |>
+    select(.row = row, col, error) |>
+    inner_join(select(data, .row, paper), by = ".row") |>
+    left_join(columns, by = "col") |>
+    select(.row, paper, column, error)
+}
+
 # Codebook ----------------------------------------------------------------
 
 # Read the codebook, which defines each sheet's columns and the values they
@@ -226,18 +306,15 @@ codebook_columns <- tibble(
   unnest_wider(definition) |>
   mutate(multiple = multiple %in% TRUE, required = required %in% TRUE)
 
-# Give every level the same shape, whether it's written as a plain string or
-# with extra fields
-level_as_map <- function(level) {
-  if (is.list(level)) level else list(value = level)
-}
-
 # List the allowed values of each factor column, one row per value, e.g.
-# study_design with "between", "within", "mixed", and "crossover"
+# study_design with "between", "within", "mixed", and "crossover". A level
+# can be a plain string or have extra fields, so plain ones are turned into
+# the same shape first.
 codebook_levels <- codebook_columns |>
   select(column, level = levels) |>
-  mutate(level = map(level, \(levels) map(as.list(levels), level_as_map))) |>
+  mutate(level = map(level, as.list)) |>
   unnest_longer(level) |>
+  mutate(level = map(level, \(x) if (is.list(x)) x else list(value = x))) |>
   unnest_wider(level) |>
   mutate(value = as.character(value))
 
@@ -258,188 +335,122 @@ codebook_requires <- codebook_levels |>
 
 url <- "https://docs.google.com/spreadsheets/"
 url_id <- "d/1asBfkq4AkTtdcb_yZTkN685LVeV5DYHNrO83g9N5HCU/"
+sheet_url <- paste0(url, url_id)
 
-# Read every cell of every sheet in the codebook, once
-sheet_cells <- names(codebook$sheets) |>
-  set_names() |>
-  map(\(sheet) range_read_cells(paste0(url, url_id), sheet = sheet))
+# Read every cell of each sheet. The cells are kept, because formula errors
+# (#REF!, #N/A) only show up there.
+paper_sheet <- range_read_cells(sheet_url, sheet = "Paper-level")
+study_sheet <- range_read_cells(sheet_url, sheet = "Study-level")
+condition_sheet <- range_read_cells(sheet_url, sheet = "Condition-level")
+outcome_sheet <- range_read_cells(sheet_url, sheet = "Outcome-level")
+sample_sheet <- range_read_cells(sheet_url, sheet = "Sample-level")
+statistics_sheet <- range_read_cells(sheet_url, sheet = "Statistics-level")
+effects_sheet <- range_read_cells(sheet_url, sheet = "Effects-level")
 
-# Turn each sheet into a table. Each row gets its row number in the sheet
-# (.row), so you can find a flagged problem there, and the empty rows at the
-# bottom of each sheet are dropped.
-sheets <- sheet_cells |>
-  map(\(cells) {
-    spread_sheet(cells, na = c("", "-")) |>
-      mutate(.row = row_number() + 1, .before = 1) |>
-      filter(!is.na(paper))
-  })
-
-# Collect the cells whose formula gives an error, such as #REF! or #N/A. In
-# the tables above these are just empty, so they're kept here to check
-# separately.
-formula_errors <- sheet_cells |>
-  list_rbind(names_to = "sheet") |>
-  mutate(
-    error = map_chr(
-      cell,
-      \(x) x$effectiveValue$errorValue$type %||% NA_character_
-    )
-  ) |>
-  filter(!is.na(error)) |>
-  select(sheet, .row = row, col, error)
-
-rm(sheet_cells)
-
-papers <- sheets$`Paper-level`
-studies <- sheets$`Study-level`
-samples <- sheets$`Sample-level`
-conditions <- sheets$`Condition-level`
-outcomes <- sheets$`Outcome-level`
-statistics <- sheets$`Statistics-level`
-effects <- sheets$`Effects-level`
+# Turn each sheet into a table
+papers <- sheet_table(paper_sheet)
+studies <- sheet_table(study_sheet)
+conditions <- sheet_table(condition_sheet)
+outcomes <- sheet_table(outcome_sheet)
+samples <- sheet_table(sample_sheet)
+statistics <- sheet_table(statistics_sheet)
+effects <- sheet_table(effects_sheet)
 
 # Read the reviews and meta-reviews that papers were found through
 reviews <- read_sheet(
-  paste0(url, url_id),
+  sheet_url,
   sheet = "Meta-reviews & reviews",
   na = c("", "-", "NA")
 )
 
-# Validation: Codebook ---------------------------------------------------
+# Validation: Paper-level ------------------------------------------------
 
-# Find columns in the codebook but not in the sheet, and the other way round
-sheet_columns <- sheets |>
-  imap(\(data, sheet) {
-    tibble(sheet = sheet, column = setdiff(names(data), ".row")) |>
-      mutate(position = row_number())
-  }) |>
-  list_rbind()
+# Find columns in the codebook but not in the sheet, and the other way around
+paper_columns <- tibble(column = setdiff(names(papers), ".row")) |>
+  mutate(position = row_number())
+paper_codebook_columns <- codebook_sheet_columns |>
+  filter(sheet == "Paper-level") |>
+  select(column, position)
 
-anti_join(codebook_sheet_columns, sheet_columns, by = c("sheet", "column"))
-anti_join(sheet_columns, codebook_sheet_columns, by = c("sheet", "column"))
+anti_join(paper_codebook_columns, paper_columns, by = "column")
+anti_join(paper_columns, paper_codebook_columns, by = "column")
 
 # Find columns that both have, but in a different order
 inner_join(
-  sheet_columns,
-  codebook_sheet_columns,
-  by = c("sheet", "column"),
+  paper_columns,
+  paper_codebook_columns,
+  by = "column",
   suffix = c("_sheet", "_codebook")
 ) |>
-  filter(
-    rank(position_sheet) != rank(position_codebook),
-    .by = sheet
-  )
+  filter(rank(position_sheet) != rank(position_codebook))
 
-# Put every hand-entered cell of every sheet in one table, next to the
-# codebook rules for its column, so each check below can look at all sheets at
-# once.
-# Lookups (filled by sheet formulas) and draft columns are left out.
-cells <- sheets |>
-  imap(\(data, sheet) {
-    data |>
-      mutate(across(-c(.row, paper), as_text)) |>
-      pivot_longer(-c(.row, paper), names_to = "column", values_to = "value") |>
-      mutate(sheet = sheet, .before = 1)
-  }) |>
-  list_rbind() |>
-  semi_join(
-    filter(codebook_sheet_columns, !lookup),
-    by = c("sheet", "column")
-  ) |>
-  inner_join(
-    select(
-      codebook_columns,
-      column,
-      type,
-      multiple,
-      required,
-      min,
-      max,
-      status
-    ),
-    by = "column"
-  ) |>
-  filter(!status %in% "draft")
+check_formula_errors(paper_sheet, papers)
+
+paper_cells <- codebook_cells(papers, "Paper-level")
+paper_factors <- factor_levels(paper_cells)
 
 # Find required cells that are empty
-cells |>
+paper_cells |>
   filter(required, is.na(value)) |>
-  select(sheet, .row, paper, column)
+  select(.row, paper, column)
 
 # Find number cells that aren't a number, aren't a whole number (for
 # integers), or are outside the allowed range
-numbers <- cells |>
-  filter(type %in% c("integer", "number"), !is.na(value)) |>
-  mutate(number = suppressWarnings(as.numeric(value)))
+paper_cells |>
+  filter(type %in% c("integer", "number"), !is.na(value), is.na(number)) |>
+  select(.row, paper, column, value)
 
-numbers |>
-  filter(is.na(number)) |>
-  select(sheet, .row, paper, column, value)
-
-numbers |>
+paper_cells |>
   filter(type == "integer", number %% 1 != 0) |>
-  select(sheet, .row, paper, column, value)
+  select(.row, paper, column, value)
 
-numbers |>
+paper_cells |>
   filter(number < min | number > max) |>
-  select(sheet, .row, paper, column, value, min, max)
+  select(.row, paper, column, value, min, max)
 
 # Find links that don't start with http(s)://
-cells |>
+paper_cells |>
   filter(type == "url", !is.na(value), !str_detect(value, "^https?://")) |>
-  select(sheet, .row, paper, column, value)
-
-# List the levels used in factor cells, one per row, so a cell with several
-# comma-separated levels is checked level by level
-factor_cells <- bind_rows(
-  cells |>
-    filter(type == "factor", !multiple, !is.na(value)) |>
-    mutate(level = value),
-  cells |>
-    filter(type == "factor", multiple, !is.na(value)) |>
-    mutate(level = value) |>
-    separate_longer_delim(level, delim = ",")
-) |>
-  mutate(level = str_trim(level))
+  select(.row, paper, column, value)
 
 # Find levels that aren't in the codebook
-factor_cells |>
+paper_factors |>
   anti_join(codebook_levels, by = c("column", "level" = "value")) |>
-  count(sheet, column, level, sort = TRUE)
+  count(column, level, sort = TRUE)
 
-factor_cells |>
+paper_factors |>
   anti_join(codebook_levels, by = c("column", "level" = "value")) |>
-  select(sheet, .row, paper, column, value)
+  select(.row, paper, column, value)
 
 # Find levels whose requires rule isn't met, e.g. product subtype "beef"
 # without product type "meat" in the same row
-factor_cells |>
-  select(sheet, .row, paper, column, level) |>
+paper_factors |>
+  select(.row, paper, column, level) |>
   inner_join(
     codebook_requires,
     by = c("column", "level" = "value"),
     relationship = "many-to-many"
   ) |>
   left_join(
-    factor_cells |>
-      select(sheet, .row, other_column = column, other_level = level) |>
+    paper_factors |>
+      select(.row, other_column = column, other_level = level) |>
       mutate(found = TRUE),
-    by = c("sheet", ".row", "other_column", "other_level")
+    by = c(".row", "other_column", "other_level")
   ) |>
   summarise(
     ok = any(found %in% TRUE),
     allowed = paste(other_level, collapse = " or "),
-    .by = c(sheet, .row, paper, column, level, other_column)
+    .by = c(.row, paper, column, level, other_column)
   ) |>
   filter(!ok) |>
   left_join(
-    select(cells, sheet, .row, other_column = column, other_value = value),
-    by = c("sheet", ".row", "other_column")
+    select(paper_cells, .row, other_column = column, other_value = value),
+    by = c(".row", "other_column")
   ) |>
   select(-ok)
 
 # Find included reviews that aren't a paper_in_paper level with the same
-# reference, and the other way round. Meta-reviews led to reviews, not to
+# reference, and the other way around. Meta-reviews led to reviews, not to
 # papers, so they aren't levels.
 reviews_included <- reviews |>
   filter(status == "included", `source type` != "meta-review") |>
@@ -456,22 +467,6 @@ full_join(reviews_included, paper_in_paper_levels, by = "value") |>
       str_squish(reference) != str_squish(description)
   )
 
-# Find formula errors (#REF!, #N/A) in rows that have a paper. The empty rows
-# at the bottom of each sheet always have them, so they're left out.
-sheet_rows <- sheets |>
-  map(\(data) select(data, .row, paper)) |>
-  list_rbind(names_to = "sheet")
-
-formula_errors |>
-  inner_join(sheet_rows, by = c("sheet", ".row")) |>
-  left_join(
-    select(sheet_columns, sheet, col = position, column),
-    by = c("sheet", "col")
-  ) |>
-  select(sheet, .row, paper, column, error)
-
-# Validation: Paper-level ------------------------------------------------
-
 check_duplicates(papers, paper)
 check_duplicates(papers, paper_label)
 
@@ -486,6 +481,53 @@ papers |>
   check_duplicates(title, na.rm = TRUE) |>
   select(.row, paper, paper_label, paper_title)
 
+# Find titles in Title Case rather than sentence case: most longer words after
+# the first start with a capital. Text in parentheses is left out, since it's
+# often a spelled-out acronym. Titles full of names (projects, reports) show
+# up here too. Paper 109's title starts with the name of the center that
+# published it; it's skipped for as long as the title stays the same.
+papers |>
+  filter(
+    !(paper == 109 &
+      paper_title %in%
+        "The Johns Hopkins Center for a Livable Future: Sodexo Meatless Monday survey results")
+  ) |>
+  select(.row, paper, paper_label, paper_title) |>
+  mutate(
+    word = paper_title |>
+      str_remove_all("\\([^)]*\\)") |>
+      str_remove("^\\S+\\s*")
+  ) |>
+  separate_longer_delim(word, delim = " ") |>
+  mutate(word = str_remove_all(word, "^[^\\p{L}]+|[^\\p{L}]+$")) |>
+  filter(str_length(word) > 3) |>
+  summarise(
+    words = n(),
+    capitalized = mean(str_detect(word, "^\\p{Lu}")),
+    .by = c(.row, paper, paper_label, paper_title)
+  ) |>
+  filter(words >= 3, capitalized >= 0.8)
+
+# Find titles that end with a period (except abbreviations like "U.K."), have
+# a lowercase word after a colon, or use curly quotes
+papers |>
+  filter(
+    str_detect(paper_title, "(?<!\\b\\p{Lu})\\.$") |
+      str_detect(paper_title, ": \\p{Ll}") |
+      str_detect(paper_title, "[‘’“”]")
+  ) |>
+  select(.row, paper, paper_label, paper_title)
+
+# Find titles with spacing problems: a space before punctuation
+# ("Hochschulmensa : Fleisch"), a double space, or no space after a sentence
+# ("intake.\"Five") or a comma
+papers |>
+  filter(
+    str_detect(paper_title, " [:;,?!.]|  ") |
+      str_detect(paper_title, "\\p{Ll}{2}[.?!:;](\\p{L}|[\"']\\p{L})|,\\p{L}")
+  ) |>
+  select(.row, paper, paper_label, paper_title)
+
 # Find duplicate links, ignoring http(s), www, dx., case, and a trailing
 # slash
 papers |>
@@ -498,6 +540,15 @@ papers |>
   check_duplicates(link, na.rm = TRUE) |>
   select(.row, paper, paper_label, paper_link)
 
+# Find links with a DOI that aren't written as "https://doi.org/10.xxxx/...",
+# e.g. dx.doi.org, a publisher's page, or a tracking suffix like ?urlappend=
+papers |>
+  filter(
+    str_detect(paper_link, "10\\.\\d{4,9}/"),
+    !str_detect(paper_link, "^https://doi\\.org/10\\.\\d{4,9}/[^?#\\s]+$")
+  ) |>
+  select(.row, paper, paper_label, paper_link)
+
 # Find years after this year (the codebook checks the minimum)
 papers |>
   filter(paper_year > year(today())) |>
@@ -507,7 +558,7 @@ papers |>
 # or "Author et al. (2020a)", with "&" rather than "and"
 papers |>
   filter(
-    !str_detect(paper_label, "^\\S.* \\((.+, )?\\d{4}[a-z]?\\)$") |
+    !str_detect(paper_label, "^\\S.* \\(\\d{4}[a-z]?\\)$") |
       str_detect(paper_label, " and |\\Set al\\.|et al(?!\\.)|et a\\.")
   ) |>
   select(.row, paper, paper_label)
@@ -522,7 +573,7 @@ papers |>
 
 # Find labels whose first author isn't the first author in paper_authors.
 # Names with particles can be written either way round ("da Silva" vs
-# "Rocha Possidónio da Silva"), so one may end with the other. Organisations
+# "Rocha Possidónio da Silva"), so one may end with the other. Organizations
 # as authors show up here too.
 papers |>
   mutate(
@@ -538,16 +589,102 @@ papers |>
   ) |>
   select(.row, paper, paper_label, paper_authors)
 
-# Find paper_authors not written as "Last, I.; Last, I.": each author
-# separated by a semicolon, with one comma between last name and initials
+# Find paper_authors not written as "Last, F. M.; Last, F.": each author
+# separated by "; ", with a comma between last name and initials, and an
+# optional Jr. or Sr. Authors with the same last name and initials get their
+# first name in brackets, as APA does: "Ahmed, S. [Saifuddin]". Organizations
+# are names without a comma, but not ones that end in initials ("Lea E").
+# Truncated lists ("et al.", "…") show up too.
 papers |>
   select(.row, paper, paper_label, paper_authors) |>
   mutate(author = paper_authors) |>
-  separate_longer_delim(author, delim = ";") |>
-  filter(str_count(author, ",") > 1 | str_detect(author, "&")) |>
+  separate_longer_delim(author, delim = "; ") |>
+  mutate(
+    person = str_detect(
+      author,
+      "^\\S[^,;&]*, \\p{Lu}\\.(-\\p{Lu}\\.)?( \\p{Lu}\\.(-\\p{Lu}\\.)?)*( \\[[^\\]]+\\])?(, (Jr|Sr)\\.)?$"
+    ),
+    organization = str_detect(author, "^\\p{L}[^,;&]*\\S$") &
+      !str_detect(author, "\\s(\\p{Lu}\\.?-?){1,3}$|et al|…")
+  ) |>
+  filter(!person, !organization) |>
   distinct(.row, paper, paper_label, paper_authors)
 
+# Find authors listed twice in the same paper
+papers |>
+  select(.row, paper, paper_label, paper_authors) |>
+  mutate(author = paper_authors) |>
+  separate_longer_delim(author, delim = "; ") |>
+  filter(n() > 1, .by = c(.row, author)) |>
+  distinct(.row, paper, paper_label, paper_authors)
+
+# Find garbled characters in authors and titles, such as a loose diaeresis
+# ("Ma¨ kela¨"), "€" for "ö", or a ligature ("ﬀ") from copying out of a PDF
+papers |>
+  filter(
+    str_detect(paper_authors, "[¨´`€\\x{FB00}-\\x{FB06}\\x{FFFD}]") |
+      str_detect(paper_title, "[¨´`€\\x{FB00}-\\x{FB06}\\x{FFFD}]")
+  ) |>
+  select(.row, paper, paper_label, paper_authors, paper_title)
+
 # Validation: Study-level ------------------------------------------------
+
+# Find columns in the codebook but not in the sheet, and the other way around
+study_columns <- tibble(column = setdiff(names(studies), ".row")) |>
+  mutate(position = row_number())
+study_codebook_columns <- codebook_sheet_columns |>
+  filter(sheet == "Study-level") |>
+  select(column, position)
+
+anti_join(study_codebook_columns, study_columns, by = "column")
+anti_join(study_columns, study_codebook_columns, by = "column")
+
+# Find columns that both have, but in a different order
+inner_join(
+  study_columns,
+  study_codebook_columns,
+  by = "column",
+  suffix = c("_sheet", "_codebook")
+) |>
+  filter(rank(position_sheet) != rank(position_codebook))
+
+check_formula_errors(study_sheet, studies)
+
+study_cells <- codebook_cells(studies, "Study-level")
+study_factors <- factor_levels(study_cells)
+
+# Find required cells that are empty
+study_cells |>
+  filter(required, is.na(value)) |>
+  select(.row, paper, column)
+
+# Find number cells that aren't a number, aren't a whole number (for
+# integers), or are outside the allowed range
+study_cells |>
+  filter(type %in% c("integer", "number"), !is.na(value), is.na(number)) |>
+  select(.row, paper, column, value)
+
+study_cells |>
+  filter(type == "integer", number %% 1 != 0) |>
+  select(.row, paper, column, value)
+
+study_cells |>
+  filter(number < min | number > max) |>
+  select(.row, paper, column, value, min, max)
+
+# Find links that don't start with http(s)://
+study_cells |>
+  filter(type == "url", !is.na(value), !str_detect(value, "^https?://")) |>
+  select(.row, paper, column, value)
+
+# Find levels that aren't in the codebook
+study_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  count(column, level, sort = TRUE)
+
+study_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  select(.row, paper, column, value)
 
 check_duplicates(studies, paper, study)
 
@@ -588,6 +725,58 @@ studies |>
   select(.row, paper, paper_label, study, study_data_link)
 
 # Validation: Condition-level --------------------------------------------
+
+# Find columns in the codebook but not in the sheet, and the other way around
+condition_columns <- tibble(column = setdiff(names(conditions), ".row")) |>
+  mutate(position = row_number())
+condition_codebook_columns <- codebook_sheet_columns |>
+  filter(sheet == "Condition-level") |>
+  select(column, position)
+
+anti_join(condition_codebook_columns, condition_columns, by = "column")
+anti_join(condition_columns, condition_codebook_columns, by = "column")
+
+# Find columns that both have, but in a different order
+inner_join(
+  condition_columns,
+  condition_codebook_columns,
+  by = "column",
+  suffix = c("_sheet", "_codebook")
+) |>
+  filter(rank(position_sheet) != rank(position_codebook))
+
+check_formula_errors(condition_sheet, conditions)
+
+condition_cells <- codebook_cells(conditions, "Condition-level")
+condition_factors <- factor_levels(condition_cells)
+
+# Find required cells that are empty
+condition_cells |>
+  filter(required, is.na(value)) |>
+  select(.row, paper, column)
+
+# Find number cells that aren't a number, aren't a whole number (for
+# integers), or are outside the allowed range
+condition_cells |>
+  filter(type %in% c("integer", "number"), !is.na(value), is.na(number)) |>
+  select(.row, paper, column, value)
+
+condition_cells |>
+  filter(type == "integer", number %% 1 != 0) |>
+  select(.row, paper, column, value)
+
+condition_cells |>
+  filter(number < min | number > max) |>
+  select(.row, paper, column, value, min, max)
+
+# Find levels that aren't in the codebook
+condition_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  count(column, level, sort = TRUE)
+
+condition_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  select(.row, paper, column, value)
 
 check_duplicates(conditions, paper, study, condition)
 
@@ -633,7 +822,8 @@ conditions |>
 conditions |>
   mutate(n_mechanisms = str_count(intervention_mechanism, ",") + 1) |>
   filter(
-    intervention_multicomponent == "yes" & n_mechanisms == 1 |
+    intervention_multicomponent == "yes" &
+      n_mechanisms == 1 |
       intervention_multicomponent == "no" & n_mechanisms > 1
   ) |>
   select(
@@ -682,6 +872,85 @@ conditions |>
   select(.row, paper, paper_label, study, study_design, study_design_study)
 
 # Validation: Outcome-level ----------------------------------------------
+
+# Find columns in the codebook but not in the sheet, and the other way around
+outcome_columns <- tibble(column = setdiff(names(outcomes), ".row")) |>
+  mutate(position = row_number())
+outcome_codebook_columns <- codebook_sheet_columns |>
+  filter(sheet == "Outcome-level") |>
+  select(column, position)
+
+anti_join(outcome_codebook_columns, outcome_columns, by = "column")
+anti_join(outcome_columns, outcome_codebook_columns, by = "column")
+
+# Find columns that both have, but in a different order
+inner_join(
+  outcome_columns,
+  outcome_codebook_columns,
+  by = "column",
+  suffix = c("_sheet", "_codebook")
+) |>
+  filter(rank(position_sheet) != rank(position_codebook))
+
+check_formula_errors(outcome_sheet, outcomes)
+
+outcome_cells <- codebook_cells(outcomes, "Outcome-level")
+outcome_factors <- factor_levels(outcome_cells)
+
+# Find required cells that are empty
+outcome_cells |>
+  filter(required, is.na(value)) |>
+  select(.row, paper, column)
+
+# Find number cells that aren't a number, aren't a whole number (for
+# integers), or are outside the allowed range
+outcome_cells |>
+  filter(type %in% c("integer", "number"), !is.na(value), is.na(number)) |>
+  select(.row, paper, column, value)
+
+outcome_cells |>
+  filter(type == "integer", number %% 1 != 0) |>
+  select(.row, paper, column, value)
+
+outcome_cells |>
+  filter(number < min | number > max) |>
+  select(.row, paper, column, value, min, max)
+
+# Find levels that aren't in the codebook
+outcome_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  count(column, level, sort = TRUE)
+
+outcome_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  select(.row, paper, column, value)
+
+# Find levels whose requires rule isn't met, e.g. product subtype "beef"
+# without product type "meat" in the same row
+outcome_factors |>
+  select(.row, paper, column, level) |>
+  inner_join(
+    codebook_requires,
+    by = c("column", "level" = "value"),
+    relationship = "many-to-many"
+  ) |>
+  left_join(
+    outcome_factors |>
+      select(.row, other_column = column, other_level = level) |>
+      mutate(found = TRUE),
+    by = c(".row", "other_column", "other_level")
+  ) |>
+  summarise(
+    ok = any(found %in% TRUE),
+    allowed = paste(other_level, collapse = " or "),
+    .by = c(.row, paper, column, level, other_column)
+  ) |>
+  filter(!ok) |>
+  left_join(
+    select(outcome_cells, .row, other_column = column, other_value = value),
+    by = c(".row", "other_column")
+  ) |>
+  select(-ok)
 
 check_duplicates(outcomes, paper, study, outcome, time)
 
@@ -762,6 +1031,58 @@ outcomes |>
   )
 
 # Validation: Sample-level -----------------------------------------------
+
+# Find columns in the codebook but not in the sheet, and the other way around
+sample_columns <- tibble(column = setdiff(names(samples), ".row")) |>
+  mutate(position = row_number())
+sample_codebook_columns <- codebook_sheet_columns |>
+  filter(sheet == "Sample-level") |>
+  select(column, position)
+
+anti_join(sample_codebook_columns, sample_columns, by = "column")
+anti_join(sample_columns, sample_codebook_columns, by = "column")
+
+# Find columns that both have, but in a different order
+inner_join(
+  sample_columns,
+  sample_codebook_columns,
+  by = "column",
+  suffix = c("_sheet", "_codebook")
+) |>
+  filter(rank(position_sheet) != rank(position_codebook))
+
+check_formula_errors(sample_sheet, samples)
+
+sample_cells <- codebook_cells(samples, "Sample-level")
+sample_factors <- factor_levels(sample_cells)
+
+# Find required cells that are empty
+sample_cells |>
+  filter(required, is.na(value)) |>
+  select(.row, paper, column)
+
+# Find number cells that aren't a number, aren't a whole number (for
+# integers), or are outside the allowed range
+sample_cells |>
+  filter(type %in% c("integer", "number"), !is.na(value), is.na(number)) |>
+  select(.row, paper, column, value)
+
+sample_cells |>
+  filter(type == "integer", number %% 1 != 0) |>
+  select(.row, paper, column, value)
+
+sample_cells |>
+  filter(number < min | number > max) |>
+  select(.row, paper, column, value, min, max)
+
+# Find levels that aren't in the codebook
+sample_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  count(column, level, sort = TRUE)
+
+sample_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  select(.row, paper, column, value)
 
 check_duplicates(samples, paper, study, sample)
 
@@ -858,6 +1179,58 @@ samples_numbers |>
   filter(abs(pct_from_n - pct) > 1)
 
 # Validation: Statistics-level -------------------------------------------
+
+# Find columns in the codebook but not in the sheet, and the other way around
+statistics_columns <- tibble(column = setdiff(names(statistics), ".row")) |>
+  mutate(position = row_number())
+statistics_codebook_columns <- codebook_sheet_columns |>
+  filter(sheet == "Statistics-level") |>
+  select(column, position)
+
+anti_join(statistics_codebook_columns, statistics_columns, by = "column")
+anti_join(statistics_columns, statistics_codebook_columns, by = "column")
+
+# Find columns that both have, but in a different order
+inner_join(
+  statistics_columns,
+  statistics_codebook_columns,
+  by = "column",
+  suffix = c("_sheet", "_codebook")
+) |>
+  filter(rank(position_sheet) != rank(position_codebook))
+
+check_formula_errors(statistics_sheet, statistics)
+
+statistics_cells <- codebook_cells(statistics, "Statistics-level")
+statistics_factors <- factor_levels(statistics_cells)
+
+# Find required cells that are empty
+statistics_cells |>
+  filter(required, is.na(value)) |>
+  select(.row, paper, column)
+
+# Find number cells that aren't a number, aren't a whole number (for
+# integers), or are outside the allowed range
+statistics_cells |>
+  filter(type %in% c("integer", "number"), !is.na(value), is.na(number)) |>
+  select(.row, paper, column, value)
+
+statistics_cells |>
+  filter(type == "integer", number %% 1 != 0) |>
+  select(.row, paper, column, value)
+
+statistics_cells |>
+  filter(number < min | number > max) |>
+  select(.row, paper, column, value, min, max)
+
+# Find levels that aren't in the codebook
+statistics_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  count(column, level, sort = TRUE)
+
+statistics_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  select(.row, paper, column, value)
 
 check_duplicates(
   statistics,
@@ -1014,6 +1387,58 @@ statistics |>
   distinct(paper, paper_label, study, statistics)
 
 # Validation: Effects-level ----------------------------------------------
+
+# Find columns in the codebook but not in the sheet, and the other way around
+effects_columns <- tibble(column = setdiff(names(effects), ".row")) |>
+  mutate(position = row_number())
+effects_codebook_columns <- codebook_sheet_columns |>
+  filter(sheet == "Effects-level") |>
+  select(column, position)
+
+anti_join(effects_codebook_columns, effects_columns, by = "column")
+anti_join(effects_columns, effects_codebook_columns, by = "column")
+
+# Find columns that both have, but in a different order
+inner_join(
+  effects_columns,
+  effects_codebook_columns,
+  by = "column",
+  suffix = c("_sheet", "_codebook")
+) |>
+  filter(rank(position_sheet) != rank(position_codebook))
+
+check_formula_errors(effects_sheet, effects)
+
+effects_cells <- codebook_cells(effects, "Effects-level")
+effects_factors <- factor_levels(effects_cells)
+
+# Find required cells that are empty
+effects_cells |>
+  filter(required, is.na(value)) |>
+  select(.row, paper, column)
+
+# Find number cells that aren't a number, aren't a whole number (for
+# integers), or are outside the allowed range
+effects_cells |>
+  filter(type %in% c("integer", "number"), !is.na(value), is.na(number)) |>
+  select(.row, paper, column, value)
+
+effects_cells |>
+  filter(type == "integer", number %% 1 != 0) |>
+  select(.row, paper, column, value)
+
+effects_cells |>
+  filter(number < min | number > max) |>
+  select(.row, paper, column, value, min, max)
+
+# Find levels that aren't in the codebook
+effects_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  count(column, level, sort = TRUE)
+
+effects_factors |>
+  anti_join(codebook_levels, by = c("column", "level" = "value")) |>
+  select(.row, paper, column, value)
 
 check_duplicates(effects, paper, effect) |>
   select(.row, paper, paper_label, effect)
