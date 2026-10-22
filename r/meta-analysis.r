@@ -65,7 +65,10 @@ codebook <- read_sheet(
 # Prepare data ------------------------------------------------------------
 
 effect_sizes <- effects |>
-  filter(effect_size_name %in% c("OR2DL", "SMCC", "SMD", "g")) |>
+  filter(
+    effect_size_name %in%
+      c("OR2DL", "OR2DL DiD", "SMCC", "SMD", "SMD DiD", "g")
+  ) |>
   filter(effect_exclude == "no") |>
   select(
     paper,

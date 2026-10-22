@@ -1640,13 +1640,24 @@ columns:
     type: factor
     required: true
     description: >-
-      The kind of effect size. Only OR2DL, SMCC, SMD, and g are included in
-      the meta-analysis; the others are kept for reference.
+      The kind of effect size. Only OR2DL, OR2DL DiD, SMCC, SMD, SMD DiD, and
+      g are included in the meta-analysis; the others are kept for reference.
     levels:
       - value: SMD
         description: Standardized mean difference (Hedges' g), calculated from means and SDs.
+      - value: SMD DiD
+        description: >-
+          Difference-in-differences on means (Morris, 2008): the change in the
+          intervention group minus the change in the control group, divided by
+          the pooled pre-test SD. Uses the _2 statistics groups for the
+          pre-test and the pre-post correlation (effect_r).
       - value: OR2DL
         description: Log odds ratio converted to a standardized mean difference (√3/π), calculated from counts.
+      - value: OR2DL DiD
+        description: >-
+          Difference-in-differences on counts: the change in log odds in the
+          intervention group minus the change in the control group, converted
+          with √3/π. Uses the _2 statistics groups for the pre-test.
       - value: SMCC
         description: >-
           Standardized mean change for the same participants measured twice,

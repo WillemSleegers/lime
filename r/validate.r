@@ -1145,11 +1145,12 @@ effects |>
   select(.row, paper, paper_label, effect, intervention_condition)
 
 # Find effects in the meta-analysis of a kind it doesn't use: only OR2DL,
-# SMCC, SMD, and g are pooled
+# OR2DL DiD, SMCC, SMD, SMD DiD, and g are pooled
 effects |>
   filter(
     effect_exclude == "no",
-    !effect_size_name %in% c("OR2DL", "SMCC", "SMD", "g")
+    !effect_size_name %in%
+      c("OR2DL", "OR2DL DiD", "SMCC", "SMD", "SMD DiD", "g")
   ) |>
   select(.row, paper, paper_label, effect, effect_size_name)
 

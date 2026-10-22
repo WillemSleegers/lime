@@ -13,14 +13,15 @@ All calculations live in `r/effect-functions.r`; `r/calculate-effects.r` runs th
 
 | effect_size_name | Input statistics | Method |
 |---|---|---|
-| SMD | M, SD (or SE), n per group | escalc SMD + Welch's two-sample t-test |
+| SMD | M, SD (or SE), n per group | escalc SMD + Welch's t-test |
+| SMD DiD (with `_2` statistics) | M, SD, n in a 2x2; `effect_r` | Morris (2008) d_ppc2, z-test |
 | OR2DL | successes, failures per group | escalc OR2DL + Fisher's exact test |
+| OR2DL DiD (with `_2` statistics) | successes, failures in a 2x2 | Difference in log odds ratios × √3/π, Wald χ² (df = 1) |
 | SMCC | M, SD, n; `effect_r` for paired | Paired-sample t-test with `effect_r`, one-sample t-test on change scores without |
-| g (with `_2` statistics) | successes, failures in a 2x2 | Difference in log odds ratios × √3/π, Wald χ² (df = 1) |
 
-Effects with other measures (d, eta squared, IRR) are skipped and listed. Tell the user about them.
+Effects with other measures (d, eta squared, IRR, and g, which holds conversions such as reported ORs) are skipped and listed. Tell the user about them.
 
-The g difference-in-differences treats all four cells as independent samples. That's right when different people are counted at each time (e.g. sales data), but conservative when the same participants are measured twice. In that case, use raw data if available to compute the paired variance in a paper-specific script (see lime-context, "Paper-specific scripts"). Otherwise note the assumption in `effect_notes`.
+The OR2DL difference-in-differences treats all four cells as independent samples. That's right when different people are counted at each time (e.g. sales data), but conservative when the same participants are measured twice. In that case, use raw data if available to compute the paired variance in a paper-specific script (see lime-context, "Paper-specific scripts"). Otherwise note the assumption in `effect_notes`.
 
 Reported odds ratios (effect_size_name "OR", with a 95% CI) are converted with `convert_reported_or()`: it returns a new `g` row per OR (log(OR) × √3/π, SE from the CI). Add those as new effects and set the original OR rows to `effect_exclude` "yes", so exactly one row per comparison is pooled.
 

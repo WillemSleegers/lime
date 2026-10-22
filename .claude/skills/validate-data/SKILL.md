@@ -14,7 +14,7 @@ DRAFT: `r/validate.r` was updated for the `_1`/`_2` columns but hasn't been run 
 1. **Run `r/validate.r`** with Rscript, skipping `btw_mcp_session()` (see the parse/eval trick in the context file). Its checks print their results rather than returning them, so capture each non-empty result per section.
 2. **Run the effect-level attention checks**, which aren't all in validate.r yet:
    - Pooled effects (`effect_exclude` "no") missing `effect_size`, `effect_size_var`, or `effect_size_name`.
-   - Pooled effects whose measure meta-analysis.r doesn't use (anything outside OR2DL, SMCC, SMD, g).
+   - Pooled effects whose measure meta-analysis.r doesn't use (anything outside OR2DL, OR2DL DiD, SMCC, SMD, SMD DiD, g).
    - `effect_exclude` "maybe" or empty, joined with `paper_status` (flag it when the paper is already "included").
    - More than one pooled row per comparison (paper, study, outcome, conditions, times, samples).
    - Intervention and control using the same statistics group (except one-sample SMCC without `effect_r`).

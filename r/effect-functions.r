@@ -72,7 +72,7 @@ calculate_smd <- function(data) {
 
   effect_size_columns(es) |>
     mutate(
-      effect_analysis = "Welch's two-sample t-test",
+      effect_analysis = "Welch's t-test",
       effect_statistic_name = "t",
       effect_statistic_value = t,
       effect_df = df,
@@ -153,7 +153,7 @@ calculate_smcc <- function(data) {
     )
 }
 
-# Difference-in-differences on a 2x2 set of successes/failures:
+# Difference-in-differences on a 2x2 set of successes/failures (OR2DL DiD):
 # (log OR intervention _1 vs _2) - (log OR control _1 vs _2), converted from
 # the logit scale to d with sqrt(3) / pi, tested with a Wald chi-squared.
 calculate_did_logit <- function(data) {
@@ -179,17 +179,17 @@ calculate_did_logit <- function(data) {
     effect_size_var = v * k^2,
     effect_size_se = sqrt(v) * k,
     effect_analysis = "Logistic regression",
-    effect_statistic_name = "chi squared",
+    effect_statistic_name = "chi-squared",
     effect_statistic_value = chi2,
     effect_df = 1,
     effect_p = pchisq(chi2, df = 1, lower.tail = FALSE)
   )
 }
 
-# Difference-in-differences on means (Morris, 2008, d_ppc2): the change in the
-# intervention group (_1 minus _2) minus the change in the control group,
-# divided by the pooled SD of the _2 groups and bias-corrected. The variance
-# needs the correlation between _1 and _2 in effect_r.
+# Difference-in-differences on means (SMD DiD; Morris, 2008, d_ppc2): the
+# change in the intervention group (_1 minus _2) minus the change in the
+# control group, divided by the pooled SD of the _2 groups and bias-corrected.
+# The variance needs the correlation between _1 and _2 in effect_r.
 calculate_did_smd <- function(data) {
   n_i <- data$i2_n
   n_c <- data$c2_n
@@ -270,14 +270,11 @@ calculate_effects <- function(effects, statistics) {
     attach_statistics(statistics) |>
     mutate(
       .method = case_when(
-        effect_size_name == "SMD" & !is.na(intervention_statistics_2) ~
-          "did_smd",
         effect_size_name == "SMD" ~ "smd",
+        effect_size_name == "SMD DiD" ~ "did_smd",
         effect_size_name == "OR2DL" ~ "or2dl",
-        effect_size_name == "SMCC" ~ "smcc",
-        effect_size_name == "g" &
-          !is.na(intervention_statistics_2) &
-          !is.na(i1_successes) ~ "did_logit"
+        effect_size_name == "OR2DL DiD" ~ "did_logit",
+        effect_size_name == "SMCC" ~ "smcc"
       )
     )
 
