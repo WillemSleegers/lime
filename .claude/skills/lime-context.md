@@ -65,9 +65,8 @@ Judgment calls on how to calculate effects are listed in `check-paper/SKILL.md` 
 ## Meta-analysis (`r/meta-analysis.r`)
 
 - Uses effects with `effect_exclude == "no"` and `effect_size_name` in OR2DL, OR2DL DiD, SMCC, SMD, SMD DiD, g. Reported d, eta squared, OR, and IRR are not pooled unless converted.
-- Keeps only the latest `intervention_time_1` per paper/study/outcome.
+- Keeps only the earliest `intervention_time_1` per paper/study/outcome (the shortest time between intervention and outcome).
 - `vcalc()` with cluster paper-study, subgroup outcome, and group keys from condition-sample-time; then `rma.mv(random = ~ 1 | paper / study / outcome)` with clubSandwich robust inference clustered by paper.
-- State on 2026-09-13: 732 effects from 178 papers; pooled estimate 0.255 [0.201, 0.309].
 
 ## Common coding errors found so far
 

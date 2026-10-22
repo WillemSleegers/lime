@@ -370,7 +370,7 @@ Papers report their results in different ways. Some give means and standard devi
 - **Measurements before and after an intervention, in both an intervention and a control group**: a difference-in-differences. We take the change in the intervention group and subtract the change in the control group, so that changes that happened in every group (e.g., because of the season or repeated testing) aren't counted as an effect of the intervention. For means, we follow Morris (2008). For counts, we take the difference between the changes in log odds and convert it with √3/π.
 - **Odds ratios reported by the paper** (e.g., from a logistic regression): converted with √3/π, with the standard error taken from the reported 95% confidence interval.
 
-When a paper reports the same comparison in more than one way, we record each version but include only one in the meta-analysis. When an outcome was measured at several time points after the intervention, the meta-analysis uses the latest time point among the included effects (see section 3.2 for when a time point is not included).
+When a paper reports the same comparison in more than one way, we record each version but include only one in the meta-analysis. When an outcome was measured at several time points after the intervention, the meta-analysis uses the earliest time point among the included effects, so that the results are comparable with studies that didn't measure the outcome again later (see section 3.2 for when a time point is not included).
 
 ## 3.2 Judgment calls
 
