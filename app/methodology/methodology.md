@@ -1,6 +1,6 @@
 # Methodology
 
-_Last updated: 13 September 2026_
+_Last updated: 14 October 2026_
 
 This page describes how the studies in LIME were identified, selected, and coded, and how we calculated effect sizes.
 
@@ -121,7 +121,7 @@ Second, the breadth of our categories is informed by the availability of studies
 
 Third, this means that in some cases, our labeling of an intervention deviates from how the intervention was labeled by the researchers who conducted the study.
 
-Below are descriptions and examples for the categories into which intervention studies are currently organized. These intervention categories are organized into six broader groups. This organization might change in the future, if we deem it informative to split up certain categories due to the availability of more evidence. Note that categories are not exclusive. Many interventions are based on multiple mechanisms (we refer to these as multi-component interventions), and this is also reflected in our coding. Many categories contain interventions that either steer people away from meat consumption, or toward vegetarian alternatives, or both simultaneously. However, when describing intervention types below, we mostly focus on the anti-meat framing for brevity.
+Below are descriptions and examples for the 23 categories into which intervention studies are currently organized. These intervention categories are organized into six broader groups. This organization might change in the future, if we deem it informative to split up certain categories due to the availability of more evidence. Note that categories are not exclusive. Many interventions target multiple mechanisms (we refer to these as multi-component interventions), and this is also reflected in our coding. Many categories contain interventions that either steer people away from meat consumption, or toward vegetarian alternatives, or both simultaneously. However, when describing intervention types below, we mostly focus on the anti-meat framing for brevity.
 
 ### 2.2.1 Persuasion interventions
 
@@ -289,10 +289,11 @@ Interventions that aim to improve the taste of vegetarian dishes.
 
 #### Price/tax/incentives
 
-Interventions that use prices, taxes, or incentives to make vegetarian options cheaper relative to meat options.
+Interventions that increase the price of animal products (with or without framing it as, for example, a meat tax), decrease the price of vegetarian options, or provide other concrete incentives for choosing a vegetarian option.
 
 - The college cafeteria decreased the price of the vegetarian option by 20 pence (from £2.05 to £1.85) and increased the price of meat options by 20 pence (from £2.52 to £2.72; Garnett et al., 2021).
 - Participants received a voucher worth $1.40 if they chose a meat-based dish, or $2.80 if they chose a vegetarian dish (Pizzo et al., 2026).
+- Participants received a stamp in their loyalty card for every vegetarian meal they purchased. After collecting three stamps, they could claim a free meal (Gold et al., 2024).
 
 #### Other
 
@@ -309,13 +310,12 @@ We distinguish between four **outcome categories**.
 - **Behaviors (self-reported)** include outcomes such as self-reported changes in meat consumption (Aberman & Plaks, 2022), and the frequency of animal product consumption as assessed with multi-day food diaries (Animal Charity Evaluators, 2013) or 24-hour recalls (Feltz et al., 2022).
 - **Intentions** include outcomes such as self-reported intentions to reduce future meat consumption (Pauer et al., 2022) and hypothetical choices of vegetarian dishes (Krpan & Houtsma, 2020).
 
-These categories are divided into more specific **outcome subcategories**. Donation and signing a petition are recorded, but not included in the meta-analysis, because they don't measure diet.
+These categories are divided into 22 **outcome subcategories**.
 
 Attitudes/beliefs
 
 - **Meat attitude**: general evaluations of meat or meat eaters.
-- **Meat belief**: beliefs about the consequences of eating meat (e.g., that eating pork contributes to the suffering of pigs).
-- **Meat hedonics**: perceived tastiness and anticipated enjoyment of meat products.
+- **Meat hedonic**: perceived tastiness and anticipated enjoyment of meat products.
 - **Moral judgment**: judgments about the ethicality of eating meat.
 - **Vegan hedonics**: perceived tastiness and anticipated enjoyment of vegan products.
 - **Vegetarian attitude**: general evaluations of vegetarian food or vegetarians.
@@ -324,8 +324,6 @@ Attitudes/beliefs
 Behaviors (observed)
 
 - **Animal product consumption**: observed consumption of animal products.
-- **Dairy consumption**: observed consumption of dairy.
-- **Donation**: donations to animal advocacy (e.g., part of a study bonus).
 - **Meat consumption**: observed consumption of meat.
 - **Vegan consumption**: observed consumption of vegan food.
 - **Vegetarian consumption**: observed consumption of vegetarian food.
@@ -345,11 +343,10 @@ Intentions
 - **Animal product intentions**: self-reported intentions to change one's consumption of animal products.
 - **Diet intentions**: self-reported intentions to change one's diet (e.g., omnivorous, vegetarian, vegan).
 - **Meat consumption intentions**: self-reported intentions to change one's consumption of meat.
-- **Signing a petition**: intentions to support petitions or policies that reduce meat consumption.
 - **Vegan consumption intentions**: self-reported intentions to change one's consumption of vegan food.
 - **Vegetarian consumption intentions**: self-reported intentions to change one's consumption of vegetarian food.
 
-Some measures specifically target certain foods, such as the consumption of red meat or eggs. This is captured with a **product type** variable that shows whether a measure captured a specific category of animal products (meat, eggs, dairy), and a **product subtype** variable that shows whether a measure captured a more specific subcategory (beef, butter, cheese, chicken, fish, lamb, milk, pork, poultry, processed meat, red meat, red and processed meat, seafood, shrimp, turkey, veal, white meat, yoghurt).
+Some measures specifically target certain foods, such as the consumption of red meat or eggs. This is captured with a **product type** variable that shows whether a measure captured a specific category of animal products (meat, eggs, dairy), and a **product subtype** variable that shows whether a measure captured a more specific subcategory (beef, cheese, chicken, dairy, fish, lamb, milk, pork, poultry, processed meat, red meat, red and processed meat, seafood, shrimp, turkey, white meat, yogurt).
 
 Finally, a **measurement type** variable indicates what type of measurement instrument was used to record the outcome.
 
@@ -370,7 +367,7 @@ Papers report their results in different ways. Some give means and standard devi
 - **Measurements before and after an intervention, in both an intervention and a control group**: a difference-in-differences. We take the change in the intervention group and subtract the change in the control group, so that changes that happened in every group (e.g., because of the season or repeated testing) aren't counted as an effect of the intervention. For means, we follow Morris (2008). For counts, we take the difference between the changes in log odds and convert it with √3/π.
 - **Odds ratios reported by the paper** (e.g., from a logistic regression): converted with √3/π, with the standard error taken from the reported 95% confidence interval.
 
-When a paper reports the same comparison in more than one way, we record each version but include only one in the meta-analysis. When an outcome was measured at several time points after the intervention, the meta-analysis uses the earliest time point among the included effects, so that the results are comparable with studies that didn't measure the outcome again later (see section 3.2 for when a time point is not included).
+When a paper reports the same comparison in more than one way, we record each version but include only one in the meta-analysis. When an outcome was measured at several time points after the intervention, the meta-analysis uses the latest time point among the included effects (see section 3.2 for when a time point is not included).
 
 ## 3.2 Judgment calls
 
@@ -381,7 +378,6 @@ Papers don't always report what we need, so sometimes we have to decide how to h
 - **Control groups reported together**: we keep them combined, as the paper reports them.
 - **Conditions that don't aim to reduce animal product consumption** (e.g., a "humane" label in a study that also tests a vegetarian label): we leave them out.
 - **Counts from the same participants at two time points**: calculating a difference-in-differences from counts alone treats the two time points as if they came from different people. Because most people give the same answer both times (e.g., omnivores at the pre-test are usually still omnivores at the post-test), this makes the estimate look more uncertain than it is. When the raw data are available, we calculate the uncertainty from the raw data instead. When they aren't, we use the counts and note this in the effect notes.
-- **Before and after measurements of means, without the correlation between them**: a difference-in-differences for means needs to know how strongly people's scores before and after the intervention are related. Papers rarely report this. When we can't calculate it from the paper or the raw data, we compare the intervention and control groups after the intervention only, and note this in the effect notes.
 - **Control group measured at only some time points**: sometimes the intervention group was measured at more time points than the control group (e.g., both groups at baseline and during the intervention, but only the intervention group afterwards). Without a control group, a change over time can't be separated from things that affect everyone, such as the season or holidays. We therefore only include effects at time points where both groups were measured. This can mean that the included effect is a short-term one, even though later measurements exist. We may still record the uncontrolled changes in the database, but they are not included in the meta-analysis.
 - **Counts that don't come from the same group** (e.g., red meat packages bought, out of the number of shoppers who entered the store): we treat the ratio as a proportion, even though it's really a rate (one shopper can buy several packages). These values are marked as approximate.
 
@@ -430,6 +426,8 @@ Friis, R., Skov, L. R., Olsen, A., Appleton, K. M., Saulais, L., Dinnella, C., H
 Garnett, E. E., Balmford, A., Marteau, T. M., Pilling, M. A., & Sandbrook, C. (2021). Price of change: Does a small alteration to the price of meat and vegetarian options affect their sales? *Journal of Environmental Psychology*, *75*, 101589. https://doi.org/10.1016/j.jenvp.2021.101589
 
 Gavrieli, A., Attwood, S., Wise, J., Putnam-Farr, E., Stillman, P., Giambastiani, S., Upritchard, J., Hanson, C., & Bakker, M. (2022). Appealing dish names to nudge diners to more sustainable food choices: A quasi-experimental study. *BMC Public Health*, *22*(1), 2229. https://doi.org/10.1186/s12889-022-14683-8
+
+Gold, N., Cornel, P., Zhuo, S., Thornton, K., Riddle, R., & McPhedran, R. (2024). Exploring the impact of giving free food samples and loyalty cards on sustainable food choices: A stepped wedge trial in workplace food outlets. *International Journal of Market Research*, *66*(5), 650–673. https://doi.org/10.1177/14707853241264242
 
 Green, S. A., Smith, B., & Mathur, M. B. (2026). Meaningfully reducing consumption of meat and animal products is an unsolved problem: A meta-analysis. *Appetite*, *216*, 108233. https://doi.org/10.1016/j.appet.2025.108233
 
