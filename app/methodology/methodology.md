@@ -287,9 +287,9 @@ Interventions that aim to improve the taste of vegetarian dishes.
 - A two-day workshop was conducted with the canteen kitchen, which included practical demonstrations of how to improve the visual and sensory appeal of plant-based meals (Guedes et al., 2023).
 - Higher-end plant-based meats (from Impossible Foods) were offered in a cafeteria (Malan, 2020).
 
-#### Price
+#### Price/tax/incentives
 
-Interventions that reduce the price of vegetarian options relative to meat options.
+Interventions that use prices, taxes, or incentives to make vegetarian options cheaper relative to meat options.
 
 - The college cafeteria decreased the price of the vegetarian option by 20 pence (from £2.05 to £1.85) and increased the price of meat options by 20 pence (from £2.52 to £2.72; Garnett et al., 2021).
 - Participants received a voucher worth $1.40 if they chose a meat-based dish, or $2.80 if they chose a vegetarian dish (Pizzo et al., 2026).

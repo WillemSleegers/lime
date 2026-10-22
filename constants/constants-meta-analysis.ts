@@ -96,7 +96,7 @@ export const MECHANISM_BINARY_LEVELS: BinaryModeratorLevel[] = [
   { label: "Origin of animal product", column: "has_mechanism_origin_of_animal_product" },
   { label: "Perspective taking/individuation", column: "has_mechanism_perspective_taking_individuation" },
   { label: "Priming", column: "has_mechanism_priming" },
-  { label: "Price", column: "has_mechanism_price" },
+  { label: "Price/tax/incentives", column: "has_mechanism_price_tax_incentives" },
   { label: "Taste", column: "has_mechanism_taste" },
   { label: "Other", column: "has_mechanism_other" },
 ]
@@ -110,7 +110,7 @@ export const MEDIUM_BINARY_LEVELS: BinaryModeratorLevel[] = [
   { label: "Choice architecture", column: "has_medium_choice_architecture" },
   { label: "In person", column: "has_medium_in_person" },
   { label: "Label", column: "has_medium_label" },
-  { label: "Price", column: "has_medium_price" },
+  { label: "Price/tax/incentives", column: "has_medium_price_tax_incentives" },
   { label: "Other", column: "has_medium_other" },
 ]
 
