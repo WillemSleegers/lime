@@ -2640,8 +2640,8 @@
         "study_n": 22,
         "interventions": [
           {
-            "intervention_condition": 1,
-            "intervention_description": "Participants were exposed to social norm message for two consecutive weeks, preceded by two weeks of no-message control. The message “More and more [retail store name] customers are choosing our veggie options” appeared in a green circle on the top right corner of the image displayed on the digital boards, covering 1/8th of the screen, and was animated with a small stretching and wobbling effect to draw customers’ attention further. The message was displayed alongside a picture of the vegetarian breakfast option during the breakfast service hours, and a vegetarian main meal during the remaining trading hours.",
+            "intervention_condition": 2,
+            "intervention_description": "Participants were exposed to social norm message for two consecutive weeks, followed by two weeks of no-message control. The message “More and more [retail store name] customers are choosing our veggie options” appeared in a green circle on the top right corner of the image displayed on the digital boards, covering 1/8th of the screen, and was animated with a small stretching and wobbling effect to draw customers’ attention further. The message was displayed alongside a picture of the vegetarian breakfast option during the breakfast service hours, and a vegetarian main meal during the remaining trading hours.",
             "intervention_mechanism": "norms: dynamic",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -2758,9 +2758,9 @@
           {
             "intervention_condition": 2,
             "intervention_description": "The college served two meat options, one vegetarian, one fish and one vegan option at all mealtimes, except on Friday lunchtimes where one meat option was replaced with an additional fish option and Saturday lunchtimes where the vegan option was not included. In the final five weeks of the term, the college cafeteria decreased the price of the vegetarian option by 20 pence (from £2.05 to £1.85) and increased the price of meat options by 20 pence (from £2.52 to £2.72).",
-            "intervention_mechanism": "price",
+            "intervention_mechanism": "price/tax/incentives",
             "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "price",
+            "intervention_medium": "price/tax/incentives",
             "intervention_medium_multicomponent": "no"
           }
         ],
@@ -3039,9 +3039,9 @@
         "study_n": 1386,
         "interventions": [
           {
-            "intervention_condition": 3,
+            "intervention_condition": 2,
             "intervention_description": "The intervention intended to educate employees on how small adjustments in meat consumption can reduce an individual’s environmental footprint as well as the risk of adverse health outcomes associated with high-meat diets. Participants joined an 18-month Meatless Monday campaign in which cafeterias promoted a discounted and dietitian approved vegetarian dish alongside the available meat options. Weekly posters delivered evidence-based health and environmental messages regarding the benefits of meat reduction.",
-            "intervention_mechanism": "info: health, info: environment, price",
+            "intervention_mechanism": "info: health, info: environment, price/tax/incentives",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "in-person",
             "intervention_medium_multicomponent": "no"
@@ -3073,11 +3073,11 @@
         "study_n": 4915,
         "interventions": [
           {
-            "intervention_condition": 2,
-            "intervention_description": "The vegatarian option was placed at the beginning of the buffet, whereas the meat option was placed at the end.",
+            "intervention_condition": 1,
+            "intervention_description": "Participants were exposed to a menu in which the vegetarian option was labeled as \"our recommendation\"",
             "intervention_mechanism": "choice architecture: visibility/salience/ease",
             "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "choice architecture",
+            "intervention_medium": "label",
             "intervention_medium_multicomponent": "no"
           }
         ],
@@ -3923,9 +3923,9 @@
           {
             "intervention_condition": 2,
             "intervention_description": "Participants were presented with a simulated delivery platform, with an additional tax imposed on items containing meat. The platform included nine restaurants that were based on real-world equivalents and offered a variety of popular cuisines. Each restaurant’s menu included a selection of starters, mains, desserts, and drinks (if applicable), to make the choice environment as realistic as possible. In total, participants could select from 164 unique food items for which we calculated the carbon footprint and calorie content. The menu page of a respective item displayed a red “T” icon and the text “Includes £X.XX of meat tax.” In the selection pop-up and in the checkout basket, an extra row identified the price added by the tax as “+£X.XX meat tax.” Additional rows displayed a small information icon, providing further details about the tax’s purpose and impact (“An additional meat tax has been added to this item to reflect its climate impact”) if hovered over with the mouse or touched on a mobile device.",
-            "intervention_mechanism": "info: environment, price",
+            "intervention_mechanism": "info: environment, price/tax/incentives",
             "intervention_mechanism_multicomponent": "yes",
-            "intervention_medium": "price, text",
+            "intervention_medium": "price/tax/incentives, text",
             "intervention_medium_multicomponent": "yes",
             "control_description": "Participants were presented with a simulated delivery platform in its regular “business as usual” design. They saw the same pages without carbon footprint or tax information, and both restaurant and menu pages were presented randomly."
           },
@@ -4194,7 +4194,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Meat consumption frequency within a week (1 year post-intervention)"
+            "outcome_description": "Meat consumption frequency within a week (1 week post-intervention)"
           }
         ]
       }
@@ -5253,7 +5253,7 @@
   },
   {
     "paper": 308,
-    "paper_label": "Hankins et al. (2025)",
+    "paper_label": "Hankins et al. (2025a)",
     "paper_authors": "Hankins, E.; Balhatchet, C.; Bryant, C.; Wilks, M.; Macdonald, C.; Hankins, R.; Abugu, P.; Walker Mackay, T.; McFarlane Smith, W.; Hazel, H.-W.; Clargo, S.",
     "paper_title": "Educational presentations reduce meat consumption across two universities",
     "paper_year": 2025,
@@ -5475,8 +5475,8 @@
         "study_n": 1489,
         "interventions": [
           {
-            "intervention_condition": 4,
-            "intervention_description": "Participants were presented with three signs designed to help them understand whether their meal choices had high, medium, or low water footprints. These signs were displayed throughout a three-week dinner rotation. The informational poster contained a call to action, “Eat Water Smart,” along with concise definitions of food water footprints. The bottom half of the poster categorized meals into three levels: low (vegetarian), medium (pork, chicken, or seafood), and high (beef). Each category included the average water footprint of the Dining Center meals: 300 liters (low), 590 liters (medium), and 1,350 liters (high). In the previous week, participants also saw additional signs that presented a daily “Water Smart Choice” directly below the informational signs, but these signs were removed again for this condition.",
+            "intervention_condition": 2,
+            "intervention_description": "Participants were presented with three signs designed to help them understand whether their meal choices had high, medium, or low water footprints. These signs were displayed throughout a three-week dinner rotation. The informational poster contained a call to action, “Eat Water Smart,” along with concise definitions of food water footprints. The bottom half of the poster categorized meals into three levels: low (vegetarian), medium (pork, chicken, or seafood), and high (beef). Each category included the average water footprint of the Dining Center meals: 300 liters (low), 590 liters (medium), and 1,350 liters (high).",
             "intervention_mechanism": "info: environment",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label, text",
@@ -5999,10 +5999,10 @@
   },
   {
     "paper": 362,
-    "paper_label": "Hansen et al. (2019)",
+    "paper_label": "Hansen et al. (2021)",
     "paper_authors": "Hansen, P. G.; Schilling, M.; Malthesen, M. S.",
     "paper_title": "Nudging healthy and sustainable food choices: Three randomized controlled field experiments using a vegetarian lunch-default as a normative signal",
-    "paper_year": 2019,
+    "paper_year": 2021,
     "paper_link": "https://doi.org/10.1093/pubmed/fdz154",
     "studies": [
       {
@@ -7565,6 +7565,22 @@
         ],
         "outcomes": [
           {
+            "outcome": 1,
+            "outcome_description": "Intention to reduce meat consumption over the next week"
+          },
+          {
+            "outcome": 9,
+            "outcome_description": "Attitude towards reducing meat consumption, measured on a scale from extremely unfavourable to extremely favourable"
+          },
+          {
+            "outcome": 10,
+            "outcome_description": "Interest in eating less meat, measured on a scale from not at all interested to extremely interested"
+          },
+          {
+            "outcome": 11,
+            "outcome_description": "Exploratory single-item measure of intention to increase or decrease meat consumption over the next week, measured on a scale from greatly decrease to greatly increase"
+          },
+          {
             "outcome": 2,
             "outcome_description": "Participants' meat consumption over the past week measured with a food frequency questionnaire"
           },
@@ -7591,22 +7607,6 @@
           {
             "outcome": 8,
             "outcome_description": "Participants' other meat consumption (e.g., duck, lamb, venison, etc.) over the past week measured with a food frequency questionnaire"
-          },
-          {
-            "outcome": 9,
-            "outcome_description": "Attitude towards reducing meat consumption, measured on a scale from extremely unfavourable to extremely favourable"
-          },
-          {
-            "outcome": 10,
-            "outcome_description": "Interest in eating less meat, measured on a scale from not at all interested to extremely interested"
-          },
-          {
-            "outcome": 11,
-            "outcome_description": "Exploratory single-item measure of intention to increase or decrease meat consumption over the next week, measured on a scale from greatly decrease to greatly increase"
-          },
-          {
-            "outcome": 1,
-            "outcome_description": "Intention to reduce meat consumption over the next week"
           }
         ]
       }
@@ -8195,10 +8195,10 @@
         "study_n": 21,
         "interventions": [
           {
-            "intervention_condition": 3,
-            "intervention_description": "Participants continued with the second component of \"Cooking Up Health\" intervention, intergrating service-learning experience in which participants applied their nutritional and socioeconomic knowledge by teaching at Chicago Public Schools, requiring students to co-lead at least four sessions of the \"Small Bites\" nutrition curriculum for elementary-age children. By synthesizing classroom learning with community service, students solidified their understanding of the complex relationships between food, health, and disease. In the first part of the program, participants had learned about six core pillars: applied nutrition science, hands-on plant-based cooking, disease management, patient coaching, cultural competency, and public health perspectives. Students had first completed the in-class learning component (six in-class didactic sessions) and, subsequently, completed the service component in the CPS classrooms after the last in-class learning component.",
-            "intervention_mechanism": "info: health",
-            "intervention_mechanism_multicomponent": "no",
+            "intervention_condition": 2,
+            "intervention_description": "Participants were exposed to \"Cooking Up Health\" intervention, a six-session culinary medicine elective course with each session lasting approximately 2.5 hours. The curriculum is delivered to small groups of 10-12 students by a multidisciplinary team consisting of faculty facilitators and a chef instructor. It integrated six core pillars: applied nutrition science, hands-on plant-based cooking, disease management, patient coaching, cultural competency, and public health perspectives. Students first completed the in-class learning component (six in-class didactic sessions) and, subsequently, completed the service component in the CPS classrooms after the last in-class learning component.",
+            "intervention_mechanism": "info: health, goal pursuit: cooking skills",
+            "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "in-person",
             "intervention_medium_multicomponent": "no"
           },
@@ -8495,27 +8495,6 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "In the online bookng system, the hot vegetarian lunchtime option was listed first in a drop-down list (instead of the meat option). If an individual would prefer a meat hot meal, they would have to manually switch their meal selection to a meat meal.",
-            "intervention_mechanism": "choice architecture: default",
-            "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "choice architecture",
-            "intervention_medium_multicomponent": "no",
-            "control_description": "In the online bookng system, the hot meat lunchtime option was listed first in a drop-down list. If an individual would prefer a vegetarianhot meal, they would have to manually switch their meal selection to a meat meal."
-          }
-        ],
-        "outcomes": [
-          {
-            "outcome": 1,
-            "outcome_description": "Percentage of vegetarian or vegan menu items that were sold"
-          }
-        ]
-      },
-      {
-        "study": 3,
-        "study_n": 9363,
-        "interventions": [
-          {
-            "intervention_condition": 2,
             "intervention_description": "On virtual and physical lunchtime menus, the main vegetarian option was listed first (instead of the meat option). In addition, the main vegetarian option was physically placed first in the cafeteria.",
             "intervention_mechanism": "choice architecture: visibility/salience/ease",
             "intervention_mechanism_multicomponent": "no",
@@ -8532,8 +8511,8 @@
         ]
       },
       {
-        "study": 4,
-        "study_n": 9717,
+        "study": 3,
+        "study_n": 9363,
         "interventions": [
           {
             "intervention_condition": 2,
@@ -8543,6 +8522,27 @@
             "intervention_medium": "choice architecture",
             "intervention_medium_multicomponent": "no",
             "control_description": "For each lunch offering, one meat and one vegetarian hot main meal were offered."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of vegetarian or vegan menu items that were sold"
+          }
+        ]
+      },
+      {
+        "study": 4,
+        "study_n": 9717,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "In the online booking system, the hot vegetarian lunchtime option was listed first in a drop-down list (instead of the meat option). If an individual would prefer a meat hot meal, they would have to manually switch their meal selection to a meat meal.",
+            "intervention_mechanism": "choice architecture: default",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the online bookng system, the hot meat lunchtime option was listed first in a drop-down list. If an individual would prefer a vegetarianhot meal, they would have to manually switch their meal selection to a meat meal."
           }
         ],
         "outcomes": [
@@ -8609,18 +8609,18 @@
           {
             "intervention_condition": 4,
             "intervention_description": "Participants received a voucher worth $1.40 if they chose a meat-based dish, or $2.80 if they chose a vegetarian dish.",
-            "intervention_mechanism": "price",
+            "intervention_mechanism": "price/tax/incentives",
             "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "price",
+            "intervention_medium": "price/tax/incentives",
             "intervention_medium_multicomponent": "no",
             "control_description": "Participants received a voucher worth $1.40 that could be used for either a vegetarian or meat-based dish."
           },
           {
             "intervention_condition": 5,
             "intervention_description": "Participants received a voucher worth $1.40 if they chose a meat-based dish, or $4.20 if they chose a vegetarian dish.",
-            "intervention_mechanism": "price",
+            "intervention_mechanism": "price/tax/incentives",
             "intervention_mechanism_multicomponent": "no",
-            "intervention_medium": "price",
+            "intervention_medium": "price/tax/incentives",
             "intervention_medium_multicomponent": "no",
             "control_description": "Participants received a voucher worth $1.40 that could be used for either a vegetarian or meat-based dish."
           }
@@ -8771,6 +8771,808 @@
           {
             "outcome": 1,
             "outcome_description": "Percentage of times participants selected a plant-based option in the proteins and fats category instead of red/white meat, fish, or cheese."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1075,
+    "paper_label": "Major-Smith et al. (2025)",
+    "paper_authors": "Major-Smith, K.; Borne, G.; Wallis, L.; Major-Smith, D.; Cotton, D.",
+    "paper_title": "Impact of a default nudge intervention on plant-based milk consumption in a UK university café",
+    "paper_year": 2025,
+    "paper_link": "https://doi.org/10.5964/gep.13967",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 6030,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Customers were automatically given oat milk in their drink unless they requested otherwise. Three signs were displayed informing customers that oat milk would be automatically applied to drinks for environmental reasons and that alternative milks were available upon request",
+            "intervention_mechanism": "choice architecture: default, info: environment",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "choice architecture, text",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "Customers were automatically given dairy milk in their drink unless they requested otherwise."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of drinks that were ordered with plant-based milk (vs. dairy)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1079,
+    "paper_label": "Macdonald (2025)",
+    "paper_authors": "Macdonald, C.",
+    "paper_title": "Reducing meat consumption with consumer insights and the nudge by proxy",
+    "paper_year": 2025,
+    "paper_link": "https://doi.org/10.3389/fsufs.2025.1656336",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 1500,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "The menu contained only two items from Greggs (a well-known British bakery chain): a sausage roll, and a vegan sausage roll. For the carbon group, the labelling included additional carbon footprint data in parentheses.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "The menu contained only two items from Greggs (a well-known British bakery chain): a sausage roll, and a vegan sausage roll. For the control group, the labelling included only the item names and the item costs."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "The menu contained only two items from Greggs (a well-known British bakery chain): a sausage roll, and a vegan sausage roll. For the protein group, the labelling included additional protein data in parentheses.",
+            "intervention_mechanism": "info: health",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "The menu contained only two items from Greggs (a well-known British bakery chain): a sausage roll, and a vegan sausage roll. For the control group, the labelling included only the item names and the item costs."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants who selected the vegan (vs. meat-based) sausage roll"
+          }
+        ]
+      },
+      {
+        "study": 2,
+        "study_n": 1500,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "The menu contained only two items from Greggs (a well-known British bakery chain): a sausage breakfast roll, and a vegan sausage breakfast roll. For the carbon group, the labelling included protein data in parentheses.",
+            "intervention_mechanism": "info: health",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "The menu contained only two items from Greggs (a well-known British bakery chain): a sausage breakfast roll, and a vegan sausage breakfast roll. For the control group, the labelling included only the item names and the item costs."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "The menu contained only two items from Greggs (a well-known British bakery chain): a sausage breakfast roll, and a vegan sausage breakfast roll. For the protein and fat group, the labelling included protein and fat data in parentheses.",
+            "intervention_mechanism": "info: health",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "The menu contained only two items from Greggs (a well-known British bakery chain): a sausage breakfast roll, and a vegan sausage breakfast roll. For the control group, the labelling included only the item names and the item costs."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants who selected the vegan (vs. meat-based) sausage breakfast roll"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1099,
+    "paper_label": "Reinders et al. (2024)",
+    "paper_authors": "Reinders, M. J.; Bouwman, E. P.; Onwezen, M. C.",
+    "paper_title": "Reducing meat consumption in restaurants: Exploring the default mechanism in a surprise menu, combined with effort and price incentives",
+    "paper_year": 2024,
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2024.102402",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 1054,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "In week 3 the default Chef's menu consisted of vegetarian dishes (knonw to customers), while the alternative comprised meat- and fish dishes: ‘Prefer meat or fish? This is also possible.’",
+            "intervention_mechanism": "choice architecture: default",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In week 1 the regular Chef’s Menu was implemented, which comprised of one meat, one fish ,and one vegetarian dish (spread across starter, main dish and dessert)."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of cosutomers who ordered the vegetarian (vs meat- and fish-based) Chef’s menu"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1102,
+    "paper_label": "Arrazat et al. (2024)",
+    "paper_authors": "Arrazat, L.; Cambriels, C.; Le Noan, C.; Nicklaus, S.; Marty, L.",
+    "paper_title": "Effects of increasing the availability of vegetarian options on main meal choices, meal offer satisfaction and liking: A pre-post analysis in a French university cafeteria",
+    "paper_year": 2024,
+    "paper_link": "https://doi.org/10.1186/s12966-024-01624-4",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 37299,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "During the intervention period, the avialbaility of vegetarian main meals was doubled to 48%.",
+            "intervention_mechanism": "choice architecture: availability/variety/size",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "During the control period, 24% of main meals were vegetarian as had been common in the cafeteria."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of main meals sold that were vegetarian"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1109,
+    "paper_label": "Gold et al. (2024)",
+    "paper_authors": "Gold, N.; Cornel, P.; Zhuo, S.; Thornton, K.; Riddle, R.; McPhedran, R.",
+    "paper_title": "Exploring the impact of giving free food samples and loyalty cards on sustainable food choices: A stepped wedge trial in workplace food outlets",
+    "paper_year": 2024,
+    "paper_link": "https://doi.org/10.1177/14707853241264242",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 12430,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "In this condition of the stepped-wedged trial, the intervention was active in weeks 1-4 of the 4-week intervention period. In the first week of the intervention, free samples of one of the vegan or vegetarian meals on offer that day were given out. Loyalty cards were made available for the duration of the intervention period. Customers received a stamp for each vegan or vegetarian hot meal or baguette they ordered. Once customers had collected four stamps, they could exchange the card for any meal of their choice, vegan/vegetarian or otherwise. The first stamp was given as ‘endowed progress’, so in practice, customers only needed to purchase three qualifying meals to receive a free meal.",
+            "intervention_mechanism": "goal pursuit: food provision, price/tax/incentives",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "in-person, price/tax/incentives",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "This 4-week baseline period preceded a 4-week intervention period. In this condition of the stepped-wedged trial, the intervention was active in weeks 1-4 of the 4-week intervention period."
+          },
+          {
+            "intervention_condition": 5,
+            "intervention_description": "In this condition of the stepped-wedged trial, the intervention was active in weeks 2-4 of the 4-week intervention period. In the first week of the intervention, free samples of one of the vegan or vegetarian meals on offer that day were given out. Loyalty cards were made available for the duration of the intervention period. Customers received a stamp for each vegan or vegetarian hot meal or baguette they ordered. Once customers had collected four stamps, they could exchange the card for any meal of their choice, vegan/vegetarian or otherwise. The first stamp was given as ‘endowed progress’, so in practice, customers only needed to purchase three qualifying meals to receive a free meal.",
+            "intervention_mechanism": "goal pursuit: food provision, price/tax/incentives",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "in-person, price/tax/incentives",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "This 4-week baseline period preceded a 3-week intervention period. In this condition of the stepped-wedged trial, the intervention was active in weeks 2-4 of the 4-week intervention period."
+          },
+          {
+            "intervention_condition": 8,
+            "intervention_description": "In this condition of the stepped-wedged trial, the intervention was active in weeks 3-4 of the 4-week intervention period. In the first week of the intervention, free samples of one of the vegan or vegetarian meals on offer that day were given out. Loyalty cards were made available for the duration of the intervention period. Customers received a stamp for each vegan or vegetarian hot meal or baguette they ordered. Once customers had collected four stamps, they could exchange the card for any meal of their choice, vegan/vegetarian or otherwise. The first stamp was given as ‘endowed progress’, so in practice, customers only needed to purchase three qualifying meals to receive a free meal.",
+            "intervention_mechanism": "goal pursuit: food provision, price/tax/incentives",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "in-person, price/tax/incentives",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "This 4-week baseline period preceded a 2-week intervention period. In this condition of the stepped-wedged trial, the intervention was active in weeks 3-4 of the 4-week intervention period."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of meals sold that were plant-based"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Percentage of meals sold that were plant-based"
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Percentage of meals sold that were plant-based"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1119,
+    "paper_label": "Taillie et al. (2023)",
+    "paper_authors": "Taillie, L. S.; Bercholz, M.; Prestemon, C. E.; Higgins, I. C. A.; Grummon, A. H.; Hall, M. G.; Jaacks, L. M.",
+    "paper_title": "Impact of taxes and warning labels on red meat purchases among US consumers: A randomized controlled trial",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1371/journal.pmed.1004284",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 3518,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "In the warning labels condition, red meat products had health and environmental warning labels applied next to the product image.",
+            "intervention_mechanism": "info: health, info: environment",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, products containing red meat retained their original price and did not display any additional labels on the product page"
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "In the tax condition, prices of red meat products were raised 30% over the baseline price.",
+            "intervention_mechanism": "price/tax/incentives",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "price/tax/incentives",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, products containing red meat retained their original price and did not display any additional labels on the product page"
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "In the combined condition, red meat products had health and environmental warning labels applied next to the product image and prices of red meat products were raised 30% over the baseline price.",
+            "intervention_mechanism": "info: health, info: environment, price/tax/incentives",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "label, price/tax/incentives",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "In the control condition, products containing red meat retained their original price and did not display any additional labels on the product page"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Each participants' percentage of selected products that contained red meat"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1118,
+    "paper_label": "Stillman et al. (2023)",
+    "paper_authors": "Stillman, P. E.; Gavrieli, A.; Upritchard, J.; Hanson, C.; Ahmed, T.; Kaplan, J.; Dhar, R.; Bakker, M.",
+    "paper_title": "Driving sustainable food choices: How to craft an effective sustainability labeling system",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1086/725112",
+    "studies": [
+      {
+        "study": 2,
+        "study_n": 1514,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. The vegan patty was labeled with a globe plus a message that read “sustainable choice!”",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. Each patty option was labeled with the estimated kg of CO2 emitted to produce that choice.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. Each patty option was labeled with the estimated kg of CO2 emitted to produce that choice. It also included a picture of a car with the distance required to produce equivalent carbon emissions.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          },
+          {
+            "intervention_condition": 5,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. The vegan patty was labeled with a globe plus a message that read “sustainable choice!”. Each patty option was also labeled with the estimated kg of CO2 emitted to produce that choice.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants who selected the vegan patty for their burger"
+          }
+        ]
+      },
+      {
+        "study": 3,
+        "study_n": 1804,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. Tthe vegan patty was labeled with a globe plus a message that read “sustainable choice!”",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. Each patty option  was labeled with the estimated kg of CO2 emitted to produce that choice.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. The vegan patty was labeled with a globe plus a message that read “sustainable choice!”. Each patty was also labeled option with the estimated kg of CO2 emitted to produce that choice.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          },
+          {
+            "intervention_condition": 5,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. Green, yellow, or red stoplight symbols were added on each protein option.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          },
+          {
+            "intervention_condition": 6,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. Green, yellow, or red stoplight symbols were added on each protein option. Each patty option was also labeled with the estimated kg of CO2 emitted to produce that choice.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants who selected the vegan patty for their burger"
+          }
+        ]
+      },
+      {
+        "study": 4,
+        "study_n": 903,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. The vegetarian meal options were labeled with a globe plus a message that read “sustainable choice!”. Each option was also labeled with the estimated kg of CO2 emitted to produce that choice.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. Green, yellow, or red stoplight symbols were added on each meal option. Each option was also labeled with the estimated kg of CO2 emitted to produce that choice.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants who selected one of the vegetarian meal options (creamy tomato fettuccine or spicy soy-glazed tofu)"
+          }
+        ]
+      },
+      {
+        "study": 5,
+        "study_n": 726,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. The vegetarian meal options were labeled with a globe plus a message that read “sustainable choice!”. Each option was also labeled with the estimated kg of CO2 emitted to produce that choice.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "In the control condition, participants simply saw no labels or numbers when making their choice."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants who selected the vegan patty for their burger"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Percentage of participants who selected one of the vegetarian stew options (seasonal veggies or tofu)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1104,
+    "paper_label": "Beyer et al. (2024)",
+    "paper_authors": "Beyer, B.; Chaskel, R.; Euler, S.; Gassen, J.; Großkopf, A.-K.; Sellhorn, T.",
+    "paper_title": "How does carbon footprint information affect consumer choice? A field experiment",
+    "paper_year": 2024,
+    "paper_link": "https://doi.org/10.1111/1475-679X.12505",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 22713,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "A display of absolute CO2-equivalent emissions in grams, depicted as a black-and-white leaf-shaped pictorial, was added to the description of each dish.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "No additional information was shown next to the dishes."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "A display of absolute CO2-equivalent emissions in grams was added to the description of each dish. This absolute GHG information was presented as a leaf-shaped pictorial coded in traffic-light colors, with green (yellow, red) signaling low (medium, high) carbon footprints.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "No additional information was shown next to the dishes."
+          },
+          {
+            "intervention_condition": 4,
+            "intervention_description": "A leaf-shaped pictorial coded in traffic-light colors, with green (yellow, red) signaling low (medium, high) carbon footprints, was shown next to the description of each dish. This included a number, the percentage of a stylized individual’s daily CO2 budget only for food that corresponds to 100 grams of the dish.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "No additional information was shown next to the dishes."
+          },
+          {
+            "intervention_condition": 5,
+            "intervention_description": "A leaf-shaped pictorial coded in traffic-light colors, with green (yellow, red) signaling low (medium, high) carbon footprints, was shown next to the description of each dish. This included a number, a monetary estimate (in Euros) of the environmental costs associated with 100 grams of the dish.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "No additional information was shown next to the dishes."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of customers choosing a dish that contains meat"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1105,
+    "paper_label": "Carroll et al. (2024)",
+    "paper_authors": "Carroll, K. A.; Guthrie, J. F.; Samek, A.",
+    "paper_title": "Impact of recipe cards and nutrition tips on produce selection in a food pre-ordering program",
+    "paper_year": 2024,
+    "paper_link": "https://doi.org/10.1080/19320248.2022.2117004",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 200,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "With their ordered food boxes, people received an enevelope with a card that encouraged them to eat more vegetables and fruit, and 6 recipe cards for vegetarian dishes. Approximately one week before they could order their boxes for the next month, people received a reminder phone call (also in the contrrol condition). In the treatment condition, participants were also encouraged to order a fruit, vegetable, or garden box this month to take advantage of the recipes they had received.",
+            "intervention_mechanism": "goal pursuit: planning/pledge/reminder, goal pursuit: cooking skills",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "text, in-person",
+            "intervention_medium_multicomponent": "yes"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of each person's food box purchases that were the meat or seafood box"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1106,
+    "paper_label": "Casati et al. (2023)",
+    "paper_authors": "Casati, M.; Soregaroli, C.; Rommel, J.; Luzzani, G.; Stranieri, S.",
+    "paper_title": "Please keep ordering! A natural field experiment assessing a carbon label introduction",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1016/j.foodpol.2023.102523",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 1391,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "A simple green circle containing a white leaf identified the lowest-emission dish for each food category on the digital menu. For all categories, the labeled dish was always vegetarian.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of customers who selected the vegetarian couscous when selecting a first course dish"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Percentage of customers who selected the vegetarian version when selecting a poké bowl"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1107,
+    "paper_label": "Engström et al. (2024)",
+    "paper_authors": "Engström, E.; Nilsson Lewis, A.; Moberg, Å.; Vanhuyse, F.; Dawkins, E.; Lambe, F.; Sendlhofer, T.; Ran, Y.",
+    "paper_title": "Using labels to support climate-friendly lunch purchases – An in-store study",
+    "paper_year": 2024,
+    "paper_link": "https://doi.org/10.1016/j.clrc.2024.100239",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 9406,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "A label was added to each lunch box showing whether the lunch box had a lower, medium, or hogher carbon footprint compared to the other lunch boxes. Two vegetarian lunchboxes and two chicken lunchboxes were labeled as low.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of customers choosing the tempeh salad lunchbox (on of the two vegetarian options)"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Percentage of customers choosing the vegan curry lunchbox (on of the two vegetarian options)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1110,
+    "paper_label": "Kaiser et al. (2020)",
+    "paper_authors": "Kaiser, F. G.; Henn, L.; Marschke, B.",
+    "paper_title": "Financial rewards for long-term environmental protection",
+    "paper_year": 2020,
+    "paper_link": "https://doi.org/10.1016/j.jenvp.2020.101411",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 296,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants in the treatment group were offered a financial reward of 2€  (in addition to the show-up fee) for every vegetarian lunch they chose at the university cafeteria during the intervention week. The reward was close to the student price for meals (between 2.30 € and 2.80 €), meaning students could essentially enjoy a week of free lunches if they chose to eat vegetarian dishes every day.",
+            "intervention_mechanism": "price/tax/incentives, info: taste/disgust",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "price/tax/incentives",
+            "intervention_medium_multicomponent": "no"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Proportion of meals bought in the university cafeteria that were vegetarian"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1113,
+    "paper_label": "Luick et al. (2024)",
+    "paper_authors": "Luick, M.; Bandy, L.; Piernas, C.; Jebb, S. A.; Pechey, R.",
+    "paper_title": "Do promotions of healthier or more sustainable foods increase sales? Findings from three natural experiments in UK supermarkets",
+    "paper_year": 2024,
+    "paper_link": "https://doi.org/10.1186/s12889-024-19080-x",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 93063,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Price promotions, banners and social media were deployed in store to encourage purchasing of plant-based foods across a range of food categories. The retailer also utilised television advertisements, radio partnerships, influencers on social media, email, and online advertisements to further draw attention to the ongoing promotion. In stores, there were smart screens with information about the promotion, recipe cards, recommendations next to vegan products of how they could be used, and large signs hanging overhead to increase visibility of the promotion. Promoted items were placed at the end of aisles, otherwise product positioning was not targeted. Promotions included price reductions mostly ranging from £0.20 to £1, with a sticker highlighting the price reduction.",
+            "intervention_mechanism": "authority/role models, choice architecture: visibility/salience/ease, price/tax/incentives, goal pursuit: cooking skills",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "price/tax/incentives, video, text, choice architecture",
+            "intervention_medium_multicomponent": "yes"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Average number of units of dairy products sold in a store per week"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Average number of units of meat products sold in a store per week"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1103,
+    "paper_label": "Bazoche et al. (2023)",
+    "paper_authors": "Bazoche, P.; Guinet, N.; Poret, S.; Teyssier, S.",
+    "paper_title": "Does the provision of information increase the substitution of animal proteins with plant-based proteins? An experimental investigation into consumer choices",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1016/j.foodpol.2023.102426",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 309,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "After choosing and eating a first meal without receiving any additional information, before choosing their second meal, participants received information about the environmental footprint of meat. Before choosing their third meal, participants saw the same information again.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants chose their meals without receiveing any additional information."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "After choosing and eating a first meal without receiving any additional information, before choosing their second meal, participants received information about the negative consequences of the overconsumption of beef on health. Before choosing their third meal, participants saw the same information again.",
+            "intervention_mechanism": "info: health",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants chose their meals without receiveing any additional information."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants choosing a meat-based meal. This includes participants who selected a vegetarian meal but then added meat to the meal."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1092,
+    "paper_label": "Jenny et al. (2026)",
+    "paper_authors": "Jenny, A.; Chryssolouris, D.; Minder, N.; Koch, D.; Stucki, M.",
+    "paper_title": "Climate-based meal pricing in hospital catering",
+    "paper_year": 2026,
+    "paper_link": "https://doi.org/10.3389/fsufs.2026.1760673",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 31800,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Prices of dishes were adjusted in accordance with their carbon emissions (meat dishes generaly increasing in price, veg*n dishes decreasing in price). Digital displays at the restaurant entrance, posters and table cards, and an intranet announcement highlighted that the price increases served to offset the discount applied to climate-friendly meals. The project was framed as part of Zurich’s climate goals and presented as an opportunity for the hospital to contribute meaningfully to their achievement.",
+            "intervention_mechanism": "info: environment, price/tax/incentives, goal pursuit: efficacy/consequences/feedback",
+            "intervention_mechanism_multicomponent": "yes",
+            "intervention_medium": "price/tax/incentives, text",
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "Six weeks in autumn 2023 (1 year prior to the intervention) served as the baseline"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 2,
+            "outcome_description": "Percentage of customers selecting a vegan meal"
+          },
+          {
+            "outcome": 3,
+            "outcome_description": "Percentage of customers selecting a vegetarian meal"
+          },
+          {
+            "outcome": 4,
+            "outcome_description": "Percentage of customers selecting a poultry-based meal"
+          },
+          {
+            "outcome": 5,
+            "outcome_description": "Percentage of customers selecting a pork-based meal"
+          },
+          {
+            "outcome": 6,
+            "outcome_description": "Percentage of customers selecting a beef-based meal"
+          },
+          {
+            "outcome": 7,
+            "outcome_description": "Percentage of customers selecting a veal-based meal"
+          },
+          {
+            "outcome": 8,
+            "outcome_description": "Percentage of customers selecting a fish-based meal"
+          },
+          {
+            "outcome": 9,
+            "outcome_description": "Percentage of customers selecting a game-based meal"
+          },
+          {
+            "outcome": 10,
+            "outcome_description": "Percentage of customers selecting a mixed-meat- or lamb-based meal"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "paper": 1090,
+    "paper_label": "Lohmann et al. (2025)",
+    "paper_authors": "Lohmann, P. M.; Gsottbauer, E.; Gravert, C.; Reisch, L. A.",
+    "paper_title": "Nudging, Fast and Slow: Experimental Evidence from Food Choices under Time Pressure",
+    "paper_year": 2025,
+    "paper_link": "https://doi.org/10.1007/s10640-025-01012-x",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 3017,
+        "interventions": [
+          {
+            "intervention_condition": 2,
+            "intervention_description": "Participants were shown a carbon footprint label on each menu item, indicating a low to high environmental impact. The order of restaurants and menu items was randomly presented.",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "label",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants did not see any additional information and restaurants and their items were displayed in random order."
+          },
+          {
+            "intervention_condition": 3,
+            "intervention_description": "Both restaurants and menu items were re-arranged based on their climate impact. Menu items were ranked by greenhouse gas intensity (kg CO2e / kg). Restaurant rankings were ranked by the average GHG intensity of their meals.",
+            "intervention_mechanism": "choice architecture: visibility/salience/ease",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "choice architecture",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants did not see any additional information and restaurants and their items were displayed in random order."
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Percentage of participants choosing a meat-based meal at the end of the decision period (90 seconds)."
           }
         ]
       }

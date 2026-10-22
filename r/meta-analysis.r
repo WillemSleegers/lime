@@ -94,11 +94,12 @@ effect_sizes <- effects |>
   )
 
 # Some studies have the same effect across different times
-# Only include the effects with the longest time between the intervention
-# and outcome measurement
+# Only include the effects with the shortest time between the intervention
+# and outcome measurement so results are most comparable to those who
+# did not include follow-up measurements
 effect_sizes <- effect_sizes |>
   group_by(paper, study, outcome) |>
-  filter(intervention_time_1 == max(intervention_time_1)) |>
+  filter(intervention_time_1 == min(intervention_time_1)) |>
   ungroup()
 
 # Add outcome information
