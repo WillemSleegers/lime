@@ -56,12 +56,6 @@ effects <- read_sheet(
   na = c("", "-")
 )
 
-codebook <- read_sheet(
-  paste0(url, url_id),
-  sheet = "Codebook",
-  na = c("", "-")
-)
-
 # Prepare data ------------------------------------------------------------
 
 effect_sizes <- effects |>
