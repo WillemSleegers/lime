@@ -41,6 +41,16 @@
   - Needs: a way to pool rate ratios (the meta-analysis doesn't pool IRRs yet), a conversion to the common effect size scale, and a check for other papers coded the same way.
   - Different from sales as the unit (e.g. paper 62: vegetarian vs meat dishes out of all dishes sold), where the proportion is valid.
 
+- [ ] **Paper 115 (Fredholm & Karlsson, 2020): aggregate store sales** — Excluded as "no internal variance", but the raw data (CSV in its Paperbank folder: weekly units sold per product per store) do give a variance. Three ICA stores in Lund: a climate nudge store, an economic nudge store, and a control store; weeks 9–12 (before) and 13–16 (during the nudge) in 2020, and the same weeks in 2019. No participants, so `study_n` is empty; the stores are the unit of analysis, so use 3.
+  - How to analyze it: a difference-in-differences on store-weeks (kg of meat per week, summed over the meat products). For each nudge store, the 2020 change from weeks 9–12 to 13–16 minus the same change in the control store: two effects sharing one control. The variance comes from week-to-week variation within each store-period, with `effect_r` = 0 (pre and post are different weeks). 2019 serves as a placebo check (the same contrast should be about zero), not as part of the estimate. The effect applies to these stores only: with one store per condition, variation in the effect between stores can't be estimated.
+  - Problems: (1) only 2–3 usable weeks per cell after dropping promotion weeks, so each SD rests on very few points; (2) an SMD scaled by the SD of weekly store totals isn't on the same scale as SMDs from individuals, and comes out large (climate store 2020: 50.3 → 37.2 kg/week, weekly SD about 10); (3) COVID panic buying around weeks 11–12 of 2020 falls in the pre-period (climate store baseline 50 kg/week in 2020 vs 35 in 2019), and one control store can't show whether all stores were hit equally. Some products in the CSV lack `weight_g`, so check that before calculating kg.
+  - For now: keep it excluded, but replace the reason in `paper_notes` with the three problems above, and set `study_n` to 3 with a study note that stores are the unit of analysis.
+  - Changes to LIME this would need:
+    - A log ratio of means (ROM, lnRR) effect type, which doesn't depend on the level of aggregation: `ln(M_i / M_c)` with variance `SD_i² / (n_i·M_i²) + SD_c² / (n_c·M_c²)`, and a difference-in-differences version on the log scale. It needs a calculation in `r/effect-functions.r`, a level in the codebook, and a decision on pooling, since there's no clean conversion to SMD: a separate analysis, or a subgroup by effect type.
+    - The unit an effect was computed on (store, store-period, transaction, individual) and whether it's below the unit of assignment. This belongs in the draft `study_measurement_unit` and `study_pseudoreplication_risk` columns (see the methodology 2.1 item under Important), so effects computed on transactions from cluster-assigned studies can be flagged or corrected for the design effect.
+    - A `study_n` convention for aggregate data (number of stores, store-periods, or transactions) in the codebook description. Compare papers 86 and 416 (stores) with 384 and 1062 (meals sold).
+    - Related: the rate-based effects item above (paper 140).
+
 ## Data Quality and Coding Review
 
 ### High Priority

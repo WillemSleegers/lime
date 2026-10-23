@@ -270,6 +270,64 @@ check_formula_errors <- function(cells, data) {
     select(.row, paper, column, error)
 }
 
+# Find lookups that aren't the expected formula, e.g. because the formula was
+# typed over with its value, in rows that have a paper. expected is the
+# formula with {row} for the row number. The cells read below don't include
+# formulas, so only this column's formulas are read here.
+check_lookup_formula <- function(data, ss, sheet_name, column, expected) {
+  letter <- cellranger::num_to_letter(match(column, names(data)) - 1)
+
+  response <- request_generate(
+    "sheets.spreadsheets.get",
+    params = list(
+      spreadsheetId = as.character(as_sheets_id(ss)),
+      ranges = paste0("'", sheet_name, "'!", letter, ":", letter),
+      fields = "sheets.data.rowData.values.userEnteredValue"
+    )
+  ) |>
+    request_make() |>
+    gargle::response_process()
+
+  rows <- response$sheets[[1]]$data[[1]]$rowData
+
+  tibble(
+    .row = seq_along(rows),
+    formula = map_chr(
+      rows,
+      \(x) {
+        pluck(
+          x,
+          "values",
+          1,
+          "userEnteredValue",
+          "formulaValue",
+          .default = NA_character_
+        )
+      }
+    )
+  ) |>
+    right_join(select(data, .row, paper, all_of(column)), by = ".row") |>
+    mutate(
+      expected = str_replace_all(expected, fixed("{row}"), as.character(.row))
+    ) |>
+    filter(is.na(formula) | formula != expected) |>
+    select(.row, paper, all_of(column), formula, expected)
+}
+
+# Find links that are malformed or may not open: links that don't start with
+# https://, or that have a space, end in punctuation, or have an empty OSF
+# view-only key ("?view_only=")
+check_urls <- function(cells) {
+  cells |>
+    filter(
+      type == "url",
+      !is.na(value),
+      !str_detect(value, "^https://") |
+        str_detect(value, "\\s|[.,;:)]$|view_only=?$")
+    ) |>
+    select(.row, paper, column, value)
+}
+
 # Codebook ----------------------------------------------------------------
 
 # Read the codebook, which defines each sheet's columns and the values they
@@ -650,6 +708,14 @@ inner_join(
 
 check_formula_errors(study_sheet, studies)
 
+check_lookup_formula(
+  studies,
+  sheet_url,
+  "Study-level",
+  "paper_label",
+  "=FILTER('Paper-level'!B:B, 'Paper-level'!A:A=A{row})"
+)
+
 study_cells <- codebook_cells(studies, "Study-level")
 study_factors <- factor_levels(study_cells)
 
@@ -672,10 +738,7 @@ study_cells |>
   filter(number < min | number > max) |>
   select(.row, paper, column, value, min, max)
 
-# Find links that don't start with http(s)://
-study_cells |>
-  filter(type == "url", !is.na(value), !str_detect(value, "^https?://")) |>
-  select(.row, paper, column, value)
+check_urls(study_cells)
 
 # Find levels that aren't in the codebook
 study_factors |>
@@ -691,6 +754,36 @@ check_duplicates(studies, paper, study)
 # Find studies of a paper that isn't in Paper-level
 check_orphans(studies, papers, by = "paper") |>
   select(.row, paper, paper_label, study)
+
+# Find studies without conditions or outcomes. Studies without samples are
+# found by the "(total)" sample check in Sample-level.
+check_orphans(studies, conditions, by = c("paper", "study")) |>
+  select(.row, paper, paper_label, study)
+
+check_orphans(studies, outcomes, by = c("paper", "study")) |>
+  select(.row, paper, paper_label, study)
+
+# Find samples larger than their study. study_n is the number at the earliest
+# measurement point, so a bigger sample suggests a typo, or a sample that
+# counts observations (e.g. meals) while study_n counts participants. Only
+# the largest sample of each study is shown.
+studies |>
+  inner_join(
+    select(samples, paper, study, sample, sample_label, sample_n),
+    by = c("paper", "study")
+  ) |>
+  filter(sample_n > study_n) |>
+  slice_max(sample_n, n = 1, with_ties = FALSE, by = c(paper, study)) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    study,
+    study_n,
+    sample,
+    sample_label,
+    sample_n
+  )
 
 # Find the same preregistration or data link in different papers
 check_duplicates_across(
