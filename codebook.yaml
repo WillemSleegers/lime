@@ -662,9 +662,15 @@ columns:
     min: 1
     required: true
     description: >-
-      The number of participants or observations in the study that were
-      retained for analysis. For studies with several measurement points, the
-      number at the earliest one.
+      The number of participants in the study that were retained for analysis.
+      When the data can't be traced to participants, as in most sales data,
+      the number of observations the outcomes were computed on instead, such
+      as purchases or meals sold. For studies with several measurement points,
+      the number at the earliest one.
+    notes: >-
+      Participants who give several responses (e.g. one choice per menu) still
+      count once. Observations are only counted when participants aren't, so
+      study_n may count a different unit than sample_n.
 
   study_preregistered:
     label: Preregistered
@@ -830,6 +836,10 @@ columns:
     type: integer
     min: 1
     description: The number of participants in the sample.
+    notes: >-
+      Always participants, never observations such as purchases or meals.
+      Left empty when the paper doesn't count participants, as in most sales
+      data; the observations are counted in study_n and in Statistics-level.
 
   sample_gender_f_n:
     label: Women (n)

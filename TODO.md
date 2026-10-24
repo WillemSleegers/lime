@@ -3,6 +3,12 @@
 ## Important
 
 - [ ] **Methodology section 2.1 is out of sync with the Study-level columns** — It describes study design variables the sheet doesn't hold yet: cluster label, cluster number, a three-level assignment process (random / non-random researcher-assigned / self-selection), data tracking, and study RCT. The sheet has draft columns for a new scheme (`study_condition_assignment_unit`, `_process`, `_structure`, `study_cluster_label`, `study_cluster_k`, `study_measurement_unit`, `study_data_tracking`, `study_pseudoreplication_risk`, `study_crossover_contamination_risk`, `study_rct`), but they're empty or copies of the current columns. Settle the scheme, then bring the methodology, the draft entries in `codebook.yaml`, and the app's study filters in line with it.
+  - **`study_data_tracking` decides how study_n and sample_n are counted.** `codebook.yaml` now says: study_n counts participants, or observations (purchases, meals) when the data can't be traced to participants; sample_n always counts participants and stays empty when they aren't counted. `outcome_measurement_type` "sales data" isn't a reliable stand-in: some sales data are tied to individuals (paper 226: 20,373 purchases from 3,715 individuals), and some "meal choice" outcomes count plates or dishes that can't be traced to anyone.
+    1. Define `study_data_tracking` in `codebook.yaml`: "yes" (observations can be traced to participants) or "no".
+    2. Fill it in. The starting list is `r/output/study-data-tracking-review.csv`: 73 studies with a sales data outcome and 19 meal choice studies whose samples mention meals, dishes, plates, or sales. The other studies are most likely "yes".
+    3. Where it's "no", set study_n to the observations and empty sample_n. Check sample_n in the other studies too, since some count observations. Fixes already known from the PDFs: paper 226's "(total)" sample_n 20737 → 3715 (study_n stays 3715) and its phase samples (8555, 11818 purchase decisions) emptied; paper 496's study_n 254 (survey respondents) → 1290 (plates in the first period) and its sample_n emptied; paper 383's study_n 727 (phase 1) → 2000 (phase 2, which the outcome comes from).
+    4. Add to `validate.r`: sample_n must be empty when `study_data_tracking` is "no".
+    5. The app calls study_n "Sample size" in the data explorer but "Observations" and "Data points" in the totals. Show the unit next to the number, and reconsider the "Minimum sample size" filter, which now mixes participants and purchases.
 - [x] When creating the data from the R script, go back to selecting effects with the shortest time point from intervention to outcome, rather than the longest. The idea is that this makes the effects more comparable. Or, alternatively, include all effects but add a filter on the website so users can select what they want, like minimum days since intervention. The main challenge is that our model does not support multiple effects that only differ in their time point, so we need to make sure each outcome only includes one time point
 
 ## Code Quality
@@ -16,6 +22,14 @@
 
 - [ ] **Factor model for intervention mechanism moderator** — When "Exclude multi-mechanism interventions" is on, mechanism becomes a clean categorical variable. Add an option to run a single factor model across all mechanism levels simultaneously, giving predicted means for each in one chart/table, rather than picking one mechanism at a time.
 - [ ] **Double-check remaining "effect"-labeled Highlights tooltips** — `components/meta-analysis/highlights.tsx` has four bar charts still counting directly over the effect-level `data` array with `unit="effect"`: Intervention mechanism, Intervention medium, Measurement type, Outcome categories. Verify each field (`intervention_mechanism`, `intervention_medium`, `outcome_measurement_type`, `outcome_subcategory`) is genuinely effect-level rather than constant across multiple effect rows for the same intervention/outcome/study — if it's coarser, counting per raw effect row over-counts, the same bug just fixed for `paper_type` (was constant per paper but counted per effect row, ~3x inflation) in the "Publication type" chart.
+
+- [ ] **Complete the effect dialog** — `components/meta-analysis/effect-dialog-content.tsx` (opened from the forest and dot plots) shows only the paper title, authors, and study number; the intervention description; the sample n and description for each condition; the outcome description; and the effect size with its CI. Missing, among other things:
+  - The control condition: its section shows only a sample n, and `data.json` has no control description to show.
+  - The n behind the effect: the dialog shows `sample_n`, which isn't the n the effect was computed on and is empty for sales studies once `sample_n` counts participants only. `data.json` already has `effect_intervention_n` and `effect_control_n`.
+  - Study context: design, condition assignment, randomization, preregistration, data availability (all in `data.json`).
+  - Intervention mechanism and medium, and the outcome's category, measurement type, and time point (days since the intervention).
+  - The effect's SE or p-value, and whether it was reported in the paper or calculated by us.
+  - A link to the paper in the data explorer.
 
 ## Effect Size Calculation
 
