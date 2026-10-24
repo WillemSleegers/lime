@@ -13,8 +13,7 @@ DRAFT: not yet tried end to end with the user. Refine it after the first real us
 
 1. **Gather in parallel.**
    - The PDF, and the folder if there is one, with its supplement and data.
-   - The Codebook tab.
-   - The allowed levels in `r/validate.r`.
+   - `codebook.yaml`: each column's definition, allowed levels, and coding notes.
    - The existing rows for this paper, if partly coded.
    - One fully coded paper with a similar design as a template: paper 2 (between, repeated measures) or paper 34 (between, several studies, from a supplement).
 2. **Decide the structure with the user before drafting rows:**
@@ -23,8 +22,8 @@ DRAFT: not yet tried end to end with the user. Refine it after the first real us
    - which outcomes and time points
    - which comparisons become effects
 3. **Draft rows for every level**, copying columns from `read_sheet` so the order matches:
-   - **Study:** `study_n` after exclusions.
-   - **Sample:** a `(total)` sample, then one per condition (per period if relevant), with n, gender, and age where reported.
+   - **Study:** `study_n` after exclusions: the participants, or, when the data can't be traced to participants (most sales data), the observations the outcomes were computed on, such as purchases, meals, or dish showings. A participant with several responses counts once.
+   - **Sample:** a `(total)` sample, then one per condition (per period if relevant), with n, gender, and age where reported. `sample_n` always counts participants; leave it empty when the paper doesn't count them, e.g. meals sold.
    - **Condition:** descriptions of what participants actually saw, plus mechanism and medium from the allowed levels.
    - **Outcome:** item wording and scale in `outcome_notes` / `outcome_scale`, and `outcome_expectation`.
    - **Statistics:** one group per condition × sample × outcome × time. `statistics` is numbered across the paper, `statistic` within the group. Prefer counts (successes/failures/n) or M/SD/n. Set `statistic_from_paper`.

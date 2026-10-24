@@ -795,8 +795,16 @@ check_conditional_required(
   study_preregistration_link
 )
 
+# Paper 494 links to a registration made after the study, so it wasn't
+# preregistered; it's skipped for as long as the link stays the same.
 studies |>
-  filter(study_preregistered == "no", !is.na(study_preregistration_link)) |>
+  filter(
+    study_preregistered == "no",
+    !is.na(study_preregistration_link),
+    !(paper == 494 &
+      study_preregistration_link %in%
+        "https://clinicaltrials.gov/study/NCT06554743")
+  ) |>
   select(.row, paper, paper_label, study, study_preregistration_link)
 
 check_conditional_required(
