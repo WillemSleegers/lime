@@ -755,14 +755,6 @@ check_duplicates(studies, paper, study)
 check_orphans(studies, papers, by = "paper") |>
   select(.row, paper, paper_label, study)
 
-# Find studies without conditions or outcomes. Studies without samples are
-# found by the "(total)" sample check in Sample-level.
-check_orphans(studies, conditions, by = c("paper", "study")) |>
-  select(.row, paper, paper_label, study)
-
-check_orphans(studies, outcomes, by = c("paper", "study")) |>
-  select(.row, paper, paper_label, study)
-
 # Find samples larger than their study. study_n is the number at the earliest
 # measurement point, so a bigger sample suggests a typo, or a sample that
 # counts observations (e.g. meals) while study_n counts participants. Only
