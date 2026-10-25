@@ -11,7 +11,33 @@ DRAFT: `r/validate.r` was updated for the `_1`/`_2` columns but hasn't been run 
 
 ## Steps
 
-1. **Run `r/validate.r`** with Rscript, skipping `btw_mcp_session()` (see the parse/eval trick in the context file). Its checks print their results rather than returning them, so capture each non-empty result per section.
+1. **Run `r/validate.r`** with Rscript, skipping `btw_mcp_session()` (see the parse/eval trick in the context file). Its checks print their results rather than returning them, so capture each non-empty result per section. To run one section (e.g. when the user asks for just the Study-level sheet), save this runner in the scratchpad and run it from the repo root with `Rscript <runner> "Study-level"`. It runs everything before the first `# Validation:` header (setup, functions, codebook, import), then only the named section, and prints each non-empty result with its line in validate.r:
+   ```r
+   options(width = 200)
+   section <- commandArgs(trailingOnly = TRUE)[1]
+   src <- readLines("r/validate.r")
+   headers <- grep("^# Validation: ", src)
+   start <- grep(paste0("^# Validation: ", section, " "), src)
+   end <- c(headers, length(src) + 1)[match(start, headers) + 1]
+   exprs <- parse("r/validate.r", keep.source = TRUE)
+   lines <- vapply(attr(exprs, "srcref"), \(s) s[1], integer(1))
+   for (i in seq_along(exprs)) {
+     in_section <- lines[i] >= start && lines[i] < end
+     if (lines[i] >= headers[1] && !in_section) next
+     if (identical(deparse(exprs[[i]]), "btw_mcp_session()")) next
+     if (lines[i] >= min(grep("^# Import data", src)) && !exists(".authed")) {
+       googlesheets4::gs4_auth(email = "*@me.com")
+       .authed <- TRUE
+     }
+     res <- withVisible(eval(exprs[[i]], globalenv()))
+     v <- res$value
+     if (!in_section || !res$visible || length(v) == 0) next
+     if (is.data.frame(v) && nrow(v) == 0) next
+     cat("\n=== line", lines[i], "===\n")
+     if (is.data.frame(v)) print(v, n = Inf, width = Inf) else print(v)
+   }
+   ```
+   Importing reads every sheet, so a run takes a few minutes. Filter the `✔`/`ℹ` googlesheets4 messages from the output.
 2. **Run the effect-level attention checks**, which aren't all in validate.r yet:
    - Pooled effects (`effect_exclude` "no") missing `effect_size`, `effect_size_var`, or `effect_size_name`.
    - Pooled effects whose measure meta-analysis.r doesn't use (anything outside OR2DL, OR2DL DiD, SMCC, SMD, SMD DiD, g).
