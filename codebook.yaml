@@ -1211,18 +1211,28 @@ columns:
     type: integer
     required: true
     description: >-
-      How many days after the intervention the outcome was measured; the
-      minimum if measurement took several days. 0 means the same day, and
-      negative numbers mean before the intervention.
+      How many days after the end of the intervention the outcome was
+      measured; the minimum if measurement took several days. 0 means the
+      same day as the intervention's last moment, and negative numbers mean
+      before the intervention started.
+    notes: >-
+      Counts from the last moment of the intervention, not its start (e.g.
+      the last of two weeks of text messages), because it measures how long
+      the effect persists. Outcomes measured while the intervention is still
+      running are coded 0.
 
   outcome_days_since_intervention_max:
     label: Days since intervention (max)
     type: integer
     required: true
     description: >-
-      How many days after the intervention the outcome was measured; the
-      maximum if measurement took several days. 0 means the same day, and
-      negative numbers mean before the intervention.
+      How many days after the end of the intervention the outcome was
+      measured; the maximum if measurement took several days. 0 means the
+      same day as the intervention's last moment, and negative numbers mean
+      before the intervention started.
+    notes: >-
+      Counts from the last moment of the intervention, like the minimum.
+      Outcomes measured while the intervention is still running are coded 0.
 
   outcome_expectation:
     label: Expected direction
