@@ -755,27 +755,93 @@ check_duplicates(studies, paper, study)
 check_orphans(studies, papers, by = "paper") |>
   select(.row, paper, paper_label, study)
 
-# Find samples larger than their study. study_n is the number at the earliest
-# measurement point, so a bigger sample suggests a typo, or a sample that
-# counts observations (e.g. meals) while study_n counts participants. Only
-# the largest sample of each study is shown.
-studies |>
+# Find between-subjects studies whose study_n is smaller than the n behind
+# their pooled effects: the conditions' n summed, at the earliest time of each
+# outcome (as in meta-analysis.r). A condition split over several samples
+# counts with its largest group. Other designs are skipped, since the same
+# participants can be in several conditions. When a paper only reports the
+# total, each condition's n is the total split evenly and rounded, so the sum
+# may exceed study_n by up to half a participant per condition.
+effects |>
+  filter(effect_exclude == "no") |>
+  filter(
+    intervention_time_1 == min(intervention_time_1),
+    .by = c(paper, study, outcome)
+  ) |>
+  pivot_longer(
+    c(intervention_statistics_1, control_statistics_1),
+    values_to = "statistics"
+  ) |>
+  distinct(paper, study, outcome, statistics) |>
   inner_join(
-    select(samples, paper, study, sample, sample_label, sample_n),
+    statistics |>
+      filter(statistic_name == "n") |>
+      distinct(paper, statistics, condition, sample, n = statistic_value),
+    by = c("paper", "statistics")
+  ) |>
+  summarize(n = max(n), .by = c(paper, study, outcome, condition)) |>
+  summarize(
+    analyzed_n = sum(n),
+    conditions = n(),
+    .by = c(paper, study, outcome)
+  ) |>
+  slice_max(analyzed_n, n = 1, with_ties = FALSE, by = c(paper, study)) |>
+  inner_join(
+    filter(studies, study_design == "between"),
     by = c("paper", "study")
   ) |>
-  filter(sample_n > study_n) |>
-  slice_max(sample_n, n = 1, with_ties = FALSE, by = c(paper, study)) |>
-  select(
-    .row,
-    paper,
-    paper_label,
-    study,
-    study_n,
-    sample,
-    sample_label,
-    sample_n
-  )
+  filter(analyzed_n - study_n > conditions / 2) |>
+  select(.row, paper, paper_label, study, study_n, outcome, analyzed_n)
+
+# Find between-subjects studies with only one condition, since a between
+# design compares different participants across conditions
+conditions |>
+  count(paper, study, name = "conditions") |>
+  filter(conditions == 1) |>
+  inner_join(
+    filter(studies, study_design == "between"),
+    by = c("paper", "study")
+  ) |>
+  select(.row, paper, paper_label, study, conditions)
+
+# Find between-subjects studies with effects that compare a condition with
+# itself at another time, which suggests a within or mixed design
+studies |>
+  filter(study_design == "between") |>
+  semi_join(
+    filter(
+      effects,
+      intervention_condition == control_condition,
+      is.na(intervention_statistics_2)
+    ),
+    by = c("paper", "study")
+  ) |>
+  select(.row, paper, paper_label, study)
+
+# Find within-subjects studies whose conditions differ a lot in n (the largest
+# more than 1.5 times the smallest) at the same outcome and time. The same
+# participants should be in every condition, so this suggests different
+# people per condition, as in sales from different periods, and a between
+# design. A condition split over several samples counts with its largest
+# group; only the biggest difference of each study is shown.
+statistics |>
+  filter(statistic_name == "n") |>
+  summarize(
+    n = max(statistic_value),
+    .by = c(paper, study, outcome, time_1, condition)
+  ) |>
+  summarize(
+    min_n = min(n),
+    max_n = max(n),
+    .by = c(paper, study, outcome, time_1)
+  ) |>
+  filter(max_n > 1.5 * min_n) |>
+  slice_max(max_n / min_n, n = 1, with_ties = FALSE, by = c(paper, study)) |>
+  inner_join(
+    filter(studies, study_design == "within"),
+    by = c("paper", "study")
+  ) |>
+  select(.row, paper, paper_label, study, outcome, time_1, min_n, max_n)
 
 # Find the same preregistration or data link in different papers
 check_duplicates_across(
@@ -813,8 +879,14 @@ check_conditional_required(
   study_data_link
 )
 
+# Paper 58 links to data that need permission to access, so they aren't
+# available; it's skipped for as long as the link stays the same.
 studies |>
-  filter(study_data_available == "no", !is.na(study_data_link)) |>
+  filter(
+    study_data_available == "no",
+    !is.na(study_data_link),
+    !(paper == 58 & study_data_link %in% "https://osf.io/7kx8u")
+  ) |>
   select(.row, paper, paper_label, study, study_data_link)
 
 # Validation: Condition-level --------------------------------------------
