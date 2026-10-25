@@ -115,7 +115,6 @@ sheets:
       - sample_notes
     lookups:
       - paper_label
-      - sample_gender_f_n
 
   Condition-level:
     level: condition
