@@ -762,6 +762,9 @@ check_orphans(studies, papers, by = "paper") |>
 # participants can be in several conditions. When a paper only reports the
 # total, each condition's n is the total split evenly and rounded, so the sum
 # may exceed study_n by up to half a participant per condition.
+# Paper 1060 is skipped for as long as its study_n stays 471: its "no info"
+# condition is the sum of three incentive conditions (a 2 x 3 design coded
+# both as main effects and as cells), so the sum counts them twice.
 effects |>
   filter(effect_exclude == "no") |>
   filter(
@@ -790,19 +793,23 @@ effects |>
     filter(studies, study_design == "between"),
     by = c("paper", "study")
   ) |>
-  filter(analyzed_n - study_n > conditions / 2) |>
+  filter(
+    analyzed_n - study_n > conditions / 2,
+    !(paper == 1060 & study_n %in% 471)
+  ) |>
   select(.row, paper, paper_label, study, study_n, outcome, analyzed_n)
 
-# Find between-subjects studies with only one condition, since a between
-# design compares different participants across conditions
+# Find between-subjects and mixed studies with only one condition, since both
+# compare different participants across conditions; a pre-post study with one
+# group is within-subjects
 conditions |>
   count(paper, study, name = "conditions") |>
   filter(conditions == 1) |>
   inner_join(
-    filter(studies, study_design == "between"),
+    filter(studies, study_design %in% c("between", "mixed")),
     by = c("paper", "study")
   ) |>
-  select(.row, paper, paper_label, study, conditions)
+  select(.row, paper, paper_label, study, study_design, conditions)
 
 # Find between-subjects studies with effects that compare a condition with
 # itself at another time, which suggests a within or mixed design
