@@ -1741,6 +1741,22 @@ effects |>
   ) |>
   select(.row, paper, paper_label, effect, intervention_condition)
 
+# Find effects in the meta-analysis of a between-subjects study whose control
+# side is an intervention condition, e.g. a control coded as an intervention.
+# Within-subjects and pre-post designs use the same condition on both sides.
+effects |>
+  filter(effect_exclude == "no") |>
+  inner_join(
+    conditions |>
+      filter(
+        condition_category == "intervention",
+        study_design == "between"
+      ) |>
+      select(paper, study, condition, condition_label),
+    by = c("paper", "study", "control_condition" = "condition")
+  ) |>
+  select(.row, paper, paper_label, effect, control_condition, condition_label)
+
 # Find effects in the meta-analysis of a kind it doesn't use: only OR2DL,
 # OR2DL DiD, SMCC, SMD, SMD DiD, and g are pooled
 effects |>
