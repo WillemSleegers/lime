@@ -1066,6 +1066,14 @@ inner_join(
 
 check_formula_errors(outcome_sheet, outcomes)
 
+check_lookup_formula(
+  outcomes,
+  sheet_url,
+  "Outcome-level",
+  "paper_label",
+  "=FILTER('Paper-level'!B:B, 'Paper-level'!A:A=A{row})"
+)
+
 outcome_cells <- codebook_cells(outcomes, "Outcome-level")
 outcome_factors <- factor_levels(outcome_cells)
 
@@ -1145,6 +1153,12 @@ outcomes |>
 outcomes |>
   distinct(paper, paper_label, study, outcome, outcome_label) |>
   check_duplicates(paper, study, outcome_label)
+
+# Find outcomes with the same description in a study, e.g. because a
+# description was copied from the row above and not changed
+outcomes |>
+  distinct(paper, paper_label, study, outcome, outcome_description) |>
+  check_duplicates(paper, study, outcome_description, na.rm = TRUE)
 
 # Find outcomes coded differently at different times, e.g. a different
 # category at baseline than at follow-up. The description can differ, e.g. to

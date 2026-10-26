@@ -1279,16 +1279,19 @@ columns:
         description: General evaluations of meat or meat eaters.
         requires:
           outcome_category: [attitudes/beliefs]
+          outcome_product_type: [meat]
       - value: meat belief
         description: >-
           Beliefs about the consequences of eating meat, e.g. that eating pork
           contributes to the suffering of pigs.
         requires:
           outcome_category: [attitudes/beliefs]
+          outcome_product_type: [meat]
       - value: meat hedonics
         description: Perceived tastiness and anticipated enjoyment of meat products.
         requires:
           outcome_category: [attitudes/beliefs]
+          outcome_product_type: [meat]
       - value: moral judgment
         description: Judgments about the ethicality of eating meat.
         requires:
@@ -1313,14 +1316,17 @@ columns:
         description: Consumption of dairy.
         requires:
           outcome_category: [behavior - observed, behavior - self-reported]
+          outcome_product_type: [dairy]
       - value: egg consumption
         description: Consumption of eggs.
         requires:
           outcome_category: [behavior - self-reported]
+          outcome_product_type: [eggs]
       - value: meat consumption
         description: Consumption of meat.
         requires:
           outcome_category: [behavior - observed, behavior - self-reported]
+          outcome_product_type: [meat]
       - value: vegan consumption
         description: Consumption of vegan food.
         requires:
@@ -1352,6 +1358,7 @@ columns:
         description: Intentions to change one's consumption of meat.
         requires:
           outcome_category: [intentions]
+          outcome_product_type: [meat]
       - value: vegan consumption intentions
         description: Intentions to change one's consumption of vegan food.
         requires:
@@ -1386,12 +1393,18 @@ columns:
         description: >-
           Detailed records of food consumption, e.g. 24-hour recalls or food
           frequency questionnaires
+        requires:
+          outcome_category: [behavior - self-reported]
       - value: sales data
         label: Sales data
         description: Records of products sold in a restaurant, supermarket, or other venue
+        requires:
+          outcome_category: [behavior - observed]
       - value: meal choice
         label: Meal choice
         description: Real or hypothetical choices of specific dishes or products
+        requires:
+          outcome_category: [behavior - observed, intentions]
 
   outcome_product_type:
     label: Product type
@@ -1425,6 +1438,8 @@ columns:
       - value: pork
         requires: {outcome_product_type: [meat]}
       - value: lamb
+        requires: {outcome_product_type: [meat]}
+      - value: game
         requires: {outcome_product_type: [meat]}
       - value: poultry
         requires: {outcome_product_type: [meat]}
