@@ -51,6 +51,7 @@ effects <- read_sheet(
   sheet = "Effects-level",
   na = c("", "-")
 ) |>
+  mutate(.row = row_number() + 1) |>
   filter(!is.na(paper))
 
 # List the statistics groups ----------------------------------------------
@@ -100,7 +101,7 @@ comparisons <- read_csv(comparisons_path, show_col_types = FALSE)
 
 # Take study and outcome from the intervention's statistics group, and add the
 # remaining Effects-level columns empty, so the output pastes straight in. The
-# formula columns (outcome_label up to control_sample) stay empty too.
+# lookup columns get their formulas before the output is written.
 drafted <- comparisons |>
   mutate(paper = paper_number) |>
   left_join(
@@ -109,6 +110,7 @@ drafted <- comparisons |>
   ) |>
   mutate(across(any_of("effect_p"), as.character))
 drafted <- effects[0, ] |>
+  select(-.row) |>
   mutate(effect_p = character()) |>
   bind_rows(drafted) |>
   mutate(
@@ -175,7 +177,45 @@ results |>
   select(effect, intervention_statistics_1, control_statistics_1) |>
   print(n = Inf)
 
+# Write the lookups as formulas -------------------------------------------
+
+# The new rows go below the paper's effects, or below the papers before it if
+# it has none yet. Effects-level is sorted by paper.
+first_row <- max(effects$.row[effects$paper <= paper_number], 1) + 1
+target_rows <- first_row + seq_len(nrow(results)) - 1
+
+# Copy the formulas from the row above the new rows, with the row number of
+# each new row, so importing the output keeps the lookups as formulas
+source_row <- max(first_row - 1, 2)
+lookups <- range_read_cells(
+  paste0(url, url_id),
+  sheet = "Effects-level",
+  range = cell_rows(source_row),
+  cell_data = "full"
+) |>
+  mutate(
+    column = names(effects)[col],
+    formula = map_chr(
+      cell,
+      \(x) x$userEnteredValue$formulaValue %||% NA_character_
+    )
+  ) |>
+  filter(!is.na(formula))
+
+for (i in seq_len(nrow(lookups))) {
+  results[[lookups$column[i]]] <- str_replace_all(
+    lookups$formula[i],
+    paste0("(?<=[A-Z])", source_row, "\\b"),
+    as.character(target_rows)
+  )
+}
+
 write_effects(
   results,
   file.path("r", "output", paste0(paper_number, "-effects.csv"))
 )
+
+cat(paste0(
+  "\nInsert ", nrow(results), " empty rows below row ", first_row - 1,
+  " in Effects-level, then import the output at cell A", first_row, "\n"
+))

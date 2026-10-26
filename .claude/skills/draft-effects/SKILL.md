@@ -23,7 +23,7 @@ The statistics are already coded and checked. This skill only decides the compar
 7. **Report:**
    - the CSV path and a short table of the effects (comparison, measure, g with CI), without interpreting their direction
    - judgment calls you made, and problems noticed in other levels
-   - the derived columns (`paper_label`, `outcome_label` up to `control_sample`) are left as `-`, so drag the formulas down over the pasted rows
+   - where to paste, as the script prints it: insert that many empty rows below the given row, then import at the given cell with "Replace data at selected cell" and "Convert text to numbers, dates, and formulas" ticked. The lookup columns (`paper_label`, `study`, `outcome`, `outcome_label` up to `control_sample`, `effect_size_se`) hold formulas for exactly those rows, copied from the row above
    - Positron's data preview shows "no" as "false"
    - a reminder to update the paper's status (don't suggest a value)
 
