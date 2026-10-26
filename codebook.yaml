@@ -1276,7 +1276,7 @@ columns:
       of the methodology describes each subcategory.
     levels:
       - value: meat attitude
-        description: General evaluations of meat or meat eaters.
+        description: General evaluations of meat, meat eaters, or eating less meat.
         requires:
           outcome_category: [attitudes/beliefs]
           outcome_product_type: [meat]
@@ -1333,6 +1333,10 @@ columns:
           outcome_category: [behavior - observed, behavior - self-reported]
       - value: vegetarian consumption
         description: Consumption of vegetarian food.
+        notes: >-
+          Includes vegan food: outcomes that count vegan and vegetarian food
+          together go here. The vegan subcategories are for outcomes only
+          about vegan food.
         requires:
           outcome_category: [behavior - observed, behavior - self-reported]
       - value: diet
@@ -1365,6 +1369,10 @@ columns:
           outcome_category: [intentions]
       - value: vegetarian consumption intentions
         description: Intentions to change one's consumption of vegetarian food.
+        notes: >-
+          Includes vegan food: outcomes that count vegan and vegetarian food
+          together go here. The vegan subcategories are for outcomes only
+          about vegan food.
         requires:
           outcome_category: [intentions]
       - value: signing a petition
