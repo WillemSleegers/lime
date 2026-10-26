@@ -314,7 +314,7 @@ These categories are divided into 22 **outcome subcategories**.
 
 Attitudes/beliefs
 
-- **Meat attitude**: general evaluations of meat or meat eaters.
+- **Meat attitude**: general evaluations of meat, meat eaters, or eating less meat.
 - **Meat hedonic**: perceived tastiness and anticipated enjoyment of meat products.
 - **Moral judgment**: judgments about the ethicality of eating meat.
 - **Vegan hedonics**: perceived tastiness and anticipated enjoyment of vegan products.
