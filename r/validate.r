@@ -270,6 +270,29 @@ check_formula_errors <- function(cells, data) {
     select(.row, paper, column, error)
 }
 
+# Find cells shown as dates, in rows that have a paper. The codebook has no
+# date columns, so these are values that Sheets turned into a date when they
+# were typed, e.g. the scale "1-7" stored as 7 January. Retyping them doesn't
+# help; format the cells as plain text first.
+check_dates <- function(cells, data) {
+  columns <- tibble(column = setdiff(names(data), ".row")) |>
+    mutate(col = row_number())
+
+  cells |>
+    mutate(
+      format = map_chr(
+        cell,
+        \(x) x$effectiveFormat$numberFormat$type %||% NA_character_
+      ),
+      shown = map_chr(cell, \(x) x$formattedValue %||% NA_character_)
+    ) |>
+    filter(format %in% c("DATE", "DATE_TIME", "TIME"), !is.na(shown)) |>
+    select(.row = row, col, shown) |>
+    inner_join(select(data, .row, paper), by = ".row") |>
+    left_join(columns, by = "col") |>
+    select(.row, paper, column, shown)
+}
+
 # Find lookups that aren't the expected formula, e.g. because the formula was
 # typed over with its value, in rows that have a paper. expected is the
 # formula with {row} for the row number. The cells read below don't include
@@ -443,6 +466,7 @@ inner_join(
   filter(rank(position_sheet) != rank(position_codebook))
 
 check_formula_errors(paper_sheet, papers)
+check_dates(paper_sheet, papers)
 
 paper_cells <- codebook_cells(papers, "Paper-level")
 paper_factors <- factor_levels(paper_cells)
@@ -707,6 +731,7 @@ inner_join(
   filter(rank(position_sheet) != rank(position_codebook))
 
 check_formula_errors(study_sheet, studies)
+check_dates(study_sheet, studies)
 
 check_lookup_formula(
   studies,
@@ -918,6 +943,7 @@ inner_join(
   filter(rank(position_sheet) != rank(position_codebook))
 
 check_formula_errors(condition_sheet, conditions)
+check_dates(condition_sheet, conditions)
 
 condition_cells <- codebook_cells(conditions, "Condition-level")
 condition_factors <- factor_levels(condition_cells)
@@ -1065,6 +1091,7 @@ inner_join(
   filter(rank(position_sheet) != rank(position_codebook))
 
 check_formula_errors(outcome_sheet, outcomes)
+check_dates(outcome_sheet, outcomes)
 
 check_lookup_formula(
   outcomes,
@@ -1238,6 +1265,7 @@ inner_join(
   filter(rank(position_sheet) != rank(position_codebook))
 
 check_formula_errors(sample_sheet, samples)
+check_dates(sample_sheet, samples)
 
 sample_cells <- codebook_cells(samples, "Sample-level")
 sample_factors <- factor_levels(sample_cells)
@@ -1386,6 +1414,7 @@ inner_join(
   filter(rank(position_sheet) != rank(position_codebook))
 
 check_formula_errors(statistics_sheet, statistics)
+check_dates(statistics_sheet, statistics)
 
 statistics_cells <- codebook_cells(statistics, "Statistics-level")
 statistics_factors <- factor_levels(statistics_cells)
@@ -1594,6 +1623,7 @@ inner_join(
   filter(rank(position_sheet) != rank(position_codebook))
 
 check_formula_errors(effects_sheet, effects)
+check_dates(effects_sheet, effects)
 
 effects_cells <- codebook_cells(effects, "Effects-level")
 effects_factors <- factor_levels(effects_cells)
