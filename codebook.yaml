@@ -841,7 +841,9 @@ columns:
       Left empty when the paper doesn't count participants, as in most sales
       data; the observations are counted in study_n and in Statistics-level.
       The number the paper describes the sample with, which can be before
-      dropout and so larger than study_n.
+      dropout and so larger than study_n. Always a whole number: a size
+      estimated from a percentage is rounded, and sample_notes says how it
+      was estimated.
 
   sample_gender_f_n:
     label: Women (n)
@@ -967,6 +969,8 @@ columns:
       The country or countries where the sample was collected, as English
       country names separated by commas. "Unspecified" when the paper doesn't
       say.
+    notes: >-
+      "Unspecified" stands on its own, never next to named countries.
     app_description: >-
       The country where the sample was collected. "Multiple countries" when it
       was collected in more than one, and "Unspecified" when the paper doesn't

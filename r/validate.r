@@ -293,6 +293,31 @@ check_dates <- function(cells, data) {
     select(.row, paper, column, shown)
 }
 
+# Find text with extra spaces: two spaces in a row, or a space at the start or
+# end, in rows that have a paper. Lookups repeat the text of the cell they look
+# up, so only hand-entered columns are checked.
+check_spaces <- function(cells, data, sheet_name) {
+  columns <- tibble(column = setdiff(names(data), ".row")) |>
+    mutate(col = row_number())
+  lookups <- codebook_sheet_columns |>
+    filter(sheet == sheet_name, lookup) |>
+    pull(column)
+
+  cells |>
+    mutate(
+      text = map_chr(
+        cell,
+        \(x) x$effectiveValue$stringValue %||% NA_character_
+      )
+    ) |>
+    filter(str_detect(text, "^ | $|  ")) |>
+    select(.row = row, col, text) |>
+    inner_join(select(data, .row, paper), by = ".row") |>
+    left_join(columns, by = "col") |>
+    filter(!column %in% lookups) |>
+    select(.row, paper, column, text)
+}
+
 # Find lookups that aren't the expected formula, e.g. because the formula was
 # typed over with its value, in rows that have a paper. expected is the
 # formula with {row} for the row number. The cells read below don't include
@@ -467,6 +492,7 @@ inner_join(
 
 check_formula_errors(paper_sheet, papers)
 check_dates(paper_sheet, papers)
+check_spaces(paper_sheet, papers, "Paper-level")
 
 paper_cells <- codebook_cells(papers, "Paper-level")
 paper_factors <- factor_levels(paper_cells)
@@ -732,6 +758,7 @@ inner_join(
 
 check_formula_errors(study_sheet, studies)
 check_dates(study_sheet, studies)
+check_spaces(study_sheet, studies, "Study-level")
 
 check_lookup_formula(
   studies,
@@ -944,6 +971,7 @@ inner_join(
 
 check_formula_errors(condition_sheet, conditions)
 check_dates(condition_sheet, conditions)
+check_spaces(condition_sheet, conditions, "Condition-level")
 
 condition_cells <- codebook_cells(conditions, "Condition-level")
 condition_factors <- factor_levels(condition_cells)
@@ -1092,6 +1120,7 @@ inner_join(
 
 check_formula_errors(outcome_sheet, outcomes)
 check_dates(outcome_sheet, outcomes)
+check_spaces(outcome_sheet, outcomes, "Outcome-level")
 
 check_lookup_formula(
   outcomes,
@@ -1266,6 +1295,15 @@ inner_join(
 
 check_formula_errors(sample_sheet, samples)
 check_dates(sample_sheet, samples)
+check_spaces(sample_sheet, samples, "Sample-level")
+
+check_lookup_formula(
+  samples,
+  sheet_url,
+  "Sample-level",
+  "paper_label",
+  "=FILTER('Paper-level'!B:B, 'Paper-level'!A:A=A{row})"
+)
 
 sample_cells <- codebook_cells(samples, "Sample-level")
 sample_factors <- factor_levels(sample_cells)
@@ -1348,6 +1386,33 @@ samples_numbers |>
     sample_age_max
   )
 
+# Find samples of minors that aren't typed "children", e.g. adolescents of
+# 13-17 coded as "public"
+samples_numbers |>
+  filter(
+    sample_age_max < 18 | sample_age_mean < 18,
+    !str_detect(sample_type, "children")
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    sample,
+    sample_type,
+    sample_age_mean,
+    sample_age_min,
+    sample_age_max
+  )
+
+# Find "Unspecified" listed next to named countries. "Unspecified" is for
+# samples whose country the paper doesn't give at all.
+samples |>
+  filter(
+    str_detect(sample_country, "Unspecified"),
+    sample_country != "Unspecified"
+  ) |>
+  select(.row, paper, paper_label, sample, sample_country)
+
 # Find samples whose gender percentages add up to more than 100, or whose
 # gender counts add up to more than sample_n. Rounding can add up to 1.
 samples_numbers |>
@@ -1415,6 +1480,7 @@ inner_join(
 
 check_formula_errors(statistics_sheet, statistics)
 check_dates(statistics_sheet, statistics)
+check_spaces(statistics_sheet, statistics, "Statistics-level")
 
 statistics_cells <- codebook_cells(statistics, "Statistics-level")
 statistics_factors <- factor_levels(statistics_cells)
@@ -1485,6 +1551,27 @@ statistics |>
     statistic_name,
     statistic_value
   )
+
+# Find statistics groups with the same values as a group of another paper,
+# e.g. a paper's coding pasted under the wrong paper number, or two papers
+# that report the same data. n is left out, since two codings of the same data
+# can differ in it. A group needs at least two values, so that a lone
+# percentage doesn't match by chance; rounded values such as M 4 and SD 1.4
+# still can.
+statistics |>
+  filter(!is.na(statistic_value), statistic_name != "n") |>
+  summarise(
+    values = paste(
+      sort(paste(statistic_name, statistic_value)),
+      collapse = ", "
+    ),
+    count = n(),
+    .by = c(paper, paper_label, statistics)
+  ) |>
+  filter(count >= 2) |>
+  filter(n_distinct(paper) > 1, .by = values) |>
+  arrange(values, paper) |>
+  select(paper, paper_label, statistics, values)
 
 # Find statistics whose study, condition, sample, or outcome and time isn't in
 # the sheet for that level. Empty ones are reported by the codebook checks.
@@ -1624,6 +1711,7 @@ inner_join(
 
 check_formula_errors(effects_sheet, effects)
 check_dates(effects_sheet, effects)
+check_spaces(effects_sheet, effects, "Effects-level")
 
 effects_cells <- codebook_cells(effects, "Effects-level")
 effects_factors <- factor_levels(effects_cells)
