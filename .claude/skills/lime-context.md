@@ -8,7 +8,7 @@ Read this before running any LIME data skill.
 - Sheet tabs: Paper-level, Study-level, Sample-level, Condition-level, Outcome-level, Statistics-level, Effects-level, Codebook
 - Paper PDFs: `/Users/willem/Google Drive/Projects/Meata-analysis/Papers/Paperbank`, named `<paper> - <paper_label>.pdf` (e.g. `10 - Carfora et al. (2017b).pdf`). Some papers are a folder `<paper> - <paper_label>/` instead, holding the PDF plus supplements (.docx: convert with `textutil -convert txt`), raw data, notes, and an R script used to extract statistics. Check it before concluding something isn't reported.
 - R scripts:
-  - `r/validate.r`: data checks
+  - `r/validate.r`: data checks, written to run line by line; `r/validate-report.r` runs them from the command line (see validate-data)
   - `r/effect-functions.r`: all effect size calculations and conversions (sourced by the two scripts below)
   - `r/calculate-effects.r`: runs them for papers and writes paste-ready effects
   - `r/meta-analysis.r`: builds the app's JSON in `assets/data/` and fits the model
@@ -62,7 +62,7 @@ Judgment calls on how to calculate effects are listed in `check-paper/SKILL.md` 
 - One comparison can have several rows (e.g. a reported OR and its converted g). Exactly one row per comparison may have `effect_exclude = "no"`; the others are "yes" with a note.
 - `effect_size` is stored unflipped: positive means the intervention's raw value is higher than control's. `meta-analysis.r` flips by `outcome_expectation`.
 - `effect_r` is the pre-post (repeated measures) correlation.
-- Allowed factor levels are defined in `r/validate.r`.
+- Allowed factor levels, like every column's type and range, are defined in `codebook.yaml`, which `r/validate.r` checks against.
 
 ## Meta-analysis (`r/meta-analysis.r`)
 

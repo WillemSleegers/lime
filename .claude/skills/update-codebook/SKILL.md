@@ -15,7 +15,7 @@ DRAFT: not yet used. Refine it with the user on first use.
 2. Compare four sources:
    - the Codebook tab
    - the actual sheet columns and values
-   - the factor levels in `r/validate.r`
+   - `codebook.yaml`, which `r/validate.r` checks the sheets against (columns, types, factor levels)
    - `assets/data/codebook.json`
 3. Report:
    - Columns that exist in the sheet but aren't documented. Recent additions include the `_1`/`_2` time and statistics columns, `effect_r`, `effect_size_se`, `paper_in_paper`, and many Study-level design columns.

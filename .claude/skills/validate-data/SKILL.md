@@ -1,59 +1,25 @@
 ---
 name: validate-data
-description: Run the LIME data validation checks in r/validate.r and find effects that need attention, then triage the results. Use when the user asks to validate the Google Sheet, check for errors, or asks what still needs work.
+description: Run the LIME data checks in r/validate.r, for every sheet or just some, then triage what they find and offer fixes. Use when the user asks to validate the Google Sheet or data, check for errors, or asks what still needs fixing.
 ---
 
 # Validate data
 
 Read `.claude/skills/lime-context.md` first.
 
-DRAFT: `r/validate.r` was updated for the `_1`/`_2` columns but hasn't been run end to end since. Refine this skill after the first real run.
-
 ## Steps
 
-1. **Run `r/validate.r`** with Rscript, skipping `btw_mcp_session()` (see the parse/eval trick in the context file). Its checks print their results rather than returning them, so capture each non-empty result per section. To run one section (e.g. when the user asks for just the Study-level sheet), save this runner in the scratchpad and run it from the repo root with `Rscript <runner> "Study-level"`. It runs everything before the first `# Validation:` header (setup, functions, codebook, import), then only the named section, and prints each non-empty result with its line in validate.r:
-   ```r
-   options(width = 200)
-   section <- commandArgs(trailingOnly = TRUE)[1]
-   src <- readLines("r/validate.r")
-   headers <- grep("^# Validation: ", src)
-   start <- grep(paste0("^# Validation: ", section, " "), src)
-   end <- c(headers, length(src) + 1)[match(start, headers) + 1]
-   exprs <- parse("r/validate.r", keep.source = TRUE)
-   lines <- vapply(attr(exprs, "srcref"), \(s) s[1], integer(1))
-   for (i in seq_along(exprs)) {
-     in_section <- lines[i] >= start && lines[i] < end
-     if (lines[i] >= headers[1] && !in_section) next
-     if (identical(deparse(exprs[[i]]), "btw_mcp_session()")) next
-     if (lines[i] >= min(grep("^# Import data", src)) && !exists(".authed")) {
-       googlesheets4::gs4_auth(email = "*@me.com")
-       .authed <- TRUE
-     }
-     res <- withVisible(eval(exprs[[i]], globalenv()))
-     v <- res$value
-     if (!in_section || !res$visible || length(v) == 0) next
-     if (is.data.frame(v) && nrow(v) == 0) next
-     cat("\n=== line", lines[i], "===\n")
-     if (is.data.frame(v)) print(v, n = Inf, width = Inf) else print(v)
-   }
+1. **Run the checks** from the repo root and save the output in the scratchpad:
+   ```sh
+   Rscript r/validate-report.r > <scratchpad>/validation.txt 2>&1
    ```
-   Importing reads every sheet, so a run takes a few minutes. Filter the `✔`/`ℹ` googlesheets4 messages from the output.
-2. **Run the effect-level attention checks**, which aren't all in validate.r yet:
-   - Pooled effects (`effect_exclude` "no") missing `effect_size`, `effect_size_var`, or `effect_size_name`.
-   - Pooled effects whose measure meta-analysis.r doesn't use (anything outside OR2DL, OR2DL DiD, SMCC, SMD, SMD DiD, g).
-   - `effect_exclude` "maybe" or empty, joined with `paper_status` (flag it when the paper is already "included").
-   - More than one pooled row per comparison (paper, study, outcome, conditions, times, samples).
-   - Intervention and control using the same statistics group (except one-sample SMCC without `effect_r`).
-   - A recalculation of all stored effects with `calculate_effects()`, flagging differences > 0.001.
-   - "included" papers with no pooled effect.
-3. **Report per issue:** the check, the affected papers and rows, the likely cause, and the suggested fix. Order by severity:
-   - wrong effect sizes or direction
-   - included papers with unresolved effects
-   - missing effects
-   - structural issues and factor levels
-4. **Ask which paper to work on**, then switch to check-paper or calculate-effects.
-
-## Known state (2026-09-13)
-
-- Trailing empty rows with `#REF!` exist in Effects-level (54) and Statistics-level (125). The user needs to delete them as whole rows.
-- `validate.r` factor levels now include OR, g, Fisher's exact test, Logistic regression, and z. Variants like "χ²" and "Welch's two sample t-test" (without the hyphen) are still in the sheet and will be flagged.
+   To check only some sheets, name their sections: `Rscript r/validate-report.r Study-level "Paper status"`. Each check that finds something is printed under the comment above it in validate.r (or its first line of code) and its line number, with the result as CSV. `.row` is the row in the sheet. A full pass takes about a minute and can print a few thousand lines, so read it in parts. Report any `== ERROR` blocks first: a check that fails hides what it would have found.
+2. **Read each flagged check** in validate.r at its line. The comment says what the check looks for, often when a hit isn't an error (e.g. n larger than `sample_n` because n counts meals), and sometimes how to fix it (e.g. cells shown as dates need plain-text formatting before retyping). When the output doesn't settle whether a hit is an error, look at the paper's rows or its PDF.
+3. **Report per issue:** the check, the affected papers and sheet rows, the likely cause, and the suggested fix. Group hits that are likely fine separately, with the reason, so they don't bury real issues. Order by severity:
+   - effects that are wrong: they don't reproduce, have the wrong sign, or fall outside their interval
+   - paper status that doesn't match the website: included papers without a usable effect or with undecided effects, other papers with pooled effects
+   - missing data: required cells, missing statistics or effect sizes
+   - structure and formatting: keys, numbering, lookups, factor levels, formula errors, spaces, dates
+4. **Offer fixes, then ask what's next.**
+   - Mechanical fixes (misspelled factor levels, extra spaces, typed-over lookups): propose old → new per cell in chat, and after the user approves, write paste-ready CSVs per sheet (see "Output files" in the context file).
+   - Issues that need the paper: ask which paper to work on, then switch to check-paper (coding mistakes, effects that don't reproduce), calculate-effects (pooled effects without an effect size), or draft-effects (papers with statistics but no effects).

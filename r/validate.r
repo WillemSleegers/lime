@@ -7,7 +7,9 @@ library(btw)
 
 source("r/effect-functions.r")
 
-btw_mcp_session()
+# Share this R session with Claude, except when run from the command line
+# (r/validate-report.r)
+if (interactive()) btw_mcp_session()
 
 # Functions ---------------------------------------------------------------
 
