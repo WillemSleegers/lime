@@ -2368,22 +2368,28 @@ effects |>
     effect_size_var_recalculated
   )
 
-# Find effects without an effect size that can be calculated from their
-# statistics, e.g. drafted rows that were never calculated, or an effect that
-# was emptied after one of its statistics changed. Excluded effects can keep
-# just the paper's reported test, so they're left out.
+# Find effects in the meta-analysis without an effect size or variance, e.g.
+# drafted rows that were never calculated, or an effect that was emptied after
+# one of its statistics changed. The recalculated columns show what
+# r/effect-functions.r would fill in, when it can calculate the effect.
+# Excluded and undecided effects can keep just the paper's reported test, so
+# they're left out.
 effects |>
-  filter(is.na(effect_size), !effect_exclude %in% "yes") |>
-  inner_join(recalculated, by = c("paper", "study", "outcome", "effect")) |>
-  filter(!is.na(effect_size_recalculated)) |>
+  filter(
+    effect_exclude %in% "no",
+    is.na(effect_size) | is.na(effect_size_var)
+  ) |>
+  left_join(recalculated, by = c("paper", "study", "outcome", "effect")) |>
   select(
     .row,
     paper,
     paper_label,
     effect,
     effect_size_name,
+    effect_size,
     effect_size_recalculated,
-    effect_exclude
+    effect_size_var,
+    effect_size_var_recalculated
   )
 
 # Find effects we calculated (effect_from_paper "no") that can't be
@@ -2428,10 +2434,9 @@ effects |>
 
 # Validation: Paper status -----------------------------------------------
 
-# Keep the effects that still count towards a paper: "maybe" and missing are
-# not exclusions, so only an explicit "yes" removes an effect from the pool
-effects_kept <- effects |>
-  filter(!(effect_exclude %in% "yes"))
+# meta-analysis.r doesn't read paper_status: a paper is on the website when
+# it has an effect with effect_exclude "no" of a kind it pools, with an effect
+# size and a variance. The checks below make the status match that.
 
 # Find included papers that aren't coded all the way down
 check_status_missing_rows(papers, studies, "included")
@@ -2439,10 +2444,22 @@ check_status_missing_rows(papers, samples, "included")
 check_status_missing_rows(papers, conditions, "included")
 check_status_missing_rows(papers, outcomes, "included")
 check_status_missing_rows(papers, statistics, "included")
-check_status_missing_rows(papers, effects_kept, "included")
 
-# Find included papers whose coding isn't finished: effects still undecided
-# (effect_exclude "maybe"), or effects that count without an effect size
+# Find included papers without an effect the meta-analysis can use, which
+# leaves them off the website, e.g. a paper with only a reported d
+effects_pooled <- effects |>
+  filter(
+    effect_exclude %in% "no",
+    effect_size_name %in%
+      c("OR2DL", "OR2DL DiD", "SMCC", "SMD", "SMD DiD", "g"),
+    !is.na(effect_size),
+    !is.na(effect_size_var)
+  )
+
+check_status_missing_rows(papers, effects_pooled, "included")
+
+# Find included papers whose effects are still undecided (effect_exclude
+# "maybe")
 check_status_unexpected_rows(
   effects,
   papers,
@@ -2450,12 +2467,22 @@ check_status_unexpected_rows(
   effect_exclude == "maybe"
 )
 
+# Find papers that aren't included but have effects in the meta-analysis,
+# which puts them on the website, e.g. an excluded paper whose effects were
+# never set to "yes". An excluded paper can keep "maybe" effects while it
+# waits for the authors.
 check_status_unexpected_rows(
-  effects_kept,
+  effects,
   papers,
-  "included",
-  is.na(effect_size) | is.na(effect_size_var)
+  c("unscreened", "in progress", "excluded", NA),
+  effect_exclude == "no"
 )
 
-# Find excluded papers that still have effects that count
-check_status_unexpected_rows(effects_kept, papers, "excluded")
+# Find unscreened papers that already have coding: a paper is screened
+# before it's coded
+check_status_unexpected_rows(studies, papers, "unscreened")
+check_status_unexpected_rows(samples, papers, "unscreened")
+check_status_unexpected_rows(conditions, papers, "unscreened")
+check_status_unexpected_rows(outcomes, papers, "unscreened")
+check_status_unexpected_rows(statistics, papers, "unscreened")
+check_status_unexpected_rows(effects, papers, "unscreened")
