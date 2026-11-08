@@ -185,9 +185,13 @@ check_effect_direction <- function(effects, statistics, outcomes) {
     )
 
   # Leave out difference-in-differences effects, which compare more than two
-  # groups
+  # groups, effects whose kind has no sign (eta squared), and effects of zero
   effects |>
-    filter(is.na(intervention_statistics_2)) |>
+    filter(
+      is.na(intervention_statistics_2),
+      !effect_size_name %in% c("eta squared", "partial eta squared"),
+      effect_size != 0
+    ) |>
     left_join(
       distinct(outcomes, paper, study, outcome, outcome_expectation),
       by = c("paper", "study", "outcome")
@@ -1482,6 +1486,64 @@ check_formula_errors(statistics_sheet, statistics)
 check_dates(statistics_sheet, statistics)
 check_spaces(statistics_sheet, statistics, "Statistics-level")
 
+# Find lookups that were typed over or point at the wrong row or column, e.g.
+# a condition_label looked up by the sample number
+check_lookup_formula(
+  statistics,
+  sheet_url,
+  "Statistics-level",
+  "paper_label",
+  "=FILTER('Paper-level'!B:B, 'Paper-level'!A:A=A{row})"
+)
+
+check_lookup_formula(
+  statistics,
+  sheet_url,
+  "Statistics-level",
+  "outcome_label",
+  "=FILTER('Outcome-level'!E:E, 'Outcome-level'!A:A=A{row},'Outcome-level'!C:C=C{row},'Outcome-level'!D:D=D{row},'Outcome-level'!G:G=F{row})"
+)
+
+check_lookup_formula(
+  statistics,
+  sheet_url,
+  "Statistics-level",
+  "time_1_label",
+  "=FILTER('Outcome-level'!H:H, 'Outcome-level'!A:A=A{row},'Outcome-level'!C:C=C{row},'Outcome-level'!D:D=D{row},'Outcome-level'!G:G=F{row})"
+)
+
+check_lookup_formula(
+  statistics,
+  sheet_url,
+  "Statistics-level",
+  "time_2_label",
+  "=IF(H{row}=\"-\",\"-\",FILTER('Outcome-level'!H:H, 'Outcome-level'!A:A=A{row},'Outcome-level'!C:C=C{row},'Outcome-level'!D:D=D{row},'Outcome-level'!G:G=H{row}))"
+)
+
+check_lookup_formula(
+  statistics,
+  sheet_url,
+  "Statistics-level",
+  "condition_label",
+  "=FILTER('Condition-level'!F:F, 'Condition-level'!A:A=A{row},'Condition-level'!C:C=C{row},'Condition-level'!E:E=J{row})"
+)
+
+check_lookup_formula(
+  statistics,
+  sheet_url,
+  "Statistics-level",
+  "condition_category",
+  "=FILTER('Condition-level'!G:G, 'Condition-level'!A:A=A{row},'Condition-level'!C:C=C{row},'Condition-level'!E:E=J{row})"
+)
+
+check_lookup_formula(
+  statistics,
+  sheet_url,
+  "Statistics-level",
+  "sample_label",
+  "=FILTER('Sample-level'!E:E, 'Sample-level'!A:A=A{row},'Sample-level'!C:C=C{row},'Sample-level'!D:D=M{row})"
+)
+
 statistics_cells <- codebook_cells(statistics, "Statistics-level")
 statistics_factors <- factor_levels(statistics_cells)
 
@@ -1489,6 +1551,12 @@ statistics_factors <- factor_levels(statistics_cells)
 statistics_cells |>
   filter(required, is.na(value)) |>
   select(.row, paper, column)
+
+# Find values without statistic_from_paper, which says whether the value was
+# reported, calculated, or estimated
+statistics |>
+  filter(!is.na(statistic_value), is.na(statistic_from_paper)) |>
+  select(.row, paper, paper_label, statistics, statistic, statistic_name)
 
 # Find number cells that aren't a number, aren't a whole number (for
 # integers), or are outside the allowed range
@@ -1537,6 +1605,24 @@ statistics |>
   ) |>
   check_duplicates(paper, statistics)
 
+# Find combinations of study, outcome, time, condition, and sample that have
+# more than one statistics group, e.g. a second measure coded under the same
+# outcome
+statistics |>
+  filter(!is.na(statistics)) |>
+  distinct(
+    paper,
+    paper_label,
+    study,
+    outcome,
+    time_1,
+    time_2,
+    condition,
+    sample,
+    statistics
+  ) |>
+  check_duplicates(paper, study, outcome, time_1, time_2, condition, sample)
+
 # Find statistics that appear more than once in a statistics group, e.g. two
 # n's
 statistics |>
@@ -1573,6 +1659,34 @@ statistics |>
   arrange(values, paper) |>
   select(paper, paper_label, statistics, values)
 
+# Find statistics groups with the same values as another group of the same
+# paper, e.g. a baseline mean copied into the follow-up group. As above, n is
+# left out and a group needs at least two values. Many hits aren't errors: two
+# groups can have the same rounded mean or the same count.
+statistics |>
+  filter(!is.na(statistic_value), statistic_name != "n") |>
+  summarise(
+    values = paste(
+      sort(paste(statistic_name, statistic_value)),
+      collapse = ", "
+    ),
+    count = n(),
+    .by = c(paper, paper_label, study, outcome, time_1, condition, statistics)
+  ) |>
+  filter(count >= 2) |>
+  filter(n() > 1, .by = c(paper, values)) |>
+  arrange(paper, values) |>
+  select(
+    paper,
+    paper_label,
+    study,
+    outcome,
+    time_1,
+    condition,
+    statistics,
+    values
+  )
+
 # Find statistics whose study, condition, sample, or outcome and time isn't in
 # the sheet for that level. Empty ones are reported by the codebook checks.
 check_orphans(statistics, studies, by = c("paper", "study")) |>
@@ -1606,6 +1720,49 @@ check_orphans(
 ) |>
   select(.row, paper, paper_label, study, statistics, outcome, time_2)
 
+# Find samples of one condition used with another condition in a
+# between-subjects study, e.g. the 2D video group's statistics linked to the
+# control sample. The "(total)" samples cover all conditions, so they're left
+# out. The labels come from Sample-level, since the lookups here can be wrong.
+statistics |>
+  filter(!is.na(condition), !is.na(sample)) |>
+  distinct(paper, study, sample, condition) |>
+  inner_join(
+    filter(studies, study_design == "between") |>
+      select(paper, paper_label, study),
+    by = c("paper", "study")
+  ) |>
+  inner_join(
+    filter(samples, !str_starts(sample_label, "\\(total\\)")) |>
+      select(paper, study, sample, sample_label),
+    by = c("paper", "study", "sample")
+  ) |>
+  filter(n() > 1, .by = c(paper, study, sample)) |>
+  arrange(paper, study, sample, condition) |>
+  select(paper, paper_label, study, sample, sample_label, condition)
+
+# Find statistics groups whose n is larger than their sample's sample_n.
+# sample_n counts participants, and n can count observations such as meals or
+# sales, so many hits aren't errors.
+statistics |>
+  filter(statistic_name == "n") |>
+  inner_join(
+    select(samples, paper, study, sample, sample_n),
+    by = c("paper", "study", "sample")
+  ) |>
+  filter(statistic_value > sample_n) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    study,
+    sample,
+    sample_label,
+    statistics,
+    n = statistic_value,
+    sample_n
+  )
+
 # Find change scores whose baseline (time_2) isn't before time_1
 statistics |>
   filter(time_2 >= time_1) |>
@@ -1629,6 +1786,40 @@ statistics |>
   ) |>
   select(.row, paper, paper_label, statistics, statistic_value)
 
+# Find means outside the outcome's scale, e.g. a mean of 9 on a 0-5 scale.
+# The range is read from the first "number-number" or "number to number" in
+# outcome_scale. Scales that Sheets stored as dates (read as e.g. 2026-01-07)
+# give a minimum above the maximum and are left out; Outcome-level reports
+# them. Change scores (with a time_2) can be negative, so they're left out too.
+# A mean can also be a sum of items whose scale is described per item.
+outcomes |>
+  mutate(
+    scale = as_text(outcome_scale),
+    range = str_match(
+      scale,
+      "(-?\\d+(?:\\.\\d+)?)\\s*(?:-|–|to)\\s*(-?\\d+(?:\\.\\d+)?)"
+    ),
+    scale_min = as.numeric(range[, 2]),
+    scale_max = as.numeric(range[, 3])
+  ) |>
+  filter(scale_min < scale_max) |>
+  select(paper, study, outcome, time, scale, scale_min, scale_max) |>
+  inner_join(
+    filter(statistics, statistic_name == "M", is.na(time_2)),
+    by = c("paper", "study", "outcome", "time" = "time_1")
+  ) |>
+  filter(statistic_value < scale_min | statistic_value > scale_max) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    study,
+    outcome,
+    statistics,
+    statistic_value,
+    scale
+  )
+
 # Find counts from the paper (n, successes, failures) that aren't whole
 # numbers. Calculated or estimated counts can have decimals, but then
 # statistic_from_paper should be "no" or "approx.".
@@ -1637,6 +1828,16 @@ statistics |>
     statistic_name %in% c("n", "successes", "failures"),
     statistic_from_paper == "yes",
     statistic_value %% 1 != 0
+  ) |>
+  select(.row, paper, paper_label, statistics, statistic_name, statistic_value)
+
+# Find values from the paper with more than four decimals. Papers rarely
+# report that many, so these are probably calculated (statistic_from_paper
+# "no") or estimated ("approx.").
+statistics |>
+  filter(
+    statistic_from_paper == "yes",
+    abs(statistic_value * 1e4 - round(statistic_value * 1e4)) > 1e-6
   ) |>
   select(.row, paper, paper_label, statistics, statistic_name, statistic_value)
 
@@ -1688,6 +1889,22 @@ statistics |>
   ) |>
   distinct(paper, paper_label, study, statistics)
 
+# Find statistics groups where exactly one of successes, failures, and n is
+# estimated. Any two of them give the third (successes + failures = n), so a
+# value calculated from two reported ones is "no", and one calculated from an
+# estimate is "approx." too: a group has none or at least two estimated
+# counts. E.g. failures as n minus reported successes marked "approx.".
+statistics |>
+  filter(statistic_name %in% c("successes", "failures", "n")) |>
+  summarise(
+    from_paper = paste(statistic_name, statistic_from_paper, collapse = ", "),
+    counts = n_distinct(statistic_name),
+    estimated = sum(statistic_from_paper %in% "approx."),
+    .by = c(paper, paper_label, study, statistics)
+  ) |>
+  filter(counts == 3, estimated == 1) |>
+  select(paper, paper_label, study, statistics, from_paper)
+
 # Validation: Effects-level ----------------------------------------------
 
 # Find columns in the codebook but not in the sheet, and the other way around
@@ -1712,6 +1929,133 @@ inner_join(
 check_formula_errors(effects_sheet, effects)
 check_dates(effects_sheet, effects)
 check_spaces(effects_sheet, effects, "Effects-level")
+
+# Find lookups that were typed over or point at the wrong row, e.g. an
+# effect_size_se typed as a value, which goes stale when the effect is
+# recalculated. Study, outcome, and the intervention columns come from
+# intervention_statistics_1 (column Q), the control columns from
+# control_statistics_1 (S), and the times for difference-in-differences from
+# the _2 groups (R and T).
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "paper_label",
+  "=FILTER('Paper-level'!B:B, 'Paper-level'!A:A=A{row})"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "study",
+  "=UNIQUE(FILTER('Statistics-level'!C:C, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=Q{row}))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "outcome",
+  "=UNIQUE(FILTER('Statistics-level'!D:D, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=Q{row}))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "outcome_label",
+  "=UNIQUE(FILTER('Statistics-level'!E:E, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=Q{row}))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "intervention_condition",
+  "=UNIQUE(FILTER('Statistics-level'!J:J, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=Q{row}))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "intervention_time_1",
+  "=UNIQUE(FILTER('Statistics-level'!F:F, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=Q{row}))"
+)
+
+# The sheet's intervention_time_2 formula ends in a line break
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "intervention_time_2",
+  "=IF(R{row}=\"-\", \"-\", UNIQUE(FILTER('Statistics-level'!F:F, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=R{row})))\n"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "intervention_label",
+  "=UNIQUE(FILTER('Statistics-level'!K:K, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=Q{row}))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "intervention_sample",
+  "=UNIQUE(FILTER('Statistics-level'!M:M, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=Q{row}))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "control_condition",
+  "=UNIQUE(FILTER('Statistics-level'!J:J, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=S{row}))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "control_time_1",
+  "=UNIQUE(FILTER('Statistics-level'!F:F, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=S{row}))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "control_time_2",
+  "=IF(T{row}=\"-\", \"-\", UNIQUE(FILTER('Statistics-level'!F:F, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=T{row})))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "control_label",
+  "=UNIQUE(FILTER('Statistics-level'!K:K, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=S{row}))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "control_sample",
+  "=UNIQUE(FILTER('Statistics-level'!M:M, 'Statistics-level'!A:A=A{row}, 'Statistics-level'!O:O=S{row}))"
+)
+
+check_lookup_formula(
+  effects,
+  sheet_url,
+  "Effects-level",
+  "effect_size_se",
+  "=IF(Z{row}=\"-\", \"-\", SQRT(Z{row}))"
+)
 
 effects_cells <- codebook_cells(effects, "Effects-level")
 effects_factors <- factor_levels(effects_cells)
@@ -1827,6 +2171,69 @@ effects |>
     sample_c
   )
 
+# Find effects whose control is measured at another time than the
+# intervention, while the control condition was also measured at the
+# intervention's time, e.g. a second-wave intervention group compared with the
+# control's first wave. Pre-post effects (the same condition on both sides) and
+# difference-in-differences effects compare times on purpose, so they're left
+# out.
+effects |>
+  filter(
+    is.na(intervention_statistics_2),
+    intervention_condition != control_condition,
+    intervention_time_1 != control_time_1
+  ) |>
+  inner_join(
+    select(
+      statistics_groups,
+      paper,
+      study,
+      outcome,
+      condition,
+      time_1,
+      same_time_control = statistics
+    ),
+    by = c(
+      "paper",
+      "study",
+      "outcome",
+      "control_condition" = "condition",
+      "intervention_time_1" = "time_1"
+    )
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    effect,
+    intervention_statistics_1,
+    intervention_time_1,
+    control_statistics_1,
+    control_time_1,
+    same_time_control
+  )
+
+# Find effects whose type doesn't match their statistics groups:
+# difference-in-differences types need the _2 groups, and SMD, OR2DL, and
+# SMCC are calculated without them, e.g. a difference-in-differences effect
+# named "SMD", which the recalculation below would get wrong
+effects |>
+  filter(
+    effect_size_name %in% c("SMD DiD", "OR2DL DiD") &
+      (is.na(intervention_statistics_2) | is.na(control_statistics_2)) |
+      effect_size_name %in% c("SMD", "OR2DL", "SMCC") &
+        (!is.na(intervention_statistics_2) | !is.na(control_statistics_2))
+  ) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    effect,
+    effect_size_name,
+    intervention_statistics_2,
+    control_statistics_2
+  )
+
 # Find comparisons with more than one effect that goes into the meta-analysis
 # (e.g. a reported test and a recalculated effect, or an original d and a
 # converted SMD, where only one should have effect_exclude "no")
@@ -1847,11 +2254,17 @@ effects |>
   )
 
 # Find effects whose intervention and control use the same statistics group,
-# except one-sample SMCC effects on change scores (no effect_r)
+# except effects on one group's change scores (a group with a time_2), such
+# as a one-sample SMCC or a reported pre-post d
+change_score_groups <- statistics |>
+  filter(!is.na(time_2)) |>
+  distinct(paper, statistics)
+
 effects |>
-  filter(
-    intervention_statistics_1 == control_statistics_1,
-    !(effect_size_name %in% "SMCC" & is.na(effect_r))
+  filter(intervention_statistics_1 == control_statistics_1) |>
+  anti_join(
+    change_score_groups,
+    by = c("paper", "intervention_statistics_1" = "statistics")
   ) |>
   select(
     .row,
@@ -1953,6 +2366,24 @@ effects |>
     effect_size_recalculated,
     effect_size_var,
     effect_size_var_recalculated
+  )
+
+# Find effects without an effect size that can be calculated from their
+# statistics, e.g. drafted rows that were never calculated, or an effect that
+# was emptied after one of its statistics changed. Excluded effects can keep
+# just the paper's reported test, so they're left out.
+effects |>
+  filter(is.na(effect_size), !effect_exclude %in% "yes") |>
+  inner_join(recalculated, by = c("paper", "study", "outcome", "effect")) |>
+  filter(!is.na(effect_size_recalculated)) |>
+  select(
+    .row,
+    paper,
+    paper_label,
+    effect,
+    effect_size_name,
+    effect_size_recalculated,
+    effect_exclude
   )
 
 # Find effects we calculated (effect_from_paper "no") that can't be

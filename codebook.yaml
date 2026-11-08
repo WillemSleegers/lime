@@ -1469,7 +1469,7 @@ columns:
         requires: {outcome_product_type: [dairy]}
       - value: cheese
         requires: {outcome_product_type: [dairy]}
-      - value: yoghurt
+      - value: yogurt
         requires: {outcome_product_type: [dairy]}
       - value: butter
         requires: {outcome_product_type: [dairy]}
@@ -1578,11 +1578,16 @@ columns:
       - value: "yes"
         description: Reported in the paper (or its supplement).
       - value: "no"
-        description: Calculated from other reported values, e.g. failures as n minus successes.
+        description: >-
+          Calculated from reported values only, e.g. failures as n minus
+          successes when both are reported.
       - value: approx.
         description: >-
           Estimated, e.g. a per-condition n from splitting the total equally,
-          or a value read from a figure. Explain how in statistic_notes.
+          or a value read from a figure. A value calculated from an estimated
+          value is estimated too, e.g. failures as n minus successes when the
+          successes come from a rounded percentage. Explain how in
+          statistic_notes.
 
   statistic_notes:
     label: Notes
@@ -1664,6 +1669,11 @@ columns:
       The statistics group of the intervention side of the comparison. Also
       needed for effects reported directly by the paper; the group can then
       hold just n.
+    notes: >-
+      An effect reported by the paper (e.g. a d or an F test's eta squared)
+      links to the groups of the cells it compares, even when it wasn't
+      calculated from their statistics. When no group exists for those cells,
+      add one that holds just n.
 
   intervention_statistics_2:
     label: Intervention statistics (2)
@@ -1680,6 +1690,7 @@ columns:
       The statistics group of the control side of the comparison. Also needed
       for effects reported directly by the paper; the group can then hold
       just n.
+    notes: See intervention_statistics_1.
 
   control_statistics_2:
     label: Control statistics (2)
