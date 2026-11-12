@@ -441,22 +441,22 @@ effect_sizes <- mutate(
   paper_study = paste(paper, "-", study),
 )
 
-# Conditions are only uniquely defined together with their sample, and SMCC
-# pre/post effects compare the same condition+sample across time. Include
-# sample and time in the keys so vcalc can uniquely identify each group.
+# Identify each group of participants by its sample and time, not its
+# condition: a group can appear as two conditions when it plays a different
+# role in different comparisons (e.g. paper 124's private info group is the
+# intervention for the information effect and the control for the
+# observability effect), and vcalc must see that those effects share it.
 # For SMCC effects the keys collide (same group on both sides); set control_key
-# to NA so vcalc treats them as single-group effects with no shared control arm.
+# to "" so vcalc treats them as single-group effects with no shared control arm.
 effect_sizes <- mutate(
   effect_sizes,
   intervention_key = paste(
-    intervention_condition,
     intervention_sample,
     intervention_time_1,
     intervention_time_2,
     sep = "-"
   ),
   control_key = paste(
-    control_condition,
     control_sample,
     control_time_1,
     control_time_2,

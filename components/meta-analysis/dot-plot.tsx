@@ -9,13 +9,7 @@ import {
 } from "recharts"
 import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Card, CardContent } from "@/components/ui/card"
 import { Data, Datum } from "@/lib/types"
 import { EffectDialogContent } from "./effect-dialog-content"
@@ -63,23 +57,9 @@ const CustomDot = (props: {
         />
       </DialogTrigger>
       <DialogContent
-        className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl overflow-auto p-4"
+        className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl overflow-auto p-6"
         style={{ maxHeight: "95dvh" }}
-        aria-description={
-          "Effect information of " +
-          payload.effect.paper_label +
-          " - " +
-          payload.effect.effect
-        }
-        aria-describedby={
-          payload.effect.paper_label + " - " + payload.effect.effect
-        }
       >
-        <DialogHeader>
-          <DialogTitle className="text-center">
-            {payload.effect.paper_label + " - " + payload.effect.effect}
-          </DialogTitle>
-        </DialogHeader>
         <EffectDialogContent effect={payload.effect} />
       </DialogContent>
     </Dialog>

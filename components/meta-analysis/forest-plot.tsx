@@ -18,13 +18,7 @@ import {
   ValueType,
   NameType,
 } from "recharts/types/component/DefaultTooltipContent"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Card, CardContent } from "@/components/ui/card"
 
 import { EffectDialogContent } from "./effect-dialog-content"
@@ -257,16 +251,9 @@ const CustomizedAxisTick = (props: CustomAxisTickProps) => {
         </text>
       </DialogTrigger>
       <DialogContent
-        className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl overflow-auto p-4"
+        className="sm:max-w-xl md:max-w-2xl lg:max-w-3xl overflow-auto p-6"
         style={{ maxHeight: "95dvh" }}
-        aria-description={
-          "Effect information of " + effect.paper_label + " - " + effect.effect
-        }
-        aria-describedby={effect.paper_label + " - " + effect.effect}
       >
-        <DialogHeader>
-          <DialogTitle className="text-center">{payload.value}</DialogTitle>
-        </DialogHeader>
         <EffectDialogContent effect={effect} />
       </DialogContent>
     </Dialog>

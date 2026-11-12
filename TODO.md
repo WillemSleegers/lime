@@ -7,9 +7,10 @@
     1. Define `study_data_tracking` in `codebook.yaml`: "yes" (observations can be traced to participants) or "no".
     2. Fill it in. The starting list is `r/output/study-data-tracking-review.csv`: 73 studies with a sales data outcome and 19 meal choice studies whose samples mention meals, dishes, plates, or sales. The other studies are most likely "yes".
     3. Where it's "no", set study_n to the observations and empty sample_n. Check sample_n in the other studies too, since some count observations. Fixes already known from the PDFs: paper 226's "(total)" sample_n 20737 → 3715 (study_n stays 3715) and its phase samples (8555, 11818 purchase decisions) emptied; paper 496's study_n 254 (survey respondents) → 1290 (plates in the first period) and its sample_n emptied; paper 383's study_n 727 (phase 1) → 2000 (phase 2, which the outcome comes from).
-    4. Add to `validate.r`: sample_n must be empty when `study_data_tracking` is "no".
+    4. Add to `validate.r`: sample_n must be empty when `study_data_tracking` is "no". (and validation check about finding within-subject studies should be updated)
     5. The app calls study_n "Sample size" in the data explorer but "Observations" and "Data points" in the totals. Show the unit next to the number, and reconsider the "Minimum sample size" filter, which now mixes participants and purchases.
   - **Replace the within-design n-ratio check in `validate.r`.** It flags within-subjects studies whose conditions differ more than 1.5× in n, as a stand-in for "different people per condition" (currently papers 380, 412, 1075: sales from different periods). Once `study_data_tracking` and `study_condition_assignment_unit` are filled in, check that directly instead. The 36 "between" vs. 27 "within" split among time-point-assigned studies should be settled then too.
+  - **Check `study_n` against the study design in `validate.r`.** We tend to add up participants (or sales) across conditions, but that only makes sense when different people are in each condition. In within-subject and pre-post designs the same participants (or the same stores) appear in every condition or time point, so `study_n` should be the number of unique participants, not the sum. Add a check that compares `study_n` with the per-condition `sample_n` values, depending on the design and `study_condition_assignment_unit`, and flags studies where `study_n` equals their sum despite a within-subject or pre-post design. Then fix the flagged studies in the sheet. Related to the n-ratio check above, which this could replace.
 - [x] When creating the data from the R script, go back to selecting effects with the shortest time point from intervention to outcome, rather than the longest. The idea is that this makes the effects more comparable. Or, alternatively, include all effects but add a filter on the website so users can select what they want, like minimum days since intervention. The main challenge is that our model does not support multiple effects that only differ in their time point, so we need to make sure each outcome only includes one time point
 
 ## Code Quality
@@ -18,6 +19,13 @@
   - `components/data-explorer/table/columns.tsx` — 3x `@typescript-eslint/no-explicit-any` on shared column defs (`Column<any, unknown>`) reused across different row types. Try narrowing to `Column<unknown, unknown>`; may run into TanStack Table type friction.
   - `components/data-explorer/table/data-table.tsx` and `components/meta-analysis/filters.tsx` — React Compiler skips memoization around TanStack Table's `useReactTable()` and React Hook Form's `watch()` (both flagged as "incompatible library"). No clear fix short of replacing those libraries.
 - [ ] Add tests
+
+## Claude Skills
+
+- [ ] **Bring the skills in line with `codebook.yaml` and the new paper statuses** — `codebook.yaml` replaced the sheet's Codebook tab, and `paper_status` was split into `paper_status` and `paper_status_detail`, but some skills still describe the old setup:
+  - `update-codebook/SKILL.md` is still a draft built around the Codebook tab: it loads the tab, compares it with the sheet, and writes a paste-ready CSV for it. Its "Recent additions" and "Known gaps" lists describe the data before `codebook.yaml`. Since `validate.r` now checks the sheet's columns and levels against `codebook.yaml`, decide what the skill is still for (e.g. reviewing descriptions and notes, or comparing `codebook.yaml` with the app's codebook JSON once `meta-analysis.r` writes it), and rewrite it to propose edits to `codebook.yaml`. The app's `assets/data/codebook.json` is stale until then.
+  - `lime-context.md`: the `paper_status` flow (unscreened → ready to code → … → add to website → included) predates the split. "add to website" no longer exists, and "ready to code" and "calculate effect sizes" are now `paper_status_detail` levels. The list of sheet tabs still names the Codebook tab and leaves out "Meta-reviews & reviews".
+  - The `calculate-effects` and `code-paper` descriptions say paper_status "calculate effect sizes" and "ready to code"; both are `paper_status_detail` levels now.
 
 ## Meta-Analysis
 

@@ -1,6 +1,6 @@
 ---
 name: check-paper
-description: Check a coded LIME paper against its PDF (and supplements/raw data) for coding mistakes, and produce paste-ready corrections. Use when the user asks to check, verify, or review how a paper was coded, or when an effect size doesn't reproduce.
+description: Check a coded LIME paper against its PDF (and supplements/raw data) for coding mistakes and for readable descriptions, labels, and notes, and produce paste-ready corrections. Use when the user asks to check, verify, or review how a paper was coded, or whether its descriptions or notes are clear, or when an effect size doesn't reproduce.
 ---
 
 # Check a coded paper
@@ -10,19 +10,42 @@ Read `.claude/skills/lime-context.md` first, especially "Common coding errors fo
 ## Steps
 
 1. **Gather everything in parallel.**
-   - The paper's rows from every sheet level: Paper, Study, Sample, Condition, Outcome, Statistics, Effects. Include `paper_notes`, `study_notes`, `sample_notes`, `statistic_notes`, and `effect_notes`; they often explain choices.
+   - The paper's rows from every sheet level: Paper, Study, Sample, Condition, Outcome, Statistics, Effects. Include every free-text column (titles, labels, descriptions, and `*_notes`); the notes often explain choices.
    - The Paperbank entry, which may be a folder with a supplement, data, and an extraction script.
    - A recalculation of the stored effects with `calculate_effects()`, flagging differences > 0.001.
-2. **Read the PDF sections that matter:** the method (design, how participants were assigned and split), the results text, and every table and figure used for statistics.
+2. **Read the PDF sections that matter:** the method (design, how participants were assigned and split, what each condition received, how outcomes were measured), the results text, and every table and figure used for statistics.
 3. **Check, in this order:**
+   - **Text facts.** Do the title, descriptions, and labels match the paper: the right condition, sample, measure, and scale?
    - **Design and n.** Is each coded n the n of that condition? Watch for totals per dish, menu, or study. Use the paper's own arithmetic (reported Ns of pairwise tests, df, "each name received X responses") and CI widths to confirm.
    - **Statistics.** Is every value the one in the paper, from the right cell? Do counts reproduce reported percentages and tests (e.g. an omnibus χ² with `chisq.test(correct = FALSE)`)? Is `statistic_from_paper` right (yes / approx. / no)?
    - **Keys.** Do the intervention and control sides point at the right condition, sample, time, and statistics group? Are both statistics groups set?
    - **Effects.** Is the measure right for the statistics (successes/failures → OR2DL; M/SD/n → SMD; within-subject → SMCC with `effect_r`)? Do the direction and p-value belong to this comparison? Is there exactly one pooled row per comparison? In a mixed design (pre-test + control group), is each effect a difference-in-differences against the control rather than a pre-post change within one group? Collaborators often leave the intended comparisons in `statistic_notes`.
    - **Raw data**, if available: recompute M, SD, n, and r with the stated exclusions and complete pairs.
 4. **Explain the likely cause** of each discrepancy before proposing a fix (e.g. old values computed from rounded percentages). When a value can't be derived exactly, present options (equal split, day share, contact authors) and let the user choose.
-5. **Produce corrections** as paste-ready CSVs per level (see "Output files"). Recalculate effects from the corrected statistics in memory, before the user pastes. Show old vs new values in chat.
-6. **Report:** clear errors vs judgment calls, the evidence (page, table, figure), which rows to delete before pasting, and remind the user to update `paper_status`.
+5. **Review readability** of every free-text column against "Readability" below. Propose new text in chat as old → new per cell, grouped by level, marking which columns are published. Wait for the user to approve or edit the proposals before they go into the CSVs.
+6. **Produce corrections** as paste-ready CSVs per level (see "Output files"), with both the coding fixes and the approved text. Recalculate effects from the corrected statistics in memory, before the user pastes. Show old vs new values in chat.
+7. **Report:** clear errors vs judgment calls vs readability edits, the evidence (page, table, figure), which rows to delete before pasting, and remind the user to update `paper_status`.
+
+## Readability
+
+Published columns (`paper_title`, `condition_description`, `sample_description`, `outcome_label`, `outcome_description`; check `r/meta-analysis.r` for the current set) are written for site visitors: researchers and advocates who haven't read the paper. Everything else, including the other labels and all `*_notes`, is written for a future coder who doesn't have the paper open.
+
+**Self-contained.** Understandable without the paper or other rows: no "Study 2 group", "the first group", "as above", or conditions referred to by number, and no abbreviations the paper defines (spell out "TPB"; common ones like "MTurk" are fine).
+
+**Describes the right thing.**
+
+- `condition_description`: what participants in this condition received or saw. That includes the control (e.g. "no information about meat"), not how its participants were recruited (Novotná (2019)) or what the authors expected.
+- `sample_description`: who the participants were, e.g. "residents of a mid-sized city in Australia". When the data are sales rather than people, say so plainly ("wraps sold in a café at a Norwegian university", not "datapoint represents wraps…", Hohle (2014)).
+- `outcome_description`: what was measured, how (self-report, sales, observed choice), and the unit or scale, e.g. "Self-reported grams of meat per meal". Not just the label restated ("Intention to eat low-meat diet", Bianchi et al. (2022)).
+- Notes: what was done and why, with the location in the paper (Table 2, p. 5). A note that describes an older version of the coding is a correctness issue, not a wording one.
+
+**Consistent form.**
+
+- `condition_description` and `outcome_description`: full sentences in sentence case, ending with a period.
+- `sample_description` and labels: short lowercase phrases without a period (the site shows samples as "n = 120 (Czech adults)"). Proper nouns keep their capitals.
+- American English. No truncated text, leftover fragments, or double spaces.
+
+**Light edits only for `condition_description`.** It's copied from the paper, so keep the paper's wording: trim, define jargon, and replace references to other conditions so it stands alone, but don't paraphrase it wholesale.
 
 ## Judgment calls the user has made
 

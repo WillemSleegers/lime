@@ -1025,17 +1025,24 @@ columns:
   intervention_multicomponent:
     label: Intervention components
     type: factor
-    description: Whether the intervention is based on more than one mechanism.
+    description: >-
+      Whether the intervention combines several components, such as several
+      mechanisms or several interventions, so that its effect can't be
+      attributed to one type of intervention.
     levels:
       - value: "no"
         label: Single-component
-        description: Intervention is based on one mechanism
+        description: Intervention clearly tests one type of intervention
       - value: "yes"
         label: Multicomponent
-        description: Intervention is based on several mechanisms
+        description: Intervention combines several components
     notes: >-
-      Follows intervention_mechanism: "yes" when it lists more than one
-      mechanism, "no" when it lists one.
+      A judgment call, meant to make it easy to select effects that clearly
+      test one type of intervention. Several mechanisms in
+      intervention_mechanism, or an intervention_count above 1, usually mean
+      "yes", but not always, so this doesn't have to match either column.
+      The website's "Mechanism components" filter doesn't use this column; it
+      counts the mechanisms in intervention_mechanism.
 
   intervention_duration:
     label: Duration (days)
@@ -1207,8 +1214,10 @@ columns:
   time_label:
     label: Time
     type: string
-    required: true
-    description: A short description of the measurement point, e.g. "baseline" or "4-week follow-up".
+    description: >-
+      A short description of the measurement point, e.g. "baseline" or
+      "4-week follow-up". Required when the outcome has more than one
+      measurement point; can be left empty otherwise.
 
   outcome_days_since_intervention_min:
     label: Days since intervention (min)
@@ -1421,27 +1430,50 @@ columns:
   outcome_product_type:
     label: Product type
     type: factor
-    multiple: true
     description: >-
       The kind of animal product the outcome is specifically about, if any.
-      Empty for outcomes about animal products or diet in general.
-    levels: [meat, eggs, dairy]
+      One value only: outcomes about more than one kind get "multiple animal
+      products". Empty for outcomes that aren't about animal products, e.g.
+      vegetarian meal choices or diet in general.
+    levels:
+      - value: meat
+      - value: eggs
+      - value: dairy
+      - value: multiple animal products
+        description: >-
+          More than one kind of animal product, e.g. meat and dairy, or
+          animal products in general. Outcomes about only meat are coded meat.
 
   outcome_product_subtype:
     label: Product subtype
     type: factor
-    multiple: true
     description: >-
       The more specific animal product the outcome is about, if any. Requires
-      the matching product type.
+      the matching product type. One value only. When the authors name the
+      category themselves (e.g. red meat, white meat, processed meat), use
+      their category. Otherwise, an outcome about several products gets the
+      narrowest level that covers all of them, e.g. red meat for beef and
+      pork, or poultry for chicken and turkey. Empty when no level covers them
+      all, e.g. meat consumption as a whole.
     levels:
       - value: red meat
+        description: >-
+          Beef, veal, pork, lamb, and other meat from mammals, following the
+          WHO definition. Game is coded separately.
         requires: {outcome_product_type: [meat]}
       - value: white meat
+        description: >-
+          Only when the authors call it white meat, because papers use the term
+          for different things (sometimes including fish or pork). Chicken and
+          turkey together are poultry.
         requires: {outcome_product_type: [meat]}
       - value: processed meat
+        description: >-
+          Processed products like bacon, ham, and sausages, whatever the
+          animal. Unprocessed or unspecified meat gets the animal's level.
         requires: {outcome_product_type: [meat]}
       - value: red and processed meat
+        description: Only when the authors measure the two together.
         requires: {outcome_product_type: [meat]}
       - value: beef
         requires: {outcome_product_type: [meat]}
@@ -1452,8 +1484,10 @@ columns:
       - value: lamb
         requires: {outcome_product_type: [meat]}
       - value: game
+        description: Meat from hunted animals, e.g. venison or pheasant.
         requires: {outcome_product_type: [meat]}
       - value: poultry
+        description: Chicken, turkey, and other farmed birds.
         requires: {outcome_product_type: [meat]}
       - value: chicken
         requires: {outcome_product_type: [meat]}
@@ -1462,6 +1496,7 @@ columns:
       - value: fish
         requires: {outcome_product_type: [meat]}
       - value: seafood
+        description: Fish and shellfish.
         requires: {outcome_product_type: [meat]}
       - value: shrimp
         requires: {outcome_product_type: [meat]}

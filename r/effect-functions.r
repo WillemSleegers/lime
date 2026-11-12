@@ -102,7 +102,8 @@ calculate_or2dl <- function(data) {
       if (anyNA(c(a, b, c, d))) {
         return(NA_real_)
       }
-      fisher.test(matrix(c(a, b, c, d), nrow = 2))$p.value
+      # Counts can be calculated from percentages and so aren't whole numbers
+      fisher.test(matrix(round(c(a, b, c, d)), nrow = 2))$p.value
     }
   )
 

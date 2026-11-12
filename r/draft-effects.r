@@ -198,7 +198,9 @@ lookups <- range_read_cells(
     formula = map_chr(
       cell,
       \(x) x$userEnteredValue$formulaValue %||% NA_character_
-    )
+    ),
+    # Some formulas end in a line break, which splits CSV rows in viewers
+    formula = str_trim(str_replace_all(formula, "[\r\n]+", " "))
   ) |>
   filter(!is.na(formula))
 

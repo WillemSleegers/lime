@@ -9,7 +9,9 @@ source("r/effect-functions.r")
 
 # Share this R session with Claude, except when run from the command line
 # (r/validate-report.r)
-if (interactive()) btw_mcp_session()
+if (interactive()) {
+  btw_mcp_session()
+}
 
 # Functions ---------------------------------------------------------------
 
@@ -816,10 +818,12 @@ check_orphans(studies, papers, by = "paper") |>
 # Find between-subjects studies whose study_n is smaller than the n behind
 # their pooled effects: the conditions' n summed, at the earliest time of each
 # outcome (as in meta-analysis.r). A condition split over several samples
-# counts with its largest group. Other designs are skipped, since the same
-# participants can be in several conditions. When a paper only reports the
-# total, each condition's n is the total split evenly and rounded, so the sum
-# may exceed study_n by up to half a participant per condition.
+# counts with its largest group. A sample counts once, even when it's coded
+# as two conditions (e.g. paper 124 has one group as the intervention in one
+# effect and as the control in another). Other designs are skipped, since the
+# same participants can be in several conditions. When a paper only reports
+# the total, each condition's n is the total split evenly and rounded, so the
+# sum may exceed study_n by up to half a participant per sample.
 # Paper 1060 is skipped for as long as its study_n stays 471: its "no info"
 # condition is the sum of three incentive conditions (a 2 x 3 design coded
 # both as main effects and as cells), so the sum counts them twice.
@@ -840,10 +844,16 @@ effects |>
       distinct(paper, statistics, condition, sample, n = statistic_value),
     by = c("paper", "statistics")
   ) |>
-  summarize(n = max(n), .by = c(paper, study, outcome, condition)) |>
+  slice_max(
+    n,
+    n = 1,
+    with_ties = FALSE,
+    by = c(paper, study, outcome, condition)
+  ) |>
+  distinct(paper, study, outcome, sample, n) |>
   summarize(
     analyzed_n = sum(n),
-    conditions = n(),
+    samples = n(),
     .by = c(paper, study, outcome)
   ) |>
   slice_max(analyzed_n, n = 1, with_ties = FALSE, by = c(paper, study)) |>
@@ -852,7 +862,7 @@ effects |>
     by = c("paper", "study")
   ) |>
   filter(
-    analyzed_n - study_n > conditions / 2,
+    analyzed_n - study_n > samples / 2,
     !(paper == 1060 & study_n %in% 471)
   ) |>
   select(.row, paper, paper_label, study, study_n, outcome, analyzed_n)
@@ -1050,7 +1060,9 @@ conditions |>
   )
 
 # Find interventions whose components don't match their mechanisms: "yes"
-# (multicomponent) with one mechanism, or "no" with more than one
+# (multicomponent) with one mechanism, or "no" with more than one. These are
+# worth a second look but not necessarily mistakes, since multicomponent is a
+# judgment call that doesn't have to follow the mechanisms (see the codebook).
 conditions |>
   mutate(n_mechanisms = str_count(intervention_mechanism, ",") + 1) |>
   filter(
@@ -1126,7 +1138,8 @@ inner_join(
 
 check_formula_errors(outcome_sheet, outcomes)
 check_dates(outcome_sheet, outcomes)
-check_spaces(outcome_sheet, outcomes, "Outcome-level")
+check_spaces(outcome_sheet, outcomes, "Outcome-level") |>
+  print(n = Inf)
 
 check_lookup_formula(
   outcomes,
@@ -1204,6 +1217,13 @@ check_orphans(outcomes, studies, by = c("paper", "study")) |>
 # numbers for baseline measurements and no 0
 check_sequence(outcomes, time, paper, study, outcome, skip_zero = TRUE) |>
   select(.row, paper, paper_label, study, outcome, time, time_label)
+
+# Find outcomes with several measurement points but no time label, which
+# makes the measurement points hard to tell apart
+outcomes |>
+  mutate(n_times = n(), .by = c(paper, study, outcome)) |>
+  check_conditional_required(n_times > 1, time_label) |>
+  select(.row, paper, paper_label, study, outcome, time)
 
 # Find studies whose outcomes aren't numbered 1, 2, 3, ...
 outcomes |>
@@ -2221,9 +2241,11 @@ effects |>
 # named "SMD", which the recalculation below would get wrong
 effects |>
   filter(
-    effect_size_name %in% c("SMD DiD", "OR2DL DiD") &
+    effect_size_name %in%
+      c("SMD DiD", "OR2DL DiD") &
       (is.na(intervention_statistics_2) | is.na(control_statistics_2)) |
-      effect_size_name %in% c("SMD", "OR2DL", "SMCC") &
+      effect_size_name %in%
+        c("SMD", "OR2DL", "SMCC") &
         (!is.na(intervention_statistics_2) | !is.na(control_statistics_2))
   ) |>
   select(
