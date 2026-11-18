@@ -4,7 +4,7 @@
 
 ### What is LIME?
 
-In short, it is a library of psychological intervention studies aimed at reducing animal product consumption. We are collecting information on all studies on this topic to make it available via this website. You can explore the studies with the [Data Explorer tool](/data-explorer/) or conduct custom analyses with the [Meta-analysis tool](/meta-analysis/). You can find out more about this project on the [About](/about/) page.
+In short, it is a library of intervention studies aimed at reducing animal product consumption. We are collecting information on all studies on this topic to make it available via this website. You can explore the studies with the [Data Explorer tool](/data-explorer/) or conduct custom analyses with the [Meta-analysis tool](/meta-analysis/). You can find out more about this project on the [About](/about/) page.
 
 ### Who is the target audience?
 
@@ -40,7 +40,7 @@ These outcomes were measured online, in research laboratories, or in the field. 
 
 ### What types of studies are included?
 
-The database includes data from different types of publications, including peer-reviewed articles published in scientific journals, unpublished scientific papers and theses, and reports by advocacy groups and other institutions. We include studies that experimentally tested the effect of an intervention on a relevant outcome. This includes between-subject designs, which compare the scores of participants who were exposed to the intervention to scores of a control group of participants who were not exposed to an intervention, and within-subject designs, which compare participants' scores before and after an intervention.
+The database includes data from different types of publications, including peer-reviewed articles published in scientific journals, unpublished scientific papers and theses, and reports by advocacy groups and other institutions. We include experimental and quasi-experimental studies that tested the effect of an intervention on a relevant outcome. This includes between-subject designs, which compare the scores of participants who were exposed to the intervention to scores of a control group of participants who were not exposed to an intervention, and within-subject designs, which compare participants' scores before and after an intervention.
 
 ### How were the studies coded?
 

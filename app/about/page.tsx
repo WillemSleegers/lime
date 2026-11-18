@@ -21,8 +21,8 @@ const About = () => {
       <p className="text-description">
         <strong>LIME</strong> stands for Library of Interventions for Meat
         Elimination. In short, LIME is a continuously growing collection of
-        experimental studies that tested the effectiveness of a psychological
-        intervention in reducing animal product consumption. This website aims
+        experimental and quasi-experimental studies on interventions to reduce
+        animal product consumption. This website aims
         to make this literature more accessible to researchers, advocates, and
         policy makers.
       </p>

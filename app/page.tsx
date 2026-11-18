@@ -80,9 +80,9 @@ export default function Home() {
             LIME
           </h2>
           <p className="text-description">
-            LIME is a continuously growing collection of experimental studies
-            examining psychological interventions to reduce animal product
-            consumption. With LIME, you can explore individual studies,
+            LIME is a continuously growing collection of experimental and
+            quasi-experimental studies on interventions to reduce animal
+            product consumption. With LIME, you can explore individual studies,
             understand the current state of research, and evaluate which
             interventions have the strongest evidence behind them.
           </p>
