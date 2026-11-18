@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { Badge } from "@/components/ui/badge"
 import { Counter } from "@/components/landing-page/counter"
 import { Button } from "@/components/ui/button"
 import { PaperCarousel } from "@/components/landing-page/paper-carousel"
@@ -13,12 +14,15 @@ export default function Home() {
     <main className="page-container space-y-landing">
       {/* Hero */}
       <section className="mx-auto max-w-4xl space-y-10 text-center md:space-y-12">
-        <Image
-          src={lime}
-          alt=""
-          loading="eager"
-          className="mx-auto -mt-6 size-20 md:-mt-8 md:size-24 lg:-mt-10 xl:-mt-12"
-        />
+        <div className="space-y-4">
+          <Badge variant="destructive">Currently in beta</Badge>
+          <Image
+            src={lime}
+            alt=""
+            loading="eager"
+            className="mx-auto size-20 md:size-24"
+          />
+        </div>
         <div className="space-y-4">
           <h1 className="text-page-title text-balance">
             Library of Interventions for Meat Elimination
