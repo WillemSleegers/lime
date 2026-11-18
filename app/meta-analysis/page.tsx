@@ -77,9 +77,12 @@ const MetaAnalysisPage = () => {
   }, [])
 
   // Scroll to top whenever the active tab changes. Runs after React commits
-  // the new tab content, so no setTimeout is needed.
+  // the new tab content, so no setTimeout is needed. The jump is instant
+  // because a smooth scroll gets cut short when the page height changes
+  // mid-animation (e.g. the long Step 2 content unmounts and the analysis
+  // starts rendering results).
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
+    window.scrollTo({ top: 0, behavior: "instant" })
   }, [activeTab])
 
   const handleFiltersApplied = () => {
