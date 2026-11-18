@@ -52,7 +52,6 @@ import { META_ANALYSIS_DEFAULTS } from "@/constants/constants-meta-analysis"
 import {
   usePersistedForm,
   clearFormValues,
-  loadFormValues,
 } from "@/hooks/use-persisted-form"
 import { useOutcomeSubcategorySync } from "@/hooks/use-outcome-subcategory-sync"
 
@@ -177,23 +176,21 @@ export const Filters = ({ status, setData, onFiltersApplied }: FiltersProps) => 
   // brief pause.
   //
   // Seeded with plain defaults (matching SSR, since localStorage isn't
-  // available on the server) and synced from localStorage in the effect
-  // below. Reading localStorage directly in the useState initializer would
-  // run during the render phase, including on the server, which throws
-  // there and (once swallowed) leaves a stale hydration mismatch that
-  // Count's suppressHydrationWarning prevents from ever self-correcting.
+  // available on the server). usePersistedForm resets the form to the saved
+  // values after hydration, and that reset also fires this subscription, so
+  // the counts pick up the saved filters without reading localStorage here.
   const [debouncedValues, setDebouncedValues] = useState<FormValues>(defaults)
   useEffect(() => {
-    setDebouncedValues(loadFormValues(STORAGE_KEY, defaults))
-  }, [])
-  useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | null = null
-    const sub = form.watch((v) => {
-      if (timer) clearTimeout(timer)
-      timer = setTimeout(() => setDebouncedValues(v as FormValues), 200)
+    const unsubscribe = form.subscribe({
+      formState: { values: true },
+      callback: ({ values }) => {
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(() => setDebouncedValues(values), 200)
+      },
     })
     return () => {
-      sub.unsubscribe()
+      unsubscribe()
       if (timer) clearTimeout(timer)
     }
   }, [form])
