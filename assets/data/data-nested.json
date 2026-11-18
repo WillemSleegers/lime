@@ -47,10 +47,10 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants received a presentation on declining meat consumption trends in Canada since 1980 and the negative health, animal welfare, and environmental impacts of meat consumption (including PETA videos). They completed a mind attribution task writing about a cow's thoughts and feelings, received practical tips for planning meat-free meals and making substitutions, and set a monthly goal to reduce, maintain, or increase their meat consumption.",
+            "intervention_description": "Participants received a presentation on declining meat consumption trends in Canada since 1980 and the negative health, animal welfare, and environmental impacts of meat consumption (including PETA videos). They completed a mind attribution task writing about a cow's thoughts and feelings, received practical tips for planning meat-free meals and making substitutions, and set a monthly goal to reduce, maintain, or increase their meat consumption. As a follow-up to the initial intervention, participants received text-messaging reinforcement of the informational and self-monitoring components. The messages sent upbeat and educational information that reminded participants of the benefits of reducing meat consumption and provided them with additional tips and links to recipes.",
             "intervention_mechanism": "info: health, info: environment, info: animal welfare, norms: dynamic, perspective taking/individuation, goal pursuit: planning/pledge/reminder, goal pursuit: cooking skills",
             "intervention_mechanism_multicomponent": "yes",
-            "intervention_medium": "presentation, video",
+            "intervention_medium": "presentation, video, text",
             "intervention_medium_multicomponent": "yes",
             "control_description": "Participants received information about how to complete dietary journals and were instructed to keep a record of their food intake, including condiments and beverages, over two weekdays and one weekend day; they were encouraged to write as much as possible. They were provided with food weight scales to estimate their portion sizes, and the first dietary journal was completed in the following week, representing a baseline measure of meat eating."
           }
@@ -186,7 +186,7 @@
         ],
         "outcomes": [
           {
-            "outcome": 2,
+            "outcome": 1,
             "outcome_description": "Frequency of animal product consumption (poultry, fish, beef, pork, eggs, dairy) during the past week"
           }
         ]
@@ -307,7 +307,7 @@
     "paper": 9,
     "paper_label": "Carfora et al. (2017a)",
     "paper_authors": "Carfora, V.; Caso, D.; Conner, M.",
-    "paper_title": "Correlational study and randomised controlled trial for understanding and changing red meat consumption: the role of eating identities",
+    "paper_title": "Correlational study and randomised controlled trial for understanding and changing red meat consumption: The role of eating identities",
     "paper_year": 2017,
     "paper_link": "https://doi.org/10.1016/j.socscimed.2017.01.005",
     "studies": [
@@ -349,7 +349,7 @@
     "paper": 10,
     "paper_label": "Carfora et al. (2017b)",
     "paper_authors": "Carfora, V.; Caso, D.; Conner, M.",
-    "paper_title": "Randomised controlled trial of a text messaging intervention for reducing processed meat consumption: the mediating roles of anticipated regret and intention",
+    "paper_title": "Randomised controlled trial of a text messaging intervention for reducing processed meat consumption: The mediating roles of anticipated regret and intention",
     "paper_year": 2017,
     "paper_link": "https://doi.org/10.1016/j.appet.2017.06.025",
     "studies": [
@@ -425,7 +425,7 @@
           },
           {
             "intervention_condition": 5,
-            "intervention_description": "Participants received a booklet focusing primarily on cruelty, discussing only chickens, and how to go vegetarian.  Health considerations were also mentioned. No time constraints were imposed; participants could read the booklet for as long or as short a period as they preferred.",
+            "intervention_description": "Participants received a booklet focusing primarily on cruelty, discussing only chickens, and how to go vegetarian. Health considerations were also mentioned. No time constraints were imposed; participants could read the booklet for as long or as short a period as they preferred.",
             "intervention_mechanism": "authority/role models, info: health, info: animal welfare, goal pursuit: planning/pledge/reminder, norms: dynamic",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text",
@@ -603,7 +603,7 @@
     "paper": 14,
     "paper_label": "Doebel et al. (2015)",
     "paper_authors": "Doebel, S.; Gabriel, S.; The Humane League",
-    "paper_title": "Does encouraging the public to “eat vegan,” “eat vegetarian,” “eat less meat,” or “cut out or cut back on” meat and other animal products lead to the most diet change?",
+    "paper_title": "Does encouraging the public to \"eat vegan,\" \"eat vegetarian,\" \"eat less meat,\" or \"cut out or cut back on\" meat and other animal products lead to the most diet change?",
     "paper_year": 2015,
     "paper_link": "https://osf.io/tfj9z/",
     "studies": [
@@ -678,6 +678,40 @@
     ]
   },
   {
+    "paper": 15,
+    "paper_label": "Jans et al. (2023)",
+    "paper_authors": "Jans, L.; Koudenburg, N.; Grose, L.",
+    "paper_title": "Cooking a pro-veg*n social identity: The influence of vegan cooking workshops on children's proveg*n social identities, attitudes, and dietary intentions",
+    "paper_year": 2023,
+    "paper_link": "https://doi.org/10.1080/13504622.2023.2182750",
+    "studies": [
+      {
+        "study": 1,
+        "study_n": 155,
+        "interventions": [
+          {
+            "intervention_condition": 1,
+            "intervention_description": "Participants completed a veg*n cooking workshop at school. This workshop aimed to stimulate shared social identity formation within the group. Participants also ate the dish they cooked, and joined a group discussion about the cooking process. Participants also received a presentation on five reasons for a vegan diet (taste, health, justice, animal, and environmental protection), but this was administered before the pre-intervention measure.",
+            "intervention_mechanism": "goal pursuit: cooking skills",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "in-person",
+            "intervention_medium_multicomponent": "no"
+          }
+        ],
+        "outcomes": [
+          {
+            "outcome": 1,
+            "outcome_description": "Agreement with 'In general vegan food tastes good to me'"
+          },
+          {
+            "outcome": 2,
+            "outcome_description": "Importance of eating vegetarian, vegan, and to reducing their own meat consumption"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "paper": 17,
     "paper_label": "Fehrenbach (2015)",
     "paper_authors": "Fehrenbach, K. S.",
@@ -723,7 +757,11 @@
           },
           {
             "outcome": 4,
-            "outcome_description": "Participants indicated how many meals they ate containing meat in the past 7 days for breakfast (0-7), lunch (0-7), and dinner (0-7)."
+            "outcome_description": "Participants indicated how many meals they ate containing meat in the past 7 days for breakfast (0-7), lunch (0-7), and dinner (0-7), summed into a total (0-21)."
+          },
+          {
+            "outcome": 5,
+            "outcome_description": "Participants indicated whether, in the past 7 days, they ate less meat than usual (-1), the same amount of meat as usual (0), or more meat than usual (1)."
           }
         ]
       }
@@ -1174,7 +1212,7 @@
       },
       {
         "study": 2,
-        "study_n": 103,
+        "study_n": 105,
         "interventions": [
           {
             "intervention_condition": 1,
@@ -1409,7 +1447,7 @@
     "paper": 42,
     "paper_label": "Mercy for Animals (2016b)",
     "paper_authors": "Mercy for Animals",
-    "paper_title": "Do online videos of farmed animal cruelty change people’s diets and attitudes?",
+    "paper_title": "Do online videos of farmed animal cruelty change people's diets and attitudes?",
     "paper_year": 2016,
     "paper_link": "https://mercyforanimals.org/blog/impact-study/",
     "studies": [
@@ -1474,21 +1512,21 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants read James Rachels' article “The Basic Argument for Vegetarianism”, an introductory-level ten-page philosophy article arguing that it is unethical to eat meat. Participants were also encouraged to view, on their own outside of class, an optional eleven-minute vegetarianism advocacy video “What Came Before”.",
+            "intervention_description": "Participants read James Rachels' article “The Basic Argument for Vegetarianism”, an introductory-level ten-page philosophy article arguing that it is unethical to eat meat. Participants were also encouraged to view, on their own outside of class, an optional eleven-minute vegetarianism advocacy video “What Came Before”. Then, they met with teaching assistants for 50-minute group discussion sections.",
             "intervention_mechanism": "info: animal welfare",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text, video, in-person",
             "intervention_medium_multicomponent": "yes",
-            "control_description": "Participants read Peter Singer's article “The Singer Solution to World Poverty”, a six-page opinion article that had originally appeared in New York Times Magazine arguing unethical aspect of luxury spending instead of making donations to charity. Participants were also encouraged to view, on their own outside of class, an optional nineteen-minute video advocating donation to hunger-relief initiatives: “Ending Hunger Now”."
+            "control_description": "Participants read Peter Singer's article “The Singer Solution to World Poverty”, a six-page opinion article that had originally appeared in New York Times Magazine arguing unethical aspect of luxury spending instead of making donations to charity. Participants were also encouraged to view, on their own outside of class, an optional nineteen-minute video advocating donation to hunger-relief initiatives: “Ending Hunger Now”. Then, they met with teaching assistants for 50-minute group discussion sections."
           }
         ],
         "outcomes": [
           {
-            "outcome": 2,
+            "outcome": 1,
             "outcome_description": "Percentage of participants buying a meal containing meat with a restaurant voucher"
           },
           {
-            "outcome": 3,
+            "outcome": 2,
             "outcome_description": "Percentage of main meals containing meat purchased at the univerity's dining hall"
           }
         ]
@@ -1749,8 +1787,8 @@
   {
     "paper": 57,
     "paper_label": "Piester et al. (2020)",
-    "paper_authors": "Piester, H. E.; DeRieux. C. M.; Tucker, J.; Buttrick, N. R.; Galloway,, J. N.; Wilson, T. D.",
-    "paper_title": "“I’ll try the veggie burger ”: Increasing purchases of sustainable foods with information about sustainability and taste",
+    "paper_authors": "Piester, H. E.; DeRieux, C. M.; Tucker, J.; Buttrick, N. R.; Galloway, J. N.; Wilson, T. D.",
+    "paper_title": "\"I'll try the veggie burger\": Increasing purchases of sustainable foods with information about sustainability and taste",
     "paper_year": 2020,
     "paper_link": "https://doi.org/10.1016/j.appet.2020.104842",
     "studies": [
@@ -1839,7 +1877,7 @@
           },
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants were briefed on the rationale for and requirements of the diet for the adherence peroiod, they were also given a handout including the following information: \"One type of diet that some people endorse is the ‘One step for the animals diet' eliminating chicken from our diets. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food.  If we can convince someone to stop eating birds, they would go from being responsible for the factory farming and slaughtering of more than two dozen land animals per year to fewer than one. Furthermore, while most cows and sheep raised in Australia spend most of their life grazing, the vast majority of chickens are raised in crowded factory farms.\"",
+            "intervention_description": "Participants were briefed on the rationale for and requirements of the diet for the adherence peroiod, they were also given a handout including the following information: \"One type of diet that some people endorse is the ‘One step for the animals diet' eliminating chicken from our diets. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. If we can convince someone to stop eating birds, they would go from being responsible for the factory farming and slaughtering of more than two dozen land animals per year to fewer than one. Furthermore, while most cows and sheep raised in Australia spend most of their life grazing, the vast majority of chickens are raised in crowded factory farms.\"",
             "intervention_mechanism": "info: animal welfare, goal pursuit: efficacy/consequences/feedback",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text",
@@ -1855,7 +1893,7 @@
           },
           {
             "intervention_condition": 4,
-            "intervention_description": "Participants were briefed on the rationale for and requirements of the diet for the adherence peroiod, they were also given a handout including the following information:  \"One type of diet that some people endorse is a Vegetarian diet eliminating all meat and fish from one's diet. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factory farms in Australia today. This includes cows, pigs, sheep and chickens. Adopting a vegetarian diet is the most powerful way to object to animal cruelty, and by doing so, you will spare approximately 100 animal lives (25 land animals and 75 fish and shellfish) every year.\"",
+            "intervention_description": "Participants were briefed on the rationale for and requirements of the diet for the adherence peroiod, they were also given a handout including the following information: \"One type of diet that some people endorse is a Vegetarian diet eliminating all meat and fish from one's diet. The reasoning is as follows: Despite having the same capacity to suffer, farmed animals are denied the protection of animal cruelty laws that protect dogs and cats. This means that it is legal and widespread to cause immense suffering to animals raised for food. This includes painful surgical mutilations (without pain relief) and in most cases, intensive and unnatural overcrowding or confinement, and often a painful and traumatic slaughter. There are over 500 million animals confined like this in factory farms in Australia today. This includes cows, pigs, sheep and chickens. Adopting a vegetarian diet is the most powerful way to object to animal cruelty, and by doing so, you will spare approximately 100 animal lives (25 land animals and 75 fish and shellfish) every year.\"",
             "intervention_mechanism": "info: animal welfare, goal pursuit: efficacy/consequences/feedback",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text",
@@ -1881,7 +1919,7 @@
     "studies": [
       {
         "study": 1,
-        "study_n": 730,
+        "study_n": 339,
         "interventions": [
           {
             "intervention_condition": 1,
@@ -1889,7 +1927,8 @@
             "intervention_mechanism": "info: animal welfare, perspective taking/individuation, origin of animal product",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, video, in-person",
-            "intervention_medium_multicomponent": "yes"
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "Students with adjacent Student ID numbers who weren't enrolled in any of the three philosophy courses and received no instruction. Only their campus purchase data were used."
           },
           {
             "intervention_condition": 2,
@@ -1897,17 +1936,14 @@
             "intervention_mechanism": "info: animal welfare, origin of animal product",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text, in-person",
-            "intervention_medium_multicomponent": "yes"
+            "intervention_medium_multicomponent": "yes",
+            "control_description": "Students with adjacent Student ID numbers who weren't enrolled in any of the three philosophy courses and received no instruction. Only their campus purchase data were used."
           }
         ],
         "outcomes": [
           {
             "outcome": 4,
             "outcome_description": "Percentage of purchases containing meat"
-          },
-          {
-            "outcome": 5,
-            "outcome_description": "Percentage of main meals containing meat"
           }
         ]
       }
@@ -1917,7 +1953,7 @@
     "paper": 61,
     "paper_label": "Gunther et al. (2023)",
     "paper_authors": "Gunther, O. E.; MacInnisa, C. C.; Hodson, G.; Dhont, K.",
-    "paper_title": "Addressing behavior and policy around meat: Associating actory farming with animal cruelty “works” better than zoonotic disease",
+    "paper_title": "Addressing behavior and policy around meat: Associating factory farming with animal cruelty \"works\" better than zoonotic disease",
     "paper_year": 2023,
     "paper_link": "https://doi.org/10.1080/08927936.2023.2243738",
     "studies": [
@@ -1963,7 +1999,7 @@
     "studies": [
       {
         "study": 1,
-        "study_n": 8272,
+        "study_n": 49752,
         "interventions": [
           {
             "intervention_condition": 2,
@@ -2064,7 +2100,7 @@
     "studies": [
       {
         "study": 1,
-        "study_n": 3104,
+        "study_n": 7216,
         "interventions": [
           {
             "intervention_condition": 2,
@@ -2127,7 +2163,7 @@
   {
     "paper": 67,
     "paper_label": "Guedes et al. (2023)",
-    "paper_authors": "Guedes, D.; Brazão, V.; Roque, L; Campos, L.; Godinho, C.; Truninger, M.; Vinnari, M.; João Graça, J.",
+    "paper_authors": "Guedes, D.; Brazão, V.; Roque, L.; Campos, L.; Godinho, C.; Truninger, M.; Vinnari, M.; Graça, J.",
     "paper_title": "Promoting plant-based eating in meat-centric meal contexts: A field study",
     "paper_year": 2023,
     "paper_link": "https://doi.org/10.1017/S1368980023001763",
@@ -2157,14 +2193,14 @@
   {
     "paper": 68,
     "paper_label": "Garnett et al. (2020)",
-    "paper_authors": "Garnett, E. E; Marteau, T. M.; Sandbrook, C.; Pilling, M. A.; Balmford, A.",
+    "paper_authors": "Garnett, E. E.; Marteau, T. M.; Sandbrook, C.; Pilling, M. A.; Balmford, A.",
     "paper_title": "Order of meals at the counter and distance between options affect student cafeteria vegetarian sales",
     "paper_year": 2020,
     "paper_link": "https://doi.org/10.1038/s43016-020-0132-8",
     "studies": [
       {
         "study": 1,
-        "study_n": 54745,
+        "study_n": 54755,
         "interventions": [
           {
             "intervention_condition": 2,
@@ -2349,7 +2385,7 @@
     "paper": 75,
     "paper_label": "Marcone et al. (2023)",
     "paper_authors": "Marcone, A. L.; Darmstadt, G. L.; Challamel, G. A.; Mathur, M.; Gardner, C. D.",
-    "paper_title": "Effects of an educational planetary plate graphic on meat consumption in a Stanford University dining hall: a randomized controlled trial",
+    "paper_title": "Effects of an educational planetary plate graphic on meat consumption in a Stanford University dining hall: A randomized controlled trial",
     "paper_year": 2023,
     "paper_link": "https://doi.org/10.1186/s40795-023-00764-3",
     "studies": [
@@ -2424,7 +2460,7 @@
   {
     "paper": 78,
     "paper_label": "Boronowsky et al. (2022)",
-    "paper_authors": "Boronowsky, R. D.; Zhang, A. W.; Stecher, C.; Presley, K.; Mathur, M.; Cleveland, D. A.; Garnett, E.; Wharton, C.; Brown, D.; Meier, A.; Wang, M.; Braverman, I; Jay, J. A.",
+    "paper_authors": "Boronowsky, R. D.; Zhang, A. W.; Stecher, C.; Presley, K.; Mathur, M.; Cleveland, D. A.; Garnett, E.; Wharton, C.; Brown, D.; Meier, A.; Wang, M.; Braverman, I.; Jay, J. A.",
     "paper_title": "Plant-based default nudges effectively increase the sustainability of catered meals on college campuses: Three randomized controlled trials",
     "paper_year": 2022,
     "paper_link": "https://doi.org/10.3389/fsufs.2022.1001157",
@@ -2486,7 +2522,7 @@
   {
     "paper": 81,
     "paper_label": "Erhard et al. (2023)",
-    "paper_authors": "Erhard, A.;  Boztuğ, Y.; Lemken, D.",
+    "paper_authors": "Erhard, A.; Boztuğ, Y.; Lemken, D.",
     "paper_title": "How do defaults and framing influence food choice? An intervention aimed at promoting plant-based choice in online menus",
     "paper_year": 2023,
     "paper_link": "https://doi.org/10.1016/j.appet.2023.107005",
@@ -2629,7 +2665,7 @@
   },
   {
     "paper": 86,
-    "paper_label": "Çoker et a. (2022)",
+    "paper_label": "Çoker et al. (2022)",
     "paper_authors": "Çoker, E. N.; Pechey, R.; Frie, K.; Jebb, S. A.; Stewart, C.; Higgs, S.; Cook, B.",
     "paper_title": "A dynamic social norm messaging intervention to reduce meat consumption: A randomized cross-over trial in retail store restaurants",
     "paper_year": 2022,
@@ -2746,7 +2782,7 @@
   {
     "paper": 90,
     "paper_label": "Garnett et al. (2021)",
-    "paper_authors": "Garnett, E. E.; Balmford, A; Marteau, T. M.; Pilling, M. A.; Sandbrook, C.",
+    "paper_authors": "Garnett, E. E.; Balmford, A.; Marteau, T. M.; Pilling, M. A.; Sandbrook, C.",
     "paper_title": "Price of change: Does a small alteration to the price of meat and vegetarian options affect their sales?",
     "paper_year": 2021,
     "paper_link": "https://doi.org/10.1016/j.jenvp.2021.101589",
@@ -2909,8 +2945,8 @@
   {
     "paper": 96,
     "paper_label": "Saulais et al. (2019)",
-    "paper_authors": "Saulais, L.; Massey, C; Perez-Cueto, F. J. A.; Appleton, K. M.; Dinnella, C.; Monteleone, E.; Depezay, L.; Hartwell, H.; Giboreau, A.",
-    "paper_title": "When are “Dish of the Day” nudges most effective to increase vegetable selection?",
+    "paper_authors": "Saulais, L.; Massey, C.; Perez-Cueto, F. J. A.; Appleton, K. M.; Dinnella, C.; Monteleone, E.; Depezay, L.; Hartwell, H.; Giboreau, A.",
+    "paper_title": "When are \"Dish of the Day\" nudges most effective to increase vegetable selection?",
     "paper_year": 2019,
     "paper_link": "https://doi.org/10.1016/j.foodpol.2019.04.003",
     "studies": [
@@ -2947,7 +2983,7 @@
   {
     "paper": 105,
     "paper_label": "Karakaş & Jaeger (2024)",
-    "paper_authors": "Karakaş, N., Jaeger, B.",
+    "paper_authors": "Karakaş, N.; Jaeger, B.",
     "paper_title": "Changes in attitudes toward meat consumption after chatting with a large language model",
     "paper_year": 2024,
     "paper_link": "https://osf.io/preprints/psyarxiv/8y2me",
@@ -2980,7 +3016,7 @@
     "paper_authors": "Stewart, G.",
     "paper_title": "Can simple nudges reduce meat consumption?",
     "paper_year": 2021,
-    "paper_link": "http://dx.doi.org/10.13140/RG.2.2.34307.02089",
+    "paper_link": "https://doi.org/10.13140/RG.2.2.34307.02089",
     "studies": [
       {
         "study": 2,
@@ -3030,7 +3066,7 @@
     "paper": 116,
     "paper_label": "Altema-Johnson et al. (2020)",
     "paper_authors": "Altema-Johnson, D.; Hernandez, R.; Nowara, A.; Ramsing, B.; Wingood, G.",
-    "paper_title": "Evaluation of the meatless monday campaign at NewYork- Presbyterian",
+    "paper_title": "Evaluation of the Meatless Monday campaign at NewYork-Presbyterian",
     "paper_year": 2020,
     "paper_link": "https://clf.jhsph.edu/sites/default/files/2020-09/evaluation-of-the-meatless-monday-campaign-at-newyork-presbyterian.pdf",
     "studies": [
@@ -3104,27 +3140,36 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants were eligible to win a non-transferable voucher for two sandwiches (meat, vegetarian, or vegan options), redeemable at a local establishment. Participants read the following information on meat consumption reduction: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\" before privately announced their choice of voucher.",
+            "intervention_description": "Participants could win a non-transferable voucher for two sandwiches at a local restaurant, choosing a meat, vegetarian, or vegan voucher, or no voucher. Just before choosing, they read: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\" followed by: \"The winners will be publicly announced directly in the breakout room. Their choice of voucher will not be revealed to other participants. Please indicate which type of voucher you would like to receive if you win.\"",
             "intervention_mechanism": "info: environment",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
             "intervention_medium_multicomponent": "no",
-            "control_description": "Participants were eligible to win a non-transferable voucher for two sandwiches (meat, vegetarian, or vegan options), redeemable at a local establishment. No information on meat consumption were given, participants read the following text just before they made their decision on which sandwich they wanted (meat, vegetarian or vegan): \"The winners will be publicly announced directly in the breakout room. Their choice of voucher will not be revealed to other participants. Please indicate which type of voucher you would like to receive if you win.\""
+            "control_description": "Participants could win a non-transferable voucher for two sandwiches at a local restaurant, choosing a meat, vegetarian, or vegan voucher, or no voucher. They received no information about meat consumption. Just before choosing, they read: \"The winners will be publicly announced directly in the breakout room. Their choice of voucher will not be revealed to other participants. Please indicate which type of voucher you would like to receive if you win.\""
           },
           {
             "intervention_condition": 4,
-            "intervention_description": "Participants were eligible to win a non-transferable voucher for two sandwiches (meat, vegetarian, or vegan options), redeemable at a local establishment. Participants read the following text just before they made their decision on which sandwich they wanted: \"The winners will be publicly announced directly in the breakout room and asked for their choice of voucher so that we can pass on the selection to the restaurant. Please indicate which type of voucher you would like to receive if you win.\" Participants read the following information on meat consumption reduction before their choice of voucher was publicly announced: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\"",
-            "intervention_mechanism": "info: environment, identity/reputation",
-            "intervention_mechanism_multicomponent": "yes",
+            "intervention_description": "Participants could win a non-transferable voucher for two sandwiches at a local restaurant, choosing a meat, vegetarian, or vegan voucher, or no voucher. Just before choosing, they read: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\" followed by: \"The winners will be publicly announced directly in the breakout room and asked for their choice of voucher so that we can pass on the selection to the restaurant. Please indicate which type of voucher you would like to receive if you win.\"",
+            "intervention_mechanism": "info: environment",
+            "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
             "intervention_medium_multicomponent": "no",
-            "control_description": "Participants were eligible to win a non-transferable voucher for two sandwiches (meat, vegetarian, or vegan options). Participants read the following text just before they made their decision on which sandwich they wanted (meat, vegetarian or vegan): \"The winners will be publicly announced directly in the breakout room and asked for their choice of voucher so that we can pass on the selection to the restaurant. Please indicate which type of voucher you would like to receive if you win.\""
+            "control_description": "Participants could win a non-transferable voucher for two sandwiches at a local restaurant, choosing a meat, vegetarian, or vegan voucher, or no voucher. They received no information about meat consumption. Just before choosing, they read: \"The winners will be publicly announced directly in the breakout room and asked for their choice of voucher so that we can pass on the selection to the restaurant. Please indicate which type of voucher you would like to receive if you win.\""
+          },
+          {
+            "intervention_condition": 6,
+            "intervention_description": "Participants could win a non-transferable voucher for two sandwiches at a local restaurant, choosing a meat, vegetarian, or vegan voucher, or no voucher. Just before choosing, they read: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\" followed by: \"The winners will be publicly announced directly in the breakout room and asked for their choice of voucher so that we can pass on the selection to the restaurant. Please indicate which type of voucher you would like to receive if you win.\"",
+            "intervention_mechanism": "identity/reputation",
+            "intervention_mechanism_multicomponent": "no",
+            "intervention_medium": "text",
+            "intervention_medium_multicomponent": "no",
+            "control_description": "Participants could win a non-transferable voucher for two sandwiches at a local restaurant, choosing a meat, vegetarian, or vegan voucher, or no voucher. Just before choosing, they read: \"Reducing one's consumption of animal products can have significant environmental benefits. For example, food-related greenhouse gas emissions can on average be lowered by about a quarter (24%) through following a vegetarian diet and by about half (53%) through following a vegan diet.\" followed by: \"The winners will be publicly announced directly in the breakout room. Their choice of voucher will not be revealed to other participants. Please indicate which type of voucher you would like to receive if you win.\""
           }
         ],
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Percentage of participants choosing the voucher for a meat sandwich"
+            "outcome_description": "Percentage of participants who chose the meat sandwich voucher, out of all participants (the alternatives were a vegetarian or vegan voucher, or no voucher). The choice was real: winners received the voucher they chose."
           }
         ]
       }
@@ -3175,7 +3220,7 @@
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "Impossible foodprint project is an intervention aiming to reduce animal-based protein consumption with a focus on health and environmental sustainability promotion. Impossible plant-based meat was only implemented at Rendezvous West, and only Rendezvous West received the intervention’s stanchion sign (key educational piece with carbon footprint scorecard), “Swap the  Meat, Save the Planet” promotional banner, check stand sign, promotional screens, and Low Carbon Foodprint green Earth icons on the menus.",
+            "intervention_description": "Impossible foodprint project is an intervention aiming to reduce animal-based protein consumption with a focus on health and environmental sustainability promotion. Impossible plant-based meat was only implemented at Rendezvous West, and only Rendezvous West received the intervention’s stanchion sign (key educational piece with carbon footprint scorecard), “Swap the Meat, Save the Planet” promotional banner, check stand sign, promotional screens, and Low Carbon Foodprint green Earth icons on the menus.",
             "intervention_mechanism": "info: environment, taste, info: health",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "choice architecture, text, image",
@@ -3297,7 +3342,7 @@
     "paper": 144,
     "paper_label": "Anderson (2020)",
     "paper_authors": "Anderson, J.",
-    "paper_title": "“Reduce” or “Go Veg”? Effects on meal choice",
+    "paper_title": "\"Reduce\" or \"Go Veg\"? Effects on meal choice",
     "paper_year": 2020,
     "paper_link": "https://osf.io/cwpfk",
     "studies": [
@@ -3351,7 +3396,7 @@
     "studies": [
       {
         "study": 1,
-        "study_n": 111,
+        "study_n": 2471,
         "interventions": [
           {
             "intervention_condition": 2,
@@ -3366,7 +3411,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Reported total percentages of meat-containing meals from Monday through Sunday following intervention"
+            "outcome_description": "Reported total percentages of meat-containing meals from Monday through Sunday following intervention."
           }
         ]
       }
@@ -3437,7 +3482,7 @@
     "paper": 157,
     "paper_label": "Stel & Unterweger (2025)",
     "paper_authors": "Stel, M.; Unterweger, A.",
-    "paper_title": "Towards sustainability by changing the moral standing of animals: A prejudice-based intervention reducing people’s speciesist attitudes and behaviors",
+    "paper_title": "Towards sustainability by changing the moral standing of animals: A prejudice-based intervention reducing people's speciesist attitudes and behaviors",
     "paper_year": 2025,
     "paper_link": "https://doi.org/10.1111/bjso.12864",
     "studies": [
@@ -3475,7 +3520,7 @@
         ],
         "outcomes": [
           {
-            "outcome": 2,
+            "outcome": 1,
             "outcome_description": "Participants were asked to what extent they intend to change their harmful behaviour regarding animals. They could indicate separately for different categories (9 items), and choose their intent to show this behavior \"more\", \"equal\", \"less\", \"not at all\" for future."
           }
         ]
@@ -3507,7 +3552,7 @@
             "outcome_description": "Participants were asked to indicate how many days in the past 7 days they consumed eggs. They were asked to indicate for breakfast, lunch, dinner, and in between snacks separately."
           },
           {
-            "outcome": 6,
+            "outcome": 5,
             "outcome_description": "Participants were asked to what extent they intend to change their harmful behaviour regarding animals. They could indicate separately for different categories (9 items), and choose their intent to show this behavior \"more\", \"equal\", \"less\", \"not at all\" for future."
           }
         ]
@@ -3683,7 +3728,7 @@
         ],
         "outcomes": [
           {
-            "outcome": 3,
+            "outcome": 1,
             "outcome_description": "People's frequency of consuming some animal products over the previous 24 h: “In the past day, how many times did you consume the following food and drinks?” Participants could respond from 0 times to 5 or more times for the following items: Dairy, chicken, turkey, fish, pork, eggs, beef, bacon, sausages, processed meats, hamburgers, or any animal meat (any kind). Responses were coded from 0 to 5."
           }
         ]
@@ -3782,7 +3827,7 @@
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "choice architecture",
             "intervention_medium_multicomponent": "no",
-            "control_description": "The  beef burger was presented as the default option, but in a separate box next to it: “Rather have a beans burger? This is also possible on request.”"
+            "control_description": "The beef burger was presented as the default option, but in a separate box next to it: “Rather have a beans burger? This is also possible on request.”"
           },
           {
             "intervention_condition": 4,
@@ -3961,7 +4006,7 @@
     "paper": 182,
     "paper_label": "McDonough (2012)",
     "paper_authors": "McDonough, T.",
-    "paper_title": "Modifying students’ intentions to eat sustainably",
+    "paper_title": "Modifying students' intentions to eat sustainably",
     "paper_year": 2012,
     "paper_link": "https://escholarship.mcgill.ca/concern/papers/vt150k71s",
     "studies": [
@@ -4114,7 +4159,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Proportion of plant-based products that were chosen from the meat/meat alternatives aisle in an incentivized online grocery shopping task"
+            "outcome_description": "Proportion of plant-based products that were chosen from the meat/meat alternatives aisle in an incentivized online grocery shopping task."
           }
         ]
       }
@@ -4134,7 +4179,7 @@
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "Participants were presented with a menu that had three options including beef burrito, a chicken burrito and a vegetarian burrito, alongside a traffic light system, with a scale of 1–5, which was circled at the appropriate sustainability level for that burrito: beef burrito – unsustainable, chicken burrito – neither sustainable nor unsustainable and vegetarian burrito – sustainable",
+            "intervention_description": "Participants were presented with a menu that had three options including beef burrito, a chicken burrito and a vegetarian burrito, alongside a traffic light system, with a scale of 1–5, which was circled at the appropriate sustainability level for that burrito: beef burrito – unsustainable, chicken burrito – neither sustainable nor unsustainable and vegetarian burrito – sustainable.",
             "intervention_mechanism": "info: environment",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
@@ -4143,7 +4188,7 @@
           },
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants were presented with a menu that had three options including beef burrito, a chicken burrito and a vegetarian burrito, where the vegetarian burrito was presented alongside a popularity label consisting of a gold star next to the words ‘Most Popular’",
+            "intervention_description": "Participants were presented with a menu that had three options including beef burrito, a chicken burrito and a vegetarian burrito, where the vegetarian burrito was presented alongside a popularity label consisting of a gold star next to the words ‘Most Popular’.",
             "intervention_mechanism": "norms: descriptive",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
@@ -4203,7 +4248,7 @@
   {
     "paper": 220,
     "paper_label": "Jay et al. (2019)",
-    "paper_authors": "Jay, J. A.; D’Auria, R.; Nordby, J. C.; Rice, D. A.; Cleveland, D. A.; Friscia, A. R.; Kissinger, S.; Levis, M.; Malan, H.; Rajagopal, D.; Reynolds, J. R.; Slusser, W.; Wang, M.; Wesel, E.",
+    "paper_authors": "Jay, J. A.; D'Auria, R.; Nordby, J. C.; Rice, D. A.; Cleveland, D. A.; Friscia, A. R.; Kissinger, S.; Levis, M.; Malan, H.; Rajagopal, D.; Reynolds, J. R.; Slusser, W.; Wang, M.; Wesel, E.",
     "paper_title": "Reduction of the carbon footprint of college freshman diets after a food-based environmental science course",
     "paper_year": 2019,
     "paper_link": "https://doi.org/10.1007/s10584-019-02407-8",
@@ -4391,7 +4436,7 @@
     "paper": 240,
     "paper_label": "Thamer et al. (2024)",
     "paper_authors": "Thamer, P.; Banerjee, S.; John, P.",
-    "paper_title": "Pledging after nudging improves uptake of plant-based diets: a field experiment in a German university cafeteria",
+    "paper_title": "Pledging after nudging improves uptake of plant-based diets: A field experiment in a German university cafeteria",
     "paper_year": 2024,
     "paper_link": "https://doi.org/10.1088/2515-7620/ad2625",
     "studies": [
@@ -4420,7 +4465,7 @@
   {
     "paper": 243,
     "paper_label": "dos Santos et al. (2020)",
-    "paper_authors": "dos Santos, Q.; Perez-Cueto, F.J.A.; Rodrigues, V.M.; Appleton, K.; Giboreau, A.; Saulais, L.; Monteleone, E.",
+    "paper_authors": "dos Santos, Q.; Perez-Cueto, F. J. A.; Rodrigues, V. M.; Appleton, K.; Giboreau, A.; Saulais, L.; Monteleone, E.",
     "paper_title": "Impact of a nudging intervention and factors associated with vegetable dish choice among European adolescents",
     "paper_year": 2020,
     "paper_link": "https://doi.org/10.1007/s00394-019-01903-y",
@@ -4513,8 +4558,8 @@
   {
     "paper": 264,
     "paper_label": "Zhou et al. (2019)",
-    "paper_authors": "Zhou, X.; Perez-Cueto, F. J. A.; dos Santos, Q.; Bredie, W. L.P.;  Brugarolas Mollá-Bauza, M. M.; Rodrigues, V. M.; Buch-Andersen, T.; Appleton, K. M.; Hemingway, A.; Giboreau, A.; Saulais, L.; Monteleone, E.; Dinnella, C.; Hartwell, H.",
-    "paper_title": "Promotion of novel plant-based dishes among older consumers using the ‘dish of the day’ as a nudging strategy in 4 EU countries",
+    "paper_authors": "Zhou, X.; Perez-Cueto, F. J. A.; dos Santos, Q.; Bredie, W. L. P.; Brugarolas Mollá-Bauza, M. M.; Rodrigues, V. M.; Buch-Andersen, T.; Appleton, K. M.; Hemingway, A.; Giboreau, A.; Saulais, L.; Monteleone, E.; Dinnella, C.; Hartwell, H.",
+    "paper_title": "Promotion of novel plant-based dishes among older consumers using the 'dish of the day' as a nudging strategy in 4 EU countries",
     "paper_year": 2019,
     "paper_link": "https://doi.org/10.1016/j.foodqual.2018.12.003",
     "studies": [
@@ -4555,7 +4600,7 @@
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "Participants received information by a text composed of four paragraph. The first paragraph was identical in the health and environmental condition and informed about high meat consumption rates in Germany. The other paragraphs described negative impacts of meat consumption on health (e.g. increased risk of non-communicable diseases)",
+            "intervention_description": "Participants received information by a text composed of four paragraph. The first paragraph was identical in the health and environmental condition and informed about high meat consumption rates in Germany. The other paragraphs described negative impacts of meat consumption on health (e.g. increased risk of non-communicable diseases).",
             "intervention_mechanism": "info: health",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -4584,7 +4629,7 @@
   {
     "paper": 273,
     "paper_label": "Radnitz et al. (2023)",
-    "paper_authors": "Radnitz, C.; Beezhold, B.; Pilato, I.; Drury, C. R.; Fruchter, S.; Murphy, B. D.G.; Loeb, K. L.",
+    "paper_authors": "Radnitz, C.; Beezhold, B.; Pilato, I.; Drury, C. R.; Fruchter, S.; Murphy, B. D. G.; Loeb, K. L.",
     "paper_title": "Application of optimal defaults to increase selection of sustainable menu choices",
     "paper_year": 2023,
     "paper_link": "https://doi.org/10.1016/j.foodqual.2023.104954",
@@ -4783,7 +4828,7 @@
   {
     "paper": 280,
     "paper_label": "Kranzbühler & Schifferstein (2023)",
-    "paper_authors": "Kranzbühler, A. M.; Schifferstein, H. N.J.",
+    "paper_authors": "Kranzbühler, A. M.; Schifferstein, H. N. J.",
     "paper_title": "The effect of meat-shaming on meat eaters' emotions and intentions to adapt behavior",
     "paper_year": 2023,
     "paper_link": "https://doi.org/10.1016/j.foodqual.2023.104831",
@@ -5131,7 +5176,7 @@
     "paper": 297,
     "paper_label": "Lim et al. (2021)",
     "paper_authors": "Lim, T. J.; Okine, R. N.; Kershaw, J. C.",
-    "paper_title": "Health- or environment-focused text messages as a potential strategy to increase plant-based eating among young adults: An exploratory study.",
+    "paper_title": "Health- or environment-focused text messages as a potential strategy to increase plant-based eating among young adults: An exploratory study",
     "paper_year": 2021,
     "paper_link": "https://doi.org/10.3390/foods10123147",
     "studies": [
@@ -5140,7 +5185,7 @@
         "study_n": 159,
         "interventions": [
           {
-            "intervention_condition": 2,
+            "intervention_condition": 1,
             "intervention_description": "Participants received 2–3 health-focused SMS per week for eight consecutive weeks via Textedly. The intervention contained messages describing health benefits of plant-based diets, potential health consequences of animal-based diets, practical strategies to increase plant-based eating (including links to supportive websites in each message), and information about the increasing popularity of PBD among Americans.",
             "intervention_mechanism": "info: health, norms: dynamic, goal pursuit: cooking skills, goal pursuit: planning/pledge/reminder, goal pursuit: efficacy/consequences/feedback",
             "intervention_mechanism_multicomponent": "yes",
@@ -5148,7 +5193,7 @@
             "intervention_medium_multicomponent": "no"
           },
           {
-            "intervention_condition": 4,
+            "intervention_condition": 2,
             "intervention_description": "Participants received 2–3 environment-focused SMS per week for eight consecutive weeks via Textedly. The intervention contained messages describing environmental benefits of plant-based diets, potential environmental consequences of animal-based diets, practical strategies to increase plant-based eating (including links to supportive websites in each message), and information about the increasing popularity of PBD among Americans.",
             "intervention_mechanism": "info: health, norms: dynamic, goal pursuit: cooking skills, goal pursuit: planning/pledge/reminder, goal pursuit: efficacy/consequences/feedback",
             "intervention_mechanism_multicomponent": "yes",
@@ -5265,12 +5310,12 @@
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "Participants received the Educa­ted Choices Program’s (ECP) The Planet and Our Plates presentation, which describes the environmental impacts of animal agriculture versus plant-based food choices. For example, viewers learn about the land use of animal agriculture versus growing food for direct human consumption, feed-conversion ratios, the environmental consequences of aquaculture (e.g. ocean acidification), emissions from concentrated animal feeding operations (CAFOs), and more. Afterward, all participants received a free food voucher for a local café.  Café  staff, unaware of the video conditions, recorded whether the voucher was used for a vegetarian/vegan (veg*n) meal or a meal that contains meat.",
+            "intervention_description": "Participants received the Educated Choices Program’s (ECP) The Planet and Our Plates presentation, which describes the environmental impacts of animal agriculture versus plant-based food choices. For example, viewers learn about the land use of animal agriculture versus growing food for direct human consumption, feed-conversion ratios, the environmental consequences of aquaculture (e.g. ocean acidification), emissions from concentrated animal feeding operations (CAFOs), and more. Afterward, all participants received a free food voucher for a local café. Café staff, unaware of the video conditions, recorded whether the voucher was used for a vegetarian/vegan (veg*n) meal or a meal that contains meat.",
             "intervention_mechanism": "info: environment",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "presentation, video",
             "intervention_medium_multicomponent": "yes",
-            "control_description": "Participants received the Patagonia Films’ We the Power: The Future of Energy is Community-Owned (Patagonia, 2021), a short film documenting community efforts to produce and have autonomy over their own renewable energies rather than rely on large energy sectors. Afterward, all participants received a  free  food  voucher  for  a  local  café.  Café  staff,  unaware  of  the  video  conditions,  recorded  whether the voucher was used for a vegetarian/vegan (veg*n) meal or a meal that contains meat."
+            "control_description": "Participants received the Patagonia Films’ We the Power: The Future of Energy is Community-Owned (Patagonia, 2021), a short film documenting community efforts to produce and have autonomy over their own renewable energies rather than rely on large energy sectors. Afterward, all participants received a free food voucher for a local café. Café staff, unaware of the video conditions, recorded whether the voucher was used for a vegetarian/vegan (veg*n) meal or a meal that contains meat."
           }
         ],
         "outcomes": [
@@ -5286,21 +5331,21 @@
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "Participants received the Educa­ted Choices Program’s (ECP) The Planet and Our Plates presentation, which describes the environmental impacts of animal agriculture versus plant-based food choices. For example, viewers learn about the land use of animal agriculture versus growing food for direct human consumption, feed-conversion ratios, the environmental consequences of aquaculture (e.g. ocean acidification), emissions from concentrated animal feeding operations (CAFOs), and more.  In  exchange for watching this presentation - video, participants received a free ticket to a formal university dinner, pre-selecting either an  \"omnivorous\" or \"plant-based\" meal.",
+            "intervention_description": "Participants received the Educated Choices Program’s (ECP) The Planet and Our Plates presentation, which describes the environmental impacts of animal agriculture versus plant-based food choices. For example, viewers learn about the land use of animal agriculture versus growing food for direct human consumption, feed-conversion ratios, the environmental consequences of aquaculture (e.g. ocean acidification), emissions from concentrated animal feeding operations (CAFOs), and more. In exchange for watching this presentation - video, participants received a free ticket to a formal university dinner, pre-selecting either an \"omnivorous\" or \"plant-based\" meal.",
             "intervention_mechanism": "info: environment",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "presentation, video",
             "intervention_medium_multicomponent": "yes",
-            "control_description": "Participants received the Patagonia Films’ We the Power: The Future of Energy is Community-Owned (Patagonia, 2021), a short film documenting community efforts to produce and have autonomy over their own renewable energies rather than rely on large energy sectors.   In  exchange  for  watching  this film,  participants  received  a  free  ticket  to  a  formal  university  dinner,  pre-selecting  either  an  \"omnivorous\"  or  \"plant-based\"  meal."
+            "control_description": "Participants received the Patagonia Films’ We the Power: The Future of Energy is Community-Owned (Patagonia, 2021), a short film documenting community efforts to produce and have autonomy over their own renewable energies rather than rely on large energy sectors. In exchange for watching this film, participants received a free ticket to a formal university dinner, pre-selecting either an \"omnivorous\" or \"plant-based\" meal."
           },
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants received the ECP’s Food for Thought presentation, which critically examines the ethical impacts of modern animal agriculture. The presentation highlights animal welfare concerns as well as the significant physical and psychological occupational hazards faced by workers, demonstrating how consumer demand drives these issues. In exchange for watching this presentation - video,  participants received a free ticket to a formal university dinner, pre-selecting either an \"omnivorous\" or \"plant-based\" meal.",
+            "intervention_description": "Participants received the ECP’s Food for Thought presentation, which critically examines the ethical impacts of modern animal agriculture. The presentation highlights animal welfare concerns as well as the significant physical and psychological occupational hazards faced by workers, demonstrating how consumer demand drives these issues. In exchange for watching this presentation - video, participants received a free ticket to a formal university dinner, pre-selecting either an \"omnivorous\" or \"plant-based\" meal.",
             "intervention_mechanism": "info: animal welfare",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "presentation, video",
             "intervention_medium_multicomponent": "yes",
-            "control_description": "Participants received the Patagonia Films’ We the Power: The Future of Energy is Community-Owned (Patagonia, 2021), a short film documenting community efforts to produce and have autonomy over their own renewable energies rather than rely on large energy sectors.   In  exchange  for  watching  this film,  participants  received  a  free  ticket  to  a  formal  university  dinner,  pre-selecting  either  an  \"omnivorous\"  or  \"plant-based\"  meal."
+            "control_description": "Participants received the Patagonia Films’ We the Power: The Future of Energy is Community-Owned (Patagonia, 2021), a short film documenting community efforts to produce and have autonomy over their own renewable energies rather than rely on large energy sectors. In exchange for watching this film, participants received a free ticket to a formal university dinner, pre-selecting either an \"omnivorous\" or \"plant-based\" meal."
           }
         ],
         "outcomes": [
@@ -5378,7 +5423,7 @@
     "paper": 318,
     "paper_label": "dos Santos et al. (2018)",
     "paper_authors": "dos Santos, Q.; Nogueira, B. M.; Rodrigues, V. M.; Hartwell, H.; Giboreau, A.; Monteleone, E.; Dinnella, C.; Perez-Cueto, F. J.",
-    "paper_title": "Nudging using the ‘dish of the day’ strategy does not work for plant-based meals in a Danish sample of adolescent and older people",
+    "paper_title": "Nudging using the 'dish of the day' strategy does not work for plant-based meals in a Danish sample of adolescent and older people",
     "paper_year": 2018,
     "paper_link": "https://doi.org/10.1111/ijcs.12421",
     "studies": [
@@ -5496,7 +5541,7 @@
     "paper": 323,
     "paper_label": "Wolfson et al. (2022)",
     "paper_authors": "Wolfson, J. A.; Musicus, A. A.; Leung, C. W.; Gearhardt, A. N.; Falbe, J.",
-    "paper_title": "Effect of climate change impact menu labels on fast food ordering choices among US adults: A randomized clinical trial.",
+    "paper_title": "Effect of climate change impact menu labels on fast food ordering choices among US adults: A randomized clinical trial",
     "paper_year": 2022,
     "paper_link": "https://doi.org/10.1001/jamanetworkopen.2022.48320",
     "studies": [
@@ -5540,7 +5585,7 @@
     "paper": 340,
     "paper_label": "Feldman et al. (2013)",
     "paper_authors": "Feldman, C.; Su, H.; Mahadevan, M.; Brusca, J.; Hartwell, H.",
-    "paper_title": "Menu psychology to encourage healthy menu selections at a New Jersey University",
+    "paper_title": "Menu psychology to encourage healthy menu selections at a New Jersey university",
     "paper_year": 2013,
     "paper_link": "https://doi.org/10.1080/15428052.2013.798605",
     "studies": [
@@ -5664,7 +5709,7 @@
           },
           {
             "intervention_condition": 3,
-            "intervention_description": "Participants were shown a restaurant menu in which two vegetarian dishes are listed with a title  “Refreshing Main Courses for Relaxing Conversations”. For some participants this section was on the top of menu, whereas it was on the down for others.",
+            "intervention_description": "Participants were shown a restaurant menu in which two vegetarian dishes are listed with a title “Refreshing Main Courses for Relaxing Conversations”. For some participants this section was on the top of menu, whereas it was on the down for others.",
             "intervention_mechanism": "hedonic labeling",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
@@ -5723,7 +5768,7 @@
   {
     "paper": 347,
     "paper_label": "Parkin & Attwood (2022)",
-    "paper_authors": "Parkin, B.L.; Attwood, S.",
+    "paper_authors": "Parkin, B. L.; Attwood, S.",
     "paper_title": "Menu design approaches to promote sustainable vegetarian food choices when dining out",
     "paper_year": 2022,
     "paper_link": "https://doi.org/10.1016/j.jenvp.2021.101721",
@@ -5733,22 +5778,22 @@
         "study_n": 424,
         "interventions": [
           {
-            "intervention_condition": 3,
-            "intervention_description": "The vegetarian and meat items were presented in fixed positions across all menus. In this condition, vegetarian dishes were presented without any V symbol this time.",
+            "intervention_condition": 1,
+            "intervention_description": "The vegetarian and meat items were presented in fixed positions across all menus. In this condition, vegetarian dishes were presented with vegetarian symbol (V) on the left side of the dish name.",
             "intervention_mechanism": "other",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "choice architecture",
             "intervention_medium_multicomponent": "no",
-            "control_description": "The vegetarian and meat items were presented in fixed positions across all menus. In this condition, vegetarian dishes were presented with vegetarian symbol (V) on the left side of the dish name."
+            "control_description": "The vegetarian and meat items were presented in fixed positions across all menus. In this condition, vegetarian dishes were presented without any V symbol this time."
           },
           {
-            "intervention_condition": 3,
-            "intervention_description": "The vegetarian and meat items were presented in fixed positions across all menus. In this condition, vegetarian dishes were presented without any V symbol this time.",
+            "intervention_condition": 2,
+            "intervention_description": "The vegetarian and meat items were presented in fixed positions across all menus. In this condition, vegetarian dishes were presented with vegetarian symbol (V) on the right side of the dish name.",
             "intervention_mechanism": "other",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "choice architecture",
             "intervention_medium_multicomponent": "no",
-            "control_description": "The vegetarian and meat items were presented in fixed positions across all menus. In this condition, vegetarian dishes were presented with vegetarian symbol (V) on the right side of the dish name."
+            "control_description": "The vegetarian and meat items were presented in fixed positions across all menus. In this condition, vegetarian dishes were presented without any V symbol this time."
           }
         ],
         "outcomes": [
@@ -5764,7 +5809,7 @@
     "paper": 348,
     "paper_label": "Hielkema & Lund (2022)",
     "paper_authors": "Hielkema, M. H.; Lund, T. B.",
-    "paper_title": "A “vegetarian curry stew” or just a “curry stew”? - The effect of neutral labeling of vegetarian dishes on food choice among meat-reducers and non-reducers",
+    "paper_title": "A \"vegetarian curry stew\" or just a \"curry stew\"? - The effect of neutral labeling of vegetarian dishes on food choice among meat-reducers and non-reducers",
     "paper_year": 2022,
     "paper_link": "https://doi.org/10.1016/j.jenvp.2022.101877",
     "studies": [
@@ -5793,7 +5838,7 @@
         ],
         "outcomes": [
           {
-            "outcome": 2,
+            "outcome": 1,
             "outcome_description": "Percentage of participants choosing a meat dish (chicken curry, red prawn curry, fried noodles with beef) from the menu"
           }
         ]
@@ -6084,7 +6129,7 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants viewed red-meat–reduction messages linking red meat consumption with animal welfare: \"Eating red meat contributes to animal suffering.\"  and \"Ethical eating can start with eating less red meat!\"",
+            "intervention_description": "Participants viewed red-meat–reduction messages linking red meat consumption with animal welfare: \"Eating red meat contributes to animal suffering.\" and \"Ethical eating can start with eating less red meat!\"",
             "intervention_mechanism": "info: animal welfare",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -6167,7 +6212,7 @@
     "studies": [
       {
         "study": 1,
-        "study_n": 5426,
+        "study_n": 10530,
         "interventions": [
           {
             "intervention_condition": 3,
@@ -6209,7 +6254,7 @@
         "interventions": [
           {
             "intervention_condition": 3,
-            "intervention_description": "Participants saw descriptive social norm message e.g. “Between 2010 and 2017, the share of vegetarian and vegan meals in our sales rose from about 24% to more than 35%.” in trials of meal selection from menus",
+            "intervention_description": "Participants saw descriptive social norm message e.g. “Between 2010 and 2017, the share of vegetarian and vegan meals in our sales rose from about 24% to more than 35%.” in trials of meal selection from menus.",
             "intervention_mechanism": "norms: dynamic",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -6236,7 +6281,7 @@
     "studies": [
       {
         "study": 1,
-        "study_n": 727,
+        "study_n": 2000,
         "interventions": [
           {
             "intervention_condition": 2,
@@ -6554,7 +6599,7 @@
     "paper": 389,
     "paper_label": "Scharmer (2021)",
     "paper_authors": "Scharmer, A.",
-    "paper_title": "For the planet, the animals, or oneself? Measuring individuals’ motivations to restrict meat consumption and encouraging dietary change",
+    "paper_title": "For the planet, the animals, or oneself? Measuring individuals' motivations to restrict meat consumption and encouraging dietary change",
     "paper_year": 2021,
     "paper_link": "https://conservancy.umn.edu/items/57225a96-959b-4969-bb6e-29679adeb098",
     "studies": [
@@ -6564,7 +6609,7 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "The intervention included a message-matching procedure in which individuals view a randomly assigned persuasive appeal related to one of the four previously identified motives. Participants were presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of animal welfare. (e.g. positive outcomes for animal welfare)",
+            "intervention_description": "The intervention included a message-matching procedure in which individuals view a randomly assigned persuasive appeal related to one of the four previously identified motives. Participants were presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of animal welfare (e.g. positive outcomes for animal welfare).",
             "intervention_mechanism": "info: animal welfare",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -6572,7 +6617,7 @@
           },
           {
             "intervention_condition": 3,
-            "intervention_description": "The intervention included a message-matching procedure in which individuals view a randomly assigned persuasive appeal related to one of the four previously identified motives. Participants were presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of environment. (e.g. positive outcomes for the environment)",
+            "intervention_description": "The intervention included a message-matching procedure in which individuals view a randomly assigned persuasive appeal related to one of the four previously identified motives. Participants were presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of environment (e.g. positive outcomes for the environment).",
             "intervention_mechanism": "info: environment",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -6580,7 +6625,7 @@
           },
           {
             "intervention_condition": 4,
-            "intervention_description": "The intervention included a message-matching procedure in which individuals view a randomly assigned persuasive appeal related to one of the four previously identified motives. Participants were presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of health. (positive outcomes for the health)",
+            "intervention_description": "The intervention included a message-matching procedure in which individuals view a randomly assigned persuasive appeal related to one of the four previously identified motives. Participants were presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of health (positive outcomes for the health).",
             "intervention_mechanism": "info: health",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -6588,7 +6633,7 @@
           },
           {
             "intervention_condition": 5,
-            "intervention_description": "The intervention included a message-matching procedure in which individuals view a randomly assigned persuasive appeal related to one of the four previously identified motives. Participants were presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of social. (e.g. positive outcomes about social life, conformity, peers, belonging)",
+            "intervention_description": "The intervention included a message-matching procedure in which individuals view a randomly assigned persuasive appeal related to one of the four previously identified motives. Participants were presented with a 120-word message designed to encompass four distinct motivational factors. In this condition, the message is specifically framed around the theme of social belonging (e.g. positive outcomes about social life, conformity, peers, belonging).",
             "intervention_mechanism": "norms: descriptive, identity/reputation",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "text",
@@ -6657,7 +6702,7 @@
     "paper": 399,
     "paper_label": "Carfora & Catellani (2022)",
     "paper_authors": "Carfora, V.; Catellani, P.",
-    "paper_title": "Legumes or meat? The effectiveness of recommendation messages towards a plant-based diet depends on people’s identification with flexitarians",
+    "paper_title": "Legumes or meat? The effectiveness of recommendation messages towards a plant-based diet depends on people's identification with flexitarians",
     "paper_year": 2022,
     "paper_link": "https://doi.org/10.3390/nu15010015",
     "studies": [
@@ -6745,7 +6790,7 @@
   {
     "paper": 408,
     "paper_label": "Malan et al. (2020)",
-    "paper_authors": "Malan, H.; Challamel, G. A.; Silverstein, D.; Hoffs, C.; Spang, E. S.; Pace, S. A.; Malagueño, B. L. R.; Gardner, C. D.; Wang, M. C; Slusser, W.; Jay, J. A.",
+    "paper_authors": "Malan, H.; Challamel, G. A.; Silverstein, D.; Hoffs, C.; Spang, E. S.; Pace, S. A.; Malagueño, B. L. R.; Gardner, C. D.; Wang, M. C.; Slusser, W.; Jay, J. A.",
     "paper_title": "Impact of a scalable, multi-campus \"Foodprint\" seminar on college students' dietary intake and dietary carbon footprint",
     "paper_year": 2020,
     "paper_link": "https://doi.org/10.3390/nu12092890",
@@ -7011,7 +7056,7 @@
           },
           {
             "outcome": 2,
-            "outcome_description": "Proportions of vegetarian orders made by participants comparing the intervention vs. control days"
+            "outcome_description": "Proportion of dishes ordered that contained red meat (beef, pork, and other red meat)"
           }
         ]
       },
@@ -7062,7 +7107,7 @@
   {
     "paper": 453,
     "paper_label": "Egeler & Baur (2022)",
-    "paper_authors": "Egeler, G.A.; Baur, P.",
+    "paper_authors": "Egeler, G. A.; Baur, P.",
     "paper_title": "Menu choice and meat-eating habits: Results of a field experiment in two university canteens",
     "paper_year": 2022,
     "paper_link": "https://doi.org/10.3390/su14063296",
@@ -7098,7 +7143,7 @@
     "paper": 454,
     "paper_label": "Hallez et al. (2021)",
     "paper_authors": "Hallez, L.; Qutteina, Y.; Boen, F.; Smits, T.",
-    "paper_title": "The ABC’s of ecological and nutrition labels. The impact of label theme and complexity on the environmental footprint of online grocery choices",
+    "paper_title": "The ABC's of ecological and nutrition labels. The impact of label theme and complexity on the environmental footprint of online grocery choices",
     "paper_year": 2021,
     "paper_link": "https://doi.org/10.3390/su13052474",
     "studies": [
@@ -7217,7 +7262,7 @@
     "paper": 461,
     "paper_label": "Arrazat et al. (2023)",
     "paper_authors": "Arrazat, L.; Chambaron, S.; Arvisenet, G.; Goisbault, I.; Charrier, J.; Nicklaus, S.; Marty, L.",
-    "paper_title": "Traffic-light front-of-pack environmental labelling across food categories triggers more environmentally friendly food choices: A randomised controlled trial in virtual reality supermarket.",
+    "paper_title": "Traffic-light front-of-pack environmental labelling across food categories triggers more environmentally friendly food choices: A randomised controlled trial in virtual reality supermarket",
     "paper_year": 2023,
     "paper_link": "https://doi.org/10.1186/s12966-023-01410-8",
     "studies": [
@@ -7389,7 +7434,7 @@
     "paper": 473,
     "paper_label": "Marty et al. (2025)",
     "paper_authors": "Marty, L.; Biehlmann, M.; Louveau, A.; Poquet, D.; Robinson, E.",
-    "paper_title": "The “Eat Less Meat” one-month challenge: a randomized controlled trial of a meat reduction pledge intervention among French university students",
+    "paper_title": "The \"Eat Less Meat\" one-month challenge: A randomized controlled trial of a meat reduction pledge intervention among French university students",
     "paper_year": 2025,
     "paper_link": "https://doi.org/10.1186/s12966-025-01831-7",
     "studies": [
@@ -7480,7 +7525,7 @@
           },
           {
             "outcome": 3,
-            "outcome_description": "Yoghurt servings consumed during the previous day"
+            "outcome_description": "Yogurt servings consumed during the previous day"
           },
           {
             "outcome": 4,
@@ -7518,7 +7563,7 @@
     "paper": 476,
     "paper_label": "Aldoh et al. (2023)",
     "paper_authors": "Aldoh, A.; Sparks, P.; Harris, P. R.",
-    "paper_title": "Shifting norms, static behaviour: effects of dynamic norms on meat consumption",
+    "paper_title": "Shifting norms, static behaviour: Effects of dynamic norms on meat consumption",
     "paper_year": 2023,
     "paper_link": "https://doi.org/10.1098/rsos.240407",
     "studies": [
@@ -7815,7 +7860,7 @@
     "studies": [
       {
         "study": 1,
-        "study_n": 254,
+        "study_n": 1290,
         "interventions": [
           {
             "intervention_condition": 1,
@@ -8065,8 +8110,8 @@
   {
     "paper": 516,
     "paper_label": "Schiller et al. (2025)",
-    "paper_authors": "Schiller, J.; Ruby M. B.; Sproesser, G.",
-    "paper_title": "A license to eat meat? Exploring processes underlying the effect of animal\nlabels on meat consumption",
+    "paper_authors": "Schiller, J.; Ruby, M. B.; Sproesser, G.",
+    "paper_title": "A license to eat meat? Exploring processes underlying the effect of animal labels on meat consumption",
     "paper_year": 2025,
     "paper_link": "https://doi.org/10.1016/j.appet.2025.108242",
     "studies": [
@@ -8115,7 +8160,7 @@
     "paper": 517,
     "paper_label": "Fonseca & De Groeve (2025)",
     "paper_authors": "Fonseca, R. P.; De Groeve, B.",
-    "paper_title": "‘Meating’ the animal and moral emotions: Exploring animal caring and cruelty appeals for dietary change",
+    "paper_title": "'Meating' the animal and moral emotions: Exploring animal caring and cruelty appeals for dietary change",
     "paper_year": 2025,
     "paper_link": "https://doi.org/10.1016/j.appet.2025.108018",
     "studies": [
@@ -8214,7 +8259,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Participants' reported meat consumption via PrimeScreen Dietary Screening Tool. This tool was a 17-item questionnaire that assesses the frequency that respondents consume various foods.  In cohort 1, participants responded to the questionnaire using the original scale: 0 = never, 1 = less than once per week, 2 = once per week, 3 = 2–4 times per week, 4 = nearly daily or daily, and 5 = twice or more daily"
+            "outcome_description": "Participants' reported meat consumption via PrimeScreen Dietary Screening Tool. This tool was a 17-item questionnaire that assesses the frequency that respondents consume various foods. In cohort 1, participants responded to the questionnaire using the original scale: 0 = never, 1 = less than once per week, 2 = once per week, 3 = 2–4 times per week, 4 = nearly daily or daily, and 5 = twice or more daily."
           },
           {
             "outcome": 2,
@@ -8227,7 +8272,7 @@
   {
     "paper": 541,
     "paper_label": "Herchenroeder et al. (2022)",
-    "paper_authors": "Herchenroeder, L.; Forestell, C.A.; Bravo, A.J.",
+    "paper_authors": "Herchenroeder, L.; Forestell, C. A.; Bravo, A. J.",
     "paper_title": "The effectiveness of animal welfare-, environmental-, and health-focused video appeals on implicit and explicit wanting of meat and intentions to reduce meat consumption",
     "paper_year": 2022,
     "paper_link": "https://doi.org/10.1080/00224545.2022.2081529",
@@ -8333,7 +8378,7 @@
   {
     "paper": 1050,
     "paper_label": "Murray et al. (2026a)",
-    "paper_authors": "Murray, S.; Meleady, R., Hodson, G.",
+    "paper_authors": "Murray, S.; Meleady, R.; Hodson, G.",
     "paper_title": "Seeing animals, choosing plants: Evidence from a cafeteria field study on food choice",
     "paper_year": 2026,
     "paper_link": "https://doi.org/10.1016/j.jenvp.2026.102988",
@@ -8424,9 +8469,10 @@
   {
     "paper": 1053,
     "paper_label": "Kramer & Landry (2026)",
-    "paper_authors": "Kramer, L; Landry, P.",
-    "paper_title": "How the sausage Is made: Testing the effectiveness of an informative video in promoting sustainable food consumption",
+    "paper_authors": "Kramer, L.; Landry, P.",
+    "paper_title": "How the sausage is made: Testing the effectiveness of an informative video in promoting sustainable food consumption",
     "paper_year": 2026,
+    "paper_link": "https://doi.org/10.1038/s41598-026-45035-w",
     "studies": [
       {
         "study": 1,
@@ -8434,7 +8480,7 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "Participants watched a 16-minute clip from the beginning of the Dominion documentary, which focuses predominantly on industrial-scale pork production and does not include any discussion of dietary choices, nor any appeals to adopt a plant-based diet. In this  way, the task of connecting the experiences of pigs on industrial-scale farms (as depicted  in the video) to one’s own consumption choices is left entirely to the viewer. After watching the first 11 minutes of the treatment video, participants were given an  explicit choice of whether or not to watch the remaining five minutes, which contained a detailed overview of methods used to slaughter pigs.",
+            "intervention_description": "Participants watched a 16-minute clip from the beginning of the Dominion documentary, which focuses predominantly on industrial-scale pork production and does not include any discussion of dietary choices, nor any appeals to adopt a plant-based diet. In this way, the task of connecting the experiences of pigs on industrial-scale farms (as depicted in the video) to one’s own consumption choices is left entirely to the viewer. After watching the first 11 minutes of the treatment video, participants were given an explicit choice of whether or not to watch the remaining five minutes, which contained a detailed overview of methods used to slaughter pigs.",
             "intervention_mechanism": "info: animal welfare",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "video",
@@ -8465,7 +8511,7 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "People saw the following message: \"We’ve noticed that more and more College [X] students are choosing veggie lunches.\" In cafeterias where meal selections were made in the cafeteria, messages were printed on A4 posters and displayed at the point of decision-making in at  least two highly visible locations to ensure message salience. For cafeterias that used an  online meal booking system for meal selections, we placed messages as text in a prominent  location in the booking system.",
+            "intervention_description": "People saw the following message: \"We’ve noticed that more and more College [X] students are choosing veggie lunches.\" In cafeterias where meal selections were made in the cafeteria, messages were printed on A4 posters and displayed at the point of decision-making in at least two highly visible locations to ensure message salience. For cafeterias that used an online meal booking system for meal selections, we placed messages as text in a prominent location in the booking system.",
             "intervention_mechanism": "norms: dynamic",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -8474,7 +8520,7 @@
           },
           {
             "intervention_condition": 3,
-            "intervention_description": "People saw the following message: \"Did you know? More and more people in the UK are choosing veggie options *According to Stewart et al, 2021.\" In cafeterias where meal selections were made in the cafeteria, messages were  printed on A4 (210 x 297 mm) posters and displayed at the point of decision-making in at  least two highly visible locations to ensure message salience. For cafeterias that used an  online meal booking system for meal selections, we placed messages as text in a prominent  location in the booking system.",
+            "intervention_description": "People saw the following message: \"Did you know? More and more people in the UK are choosing veggie options *According to Stewart et al, 2021.\" In cafeterias where meal selections were made in the cafeteria, messages were printed on A4 (210 x 297 mm) posters and displayed at the point of decision-making in at least two highly visible locations to ensure message salience. For cafeterias that used an online meal booking system for meal selections, we placed messages as text in a prominent location in the booking system.",
             "intervention_mechanism": "norms: dynamic",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "text",
@@ -8558,7 +8604,7 @@
     "paper": 1056,
     "paper_label": "Becker et al. (2026)",
     "paper_authors": "Becker, E.; Garnett, E. E.; Scarborough, P.; Cummins, S.; Savory, B.; Huse, O.; Thompson, C.; Brock, J.; Clark, M.; Renzella, J.; White, M.; Pechey, R.",
-    "paper_title": "The effect of increasing availability of vegetarian meals on their sales in worksite cafeterias: a stepped-wedge cluster randomised controlled trial",
+    "paper_title": "The effect of increasing availability of vegetarian meals on their sales in worksite cafeterias: A stepped-wedge cluster randomised controlled trial",
     "paper_year": 2026,
     "paper_link": "https://doi.org/10.1186/s12966-026-01889-x",
     "studies": [
@@ -8637,7 +8683,7 @@
   {
     "paper": 1061,
     "paper_label": "De Lint et al. (2026a)",
-    "paper_authors": "De Lint, L; De Vries, R.; Van Rookhuijzen, W. E. A. M.; Gort, G.; De Vet, E.",
+    "paper_authors": "De Lint, L.; De Vries, R.; Van Rookhuijzen, W. E. A. M.; Gort, G.; De Vet, E.",
     "paper_title": "Out of sight, out of cart? The effect of a nudge(+) that reduced visibility of meat promotions on supermarket shopping behavior",
     "paper_year": 2026,
     "paper_link": "https://doi.org/10.31235/osf.io/ez7y3_v2",
@@ -8648,7 +8694,7 @@
         "interventions": [
           {
             "intervention_condition": 2,
-            "intervention_description": "Promotional fresh meat products were removed from end-cap displays and remained available only in regular aisle positions.  Within the fresh meat aisle, the promotional products retained standard-sized price tags visually identical to non-promotional items, showing only the discounted price. Vacated end-cap space displayed non-meat promotions alongside a weekly plant-based recipe featuring some promoted items. Green footsteps on the floor guided customers from the fresh meat section toward the meat replacement aisle.",
+            "intervention_description": "Promotional fresh meat products were removed from end-cap displays and remained available only in regular aisle positions. Within the fresh meat aisle, the promotional products retained standard-sized price tags visually identical to non-promotional items, showing only the discounted price. Vacated end-cap space displayed non-meat promotions alongside a weekly plant-based recipe featuring some promoted items. Green footsteps on the floor guided customers from the fresh meat section toward the meat replacement aisle. In addition, promotional materials with a plant-based reflective cue were added at two store locations: the entrance handscanner pickup and the fresh meat aisle end-cap. Materials stated: \"Will you choose more plant-based today? Affordable, tasty, and better for nature,\" accompanied by plant-based product images.",
             "intervention_mechanism": "choice architecture: visibility/salience/ease",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "choice architecture",
@@ -8657,7 +8703,7 @@
           },
           {
             "intervention_condition": 3,
-            "intervention_description": "Promotional fresh meat products were removed from end-cap displays and remained available only in regular aisle positions.  Within the fresh meat aisle, the promotional products retained standard-sized price tags visually identical to non-promotional items, showing only the discounted price. Vacated end-cap space displayed non-meat promotions alongside a weekly plant-based recipe featuring some promoted items. Green footsteps on the floor guided customers from the fresh meat section toward the meat replacement aisle. In addition, promotional materials with a plant-based reflective cue were added at two store locations: the entrance handscanner pickup and the fresh meat aisle end-cap. Materials stated: \"Will you choose more plant-based today? Affordable, tasty, and better for nature,\" accompanied by plant-based product images.",
+            "intervention_description": "Promotional fresh meat products were removed from end-cap displays and remained available only in regular aisle positions. Within the fresh meat aisle, the promotional products retained standard-sized price tags visually identical to non-promotional items, showing only the discounted price. Vacated end-cap space displayed non-meat promotions alongside a weekly plant-based recipe featuring some promoted items. Green footsteps on the floor guided customers from the fresh meat section toward the meat replacement aisle. In addition, promotional materials with a plant-based reflective cue were added at two store locations: the entrance handscanner pickup and the fresh meat aisle end-cap. Materials stated: \"Will you choose more plant-based today? Affordable, tasty, and better for nature,\" accompanied by plant-based product images.",
             "intervention_mechanism": "choice architecture: visibility/salience/ease, info: environment, info: taste/disgust",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "choice architecture, image, text",
@@ -8708,7 +8754,7 @@
   {
     "paper": 1066,
     "paper_label": "De Lint et al. (2026b)",
-    "paper_authors": "de Lint, L.;de Vries, R.; van Rookhuijzen, M.; op ‘t Landt, S.; de Vet, E,",
+    "paper_authors": "de Lint, L.; de Vries, R.; van Rookhuijzen, M.; op 't Landt, S.; de Vet, E.",
     "paper_title": "Beyond the first choice: How (nudged) vegetarian food choices spill over to subsequent food choices",
     "paper_year": 2026,
     "paper_link": "https://doi.org/10.1016/j.appet.2025.108394",
@@ -8982,15 +9028,15 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Percentage of meals sold that were plant-based"
+            "outcome_description": "Percentage of meals sold that were plant-based, in the 9 outlets of sequence 1, which started the intervention in week 1 (1 August 2023)"
           },
           {
             "outcome": 2,
-            "outcome_description": "Percentage of meals sold that were plant-based"
+            "outcome_description": "Percentage of meals sold that were plant-based, in the 10 outlets of sequence 2, which started the intervention in week 2 (8 August 2023)"
           },
           {
             "outcome": 3,
-            "outcome_description": "Percentage of meals sold that were plant-based"
+            "outcome_description": "Percentage of meals sold that were plant-based, in the 10 outlets of sequence 3, which started the intervention in week 3 (15 August 2023)"
           }
         ]
       }
@@ -9116,7 +9162,7 @@
           },
           {
             "intervention_condition": 3,
-            "intervention_description": "Before making any choices, participants saw an explanation of the label. Each patty option  was labeled with the estimated kg of CO2 emitted to produce that choice.",
+            "intervention_description": "Before making any choices, participants saw an explanation of the label. Each patty option was labeled with the estimated kg of CO2 emitted to produce that choice.",
             "intervention_mechanism": "info: environment",
             "intervention_mechanism_multicomponent": "no",
             "intervention_medium": "label",
@@ -9267,7 +9313,7 @@
         "outcomes": [
           {
             "outcome": 1,
-            "outcome_description": "Percentage of customers choosing a dish that contains meat"
+            "outcome_description": "Percentage of customers choosing a meat or fish dish"
           }
         ]
       }
@@ -9385,7 +9431,7 @@
         "interventions": [
           {
             "intervention_condition": 1,
-            "intervention_description": "Participants in the treatment group were offered a financial reward of 2€  (in addition to the show-up fee) for every vegetarian lunch they chose at the university cafeteria during the intervention week. The reward was close to the student price for meals (between 2.30 € and 2.80 €), meaning students could essentially enjoy a week of free lunches if they chose to eat vegetarian dishes every day.",
+            "intervention_description": "Participants in the treatment group were offered a financial reward of 2€ (in addition to the show-up fee) for every vegetarian lunch they chose at the university cafeteria during the intervention week. The reward was close to the student price for meals (between 2.30 € and 2.80 €), meaning students could essentially enjoy a week of free lunches if they chose to eat vegetarian dishes every day.",
             "intervention_mechanism": "price/tax/incentives, info: taste/disgust",
             "intervention_mechanism_multicomponent": "yes",
             "intervention_medium": "price/tax/incentives",
@@ -9542,7 +9588,7 @@
     "paper": 1090,
     "paper_label": "Lohmann et al. (2025)",
     "paper_authors": "Lohmann, P. M.; Gsottbauer, E.; Gravert, C.; Reisch, L. A.",
-    "paper_title": "Nudging, Fast and Slow: Experimental Evidence from Food Choices under Time Pressure",
+    "paper_title": "Nudging, fast and slow: Experimental evidence from food choices under time pressure",
     "paper_year": 2025,
     "paper_link": "https://doi.org/10.1007/s10640-025-01012-x",
     "studies": [
