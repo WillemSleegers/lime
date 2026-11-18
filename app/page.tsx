@@ -14,15 +14,15 @@ export default function Home() {
     <main className="page-container space-y-landing">
       {/* Hero */}
       <section className="mx-auto max-w-4xl space-y-10 text-center md:space-y-12">
-        <div className="space-y-4">
+        <div className="flex justify-center">
           <Badge variant="destructive">Currently in beta</Badge>
-          <Image
-            src={lime}
-            alt=""
-            loading="eager"
-            className="mx-auto size-20 md:size-24"
-          />
         </div>
+        <Image
+          src={lime}
+          alt=""
+          loading="eager"
+          className="mx-auto size-20 md:size-24"
+        />
         <div className="space-y-4">
           <h1 className="text-page-title text-balance">
             Library of Interventions for Meat Elimination
