@@ -6,6 +6,7 @@ import rehypeRaw from "rehype-raw"
 import type { Components } from "react-markdown"
 
 import { ConditionStructures } from "@/components/condition-structures"
+import { MethodologyToc } from "@/components/methodology-toc"
 
 import counts from "@/assets/data/counts.json"
 
@@ -76,7 +77,7 @@ const BLOCK_TAGS = ["database-counts", "condition-structures"]
 
 // Screening totals from the project tracking sheet. The number of papers that
 // have been screened is derived from the papers actually in the database, so
-// the arithmetic in section 1.3 always adds up as the database grows.
+// the arithmetic in the Screening section always adds up as the database grows.
 const PAPERS_RETRIEVED = 1084
 const PAPERS_EXCLUDED = 876
 const PAPERS_SCREENED = PAPERS_EXCLUDED + counts.papers
@@ -95,7 +96,7 @@ const components = {
   h1: ({ children }: { children?: React.ReactNode }) => (
     <h2
       id={slugify(toText(children))}
-      className="text-section-title mt-12 mb-4 scroll-mt-24 first:mt-0"
+      className="text-section-title mt-16 mb-4 scroll-mt-24 border-t pt-10 first:mt-0 first:border-t-0 first:pt-0"
     >
       {children}
     </h2>
@@ -133,7 +134,7 @@ const components = {
   ),
   a: ({ href, children }: { href?: string; children?: React.ReactNode }) => {
     if (!href) return <span>{children}</span>
-    if (href.startsWith("/")) {
+    if (href.startsWith("/") || href.startsWith("#")) {
       return (
         <Link href={href} className="font-medium text-primary hover:underline">
           {children}
@@ -185,7 +186,7 @@ const referenceComponents = {
 
 function References({ references }: { references: string[] }) {
   return (
-    <section className="mt-12">
+    <section className="mt-16 border-t pt-10">
       <h2 id="references" className="text-section-title mb-4 scroll-mt-24">
         References
       </h2>
@@ -197,32 +198,6 @@ function References({ references }: { references: string[] }) {
         ))}
       </div>
     </section>
-  )
-}
-
-function TableOfContents({ headings }: { headings: Heading[] }) {
-  return (
-    <nav aria-label="On this page" className="space-y-2 text-sm">
-      <p className="font-semibold">On this page</p>
-      <ul className="space-y-1">
-        {headings.map((heading) => (
-          <li
-            key={heading.slug}
-            className={
-              heading.level === 1
-                ? "pt-2 font-medium"
-                : heading.level === 2
-                  ? "pl-3"
-                  : "pl-6 text-muted-foreground"
-            }
-          >
-            <a href={`#${heading.slug}`} className="hover:text-primary">
-              {heading.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
   )
 }
 
@@ -242,13 +217,13 @@ const Methodology = () => {
         {date && <p className="text-sm text-muted-foreground">{date}</p>}
       </div>
 
-      <div className="gap-12 lg:grid lg:grid-cols-[15rem_minmax(0,1fr)]">
+      <div className="gap-16 pt-4 lg:grid lg:grid-cols-[16rem_minmax(0,48rem)] lg:justify-center">
         <div className="hidden lg:block">
-          <div className="sticky top-8 max-h-[calc(100svh-4rem)] overflow-y-auto">
-            <TableOfContents headings={headings} />
+          <div className="sticky top-8 max-h-[calc(100svh-4rem)] overflow-y-auto pb-8">
+            <MethodologyToc headings={headings} />
           </div>
         </div>
-        <article className="max-w-3xl">
+        <article className="max-w-3xl [&_h2+h3]:mt-4">
           <Markdown rehypePlugins={[rehypeRaw]} components={components}>
             {body}
           </Markdown>

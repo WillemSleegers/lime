@@ -4,9 +4,9 @@ _Last updated: 14 October 2026_
 
 This page describes how the studies in LIME were identified, selected, and coded, and how we calculated effect sizes.
 
-# 1 Study identification
+# Study identification
 
-## 1.1 Scope
+## Scope
 
 LIME contains evidence from intervention studies that aimed to reduce animal product consumption. We included results from studies that matched the following criteria.
 
@@ -41,7 +41,7 @@ LIME contains evidence from intervention studies that aimed to reduce animal pro
 - We exclude outcomes that combine plant-based and animal product choices (e.g., a sustainability index where beans but also fish result in a higher score).
 - We only include measures that focus solely on vegetarian products (e.g., purchases of meat replacements) if this is measured in a context where choosing it can be expected to replace animal products. For example, we exclude studies that measure liking of plant-based steak or intentions to eat more beans because this does not necessarily imply that people will reduce their consumption of animal products.
 
-## 1.2 Search strategy
+## Search strategy
 
 The typical approach to identifying relevant studies for a meta-analysis involves (a) specifying a string of search terms that match what is contained in the title and abstract of relevant studies, (b) entering the search terms into one or multiple databases of academic articles, and (c) screening all papers that are flagged by this search. This approach was not feasible for the present project. To create a comprehensive overview of the literature, we include various intervention types, outcomes, and study designs. Studies that we intend to include are conducted in psychology, economics, consumer behavior, climate science, nutrition science, and other fields. Search terms that capture all relevant studies across diverse fields, topics, and methodologies have to be so broad that they would also capture many irrelevant studies on adjacent topics (e.g., thousands of studies on changing the taste or other attributes of animal products, or on the effect of diet on health outcomes).
 
@@ -53,9 +53,9 @@ As a secondary search strategy, we used various channels to identify additional 
 
 Combining papers from both search strategies led to a list of 2,420 papers. After removing 1,319 duplicate entries and 17 papers which could not be found or accessed, we were left with 1,084 papers to be screened for relevance.
 
-## 1.3 Screening
+## Screening
 
-Of these papers, <papers-screened></papers-screened> have been screened so far, considering the inclusion criteria outlined in section 1.1, based on the abstract and, in case the information in the abstract was insufficient, based on the description of the study's research question, hypotheses, and methods. The remaining <papers-pending></papers-pending> papers have yet to be screened. A total of 876 papers were excluded: 806 papers because they did not meet the inclusion criteria and 70 papers because, even though they were deemed relevant, the statistics that are necessary for our analyses were not reported in the paper (e.g., means, sample sizes, standardized effect sizes). We are in the process of contacting the authors of these papers to obtain the relevant statistics and include the studies in our database.
+Of these papers, <papers-screened></papers-screened> have been screened so far, considering the inclusion criteria outlined in [Scope](#scope), based on the abstract and, in case the information in the abstract was insufficient, based on the description of the study's research question, hypotheses, and methods. The remaining <papers-pending></papers-pending> papers have yet to be screened. A total of 876 papers were excluded: 806 papers because they did not meet the inclusion criteria and 70 papers because, even though they were deemed relevant, the statistics that are necessary for our analyses were not reported in the paper (e.g., means, sample sizes, standardized effect sizes). We are in the process of contacting the authors of these papers to obtain the relevant statistics and include the studies in our database.
 
 This screening process leaves us with the studies currently in the database. These numbers are updated automatically as the database grows.
 
@@ -63,7 +63,7 @@ This screening process leaves us with the studies currently in the database. The
 
 Many studies included multiple estimates of intervention effectiveness, for example, because multiple interventions or outcomes were tested.
 
-# 2 Study coding
+# Study coding
 
 Each study included in the database was coded on dozens of dimensions. We extracted information at the
 
@@ -75,7 +75,7 @@ Each study included in the database was coded on dozens of dimensions. We extrac
 
 The codebook, which you can download from the [Meta-analysis](/meta-analysis/) page, provides an overview of all variables. Most variables and attributes are self-explanatory. Below, we describe three coding approaches in more detail because they are not self-explanatory and are central to the analyses.
 
-## 2.1 Coding study designs
+## Coding study designs
 
 The studies that are included in the database vary substantially in their design (e.g., whether results for the control and intervention conditions come from the same or different groups of participants). We capture this variability with eight variables.
 
@@ -111,7 +111,7 @@ Finally, **study RCT** indicates whether a study shows a specific set of design 
 - The study has a between or mixed condition structure.
 - Data tracking is possible.
 
-## 2.2 Coding intervention types
+## Coding intervention types
 
 A primary goal of this project is to estimate the effectiveness of different types of interventions. We categorized interventions according to the pathway via which they are expected to change animal product consumption. Given the diversity of interventions that have been tested and the diversity of terminology in the literature, there is no obviously correct way to categorize interventions. Our coding scheme was based on three considerations.
 
@@ -123,7 +123,7 @@ Third, this means that in some cases, our labeling of an intervention deviates f
 
 Below are descriptions and examples for the 23 categories into which intervention studies are currently organized. These intervention categories are organized into six broader groups. This organization might change in the future, if we deem it informative to split up certain categories due to the availability of more evidence. Note that categories are not exclusive. Many interventions target multiple mechanisms (we refer to these as multi-component interventions), and this is also reflected in our coding. Many categories contain interventions that either steer people away from meat consumption, or toward vegetarian alternatives, or both simultaneously. However, when describing intervention types below, we mostly focus on the anti-meat framing for brevity.
 
-### 2.2.1 Persuasion interventions
+### Persuasion interventions
 
 Interventions that primarily aim to change behavior by presenting relevant factual information.
 
@@ -155,7 +155,7 @@ Interventions that provide information on the tastiness of vegetarian food, or o
 - Participants read a persuasive essay describing disgust-evoking aspects of meat production and consumption (e.g., "...ABC News recently broke a story highlighting the amount of 'pink slime' that is added to the ground beef that you see in grocery stores, restaurants, and even school cafeterias..."; Palomo-Vélez et al., 2018).
 - After buying their noodles, consumers could add fish sauce from a bottle. An A4-sized information sheet with an affect-provoking picture of a girl making a disgusted face with a short message saying "too salty" was displayed nearby the fish sauce bottle (Kanchanachitra et al., 2020).
 
-### 2.2.2 Social influence interventions
+### Social influence interventions
 
 Interventions that primarily aim to change behavior via conformity with social norms, via activating image concerns, or via similar social processes.
 
@@ -187,7 +187,7 @@ Interventions that activate image concerns, or that highlight how desirable trai
 - Participants were presented with an image of a zoo or hospital accompanied by a text asking them to imagine being at the zoo or hospital, "During your visit you get hungry and decide to have lunch in the restaurant of the zoo/hospital," followed by a question of whether they consider animal welfare to be important (Bouwman et al., 2022).
 - Participants were made aware of their prejudice towards animals by conducting and receiving a bogus result from an Animal-Human Implicit Association Test (IAT), suggesting they preferred humans over animals, an attitude explained as contributing to harm toward animals (Stel & Unterweger, 2025).
 
-### 2.2.3 Affect and association interventions
+### Affect and association interventions
 
 Interventions that primarily aim to change behavior by triggering relevant emotions or associations.
 
@@ -219,7 +219,7 @@ Interventions that expose participants to visual or other sensory stimuli that a
 - Participants viewed a slideshow consisting of 15 stock photographs portraying scenes of vulnerability, care-giving, human connection, and times of emotional distress of animals, which were shown to induce compassion in a pretest (Pohlmann, 2021).
 - The food environment was tailored to facilitate the choice of plant-based options, including a green ambience of plants, green serving bowls, and herbs in the dining area. The fresh herbs provided a strong odour and participants could freely use the provided fresh herbs (basil, parsley) as part of their meal (Friis et al., 2017).
 
-### 2.2.4 Choice architecture interventions
+### Choice architecture interventions
 
 Interventions that primarily aim to change behavior by changing the structure of the situation in which food choices are made.
 
@@ -244,7 +244,7 @@ Interventions that increase the number or diversity of vegetarian options that a
 - The portion sizes of vegetables on the plates of main dishes were doubled (150 g of vegetables instead of 75 g) and the portion sizes of meat were reduced by an average of 12.5% (Reinders et al., 2017).
 - One meat and two vegetarian hot lunches were offered, instead of only one vegetarian meal (Biggs et al., 2026).
 
-### 2.2.5 Goal pursuit interventions
+### Goal pursuit interventions
 
 Interventions that primarily aim to change behavior by helping people to form and pursue relevant goals and intentions.
 
@@ -276,7 +276,7 @@ Interventions that facilitate vegetarian meal planning and cooking.
 - Participants completed a veg\*n cooking workshop at school, ate the dish they cooked, and joined a group discussion about the cooking process (Jans et al., 2023).
 - Participants received by email a cookbook of ten easy-to-prepare and cheap meat-free recipes (Marty et al., 2025).
 
-### 2.2.6 Other interventions
+### Other interventions
 
 Interventions that did not fit into the other categories.
 
@@ -299,7 +299,7 @@ Interventions that increase the price of animal products (with or without framin
 
 Interventions that did not fit into one of the categories.
 
-## 2.3 Coding outcome measures
+## Coding outcome measures
 
 We use five variables to describe the type of outcome measure that was used in a study.
 
@@ -355,11 +355,11 @@ Finally, a **measurement type** variable indicates what type of measurement inst
 - **Sales data**: records of products sold in a restaurant, supermarket, or another venue.
 - **Survey**: questionnaires that capture self-reported attitudes, beliefs, or intentions with single items or multi-item scales.
 
-# 3 Calculating effect sizes
+# Calculating effect sizes
 
 Papers report their results in different ways. Some give means and standard deviations, others give the number of people who chose a vegetarian meal, and others only give the result of a statistical model. To combine these results in one meta-analysis, we convert them to a standardized mean difference. When a paper doesn't report the effect size we need, we calculate it from the statistics it does report.
 
-## 3.1 Calculation methods
+## Calculation methods
 
 - **Means and standard deviations per group**: a standardized mean difference (Hedges' _g_).
 - **Counts per group** (e.g., 40 of 120 participants chose the vegetarian dish): a log odds ratio, converted to a standardized mean difference by multiplying it by √3/π.
@@ -367,9 +367,9 @@ Papers report their results in different ways. Some give means and standard devi
 - **Measurements before and after an intervention, in both an intervention and a control group**: a difference-in-differences. We take the change in the intervention group and subtract the change in the control group, so that changes that happened in every group (e.g., because of the season or repeated testing) aren't counted as an effect of the intervention. For means, we follow Morris (2008). For counts, we take the difference between the changes in log odds and convert it with √3/π.
 - **Odds ratios reported by the paper** (e.g., from a logistic regression): converted with √3/π, with the standard error taken from the reported 95% confidence interval.
 
-When a paper reports the same comparison in more than one way, we record each version but include only one in the meta-analysis. When an outcome was measured at several time points after the intervention, the meta-analysis uses the earliest time point among the included effects, so that results are comparable with studies that didn't include follow-up measurements (see section 3.2 for when a time point is not included).
+When a paper reports the same comparison in more than one way, we record each version but include only one in the meta-analysis. When an outcome was measured at several time points after the intervention, the meta-analysis uses the earliest time point among the included effects, so that results are comparable with studies that didn't include follow-up measurements (see [Judgment calls](#judgment-calls) for when a time point is not included).
 
-## 3.2 Judgment calls
+## Judgment calls
 
 Papers don't always report what we need, so sometimes we have to decide how to handle a gap. These are the decisions we have made so far.
 
